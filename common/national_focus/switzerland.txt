@@ -1233,7 +1233,7 @@
 				add_idea = SWI_frontier_defense_plan_idea_2
 			}
 			add_to_variable = {
-				var = SWI_citizen_militia_initial_activation_timeout
+				var = SWI_citizen_militia_activation_timeout
 				value = 10
 				tooltip = SWI_increase_timeout_TT
 			}
@@ -1387,7 +1387,7 @@
 
 		completion_reward = {
 			add_to_variable = {
-				var = SWI_citizen_militia_initial_activation_timeout
+				var = SWI_citizen_militia_activation_timeout
 				value = 20
 				tooltip = SWI_increase_timeout_TT
 			}		
@@ -2149,9 +2149,12 @@
 		}
 
 		available = {
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_fully_cantons  
+			OR = {
+				is_power_balance_in_range = {
+					id = SWI_centralization_bop
+					range < SWI_centralization_bop_fully_cantons  
+				}
+				hidden_trigger = { is_ai = yes }
 			}
 			has_country_flag = SWI_viable_fascist_in_europe
 		}
@@ -2245,9 +2248,12 @@
 		}
 
 		available = {
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_fully_cantons  
+			OR = {
+				is_power_balance_in_range = {
+					id = SWI_centralization_bop
+					range < SWI_centralization_bop_fully_cantons  
+				}
+				hidden_trigger = { is_ai = yes }
 			}
 		}
 		
@@ -2322,9 +2328,12 @@
 		}
 
 		available = {
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_fully_cantons  
+			OR = {
+				is_power_balance_in_range = {
+					id = SWI_centralization_bop
+					range < SWI_centralization_bop_fully_cantons  
+				}
+				hidden_trigger = { is_ai = yes }
 			}
 		}
 		
@@ -2520,27 +2529,40 @@
 		}
 
 		available = {
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_fully_cantons  
+			OR = {
+				is_power_balance_in_range = {
+					id = SWI_centralization_bop
+					range < SWI_centralization_bop_fully_cantons  
+				}
+				hidden_trigger = { is_ai = yes }
 			}
 			GER = {
-				has_opinion = {
-					target = ROOT 
-					value > 29
-				}
 				NOT = {
 					has_war_with = ROOT 
+				}
+			}
+			hidden_trigger = {
+				OR = {
+					NOT = { has_global_flag = swiss_trade_banned }
+					NOT = { has_global_flag = disabled_equipment_funnelling }
+					AND = {
+						GER = { has_war = yes }
+						NOT = {
+							any_country = {
+								is_neighbor_of = SWI
+								NOT = { has_government = fascism }
+								has_war_with = GER
+								has_capitulated = no
+							}
+						}
+					}
+					has_global_flag = the_league_intervention
 				}
 			}
 		}
 		
 		bypass = {
-			GER = {
-				NOT = {
-					has_government = fascism
-				}
-			}
+			hidden_trigger = { has_global_flag = swiss_trade_banned }
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		cancel_if_invalid = no
@@ -2574,9 +2596,30 @@
 		}
 
 		available = {
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_fully_cantons  
+			OR = {
+				is_power_balance_in_range = {
+					id = SWI_centralization_bop
+					range < SWI_centralization_bop_fully_cantons  
+				}
+				hidden_trigger = { is_ai = yes }
+			}
+			hidden_trigger = {  
+				NOT = { has_global_flag = mp_difficulty }
+				NOT = { has_global_flag = swiss_gold_banned }
+				OR = {
+					NOT = { has_global_flag = disabled_equipment_funnelling }
+					AND = {
+						GER = { has_war = yes }
+						NOT = {
+							any_country = {
+								is_neighbor_of = SWI
+								NOT = { has_government = fascism }
+								has_war_with = GER
+								has_capitulated = no
+							}
+						}
+					}
+				}
 			}
 		}
 		
@@ -3027,7 +3070,7 @@
 				add_dynamic_modifier = { modifier = SWI_heer_und_haus_mod }
 			}
 			add_to_variable = {
-				var = SWI_citizen_militia_initial_activation_timeout
+				var = SWI_citizen_militia_activation_timeout
 				value = 20
 				tooltip = SWI_increase_timeout_TT
 			}
@@ -3245,7 +3288,7 @@
 				}
 			}	
 			add_to_variable = {
-				var = SWI_citizen_militia_initial_activation_timeout
+				var = SWI_citizen_militia_activation_timeout
 				value = 30
 				tooltip = SWI_increase_timeout_TT
 			}
@@ -3289,10 +3332,24 @@
 		}
 
 		available = {
-			democratic > 0.65
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_fully_cantons
+			democratic > 0.50
+			hidden_trigger = {  
+				NOT = { has_global_flag = mp_difficulty }
+				NOT = { has_global_flag = swiss_gold_banned }
+				if = {
+					limit = {
+						is_historical_focus_on = yes
+						has_global_flag = allies_mainland_withdrawal
+					}
+					ENG = { is_in_faction_with = FRA }
+				}
+			}
+			OR = {
+				is_power_balance_in_range = {
+					id = SWI_centralization_bop
+					range < SWI_centralization_bop_fully_cantons  
+				}
+				hidden_trigger = { is_ai = yes }
 			}
 		}
 		
@@ -3581,14 +3638,29 @@
 		}
 
 		available = {
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range > SWI_centralization_bop_balanced
-			}	
+			OR = {
+				is_power_balance_in_range = {
+					id = SWI_centralization_bop
+					range < SWI_centralization_bop_fully_cantons  
+				}
+				hidden_trigger = { 
+					is_ai = yes 				
+					NOT = { has_global_flag = swiss_trade_banned }
+				}
+			}
+			hidden_trigger = {
+				if = {
+					limit = {
+						is_historical_focus_on = yes
+						has_global_flag = allies_mainland_withdrawal
+					}
+					ENG = { is_in_faction_with = FRA }
+				}
+			}
 		}
 		
 		bypass = {
-
+			hidden_trigger = { has_global_flag = swiss_trade_banned }
 		}
 
 		cancel_if_invalid = no
@@ -3670,6 +3742,9 @@
 				id = SWI_centralization_bop
 				range < SWI_centralization_bop_balanced
 			}	
+			hidden_trigger = {
+				NOT = { has_global_flag = swiss_gold_banned } #would be too cruel
+			}
 		}
 		
 		bypass = {
@@ -3690,6 +3765,18 @@
 				add_opinion_modifier = {
 					target = ROOT 
 					modifier = SWI_froze_our_assets
+				}
+				if = {
+					limit = {
+						has_idea = SWI_trading_with_switzerland_military
+					}
+					remove_ideas = SWI_trading_with_switzerland_military
+				}
+				if = {
+					limit = {
+						has_idea = SWI_trading_with_switzerland_civilian
+					}
+					remove_ideas = SWI_trading_with_switzerland_civilian
 				}
 			}
 			
@@ -4924,10 +5011,9 @@
 				specialization = specialization_nuclear
 				value = 0.75
 			}
-			
 			add_tech_bonus = {
 				name = SWI_weapons_of_democracy
-				bonus = 0.5 # was 1
+				bonus = 1
 				uses = 1
 				category = nuclear  
 			}			
@@ -5329,7 +5415,6 @@
 				is_subject = no
 			}
 			SWI_is_fully_centralized = yes 
-
 		}
 		
 		bypass = {
@@ -6147,6 +6232,7 @@
 				id = SWI_centralization_bop
 				range < SWI_centralization_bop_very_council
 			}
+			is_subject = no
 		}
 		
 		bypass = {

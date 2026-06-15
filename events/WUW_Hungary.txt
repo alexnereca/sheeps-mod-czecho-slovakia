@@ -588,6 +588,12 @@ country_event = {
 				strength_ratio = { tag = HUN ratio > 1 }
 				factor = 2
 			}
+			modifier = {
+				is_ai = yes
+				HUN = { is_ai = yes }	
+				is_in_faction = no
+				factor = 0
+			}
 		}
 
 		# They reject - event for HUN
@@ -1091,26 +1097,8 @@ country_event = {
 			type = take_state_focus
 			target = FROM
 			generator = { 73 }
-		}
-		if = {
-			limit = {
-				RUT = {
-					exists = yes
-					is_subject_of = FROM
-					owns_state = 73
-				}
-			}
-			add_ai_strategy = {
-				type = declare_war
-				id = RUT
-				value = 100
-			}
-			add_ai_strategy = {
-				type = conquer
-				id = RUT
-				value = 100
-			}
-		}
+		}		
+
 	}
 
 	# It is simply not worth the effort
@@ -1592,7 +1580,7 @@ country_event = {
 		ai_chance = {
 			base = 15
 			modifier = {
-				has_war_support > 0.5
+				has_war_support > 0.6
 				factor = 1.5
 			}
 			modifier = {
@@ -1600,7 +1588,7 @@ country_event = {
 				factor = 2
 			}
 			modifier = {
-				has_stability < 0.5
+				has_stability < 0.6
 				factor = 0.5
 			}
 			modifier = {
@@ -5132,6 +5120,12 @@ country_event = {
 			modifier = {
 				strength_ratio = { tag = HUN ratio > 1 }
 				factor = 2
+			}
+			modifier = {
+				is_in_faction_with = HUN
+				HUN = { is_ai = yes }
+				is_ai = yes
+				factor = 0
 			}
 		}
 

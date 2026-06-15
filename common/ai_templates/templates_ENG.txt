@@ -1,508 +1,760 @@
 armor_ENG = {
-
-	available_for = {
-		ENG
-	}
 	
 	role = armor
 
+	available_for = {
+		ENG
+	}
+
 	upgrade_prio = {
-		factor = 2
-
-		modifier = {
-			factor = 5
-			OR = {
-				has_tech = basic_medium_tank
-				has_tech = basic_medium_tank_chassis
-			}
-		}
-		
-		modifier = {
-			factor = 2
-			OR = {
-				has_tech = main_battle_tank
-				has_tech = main_battle_tank_chassis
-			}
-		}
+		factor = 2999
 	}
 
-	light_armor_default_ENG = {
-		# Intermediate template to get the AI to understand how to transition to the next one
-		upgrade_prio = {
-			factor = 1
-
-			modifier = {
-				factor = 3
-				date < 1938.1.1
-			}
-		}
-
-		target_template = {
-
-			support = {
-				engineer = 1
-				mot_recon = 1
-			}
-
-			regiments = {
-				light_armor = 3
-				motorized = 3
-			}
-		}
-
-		replace_at_match = 0.9
-		replace_with = light_armor_2_ENG
-		target_min_match = 0.3
-	}
-
-	light_armor_2_ENG = {
+	medium_armor_default_ENG_no_dlc = {
 	
 		upgrade_prio = {
-			factor = 1
+			factor = 3500
 
 			modifier = {
-				factor = 1.5
+				factor = 0
 				OR = {
-					has_tech = basic_light_tank
-					has_tech = basic_light_tank_chassis
-				}
-			}
-
-			modifier = {
-				factor = 1.5
-				OR = {
-					has_tech = improved_light_tank
-					has_tech = improved_light_tank_chassis
-				}
-			}
-		}
-		
-		target_template = {
-			
-			support = {
-				engineer = 1
-				mot_recon = 1
-				logistics_company = 1
-			}
-
-			regimental_support = {
-				anti_air_battery = 1
-				anti_tank_battery = 1
-			}
-			
-			regiments = {
-				light_armor = 3
-				motorized = 4
-			}
-		}
-		
-		replace_at_match = 0.8
-		replace_with = medium_armor_early_ENG
-		target_min_match = 0.5  # This prevents ENG from switching over to medium tanks until upgrade_prio takes over (this is a good thing). This is because the light tank target template is so different from the medium tank template, the match score is ca 0.10-0.15 something.
-	}
-	
-	medium_armor_early_ENG = {
-	
-		upgrade_prio = {
-			factor = 1
-
-			modifier = {
-				factor = 3
-				OR = {
-					has_tech = basic_medium_tank
-					has_tech = basic_medium_tank_chassis
+					has_DLC_for_tank = yes
+					can_equip_mech = yes
 				}
 			}
 		}
 
-		target_template = {
-			
-			support = {
-				engineer = 1
-				mot_recon = 1
-				logistics_company = 1
-			}
+		reinforce_prio = 2
 
-			regimental_support = {
-				anti_air_battery = 1
-				anti_tank_battery = 1
+		target_template = {
+			support = { 		
+				artillery = 1	
+				anti_air = 1		
+				logistics_company = 1		
+				anti_tank = 1 		
+				engineer = 1
 			}
 			
 			regiments = {
-				light_armor = 3			
-				medium_armor = 1
-				motorized = 4
-			}
-		}
-		
-		replace_at_match = 0.8
-		replace_with = medium_armor_default_ENG
-		target_min_match = 0.5  # This prevents ENG from switching over to medium tanks until upgrade_prio takes over (this is a good thing). This is because the light tank target template is so different from the medium tank template, the match score is ca 0.10-0.15 something.
-	}
-
-	medium_armor_default_ENG = {
-	
-		upgrade_prio = {
-			factor = 1
-
-			modifier = {
-				factor = 4
-				OR = {
-					has_tech = basic_medium_tank
-					has_tech = basic_medium_tank_chassis
-				}
-			}
-			
-			modifier = {
-				factor = 0.1
-				num_of_military_factories < 110
-			}
-		}
-
-		target_template = {
-			
-			support = {
-				engineer = 1
-				mot_recon = 1
-				logistics_company = 1
-			}
-			
-			regimental_support = {
-				anti_air_battery = 1
-				anti_tank_battery = 1
-			}
-
-			regiments = {
-				medium_armor = 4
-				motorized = 6
-				mot_artillery_brigade = 1
-			}
-		}
-		
-		replace_at_match = 0.9
-		replace_with = medium_armor_2_ENG
-		target_min_match = 0.8  # Prevents premature upgrade to medium_armor_2_ENG, will wait for the upgrade_prio instead
-	}
-
-	medium_armor_2_ENG = {
-	
-		upgrade_prio = {
-			factor = 1
-
-			modifier = {
-				factor = 3.5
-				OR = {
-					has_tech = improved_medium_tank
-					has_tech = improved_medium_tank_chassis
-				}
-			}
-
-			modifier = {
-				factor = 0.1
-				num_of_military_factories < 150
-			}
-		}
-		
-		target_template = {
-			
-			support = {
-				engineer = 1
-				maintenance_company = 1
-				logistics_company = 1
-				light_tank_recon = 1
-				signal_company = 1
-			}
-			
-			regimental_support = {
-				mot_fire_support = 2
-				anti_air_battery = 1
-				anti_tank_battery = 1
-			}
-
-			regiments = {
-				medium_armor = 4
+				medium_armor = 8
 				motorized = 8
-				mot_artillery_brigade = 2  
-				mot_anti_air_brigade = 1
 			}
 		}
-		
-		replace_at_match = 0.9
-		replace_with = modern_armor_default_ENG
-		target_min_match = 0.8
 	}
 
-	modern_armor_default_ENG = {
+	medium_armor_2_ENG_no_dlc = {
 	
 		upgrade_prio = {
-			factor = 1
-
+			factor = 6000
 			modifier = {
-				factor = 4
+				factor = 0
 				OR = {
-					has_tech = main_battle_tank
-					has_tech = main_battle_tank_chassis
+					has_DLC_for_tank = yes
+					can_equip_mech = no
 				}
 			}
-
 			modifier = {
-				factor = 0.1
-				num_of_military_factories < 150
+				factor = 0
+				num_of_military_factories < 100
+			}
+		}
+		reinforce_prio = 2
+
+		
+		target_template = {
+			support = { 		
+				artillery = 1	
+				anti_air = 1		
+				logistics_company = 1		
+				anti_tank = 1 		
+				engineer = 1
+			}
+			
+			regiments = {
+				medium_armor = 8
+				mechanized = 8
 			}
 		}
 
-		target_template = {
-			
-			support = {
-				engineer = 1
-				maintenance_company = 1
-				logistics_company = 1
-				light_tank_recon = 1
-				signal_company = 1
-			}
-			
-			regimental_support = {
-				mot_fire_support = 2
-			}
+		can_upgrade_in_field = {
+			has_equipment = { mechanized_equipment > 500 }
+		}
+	}
+	medium_armor_default_ENG_dlc = {
+	
+		upgrade_prio = {
+			factor = 500
 
+			modifier = {
+				factor = 0
+				OR = {
+					has_DLC_for_tank = no
+					has_ranger_pioneer = yes
+					can_equip_mech = yes
+				}
+			}
+		}
+		reinforce_prio = 2
+
+		target_template = {
+			support = { 		
+				medium_flame_tank = 1	
+				anti_air = 1		
+				artillery = 1		
+				recon = 1 		
+				engineer = 1
+			}
+			
 			regiments = {
-				modern_armor = 3
-				motorized = 3
-				mechanized = 3
-				mot_artillery_brigade = 1  # TODO this should be SP-ART when AI actually designs that
-				mot_anti_air_brigade = 1
-				mot_anti_tank_brigade = 1
-				# medium_sp_artillery_brigade = 2
-				# medium_tank_destroyer_brigade = 1
+				medium_tank_destroyer_brigade = 8
+				motorized = 8
 			}
 		}
 	}
+	medium_armor_default_ENG_dlc_2 = {
+	
+		upgrade_prio = {
+			factor = 3500
+
+			modifier = {
+				factor = 0
+				OR = {
+					has_DLC_for_tank = no
+					has_ranger_pioneer = no
+					can_equip_mech = yes
+				}
+			}
+		}
+		reinforce_prio = 2
+
+		target_template = {
+			support = { 		
+				medium_flame_tank = 1	
+				anti_air = 1		
+				artillery = 1		
+				rangers_support = 1 		
+				pioneer_support = 1
+			}
+			
+			regiments = {
+				medium_tank_destroyer_brigade = 8
+				motorized = 8
+			}
+		}
+	}
+	medium_armor_2_ENG_dlc_no_tech = {
+	
+		upgrade_prio = {
+			factor = 10000
+
+			modifier = {
+				factor = 0
+				OR = {
+					has_DLC_for_tank = no
+					has_ranger_pioneer = yes
+					can_equip_mech = no
+				}
+			}
+		}
+		reinforce_prio = 2
+
+		target_template = {
+			support = { 		
+				medium_flame_tank = 1	
+				anti_air = 1		
+				artillery = 1		
+				recon = 1 		
+				engineer = 1
+			}
+			
+			regiments = {
+				medium_tank_destroyer_brigade = 8
+				motorized = 8
+			}
+		}
+	}
+
+	medium_armor_2_ENG_has_dlc_full_tech = {
+	
+		upgrade_prio = {
+			factor = 25000
+			modifier = {
+				factor = 0
+				has_DLC_for_tank = no
+			}
+			modifier = {
+				factor = 0
+				num_of_military_factories < 100
+			}
+		}
+		reinforce_prio = 2
+
+		
+		target_template = {
+			support = { 		
+				rangers_support = 1	
+				anti_air = 1		
+				logistics_company = 1		
+				medium_flame_tank = 1 		
+				pioneer_support = 1
+			}
+			
+			regiments = {
+				medium_tank_destroyer_brigade = 8
+				mechanized = 8
+			}
+		}
+
+		can_upgrade_in_field = {
+			has_equipment = { mechanized_equipment > 500 }
+		}
+	}
+
 }
 
 infantry_ENG = {
+	
+	role = infantry
 
 	available_for = {
 		ENG
 	}
 	
-	role = infantry
-	
 	upgrade_prio = {
-		factor = 8
+		factor = 2000
 
 		modifier = {
 			factor = 1
 		}
 	}
-
 	infantry_default_ENG = {
 	
 		upgrade_prio = {
-			factor = 2
-
+			factor = 500
 			modifier = {
-				factor = 1
+				date > 1940.1.1
+				factor = 0
+			}
+			modifier = {
+				is_historical_focus_on = no
+				factor = 0
 			}
 		}
-		
 		target_template = {
-			
 			support = {
 				engineer = 1
+				anti_tank = 1
+				artillery = 1
+				anti_air = 1
 				recon = 1
 			}
 			
-			regimental_support = {
-				anti_tank_battery = 1
-				fire_support = 1
-				field_guns = 1
-			}
-
 			regiments = {
 				infantry = 9
-				artillery_brigade = 1
 			}
 		}
-
-		replace_at_match = 0.9
-		replace_with = infantry_improved_ENG
-		target_min_match = 0.9
 	}
 
-	infantry_improved_ENG = {
+	infantry_2_ENG = {
 	
 		upgrade_prio = {
-			factor = 2
-
+			factor = 1500
 			modifier = {
-				factor = 1
+				date > 1940.1.1
+				factor = 0
+			}
+			modifier = {
+				is_historical_focus_on = no
+				factor = 20
 			}
 		}
-		
 		target_template = {
-			
 			support = {
 				engineer = 1
-				recon = 1
-				field_hospital = 1
-			}
-
-			regimental_support = {
-				anti_tank_battery = 1
-				anti_air_battery = 1
-				fire_support = 1
+				anti_air = 1
+				artillery = 1
+				anti_tank = 1
+				medium_flame_tank = 1
 			}
 			
 			regiments = {
 				infantry = 9
-				artillery_brigade = 2
+				artilery_brigade = 2
 			}
 		}
 	}
+	infantry_improved_ENG_no_tech = {
+	
+		upgrade_prio = {
+			factor = 1500
+			modifier = {
+				date < 1940.1.1
+				factor = 0
+			}
+			modifier = {
+				OR = {
+					has_DLC_for_tank = no
+					has_ranger_pioneer = yes
+				}
+				factor = 0
+			}
+		}
+		
+		target_template = {
+			support = {
+				engineer = 1
+				recon = 1
+				medium_flame_tank = 1
+				artillery = 1
+				logistics_company = 1
+			}
+			
+			regiments = {
+				infantry = 12
+				artillery_brigade = 2
+				anti_air_brigade = 1
+				anti_tank_brigade = 1
+			}
+		}
+	}
+
+	infantry_improved_ENG_full_tech = {
+	
+		upgrade_prio = {
+			factor = 5500
+			modifier = {
+				date < 1940.1.1
+				factor = 0
+			}
+			modifier = {
+				OR = {
+					has_DLC_for_tank = no
+					has_ranger_pioneer = no
+				}
+				factor = 0
+			}
+		}
+		
+		target_template = {
+			support = {
+				pioneer_support = 1
+				rangers_support = 1
+				medium_flame_tank = 1
+				artillery = 1
+				logistics_company = 1
+			}
+			
+			regiments = {
+				infantry = 12
+				artillery_brigade = 2
+				anti_air_brigade = 1
+				anti_tank_brigade = 1
+			}
+		}
+	}
+
+	infantry_improved_ENG_no_AAT = {
+	
+		upgrade_prio = {
+			factor = 2500
+			modifier = {
+				date < 1942.1.1
+				factor = 0
+			}
+			modifier = {
+				has_DLC_for_tank = yes
+				factor = 0
+			}
+		}
+		target_template = {
+			support = {
+				engineer = 1
+				signal_company = 1
+				anti_air = 1
+				artillery = 1
+				logistics_company = 1
+			}
+			
+			regiments = {
+				infantry = 12
+				artillery_brigade = 2
+				anti_air_brigade = 1
+				anti_tank_brigade = 1
+			}
+		}
+	}
+
 }
 
 mountaineers_ENG = {
+	
+	role = mountaineers
 
 	available_for = {
 		ENG
 	}
 	
-	role = mountaineers
-	
 	upgrade_prio = {
-		factor = 2
-
+		factor = 2000
 		modifier = {
 			factor = 0
-			NOT = {
-				has_tech = tech_mountaineers
-			}
+			can_equip_amphib = no
 		}
 	}
-
-	mountaineers_default_ENG = {
+	mountaineers_no_tech_ENG = {
 	
 		upgrade_prio = {
-			factor = 2
-
+			factor = 500
 			modifier = {
-				factor = 1
+				factor = 0
+				OR = {
+					has_DLC_for_tank = no
+					has_ranger = yes
+					has_pioneer = yes
+				}
 			}
 		}
-
 		target_template = {
-			
 			support = {
 				engineer = 1
-				artillery = 1
-				logistics_company = 1
 				recon = 1
-			}
-
-			regimental_support = {
-				anti_tank_battery = 1
-				fire_support = 1
+				medium_flame_tank = 1
+				artillery = 1
+				anti_air = 1
 			}
 			
 			regiments = {
-				mountaineers = 9
+				amphibious_mechanized = 13
+				medium_tank_destroyer_brigade = 5
+			}
+		}
+	}
+	mountaineers_has_ranger_ENG = {
+	
+		upgrade_prio = {
+			factor = 1500
+			modifier = {
+				factor = 0
+				OR = {
+					has_DLC_for_tank = no
+					has_ranger = no
+					has_pioneer = yes
+				}
+			}
+		}
+		target_template = {
+			support = {
+				engineer = 1
+				rangers_support = 1
+				medium_flame_tank = 1
+				artillery = 1
+				anti_air = 1
+			}
+			
+			regiments = {
+				amphibious_mechanized = 13
+				medium_tank_destroyer_brigade = 5
+			}
+		}
+	}
+	mountaineers_has_pioneer_ENG = {
+	
+		upgrade_prio = {
+			factor = 1500
+			modifier = {
+				factor = 0
+				OR = {
+					has_DLC_for_tank = no
+					has_ranger = yes
+					has_pioneer = no
+				}
+			}
+		}
+		target_template = {
+			support = {
+				pioneer_support = 1
+				recon = 1
+				medium_flame_tank = 1
+				artillery = 1
+				anti_air = 1
+			}
+			
+			regiments = {
+				amphibious_mechanized = 13
+				medium_tank_destroyer_brigade = 5
+			}
+		}
+	}
+	mountaineers_full_tech_ENG = {
+	
+		upgrade_prio = {
+			factor = 50000
+			modifier = {
+				factor = 0
+				OR = {
+					has_DLC_for_tank = no
+					AND = {
+						has_ranger = no
+						has_pioneer = no
+					}
+				}
+			}
+		}
+		target_template = {
+			support = {
+				pioneer_support = 1
+				rangers_support = 1
+				medium_flame_tank = 1
+				logistics_company = 1
+				anti_air = 1
+			}
+			
+			regiments = {
+				amphibious_mechanized = 13
+				medium_tank_destroyer_brigade = 5
+			}
+		}
+	}
+	mountaineers_default_USA_no_dlc = {
+	
+		upgrade_prio = {
+			factor = 2000
+			modifier = {
+				factor = 0
+				has_DLC_for_tank = yes
+			}
+		}
+		reinforce_prio = 2
+
+		target_template = {
+			support = {
+				engineer = 1
+				anti_air = 1
+				logistics_company = 1
+				field_hospital = 1
+				artillery = 1
+			}
+			
+			regiments = {
+				heavy_armor = 5
+				amphibious_mechanized = 13
 			}
 		}
 	}
 }
 
 marines_ENG = {
+	
+	role = marines
 
 	available_for = {
 		ENG
 	}
-	
-	role = marines
-	
 	upgrade_prio = {
-		factor = 4
-
-		modifier = {
-			factor = 0
-			NOT = {
-				has_tech = marines
+		factor = 200
+	}
+	marine_no_tech_ENG = {
+		upgrade_prio = {
+			factor = 502
+			modifier = {
+				factor = 0
+				OR = {
+					has_DLC_for_tank = no
+					has_ranger_pioneer = yes
+				}
+			}
+		}
+		target_template = {
+			support = {
+				engineer = 1
+				medium_flame_tank = 1
+				artillery = 1
+				logistics_company = 1
+				anti_air = 1
+			}
+			
+			regiments = {
+				medium_tank_destroyer_brigade = 3
+				marine = 10
+				mountaineers = 5
 			}
 		}
 	}
-
-	marine_default_ENG = {
+	marine_full_tech_no_flame_ENG = {
 		upgrade_prio = {
-			factor = 2
-
+			factor = 5002
 			modifier = {
-				factor = 1
+				factor = 0
+				OR = {
+					has_DLC_for_tank = no
+					has_ranger_pioneer = no
+					has_flame_tank = yes
+				}
 			}
 		}
+		target_template = {
+			support = {
+				pioneer_support = 1
+				rangers_support = 1
+				artillery = 1
+				medium_flame_tank = 1
+				anti_air = 1
+			}
+			
+			regiments = {
+				medium_tank_destroyer_brigade = 3
+				marine = 10
+				mountaineers = 5
+			}
+		}
+	}
+	marine_full_tech_has_flame_ENG = {
+		upgrade_prio = {
+			factor = 15002
+			modifier = {
+				factor = 0
+				OR = {
+					has_DLC_for_tank = no
+					has_ranger_pioneer = no
+					has_flame_tank = no
+				}
+			}
+		}
+		target_template = {
+			support = {
+				pioneer_support = 1
+				rangers_support = 1
+				medium_flame_tank = 1
+				logistics_company = 1
+				anti_air = 1
+			}
+			
+			regiments = {
+				medium_tank_destroyer_brigade = 3
+				marine = 10
+				mountaineers = 5
+			}
+		}
+	}
+	marine_default_USA_no_dlc = {
+	
+		upgrade_prio = {
+			factor = 2000
+			modifier = {
+				factor = 0
+				has_DLC_for_tank = yes
+			}
+		}
+		reinforce_prio = 2
 
 		target_template = {
-			
 			support = {
-				recon = 1
-				logistics_company = 1
 				engineer = 1
+				anti_air = 1
+				logistics_company = 1
+				field_hospital = 1
 				artillery = 1
 			}
 			
-			regimental_support = {
-				anti_tank_battery = 1
-				fire_support = 1
-			}
-
 			regiments = {
-				marine = 9
+				medium_armor = 3
+				marine = 10
+				mountaineers = 5
 			}
 		}
 	}
 }
 
 paratrooper_ENG = {
+	
+	role = paratroopers
 
 	available_for = {
 		ENG
 	}
 	
-	role = paratroopers
-	
 	upgrade_prio = {
-		factor = 2
-
-		modifier = {
-			factor = 0
-			NOT = {
-				has_tech = paratroopers
-			}
-		}
+		factor = 2000
 	}
-
-	paratrooper_default_ENG = {
-			
+	para_role_no_tech_ENG = {
 		upgrade_prio = {
-			factor = 2
-
+			factor = 502
 			modifier = {
-				factor = 1
+				factor = 0
+				OR = {
+					has_DLC_for_tank = no
+					has_ranger_pioneer = yes
+				}
 			}
 		}
-
 		target_template = {
-			
 			support = {
 				engineer = 1
-				field_hospital = 1	
-			}
-
-			regimental_support = {
-				anti_tank_battery = 1
-				field_guns = 1
+				medium_flame_tank = 1
+				artillery = 1
+				logistics_company = 1
+				anti_air = 1
 			}
 			
 			regiments = {
-				paratrooper = 9
+				medium_tank_destroyer_brigade = 3
+				marine = 10
+				mountaineers = 5
+			}
+		}
+	}
+	para_role_full_tech_ENG = {
+		upgrade_prio = {
+			factor = 5002
+			modifier = {
+				factor = 0
+				OR = {
+					has_DLC_for_tank = no
+					has_ranger_pioneer = no
+					has_flame_tank = yes
+				}
+			}
+		}
+		target_template = {
+			support = {
+				pioneer_support = 1
+				rangers_support = 1
+				artillery = 1
+				medium_flame_tank = 1
+				anti_air = 1
+			}
+			
+			regiments = {
+				medium_tank_destroyer_brigade = 3
+				marine = 10
+				mountaineers = 5
+			}
+		}
+	}	
+	para_default_USA_no_dlc = {
+	
+		upgrade_prio = {
+			factor = 2000
+			modifier = {
+				factor = 0
+				has_DLC_for_tank = yes
+			}
+		}
+		reinforce_prio = 2
+
+		target_template = {
+			support = {
+				engineer = 1
+				anti_air = 1
+				logistics_company = 1
+				field_hospital = 1
+				artillery = 1
+			}
+			
+			regiments = {
+				heavy_armor = 3
+				marine = 10
+				mountaineers = 5
 			}
 		}
 	}
@@ -510,20 +762,15 @@ paratrooper_ENG = {
 }
 
 garrison_ENG = {
+	
+	role = garrison
 
 	available_for = {
 		ENG
 	}
 	
-	role = garrison
-	
 	upgrade_prio = {
-		base = 0.5
-
-		modifier = {
-			factor = 20
-			NOT = { ai_has_role_template = garrison }
-		}
+		factor = 80
 	}
 	
 	garrison_ENG = {
@@ -540,55 +787,15 @@ garrison_ENG = {
 		custom_icon = 7
 		
 		target_template = {
-			
 			support = {
 				engineer = 1
+				artillery = 1
+				anti_air = 1
 			}
 			
 			regiments = {
-				infantry = 6
+				infantry = 8
 			}
 		}
 	}
 }
-
-# Non-complete list of sub-units
-
-# REGIMENTS:
-# - infantry
-# - light_armor
-# - medium_armor
-# - heavy_armor
-# - super_heavy_armor
-# - modern_armor
-# - cavalry
-# - motorized
-# - mechanized
-# - marine
-# - mountaineers
-# - paratrooper
-# - artillery_brigade
-# - anti_air_brigade
-# - anti_tank_brigade
-# - light_tank_destroyer_brigade
-# - medium_tank_destroyer_brigade
-# - heavy_tank_destroyer_brigade
-# - super_heavy_tank_destroyer_brigade
-# - modern_tank_destroyer_brigade
-# - light_sp_anti_air_brigade
-# - light_sp_artillery_brigade
-
-# SUPPORT (DIVISIONAL):
-# - engineer (and variants: assault_engineer, armored_engineer)
-# - recon (and variants: mot_recon, armored_car_recon, light_tank_recon)
-# - signal_company / maintenance_company / logistics_company
-# - artillery / rocket_artillery
-# - field_hospital / military_police / hq_support_company
-
-# SUPPORT (REGIMENTAL):
-# - anti_air
-# - anti_tank
-# - field_guns
-# - fire_support
-# - mot_fire_support
-# - rocket_battery

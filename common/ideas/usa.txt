@@ -365,7 +365,7 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				production_speed_dockyard_factor = 0.1	
+				production_speed_dockyard_factor = 0.2	
 			}
 		}
 		USA_greenland_patrol_idea = {
@@ -450,7 +450,43 @@ ideas = {
 
 			removal_cost = -1
 
-			
+			on_add = {
+				division_template = {
+					name = "State Reserve"
+					priority = 1
+					division_names_group = USA_INF_01
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+						infantry = { x = 0 y = 3 }
+						infantry = { x = 0 y = 4 }
+						infantry = { x = 1 y = 0 }
+					}
+					support = {
+						artillery = { x = 0 y = 0 }
+						anti_air = { x = 0 y = 1 }
+						engineer = { x = 0 y = 2 }
+					}
+				}
+				every_owned_state = {
+					limit = {	
+						is_in_home_area = yes
+						OR = {
+							NOT = { is_fully_controlled_by = USA }
+							any_neighbor_state = {
+								controller = { has_war_with = USA }
+							}
+						}
+					}
+					create_unit = {
+						division = "name = \"State Reserve\" division_template = \"State Reserve\" start_experience_factor = 0.05" 
+						owner = USA 
+						allow_spawning_on_enemy_provs = yes  
+						count = 5
+					}
+				}
+			}
 
 			modifier = {
 				army_core_defence_factor = 0.2
@@ -514,7 +550,7 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				industrial_capacity_factory = 0.05	
+				industrial_capacity_factory = 0.10	
 			}
 		}
 		USA_labour_management_relations_act = {
@@ -598,7 +634,7 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				production_speed_industrial_complex_factor = 0.1
+				production_speed_industrial_complex_factor = 0.2
 				production_speed_arms_factory_factor = 0.1
 			}
 		}
@@ -616,7 +652,7 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				production_speed_infrastructure_factor = 0.1
+				production_speed_infrastructure_factor = 0.2
 			}
 		}
 		USA_national_employment_strategy = {
@@ -632,7 +668,7 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				production_speed_industrial_complex_factor = 0.1
+				production_speed_industrial_complex_factor = 0.2
 				production_speed_arms_factory_factor = 0.1
 				production_factory_efficiency_gain_factor = 0.1
 			}
@@ -872,7 +908,7 @@ ideas = {
 			
 			equipment_bonus = {
 				large_plane_airframe = {
-					air_range = 0.1 instant = yes
+					air_range = 0.3 instant = yes
 				}	
 			}
 		}
@@ -1306,29 +1342,9 @@ ideas = {
 				equipment_capture = 0.125
 				consumer_goods_factor = -0.25	
 				conscription_factor = 0.25
-			}
+			}			
 		}
-
-		ABDA_maintain_strategic_flexibility_spirit = {
-
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				always = yes
-			}
-
-			removal_cost = -1
-
-			picture = generic_sea_focused_navy
-
-			modifier = {
-				industrial_capacity_dockyard = 0.10
-				navy_max_range_factor = 0.10
-			}
-		}
-
+	
 	}
 
 
@@ -1363,7 +1379,6 @@ ideas = {
 					PHI_SEA = yes
 				}
 			}
-			
 			available = {
 				if = {
 					limit = {
@@ -1382,6 +1397,7 @@ ideas = {
 					}
 				}
 			}
+
 			
 			research_bonus = {
 				armor = 0.15
@@ -1563,6 +1579,8 @@ ideas = {
 				}
 			}
 			
+
+			
 			research_bonus = {
 				naval_equipment = 0.15
 			}
@@ -1645,6 +1663,8 @@ ideas = {
 				}
 			}
 			
+
+			
 			research_bonus = {
 				air_equipment = 0.15
 			}
@@ -1702,6 +1722,8 @@ ideas = {
 					}
 				}
 			}
+			
+
 			
 			research_bonus = {
 				air_equipment = 0.15
@@ -1824,6 +1846,8 @@ ideas = {
 				}
 			}
 			
+
+			
 			research_bonus = {
 				infantry_weapons = 0.15
 			}
@@ -1832,7 +1856,6 @@ ideas = {
 			
 			modifier = {
 			}
-
 		}
 		
 		ford_motor_company = {
@@ -1863,6 +1886,8 @@ ideas = {
 					}
 				}
 			}
+			
+
 			
 			research_bonus = {
 				motorized_equipment = 0.15
@@ -1905,6 +1930,8 @@ ideas = {
 				}
 			}
 			
+
+			
 			research_bonus = {
 				artillery = 0.15
 			}
@@ -1913,64 +1940,6 @@ ideas = {
 			
 			modifier = {
 			}
-		}
-
-		USA_baldwin_locomotive_works_manufacturer = {
-
-			name = "USA_baldwin_locomotive_works_organization"
-
-			picture = USA_blw
-
-			allowed = {
-				original_tag = USA
-			}
-
-			available = {
-			}
-
-			visible = {
-			}
-
-			research_bonus = {
-				train_tech = 0.15
-				support_tech = 0.07
-			}
-
-			equipment_bonus = {
-				train_equipment = {
-					build_cost_ic = -0.10
-					armor_value = 0.10
-					air_attack = 0.10
-					instant = yes
-				}
-			}
-
-			cost = 150
-
-			traits = { train_equipment_manufacturer }
-
-			ai_will_do = {
-				factor = 0
-			}
-		}
-
-		USA_sikorsky = {
-
-			name = "USA_sikorsky_organization"
-
-			picture = generic_helicopter_1
-
-			allowed = {
-				original_tag = USA
-				has_dlc = "Gotterdammerung"
-			}
-
-			research_bonus = {
-				support_tech = 0.05
-				air_equipment = 0.05
-			}
-
-			traits = { helicopter_equipment_manufacturer }
 		}
 	}
 	

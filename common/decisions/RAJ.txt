@@ -7,7 +7,7 @@ RAJ_population_decisions = {
 		state_target = any_owned_state
 		
 		visible = { 
-			ROOT = {
+			ROOT = { 
 				has_completed_focus = RAJ_administrative_oversight
 				check_variable = { RAJ_agrarian_society_value < 0 } 
 			} 
@@ -26,6 +26,7 @@ RAJ_population_decisions = {
 		target_trigger = {			
 			FROM = {
 				is_core_of = ROOT
+				is_owned_by = ROOT
 				is_controlled_by = ROOT
 				NOT = {
 					state = 439
@@ -64,6 +65,7 @@ RAJ_population_decisions = {
 			}
 			FROM = {
 				set_state_flag = RAJ_industrialized_this_state
+				RAJ_upgrade_development = yes
 				if = {
 					limit = { ROOT = { has_completed_focus = RAJ_workforce_integration } }
 					add_dynamic_modifier = {

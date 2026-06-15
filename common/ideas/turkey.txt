@@ -1,77 +1,6 @@
 ideas = {
 
-	hidden_ideas = {
-
-		TUR_inventive_genius_hidden_idea = {
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				always = yes
-			}
-			available = {
-			
-			}
-
-			removal_cost = -1
-
-			research_bonus = {
-				electronics = 0.1
-			}
-
-			modifier = {
-				
-			}
-		}
-		
-	}
-
 	country = { 
-
-		TUR_first_five_year_plan = { 
-
-			allowed = {
-				original_tag = TUR
-			}
-
-			allowed_civil_war = {
-				always = yes
-			}
-
-			picture = SOV_third_five_year_plan_civilian
-				
-			removal_cost = -1
-
-			research_bonus = {
-				construction_tech = 0.05
-			}
-				
-			modifier = {
-				production_speed_industrial_complex_factor = 0.05 
-			}
-		}
-
-		TUR_widespread_illiteracy_idea = { 
-
-			allowed = {
-				original_tag = TUR
-			}
-
-			allowed_civil_war = {
-				always = yes
-			}
-
-			picture = RAJ_tenancy_reforms
-				
-			removal_cost = -1
-				
-			modifier = {
-				research_speed_factor = -0.05
-				stability_factor = -0.05
-				political_power_factor = -0.05
-			}
-		}
 
 		TUR_kemalist_army_officers_powerful_loyal = { 
 
@@ -1224,11 +1153,6 @@ ideas = {
 			picture = generic_foreign_capital
 				
 			removal_cost = -1
-				
-			modifier = {
-				consumer_goods_factor = 0.10
-				production_speed_buildings_factor = -0.1
-			}
 		}
 
 		TUR_sheltered_foreign_outcasts = { 
@@ -2120,16 +2044,130 @@ ideas = {
 			}
 
 			picture = FRA_scw_intervention_nationalists_focus
+
+			on_add = {
+				division_template = {
+					name = "Civilian Volunteer"
+					priority = 1
+					is_locked = yes
+					division_names_group = TUR_INF_01
+					regiments = {
+						militia = { x = 0 y = 0 }
+						militia = { x = 0 y = 1 }
+						militia = { x = 0 y = 2 }
+						militia = { x = 0 y = 3 }
+						militia = { x = 0 y = 4 }
+						militia = { x = 1 y = 0 }
+					}
+				}
+				capital_scope = {
+					create_unit = {
+						division = "name = \"Volunteer Division\" division_template = \"Civilian Volunteer\" start_experience_factor = 0.02" 
+						owner = ROOT 
+						allow_spawning_on_enemy_provs = yes  
+						count = 3
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = infantry_equipment_0
+					amount = 1400
+					producer = TUR
+				}
+				add_equipment_to_stockpile = {
+					type = infantry_equipment_1
+					amount = 200
+					producer = FRA
+				}
+				add_equipment_to_stockpile = {
+					type = infantry_equipment_1
+					amount = 200
+					producer = GER
+				}
+				add_equipment_to_stockpile = {
+					type = infantry_equipment_1
+					amount = 200
+					producer = ENG
+				}
+				add_equipment_to_stockpile = {
+					type = infantry_equipment_0
+					amount = 500
+					producer = GRE
+				}
+				if = {
+					limit = { 
+						has_country_leader = {
+							character = TUR_mustafa_kemal_ataturk
+							ruling_only = yes
+						}
+					}
+					create_unit = {
+						division = "name = \"Volunteer Division\" division_template = \"Civilian Volunteer\" start_experience_factor = 0.02" 
+						owner = ROOT 
+						allow_spawning_on_enemy_provs = yes  
+						count = 3
+					}
+					add_equipment_to_stockpile = {
+						type = infantry_equipment_0
+						amount = 2000
+						producer = TUR
+					}
+				}
+			}
 				
 			removal_cost = -1
 				
 			modifier = {
 				war_support_factor = 0.3
-				army_org_factor = 0.12
-				army_speed_factor = 0.1
-				training_time_factor = -0.25
-				minimum_training_level = -0.1
-				army_core_defence_factor = 0.2
+				army_org_factor = 0.15
+				army_speed_factor = 0.2
+				training_time_factor = -0.3
+				army_core_defence_factor = 0.25
+				conscription_factor = 0.25
+			}
+		}
+
+		TUR_the_battle_for_our_nations_survival_extra = { 
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = FRA_scw_intervention_nationalists_focus
+
+			on_add = {
+				division_template = {
+					name = "Civilian Volunteer"
+					priority = 1
+					division_names_group = TUR_INF_01
+					regiments = {
+						militia = { x = 0 y = 0 }
+						militia = { x = 0 y = 1 }
+						militia = { x = 0 y = 2 }
+						militia = { x = 0 y = 3 }
+						militia = { x = 0 y = 4 }
+						militia = { x = 1 y = 0 }
+					}
+				}
+				capital_scope = {
+					create_unit = {
+						division = "name = \"Volunteer Division\" division_template = \"Civilian Volunteer\" start_experience_factor = 0.02" 
+						owner = ROOT 
+						allow_spawning_on_enemy_provs = yes  
+						count = 4
+					}
+				}
+			}
+				
+			removal_cost = -1
+				
+			modifier = {
+				war_support_factor = 0.15
+				army_org_factor = 0.15
+				army_core_defence_factor = 0.25
 				conscription_factor = 0.25
 			}
 		}
@@ -2576,7 +2614,6 @@ ideas = {
 			}
 		}
 
-		#MM: Never used. Unlocalized
 		TUR_debt_repayments = { 
 
 			allowed = {
@@ -3061,61 +3098,6 @@ ideas = {
 			traits = { linchpin_of_infrastructure }
 		}
 
-		etibank = {
-			picture = PRC_nanjing_wireless_electronics_plant
-
-			allowed = {
-				original_tag = TUR
-				has_dlc = "Battle for the Bosporus"
-			}
-
-			visible = {
-				always = yes
-			}
-
-			available = { 
-				TUR_debt_council_has_no_sway = yes
-			}	
-
-			traits = { electricity_focused_state_bank }
-
-			research_bonus = {
-			}
-
-			modifier = {
-				
-			}
-
-		}
-
-		sumerbank = {
-			picture = tur_balkan_central_bank_wealthy_greece
-
-			allowed = {
-				original_tag = TUR
-				has_dlc = "Battle for the Bosporus"
-			}
-
-			visible = {
-				always = yes
-			}
-
-			available = { 
-				TUR_debt_council_has_no_sway = yes
-				has_completed_focus = TUR_continue_the_sumerbank_industrialization_scheme
-			}	
-
-			traits = { industrial_investment_bank }
-
-			research_bonus = {
-			}
-
-			modifier = {
-				
-			}
-
-		}
-
 		petrol_ofisi = {
 			
 			picture = tur_petrol_ofisi
@@ -3131,7 +3113,7 @@ ideas = {
 			}
 
 			visible = {
-				#has_completed_focus = TUR_the_sanayiciler
+				has_completed_focus = TUR_the_sanayiciler
 			}			
 
 			cost = 75
@@ -3146,6 +3128,29 @@ ideas = {
 			modifier = {
 				production_speed_synthetic_refinery_factor = 0.05
 			}
+		}
+
+		TUR_kamil_tolon = {
+			
+			picture = tur_kamil_tolon
+
+			
+			allowed = {
+				original_tag = TUR
+				has_dlc = "Battle for the Bosporus"
+			}
+
+			available = { 
+				TUR_debt_council_has_no_sway = yes
+			}
+			
+			research_bonus = {
+				electronics = 0.1
+			}
+
+			cost = 75
+			
+			traits = { inventive_genius }
 		}
 
 	}

@@ -119,7 +119,6 @@ ideas = {
 
 			modifier = {
 				ai_get_ally_desire_factor = -300
-				ai_join_ally_desire_factor = -300
 				join_faction_tension = 0.5
 				industrial_capacity_factory = -0.2
 				industrial_capacity_dockyard = -0.2
@@ -151,7 +150,6 @@ ideas = {
 
 			modifier = {
 				ai_get_ally_desire_factor = -200
-				ai_join_ally_desire_factor = -200
 				join_faction_tension = 0.5
 				industrial_capacity_factory = -0.14
 				industrial_capacity_dockyard = -0.14
@@ -310,8 +308,8 @@ ideas = {
 
 			modifier = {
 				conscription = 0.01
-				army_infantry_attack_factor = 0.05
-				army_infantry_defence_factor = 0.05
+				army_infantry_attack_factor = 0.10
+				army_infantry_defence_factor = 0.10
 			}
 		}
 
@@ -482,7 +480,7 @@ ideas = {
 
 			modifier = {
 				mobilization_speed = 0.2
-				army_attack_factor = 0.05
+				army_attack_factor = 0.10
 			}
 		}
 
@@ -540,7 +538,8 @@ ideas = {
 			}
 
 			modifier = {
-				production_speed_arms_factory_factor = 0.1
+				production_speed_arms_factory_factor = 0.15
+				industrial_capacity_factory = 0.05
 			}
 		}
 
@@ -557,7 +556,7 @@ ideas = {
 			}
 
 			modifier = {
-				industrial_capacity_dockyard = 0.1
+				industrial_capacity_dockyard = 0.15
 			}
 		}
 
@@ -574,7 +573,7 @@ ideas = {
 			}
 
 			modifier = {
-				industrial_capacity_factory = 0.1
+				industrial_capacity_factory = 0.15
 			}
 		}
 
@@ -615,7 +614,7 @@ ideas = {
 			modifier = {
 				stability_weekly = 0.002
 				consumer_goods_factor = -0.15
-				production_speed_infrastructure_factor = 0.1
+				production_speed_infrastructure_factor = 0.2
 			}
 		}
 
@@ -635,7 +634,7 @@ ideas = {
 
 			modifier = {
 				consumer_goods_factor = -0.25
-				production_speed_infrastructure_factor = 0.1
+				production_speed_infrastructure_factor = 0.2
 			}
 		}
 
@@ -655,7 +654,7 @@ ideas = {
 
 			modifier = {
 				consumer_goods_factor = -0.25
-				production_speed_infrastructure_factor = 0.1
+				production_speed_infrastructure_factor = 0.2
 				production_speed_industrial_complex_factor = 0.1
 			}
 		}
@@ -676,7 +675,7 @@ ideas = {
 
 			modifier = {
 				consumer_goods_factor = -0.15
-				production_speed_infrastructure_factor = 0.1
+				production_speed_infrastructure_factor = 0.2
 				production_speed_industrial_complex_factor = 0.1
 			}
 		}
@@ -697,8 +696,8 @@ ideas = {
 
 			modifier = {
 				consumer_goods_factor = -0.25
-				production_speed_infrastructure_factor = 0.1
-				production_speed_industrial_complex_factor = 0.1
+				production_speed_infrastructure_factor = 0.2
+				production_speed_industrial_complex_factor = 0.2
 				industrial_capacity_factory = 0.05
 				industrial_capacity_dockyard = 0.05
 			}
@@ -720,8 +719,8 @@ ideas = {
 
 			modifier = {
 				consumer_goods_factor = -0.15
-				production_speed_infrastructure_factor = 0.1
-				production_speed_industrial_complex_factor = 0.1
+				production_speed_infrastructure_factor = 0.2
+				production_speed_industrial_complex_factor = 0.2
 				industrial_capacity_factory = 0.05
 				industrial_capacity_dockyard = 0.05
 			}
@@ -793,7 +792,7 @@ ideas = {
 			}
 
 			modifier = {
-				send_volunteer_size = 3
+				send_volunteer_size = 24
 				send_volunteer_divisions_required = -0.25
 				send_volunteers_tension = -0.20
 			}

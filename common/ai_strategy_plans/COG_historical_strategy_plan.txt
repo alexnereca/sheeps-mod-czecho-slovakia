@@ -28,7 +28,6 @@ COG_historical_plan = {
 	}
 
 	ai_national_focuses = {
-
 		# Keep in mind that the years denoted will be wildly inaccurate due to the ASAP focuses
 
 		## THINGS TO DO ASAP ##
@@ -36,7 +35,7 @@ COG_historical_plan = {
 		COG_national_insitute_of_agronomic_study # 70
 		COG_congo_and_the_war_in_europe # 35
 		CONGO_force_publique # 70
-		CONGO_establish_university_of_louvain # 70
+		CONGO_congo_army
 		CONGO_chefs_coutumiers # 70
 		COG_found_the_congolese_national_movement # 70
 		COG_establish_the_anc # 35
@@ -44,12 +43,33 @@ COG_historical_plan = {
 		COG_desgregate_the_universites # 70
 		COG_shatter_the_roof # 35
 
-		#1936
+
+		#
+
 		COG_governor_general_pierre_ryckmans # 35
-		COG_allow_local_autonomy # 35
 		CONGO_belgian_congo # 35
-		CONGO_rawji_group # 35
+		CONGO_establish_university_of_louvain # 70
+		CONGO_weapon_repair_workshops
+		CONGO_free_enterprise_fund
+		CONGO_rawji_group
 		CONGO_the_heart_of_africa # 70
+		CONGO_expand_villages
+		COG_allow_local_autonomy # 35
+		COG_closer_cooperation_with_eugene_jungers # 70
+		COG_establish_new_sabena_air_routes
+		COG_improve_colonial_lawmaking
+
+		CONGO_ccci
+		CONGO_prince_leopold_mine
+		CONGO_forminiere
+		CONGO_bakwanga_mine
+
+
+
+
+
+		#1936
+		CONGO_rawji_group # 35
 		COG_invest_in_urban_centers # 70
 		CONGO_jungle_industry # 70
 
@@ -57,7 +77,6 @@ COG_historical_plan = {
 		COG_strengthen_the_banque_du_congo_belge # 70
 		COG_cooperate_with_the_comite_special_du_katanga # 70
 		COG_establish_new_sabena_air_routes # 70
-		COG_closer_cooperation_with_eugene_jungers # 70
 		COG_uplift_the_apostolic_vicar_of_leopoldville # 35
 		COG_contract_the_empain_group # 35
 

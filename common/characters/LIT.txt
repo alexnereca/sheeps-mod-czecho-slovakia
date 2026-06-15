@@ -233,12 +233,6 @@ characters={
 						has_DLC = "No Step Back"
 					}
 					has_completed_focus = LIT_integrate_the_opposition
-					NOT = {
-						has_country_leader = {
-							ruling_only = yes
-							character = LIT_kazys_grinius
-						}
-					}
 				}
 			}
 			traits = {
@@ -326,7 +320,7 @@ characters={
 			ideology=oligarchism
 			expire="1965.1.1.1"
 			id=-1
-			traits = {  }
+			traits = { hardened_officer veteran_minister }
 		}
 	}
 
@@ -369,8 +363,8 @@ characters={
 		name=LIT_kazys_skuchas
 		portraits={
 			army={
-				large = GFX_portrait_LIT_kazys_skucas
-				small = GFX_idea_LIT_kazys_skucas
+				large="GFX_portrait_LIT_kazys_skucas"
+				small="GFX_portrait_LIT_kazys_skucas"
 			}
 		}
 		corps_commander = {

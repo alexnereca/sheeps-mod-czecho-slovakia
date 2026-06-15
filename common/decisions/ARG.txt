@@ -39,8 +39,8 @@ ARG_intervenciones_federales_decisions = {
 
 		remove_effect = {
 
-			custom_effect_tooltip = ARG_federal_intervention_tt
-			custom_effect_tooltip = CHL_skip_one_line_tt
+		custom_effect_tooltip = ARG_federal_intervention_tt
+		custom_effect_tooltip = CHL_skip_one_line_tt
 
 			add_popularity = {
 				ideology = neutrality 
@@ -924,11 +924,13 @@ ARG_balancing_act_decisions = {
 					equipment_type = small_plane_airframe
 					seller_tags = { USA ENG } 
 				}
+
 				add_equipment_subsidy = {
 					cic = 1500
 					equipment_type = motorized_equipment
 					seller_tags = { USA ENG } 
 				}
+
 				add_equipment_subsidy = {
 					cic = 1500
 					equipment_type = artillery_equipment
@@ -989,7 +991,7 @@ ARG_balancing_act_decisions = {
 				add_opinion_modifier = {
 					target = ROOT
 					modifier = medium_decrease 
-				}	
+				}
 			}
 			IF = {
 				limit = {
@@ -1094,9 +1096,22 @@ ARG_military_coup_decisions = {
 		activation = {
 			original_tag = ARG
 			has_completed_focus = ARG_the_castillo_cabinet
+ 
 			NOT = {
 				has_government = fascism
 			}
+ 
+							
+					 
+ 
+					  
+ 
+				 
+					  
+												  
+		   
+							 
+	 
 			NOT = { has_global_flag = military_coup_attempt_happened }
 			NOT = { has_completed_focus = ARG_subdue_dissension }
 			NOT = { has_completed_focus = ARG_march_to_la_casa_rosada }
@@ -1107,6 +1122,12 @@ ARG_military_coup_decisions = {
 			NOT = {
 				has_government = fascism
 			}
+ 
+			  
+			  
+		   
+							 
+	 
 			NOT = { has_global_flag = military_coup_attempt_happened }
 			NOT = { has_completed_focus = ARG_subdue_dissension } 
 			NOT = { has_completed_focus = ARG_march_to_la_casa_rosada }  
@@ -1118,6 +1139,13 @@ ARG_military_coup_decisions = {
 		timeout_effect = {
 			custom_effect_tooltip = ARG_military_state_absorption_timer_tt
 
+	
+ 
+							  
+ 
+					 
+																  
+ 
 			random_owned_state = {
 				limit = {
 					NOT = {
@@ -1127,6 +1155,7 @@ ARG_military_coup_decisions = {
 							}
 							has_dynamic_modifier = {
 								modifier = ARG_federal_intervention_modifier
+		 
 							}
 						}
 					}
@@ -1136,6 +1165,7 @@ ARG_military_coup_decisions = {
 
 				add_dynamic_modifier = {
 					modifier = ARG_military_owned_state
+	  
 				}
 			}
 		}
@@ -1274,6 +1304,46 @@ ARG_south_american_unity_decisions = {
 
 		ai_will_do = {
 			base = 50
+			modifier = {
+				add = 50
+				FROM = { state_population_k > 3000 }
+			}
+			modifier = {
+				add = 50
+				FROM = { state_population_k > 2000 }
+			}
+			modifier = {
+				add = 50
+				FROM = { state_population_k > 1000 }
+			}
+			modifier = {
+				add = 50
+				FROM = { state_population_k > 500 }
+			}
+			modifier = {
+				add = 50
+				FROM = { state_population_k > 300 }
+			}
+			modifier = {
+				add = 50
+				FROM = { state_population_k > 200 }
+			}
+			modifier = {
+				add = 500
+				FROM = { has_state_category = megalopolis }
+			}
+			modifier = {
+				add = 500
+				FROM = { has_state_category = metropolis }
+			}
+			modifier = {
+				add = 150
+				FROM = { has_state_category = large_city }
+			}
+			modifier = {
+				add = 100
+				FROM = { has_state_category = city }
+			}
 		}
 	
 		allowed = {
@@ -1281,6 +1351,7 @@ ARG_south_american_unity_decisions = {
 		}
 
 		available = {
+
 			OR = {
 				has_completed_focus = ARG_south_american_unity
 				has_completed_focus = ARG_integrate_the_motherland
@@ -1293,9 +1364,7 @@ ARG_south_american_unity_decisions = {
 				has_completed_focus = ARG_integrate_the_motherland
 			} 
 		}
-
 		state_target = any_owned_state
-
 		target_trigger = {
 			FROM = {
 				impassable = no	
@@ -1304,7 +1373,10 @@ ARG_south_american_unity_decisions = {
 						is_on_continent = south_america
 						state = 948
 					}
-					is_owned_and_controlled_by = ROOT
+					OR = {
+						is_owned_and_controlled_by = ROOT
+						is_fully_controlled_by = ROOT
+					}
 				}
 				NOT = {
 					is_core_of = ROOT
@@ -1323,6 +1395,7 @@ ARG_south_american_unity_decisions = {
 		}
 
 		remove_effect = {
+
 			FROM = {
 				add_core_of = ROOT
 			}

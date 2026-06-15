@@ -38,7 +38,6 @@ focus_tree = {
 		id = ICE_expand_the_fishing_industry
 		icon = GFX_focus_generic_industry_1
 		#prerequisite = { focus = }
-		mutually_exclusive = { focus = ICE_mineral_prospecting }
 		x = 5
 		y = 0
 		#relative_position_id =
@@ -57,7 +56,6 @@ focus_tree = {
 		id = ICE_mineral_prospecting
 		icon = GFX_focus_generic_steel
 		#prerequisite = { focus = }
-		mutually_exclusive = { focus = ICE_expand_the_fishing_industry }
 
 		x = 2
 		y = 0
@@ -91,15 +89,42 @@ focus_tree = {
 					instant_build = yes
 				}
 			} 
+
 			100 = {
 				add_resource = {
-					type = steel
-					amount = 10
+				    type = steel
+				    amount = 10
 				}
 				add_resource = {
-					type = aluminium
-					amount = 6
+				    type = aluminium
+				    amount = 6
 				}
+                random_list = {
+                    30 = {
+                        add_resource = {
+                            type = steel
+                            amount = 6
+                        }
+                    }
+                    30 = {
+                        add_resource = {
+                            type = aluminium
+                            amount = 6
+                        }
+                    }
+                    30 = {
+                    	add_resource = {
+                    	    type = tungsten
+                    	    amount = 6
+                    	}
+                    }
+                    10 = {
+                    	add_resource = {
+                    	    type = chromium
+                    	    amount = 6
+                    	}
+                    }
+                }
 			}
 		}
 	}
@@ -340,7 +365,6 @@ focus_tree = {
 		id = ICE_develop_icelandic_shipping
 		icon = GFX_focus_generic_navy_battleship2
 		prerequisite = { focus = ICE_hydroelectric_power }
-		mutually_exclusive = { focus = ICE_heavy_industry focus = ICE_advanced_technology }
 		x = -3
 		y = 1
 		relative_position_id = ICE_hydroelectric_power
@@ -371,7 +395,6 @@ focus_tree = {
 		id = ICE_heavy_industry
 		icon = GFX_goal_generic_construct_civ_factory
 		prerequisite = { focus = ICE_hydroelectric_power }
-		mutually_exclusive = { focus = ICE_develop_icelandic_shipping focus = ICE_advanced_technology }
 		x = 0
 		y = 1
 		relative_position_id = ICE_hydroelectric_power
@@ -394,7 +417,6 @@ focus_tree = {
 		id = ICE_advanced_technology
 		icon = GFX_focus_research2
 		prerequisite = { focus = ICE_hydroelectric_power }
-		mutually_exclusive = { focus = ICE_develop_icelandic_shipping focus = ICE_heavy_industry }
 		x = 3
 		y = 1
 		relative_position_id = ICE_hydroelectric_power
@@ -2978,7 +3000,6 @@ focus_tree = {
 		id = ICE_an_airbase_in_the_sea
 		icon = GFX_goal_generic_build_airforce
 		prerequisite = { focus = ICE_the_armed_forces_of_iceland }
-		mutually_exclusive = { focus = ICE_a_naval_hub_in_the_atlantic }
 		x = -2
 		y = 1
 		relative_position_id = ICE_the_armed_forces_of_iceland
@@ -3008,7 +3029,6 @@ focus_tree = {
 		id = ICE_a_naval_hub_in_the_atlantic
 		icon = GFX_goal_generic_build_navy
 		prerequisite = { focus = ICE_the_armed_forces_of_iceland }
-		mutually_exclusive = { focus = ICE_an_airbase_in_the_sea }
 		x = 2
 		y = 1
 		relative_position_id = ICE_the_armed_forces_of_iceland
@@ -3246,7 +3266,6 @@ focus_tree = {
 		available = {
 		}
 
-		mutually_exclusive = { focus = ICE_enact_conscription }
 		search_filters = {}
 
 		completion_reward = {
@@ -3267,7 +3286,6 @@ focus_tree = {
 		available = {
 		}
 
-		mutually_exclusive = { focus = ICE_a_profesional_army }
 
 		search_filters = {FOCUS_FILTER_MANPOWER}
 

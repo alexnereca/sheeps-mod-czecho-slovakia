@@ -9,7 +9,8 @@ war_measures = {
 		}
 
 		available = {
-			any_core_state = {
+			any_state = {
+				is_core_of = USA
 				NOT = {
 					is_controlled_by = USA
 				}
@@ -896,6 +897,10 @@ USA_aid_britain = {
 				factor = 10
 				has_opinion = { target = ENG value > 99 }
 			}
+			modifier = {
+				factor = 0
+				has_war_support > 0.70
+			}
 		}
 
 		visible = {
@@ -934,6 +939,10 @@ USA_aid_britain = {
 			modifier = {
 				factor = 10
 				has_opinion = { target = ENG value > 99 }
+			}
+			modifier = {
+				factor = 0
+				has_war_support > 0.70
 			}
 		}
 
@@ -978,6 +987,10 @@ USA_aid_britain = {
 				factor = 10
 				has_opinion = { target = ENG value > 99 }
 			}
+			modifier = {
+				factor = 10
+				is_historical_focus_on = yes
+			}
 		}
 
 		modifier = {
@@ -993,7 +1006,11 @@ USA_aid_britain = {
 		complete_effect = {
 			ENG = {
 				add_equipment_to_stockpile = { type = infantry_equipment_0 amount = 20000 producer = USA }
-				add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 300 producer = USA }
+				add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 5000 producer = USA }
+				add_equipment_to_stockpile = { type = infantry_equipment_2 amount = 5000 producer = USA }
+				add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 500 producer = USA }
+				add_equipment_to_stockpile = { type = anti_air_equipment_1 amount = 500 producer = USA }
+				add_equipment_to_stockpile = { type = anti_tank_equipment_1 amount = 200 producer = USA }
 				add_equipment_to_stockpile = { type = support_equipment_1 amount = 300 producer = USA }
 				country_event = { id = wtt_britain.30 }
 			}
@@ -1017,7 +1034,7 @@ USA_aid_britain = {
 		cost = 50
 		fire_only_once = yes
 		ai_will_do = {
-			factor = 10
+			factor = 99999
 		}
 
 		visible = {
@@ -1026,8 +1043,8 @@ USA_aid_britain = {
 
 		modifier = {
 			war_support_weekly = 0.001		
-			industrial_capacity_factory = 0.02
-			industrial_capacity_dockyard = 0.02
+			industrial_capacity_factory = 0.15
+			industrial_capacity_dockyard = 0.15
 			consumer_goods_factor = -0.15
 		}
 
@@ -1370,7 +1387,7 @@ USA_honor_the_confederacy = {
 		}
 		cost = 25
 		ai_will_do = {
-			factor = 1
+			factor = 9999
 		}
 		fire_only_once = yes
 		complete_effect = {
@@ -1408,7 +1425,7 @@ USA_honor_the_confederacy = {
 		}
 		cost = 25
 		ai_will_do = {
-			factor = 1
+			factor = 9999
 		}
 		fire_only_once = yes
 		complete_effect = {
@@ -1443,10 +1460,10 @@ USA_honor_the_confederacy = {
 		visible = {
 			
 		}
-		cost = 75
+		cost = 40
 		fire_only_once = yes
 		ai_will_do = {
-			factor = 1
+			factor = 9999
 		}
 		complete_effect = {
 			add_stability = 0.1
@@ -1481,10 +1498,10 @@ USA_honor_the_confederacy = {
 				value > 2
 			}
 		}
-		cost = 75
+		cost = 45
 		fire_only_once = yes
 		ai_will_do = {
-			factor = 1
+			factor = 9999
 		}
 		complete_effect = {
 			add_stability = 0.1
@@ -1521,16 +1538,27 @@ USA_honor_the_confederacy = {
 			}
 			has_cosmetic_tag = USA_CSA
 		}
-		cost = 100
+		cost = 50
 		fire_only_once = yes
 		ai_will_do = {
-			factor = 1
+			factor = 9999
 		}
 		complete_effect = {
 			add_stability = 0.1
 			add_war_support = 0.05
 			add_popularity = { ideology = fascism popularity = 0.05 }
 			set_politics = { ruling_party = fascism }
+			hidden_effect = {
+				if = {
+					limit = { 
+						is_in_faction = no 
+						is_ai = yes 
+						NOT = { has_country_flag = USA_fascist_pro_axis_flag }
+						NOT = { has_country_flag = USA_fascist_pro_japan_flag }
+					}
+					create_faction = usa_fascist_faction
+				}
+			}
 		}
 	}
 
@@ -2963,6 +2991,10 @@ USA_intervention_mandate = {
 					}
 				}
 			} 
+			OR = {
+				ROOT = { is_ai = no }
+				FROM = { is_ai = no }
+			}
 		}
 		target_trigger = {
 			FROM = {
@@ -3152,7 +3184,7 @@ operations = {
 		ai_will_do = {
 			base = 1
 			modifier = {
-				factor = 50 
+				factor = 1500
 				DEN = {
 					overlord = {
 						OR = {

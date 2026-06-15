@@ -1,6 +1,7 @@
 ideas = {
 	country = {
 
+
 		SMB_dreadnought_debt_fake_for_tooltip = { #The purpose of this NS is to display a generic name in the tooltip when used in the scripted effect SMB_dreadnought_debt_fake_for_tooltip
 			
 			allowed = {
@@ -307,6 +308,19 @@ ideas = {
 			}
 
 			on_remove = {
+				if = {
+					limit = { NOT = { has_idea = USA_monroe_doctrine_enforcer } }
+					remove_opinion_modifier = {
+						target = USA
+						modifier = trade_relation_bonus_high_2
+					}
+					USA = {
+						remove_opinion_modifier = {
+							target = ROOT
+							modifier = trade_relation_bonus_high_2
+						}
+					}
+				}
 				hidden_effect = {
 					IF = {
 						limit = {
@@ -317,6 +331,7 @@ ideas = {
 						}
 						remove_from_array = { global.monroe_doctrine_countries_to_destabilize = ROOT }
 						#log = "[THIS.GetName] (country) Was removed from standard Array"
+											
 					}
 
 					IF = {
@@ -358,6 +373,22 @@ ideas = {
 				always = yes
 			}
 
+		
+			on_remove = {
+				if = {
+					limit = { NOT = { has_idea = USA_monroe_doctrine } }
+					remove_opinion_modifier = {
+						target = USA
+						modifier = trade_relation_bonus_high_2
+					}
+					USA = {
+						remove_opinion_modifier = {
+							target = ROOT
+							modifier = trade_relation_bonus_high_2
+						}
+					}
+				}
+			}
 			modifier = {
 
 			}
@@ -366,6 +397,47 @@ ideas = {
 	}
 
 	hidden_ideas = {
+
+		idea_JUNO_truck_production_cost_b = {
+			removal_cost = -1
+			picture = ITA_bandits_war
+				
+			allowed = {
+				OR = {
+					original_tag = URG
+					original_tag = PAR
+					original_tag = BOL
+					original_tag = BRA
+					original_tag = ARG
+					original_tag = CHL
+				}
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+					
+			equipment_bonus = {
+				motorized_equipment = {
+					instant = yes
+					build_cost_ic = -0.15
+					reliability = 0.05
+				}
+				mechanized_equipment = {
+					instant = yes
+					build_cost_ic = -0.10
+					reliability = 0.05
+				}
+				amphibious_mechanized_equipment = {
+					instant = yes
+					build_cost_ic = -0.10
+					reliability = 0.05
+				}
+			}
+
+			modifier = {
+			}
+		}
 
 	}
 }

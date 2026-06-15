@@ -54,6 +54,22 @@
 		}
 		#relative_position_id = GUAY_form_ties_with_the_military
 		cost = 10
+		bypass = {
+			if = {
+				limit = {
+					original_tag = URG
+				}
+				controls_state = 502
+				controls_state = 510
+			}
+			if = {
+				limit = {
+					original_tag = PAR
+				}
+				controls_state = 957
+				controls_state = 504
+			}
+		}
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -129,100 +145,50 @@
 					original_tag = PAR
 				}
 
-				if = {
-					limit = { BRA = { has_civil_war = yes } }
-					every_country = {
-						limit = { original_tag = BRA }
-
-						ROOT = {
-							create_wargoal = {
-								type = annex_everything
-								target = PREV
-								generator = { 504 } # optional 
-							}
-						}
-					}
-				}
-				else = {
-					create_wargoal = {
-						type = annex_everything
-						target = BRA
-						generator = { 504 } # optional 
-					}
+				create_wargoal = {
+					type = annex_everything
+					target = BRA
+					generator = { 504 } # optional 
 				}
 
-				if = {
-					limit = { ARG = { has_civil_war = yes } }
-					every_country = {
-						limit = { original_tag = ARG }
+				create_wargoal = {
+					type = annex_everything
+					target = ARG
+					generator = { 957 } # optional 
+				}
 
-						ROOT = {
-							create_wargoal = {
-								type = annex_everything
-								target = PREV
-								generator = { 957 } # optional 
-							}
-						}
-					}
-				}
-				else = {
-					create_wargoal = {
-						type = annex_everything
-						target = ARG
-						generator = { 957 } # optional 
-					}
-				}
 				custom_effect_tooltip = CHL_skip_one_line_tt
 				custom_effect_tooltip = GUAY_rekindle_old_gripes_ARG_PAR_tt
 				custom_effect_tooltip = CHL_skip_one_line_tt
 				custom_effect_tooltip = GUAY_rekindle_old_gripes_BRA_PAR_tt
 			}
 			else = {
-
-				if = {
-					limit = { BRA = { has_civil_war = yes } }
-					every_country = {
-						limit = { original_tag = BRA }
-
-						ROOT = {
-							create_wargoal = {
-								type = annex_everything
-								target = PREV
-								generator = { 502 } # optional 
-							}
+				every_country = {
+					limit = {
+						original_tag = BRA
+					}
+					ROOT = {
+						create_wargoal = {
+							type = annex_everything
+							target = PREV
+							generator = { 502 } # optional 
 						}
 					}
 				}
-				else = {
-					create_wargoal = {
-						type = annex_everything
-						target = BRA
-						generator = { 502 } # optional 
+
+				every_country = {
+					limit = {
+						original_tag = ARG
 					}
-				}
-
-				if = {
-					limit = { ARG = { has_civil_war = yes } }
-					every_country = {
-						limit = { original_tag = ARG }
-
-						ROOT = {
-							create_wargoal = {
-								type = annex_everything
-								target = PREV
-								generator = { 510 } # optional 
-							}
+					ROOT = {
+						create_wargoal = {
+							type = annex_everything
+							target = PREV
+							generator = { 510 } # optional 
 						}
 					}
 				}
-				else = {
-					create_wargoal = {
-						type = annex_everything
-						target = ARG
-						generator = { 510 } # optional 
-					}
-				}
-			######
+
 				custom_effect_tooltip = CHL_skip_one_line_tt
 				custom_effect_tooltip = GUAY_rekindle_old_gripes_ARG_URG_tt
 				custom_effect_tooltip = CHL_skip_one_line_tt
@@ -1392,13 +1358,9 @@
 					instant_build = yes
 				}
 			}
-			random_core_state = {
-				limit = {
-					is_controlled_by = ROOT
-				}
+			capital_scope = {
 				add_extra_state_shared_building_slots = 2
 			}
-
 		}
 	}
 
@@ -1430,7 +1392,7 @@
 		y = 1
 		relative_position_id = GUAY_workers_rights
 		prerequisite = { focus =  GUAY_workers_rights focus =  GUAY_empower_the_land_owners }
-		cost = 10
+		cost = 5
 		ai_will_do = {
 			factor = 30
 		}
@@ -1554,7 +1516,7 @@
 		y = 1
 		relative_position_id = GUAY_laissez_faire
 		prerequisite = { focus =  GUAY_laissez_faire }
-		cost = 10
+		cost = 5
 		ai_will_do = {
 			factor = 30
 		}
@@ -1575,7 +1537,7 @@
 		y = 1
 		relative_position_id = GUAY_empower_the_land_owners
 		prerequisite = { focus =  GUAY_empower_the_land_owners focus =  GUAY_workers_rights }
-		cost = 10
+		cost = 5
 		ai_will_do = {
 			factor = 30
 		}
@@ -1761,7 +1723,7 @@
 					original_tag = URG 
 				}
 				add_tech_bonus = {
-					ahead_reduction = 1
+					ahead_reduction = 0.65
 					bonus = 1
 					uses = 1
 					category = industry # optional 
@@ -1877,12 +1839,20 @@
 
 		completion_reward = {
 			add_ideas = idea_GUAY_crusade_against_imperialism
-			set_rule = { can_join_factions = no }
 			if = {
 				limit = {
 					is_in_faction = yes
+					NOT = { 
+						any_enemy_country = {
+							OR = {
+								has_government = fascism
+								has_government = communism
+							}
+						}
+					}
 				}
 				leave_faction = yes
+				set_rule = { can_join_factions = no }
 			}
 		}
 	}
@@ -1948,9 +1918,6 @@
 					}
 				}
 			}
-			687 = { is_controlled_by = ROOT }
-			309 = { is_controlled_by = ROOT }
-			310 = { is_controlled_by = ROOT }
 		}
 
 		search_filters = { FOCUS_FILTER_ANNEXATION }
@@ -1976,6 +1943,15 @@
 				add_core_of = ROOT
 			}
 
+			every_state = {
+				limit = {
+					is_core_of = ROOT
+					is_on_continent = south_america 
+					owner = { has_war = yes }
+					NOT = { capital_scope = { is_on_continent = south_america } }
+				}
+				ROOT = { transfer_state = PREV }
+			}
 
 
 			if = {
@@ -2208,7 +2184,7 @@
 		completion_reward = {
 			add_tech_bonus = {
 				name = BRA_resource_extraction_bonus
-				bonus = 0.5
+				bonus = 0.4
 				uses = 2
 				category = excavation_tech # optional 
 				# technology  = technology_id # optional
@@ -2275,7 +2251,7 @@
 
 	shared_focus =  {
 		id = GUAY_national_academy_of_sciences_2
-		icon = GFX_focus_research2
+		icon = GFX_focus_research
 		x = 0
 		y = 1
 
@@ -2297,7 +2273,7 @@
 
 	shared_focus =  {
 		id = GUAY_national_academy_of_sciences_3
-		icon = GFX_focus_ARG_universidad_de_buenos_aires
+		icon = GFX_focus_research
 		x = 0
 		y = 1
 

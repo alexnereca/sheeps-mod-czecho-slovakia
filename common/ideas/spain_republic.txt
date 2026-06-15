@@ -40,13 +40,13 @@ ideas = {
 				conversion_cost_civ_to_mil_factor= -0.3
 				conversion_cost_mil_to_civ_factor = -0.3
 				global_building_slots_factor = 0.1
-				industrial_capacity_factory = 0.7
-				industrial_capacity_dockyard = 0.7
+				industrial_capacity_factory = 0.8
+				industrial_capacity_dockyard = 0.8
 				research_speed_factor = -0.1
 				production_factory_efficiency_gain_factor = -0.2
 				production_factory_max_efficiency_factor = -0.2
 				line_change_production_efficiency_factor = 0.1
-				factory_energy_consumption = 0.45
+				factory_energy_consumption = 0.30
 			}
 			
 			allowed_to_remove = {
@@ -1006,7 +1006,7 @@ ideas = {
 			}
 
 			modifier = {
-				army_core_defence_factor = 0.1
+				army_core_defence_factor = 0.2
 			}
 		}
 
@@ -1026,7 +1026,7 @@ ideas = {
 			}
 
 			modifier = {
-				army_core_defence_factor = 0.1
+				army_core_defence_factor = 0.2
 				army_morale_factor = 0.1
 			}
 		}
@@ -1047,7 +1047,7 @@ ideas = {
 			}
 
 			modifier = {
-				army_core_defence_factor = 0.1
+				army_core_defence_factor = 0.2
 				training_time_factor = -0.1
 				army_morale_factor = 0.1
 				conscription = 0.02
@@ -1068,7 +1068,7 @@ ideas = {
 			}
 
 			modifier = {
-				research_speed_factor = 0.05
+				research_speed_factor = 0.10
 			}
 		}
 
@@ -1105,7 +1105,7 @@ ideas = {
 			}
 
 			modifier = {
-				production_speed_infrastructure_factor = 0.1
+				production_speed_infrastructure_factor = 0.2
 			}
 		}
 
@@ -1210,7 +1210,7 @@ ideas = {
 			modifier = {
 				army_defence_factor = 0.05
 				army_attack_factor = 0.05
-				industrial_capacity_factory = 0.05
+				industrial_capacity_factory = 0.10
 				consumer_goods_factor = -0.15
 				conscription = 0.05
 			}
@@ -1231,7 +1231,7 @@ ideas = {
 
 			modifier = {
 				consumer_goods_factor = -0.15
-				production_speed_buildings_factor = 0.1
+				production_speed_buildings_factor = 0.2
 			}
 		}
 
@@ -1607,8 +1607,8 @@ ideas = {
 			modifier = {
 				conscription = 0.01
 				training_time_factor = -0.1
-				max_command_power = 15
-				planning_speed = 0.10
+				max_command_power = 25
+				planning_speed = 0.20
 			}
 		}
 

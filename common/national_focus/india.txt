@@ -26,45 +26,41 @@ focus_tree = {
 
 
 
-	#focus = {
-	#	id = RAJ_
-	#	#icon = GFX_
-	#	#prerequisite = { focus = }
-	#	#mutually_exclusive = { focus =  }
-	#	x = 0
-	#	y = 0
-	#	#relative_position_id = 
+#	focus = {
+#		id = RAJ_
+#		icon = GFX_
+#		prerequisite = { focus = }
+#		mutually_exclusive = { focus =  }
+#		x = -3
+#		y = 0
+#		relative_position_id = 
 #
-	#	cost = 10
+#		cost = 10
 #
-	#	ai_will_do = {
-	#		factor = 1
-	#	}
+#		ai_will_do = {
+#			factor = 1
+#		}
 #
-	#	available = {
+#		available = {
 #
-	#	}
-	#	
-	#	bypass = {
+#		}
+#		
+#		bypass = {
 #
-	#	}
+#		}
 #
-	#	cancel_if_invalid = yes
-	#	continue_if_invalid = no
-	#	available_if_capitulated = no
+#		cancel_if_invalid = yes
+#		continue_if_invalid = no
+#		available_if_capitulated = no
 #
-	#	complete_tooltip = {
+#		complete_tooltip = {
 #
-	#	}
+#		}
 #
-	#	completion_reward = {
+#		completion_reward = {
 #
-	#	}
-	#}
-
-
- 
-
+#		}
+#	}
 
 
 	############################
@@ -233,6 +229,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			add_ideas = RAJ_quit_india_movement
+			set_country_flag = RAJ_quit_india_movement
 			custom_effect_tooltip = "tfv_raj_quit_india_unrest_tt"
 			hidden_effect = {
 				country_event = { id = tfv_raj.210 days = 15 random_days = 20 }
@@ -1106,7 +1103,7 @@ focus_tree = {
 			}
 			add_tech_bonus = {
 				name = RAJ_japanese_army_air_force_academy
-				bonus = 2 # was 3
+				bonus = 2
 				uses = 1
 				category = light_fighter
 				category = cas_bomber
@@ -2298,8 +2295,7 @@ focus_tree = {
 		}
 
 		available = {
-			is_subject = no
-			num_of_factories > 50
+			num_of_factories > 75
 		}
 
 		bypass = {
@@ -2682,6 +2678,42 @@ focus_tree = {
 					1908 4149 12886 1103 9975 11952 7150 4187 7013 1349
 				}
 			}
+			ROOT = {
+				random_controlled_state = {
+					prioritize = { 428 443 433 }
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size > 0
+						}
+						is_fully_controlled_by = RAJ
+						NOT = { has_state_flag = RAJ_improved_infrastructure_in_state_flag }
+					}
+					set_state_flag = RAJ_improved_infrastructure_in_state_flag
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+				random_controlled_state = {
+					prioritize = { 428 443 433 }
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size > 0
+						}
+						is_fully_controlled_by = RAJ
+						NOT = { has_state_flag = RAJ_improved_infrastructure_in_state_flag }
+					}
+					set_state_flag = RAJ_improved_infrastructure_in_state_flag
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
 		}
 	}
 
@@ -2717,10 +2749,10 @@ focus_tree = {
 				limit = {
 					has_state_flag = RAJ_industrial_expansion_IC
 				}
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = industrial_complex
-					level = 1
+					level = 2
 					instant_build = yes
 				}
 			}
@@ -2732,16 +2764,17 @@ focus_tree = {
 				limit = {
 					free_building_slots = {
 						building = industrial_complex
-						size > 0
+						size > 1
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = industrial_complex
-					level = 1
+					level = 2
 					instant_build = yes
 				}
+				RAJ_upgrade_development = yes
 				set_state_flag = RAJ_industrial_expansion_IC
 			}
 		}
@@ -2783,9 +2816,11 @@ focus_tree = {
 			429 = {
 				add_resource = {
 					type = steel
-					amount = 24
+					amount = 32
 				}
+				RAJ_upgrade_development = yes
 			}
+			custom_effect_tooltip = RAJ_unlock_tata_steel_tt
 		}
 	}
 
@@ -2826,6 +2861,12 @@ focus_tree = {
 				add_resource = {
 					type = oil
 					amount = 12
+				}
+				RAJ_upgrade_development = yes
+			}
+			build_railway = {
+				path = {
+					12366 12395 10514 1581 10486 12464
 				}
 			}
 
@@ -2963,14 +3004,13 @@ focus_tree = {
 		}
 
 		available = {
-			is_subject = no
 			has_war = yes
 			is_in_faction = yes
 			OR = {
 				num_of_factories > 50
 				any_other_country = {
 					is_in_faction_with = ROOT
-					num_of_factories > 50
+					num_of_factories > 200
 				}
 			}
 		}
@@ -3027,17 +3067,17 @@ focus_tree = {
 				limit = {
 					has_state_flag = RAJ_expand_mazagon_dock
 				}
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = dockyard
-					level = 2
+					level = 1
 					instant_build = yes
 				}
 				if = {
 					limit = { has_state_flag = RAJ_expand_mazagon_dock_NB }
 					add_building_construction = {
 						type = naval_base
-						level = 2
+						level = 1
 						instant_build = yes
 						province = 1349
 					}
@@ -3046,7 +3086,7 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			navy_experience = 50
+			navy_experience = 5
 			random_owned_controlled_state = {
 				prioritize = { 429 }
 				limit = {
@@ -3057,10 +3097,10 @@ focus_tree = {
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = dockyard
-					level = 2
+					level = 1
 					instant_build = yes
 				}
 				set_state_flag = RAJ_expand_mazagon_dock
@@ -3068,12 +3108,13 @@ focus_tree = {
 					limit = { state = 429 }
 					add_building_construction = {
 						type = naval_base
-						level = 2
+						level = 1
 						instant_build = yes
 						province = 1349
 					}
 					set_state_flag = RAJ_expand_mazagon_dock_NB
 				}
+				RAJ_upgrade_development = yes
 			}
 		}
 	}
@@ -3120,7 +3161,7 @@ focus_tree = {
 					limit = { has_state_flag = RAJ_found_scindia_shipyard_NB }
 					add_building_construction = {
 						type = naval_base
-						level = 2
+						level = 1
 						instant_build = yes
 						province = 10255
 					}
@@ -3129,7 +3170,7 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			navy_experience = 25
+			navy_experience = 5
 			random_owned_controlled_state = {
 				prioritize = { 426 }
 				limit = {
@@ -3140,10 +3181,10 @@ focus_tree = {
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = dockyard
-					level = 2
+					level = 1
 					instant_build = yes
 				}
 				set_state_flag = RAJ_found_scindia_shipyard
@@ -3151,12 +3192,13 @@ focus_tree = {
 					limit = { state = 426 }
 					add_building_construction = {
 						type = naval_base
-						level = 2
+						level = 1
 						instant_build = yes
 						province = 10255
 					}
 					set_state_flag = RAJ_found_scindia_shipyard_NB
 				}
+				RAJ_upgrade_development = yes
 			}
 		}
 	}
@@ -3459,6 +3501,36 @@ focus_tree = {
 					}
 				}
 			}
+			ROOT = {
+				random_controlled_state = {
+					prioritize = { 640 288 430 }
+					limit = {
+						is_fully_controlled_by = RAJ
+						NOT = { has_state_flag = RAJ_improved_infrastructure_in_state_flag }
+					}
+					set_state_flag = RAJ_improved_infrastructure_in_state_flag
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			ROOT = {
+				random_controlled_state = {
+					prioritize = { 640 288 430 }
+					limit = {
+						is_fully_controlled_by = RAJ
+						NOT = { has_state_flag = RAJ_improved_infrastructure_in_state_flag }
+					}
+					set_state_flag = RAJ_improved_infrastructure_in_state_flag
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
 		}
 	}
 
@@ -3503,6 +3575,21 @@ focus_tree = {
 					}
 				}
 			}
+			ROOT = {
+				random_controlled_state = {
+					prioritize = { 429 427 }
+					limit = {
+						is_fully_controlled_by = RAJ
+						NOT = { has_state_flag = RAJ_improved_infrastructure_in_state_flag }
+					}
+					set_state_flag = RAJ_improved_infrastructure_in_state_flag
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
 			if = {
 				limit = {
 					controls_state = 438
@@ -3511,7 +3598,43 @@ focus_tree = {
 				}
 				build_railway = { #Lucknow - Bombay
 					path = {
-						1349 7013 4072 7060 7430 10030 4950 11995 4953 5096 5040 4045 2036 1377
+						1349 7013 4072 7060 7430 10030 4950 11995 4953 5096 5040 4045 2036 12137
+					}
+				}
+			}
+			ROOT = {
+				random_controlled_state = {
+					prioritize = { 438 436 429 }
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size > 0
+						}
+						is_fully_controlled_by = RAJ
+						NOT = { has_state_flag = RAJ_improved_infrastructure_in_state_flag }
+					}
+					set_state_flag = RAJ_improved_infrastructure_in_state_flag
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+				random_controlled_state = {
+					prioritize = { 438 436 429 }
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size > 0
+						}
+						is_fully_controlled_by = RAJ
+						NOT = { has_state_flag = RAJ_improved_infrastructure_in_state_flag }
+					}
+					set_state_flag = RAJ_improved_infrastructure_in_state_flag
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
 					}
 				}
 			}
@@ -3550,10 +3673,10 @@ focus_tree = {
 				limit = {
 					has_state_flag = RAJ_ishapore_arsenal_AF
 				}
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
-					level = 1
+					level = 2
 					instant_build = yes
 				}
 			}
@@ -3565,17 +3688,18 @@ focus_tree = {
 				limit = {
 					free_building_slots = {
 						building = arms_factory
-						size > 0
+						size > 1
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
-					level = 1
+					level = 2
 					instant_build = yes
 				}
 				set_state_flag = RAJ_ishapore_arsenal_AF
+				RAJ_upgrade_development = yes
 			}
 		}
 	}
@@ -3615,6 +3739,12 @@ focus_tree = {
 
 		completion_reward = {
 			remove_ideas = RAJ_risk_of_famine
+			random_owned_controlled_state = {
+				RAJ_upgrade_development = yes
+			}
+			random_owned_controlled_state = {
+				RAJ_upgrade_development = yes
+			}
 		}
 	}
 	
@@ -3633,7 +3763,10 @@ focus_tree = {
 		}
 
 		available = {
-			is_subject = no
+			OR = {
+				is_subject = no 
+				num_of_factories > 100
+			}
 		}
 
 		bypass = {
@@ -3653,7 +3786,6 @@ focus_tree = {
 		id = RAJ_land_clearance
 		icon = GFX_goal_generic_construct_civilian
 		prerequisite = { focus = RAJ_administrative_oversight }
-		mutually_exclusive = { focus = RAJ_workforce_integration }
 		x = -1
 		y = 1
 		relative_position_id = RAJ_administrative_oversight
@@ -3691,7 +3823,6 @@ focus_tree = {
 		id = RAJ_workforce_integration
 		icon = GFX_goal_generic_army_doctrines
 		prerequisite = { focus = RAJ_administrative_oversight }
-		mutually_exclusive = { focus = RAJ_land_clearance }
 		x = 1
 		y = 1
 		relative_position_id = RAJ_administrative_oversight
@@ -3777,10 +3908,10 @@ focus_tree = {
 				limit = {
 					has_state_flag = RAJ_strengthen_ties_with_british_investors_AF1
 				}
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
-					level = 1
+					level = 2
 					instant_build = yes
 				}
 			}
@@ -3788,10 +3919,10 @@ focus_tree = {
 				limit = {
 					has_state_flag = RAJ_strengthen_ties_with_british_investors_AF2
 				}
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
-					level = 1
+					level = 2
 					instant_build = yes
 				}
 			}
@@ -3807,34 +3938,36 @@ focus_tree = {
 				limit = {
 					free_building_slots = {
 						building = arms_factory
-						size > 0
+						size > 1
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
-					level = 1
+					level = 2
 					instant_build = yes
 				}
 				set_state_flag = RAJ_strengthen_ties_with_british_investors_AF1
+				RAJ_upgrade_development = yes
 			}
 			random_owned_controlled_state = {
 				prioritize = {  }
 				limit = {
 					free_building_slots = {
 						building = arms_factory
-						size > 0
+						size > 1
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
-					level = 1
+					level = 2
 					instant_build = yes
 				}
 				set_state_flag = RAJ_strengthen_ties_with_british_investors_AF2
+				RAJ_upgrade_development = yes
 			}
 		}
 	}
@@ -3920,6 +4053,7 @@ focus_tree = {
 					instant_build = yes
 				}
 				set_state_flag = RAJ_british_rail_investors_IC1
+				RAJ_upgrade_development = yes
 			}
 			random_owned_controlled_state = {
 				prioritize = {  }
@@ -3937,6 +4071,7 @@ focus_tree = {
 					instant_build = yes
 				}
 				set_state_flag = RAJ_british_rail_investors_IC2
+				RAJ_upgrade_development = yes
 			}
 		}
 	}
@@ -3990,10 +4125,10 @@ focus_tree = {
 				limit = {
 					has_state_flag = RAJ_british_arms_investors_AF2
 				}
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
-					level = 1
+					level = 2
 					instant_build = yes
 				}
 			}
@@ -4019,6 +4154,7 @@ focus_tree = {
 					level = 2
 					instant_build = yes
 				}
+				RAJ_upgrade_development = yes
 				set_state_flag = RAJ_british_arms_investors_AF1
 			}
 			random_owned_controlled_state = {
@@ -4026,16 +4162,17 @@ focus_tree = {
 				limit = {
 					free_building_slots = {
 						building = arms_factory
-						size > 0
+						size > 1
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
-					level = 1
+					level = 2
 					instant_build = yes
 				}
+				RAJ_upgrade_development = yes
 				set_state_flag = RAJ_british_arms_investors_AF2
 			}
 		}

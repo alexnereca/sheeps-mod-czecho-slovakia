@@ -17,6 +17,7 @@ SWI_is_country_to_balance = {
 				OR = {
 					is_in_faction = no
 					is_faction_leader = yes 
+					is_ai = no
 				}
 			}
 			AND = {

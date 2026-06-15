@@ -97,7 +97,7 @@ buildings = {
 
 	supply_node = {
 		show_on_map = 1
-		base_cost = 20000
+		base_cost = 18000
 		disabled_in_dmz = yes
 		icon_frame = 15
 		centered = yes
@@ -290,7 +290,7 @@ buildings = {
 		show_modifier = yes
 		country_modifiers = {
 			modifiers = {
-				max_fuel_building = 100.0 #k
+				max_fuel_building = 250.0 #k
 			}
 		}
 		
@@ -438,7 +438,7 @@ buildings = {
 		}
 		spawn_point = nuclear_reactor_spawn
 		show_on_map = 1
-		base_cost = 25000
+		base_cost = 20000
 		icon_frame = 13
 		nuclear_reactor = yes
 		value = 10
@@ -471,7 +471,7 @@ buildings = {
 		show_on_map = 1
 		base_cost = 35000
 		icon_frame = 27
-		nuclear_reactor = yes
+		#nuclear_reactor = yes
 		affects_energy = yes
 		value = 10
 		infrastructure_construction_effect = yes
@@ -480,13 +480,14 @@ buildings = {
 			modifiers = {
 				nuclear_production_factor = 3
 				thermonuclear_production_factor = 2
+				#consumer_goods_factor = -0.05
 			}
 		}
 
 		state_modifiers = {
 			state_production_speed_buildings_factor = 0.15
 			local_building_slots_factor = 0.15
-			state_resources_factor = 0.1
+			state_resources_factor = 0.1			
 			local_factory_energy_consumption = -0.50
 		}
 
@@ -632,34 +633,6 @@ buildings = {
 		}
 	}
 
-	cataract_dam_mountain = {
-		show_on_map = 1
-		base_cost = 20000
-		damage_factor = 0 # This building can't be damaged by regular strat bombing
-		icon_frame = 26
-		value = 5
-		tags = { dam_building }
-		spawn_point = dam_spawn
-		damage_factor = -1
-		is_buildable = no
-		affects_energy = yes
-		need_detection = yes
-		detecting_intel_type = civilian 
-		province_damage_modifiers = { flooded }
-		only_display_if_exists = yes
-		special_icon = GFX_dam_icon_small
-		level_cap = {
-			province_max = 1
-		}
-		show_modifier = yes
-		state_modifiers = {
-			state_production_speed_buildings_factor = 0.15
-			local_building_slots_factor = 0.15
-			state_resources_factor = 0.1
-			local_factory_energy_consumption = -0.65
-		}
-	}
-
 	canal_kiel = {
 		show_on_map = 1
 		base_cost = 20000
@@ -705,8 +678,6 @@ buildings = {
 			
 		}
 	}
-	
-	#### Energy
 	
 	energy_infrastructure = {
 		base_cost = 12000

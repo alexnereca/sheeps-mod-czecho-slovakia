@@ -50,7 +50,7 @@ peace_action_modifiers = {
                 has_government = fascism
             }
         }
-        cost_multiplier = 3.0
+        cost_multiplier = 4.0
     }
 
 
@@ -90,7 +90,7 @@ peace_action_modifiers = {
                 has_government = fascism
             }
         }
-        cost_multiplier = 4.0
+        cost_multiplier = 5.0
     }
 
 
@@ -128,7 +128,7 @@ peace_action_modifiers = {
                 has_government = fascism
             }
         }
-        cost_multiplier = 4.0
+        cost_multiplier = 5.0
     }
 
 
@@ -147,7 +147,7 @@ peace_action_modifiers = {
                 has_government = fascism
             }
         }
-        cost_multiplier = 0.5
+        cost_multiplier = 0.25
     }
 
     yalta_wgr_other_majors = {
@@ -168,7 +168,7 @@ peace_action_modifiers = {
                 has_government = fascism
             }
         }
-        cost_multiplier = 0.5
+        cost_multiplier = 0.25
     }
 
     yalta_wgr_force_government = {
@@ -191,7 +191,7 @@ peace_action_modifiers = {
                 has_government = fascism
             }
         }
-        cost_multiplier = 2
+        cost_multiplier = 4
     }
 
 
@@ -210,7 +210,7 @@ peace_action_modifiers = {
                 has_government = fascism
             }
         }
-        cost_multiplier = 0.5
+        cost_multiplier = 0.25
     }
 
     yalta_ddr_force_government = {
@@ -228,7 +228,7 @@ peace_action_modifiers = {
                 has_government = fascism
             }
         }
-        cost_multiplier = 2
+        cost_multiplier = 4
     }
 
     yalta_reinstate_austria = {
@@ -266,7 +266,7 @@ peace_action_modifiers = {
                 } 
             }
         }
-        cost_multiplier = 0.5
+        cost_multiplier = 0.2
     }
 
     yalta_aus_force_government = {
@@ -302,7 +302,7 @@ peace_action_modifiers = {
                 }
             }
         }
-        cost_multiplier = 0.5
+        cost_multiplier = 0.2
     }
 
     FRA_yalta_puppet_mosel_germany = {
@@ -321,7 +321,6 @@ peace_action_modifiers = {
                 state = 42 #MOSELLAND
             }
         }
-        cost_multiplier = 0.3 # It costs 70% less to do here for them 
+        cost_multiplier = 0.2 # It costs 70% less to do here for them 
     }
-
 }

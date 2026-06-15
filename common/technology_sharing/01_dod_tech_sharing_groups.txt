@@ -5,7 +5,7 @@ technology_sharing_group = {
 	desc = HUN_joint_oil_exploitation_company_desc
 	picture = GFX_technology_sharing_default
     
-	research_sharing_per_country_bonus = 0.1
+	research_sharing_per_country_bonus = 0.25
 
 	categories = { industry }
 
@@ -24,7 +24,7 @@ technology_sharing_group = {
 	desc = HUN_soviet_hungarian_military_academy_desc
 	picture = GFX_technology_sharing_default
     
-	research_sharing_per_country_bonus = 0.1	
+	research_sharing_per_country_bonus = 0.15	
 
 	categories = { land_doctrine }
 
@@ -40,7 +40,7 @@ technology_sharing_group = {
 	desc = ROM_invite_german_advisors_desc
 	picture = GFX_technology_sharing_default
     
-	research_sharing_per_country_bonus = 0.1	
+	research_sharing_per_country_bonus = 0.25	
 
 	categories = { land_doctrine }
 
@@ -70,7 +70,7 @@ technology_sharing_group = {
 	desc = ROM_joint_allied_staff_college_desc
 	picture = GFX_technology_sharing_default
     
-	research_sharing_per_country_bonus = 0.1 
+	research_sharing_per_country_bonus = 0.25 
 
 	categories = { land_doctrine naval_doctrine air_doctrine }
 
@@ -87,7 +87,7 @@ technology_sharing_group = {
 	desc = little_entente_research_group_desc
 	picture = GFX_technology_sharing_default
     
-	research_sharing_per_country_bonus = 0.1
+	research_sharing_per_country_bonus = 0.2
 
     available = {
         is_in_faction_with = CZE
@@ -104,7 +104,7 @@ technology_sharing_group = {
 	desc = YUG_naval_research_group_desc
 	picture = GFX_technology_sharing_default
     
-	research_sharing_per_country_bonus = 0.1
+	research_sharing_per_country_bonus = 0.15
 
 	categories = { naval_doctrine naval_equipment  }
 
@@ -119,7 +119,7 @@ technology_sharing_group = {
 	desc = YUG_air_research_group_desc
 	picture = GFX_technology_sharing_default
     
-	research_sharing_per_country_bonus = 0.1
+	research_sharing_per_country_bonus = 0.15
 
 	categories = { air_doctrine }
 
@@ -134,7 +134,7 @@ technology_sharing_group = {
 	desc = YUG_SOV_research_group_desc
 	picture = GFX_technology_sharing_default
     
-	research_sharing_per_country_bonus = 0.1
+	research_sharing_per_country_bonus = 0.15
 
 	categories = { }
 
@@ -149,7 +149,7 @@ technology_sharing_group = {
 	desc = HUN_joint_tank_development_group_desc
 	picture = GFX_technology_sharing_default
     
-	research_sharing_per_country_bonus = 0.1
+	research_sharing_per_country_bonus = 0.15
 
 	categories = { armor }
 
@@ -164,7 +164,7 @@ technology_sharing_group = {
 	desc = HUN_joint_air_development_group_desc
 	picture = GFX_technology_sharing_default
     
-	research_sharing_per_country_bonus = 0.1
+	research_sharing_per_country_bonus = 0.15
 
 	categories = { air_equipment }
 

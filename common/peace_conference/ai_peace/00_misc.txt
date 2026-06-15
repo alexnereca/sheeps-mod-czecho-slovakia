@@ -13,12 +13,10 @@ peace_ai_desires = {
     }
 	
     generic_influence_cutoff = { #Only do force gov and liberate outside influence range
-
-        # This AI modifier attempts to make the AI start taking a new land area from specific provinces (e.g. ports) rather than starting at a random coast line.
-
         peace_action_type = { take_states puppet }
         enable = {
             ROOT = { tag = ROOT.FROM } #We are negotiating for ourselves
+	is_historical_focus_on = yes
             OR = {
                 has_government = democratic
                 has_government = communism
@@ -31,10 +29,14 @@ peace_ai_desires = {
                         is_core_of = PREV
                     }
                 }
-                pc_is_state_outside_influence_for_winner = ROOT.FROM  # NOTE: potentially superflous after the addition of the PEACE_BID_CONTEST_TIE_BREAKER_xxx defines
+                pc_is_state_outside_influence_for_winner = ROOT.FROM
                 #is_coastal = no
                 NOT = {
                     OR = {
+						AND = {
+							is_one_state_island = yes
+							ROOT = { is_faction_leader = yes }
+						}
                         AND = {
                             is_capital = yes
                             is_coastal = yes
@@ -61,12 +63,10 @@ peace_ai_desires = {
     }
 
     generic_influence_cutoff_force_government_fascism_unaligned = { #Don't do ANYTHING outside influence range
-
-        # This AI modifier attempts to make the AI start taking a new land area from specific provinces (e.g. ports) rather than starting at a random coast line.
-
         peace_action_type = { take_states puppet force_government liberate }
         enable = {
             # ROOT = { tag = ROOT.FROM } #We are negotiating for ourselves
+	is_historical_focus_on = yes
             NOT = {
                 OR = {
                     has_government = democratic
@@ -82,10 +82,14 @@ peace_ai_desires = {
                         is_core_of = PREV
                     }
                 }
-                pc_is_state_outside_influence_for_winner = ROOT  # NOTE: potentially superflous after the addition of the PEACE_BID_CONTEST_TIE_BREAKER_xxx defines
+                pc_is_state_outside_influence_for_winner = ROOT
                 # is_coastal = no
                 NOT = {
                     OR = {
+						AND = {
+							is_one_state_island = yes
+							ROOT = { is_faction_leader = yes }
+						}
                         AND = {
                             is_capital = yes
                             is_coastal = yes
@@ -125,6 +129,7 @@ peace_ai_desires = {
     force_gov_puppets = {
         peace_action_type = force_government
         enable = {
+	is_historical_focus_on = yes
             ROOT = {
                 has_government = democratic
                 ROOT.FROM.FROM = {
@@ -139,6 +144,7 @@ peace_ai_desires = {
     doesnt_control_no_claim = {
         peace_action_type = { take_states }
         enable = {
+		is_historical_focus_on = yes
             ROOT = { tag = ROOT.FROM } #We are negotiating for ourselves
             ROOT.FROM.FROM.FROM = {
                 NOT = { is_core_of = ROOT.FROM }
@@ -154,6 +160,7 @@ peace_ai_desires = {
     democracy_force_government_on_austria = {
         peace_action_type = force_government
         enable = {
+	is_historical_focus_on = yes
             is_historical_focus_on = yes
             is_major = yes
             ROOT = { has_government = democratic }
@@ -180,6 +187,7 @@ peace_ai_desires = {
     fascist_puppet_desire = {
         peace_action_type = puppet
         enable = {
+		is_historical_focus_on = yes
             ROOT = { 
                 NOT = { tag = JAP }            #We aren't Japan (special handling)
                 is_major = yes                #We are big
@@ -243,6 +251,7 @@ peace_ai_desires = {
     democracy_force_government_on_communism = {
         peace_action_type = force_government
         enable = {
+	is_historical_focus_on = yes
             ROOT = { has_government = democratic }
             ROOT.FROM.FROM = { has_government = communism }
             ROOT.FROM.FROM.FROM = { NOT = { is_claimed_by = ROOT.FROM.FROM } }
@@ -259,6 +268,8 @@ peace_ai_desires = {
     democracy_owner_does_not_have_core = {
         peace_action_type = { force_government puppet take_states }
         enable = {
+		is_historical_focus_on = yes
+	is_historical_focus_on = yes
             ROOT = { has_government = democratic }
             ROOT.FROM.FROM.FROM = { NOT = { is_core_of = ROOT.FROM } }
         }
@@ -287,6 +298,7 @@ peace_ai_desires = {
     dont_grab_exclaves = {
         peace_action_type = take_states
         enable = {
+	is_historical_focus_on = yes
             ROOT.FROM.FROM.FROM = {
                 NOT = {
                     OR = {
@@ -329,6 +341,7 @@ peace_ai_desires = {
     leave_force_gov_at_will_to_allies = { #It is a bit hacky, but we need a preference here or we end up worse than where we started
         peace_action_type = force_government
         enable = {
+	is_historical_focus_on = yes
             ROOT = { NOT = { has_government = democratic } }
             ROOT.FROM.FROM.FROM = {
                 NOT = {
@@ -349,7 +362,12 @@ peace_ai_desires = {
         peace_action_type = { take_states puppet liberate force_government }
 
         enable = {
-            FROM.FROM.FROM = { NOT = { is_controlled_by = ROOT } }
+            	FROM.FROM.FROM = { 
+			NOT = { is_controlled_by = ROOT } 
+               	 	controller = {
+                    		pc_is_loser = no
+                	}
+		}
         }
         ai_desire = -10
     }
@@ -366,7 +384,7 @@ peace_ai_desires = {
                 }
             }
         }
-        ai_desire = -20
+        ai_desire = -50
     }
 
     democrats_dont_liberate_the_wrong_ideology = {
@@ -474,6 +492,7 @@ peace_ai_desires = {
     liberate_on_non_core = {
         peace_action_type = liberate
         enable = {
+	is_historical_focus_on = yes
             ROOT = { has_government = democratic }
             ROOT.FROM.FROM.FROM = {
                 NOT = { is_core_of = ROOT.FROM.FROM }
@@ -563,6 +582,7 @@ peace_ai_desires = {
     non_aligned_should_stick_to_claims = {
         peace_action_type = take_states
         enable = {
+		is_historical_focus_on = yes
             ROOT = { 
                 has_government = neutrality
                 is_major = no
@@ -659,6 +679,7 @@ peace_ai_desires = {
     dont_take_states_for_wrong_ideology_allies = {
         peace_action_type = take_states
         enable = {
+		is_historical_focus_on = yes
             ROOT = {
                 NOT = {
                     tag = ROOT.FROM
@@ -1010,6 +1031,7 @@ peace_ai_desires = {
     minors_avoid_interfering_with_random_claims = {
         peace_action_type = { take_states }
         enable = {
+		is_historical_focus_on = yes
             ROOT = { is_ai = yes }
             ROOT.FROM = {
                 tag = ROOT
@@ -1050,6 +1072,7 @@ peace_ai_desires = {
         peace_action_type = { take_state }
 
         enable = {
+		is_historical_focus_on = yes
             ROOT.FROM = { pc_is_puppeted_by = ROOT }
         }
         ai_desire = -200
@@ -1155,6 +1178,7 @@ peace_ai_desires = {
 	allies_try_and_have_a_unified_goal_for_eastern_europe = {
 		peace_action_type = puppet
 		enable = {
+	is_historical_focus_on = yes
 			has_government = democratic
 			ROOT.FROM.FROM = {
 				NOT = { has_government = democratic }
@@ -1172,6 +1196,7 @@ peace_ai_desires = {
 	release_ukraine_because_it_is_big_and_would_otherwise_be_messy = {
 		peace_action_type = liberate
 		enable = {
+	is_historical_focus_on = yes
 			has_government = democratic
 			ROOT.FROM = {
 				tag = UKR
@@ -1179,7 +1204,6 @@ peace_ai_desires = {
 		}
 		ai_desire = 2000
 	}
-	
 	leave_allied_ai_claims_alone = {
         peace_action_type = { take_states puppet force_government liberate }
         enable = {

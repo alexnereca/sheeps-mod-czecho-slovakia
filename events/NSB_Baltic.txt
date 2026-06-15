@@ -145,10 +145,11 @@ country_event = {
 			modifier = {
 				factor = 0
 				is_in_faction = yes
+				has_war = yes
 			}
 			modifier = {
 				factor = 1.5
-				EST = { has_country_flag = baltic_entente_flag } #countries are more likely to join if others have done so already
+				EST = { has_country_flag = baltic_entente_flag }
 			}
 			modifier = {
 				factor = 1.5
@@ -170,23 +171,53 @@ country_event = {
 				factor = 10
 				SWE = { has_country_flag = baltic_entente_flag }
 			}
-			modifier = { #for neutrality
+			modifier = {
 				factor = 0.1
 				tag = SWE
-				OR = {
-					has_government = democratic
-					has_government = neutrality
-				}
+				has_government = democratic
+				NOT = { has_completed_focus = SWE_coalition_war_cabinet }
+				NOT = { has_completed_focus = SWE_the_nordic_defense_council }
 			}
-			modifier = { #To make sure a Democracy doesn't join a Fascist/Non-Aligned Country 
+			modifier = {
 				factor = 0
-				FROM = {
-					OR = {
-						has_government = fascism
-						has_government = neutrality	
+				OR = {
+					AND = {
+						FROM = {
+							OR = {
+								has_government = fascism
+								has_government = communism	
+							}
+						}
+						ROOT = { 
+							has_government = democratic 
+						}
+					}
+					AND = {
+						FROM = {
+							has_government = communism
+						}
+						ROOT = { has_government = neutrality }
+					}
+					AND = {
+						FROM = {
+							OR = {
+								has_government = democratic
+								has_government = communism
+							}
+						}
+						ROOT = {
+							has_government = fascism
+						}
+					}
+					AND = {
+						FROM = {
+							has_government = communism
+						}
+						ROOT = {
+							has_government = neutrality
+						}
 					}
 				}
-				has_government = democratic 
 			}
 		}
 

@@ -4,9 +4,6 @@ HOL_colonial_alternate_democratic_plan = {
 
 	allowed = {
 		original_tag = HOL
-		NOT = {
-			has_dlc = "Thunder at Our Gates"
-		}
 	}
 	enable = {
 		OR = {
@@ -23,6 +20,16 @@ HOL_colonial_alternate_democratic_plan = {
 	}
 
 	ai_national_focuses = {
+		HOL_form_new_government					#June 30 1939
+		HOL_gateway_to_europe				#September 10 1939
+		HOL_cave_to_the_british					#June 20 1940	
+		HOL_unity_through_democracy					#August 30 1940
+		HOL_go_with_britain					#November 10 1940
+		HOL_replace_the_defeatist_government					#January 20 1941	
+
+
+
+
 		HOL_obtain_foreign_colonial_investments					#March 10 1936	
 		HOL_the_crown_jewel_colony					#May 20 1936	
 		HOL_the_western_possessions					#July 30 1936	
@@ -41,15 +48,9 @@ HOL_colonial_alternate_democratic_plan = {
 		HOL_prepare_the_inundation_lines					#November 30 1938
 		HOL_germany_is_the_greater_threat					#February 10 1939	
 		HOL_antilles_defenses					#April 20 1939	
-		HOL_form_new_government					#June 30 1939
-		HOL_gateway_to_europe				#September 10 1939	
 		HOL_curtail_colonial_autonomy					#November 20 1939	
 		HOL_java					#January 30 1940
-		HOL_sumatra					#April 10 1940
-		HOL_cave_to_the_british					#June 20 1940	
-		HOL_unity_through_democracy					#August 30 1940
-		HOL_go_with_britain					#November 10 1940
-		HOL_replace_the_defeatist_government					#January 20 1941	
+		HOL_sumatra					#April 10 1940	
 		HOL_de_vaarplicht					#March 30 1941	
 		HOL_borneo_and_the_grote_oost
 		HOL_continue_the_war_in_batavia
@@ -98,9 +99,6 @@ HOL_continental_alternate_democratic_plan = {
 
 	allowed = {
 		original_tag = HOL
-		NOT = {
-			has_dlc = "Thunder at Our Gates"
-		}
 	}
 	enable = {
 		OR = {
@@ -117,6 +115,13 @@ HOL_continental_alternate_democratic_plan = {
 	}
 
 	ai_national_focuses = {
+		HOL_gateway_to_europe					#April 10 1940
+		HOL_cave_to_the_british					#June 20 1940	
+		HOL_unity_through_democracy					#August 30 1940
+		HOL_go_with_britain					#November 10 1940
+		HOL_replace_the_defeatist_government					#January 20 1941
+
+
 		HOL_abandon_the_gold_standard				#March 10 1936	
 		HOL_continue_the_public_works				#May 20 1936	
 		HOL_finish_the_noordoostpolder					#July 30 1936	
@@ -138,12 +143,7 @@ HOL_continental_alternate_democratic_plan = {
 		HOL_fokker					#June 30 1939
 		HOL_domestic_jet_engine_designs					#September 10 1939	
 		HOL_domestic_innovation					#November 20 1939	
-		HOL_secret_staff_talks					#January 30 1940
-		HOL_gateway_to_europe					#April 10 1940
-		HOL_cave_to_the_british					#June 20 1940	
-		HOL_unity_through_democracy					#August 30 1940
-		HOL_go_with_britain					#November 10 1940
-		HOL_replace_the_defeatist_government					#January 20 1941	
+		HOL_secret_staff_talks					#January 30 1940	
 		HOL_de_vaarplicht					#March 30 1941	
 		HOL_the_singapore_conferences					#June 10 1941
 		HOL_ship_a_day_sinking_quotas					#August 20 1941
@@ -184,9 +184,6 @@ HOL_lead_the_minor_democracies_democratic_plan = {
 
 	allowed = {
 		original_tag = HOL
-		NOT = {
-			has_dlc = "Thunder at Our Gates"
-		}
 	}
 	enable = {
 		OR = {
@@ -202,7 +199,19 @@ HOL_lead_the_minor_democracies_democratic_plan = {
 		
 	}
 
-	ai_national_focuses = {
+	ai_national_focuses = {				#April 20 1939	
+		HOL_form_new_government					#June 30 1939
+		HOL_gateway_to_europe				#September 10 1939	
+		HOL_responsibility_for_our_own_defense	
+		HOL_cave_to_the_british				
+		HOL_unity_through_democracy			
+		HOL_lead_the_minor_democracies		
+		HOL_replace_the_defeatist_government
+		HOL_form_the_benelux				
+		HOL_lessons_from_the_low_countries		
+		HOL_foundations_for_a_european_union	
+		HOL_the_continents_best_and_brightest	
+
 		HOL_obtain_foreign_colonial_investments					#March 10 1936	
 		HOL_the_crown_jewel_colony					#May 20 1936	
 		HOL_the_western_possessions					#July 30 1936	
@@ -220,18 +229,7 @@ HOL_lead_the_minor_democracies_democratic_plan = {
 		HOL_expand_curacao_oil_refineries				#September 20 1938
 		HOL_prepare_the_inundation_lines					#November 30 1938
 		HOL_germany_is_the_greater_threat					#February 10 1939	
-		HOL_antilles_defenses					#April 20 1939	
-		HOL_form_new_government					#June 30 1939
-		HOL_gateway_to_europe				#September 10 1939	
-		HOL_responsibility_for_our_own_defense	
-		HOL_cave_to_the_british				
-		HOL_unity_through_democracy			
-		HOL_lead_the_minor_democracies		
-		HOL_replace_the_defeatist_government
-		HOL_form_the_benelux				
-		HOL_lessons_from_the_low_countries		
-		HOL_foundations_for_a_european_union	
-		HOL_the_continents_best_and_brightest	
+		HOL_antilles_defenses	
 		HOL_appoint_new_supreme_commander					#November 20 1939	
 		HOL_modernize_our_infantry_equipment					#January 30 1940
 				#April 10 1940
@@ -280,9 +278,6 @@ HOL_alternate_communist_plan = {
 
 	allowed = {
 		original_tag = HOL
-		NOT = {
-			has_dlc = "Thunder at Our Gates"
-		}
 	}
 	enable = {
 		OR = {
@@ -299,27 +294,31 @@ HOL_alternate_communist_plan = {
 	}
 
 	ai_national_focuses = {
-		HOL_abandon_the_gold_standard				#March 10 1936	
-		HOL_continue_the_public_works				#May 20 1936	
-		HOL_finish_the_noordoostpolder					#July 30 1936	
-		HOL_expand_the_artillerieinrichtingen					#October 10 1936
-		HOL_form_new_government					#October 10 1936	
-		HOL_philips_focus					#December 20 1936	
-		HOL_expand_RD_facilities					#February 30 1937	
-							#May 10 1937	
-		HOL_overturn_military_budget_cuts					#July 20 1937	
-		HOL_prepare_the_inundation_lines					#September 30 1937	
-		HOL_germany_is_the_greater_threat					#December 10 1937
-		HOL_war_on_pacifism					#February 20 1938	
+		HOL_form_new_government					#October 10 1936
 		HOL_gateway_to_europe
 		HOL_maintain_trade_neutrality
 		HOL_legacy_of_the_de_zeven_provincien_mutiny
 		HOL_red_is_the_new_orange
 		HOL_decolonization
 		HOL_join_the_french
-		HOL_affirm_loyalty_to_moscow
-		HOL_socialist_industrial_support
+		HOL_affirm_loyalty_to_moscow	
+		HOL_bastion_of_true_communism	
+		HOL_socialist_industrial_support					#February 20 1938
 		HOL_mobilize_the_masses
+
+
+		HOL_abandon_the_gold_standard				#March 10 1936	
+		HOL_continue_the_public_works				#May 20 1936	
+		HOL_finish_the_noordoostpolder					#July 30 1936	
+		HOL_expand_the_artillerieinrichtingen					#October 10 1936
+		HOL_philips_focus					#December 20 1936	
+		HOL_expand_RD_facilities					#February 30 1937	
+							#May 10 1937	
+		HOL_overturn_military_budget_cuts					#July 20 1937	
+		HOL_prepare_the_inundation_lines					#September 30 1937	
+		HOL_germany_is_the_greater_threat					#December 10 1937
+		HOL_war_on_pacifism
+		HOL_bring_socialism_south
 		HOL_french_military_mission
 		HOL_soviet_technical_teams
 		HOL_the_zuiderzee_works
@@ -380,9 +379,6 @@ HOL_alternate_fascist_plan = {
 
 	allowed = {
 		original_tag = HOL
-		NOT = {
-			has_dlc = "Thunder at Our Gates"
-		}
 	}
 	enable = {
 		OR = {
@@ -399,11 +395,21 @@ HOL_alternate_fascist_plan = {
 	}
 
 	ai_national_focuses = {
+		HOL_form_new_government					#October 10 1936	
+		HOL_gateway_to_europe
+		HOL_cave_to_the_germans
+		HOL_volk_en_vaderland
+		HOL_de_jeugdstorm
+		HOL_strength_over_blood
+		HOL_join_germany
+		HOL_the_netherlands_first
+		HOL_the_united_netherlands		#April 30 1938
+
 		HOL_abandon_the_gold_standard				#March 10 1936	
 		HOL_continue_the_public_works				#May 20 1936	
 		HOL_finish_the_noordoostpolder					#July 30 1936	
 		HOL_expand_the_artillerieinrichtingen					#October 10 1936
-		HOL_form_new_government					#October 10 1936	
+		
 		HOL_philips_focus					#December 20 1936	
 		HOL_expand_RD_facilities					#February 30 1937	
 							#May 10 1937	
@@ -411,13 +417,7 @@ HOL_alternate_fascist_plan = {
 		HOL_prepare_the_inundation_lines					#September 30 1937	
 		HOL_protect_against_britain					#December 10 1937
 		HOL_war_on_pacifism					#February 20 1938	
-		HOL_gateway_to_europe
-		HOL_cave_to_the_germans
-		HOL_volk_en_vaderland
-		HOL_de_jeugdstorm
-		HOL_strength_over_blood
-		HOL_join_germany
-		HOL_the_united_netherlands		#April 30 1938
+		
 		HOL_the_zuiderzee_works			#July 10 1938	
 		HOL_appoint_new_supreme_commander				#September 20 1938					
 		#November 30 1938
@@ -470,18 +470,16 @@ HOL_alternate_fascist_plan = {
 
 }
 
-HOL_alternate_monarchist_plan = {
+HOL_alternate_monarchist_plan_first_step = {
 	name = "Netherlands Monarchist plan"
 	desc = "Netherlands will become monarchist and join the allies, but not move the government to Batavia."
 
 	allowed = {
 		original_tag = HOL
-		NOT = {
-			has_dlc = "Thunder at Our Gates"
-		}
 	}
 	enable = {
 		OR = {
+			has_country_flag = HOL_AI_RANDOM_NEUTRALITY
 			has_completed_focus = HOL_oranje_boven
 			has_game_rule = {
 				rule = HOL_AI_BEHAVIOR 
@@ -490,52 +488,255 @@ HOL_alternate_monarchist_plan = {
 		}
 	}
 	abort = {
-		
+		has_completed_focus = HOL_prepare_the_inundation_lines
 	}
 
 	ai_national_focuses = {
-		HOL_obtain_foreign_colonial_investments					#March 10 1936	
-		HOL_the_crown_jewel_colony					#May 20 1936	
-		HOL_the_western_possessions					#July 30 1936	
-		HOL_abandon_the_gold_standard					#October 10 1936
-		HOL_continue_the_public_works					#October 10 1936	
-		HOL_finish_the_noordoostpolder					#December 20 1936	
-		HOL_the_maastunnel					#February 30 1937	
-		HOL_expand_the_artillerieinrichtingen					#May 10 1937	
-		HOL_philips_focus					#July 20 1937	
-		HOL_expand_RD_facilities					#September 30 1937	
-		HOL_overturn_military_budget_cuts					#December 10 1937
-		HOL_prepare_naval_expansion					#February 20 1938	
-		HOL_cornerstone_of_colonial_defense					#April 30 1938	
-		HOL_modernize_the_cruiser_fleet					#July 10 1938	
-		HOL_expand_curacao_oil_refineries				#September 20 1938
-		HOL_prepare_the_inundation_lines					#November 30 1938
-		HOL_germany_is_the_greater_threat					#February 10 1939	
-		HOL_antilles_defenses					#April 20 1939	
 		HOL_form_new_government					#June 30 1939
 		HOL_gateway_to_europe				#September 10 1939	
 		HOL_maintain_trade_neutrality
-		HOL_appoint_new_supreme_commander					#November 20 1939	
-		HOL_modernize_our_infantry_equipment					#January 30 1940
-		HOL_secret_staff_talks					#April 10 1940
 		HOL_oranje_boven					#June 20 1940	
 		HOL_replace_the_defeatist_government					#August 30 1940
 		HOL_go_with_britain					#November 10 1940
-		HOL_symbol_of_resistance					#January 20 1941	
-		HOL_de_vaarplicht					#March 30 1941	
-		HOL_expand_the_mld					#June 10 1941
-		HOL_protect_the_colonies					#August 20 1941
-		HOL_java
-		HOL_reinforce_java					#October 30 1941	
-		HOL_modernize_the_air_fleet					#January 10
- 		HOL_the_only_man_in_the_dutch_government					#March 20 1942
- 		HOL_ship_a_day_sinking_quotas					#May 30 1942	
+		HOL_symbol_of_resistance					#January 20 1941
+ 		HOL_the_only_man_in_the_dutch_government					#March 20 1942	
+		HOL_de_vaarplicht					#March 30 1941		
  		HOL_de_vernieuwing					#August 10 1942
  		HOL_depillarization					#October 20 1942	
  		HOL_a_new_dutch_unity					#December 30 1942	
  		HOL_revive_the_buffer_state_proposal					#March 10 1943
  		HOL_request_allied_favors				#May 20 1943	
- 		HOL_the_foundations_of_defense					#July 30 1943
+		HOL_develop_the_south
+		HOL_royal_arms_purchases
+		HOL_wilhelminism
+
+
+		HOL_abandon_the_gold_standard					#October 10 1936
+		HOL_continue_the_public_works					#October 10 1936
+		HOL_finish_the_noordoostpolder					#December 20 1936	
+		HOL_the_maastunnel					#February 30 1937	
+		HOL_expand_the_artillerieinrichtingen					#May 10 1937	
+		HOL_philips_focus					#July 20 1937	
+		HOL_expand_RD_facilities					#September 30 1937	
+		HOL_the_zuiderzee_works
+
+
+		HOL_overturn_military_budget_cuts					#December 10 1937
+		HOL_prepare_the_inundation_lines					#November 30 1938
+	}
+
+	research = {
+
+	}
+
+	ideas = {
+
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}
+HOL_alternate_monarchist_plan_second_step_a = {
+	name = "Netherlands Monarchist plan"
+	desc = "Netherlands will become monarchist and join the allies, but not move the government to Batavia."
+
+	allowed = {
+		original_tag = HOL
+	}
+	enable = {
+		has_completed_focus = HOL_prepare_the_inundation_lines
+		GER = { 
+			OR = {
+				has_completed_focus = GER_oppose_hitler
+				has_completed_focus = GER_oppose_hitler_ww
+			}
+		}
+		OR = {
+			has_country_flag = HOL_AI_RANDOM_NEUTRALITY
+			has_completed_focus = HOL_oranje_boven
+			has_game_rule = {
+				rule = HOL_AI_BEHAVIOR 
+				option = NEUTRALITY
+			}
+		}
+	}
+	abort = {
+	}
+
+	ai_national_focuses = {
+		HOL_form_new_government					#June 30 1939
+		HOL_gateway_to_europe				#September 10 1939	
+		HOL_maintain_trade_neutrality
+		HOL_oranje_boven					#June 20 1940	
+		HOL_replace_the_defeatist_government					#August 30 1940
+		HOL_go_with_britain					#November 10 1940
+		HOL_symbol_of_resistance					#January 20 1941
+ 		HOL_the_only_man_in_the_dutch_government					#March 20 1942	
+		HOL_de_vaarplicht					#March 30 1941		
+ 		HOL_de_vernieuwing					#August 10 1942
+ 		HOL_request_allied_favors				#May 20 1943	
+ 		HOL_depillarization					#October 20 1942	
+ 		HOL_a_new_dutch_unity					#December 30 1942	
+ 		HOL_revive_the_buffer_state_proposal					#March 10 1943
+		HOL_develop_the_south
+		HOL_royal_arms_purchases
+		HOL_wilhelminism
+
+		HOL_protect_against_britain
+		HOL_war_on_pacifism
+
+	}
+
+	research = {
+
+	}
+
+	ideas = {
+
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}
+HOL_alternate_monarchist_plan_second_step_b = {
+	name = "Netherlands Monarchist plan"
+	desc = "Netherlands will become monarchist and join the allies, but not move the government to Batavia."
+
+	allowed = {
+		original_tag = HOL
+	}
+	enable = {
+		has_completed_focus = HOL_prepare_the_inundation_lines
+		NOT = { 
+			GER = { 
+				OR = {
+					has_completed_focus = GER_oppose_hitler 
+					has_completed_focus = GER_oppose_hitler_ww
+				} 
+			}
+		}
+		OR = {
+			has_country_flag = HOL_AI_RANDOM_NEUTRALITY
+			has_completed_focus = HOL_oranje_boven
+			has_game_rule = {
+				rule = HOL_AI_BEHAVIOR 
+				option = NEUTRALITY
+			}
+		}
+	}
+	abort = {
+	}
+
+	ai_national_focuses = {
+		HOL_form_new_government					#June 30 1939
+		HOL_gateway_to_europe				#September 10 1939	
+		HOL_maintain_trade_neutrality
+		HOL_oranje_boven					#June 20 1940	
+		HOL_replace_the_defeatist_government					#August 30 1940
+		HOL_go_with_britain					#November 10 1940
+		HOL_symbol_of_resistance					#January 20 1941
+ 		HOL_the_only_man_in_the_dutch_government					#March 20 1942	
+		HOL_de_vaarplicht					#March 30 1941		
+ 		HOL_de_vernieuwing					#August 10 1942
+ 		HOL_depillarization					#October 20 1942	
+ 		HOL_request_allied_favors				#May 20 1943	
+ 		HOL_a_new_dutch_unity					#December 30 1942	
+ 		HOL_revive_the_buffer_state_proposal					#March 10 1943
+		HOL_develop_the_south
+		HOL_royal_arms_purchases
+		HOL_wilhelminism
+
+		HOL_germany_is_the_greater_threat
+		HOL_war_on_pacifism
+
+	}
+
+	research = {
+
+	}
+
+	ideas = {
+
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}
+HOL_alternate_monarchist_plan_third_step = {
+	name = "Netherlands Monarchist plan"
+	desc = "Netherlands will become monarchist and join the allies, but not move the government to Batavia."
+
+	allowed = {
+		original_tag = HOL
+	}
+	enable = {
+		has_completed_focus = HOL_prepare_the_inundation_lines
+		OR = {
+			has_country_flag = HOL_AI_RANDOM_NEUTRALITY
+			has_completed_focus = HOL_oranje_boven
+			has_game_rule = {
+				rule = HOL_AI_BEHAVIOR 
+				option = NEUTRALITY
+			}
+		}
+	}
+	abort = {
+	}
+
+	ai_national_focuses = {
+		HOL_form_new_government					#June 30 1939
+		HOL_gateway_to_europe				#September 10 1939	
+		HOL_maintain_trade_neutrality
+		HOL_oranje_boven					#June 20 1940	
+		HOL_replace_the_defeatist_government					#August 30 1940
+		HOL_go_with_britain					#November 10 1940
+		HOL_symbol_of_resistance					#January 20 1941
+ 		HOL_the_only_man_in_the_dutch_government					#March 20 1942	
+		HOL_de_vaarplicht					#March 30 1941		
+ 		HOL_de_vernieuwing					#August 10 1942
+ 		HOL_depillarization					#October 20 1942	
+ 		HOL_a_new_dutch_unity					#December 30 1942	
+ 		HOL_revive_the_buffer_state_proposal					#March 10 1943
+		HOL_develop_the_south
+ 		HOL_request_allied_favors				#May 20 1943	
+		HOL_royal_arms_purchases
+		HOL_wilhelminism
+
+
+		HOL_develop_the_randstad
+		HOL_expand_the_ijmuiden_steel_mill
+		HOL_fokker
+		HOL_domestic_innovation
+		HOL_develop_the_zandstad
+		HOL_friesland_agricultural_impetus
+		HOL_daf
+	
+		HOL_appoint_new_supreme_commander					#November 20 1939	
+		HOL_modernize_our_infantry_equipment					#January 30 1940
+		HOL_secret_staff_talks					#April 10 1940
+		HOL_lessons_from_the_last_war
+
 	}
 
 	research = {

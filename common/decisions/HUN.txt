@@ -1184,6 +1184,12 @@ HUN_territorial_revision_category = {
 
 		ai_will_do = {
 			base = 2
+			modifier = {
+				factor = 500
+				has_war = yes
+				is_in_faction = yes
+				764 = { owner = { is_in_faction = no } }
+			}
 		}
 
 		allowed = {
@@ -1196,20 +1202,22 @@ HUN_territorial_revision_category = {
 
 		target_trigger = {
 			FROM = {
+				NOT = {
+					OR = {
+						has_war_with = ROOT
+						original_tag = ROOT
+					}
+				}
+				NOT = {
+					has_country_flag = HUN_refused_banatian_demands
+					has_country_flag = HUN_sent_banatian_demands
+				}
 				OR = {
 					controls_state = 764
 					any_subject_country = {
 						is_ai = yes
 						controls_state = 764
 					}
-				}
-				NOT = {
-					has_war_with = ROOT
-					original_tag = ROOT
-				}
-				NOT = {
-					has_country_flag = HUN_refused_banatian_demands
-					has_country_flag = HUN_sent_banatian_demands
 				}
 			}
 		}
@@ -1233,7 +1241,7 @@ HUN_territorial_revision_category = {
 			original_tag = HUN
 		}
 
-		cost = 75
+		cost = 25
 
 		complete_effect = {
 			FROM = {
@@ -1292,7 +1300,7 @@ HUN_territorial_revision_category = {
 			controls_state = 664
 		}
 
-		days_remove = 35 
+		days_remove = 20 
 
 		cost = 50
 
@@ -1300,7 +1308,7 @@ HUN_territorial_revision_category = {
 		}
 
 		modifier = {
-			political_power_factor = -0.2
+			political_power_factor = -0.15
 		}
 
 		remove_effect = {
@@ -1379,7 +1387,7 @@ HUN_territorial_revision_category = {
 			controls_state = 70
 		}
 
-		days_remove = 35 
+		days_remove = 20 
 
 		cost = 50
 
@@ -1387,7 +1395,7 @@ HUN_territorial_revision_category = {
 		}
 
 		modifier = {
-			political_power_factor = -0.2
+			political_power_factor = -0.15
 		}
 
 		remove_effect = {
@@ -1466,7 +1474,7 @@ HUN_territorial_revision_category = {
 			controls_state = 71
 		}
 
-		days_remove = 35 
+		days_remove = 20 
 
 		cost = 50
 
@@ -1474,7 +1482,7 @@ HUN_territorial_revision_category = {
 		}
 
 		modifier = {
-			political_power_factor = -0.2
+			political_power_factor = -0.15
 		}
 
 		remove_effect = {
@@ -1553,7 +1561,7 @@ HUN_territorial_revision_category = {
 			controls_state = 73
 		}
 
-		days_remove = 35 
+		days_remove = 20 
 
 		cost = 50
 
@@ -1561,7 +1569,7 @@ HUN_territorial_revision_category = {
 		}
 
 		modifier = {
-			political_power_factor = -0.2
+			political_power_factor = -0.15
 		}
 
 		remove_effect = {
@@ -1640,7 +1648,7 @@ HUN_territorial_revision_category = {
 			controls_state = 76
 		}
 
-		days_remove = 35 
+		days_remove = 20 
 
 		cost = 50
 
@@ -1648,7 +1656,7 @@ HUN_territorial_revision_category = {
 		}
 
 		modifier = {
-			political_power_factor = -0.2
+			political_power_factor = -0.15
 		}
 
 		remove_effect = {
@@ -1727,7 +1735,7 @@ HUN_territorial_revision_category = {
 			controls_state = 84
 		}
 
-		days_remove = 35 
+		days_remove = 20 
 
 		cost = 50
 
@@ -1735,7 +1743,7 @@ HUN_territorial_revision_category = {
 		}
 
 		modifier = {
-			political_power_factor = -0.2
+			political_power_factor = -0.15
 		}
 
 		remove_effect = {
@@ -1814,7 +1822,7 @@ HUN_territorial_revision_category = {
 			controls_state = 83
 		}
 
-		days_remove = 35 
+		days_remove = 20 
 
 		cost = 50
 
@@ -1822,7 +1830,7 @@ HUN_territorial_revision_category = {
 		}
 
 		modifier = {
-			political_power_factor = -0.2
+			political_power_factor = -0.15
 		}
 
 		remove_effect = {
@@ -1901,7 +1909,7 @@ HUN_territorial_revision_category = {
 			controls_state = 82
 		}
 
-		days_remove = 35 
+		days_remove = 20 
 
 		cost = 50
 
@@ -1909,7 +1917,7 @@ HUN_territorial_revision_category = {
 		}
 
 		modifier = {
-			political_power_factor = -0.2
+			political_power_factor = -0.15
 		}
 
 		remove_effect = {
@@ -1988,7 +1996,7 @@ HUN_territorial_revision_category = {
 			controls_state = 764
 		}
 
-		days_remove = 35 
+		days_remove = 20 
 
 		cost = 50
 
@@ -1996,7 +2004,7 @@ HUN_territorial_revision_category = {
 		}
 
 		modifier = {
-			political_power_factor = -0.2
+			political_power_factor = -0.15
 		}
 
 		remove_effect = {
@@ -2075,7 +2083,7 @@ HUN_territorial_revision_category = {
 			controls_state = 45
 		}
 
-		days_remove = 35 
+		days_remove = 20 
 
 		cost = 50
 
@@ -2083,7 +2091,7 @@ HUN_territorial_revision_category = {
 		}
 
 		modifier = {
-			political_power_factor = -0.2
+			political_power_factor = -0.15
 		}
 
 		remove_effect = {
@@ -2156,7 +2164,7 @@ HUN_territorial_revision_category = {
 			controls_state = 975
 		}
 
-		days_remove = 35 
+		days_remove = 20 
 
 		cost = 50
 
@@ -2164,7 +2172,7 @@ HUN_territorial_revision_category = {
 		}
 
 		modifier = {
-			political_power_factor = -0.2
+			political_power_factor = -0.15
 		}
 
 		remove_effect = {

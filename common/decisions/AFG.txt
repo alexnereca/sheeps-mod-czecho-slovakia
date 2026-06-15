@@ -6,6 +6,69 @@ AFG_oil_concessions_category = {
 
 		ai_will_do = {
 			base = 40
+			modifier = {
+				FROM = { is_ai = no }
+				difficulty > 2
+				factor = 0
+			}
+			modifier = {
+				FROM = { tag = ENG }
+				any_country = {
+					is_axis_ai = yes
+					is_ai = no
+				}
+				NOT = {
+					any_country = {
+						is_allied_ai = yes
+						is_ai = no
+					}
+				}
+				factor = 20
+			}
+			modifier = {
+				FROM = { tag = GER }
+				any_country = {
+					is_allied_ai = yes
+					is_ai = no
+				}
+				NOT = {
+					any_country = {
+						is_axis_ai = yes
+						is_ai = no
+					}
+				}
+				factor = 20
+			}
+			modifier = {
+				AND = {
+					AND = {
+						FROM = {
+							tag = ENG
+						}
+						NOT = {
+							any_country = {
+								is_axis_ai = yes
+								is_ai = no	
+							}
+						}
+						NOT = {
+							any_country = {
+								is_allied_ai = yes
+								is_ai = no	
+							}
+						}
+					}
+				}
+				factor = 20
+			}
+			modifier = {
+				add = 5000
+				FROM = { is_ai = no } #if a player has befriended iran, always prioritized the player
+				has_opinion = {
+					target = FROM
+					value > 89
+				}
+			}
 		}
 
 		target_trigger = {
@@ -34,6 +97,7 @@ AFG_oil_concessions_category = {
 			NOT = {
 				has_country_flag = AFG_signed_oil_deal_flag
 			}
+			NOT = { has_global_flag = LSM_oil_trade_banned }
 		}
 
 		cost = 0
@@ -105,8 +169,8 @@ AFG_oil_concessions_category = {
 		} 
 
 		visible = { 
-			any_owned_state = {
-				is_controlled_by = ROOT
+			any_state = {
+				is_owned_and_controlled_by = ROOT
 				has_state_flag = AFG_oil_concession_here_flag
 			}
 		}
@@ -775,6 +839,9 @@ AFG_quami_category = {
 				}
 			}
 		}
+		ai_will_do = {
+			base = 9999
+		}
 	}
 
 	AFG_raise_quami = {
@@ -786,14 +853,23 @@ AFG_quami_category = {
 	
 		available = {
 			OR = {
-				has_defensive_war = yes
-				has_war_support > 0.3
+				has_war = yes
+				any_other_country = {
+					AFG = { 
+						OR = {
+							is_justifying_wargoal_against = PREV
+							has_wargoal_against = PREV
+						}
+					}
+				}
 			}
 			NOT = { has_country_flag = AFG_raise_quami_active }
-			has_civil_war = no
-			#NOT = {
-			#	has_government = communism
-			#}
+			if = {
+				limit = {
+					has_civil_war = yes
+				}
+				is_dynamic_country = no
+			}
 		}
 		
 		visible = {
@@ -827,6 +903,9 @@ AFG_quami_category = {
 					}
 				}
 			}
+		}
+		ai_will_do = {
+			base = 9999
 		}
 	}
 
@@ -864,6 +943,9 @@ AFG_quami_category = {
 			#	id = AFG_industrial_events.58
 			#	hours = 1
 			#}
+		}
+		ai_will_do = {
+			base = 0
 		}
 	}
 }
@@ -1014,7 +1096,6 @@ AFG_foreign_intervention_category = {
 }
 
 AFG_develop_central_asia_category = {
-
 	AFG_core_central_asian_state = {
 		icon = GFX_decision_hol_exchange_intelligence_data
 	
@@ -1025,6 +1106,7 @@ AFG_develop_central_asia_category = {
 		available = {
 			FROM = {
 				is_owned_and_controlled_by = ROOT
+
 			}
 			IF = {
 				limit = {
@@ -1104,7 +1186,6 @@ AFG_develop_central_asia_category = {
 			}
 		}
 	}
-
 }
 
 AFG_shadows_of_the_emir_category = {
@@ -1165,6 +1246,7 @@ AFG_shadows_of_the_emir_category = {
 		cancel_effect = {
 			hidden_effect = {
 				clr_country_flag = AFG_shadow_operation_in_progress
+				FROM = { set_state_flag = AFG_the_shadows_have_passed }
 			}
 		}
 	}	
@@ -1190,6 +1272,9 @@ AFG_turko_persian_heritage_category = {
 					}
 				}
 			}
+		  
+														
+	
 		}
 		
 		visible = {
@@ -1263,6 +1348,11 @@ AFG_turkik_alliance_category = {
 		}
 	
 		available = {
+		   
+		   
+																	 
+	 
+	
 			NOT = { has_country_flag = AFG_supporting_resistance_in_state_in_progress }
 		}
 		
@@ -1595,6 +1685,7 @@ AFG_kabul_conference_category = {
 
 		cancel_effect = {
 			hidden_effect = {
+			
 				clr_country_flag = AFG_expansion_claim_in_progress
 				
 			}
@@ -1641,8 +1732,6 @@ AFG_kabul_conference_category = {
 	  				region = 237
 	  				region = 236
 	  				region = 238
-	  				region = 297 
-	  				region = 298
 	  			}
 	        }
 	    }
@@ -1718,13 +1807,13 @@ AFG_turkestan_legion_cat = {
 
 		target_root_trigger = {
 			original_tag = AFG
+
 		}
 		state_target = yes
 		targets = { 49 229 651 586 732 830 742 405 823 831 584 619 249 137 676 329 1000 }
 	    target_trigger = {   
 	    }
 	    on_map_mode = map_and_decisions_view 
-		
 	    custom_cost_trigger = {
 	    	command_power > 24.9
 	    	has_equipment = { infantry_equipment > 1999 }
@@ -1808,7 +1897,7 @@ political_actions = {
 			custom_effect_tooltip = generic_skip_one_line_tt
 
 			country_event = {
-				id = AFG_political_events.173
+				id = AFG_royal_succession_events.01
 			}	
 
 		}
@@ -2141,4 +2230,3 @@ AFG_sikh_recruitment_cat = {
 		}
 	}
 }
-

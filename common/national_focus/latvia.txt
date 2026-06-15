@@ -1896,27 +1896,24 @@ focus_tree = {
 			division_template = {
 				name = "Ugonskrust Division"
 				division_names_group = LAT_INF_01
-				is_locked = no
-				priority = 0
+				is_locked = yes
 				regiments = { 
-					militia = { x = 0 y = 0 }
-					militia = { x = 1 y = 0 }
-					militia = { x = 2 y = 0 }
-					militia = { x = 3 y = 0 }
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 2 y = 0 }
+					infantry = { x = 3 y = 0 }
 
-					militia = { x = 0 y = 1 }
-					militia = { x = 1 y = 1 }
-					militia = { x = 2 y = 1 }
-					militia = { x = 3 y = 1 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 2 y = 1 }
+					infantry = { x = 3 y = 1 }
 
-					militia = { x = 0 y = 2 }
-					militia = { x = 1 y = 2 }
-					militia = { x = 2 y = 2 }
-					militia = { x = 3 y = 2 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 2 }
+					infantry = { x = 2 y = 2 }
+					infantry = { x = 3 y = 2 }
 				}
 				support = {
-					recon = { x = 0 y = 0 }
-					engineer = { x = 0 y = 1 }
 				}
 			}
 			random_owned_controlled_state = {
@@ -1940,10 +1937,6 @@ focus_tree = {
 					}
 					create_unit = { 
 						division = "name = \"5. Ugonskrust Division\" division_template = \"Ugonskrust Division\" start_experience_factor = 0.5" 
-						owner = ROOT
-					}
-					create_unit = { 
-						division = "name = \"6. Ugonskrust Division\" division_template = \"Ugonskrust Division\" start_experience_factor = 0.5" 
 						owner = ROOT
 					}
 				}
@@ -2207,11 +2200,9 @@ focus_tree = {
 		available_if_capitulated = no
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 		completion_reward = {
-
 				set_rule = {
 					can_create_factions = yes
 				}
-
 				if = {
 					limit = {
 						is_in_faction = no
@@ -2458,10 +2449,12 @@ focus_tree = {
 			custom_effect_tooltip = form_country_estonia_coring_states_tt
 			custom_effect_tooltip = form_country_lithuania_coring_states_tt
 			#Poland cores since we can't summarise them as adding all polish states as cores. 
-			784 = { add_core_of = ROOT }
-			96 = { add_core_of = ROOT }
-			95 = { add_core_of = ROOT }
-			94 = { add_core_of = ROOT }
+			every_state = {
+				limit = {
+					is_core_of = BLR
+				}
+				add_core_of = ROOT
+			}
 
 			if = { #Annexes any fascist Baltic states
 				limit = {
@@ -2604,11 +2597,13 @@ focus_tree = {
 			}			
 		custom_effect_tooltip = form_country_estonia_coring_states_tt
 		custom_effect_tooltip = form_country_lithuania_coring_states_tt
-				#Poland
-			784 = { add_core_of = ROOT }
-			96 = { add_core_of = ROOT }
-			95 = { add_core_of = ROOT }
-			94 = { add_core_of = ROOT }
+				#Poland 
+			every_state = {
+				limit = {
+					is_core_of = BLR
+				}
+				add_core_of = ROOT
+			}
 
 			set_cosmetic_tag = BAL_UNIFIED
 			if = { #Annexes any fascist Baltic states

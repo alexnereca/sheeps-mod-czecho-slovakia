@@ -36,6 +36,26 @@ is_independent_china_or_warlord = { #Does not include sinkiang
 	is_subject = no
 }
 
+is_chinese_warlord = {
+	OR = {		
+		original_tag = GXC
+		original_tag = YUN
+		original_tag = SHX
+		original_tag = XSM
+		original_tag = SIK
+		original_tag = GDC
+		original_tag = SND
+		original_tag = SIC
+		original_tag = NXM
+		original_tag = GSM
+		original_tag = XIC
+		original_tag = KHM
+		original_tag = KUM
+		original_tag = RNG
+		original_tag = HBC
+	}
+}
+
 has_hyper_inflation = {
 	if = {
 		limit = { has_idea = CHI_hyper_inflation_1 }
@@ -276,10 +296,6 @@ CHI_indo_chinese_states = {
 		state = 670 # Laos
 		state = 1017 # Trung Bo
 		state = 671 # Tonkin
-		state = 1066 # Cochinchina
-		state = 1067 # Battambang
-		state = 1068 # Bassac
-		state = 1069 # Lan Chang 
 	} 
 }
 

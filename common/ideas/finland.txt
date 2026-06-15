@@ -19,6 +19,7 @@ ideas = {
 				attrition = -0.1
 				army_core_attack_factor = 0.2
 				army_core_defence_factor = 0.2
+				hidden_modifier = { intelligence_agency_defense = 0.25 }
 			}
 		}
 
@@ -35,14 +36,26 @@ ideas = {
 			cancel = {
 				NOT = { has_war_with = SOV }
 			}
+		
+			on_add = {
+				if = {	
+					limit = { NOT = { has_country_flag = winter_war_happened } }
+					set_country_flag = winter_war_happened
+				}
+			}
 
 			removal_cost = -1
 			
 			modifier = {
-				conscription = 0.03
-				mobilization_speed = 0.85
+				training_time_factor = -0.25
+				stability_weekly = -0.0025
+				war_support_weekly = -0.0025
+				monthly_population = -0.50
+				conscription = 0.05
+				mobilization_speed = 1.00
 				winter_attrition_factor = -0.1
 				army_core_defence_factor = 0.1
+				custom_modifier_tooltip = winter_war_ns_tt
 			}
 		}
 
@@ -76,7 +89,10 @@ ideas = {
 			}
 
 			cancel = {
-				NOT = { has_war_with = FIN }
+				OR = {
+					NOT = { has_war_with = FIN }
+					NOT = { is_neighbor_of = FIN }
+				}
 			}
 
 			removal_cost = -1
@@ -288,6 +304,7 @@ ideas = {
 				attrition = -0.05
 				army_core_attack_factor = 0.05
 				army_core_defence_factor = 0.15
+				hidden_modifier = { intelligence_agency_defense = 0.50 }
 			}
 		}
 
@@ -313,6 +330,7 @@ ideas = {
 				attrition = -0.1
 				army_core_attack_factor = 0.15
 				army_core_defence_factor = 0.2
+				hidden_modifier = { intelligence_agency_defense = 1 }
 			}
 		}
 
@@ -338,6 +356,7 @@ ideas = {
 				attrition = -0.15
 				army_core_attack_factor = 0.25
 				army_core_defence_factor = 0.25
+				hidden_modifier = { intelligence_agency_defense = 2 }
 			}
 		}
 
@@ -755,7 +774,7 @@ ideas = {
 			removal_cost = -1
 
 			modifier = {
-				attrition = -0.1
+				attrition = -0.2
 				army_morale_factor = 0.1
 			}
 		}
@@ -827,8 +846,8 @@ ideas = {
 
 			modifier = {
 				political_power_factor = 0.1
-				industrial_capacity_factory = 0.05
-				industrial_capacity_dockyard = 0.05
+				industrial_capacity_factory = 0.1
+				industrial_capacity_dockyard = 0.1
 				production_speed_buildings_factor = 0.05
 				conscription_factor = 0.1
 			}
@@ -1075,7 +1094,7 @@ ideas = {
 			
 			modifier = {
 				consumer_goods_factor = -0.1
-				supply_consumption_factor = -0.05
+				supply_factor = 0.05
 			}
 		}
 
@@ -1285,7 +1304,7 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				army_core_defence_factor = 0.02
+				army_core_defence_factor = 0.05
 				conscription_factor = 0.15
 				mobilization_speed = 0.25
 			}
@@ -1307,14 +1326,12 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				army_core_defence_factor = 0.02
+				army_core_defence_factor = 0.05
 				conscription_factor = 0.15
 				mobilization_speed = 0.25
-				max_command_power_mult = 0.2
-				air_advisor_cost_factor = -0.15
-				army_advisor_cost_factor = -0.15
-				navy_advisor_cost_factor = -0.15
-
+				max_command_power_mult = 0.25
+				special_forces_cap = 0.15
+				special_forces_no_supply_grace = 12
 				grant_medal_cost_factor = -0.5
 			}
 		}
@@ -1335,15 +1352,13 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				army_core_defence_factor = 0.02
+				army_core_defence_factor = 0.05
 				conscription_factor = 0.15
 				mobilization_speed = 0.25
-				max_command_power_mult = 0.2
-				air_advisor_cost_factor = -0.15
-				army_advisor_cost_factor = -0.15
-				navy_advisor_cost_factor = -0.15
-
-				military_leader_cost_factor = -0.25
+				max_command_power_mult = 0.25
+				special_forces_cap = 0.15
+				special_forces_no_supply_grace = 12
+				grant_medal_cost_factor = -0.5
 			}
 		}
 
@@ -2025,6 +2040,10 @@ ideas = {
 			}
 			
 			traits = { mining_company }
+
+			ai_will_do = {
+				factor = 2
+			}
 		}
 
 		FIN_tampella = {
@@ -2042,6 +2061,12 @@ ideas = {
 			}
 			
 			traits = { industrial_concern }
+
+			
+
+			ai_will_do = {
+				factor = 0
+			}
 		}
 
 		FIN_pohjolan_voima = {
@@ -2088,6 +2113,10 @@ ideas = {
 			}
 			
 			traits = { electronics_concern }
+
+			ai_will_do = {
+				factor = 0
+			}
 		}
 
 		FIN_nokia_improved = {
@@ -2132,6 +2161,10 @@ ideas = {
 			}
 			
 			traits = { railway_company }
+
+			ai_will_do = {
+				factor = 0
+			}
 		}
 
 	}

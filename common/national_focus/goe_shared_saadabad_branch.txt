@@ -6,38 +6,43 @@ joint_focus = {
 	y = 0
 
 	offset = {
-		x = 63
+		x = 64
 		y = 0
 		trigger = {
 			tag = IRQ
 			AND = {
 				NOT = { has_completed_focus = IRQ_promote_kurdish_culture }
-				NOT = { has_completed_focus = IRQ_ensure_sunni_dominance }
+				NOT = { has_completed_focus = IRQ_party_of_national_brotherhood }
+				NOT = { has_completed_focus = IRQ_rally_behind_the_hashemite_dynasty }
 			}
 		}
 	}
 
 	offset = {
-		x = 37
+		x = 38
 		y = 0
 		trigger = {
 			tag = IRQ
 			AND = {
 				has_completed_focus = IRQ_promote_kurdish_culture
-				NOT = { has_completed_focus = IRQ_ensure_sunni_dominance }
+				NOT = { has_completed_focus = IRQ_party_of_national_brotherhood }
+				NOT = { has_completed_focus = IRQ_rally_behind_the_hashemite_dynasty }
 			}
 		}
 	}
 
 
 	offset = {
-		x = 57
+		x = 58
 		y = 0
 		trigger = {
 			tag = IRQ
 			AND = {
 				NOT = { has_completed_focus = IRQ_promote_kurdish_culture }
-				has_completed_focus = IRQ_ensure_sunni_dominance
+				OR = {
+					has_completed_focus = IRQ_party_of_national_brotherhood
+					has_completed_focus = IRQ_rally_behind_the_hashemite_dynasty
+				}
 			}
 		}
 	}
@@ -64,14 +69,13 @@ joint_focus = {
 
 	offset = {
 		y = 0
-		x = 67
+		x = 70
 		trigger = {
 			tag = PER
 		}
 	}
-
 	offset = {
-        x = -50
+        x = -51
         y = 0
         trigger = {
         	tag = PER
@@ -84,7 +88,7 @@ joint_focus = {
     }
 
     offset = {
-        x = -50
+        x = -51
         y = 0
         trigger = {
         	tag = PER
@@ -133,7 +137,6 @@ joint_focus = {
 
 	allow_branch = {
 		has_dlc = "Graveyard of Empires"
-		Not = { has_country_flag = saadabad_pact_rejected }
 	}
 
 	completion_reward_joint_originator = {
@@ -435,17 +438,33 @@ joint_focus = {
 				start_province = 11829
 				target_province = 10737
 			}
+							 
+   
 			if = {
 				limit = {
 					IRQ = { has_dynamic_modifier = { modifier = SSB_saadabad_pact } }
 					NOT = { tag = IRQ }
+					OR = {
+						TUR = { is_ai = no }
+						PER = { is_ai = no }
+						AFG = { is_ai = no }
+						IRQ = { is_ai = no }
+					}
 				}
 				give_military_access = IRQ
 			}
+							 
+   
 			if = {
 				limit = {
 					PER = { has_dynamic_modifier = { modifier = SSB_saadabad_pact } }
 					NOT = { tag = PER }
+					OR = {
+						TUR = { is_ai = no }
+						PER = { is_ai = no }
+						AFG = { is_ai = no }
+						IRQ = { is_ai = no }
+					}
 				}
 				give_military_access = PER
 			}
@@ -453,6 +472,12 @@ joint_focus = {
 				limit = {
 					AFG = { has_dynamic_modifier = { modifier = SSB_saadabad_pact } }
 					NOT = { tag = AFG }
+					OR = {
+						TUR = { is_ai = no }
+						PER = { is_ai = no }
+						AFG = { is_ai = no }
+						IRQ = { is_ai = no }
+					}
 				}
 				give_military_access = AFG
 			}
@@ -460,6 +485,12 @@ joint_focus = {
 				limit = {
 					TUR = { has_dynamic_modifier = { modifier = SSB_saadabad_pact } }
 					NOT = { tag = TUR }
+					OR = {
+						TUR = { is_ai = no }
+						PER = { is_ai = no }
+						AFG = { is_ai = no }
+						IRQ = { is_ai = no }
+					}
 				}
 				give_military_access = TUR
 			}
@@ -473,12 +504,22 @@ joint_focus = {
 	}
 
 	completion_reward_joint_member = {
+				   
+			
+							
+				 
+																																																																				   
+						 
+						  
+   
 		if = {
 			limit = {
 				NOT = {
 					has_global_flag = SSB_this_was_bypassed_dt
 				}
 			}
+							 
+   
 			if = {
 				limit = {
 					IRQ = { has_dynamic_modifier = { modifier = SSB_saadabad_pact } }
@@ -486,6 +527,8 @@ joint_focus = {
 				}
 				give_military_access = IRQ
 			}
+							 
+   
 			if = {
 				limit = {
 					PER = { has_dynamic_modifier = { modifier = SSB_saadabad_pact } }
@@ -493,6 +536,8 @@ joint_focus = {
 				}
 				give_military_access = PER
 			}
+							 
+   
 			if = {
 				limit = {
 					AFG = { has_dynamic_modifier = { modifier = SSB_saadabad_pact } }

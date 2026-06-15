@@ -1083,7 +1083,7 @@ focus_tree = {
 
 			add_doctrine_cost_reduction = {
 				name = HUN_feldmarchall_augusts_expertise
-				cost_reduction = 0.2
+				cost_reduction = 0.25
 				uses = 1
 				category = land_doctrine
 			}
@@ -1685,6 +1685,7 @@ focus_tree = {
 				create_faction_from_template = faction_template_habsburg_alliance
 			}
 
+			set_rule = { can_create_factions = yes }
 
 		}
 	}
@@ -2867,9 +2868,6 @@ focus_tree = {
 		y = 1
 		relative_position_id = wuw_HUN_protect_czechoslovakia
 
-		will_lead_to_war_with = ROM
-		will_lead_to_war_with = TRA
-
 		cost = 10
 
 		ai_will_do = {
@@ -2985,9 +2983,6 @@ focus_tree = {
 		x = 2
 		y = 2
 		relative_position_id = wuw_HUN_protect_czechoslovakia
-
-		will_lead_to_war_with = SLO
-		will_lead_to_war_with = CZE
 
 		cost = 5
 
@@ -5345,9 +5340,6 @@ focus_tree = {
 		available_if_capitulated = no
 
 		completion_reward = {
-
-
-
 			add_mastery_bonus = {
 				name = wuw_HUN_the_legacy_of_the_isonzo_front
 				bonus = 0.2
@@ -5355,6 +5347,12 @@ focus_tree = {
 				track = combat_support
 			}
 
+			add_doctrine_cost_reduction = {
+				name = wuw_HUN_the_legacy_of_the_isonzo_front
+				cost_reduction = 0.2
+				uses = 2
+				category = land_doctrine
+			}
 
 			add_tech_bonus = {
 				name = wuw_HUN_the_legacy_of_the_isonzo_front
@@ -7480,17 +7478,16 @@ focus_tree = {
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 
+			set_rule = { can_create_factions = yes }
 			IF = {
 				limit = {
 					has_dlc = "No Compromise, No Surrender"
 				}
-				set_rule = { can_create_factions = yes }
 				create_faction_from_template = faction_template_balkan_pact
 				add_faction_initiative = 1
 				custom_effect_tooltip = generic_skip_one_line_tt
 			}
 			ELSE = {
-				set_rule = { can_create_factions = yes }
 				create_faction_from_template = faction_template_balkan_pact
 				custom_effect_tooltip = generic_skip_one_line_tt
 			}
@@ -9818,18 +9815,22 @@ focus_tree = {
 				limit = {
 					country_exists = CZE
 					664 = { is_owned_by = CZE }
+					NOT = { is_in_faction_with = CZE }
 				}
 				strength_ratio = { tag = CZE ratio > 0.75 }
+
+				has_army_manpower = { size > 120000 }
 			}
 			IF = {
 				limit = {
 					country_exists = SLO
 					664 = { is_owned_by = SLO }
+					NOT = { is_in_faction_with = SLO }
 				}
 				strength_ratio = { tag = SLO ratio > 0.75 }
-			}
 
-			has_army_manpower = { size > 120000 }
+				has_army_manpower = { size > 120000 }
+			}
 
 		}
 
@@ -9882,7 +9883,6 @@ focus_tree = {
 				limit = {
 					SLO = {
 						exists = yes
-						is_subject = no
 						owns_state = 664
 					}
 				}
@@ -9893,12 +9893,7 @@ focus_tree = {
 					664 = {
 						NOT = {
 							OR = {
-								AND = {
-									is_owned_by = SLO
-									SLO = {
-										is_subject = no
-									}
-								}
+								is_owned_by = SLO
 								is_owned_by = CZE
 								is_owned_by = ROOT
 							}
@@ -9907,15 +9902,7 @@ focus_tree = {
 				}
 				random_country = {
 					limit = {
-						OR = {
-							AND = {
-								owns_state = 664
-								is_subject = no
-							}
-							any_subject_country = {
-								owns_state = 664
-							}
-						}
+						owns_state = 664
 					}
 					country_event = {
 						id = WW_hungary.7
@@ -9956,11 +9943,12 @@ focus_tree = {
 					73 = {
 						is_owned_by = CZE
 					}
+					NOT = { is_in_faction_with = CZE }
 				}
 				strength_ratio = { tag = CZE ratio > 0.70 }
-			}
 
-			has_army_manpower = { size > 150000 }
+				has_army_manpower = { size > 150000 }
+			}
 
 		}
 
@@ -9994,15 +9982,7 @@ focus_tree = {
 			custom_effect_tooltip = HUN_demands_tt
 			random_country = {
 				limit = {
-					OR = {
-						AND = {
-							owns_state = 73
-							is_subject = no
-						}
-						any_subject_country = {
-							owns_state = 73
-						}
-					}
+					owns_state = 73
 				}
 				country_event = {
 					id = WW_hungary.20
@@ -10035,7 +10015,7 @@ focus_tree = {
 		available = {
 
 			is_subject = no
-			has_army_manpower = { size > 200000 }
+			has_army_manpower = { size > 150000 }
 
 			NOT = {
 				OR = {
@@ -10054,10 +10034,7 @@ focus_tree = {
 			76 = {
 				OWNER = {
 					NOT = {
-						OR = {
-							is_in_faction_with = ROOT
-							has_war_with = ROOT
-						}
+						has_war_with = ROOT
 					}
 				}
 			}
@@ -10066,9 +10043,20 @@ focus_tree = {
 				limit = {
 					ROM = {
 						owns_state = 76
+						NOT = { is_in_faction_with = ROM }
 					}
 				}
 				strength_ratio = { tag = ROM ratio > 0.66 }
+			}
+
+			IF = {
+				limit = {
+					ROM = {
+						owns_state = 76
+						is_in_faction_with = ROM
+					}
+				}
+				strength_ratio = { tag = ROM ratio > 0.30 }
 			}
 
 
@@ -10149,8 +10137,6 @@ focus_tree = {
 		ai_will_do = {
 			factor = 10
 		}
-
-		will_lead_to_war_with = YUG
 
 		available = {
 
@@ -10342,8 +10328,6 @@ focus_tree = {
 		y = 1
 		relative_position_id = wuw_HUN_demand_southern_slovakia
 
-		will_lead_to_war_with = SLO
-
 		cost = 10
 
 		ai_will_do = {
@@ -10468,9 +10452,6 @@ focus_tree = {
 		x = 1
 		y = 1
 		relative_position_id = wuw_HUN_demand_southern_slovakia
-
-		will_lead_to_war_with = SLO
-		will_lead_to_war_with = CZE
 
 		cost = 10
 
@@ -11366,7 +11347,7 @@ focus_tree = {
 						country_event = generic.5
 						add_ai_strategy = {
 							type = alliance
-							id = HUN
+							id = "HUN"
 							value = 200
 						}
 					}
@@ -16566,7 +16547,8 @@ focus_tree = {
 		}
 
 		available = {
-			any_controlled_state = {
+			any_state = {
+				is_controlled_by = ROOT
 				is_coastal = yes
 			}
 			wuw_HUN_does_not_have_trianon = yes
@@ -17126,7 +17108,11 @@ focus_tree = {
 						type = industrial_complex
 						level = 2
 						instant_build = yes
-					}				
+					}
+					add_resource = {
+						type = steel
+						amount = 2
+					}			
 					add_resource = {
 						type = coal
 						amount = 8 
@@ -17495,7 +17481,8 @@ focus_tree = {
 		}
 
 		available = {
-			any_owned_state = {
+			any_state = {
+				is_owned_by = ROOT
 				is_core_of = ROOT
 			}
 			#has_country_flag = HUN_activated_huba_1_flag
@@ -17707,7 +17694,8 @@ focus_tree = {
 		}
 
 		available = {
-			any_owned_state = {
+			any_state = {
+				is_owned_by = ROOT
 				is_core_of = ROOT
 			}
 			#has_country_flag = HUN_activated_huba_1_flag
@@ -20377,8 +20365,9 @@ focus_tree = {
 		}
 
 		available = {
-			any_controlled_state = {
+			any_state = {
 				is_coastal = yes
+				is_controlled_by = ROOT
 			}
 		}
 
@@ -20496,8 +20485,8 @@ focus_tree = {
 
 			add_doctrine_cost_reduction = {
 				name = wuw_HUN_embrace_navy_traditions
-				cost_reduction = 0.25
-				uses = 1
+				cost_reduction = 0.5
+				uses = 2
 				category = naval_doctrine
 			}
 
@@ -20548,7 +20537,6 @@ focus_tree = {
 				days = 240
 				grand_doctrine = new_base_strike
 			}
-
 			add_doctrine_cost_reduction = {
 				name = wuw_HUN_a_reformed_navy
 				cost_reduction = 0.25
@@ -20795,8 +20783,9 @@ focus_tree = {
 
 		available = {
 			has_tech = basic_ship_hull_heavy
-			any_controlled_state = {
+			any_state = {
 				is_coastal = yes
+				is_controlled_by = ROOT
 			}
 		}
 

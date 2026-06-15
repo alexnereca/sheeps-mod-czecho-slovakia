@@ -96,6 +96,7 @@ country_event = { # Fascists Ransack Trotsky's residence
 			base = 10
 			modifier = {
 				factor = 10 
+
 			}
 		}
 		trigger = {
@@ -125,6 +126,20 @@ country_event = { # Fascists Ransack Trotsky's residence
 					has_completed_focus = NOR_lurk_in_the_shadows
 				}
 			}
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				NOT = { has_global_flag = vanilla_history }
+				OR = {
+					NOT = {
+						any_country = {
+							is_major = yes
+							is_ai = no
+						}
+					} 
+					GER = { is_ai = no }
+				}
+			}
 		}
 		trigger = {
 		}
@@ -143,7 +158,21 @@ country_event = { # Fascists Ransack Trotsky's residence
 				NOR_is_trotskyist_ai = no 
 			}
 			modifier = {
-				factor = 250
+				factor = 0
+				is_historical_focus_on = yes
+				NOT = { has_global_flag = vanilla_history }
+				OR = {
+					NOT = {
+						any_country = {
+							is_major = yes
+							is_ai = no
+						}
+					} 
+					GER = { is_ai = no }
+				}
+			}
+			modifier = {
+				factor = 100
 				NOR_is_trotskyist_ai = yes 
 			}
 		}
@@ -191,6 +220,20 @@ country_event = { # Fascists Ransack Trotsky's residence
 			modifier = {
 				add = 30 
 				NOR_is_stalinist_ai = yes 
+			}
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				NOT = { has_global_flag = vanilla_history }
+				OR = {
+					NOT = {
+						any_country = {
+							is_major = yes
+							is_ai = no
+						}
+					} 
+					GER = { is_ai = no }
+				}
 			}
 		}
 		trigger = {
@@ -330,6 +373,20 @@ country_event = { # The Fate of Trotsky
 		name = AAT_norway.6.a
 		ai_chance = {
 			base = 10
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				NOT = { has_global_flag = vanilla_history }
+				OR = {
+					NOT = {
+						any_country = {
+							is_major = yes
+							is_ai = no
+						}
+					} 
+					GER = { is_ai = no }
+				}
+			}
 		}
 		trigger = {
 		}
@@ -351,7 +408,24 @@ country_event = { # The Fate of Trotsky
 			base = 10
 			modifier = {
 				factor = 0 
-				NOR_is_historical_ai = yes 
+				AND = {
+					NOR_is_historical_ai = yes 
+					SOV = { is_ai = no }
+				}
+			}
+			modifier = {
+				factor = 100
+				is_historical_focus_on = yes
+				NOT = { has_global_flag = vanilla_history }
+				OR = {
+					NOT = {
+						any_country = {
+							is_major = yes
+							is_ai = no
+						}
+					} 
+					GER = { is_ai = no }
+				}
 			}
 		}
 		trigger = {
@@ -604,10 +678,6 @@ country_event = { # Quisling's Historical Coup event
 		name = AAT_norway.13.a
 		ai_chance = {
 			base = 10
-			modifier = {
-				factor = 0 
-				is_historical_focus_on = yes 
-			}
 		}
 		trigger = {
 		}
@@ -620,7 +690,10 @@ country_event = { # Quisling's Historical Coup event
 		name = AAT_norway.13.b
 		ai_chance = {
 			base = 10
-			
+			modifier = {
+				factor = 0 
+				is_historical_focus_on = yes 
+			}
 		}
 		trigger = {
 		}
@@ -642,7 +715,7 @@ country_event = { # Quisling's Historical Coup event
 					}
 				}
 			}
-			add_political_power = -25 
+			add_political_power = -50 
 		}
 		else_if = {
 			limit = {
@@ -653,7 +726,7 @@ country_event = { # Quisling's Historical Coup event
 					}
 				}
 			}
-			add_political_power = -50
+			add_political_power = -75
 		}
 		else_if = {
 			limit = {
@@ -664,7 +737,7 @@ country_event = { # Quisling's Historical Coup event
 					}
 				}
 			}
-			add_political_power = -75
+			add_political_power = -100
 		}
 		else_if = {
 			limit = {
@@ -675,12 +748,11 @@ country_event = { # Quisling's Historical Coup event
 					}
 				}
 			}
-			add_political_power = -100
+			add_political_power = -150
 		}
 		custom_effect_tooltip = NOR_delay_coup_TT
 		NOR = { set_country_flag = NOR_delayed_quislings_coup } 
 	}
-	#TODO_TA add Rally behind the King option under certain conditions
 }
 
 country_event = { # Asking Germany if they want Quisling or not 
@@ -696,10 +768,6 @@ country_event = { # Asking Germany if they want Quisling or not
 		name = AAT_norway.14.a
 		ai_chance = {
 			base = 10
-			modifier = {
-				factor = 0 
-				is_historical_focus_on = yes 
-			}
 		}
 		trigger = {
 		}
@@ -722,7 +790,13 @@ country_event = { # Asking Germany if they want Quisling or not
 		name = AAT_norway.14.b
 		ai_chance = {
 			base = 10
-			
+			modifier = {
+				factor = 0 
+				OR = {
+					NOR = {	is_ai = no }
+					is_historical_focus_on = yes 
+				}
+			}
 		}
 		trigger = {
 		}
@@ -742,10 +816,6 @@ country_event = { # Delayed Coup
 		name = AAT_norway.15.a
 		ai_chance = {
 			base = 10
-			modifier = {
-				factor = 0 
-				is_historical_focus_on = yes 
-			}
 		}
 		trigger = {
 		}
@@ -758,7 +828,10 @@ country_event = { # Delayed Coup
 		name = AAT_norway.15.b
 		ai_chance = {
 			base = 10
-			
+			modifier = {
+				factor = 0 
+				is_historical_focus_on = yes 
+			}
 		}
 		trigger = {
 		}
@@ -954,6 +1027,7 @@ country_event = { # They accepted our demands
 			}
 			100 = {
 				transfer_state_to = NOR
+				add_core_of = NOR
 			}
 			clr_country_flag = NOR_claiming_iceland
 		}
@@ -963,6 +1037,7 @@ country_event = { # They accepted our demands
 			}
 			101 = {
 				transfer_state_to = NOR 
+				add_core_of = NOR
 			}
 			clr_country_flag = NOR_claiming_greenland
 		}
@@ -972,6 +1047,7 @@ country_event = { # They accepted our demands
 			}
 			337 = {
 				transfer_state_to = NOR 
+				add_core_of = NOR
 			}
 			clr_country_flag = NOR_claiming_faroes
 		}
@@ -985,6 +1061,7 @@ country_event = { # They accepted our demands
 						is_owned_and_controlled_by = FROM 
 					}
 					transfer_State_to = NOR
+					add_core_of = NOR
 				}
 			}
 			916 = {
@@ -993,6 +1070,7 @@ country_event = { # They accepted our demands
 						is_owned_and_controlled_by = FROM 
 					}
 					transfer_State_to = NOR
+					add_core_of = NOR
 				}			
 			}
 			917 = {
@@ -1001,6 +1079,7 @@ country_event = { # They accepted our demands
 						is_owned_and_controlled_by = FROM 
 					}
 					transfer_State_to = NOR
+					add_core_of = NOR
 				}			
 			}
 			clr_country_flag = NOR_claiming_sweden 
@@ -1029,6 +1108,7 @@ country_event = { # They accepted our demands
 							is_owned_and_controlled_by = FROM 
 						} 
 						transfer_state_to = NOR
+						add_core_of = NOR
 					}
 				}
 				99 = {
@@ -1037,6 +1117,7 @@ country_event = { # They accepted our demands
 							is_owned_and_controlled_by = FROM 
 						}
 						transfer_state_to = NOR
+						add_core_of = NOR
 					}
 				}
 				911 = {
@@ -1045,6 +1126,7 @@ country_event = { # They accepted our demands
 							is_owned_and_controlled_by = FROM 
 						}
 						transfer_state_to = NOR
+						add_core_of = NOR
 					}
 				}
 				37 = {
@@ -1053,6 +1135,7 @@ country_event = { # They accepted our demands
 							is_owned_and_controlled_by = FROM 
 						}
 						transfer_state_to = NOR
+						add_core_of = NOR
 					}
 				}
 				910 = {
@@ -1061,6 +1144,7 @@ country_event = { # They accepted our demands
 							is_owned_and_controlled_by = FROM 
 						}
 						transfer_state_to = NOR
+						add_core_of = NOR
 					}
 				}
 			}
@@ -1075,7 +1159,8 @@ country_event = { # They accepted our demands
 					limit = {
 						is_owned_and_controlled_by = FROM
 					}
-					transfer_state_to = NOR  
+					transfer_state_to = NOR 
+					add_core_of = NOR 
 				}
 			}
 			214 = {
@@ -1083,7 +1168,8 @@ country_event = { # They accepted our demands
 					limit = {
 						is_owned_and_controlled_by = FROM
 					}
-					transfer_state_to = NOR  
+					transfer_state_to = NOR   
+					add_core_of = NOR
 				}
 			}
 			215 = {
@@ -1092,6 +1178,7 @@ country_event = { # They accepted our demands
 						is_owned_and_controlled_by = FROM
 					}
 					transfer_state_to = NOR  
+					add_core_of = NOR 
 				}
 			}
 			clr_country_flag  = NOR_claiming_bjarmeland
@@ -1101,7 +1188,8 @@ country_event = { # They accepted our demands
 				has_country_flag = NOR_claiming_ireland 
 			}
 			113 = {
-				transfer_state_to = NOR 
+				transfer_state_to = NOR  
+				add_core_of = NOR
 			}
 			clr_country_flag = NOR_claiming_ireland
 		}
@@ -1114,7 +1202,8 @@ country_event = { # They accepted our demands
 					limit = {
 						is_owned_and_controlled_by = FROM 
 					}
-					transfer_state_to = NOR 
+					transfer_state_to = NOR  
+					add_core_of = NOR
 				}
 			}
 			933 = {
@@ -1122,7 +1211,8 @@ country_event = { # They accepted our demands
 					limit = {
 						is_owned_and_controlled_by = FROM 
 					}
-					transfer_state_to = NOR 
+					transfer_state_to = NOR  
+					add_core_of = NOR
 				}
 			}
 			clr_country_flag = NOR_claiming_scotland
@@ -1136,7 +1226,8 @@ country_event = { # They accepted our demands
 					limit = {
 						is_owned_and_controlled_by = FROM 
 					}
-					transfer_state_to = NOR
+					transfer_state_to = NOR 
+					add_core_of = NOR
 				}
 			}
 			331 = {
@@ -1144,7 +1235,8 @@ country_event = { # They accepted our demands
 					limit = {
 						is_owned_and_controlled_by = FROM 
 					}
-					transfer_state_to = NOR
+					transfer_state_to = NOR 
+					add_core_of = NOR
 				}
 			}
 			clr_country_flag = NOR_claiming_vinland
@@ -1176,6 +1268,34 @@ country_event = { # THEY REJECTED US
 		name = AAT_norway.19.a
 		ai_chance = {
 			base = 10
+			modifier = {
+				factor = 2
+				FROM = { is_in_faction = yes }
+				NOR = { is_in_faction = no }
+			}
+		}
+		hidden_effect = {
+			add_ai_strategy = {
+				type = antagonize
+				id = FROM
+				value = 200
+			}
+			add_ai_strategy = {
+				type = declare_war
+				id = FROM
+				value = 200
+			}
+		}
+	}
+	option = { # Inte Chicken 
+		name = AAT_norway.19.a
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0.5
+				FROM = { is_in_faction = yes }
+				NOR = { is_in_faction = no }
+			}
 		}
 		trigger = {
 		}
@@ -2701,26 +2821,26 @@ country_event = { # Hey, wanna invest?
 	id = AAT_norway_allied.1
 	title = AAT_norway_allied.1.t
 	desc = AAT_norway_allied.1.desc
-	picture = GFX_report_event_generic_construction_site
+
+	picture = report_event_generic_construction_site
+
+	trigger = { 
+	}
 
 	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {}
+	}
 
 	option = { # Sure why not
 		name = AAT_norway_allied.1.a
 		ai_chance = {
-			base = 10
-			modifier = {
-				factor = 5
-				has_non_aggression_pact_with = FROM
-			}
-		}
+			base = 50
 
+		}
 		trigger = {  
 		}
-		add_political_power = -50
-		custom_effect_tooltip = generic_skip_one_line_tt
-
-		custom_effect_tooltip = we_will_gain_tt
 		add_timed_idea = {
 			idea = NOR_investing_in_norway_ns
 			days = 365
@@ -2730,38 +2850,17 @@ country_event = { # Hey, wanna invest?
 			target = FROM
 			modifier = NOR_investing_in_norway
 		}
-		custom_effect_tooltip = generic_skip_one_line_tt
-		custom_effect_tooltip = they_will_gain_tt
+
 		event_option_tooltip = AAT_norway_allied.2.a
-		hidden_effect = {
-			FROM = {
-				country_event = {
-					id = AAT_norway_allied.2
-					hours = 2
-				}
-			}
-		}
 	}
 
 	option = { # Not worth the effort
 		name = AAT_norway_allied.1.b
 		ai_chance = {
-			base = 10
-			modifier = {
-				factor = 2
-				has_opinion = {
-					target = FROM
-					value < -30
-				}
-			}
-			modifier = {
-				factor = 2
-				has_opinion = {
-					target = FROM
-					value < -60
-				}
-			}
-		}	
+			base = 0
+		}
+		trigger = {  
+		}		
 	}
 }
 

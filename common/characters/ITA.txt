@@ -14,6 +14,7 @@ characters = {
 		portraits = {
 			civilian = {
 				large = GFX_portrait_ITA_benito_mussolini
+				small = GFX_portrait_ITA_benito_mussolini_small
 			}
 		}
 
@@ -22,6 +23,40 @@ characters = {
 			traits = { il_duce }
 			expire = "1965.1.1.1"
 			id = -1
+		}
+
+		advisor = {
+			slot = army_chief
+			idea_token = benito_mussolini
+			allowed = {
+				ITA_is_italian_tag = yes
+			}
+			available = {
+				OR = {
+					has_idea = ITA_a_meeting_at_the_high_table3
+					has_idea = ITA_a_meeting_at_the_high_table4
+				}
+			}
+			visible = {
+				has_country_leader = {
+					character = ITA_benito_mussolini
+					ruling_only = yes
+				}
+				OR = {
+					has_idea = ITA_a_meeting_at_the_high_table3
+					has_idea = ITA_a_meeting_at_the_high_table4
+				}
+			}
+				
+			traits = {
+				beacon_of_reform_1
+			}
+
+			cost = 100
+
+			ai_will_do = {
+				base = 1.000
+			}
 		}
 
 		corps_commander = {
@@ -124,6 +159,30 @@ characters = {
 			civilian = {
 				large = GFX_portrait_ITA_vittorio_emanuele_III
 				small = GFX_portrait_ITA_vittorio_emanuele_III_small #just in case
+			}
+		}
+
+		advisor = {
+			slot = army_chief
+			idea_token = vittorio_emanuele_iii
+			allowed = {
+				ITA_is_italian_tag = yes
+			}
+			available = {
+				has_completed_focus = ITA_army_primacy_bba_b
+			}
+			visible = {
+				has_country_flag = ITA_defeat_in_ethiopia_flag
+			}
+				
+			traits = {
+				army_chief_morale_2
+			}
+
+			cost = 100
+
+			ai_will_do = {
+				base = 1.000
 			}
 		}
 
@@ -875,7 +934,7 @@ characters = {
 			logistics_skill = 2
 			legacy_id = 0
 			visible = {
-				has_completed_focus = ITA_army_leaders
+				has_completed_focus = ITA_army_leaders_b
 				NOT = { has_government = communism }
 			}
 		}
@@ -1281,7 +1340,7 @@ characters = {
 				ITA_is_italian_tag = yes
 			}
 			available = {
-				has_completed_focus = ITA_a_bandits_war
+				has_completed_focus = ITA_a_bandits_war_b
 			}
 			traits = {
 				army_chief_maneuver_2
@@ -1605,7 +1664,7 @@ characters = {
 					has_government = neutrality
 				}
 				NOT = { has_completed_focus = ITA_disband_the_blackshirts }
-				has_completed_focus = ITA_army_leaders
+				has_completed_focus = ITA_army_leaders_b
 			}
 			traits = {
 				army_logistics_1 # Blackshirt related trait instead?
@@ -1844,7 +1903,7 @@ characters = {
 	ITA_mario_roatta = {
 		name = ITA_mario_roatta
 		portraits = {
-		#MM: In the past we were not able to make this work. I hope that you, people from the future who are seeing this, will be able to use your knowledge and sci-fi technology to make this work. Good luck comrades. 
+		#TODO_Manu: In the past we were not able to make this work. I hope that you, people from the future who are seeing this, will be able to use your knowledge and sci-fi technology to make this work. Good luck comrades. 
 		#Edit: But don't duplicate this character or my cursed spirit will come to haunt you.
 			civilian = {
 				small = GFX_idea_ita_mario_roatta_political_advisor
@@ -2400,7 +2459,7 @@ characters = {
 				OR = {
 					AND = {
 						has_government = democratic
-						has_completed_focus = ITA_army_leaders
+						has_completed_focus = ITA_army_leaders_b
 					}
 					has_completed_focus = ITA_meritocracy
 				}
@@ -2429,7 +2488,7 @@ characters = {
 							has_government = democratic
 							has_government = neutrality
 						}
-						has_completed_focus = ITA_army_leaders
+						has_completed_focus = ITA_army_leaders_b
 					}
 					has_completed_focus = ITA_meritocracy
 				}
@@ -3506,21 +3565,7 @@ characters = {
 				always = no #Used for unit_leader events
 			}
 		}
-	}
-
-
-
-
-  #####                                                              
- #     #   ####   #  ######  #    #  #####  #   ####   #####   ####  
- #        #    #  #  #       ##   #    #    #  #         #    #      
-  #####   #       #  #####   # #  #    #    #   ####     #     ####  
-       #  #       #  #       #  # #    #    #       #    #         # 
- #     #  #    #  #  #       #   ##    #    #  #    #    #    #    # 
-  #####    ####   #  ######  #    #    #    #   ####     #     ####  
-
-
-	
+	}	
 	ITA_enrico_fermi = {
 		name = ITA_enrico_fermi
 		portraits = {

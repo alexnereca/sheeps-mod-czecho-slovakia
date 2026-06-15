@@ -23,7 +23,7 @@ equipments = {
 		#Space taken in convoy
 		lend_lease_cost = 5
 
-		build_cost_ic = 2.5
+		build_cost_ic = 2.0
 		resources = {
 			#oil = 1
 			rubber = 1
@@ -57,10 +57,10 @@ equipments = {
 		year = 1938
 
 		is_archetype = yes
-		picture = archetype_motorized_equipment
+		picture = archetype_motorized_equipment	#TODO_Manu: check if new one needed
 		is_buildable = no
 		type = {
-			motorized
+			motorized #TODO_Manu: Maybe remove this?
 			support
 		}
 		group_by = archetype

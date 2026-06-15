@@ -57,6 +57,11 @@ SOV_propaganda_campaigns = {
 			has_completed_focus = SOV_expand_the_agitprop
 			has_country_flag = SOV_debug_show_propaganda_system_flag #Debug
 		}
+		OR = {
+			is_ai = no
+			SOV_need_one_step_forward = no
+			has_war_with = GER
+		}
 	}
 }
 

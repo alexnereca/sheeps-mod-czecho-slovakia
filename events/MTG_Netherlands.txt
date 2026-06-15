@@ -299,6 +299,7 @@ country_event = {
 	
 	# Let them 'protect' the East Indies
 	option = {
+		ai_chance = { factor = 100 }
 		name = mtg_netherlands.11.a
 		effect_tooltip = {
 			JAP = {
@@ -316,6 +317,7 @@ country_event = {
 	# Give them trade
 	option = {
 		name = mtg_netherlands.11.b
+		ai_chance = { factor = 0 }
 		effect_tooltip = {
 			if = {
 				limit = {
@@ -693,7 +695,6 @@ country_event = {
 	# Goodbye, cruel world!
 	option = {
 		name = mtg_netherlands.22.a
-		custom_effect_tooltip = GAME_OVER_TT
 	}
 }
 
@@ -2774,7 +2775,7 @@ country_event = {
 		name = excellent
 		if = {
 			limit = {
-				any_controlled_state = {
+				any_state = {
 					is_fully_controlled_by = ROOT
 					is_on_continent = europe
 				}
@@ -3033,10 +3034,7 @@ country_event = {
 	option = {
 		name = mtg_netherlands.75.a
 		effect_tooltip = {
-			add_opinion_modifier = { 
-				target = HOL 
-				modifier = HOL_wilhelminism 
-			}
+			add_opinion_modifier = { target = HOL modifier = HOL_wilhelminism }
 		}
 	}
 }
@@ -3053,11 +3051,8 @@ country_event = {
 	# Very well
 	option = {
 		name = mtg_netherlands.76.a
-
 		remove_ideas = HOL_german_defectors_1
-
 		delete_unit_template_and_units = { division_template = "Hare Majesteits Duitse Legioen" }
-
 		if = {
 			limit = {
 				NOT = {
@@ -3076,8 +3071,7 @@ country_event = {
 					unlock_national_focus = GER_secure_the_new_state
 					unlock_national_focus = GER_revive_the_kaiserreich
 					unlock_national_focus = GER_return_of_the_kaiser
-					unlock_national_focus = GER_focus_on_the_true_enemy
-
+					unlock_national_focus = GER_focus_on_the_true_enemy	  
 				}
 			}
 		}

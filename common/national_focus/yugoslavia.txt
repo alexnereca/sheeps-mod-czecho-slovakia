@@ -379,6 +379,7 @@ focus_tree = {
 
 		available = {
 			is_subject = no
+
 		}
 
 		bypass = {
@@ -461,7 +462,6 @@ focus_tree = {
 						}
 					}
 				}
-
 
 				IF = {
 					limit = {
@@ -701,7 +701,6 @@ focus_tree = {
 								set_state_flag = AUS_no_longer_expansion_target
 							}
 						}
-						
 					}
 				}
 			}
@@ -771,7 +770,6 @@ focus_tree = {
 						PREV = {
 							puppet = PREV
 							set_autonomy = { target = PREV autonomy_state = autonomy_integrated_puppet }
-
 						}
 						set_country_flag = yug_croatia_flag
 					}
@@ -922,7 +920,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = YUG_devolved_croatia
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 40
@@ -1032,7 +1030,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = YUG_united_autonomous_croatia
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 40
@@ -1095,6 +1093,13 @@ focus_tree = {
 							owner = PREV
 						}
 					}
+					random_owned_controlled_state = {
+						limit = { PREV = { has_full_control_of_state = PREV } }
+						create_unit = {
+							division = "name = \"Herzegovinan Division\" division_template = \"Yugoslavian Division\" start_experience_factor = 0.9" 
+							owner = PREV
+						}
+					}
 				}
 				if = {
 					limit = { BOS = { exists = no } }
@@ -1147,6 +1152,10 @@ focus_tree = {
 							division = "name = \"Bosnian Division\" division_template = \"Yugoslavian Division\" start_experience_factor = 0.9" 
 							owner = PREV
 						}
+						create_unit = {
+							division = "name = \"Bosnian Division\" division_template = \"Yugoslavian Division\" start_experience_factor = 0.9" 
+							owner = PREV
+						}
 					}
 				}
 			}
@@ -1173,7 +1182,6 @@ focus_tree = {
 				controls_state = 106
 				controls_state = 970
 			}
-			is_subject = no
 		}
 
 		bypass = {
@@ -1230,6 +1238,13 @@ focus_tree = {
 							owner = PREV
 						}
 					}
+					random_owned_controlled_state = {
+						limit = { PREV = { has_full_control_of_state = PREV } }
+						create_unit = {
+							division = "name = \"Macedonian Division\" division_template = \"Yugoslavian Division\" start_experience_factor = 0.9" 
+							owner = PREV
+						}
+					}
 				}
 			}
 			release_puppet = KOS 
@@ -1266,6 +1281,13 @@ focus_tree = {
 							owner = PREV
 						}
 					}
+					random_owned_controlled_state = {
+						limit = { PREV = { has_full_control_of_state = PREV } }
+						create_unit = {
+							division = "name = \"Kosovan Division\" division_template = \"Yugoslavian Division\" start_experience_factor = 0.9" 
+							owner = PREV
+						}
+					}
 				}
 			}
 			release_puppet = MNT
@@ -1293,6 +1315,20 @@ focus_tree = {
 						}
 						support = {
 							engineer = { x = 0 y = 0 }
+						}
+					}
+					random_owned_controlled_state = {
+						limit = { PREV = { has_full_control_of_state = PREV } }
+						create_unit = {
+							division = "name = \"Montenegrin Division\" division_template = \"Yugoslavian Division\" start_experience_factor = 0.9" 
+							owner = PREV
+						}
+					}
+					random_owned_controlled_state = {
+						limit = { PREV = { has_full_control_of_state = PREV } }
+						create_unit = {
+							division = "name = \"Montenegrin Division\" division_template = \"Yugoslavian Division\" start_experience_factor = 0.9" 
+							owner = PREV
 						}
 					}
 					random_owned_controlled_state = {
@@ -1528,6 +1564,13 @@ focus_tree = {
 									owner = PREV
 								}
 							}
+							random_owned_controlled_state = {
+								limit = { PREV = { has_full_control_of_state = PREV } }
+								create_unit = {
+									division = "name = \"Transylvanian Division\" division_template = \"Yugoslavian Division\" start_experience_factor = 0.9" 
+									owner = PREV
+								}
+							}
 							set_party_name = { 
 								ideology = neutrality 
 								long_name = neutrality 
@@ -1592,6 +1635,13 @@ focus_tree = {
 							}
 							support = {
 								engineer = { x = 0 y = 0 }
+							}
+						}
+						random_owned_controlled_state = {
+							limit = { PREV = { has_full_control_of_state = PREV } }
+							create_unit = {
+								division = "name = \"Vojvodinian Division\" division_template = \"Yugoslavian Division\" start_experience_factor = 0.9" 
+								owner = PREV
 							}
 						}
 						random_owned_controlled_state = {
@@ -1846,7 +1896,7 @@ focus_tree = {
 			remove_ideas = YUG_idea_croatian_opposition
 			add_timed_idea = {
 				idea = YUG_idea_croats_suppressed
-				days = 1250
+				days = 1060
 			}
 		}
 	}
@@ -2237,12 +2287,6 @@ focus_tree = {
 						}	
 					}	
 				}
-				#else = {
-				#	get_best_alliance_match_fascism_effect = yes
-				#	var:best_leader = {
-				#		country_event = DOD_yugoslavia.70
-				#	}
-				#}
 			}
 			effect_tooltip = {
 				if = {
@@ -2261,6 +2305,7 @@ focus_tree = {
 				}
 				else = {
 					ITA = {
+						
 						add_opinion_modifier = { target = YUG modifier = tripartite_pact_opinion }
 						reverse_add_opinion_modifier = { target = YUG modifier = tripartite_pact_opinion }
 					}
@@ -2271,6 +2316,14 @@ focus_tree = {
 					country_leader = {
 						expire = "1965.1.1"
 						ideology = fascism_ideology
+						traits = { collaborator_king }
+					}
+					promote_leader = yes
+				}
+				add_country_leader_role = {
+					country_leader = {
+						expire = "1965.1.1"
+						ideology = despotism	
 						traits = { collaborator_king }
 					}
 					promote_leader = yes
@@ -2631,7 +2684,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = YUG_banat_for_support
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 40
@@ -2659,6 +2712,22 @@ focus_tree = {
 				promote_character = {ideology = conservatism }
 			}
 			if = {
+				limit = { fascism > 0.30 }
+				YUG_peter_ii = {
+					add_country_leader_role = {
+						character = YUG_peter_ii
+						country_leader = {
+							ideology = fascism_ideology
+							traits = {
+								collaborator_king
+								underage_monarch
+							}
+						}
+						promote_leader = yes
+					}
+				}
+			}
+			if = {
 				limit = {
 					date > 1941.09.06
 				}
@@ -2678,7 +2747,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = YUG_end_the_regency
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 40
@@ -2783,7 +2852,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = YUG_end_the_regency
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 40
@@ -3091,7 +3160,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = YUG_autonomous_transylvania
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 40
@@ -3340,7 +3409,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = YUG_autonomous_transylvania
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 40
@@ -3439,6 +3508,40 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
 		completion_reward = {
+			hidden_effect = {
+				if = {
+					limit = { has_global_flag = italy_want_it_easy }
+				}
+				ENG = {
+					add_ai_strategy = {
+						type = protect
+						id = "YUG"
+						value = -100
+					}
+				}
+				FRA = {
+					add_ai_strategy = {
+						type = protect
+						id = "YUG"
+						value = -100
+					}
+				}
+				every_country = {
+					limit = {
+						has_guaranteed = YUG
+					}
+					diplomatic_relation = {
+   						country = YUG
+   						relation = guarantee
+   						active = no
+  					}
+  					add_ai_strategy = {
+						type = ignore
+						id = "YUG"
+						value = 100
+					}
+				}
+			}
 			drop_cosmetic_tag = yes
 			every_other_country = {
 				limit = {
@@ -3467,6 +3570,9 @@ focus_tree = {
 					annex_country = {
 						target = PREV
 						transfer_troops = yes
+					}
+					hidden_effect = {
+						army_experience = 5
 					}
 				}
 			}
@@ -3691,7 +3797,7 @@ focus_tree = {
 		available = {
 			is_in_faction = no
 			is_subject = no
-			ANY_comintern_joinable = yes 
+			ANY_comintern_joinable_B = yes 
 			IF = {
 				limit = {
 					SOV = { has_government = communism }
@@ -3819,11 +3925,9 @@ focus_tree = {
 
 		available = {
 			is_subject = no
-			is_in_faction = no
 		}
 
 		bypass = {
-
 		}
 
 		cancel_if_invalid = yes
@@ -3833,10 +3937,130 @@ focus_tree = {
 
 		completion_reward = {
 			set_rule = { can_create_factions = yes }
-			create_faction_from_template = faction_template_panslavic_workers_congress
+			if = {
+				limit = {
+					is_in_faction_with = CZE
+					CZE = { is_faction_leader = yes }
+				}
+				CZE = { country_event = { id = czech.37 } }
+			}
+			else_if = {
+				limit = {
+					NOT = { is_in_faction_with = CZE }
+					is_faction_leader = yes
+				}
+				set_faction_name = panslavic_workers_congress
+				hidden_effect = { news_event = { id = news.330 } }
+				every_country = {
+					limit = {
+						OR = {
+							tag = BUL
+							tag = ALB
+							tag = TUR
+							tag = ROM
+							tag = GRE
+							tag = HUN
+						}
+						has_government = communism
+						is_in_faction = no
+					}
+					country_event = { id = generic.5 }
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = { is_in_faction_with = CZE }
+					is_faction_leader = no
+					any_country = {
+						is_faction_leader = yes
+						is_in_faction_with = YUG
+						OR = {
+							communism > 0.30
+							has_government = communism
+						}
+					}
+				}
+				hidden_effect = { news_event = { id = news.330 } }
+				every_country = {
+					limit = {
+						OR = {
+							tag = BUL
+							tag = ALB
+							tag = TUR
+							tag = ROM
+							tag = GRE
+							tag = HUN
+						}
+						OR = {
+							communism > 0.30
+							has_government = communism
+						}
+						is_in_faction = no
+					}
+					country_event = { id = generic.5 }
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = { is_in_faction_with = CZE }
+					is_faction_leader = no
+					NOT = {
+						any_country = {
+							is_faction_leader = yes
+							is_in_faction_with = YUG
+							OR = {
+								communism > 0.30
+								has_government = communism
+							}
+						}
+					}
+				}
+				hidden_effect = { news_event = { id = news.330 } }
+				create_faction = panslavic_workers_congress
+				every_country = {
+					limit = {
+						OR = {
+							tag = BUL
+							tag = ALB
+							tag = TUR
+							tag = ROM
+							tag = GRE
+							tag = HUN
+						}
+						OR = {
+							communism > 0.30
+							has_government = communism
+						}
+						is_in_faction = no
+					}
+					country_event = { id = generic.5 }
+				}
+			}
+			else_if = {
+				limit = {
+					is_in_faction = no
+				}
+				hidden_effect = { news_event = { id = news.330 } }
+				create_faction = panslavic_workers_congress
+				every_country = {
+					limit = {
+						OR = {
+							tag = BUL
+							tag = ALB
+							tag = TUR
+							tag = ROM
+							tag = GRE
+							tag = HUN
+						}
+						has_government = communism
+						is_in_faction = no
+					}
+					country_event = { id = generic.5 }
+				}
+			}
 			unlock_decision_tooltip = YUG_instigate_in_bulgaria
 			unlock_decision_tooltip = YUG_instigate_in_albania
-			hidden_effect = { news_event = { id = news.330 } }
+					
 		}
 	}
 

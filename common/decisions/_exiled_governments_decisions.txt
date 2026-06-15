@@ -33,7 +33,7 @@ governments_in_exile = {
 		}
 
 		ai_will_do = {
-			base = 10
+			factor = 1
 		}
 	}
 
@@ -46,7 +46,7 @@ governments_in_exile = {
 		    	has_legitimacy < 95
 		    }
 			OR = {
-				political_power_daily > 0.25
+				political_power_daily > 0.10
 				has_political_power > 30
 			}
 		}
@@ -58,42 +58,40 @@ governments_in_exile = {
 		    }
 		}
 
+
 		target_array = exiles
 
 		target_trigger = { FROM = { is_exiled_in = ROOT } }
 
 		modifier = {
-			political_power_cost = 0.15
+			political_power_cost = 0.10
 		}
 
 		targeted_modifier = {
 			tag = FROM
-			targeted_legitimacy_daily = 0.05
+			targeted_legitimacy_daily = 0.3
 		}
 
 		days_remove = 120
 
 		ai_will_do = {
-			base = 0.02
+			factor = 0
 			modifier = {
-				OR = {
-					has_political_power < 180
-					political_power_daily < 0.85
-				}
-				factor = 0
+				add = 500
+		    		FROM = {
+		    			has_legitimacy < 50
+		    			OR = {
+		    				fascism > 0.1
+		    				communism > 0.1
+		    			}
+		    		}
 			}
 			modifier = {
-				factor = 0
-				FROM = {
-					has_legitimacy > 60
-				}
-			}
-			modifier = {
-				factor = 0
-				has_opinion = {
-					target = FROM
-					value < 60
-				}
+				add = 10
+		    		FROM = {
+		    			has_legitimacy < 60
+					has_war_support > 0.50
+		    		}
 			}
 		}
 	}
@@ -104,7 +102,7 @@ governments_in_exile = {
 
 		available = {
 			OR = {
-				political_power_daily > 0.25
+				political_power_daily > 0.10
 				has_political_power > 30
 			}
 		}
@@ -114,17 +112,19 @@ governments_in_exile = {
 		    has_legitimacy < 100
 		}
 
+
 		targets = { host }
 
 		target_trigger = { FROM = { is_hosting_exile = ROOT } }
 
 		modifier = {
-			political_power_cost = 0.25
-			legitimacy_daily = 0.05
+			political_power_cost = 0.10
+			legitimacy_daily = 0.15
 		}
 
 		days_remove = 120
 		remove_effect = {
+
 			IF = {
 				limit = {
 					tag = ETH
@@ -136,10 +136,14 @@ governments_in_exile = {
 			}
 		}
 		ai_will_do = {
-			base = 0.1
+			factor = 0.1
 			modifier = {
 				factor = 0
 				has_war = no
+			}
+			modifier = {
+				factor = 10
+				has_legitimacy < 60
 			}
 			modifier = {
 				factor = 0
@@ -154,7 +158,7 @@ governments_in_exile = {
 
 		available = {
 			OR = {
-				political_power_daily > 0.25
+				political_power_daily > 0.15
 				has_political_power > 30
 			}
 		}
@@ -166,6 +170,7 @@ governments_in_exile = {
 		    	has_legitimacy < 100
 		    }
 		}
+
 
 		target_root_trigger = {
 			is_major = yes
@@ -183,18 +188,42 @@ governments_in_exile = {
 		}
 
 		modifier = {
-			political_power_cost = 0.25
+			political_power_cost = 0.15
 		}
 
 		targeted_modifier = {
 			tag = FROM
-			targeted_legitimacy_daily = 0.05
+			targeted_legitimacy_daily = 0.15
 		}
 
 		days_remove = 120
 	
 		ai_will_do = {
 			base = 0
+			modifier = {
+				add = 500
+		    		FROM = {
+		    			has_legitimacy < 50
+		    			OR = {
+		    				fascism > 0.1
+		    				communism > 0.1
+		    			}
+		    		}
+			}
+			modifier = {
+				add = 10
+		    		FROM = {
+		    			has_legitimacy < 60
+					has_war_support > 0.50
+		    		}
+			}
+			modifier = {
+				add = -9999
+				AND = {
+					political_power_daily < 1.60
+					has_political_power < 200
+				}
+			}
 		}
 	}
 
@@ -206,16 +235,16 @@ governments_in_exile = {
 
 		available = {
 			OR = {
-				political_power_daily > 1.0
+				political_power_daily > 0.50
 				has_political_power > 120
 			}
-			has_legitimacy > 20
+		    has_legitimacy > 20
 		}
 
 		visible = {
 			has_war = yes
 			FROM = { is_hosting_exile = ROOT }
-			has_legitimacy > 10
+		    has_legitimacy > 10
 		}
 
 
@@ -227,12 +256,12 @@ governments_in_exile = {
 		}
 
 		modifier = {
-			political_power_cost = 1.0
+			political_power_cost = 0.50
 			exile_manpower_factor = 0.5
 		}
 
 		ai_will_do = {
-			base = 0.01
+			factor = 50
 			modifier = {
 				has_political_power < 150
 				political_power_daily < 0.75
@@ -250,7 +279,7 @@ governments_in_exile = {
 		days_remove = 60
 
 		custom_cost_trigger = {
-			command_power > 25
+			command_power > 15
 		}
 
 		custom_cost_text = custom_cost_joint_training_exercise
@@ -288,12 +317,21 @@ governments_in_exile = {
 
 		complete_effect = {
 			hidden_effect = {
-				add_command_power = -25
+				add_command_power = -15
 			}
 		}
 
 		ai_will_do = {
 			base = 0.05
+
+			modifier = {
+				factor = 0
+				OR = {
+					has_air_experience < 100
+					has_army_experience < 100
+					has_navy_experience < 100
+				}
+			}
 
 			modifier = {
 				factor = 0 # Save for more immediately useful stuff
@@ -365,7 +403,7 @@ governments_in_exile = {
 		days_remove = 30
 
 		ai_will_do = {
-			base = 0
+			factor = 600 #free political power sir
 		}
 	}
 
@@ -379,17 +417,16 @@ governments_in_exile = {
 
 		available = {
 		    FROM = {
-		    	has_legitimacy > 60
-		    	any_war_score > 9
+		    	has_legitimacy > 50
 		    }
 		}
 
 		visible = {
 			FROM = {
 				is_exiled_in = ROOT
-		    	has_legitimacy > 50
-		    	any_war_score > 5
-		    }
+		    		has_legitimacy > 40
+		    		has_war_support > 0.50
+		    	}
 		}
 
 
@@ -399,15 +436,17 @@ governments_in_exile = {
 
 		modifier = {
 			industrial_factory_donations = 1
-			military_factory_donations = 1
+		}
+
+		complete_effect = {
+			ROOT = {
+				add_offsite_building = { type = arms_factory level = 1 }
+				add_offsite_building = { type = industrial_complex level = 1 }
+			}
 		}
 
 		ai_will_do = {
-			base = 0.05
-			modifier = {
-				factor = 0
-				has_war = no
-			}
+			factor = 2500 #is always good
 		}
 	}
 
@@ -415,13 +454,15 @@ governments_in_exile = {
 
 		icon = generic_naval
 
-		cost = 25
+		cost = 5
 		fire_only_once = yes
 
 		available = {
-		    FROM = {
-		    	has_legitimacy < 80
-		    }
+		    	FROM = { 
+				has_navy_size = {
+				    size > 0
+				}
+			}
 		}
 
 		visible = {
@@ -457,7 +498,7 @@ governments_in_exile = {
 		}
 
 		ai_will_do = {
-			base = 5
+			factor = 500
 		}
 	}
 }
@@ -477,6 +518,9 @@ category_exile_forces = {
 					subtract_from_temp_variable = { resistance_equipment_needed = num_owned_controlled_states }
 				}
 				multiply_temp_variable = { resistance_equipment_needed = 75 }
+				set_temp_variable = { resistance_equipment_needed_check_10 = resistance_equipment_needed }
+				multiply_temp_variable = { resistance_equipment_needed_check_10 = 10 }
+
 			}
 		    has_equipment = { infantry_equipment > resistance_equipment_needed }
 		    FROM = {
@@ -505,7 +549,7 @@ category_exile_forces = {
 			FROM = { is_exiled_in = ROOT }
 		}
 
-		days_remove = 120
+		days_remove = 180
 
 		complete_effect = {
 			hidden_effect = {
@@ -513,7 +557,7 @@ category_exile_forces = {
 					set_temp_variable = { resistance_equipment_needed = num_owned_states }
 					subtract_from_temp_variable = { resistance_equipment_needed = num_owned_controlled_states }
 				}
-				multiply_temp_variable = { resistance_equipment_needed = -75 }
+				multiply_temp_variable = { resistance_equipment_needed = -50 }
 			}
 			add_equipment_to_stockpile = {
 				type = infantry_equipment
@@ -522,13 +566,34 @@ category_exile_forces = {
 			FROM = {
 				add_timed_idea = {
 					idea = idea_weapons_for_the_resistance
-					days = 120
+					days = 180
+				}
+				every_owned_state = {
+					limit = { 
+						is_core_of = FROM
+						NOT = { is_controlled_by = FROM }
+						has_resistance = yes
+					}
+					add_resistance = 2
+					add_compliance = -1
 				}
 			}
 		}
 
 		ai_will_do = {
-			base = 0.01
+			factor = 10
+			modifier = {
+				factor = 0
+				has_equipment = { infantry_equipment < 1000 }
+			}
+			modifier = {
+				factor = 0
+				has_equipment = { infantry_equipment < resistance_equipment_needed }
+			}
+			modifier = {
+				factor = 200
+				has_equipment = { infantry_equipment > resistance_equipment_needed_check_10 }
+			}
 		}
 	}
 
@@ -572,7 +637,7 @@ category_exile_forces = {
 		days_remove = 45
 
 		ai_will_do = {
-			base = 0.01
+			factor = 0.03
 			modifier = {
 				factor = 0
 		    	has_war_support > 0.7
@@ -599,10 +664,10 @@ category_exile_forces = {
 
 		cost = 0
 
-		days_re_enable = 270
+		days_re_enable = 180
 
 		custom_cost_trigger = {
-			command_power > 25
+			command_power > 20
 		}
 
 		custom_cost_text = custom_cost_joint_training_exercise
@@ -629,14 +694,21 @@ category_exile_forces = {
 
 		complete_effect = {
 
-			army_experience = 25
-			air_experience = 50
-			navy_experience = 50
+			army_experience = 10
+			air_experience = 10
+			navy_experience = 10
 
 			FROM = {
-				army_experience = 25
-				air_experience = 50
-				navy_experience = 50
+				army_experience = 15
+				air_experience = 15
+				navy_experience = 15
+			}
+
+			every_country = {
+				limit = { is_in_faction_with = ROOT }
+				army_experience = 3
+				air_experience = 3
+				navy_experience = 3
 			}
 
 			hidden_effect = {
@@ -654,7 +726,6 @@ category_exile_forces = {
 				}
 				factor = 2
 			}
-
 			modifier = {
 				factor = 0 # Save for more immediately useful stuff
 				command_power < 50

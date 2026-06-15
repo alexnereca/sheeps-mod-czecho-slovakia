@@ -9,7 +9,7 @@ political_actions = {
 		icon = GFX_decision_oppression
 
 		ai_will_do = {
-			base = 500
+			base = 9999
 		}
 
 		allowed = {  
@@ -18,7 +18,10 @@ political_actions = {
 
 		available = {
 			1015 = {
-				compliance > 40
+				OR = {
+					compliance > 40
+					OMA = { has_army_manpower = { size > 15000 } }
+				}
 				is_owned_and_controlled_by = ROOT
 				NOT = {
 					is_core_of = ROOT
@@ -54,10 +57,6 @@ political_actions = {
 		}
 
 		complete_effect = { 
-			
-		}
-
-		remove_effect = {
 
 			IF = {
 				limit = {
@@ -79,13 +78,12 @@ political_actions = {
 			add_war_support = 0.05
 			add_stability = 0.05
 
-			custom_effect_tooltip = generic_skip_one_line_tt
-
-			add_country_leader_trait = OMA_unifier_of_muscat_and_oman
-
 			hidden_effect = {
 				set_country_flag = OMA_restored_interior_omani_order
 			}
+		}
+
+		remove_effect = {
 
 		}
 
@@ -100,14 +98,6 @@ political_actions = {
 
 		ai_will_do = {
 			base = 100
-			modifier = {
-				factor = 0
-				date < 1940.1.1
-			}
-			modifier = {
-				factor = 0.5
-				date < 1943.1.1
-			}
 		}
 
 		allowed = {  

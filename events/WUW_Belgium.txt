@@ -156,7 +156,7 @@ country_event = {
 	fire_only_once = yes
 
 	mean_time_to_happen = {
-		days = 100
+		days = 140
 	}
 
 	option = { #Is There No End?
@@ -184,9 +184,7 @@ country_event = {
 			base = 20
 			modifier = {
 				factor = 100
-				OR = {
-					BEL_historical_ai = yes
-				}
+				is_historical_focus_on = yes
 			}
 		}
 
@@ -223,6 +221,10 @@ country_event = {
 					BEL_defensive_democrat_ai = yes
 				}
 			}
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
 		}
 
 		add_country_leader_role = {
@@ -249,6 +251,53 @@ country_event = {
 			ideology = fascism
 			popularity = 0.15
 		}
+
+		custom_effect_tooltip = generic_skip_one_line_tt
+
+		custom_effect_tooltip = BEL_modify_corruption_dynamic_modifier_tt
+		add_to_variable = { 
+			BEL_corruption_political_power_gain = 0.05
+			tooltip = political_power_gain_tt				
+		}	
+		add_to_variable = { 
+			BEL_corruption_stability_factor = 0.05
+			tooltip = stability_factor_tt				
+		}
+	}
+
+	option = { #Appoint Leon Degrelle temporarily
+		name = ww_BEL_event_political.3.c
+		ai_chance = {
+			base = 5
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = allies_mainland_withdrawal
+			}
+		}
+
+		add_country_leader_role = {
+		    character = BEL_leon_degrelle
+		    promote_leader = yes
+		    country_leader = {
+		        ideology = rexism
+		        expire = "1965.1.1.1"
+		        traits = { BEL_belgian_inquisitor }
+		    }
+		}	
+
+		remove_ideas = BEL_collapsing_government_ns
+
+		complete_national_focus = BEL_degrelle	
+
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.05
+		}
+		add_stability = -0.05
 
 		custom_effect_tooltip = generic_skip_one_line_tt
 
@@ -340,6 +389,10 @@ country_event = {
 		name = ww_BEL_event_political.5.b
 		ai_chance = {
 			base = 5
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
 		}
 
 		add_stability = -0.25 
@@ -401,6 +454,8 @@ country_event = {
 		ai_chance = {
 			base = 7
 			modifier = {
+				factor = 10
+				is_historical_focus_on = yes
 			}
 		}
 
@@ -414,6 +469,8 @@ country_event = {
 		ai_chance = {
 			base = 3
 			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
 			}
 		}
 
@@ -770,12 +827,12 @@ country_event = {
 
 			modifier = {
 				add = 4
-				has_stability > 0.8
+				has_stability > 80
 			}
 
 			modifier = {
 				add = 2
-				has_stability > 0.6
+				has_stability > 60
 			}
 
 			modifier = {
@@ -860,17 +917,17 @@ country_event = {
 
 			modifier = {
 				add = 2
-				has_stability < 0.2
+				has_stability < 20
 			}
 
 			modifier = {
 				add = 2
-				has_stability < 0.4
+				has_stability < 40
 			}
 
 			modifier = {
 				add = 2
-				has_stability < 0.6
+				has_stability < 60
 			}
 		}
 
@@ -1332,7 +1389,7 @@ country_event = { #To GER/USA/ENG: BEL requests equipment
 	}
 
 	option = { #sure, support
-		name = ww_BEL_event_diplomatic.15.c
+		name = ww_BEL_event_diplomatic.15.b
 		ai_chance = {
 			base = 10
 			modifier = {
@@ -1346,7 +1403,7 @@ country_event = { #To GER/USA/ENG: BEL requests equipment
 		ROOT = {
 			send_equipment = {
 				equipment = support_equipment
-				amount = 250
+				amount = 2000
 				target = FROM
 			}
 		}
@@ -1365,7 +1422,7 @@ country_event = { #To GER/USA/ENG: BEL requests equipment
 	}
 
 	option = { #no
-		name = ww_BEL_event_diplomatic.15.b
+		name = ww_BEL_event_diplomatic.15.c
 		ai_chance = {
 			base = 1
 			modifier = {
@@ -2393,9 +2450,11 @@ country_event = {
 			base = 25
 			modifier = {
 				factor = 100
-				OR = {
-					BEL_historical_ai = yes
-				}
+				GER = { is_ai = yes }
+			}
+			modifier = {
+				factor = 0
+				GER = { is_ai = no }
 			}
 		}
 
@@ -2423,16 +2482,15 @@ country_event = {
 			}
 		}
 
-        add_ideas = BEL_the_kings_surrender_ns
+        add_timed_idea = { idea = BEL_the_kings_surrender_ns days = 30 }
 
     }
 
     option = { #Fascist - Arrest the king!
         name = ww_BEL_event_war.3.c
-        trigger = { has_government = fascism }
 
 		ai_chance = {
-			base = 5
+			base = 5000
 			modifier = {
 				factor = 100
 				OR = {
@@ -2442,13 +2500,41 @@ country_event = {
 			}
 		}
 
-    	country_event = { 
-	    	id = ww_BEL_event_war.4 
-	    	days = 14
-    	}
+    	if = {
+		limit = {
+			has_government = fascism
+		}
+		add_stability = -0.15
+    		add_war_support = -0.05
+	}
 
-    	add_stability = -0.15
-    	add_war_support = -0.05
+    	else_if = {
+		limit = {
+			NOT = { has_government = fascism }
+		}
+		add_stability = -1.00
+    		add_war_support = 0.50
+
+        	add_country_leader_role = {
+            		character = BEL_charles_count_of_flanders_person
+            		promote_leader = yes
+            		country_leader = {
+                		ideology = conservatism
+                		expire = "1965.1.1.1"
+                		traits = { BEL_royal_regent }
+           	 	}
+        	}
+	}
+	if = {
+		limit = {
+			has_government = fascism
+		}
+    		country_event = { 
+	    		id = ww_BEL_event_war.4 
+	    		days = 14
+    		}
+	}
+
 	}
 }
 
@@ -2464,6 +2550,7 @@ country_event = {
 	is_triggered_only = yes
 
     option = {
+	trigger = { has_government = fascism }
         name = ww_BEL_event_war.4.a
 
         swap_ruler_traits = { 
@@ -2477,6 +2564,7 @@ country_event = {
 
     option = {
         name = ww_BEL_event_war.4.b
+	trigger = { has_government = fascism }
 
         add_country_leader_role = {
             character = BEL_charles_count_of_flanders_person
@@ -2488,6 +2576,21 @@ country_event = {
             }
         }
     	clr_country_flag = BEL_leopold_flag
+    }
+
+    option = {
+        name = ww_BEL_event_war.4.b
+	trigger = { has_government = democratic }
+
+        add_country_leader_role = {
+            character = BEL_charles_count_of_flanders_person
+            promote_leader = yes
+            country_leader = {
+                ideology = conservatism
+                expire = "1965.1.1.1"
+                traits = { BEL_royal_regent }
+            }
+        }
     }
 }
 
@@ -3148,79 +3251,51 @@ country_event = { #Vandervelde Dies (Prime Minister)
 	desc = ww_BEL_event_misc.1.desc 
 	picture = GFX_report_event_generic_funeral
 
-	trigger = {
-		original_tag = BEL 
-		has_dlc = "Gotterdammerung"
-		date > 1938.12.27
-	}
-
-
-	mean_time_to_happen = {
-		days = 2
-	}
-
-	fire_only_once = yes
-
+	is_triggered_only = yes
 
 	option = { #Ok!
 		name = ww_BEL_event_misc.1.a
 		ai_chance = {
 			base = 100
 		}
-		if = { ## Don't change country leader if he's not current country leader, only show effect tooltip
-			limit = {
-				has_country_leader = {
-					ruling_only = yes # default = yes
-					character = BEL_emile_vanderveld
-					
-				}
-			}
+		add_country_leader_role = {
+		    character = BEL_henri_de_man
+		    promote_leader = yes
+		    country_leader = {
+		        ideology = socialism
+		        expire = "1965.1.1.1"
+		        traits = { BEL_man_with_a_plan_leader }
+		    }
+		}
+		hidden_effect = {
 			add_country_leader_role = {
 			    character = BEL_henri_de_man
 			    promote_leader = yes
 			    country_leader = {
-			        ideology = socialism
+			        ideology = marxism
 			        expire = "1965.1.1.1"
 			        traits = { BEL_man_with_a_plan_leader }
 			    }
 			}
-			hidden_effect = {
-				add_country_leader_role = {
-				    character = BEL_henri_de_man
-				    promote_leader = yes
-				    country_leader = {
-				        ideology = marxism
-				        expire = "1965.1.1.1"
-				        traits = { BEL_man_with_a_plan_leader }
-				    }
-				}
-			}
-		}
-		else = {
-			effect_tooltip = {
-				add_country_leader_role = {
-				    character = BEL_henri_de_man
-				    promote_leader = yes
-				    country_leader = {
-				        ideology = socialism
-				        expire = "1965.1.1.1"
-				        traits = { BEL_man_with_a_plan_leader }
-				    }
-				}
-				hidden_effect = {
-					add_country_leader_role = {
-					    character = BEL_henri_de_man
-					    promote_leader = yes
-					    country_leader = {
-					        ideology = marxism
-					        expire = "1965.1.1.1"
-					        traits = { BEL_man_with_a_plan_leader }
-					    }
-					}
-				}
-			}
 		}
 		add_stability = -0.05
+	}
+}
+
+
+country_event = { #Tintin
+	id = ww_BEL_event_misc.2
+	title = ww_BEL_event_misc.2.t
+	desc = ww_BEL_event_misc.2.desc 
+	picture = GFX_report_event_generic_sign_treaty2
+
+	is_triggered_only = yes
+
+	option = { #Ok!
+		name = ww_BEL_event_misc.2.a
+		ai_chance = {
+			base = 100
+		}
 	}
 }
 

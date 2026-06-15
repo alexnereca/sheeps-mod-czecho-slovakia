@@ -803,7 +803,7 @@ focus_tree = {
 	focus = {
 		id = LIT_prepare_resistance
 		icon = GFX_goal_generic_military_sphere
-		prerequisite = { focus = LIT_indivisible_power_of_the_state focus = LIT_restore_public_elections }
+		prerequisite = { focus = LIT_indivisible_power_of_the_state focus = LIT_restore_public_elections focus = LIT_merge_the_military_and_civilian_governments }
 		mutually_exclusive = { focus = LIT_appease_nazis focus = LIT_appease_soviets }
 		x = -2
 		y = 1
@@ -1796,10 +1796,6 @@ focus_tree = {
 				add_claim_by = ROOT
 				set_state_flag = greater_lithuania_flag
 			}
-			834 = {
-				add_claim_by = ROOT
-				set_state_flag = greater_lithuania_flag
-			}
 		}
 	}
 
@@ -2141,10 +2137,13 @@ focus_tree = {
 		}
 
 		bypass = {
-			POL = {
-				all_core_state = {
-					is_owned_by = ROOT
+			OR = {
+				POL = {
+					all_core_state = {
+						is_owned_by = ROOT
+					}
 				}
+				is_in_faction_with = POL
 			}
 		}
 
@@ -2185,13 +2184,30 @@ focus_tree = {
 		}
 
 		available = {
-			POL = {				
-				is_in_faction = yes
+			hidden_trigger = {
+				if = {
+					limit = {
+						is_ai = yes
+					} 
+					GER = { is_ai = yes }
+					POL = { is_ai = yes }
+					POL = {
+						is_subject = yes
+						is_in_faction_with = LIT
+					}
+				}
+			}
+			POL = {
 				OR = {
+					is_in_faction_with = ROOT
 					exists = no
 					AND = {
 						has_capitulated = yes
 						has_war_with = ROOT
+					}
+					AND = {
+						is_subject = yes
+						is_in_faction_with = ROOT
 					}
 				}
 			}
@@ -2218,15 +2234,40 @@ focus_tree = {
 
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 		completion_reward = {
-			every_other_country = {
+			if = {
 				limit = {
-					is_in_faction_with = ROOT
-					any_controlled_state = {
-						is_core_of = POL
+					NOT = {
+						AND = {
+							POL = { is_subject = yes }
+							is_in_faction_with = LIT
+						}
 					}
 				}
-				country_event = {
-					id = LIT_events.9
+				every_other_country = {
+					limit = {
+						is_in_faction_with = ROOT
+						any_controlled_state = {
+							is_core_of = POL
+						}
+					}
+					country_event = {
+						id = LIT_events.9
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					AND = {
+						POL = { is_subject = yes }
+						is_in_faction_with = LIT
+					}
+				}
+				POL = {
+					OVERLORD = {
+						country_event = {
+							id = LIT_events.9
+						}
+					}
 				}
 			}
 		}
@@ -2256,6 +2297,10 @@ focus_tree = {
 						is_ai = yes
 					}
 				}
+			}
+			any_state = {
+				NOT = { is_core_of = ROOT }
+				is_core_of = POL
 			}
 		}
 
@@ -2427,59 +2472,35 @@ focus_tree = {
 		available = {
 			242 = {
 				is_controlled_by = ROOT
-				OR = {
-					compliance > 80
-					is_core_of = ROOT
-				}
+				compliance > 80
 			}
 			243 = {
 				is_controlled_by = ROOT
-				OR = {
-					compliance > 80
-					is_core_of = ROOT
-				}
+				compliance > 80
 			}
 			224 = {
 				is_controlled_by = ROOT
-				OR = {
-					compliance > 80
-					is_core_of = ROOT
-				}
+				compliance > 80
 			}
 			205 = {
 				is_controlled_by = ROOT
-				OR = {
-					compliance > 80
-					is_core_of = ROOT
-				}
+				compliance > 80
 			}
 			223 = {
 				is_controlled_by = ROOT
-				OR = {
-					compliance > 80
-					is_core_of = ROOT
-				}
+				compliance > 80
 			}
 			222 = {
 				is_controlled_by = ROOT
-				OR = {
-					compliance > 80
-					is_core_of = ROOT
-				}
+				compliance > 80
 			}
 			220 = {
 				is_controlled_by = ROOT
-				OR = {
-					compliance > 80
-					is_core_of = ROOT
-				}
+				compliance > 80
 			}
 			240 = {
 				is_controlled_by = ROOT
-				OR = {
-					compliance > 80
-					is_core_of = ROOT
-				}
+				compliance > 80
 			}
 		}
 
@@ -2496,9 +2517,6 @@ focus_tree = {
 			every_state = {
 				limit = {
 					has_state_flag = greater_lithuania_flag
-					NOT = {
-						is_core_of = ROOT
-					}
 				}
 				add_core_of = ROOT
 			}
@@ -4676,31 +4694,65 @@ focus_tree = {
 				810 = { add_core_of = ROOT }
 			}
 			if = {
-				limit = {
-					EST = {
-						exists = yes
-						NOT = {
-							is_subject_of = ROOT
+				limit = { is_ai = no }
+				if = {
+					limit = {
+						EST = {
+							exists = yes
+							NOT = {
+								is_subject_of = ROOT
+							}
 						}
 					}
+					create_wargoal = {
+						target = EST
+						type = annex_everything
+					}
 				}
-				create_wargoal = {
-					target = EST
-					type = annex_everything
+				if = {
+					limit = {
+						LAT = {
+							exists = yes
+							NOT = {
+								is_subject_of = ROOT
+							}
+						}
+					}
+					create_wargoal = {
+						target = LAT
+						type = annex_everything
+					}
 				}
 			}
 			if = {
-				limit = {
-					LAT = {
-						exists = yes
-						NOT = {
-							is_subject_of = ROOT
+				limit = { is_ai = yes }
+				if = {
+					limit = {
+						LAT = {
+							exists = yes
+							is_subject = no
 						}
 					}
+					create_wargoal = {
+						target = LAT
+						type = annex_everything
+					}
 				}
-				create_wargoal = {
-					target = LAT
-					type = annex_everything
+				if = {
+					limit = {
+						LAT = {
+							exists = yes
+							is_subject = no
+						}
+						EST = {
+							exists = yes
+							is_subject = no
+						}
+					}
+					create_wargoal = {
+						target = EST
+						type = annex_everything
+					}
 				}
 			}
 		}
@@ -4767,7 +4819,7 @@ focus_tree = {
 			create_wargoal = {
 				type = take_state_focus
 				target = SOV
-				generator = { 96 95 94 207 206 204 241 93 199 201 198 202 203 259 193 225 221 226 197 192 242 243 224 205 223 222 220 240 194 834 }
+				generator = { 96 95 94 207 206 204 241 93 199 201 198 202 203 259 193 225 221 226 197 192 242 243 224 205 223 222 220 240 194 }
 			}
 		}
 	}
@@ -4825,7 +4877,6 @@ focus_tree = {
 			controls_state = 66
 			controls_state = 68
 			controls_state = 63
-			controls_state = 834
 		}
 
 		available_if_capitulated = yes
@@ -4874,7 +4925,6 @@ focus_tree = {
 						state = 66
 						state = 68
 						state = 63
-						state = 834
 					}
 				}
 				add_core_of = ROOT

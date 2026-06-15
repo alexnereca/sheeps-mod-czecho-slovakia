@@ -1,21 +1,4 @@
 debug_decisions = {
-	DEBUG_Manu = {
-		priority = 999
-		allowed = {
-			tag = GER
-		}
-
-		visible = {
-			is_ai = no
-			is_debug = yes
-		}
-
-		available = {
-		}
-
-		complete_effect = {
-		}
-	}
 	DEBUG_DANNE_GER = {
 		priority = 999
 		allowed = {
@@ -166,6 +149,28 @@ GER_mefo_bills_category = {
 
 		ai_will_do = {
 			base = 0
+			modifier = {
+				add = 9999
+				is_historical_focus_on = yes
+				NOT = { has_country_flag = FYP_preferred }
+				has_completed_focus = GER_remilitarize_the_rhineland
+				has_completed_focus = GER_party_chancellor_hess
+			}
+			modifier = {
+				add = 9999
+				is_historical_focus_on = yes
+				has_country_flag = FYP_preferred
+				OR = {
+					AND = {
+						has_completed_focus = GER_subsidize_hoesch_benzin
+						has_completed_focus = GER_establish_buna_werke
+					}
+					focus_progress = {
+						focus = GER_institute_price_controls
+						progress > 0
+					}
+				}
+			}
 		}
 
 		available = {
@@ -253,26 +258,36 @@ GER_seize_gold_reserves_cat = {
 		icon = GFX_decision_generic_confiscation
 
 		ai_will_do = {
-			base = 15
+			base = 10
 			modifier = {
-				factor = 0
-				check_variable = { GER_industrial_consumer_goods_factor < 0.25 }
+				factor = 2.5
+				check_variable = { GER_industrial_consumer_goods_factor > 0.25 }
 			}
 			modifier = {
 				factor = 2
-				check_variable = { GER_industrial_consumer_goods_factor > 0.35 }
-			}
-			modifier = {
-				factor = 5
 				check_variable = { GER_industrial_consumer_goods_factor > 0.5 }
 			}
 			modifier = {
-				factor = 5
-				check_variable = { GER_industrial_consumer_goods_factor > 0.65 }
+				factor = 2
+				check_variable = { GER_industrial_consumer_goods_factor > 0.75 }
 			}
 			modifier = {
 				factor = 5
-				check_variable = { GER_industrial_consumer_goods_factor > 0.75 }
+				check_variable = { GER_industrial_consumer_goods_factor > 0.99 }
+			}
+			modifier = {
+				factor = 1.5
+				has_war_with_major = yes
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					is_major = yes
+				}
+			}
+			modifier = {
+				factor = 0
+				check_variable = { GER_industrial_consumer_goods_factor < 0.15 }
 			}
 		}
 
@@ -389,7 +404,39 @@ GER_seize_gold_reserves_cat = {
 		icon = GFX_decision_generic_confiscation
 
 		ai_will_do = {
-			base = 1000
+			base = 10
+			modifier = {
+				factor = 3
+				check_variable = { GER_industrial_consumer_goods_factor > 0.25 }
+			}
+			modifier = {
+				factor = 3
+				check_variable = { GER_industrial_consumer_goods_factor > 0.5 }
+			}
+			modifier = {
+				factor = 3
+				check_variable = { GER_industrial_consumer_goods_factor > 0.75 }
+			}
+			modifier = {
+				factor = 5
+				check_variable = { GER_industrial_consumer_goods_factor > 0.99 }
+			}
+			modifier = {
+				factor = 1.5
+				has_war_with_major = yes
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					controller = {
+						is_major = yes
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				check_variable = { GER_industrial_consumer_goods_factor < 0.15 }
+			}
 		}
 
 		state_target = yes
@@ -482,6 +529,20 @@ GER_operational_planning_category = {
 		ai_will_do = {
 			base = 1
 			modifier = {
+				factor = 0.01
+				FROM = {
+					OR = {
+						tag = ENG
+						capital_scope = { is_on_continent = north_america }
+					}
+					NOT = { surrender_progress > 0 }
+				}
+			}
+			modifier = {
+				factor = 0
+				FROM = { surrender_progress > 0.80 } #pointless
+			}
+			modifier = {
 				factor = 5
 				has_war_with = FROM
 			}
@@ -505,10 +566,6 @@ GER_operational_planning_category = {
 				}
 				has_completed_focus = GER_war_with_the_ussr
 			}
-			#modifier = {
-			#	factor = 1.5
-			#	has_wargoal_against = FROM
-			#}
 			modifier = {
 				factor = 10
 				FROM = {
@@ -578,11 +635,24 @@ GER_operational_planning_category = {
 				has_war_with = FRA
 				command_power < 80
 				has_army_experience < 40
+				NOT = {
+					AND = {
+						NOT = { has_country_flag = recently_declared_war }
+						FROM = { has_capitulated = no }
+					}
+				}
 			}
 			modifier = { #Muahahahaha
 				factor = 2
 				FROM = {
 					is_ai = no
+				}
+			}
+			modifier = { #Muahahahaha
+				factor = 2
+				FROM = {
+					is_neighbor_of = GER
+					is_major = no
 				}
 			}
 			modifier = { #Luxemburg is not worth wasting CP and XP on
@@ -609,6 +679,30 @@ GER_operational_planning_category = {
 				}
 				NOT = {
 					has_completed_focus = GER_war_with_the_ussr
+				}
+			}
+			modifier = { #Save CP and XP for the offensive
+				factor = 0
+				has_completed_focus = GER_war_with_the_ussr
+				NOT = {
+					has_war_with = SOV
+				}
+			}
+			modifier = { 
+				factor = 50
+				FROM = { tag = SOV }
+				has_war_with = SOV
+				OR = {
+					has_global_flag = {
+						flag = operation_barbarossa
+						days < 365
+					}
+					has_country_flag = GER_barbarossa_offensive_enabled
+					has_idea = GER_barbarossa_offensive_1
+					has_idea = GER_barbarossa_offensive_2
+					has_idea = GER_barbarossa_offensive_3
+					has_idea = GER_barbarossa_offensive_4
+					has_idea = GER_barbarossa_offensive_5
 				}
 			}
 		}
@@ -640,11 +734,15 @@ GER_operational_planning_category = {
 			FROM = {
 				has_war_with = ROOT
 				any_controlled_state = {
-					is_on_continent = europe
+					OR = {
+						is_on_continent = europe
+						is_on_continent = north_america
+					}
 					any_neighbor_state = {
 						is_controlled_by_ROOT_or_ally = yes
 					}
 				}
+				NOT = { has_country_flag = recently_capitulated_to_GER }
 			}
 		}
 
@@ -668,7 +766,16 @@ GER_operational_planning_category = {
 					hidden_effect= {
 						every_state = {
 							limit = {
-								is_controlled_by = FROM
+								OR = {
+									is_controlled_by = FROM
+									AND = {
+										is_owned_by = FROM
+										NOT = { is_controlled_by = FROM }
+										any_neighbor_state = {
+											is_controlled_by = FROM
+										}
+									}
+								}
 								is_on_continent = europe
 							}
 							add_dynamic_modifier = {
@@ -686,7 +793,16 @@ GER_operational_planning_category = {
 					}
 					every_state = {
 						limit = {
-							is_controlled_by = FROM
+							OR = {
+								is_controlled_by = FROM
+								AND = {
+									is_owned_by = FROM
+									NOT = { is_controlled_by = FROM }
+									any_neighbor_state = {
+										is_controlled_by = FROM
+									}
+								}
+							}	
 							is_on_continent = europe
 						}
 						add_dynamic_modifier = {
@@ -703,7 +819,16 @@ GER_operational_planning_category = {
 					}
 					every_state = {
 						limit = {
-							is_controlled_by = FROM
+							OR = {
+								is_controlled_by = FROM
+								AND = {
+									is_owned_by = FROM
+									NOT = { is_controlled_by = FROM }
+									any_neighbor_state = {
+										is_controlled_by = FROM
+									}
+								}
+							}
 							is_on_continent = europe
 						}
 						add_dynamic_modifier = {
@@ -719,7 +844,16 @@ GER_operational_planning_category = {
 					}
 					every_state = {
 						limit = {
-							is_controlled_by = FROM
+							OR = {
+								is_controlled_by = FROM
+								AND = {
+									is_owned_by = FROM
+									NOT = { is_controlled_by = FROM }
+									any_neighbor_state = {
+										is_controlled_by = FROM
+									}
+								}
+							}
 							is_on_continent = europe
 						}
 						add_dynamic_modifier = {
@@ -745,7 +879,16 @@ GER_operational_planning_category = {
 					hidden_effect= {
 						every_state = {
 							limit = {
-								is_controlled_by = FROM
+								OR = {
+									is_controlled_by = FROM
+									AND = {
+										is_owned_by = FROM
+										NOT = { is_controlled_by = FROM }
+										any_neighbor_state = {
+											is_controlled_by = FROM
+										}
+									}
+								}
 								is_on_continent = europe
 							}
 							add_dynamic_modifier = {
@@ -763,7 +906,16 @@ GER_operational_planning_category = {
 					}
 					every_state = {
 						limit = {
-							is_controlled_by = FROM
+							OR = {
+								is_controlled_by = FROM
+								AND = {
+									is_owned_by = FROM
+									NOT = { is_controlled_by = FROM }
+									any_neighbor_state = {
+										is_controlled_by = FROM
+									}
+								}
+							}	
 							is_on_continent = europe
 						}
 						add_dynamic_modifier = {
@@ -780,7 +932,16 @@ GER_operational_planning_category = {
 					}
 					every_state = {
 						limit = {
-							is_controlled_by = FROM
+							OR = {
+								is_controlled_by = FROM
+								AND = {
+									is_owned_by = FROM
+									NOT = { is_controlled_by = FROM }
+									any_neighbor_state = {
+										is_controlled_by = FROM
+									}
+								}
+							}	
 							is_on_continent = europe
 						}
 						add_dynamic_modifier = {
@@ -797,7 +958,16 @@ GER_operational_planning_category = {
 					}
 					every_state = {
 						limit = {
-							is_controlled_by = FROM
+							OR = {
+								is_controlled_by = FROM
+								AND = {
+									is_owned_by = FROM
+									NOT = { is_controlled_by = FROM }
+									any_neighbor_state = {
+										is_controlled_by = FROM
+									}
+								}
+							}	
 							is_on_continent = europe
 						}
 						add_dynamic_modifier = {
@@ -813,7 +983,16 @@ GER_operational_planning_category = {
 					}
 					every_state = {
 						limit = {
-							is_controlled_by = FROM
+							OR = {
+								is_controlled_by = FROM
+								AND = {
+									is_owned_by = FROM
+									NOT = { is_controlled_by = FROM }
+									any_neighbor_state = {
+										is_controlled_by = FROM
+									}
+								}
+							}	
 							is_on_continent = europe
 						}
 						add_dynamic_modifier = {
@@ -831,6 +1010,19 @@ GER_operational_planning_category = {
 			custom_effect_tooltip = generic_skip_one_line_tt
 		}
 		remove_effect = {
+		}
+
+		cancel_trigger = {
+			FROM = { 
+				has_country_flag = recently_capitulated_to_GER
+			}
+		}
+		cancel_effect = {
+			hidden_effect = {
+				clr_country_flag = GER_operational_planning_flag
+				add_command_power = 50
+				army_experience = 25
+			}
 		}
 	}
 	GER_operational_planning_africa = {
@@ -1081,27 +1273,18 @@ GER_price_controls_cat = {
 		icon = GFX_decision_ger_military_buildup
 
 		ai_will_do = {
-			base = 10
-
+			base = 200
 			modifier = {
-				factor = 0
-				check_variable = { GER_industrial_consumer_goods_factor < 0.25 }
+				factor = 20
+				check_variable = { GER_industrial_consumer_goods_factor > 0.2 }
 			}
 			modifier = {
-				factor = 2
-				check_variable = { GER_industrial_consumer_goods_factor > 0.25 }
+				factor = 20
+				check_variable = { GER_industrial_consumer_goods_factor > 0.3 }
 			}
 			modifier = {
-				factor = 2
-				check_variable = { GER_industrial_consumer_goods_factor > 0.35 }
-			}
-			modifier = {
-				factor = 3
-				check_variable = { GER_industrial_consumer_goods_factor > 0.45 }
-			}
-			modifier = {
-				factor = 3
-				check_variable = { GER_industrial_consumer_goods_factor > 0.55 }
+				factor = 20
+				check_variable = { GER_industrial_consumer_goods_factor > 0.4 }
 			}
 		}
 
@@ -1132,27 +1315,18 @@ GER_price_controls_cat = {
 		icon = GFX_decision_generic_political_address
 
 		ai_will_do = {
-			base = 10
-
+			base = 200
 			modifier = {
-				factor = 0
-				check_variable = { GER_industrial_consumer_goods_factor < 0.25 }
+				factor = 20
+				check_variable = { GER_industrial_consumer_goods_factor > 0.2 }
 			}
 			modifier = {
-				factor = 2
-				check_variable = { GER_industrial_consumer_goods_factor > 0.25 }
+				factor = 20
+				check_variable = { GER_industrial_consumer_goods_factor > 0.3 }
 			}
 			modifier = {
-				factor = 2
-				check_variable = { GER_industrial_consumer_goods_factor > 0.35 }
-			}
-			modifier = {
-				factor = 2
-				check_variable = { GER_industrial_consumer_goods_factor > 0.45 }
-			}
-			modifier = {
-				factor = 3
-				check_variable = { GER_industrial_consumer_goods_factor > 0.55 }
+				factor = 20
+				check_variable = { GER_industrial_consumer_goods_factor > 0.4 }
 			}
 		}
 
@@ -1182,27 +1356,18 @@ GER_price_controls_cat = {
 		icon = GFX_decision_steel
 
 		ai_will_do = {
-			base = 10
-
+			base = 200
 			modifier = {
-				factor = 0
-				check_variable = { GER_industrial_consumer_goods_factor < 0.25 }
+				factor = 20
+				check_variable = { GER_industrial_consumer_goods_factor > 0.2 }
 			}
 			modifier = {
-				factor = 2
-				check_variable = { GER_industrial_consumer_goods_factor > 0.25 }
+				factor = 20
+				check_variable = { GER_industrial_consumer_goods_factor > 0.3 }
 			}
 			modifier = {
-				factor = 2
-				check_variable = { GER_industrial_consumer_goods_factor > 0.35 }
-			}
-			modifier = {
-				factor = 2
-				check_variable = { GER_industrial_consumer_goods_factor > 0.45 }
-			}
-			modifier = {
-				factor = 3
-				check_variable = { GER_industrial_consumer_goods_factor > 0.55 }
+				factor = 20
+				check_variable = { GER_industrial_consumer_goods_factor > 0.4 }
 			}
 		}
 
@@ -1235,27 +1400,18 @@ GER_price_controls_cat = {
 		icon = GFX_decision_generic_consumer_goods
 
 		ai_will_do = {
-			base = 10
-
+			base = 200
 			modifier = {
-				factor = 0
-				check_variable = { GER_industrial_consumer_goods_factor < 0.25 }
+				factor = 20
+				check_variable = { GER_industrial_consumer_goods_factor > 0.2 }
 			}
 			modifier = {
-				factor = 2
-				check_variable = { GER_industrial_consumer_goods_factor > 0.25 }
+				factor = 20
+				check_variable = { GER_industrial_consumer_goods_factor > 0.3 }
 			}
 			modifier = {
-				factor = 2
-				check_variable = { GER_industrial_consumer_goods_factor > 0.35 }
-			}
-			modifier = {
-				factor = 2
-				check_variable = { GER_industrial_consumer_goods_factor > 0.45 }
-			}
-			modifier = {
-				factor = 3
-				check_variable = { GER_industrial_consumer_goods_factor > 0.55 }
+				factor = 20
+				check_variable = { GER_industrial_consumer_goods_factor > 0.4 }
 			}
 		}
 
@@ -1285,27 +1441,18 @@ GER_price_controls_cat = {
 		icon = GFX_decision_eng_trade_unions_demand
 
 		ai_will_do = {
-			base = 15
-
+			base = 200
 			modifier = {
-				factor = 0
-				check_variable = { GER_industrial_consumer_goods_factor < 0.25 }
+				factor = 20
+				check_variable = { GER_industrial_consumer_goods_factor > 0.2 }
 			}
 			modifier = {
-				factor = 2
-				check_variable = { GER_industrial_consumer_goods_factor > 0.25 }
+				factor = 20
+				check_variable = { GER_industrial_consumer_goods_factor > 0.3 }
 			}
 			modifier = {
-				factor = 2
-				check_variable = { GER_industrial_consumer_goods_factor > 0.35 }
-			}
-			modifier = {
-				factor = 2
-				check_variable = { GER_industrial_consumer_goods_factor > 0.45 }
-			}
-			modifier = {
-				factor = 3
-				check_variable = { GER_industrial_consumer_goods_factor > 0.55 }
+				factor = 20
+				check_variable = { GER_industrial_consumer_goods_factor > 0.4 }
 			}
 		}
 
@@ -1338,27 +1485,18 @@ GER_price_controls_cat = {
 		icon = GFX_decision_eng_trade_unions_support
 
 		ai_will_do = {
-			base = 15
-
+			base = 200
 			modifier = {
-				factor = 0
-				check_variable = { GER_industrial_consumer_goods_factor < 0.25 }
+				factor = 20
+				check_variable = { GER_industrial_consumer_goods_factor > 0.2 }
 			}
 			modifier = {
-				factor = 2
-				check_variable = { GER_industrial_consumer_goods_factor > 0.25 }
+				factor = 20
+				check_variable = { GER_industrial_consumer_goods_factor > 0.3 }
 			}
 			modifier = {
-				factor = 2
-				check_variable = { GER_industrial_consumer_goods_factor > 0.35 }
-			}
-			modifier = {
-				factor = 2
-				check_variable = { GER_industrial_consumer_goods_factor > 0.45 }
-			}
-			modifier = {
-				factor = 3
-				check_variable = { GER_industrial_consumer_goods_factor > 0.55 }
+				factor = 20
+				check_variable = { GER_industrial_consumer_goods_factor > 0.4 }
 			}
 		}
 
@@ -1389,27 +1527,18 @@ GER_price_controls_cat = {
 		icon = GFX_decision_hol_attract_foreign_investors
 
 		ai_will_do = {
-			base = 15
-
+			base = 200
 			modifier = {
-				factor = 0
-				check_variable = { GER_industrial_consumer_goods_factor < 0.25 }
+				factor = 20
+				check_variable = { GER_industrial_consumer_goods_factor > 0.2 }
 			}
 			modifier = {
-				factor = 2
-				check_variable = { GER_industrial_consumer_goods_factor > 0.25 }
+				factor = 20
+				check_variable = { GER_industrial_consumer_goods_factor > 0.3 }
 			}
 			modifier = {
-				factor = 2
-				check_variable = { GER_industrial_consumer_goods_factor > 0.35 }
-			}
-			modifier = {
-				factor = 2
-				check_variable = { GER_industrial_consumer_goods_factor > 0.45 }
-			}
-			modifier = {
-				factor = 3
-				check_variable = { GER_industrial_consumer_goods_factor > 0.55 }
+				factor = 20
+				check_variable = { GER_industrial_consumer_goods_factor > 0.4 }
 			}
 		}
 
@@ -1440,36 +1569,49 @@ GER_price_controls_cat = {
 		icon = GFX_decision_generic_fundraising
 
 		ai_will_do = {
-			base = 1
+			base = 200
 			modifier = {
-				factor = 1.2
+				factor = 20
+				check_variable = { GER_industrial_consumer_goods_factor > 0.2 }
+			}
+			modifier = {
+				factor = 20
 				check_variable = { GER_industrial_consumer_goods_factor > 0.3 }
 			}
 			modifier = {
-				factor = 1.3
-				check_variable = { GER_industrial_consumer_goods_factor > 0.5 }
-			}
-			modifier = {
-				factor = 1.5
-				check_variable = { GER_industrial_consumer_goods_factor > 0.7 }
-			}
-			modifier = {
-				factor = 0
-				check_variable = { GER_industrial_consumer_goods_factor < 0.1 }
+				factor = 20
+				check_variable = { GER_industrial_consumer_goods_factor > 0.4 }
 			}
 			modifier = {
 				factor = 0
 				is_historical_focus_on = yes 
-				has_government = fascism
+				HUN = { is_ai = no }
+			}
+			modifier = {
+				add = 3000
+				HUN = { is_ai = yes }
+				is_historical_focus_on = yes 
 			}
 		}
 
 		visible = {
 			has_dlc = "Gotterdammerung"
-			NOT = {
-				OR = {
-					is_in_faction_with = HUN
-					has_guaranteed = HUN
+			if = {
+				limit = { HUN = { is_ai = no } }
+				HUN = {
+					has_idea = HUN_gombos_trade_treaty
+					NOT = {
+						OR = {
+							is_in_faction_with = ROOT
+							has_guaranteed = HUN
+						}
+					}
+				}
+			}
+			if = {
+				limit = { HUN = { is_ai = yes } }
+				HUN = {
+					has_idea = HUN_gombos_trade_treaty
 				}
 			}
 			HUN = {
@@ -1479,10 +1621,22 @@ GER_price_controls_cat = {
 		}
 
 		available = {
-			HUN = {
-				has_idea = HUN_gombos_trade_treaty
-				NOT = {
-					is_in_faction_with = ROOT
+			if = {
+				limit = { HUN = { is_ai = no } }
+				HUN = {
+					has_idea = HUN_gombos_trade_treaty
+					NOT = {
+						OR = {
+							is_in_faction_with = ROOT
+							has_guaranteed = HUN
+						}
+					}
+				}
+			}
+			if = {
+				limit = { HUN = { is_ai = yes } }
+				HUN = {
+					has_idea = HUN_gombos_trade_treaty
 				}
 			}
 		}
@@ -1698,6 +1852,7 @@ GER_fortify_the_vaterland_cat = {
 							level = 2
 							province = {
 								id = 3530
+								id = 6568
 								id = 6542
 								id = 6712
 								id = 11640
@@ -3463,12 +3618,7 @@ GER_case_anton_category = {
 			}
 		}
 		ai_will_do = {
-			factor = 25
-
-			modifier = {
-				factor = 0
-				VIC = { is_ai = no }
-			}
+			factor = 0
 		}
 		complete_effect = {
 			custom_effect_tooltip = GER_case_anton_tt
@@ -3500,7 +3650,6 @@ GER_reichskommissariats = {
 		priority = 98
 
 		visible = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			RKG = {
 				exists = no
 			}
@@ -3548,11 +3697,17 @@ GER_reichskommissariats = {
 				923 = {
 					is_controlled_by_ROOT_or_subject = yes
 				}
-				924 = {
-					is_controlled_by_ROOT_or_subject = yes
+				OR = {
+					924 = {
+						is_controlled_by_ROOT_or_subject = yes
+					}
+					has_global_flag = sweden_seized_finnmark
 				}
-				925 = {
-					is_controlled_by_ROOT_or_subject = yes
+				OR = {
+					925 = {
+						is_controlled_by_ROOT_or_subject = yes
+					}
+					has_global_flag = sweden_seized_finnmark
 				}
 			}
 		}
@@ -3587,6 +3742,12 @@ GER_reichskommissariats = {
 			modifier = {
 				add = 25
 				NOR = { exists = no }
+			}
+			modifier = {
+				add = -300
+				is_historical_focus_on = yes
+				is_in_faction_with = ROM
+				NOT = { has_war_with = SWE }
 			}
 		}
 
@@ -3696,7 +3857,6 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			RKN = {
 				exists = no
 			}
@@ -3749,6 +3909,12 @@ GER_reichskommissariats = {
 			modifier = {
 				add = 25
 				HOL = { exists = no }
+			}
+			modifier = {
+				add = -300
+				is_historical_focus_on = yes
+				is_in_faction_with = ROM
+				NOT = { has_war_with = SWE }
 			}
 		}
 
@@ -3855,7 +4021,6 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			RKB = {
 				exists = no
 			}
@@ -3917,6 +4082,12 @@ GER_reichskommissariats = {
 			modifier = {
 				add = 25
 				BEL = { exists = no }
+			}
+			modifier = {
+				add = -300
+				is_historical_focus_on = yes
+				is_in_faction_with = ROM
+				NOT = { has_war_with = SWE }
 			}
 		}
 
@@ -4025,7 +4196,6 @@ GER_reichskommissariats = {
 		priority = 97
 
 		visible = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			RKO = {
 				exists = no
 			}
@@ -4140,6 +4310,13 @@ GER_reichskommissariats = {
 			modifier = {
 				add = 15
 				POL = { exists = no }
+			}
+			modifier = {
+				add = -300
+				is_historical_focus_on = yes
+				is_in_faction_with = ROM
+				NOT = { has_war_with = SWE }
+				SOV = { has_capitulated = no }
 			}
 		}
 
@@ -4275,7 +4452,6 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			RKU = {
 				exists = no
 			}
@@ -4380,6 +4556,13 @@ GER_reichskommissariats = {
 			modifier = {
 				add = 15
 				UKR = { exists = no }
+			}
+			modifier = {
+				add = -300
+				is_historical_focus_on = yes
+				is_in_faction_with = ROM
+				NOT = { has_war_with = SWE }
+				SOV = { has_capitulated = no }
 			}
 		}
 
@@ -4496,7 +4679,6 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			RKU = {
 				exists = yes
 			}
@@ -4600,7 +4782,6 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			RKU = {
 				exists = yes
 			}
@@ -4706,14 +4887,12 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			RKK = {
 				exists = no
 			}
 		}
 
 		available = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			is_subject = no
 			OR = {
 				has_completed_focus = GER_heed_von_neuraths_concerns
@@ -4901,7 +5080,6 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			RKT = {
 				exists = no
 			}
@@ -5131,7 +5309,6 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			RKM = {
 				exists = no
 			}
@@ -5426,7 +5603,6 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			OR = {
 				829 = { is_controlled_by_ROOT_or_subject = yes }
 				country_exists = RKM
@@ -5486,9 +5662,9 @@ GER_reichskommissariats = {
 
 		priority = 110
 
-		cost = 30
+		cost = 20
 
-		days_re_enable = 91
+		days_re_enable = 60
 
 		icon = GFX_decision_eng_blackshirt_march
 
@@ -5694,7 +5870,6 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			RKL = {
 				exists = no
 			}
@@ -5793,7 +5968,6 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			RKM = {
 				exists = yes
 			}
@@ -5913,7 +6087,6 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			RKM = {
 				exists = yes
 			}
@@ -6050,7 +6223,6 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			OR = {
 				RKM = {
 					exists = yes
@@ -6147,7 +6319,6 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			GEN = {
 				exists = no
 			}
@@ -6183,6 +6354,22 @@ GER_reichskommissariats = {
 			modifier = {
 				add = 25
 				POL = { has_capitulated = yes }
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					any_state = {
+						is_core_of = POL
+						controller = { NOT = { is_in_faction_with = GER } }
+					}
+				}
+			}
+			modifier = {
+				add = -300
+				is_historical_focus_on = yes
+				is_in_faction_with = ROM
+				NOT = { has_war_with = SWE }
+				SOV = { has_capitulated = no }
 			}
 		}
 
@@ -6302,7 +6489,6 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			GEN = {
 				exists = yes
 			}
@@ -6404,11 +6590,6 @@ GER_reichskommissariats = {
 			RKH = {
 				exists = no
 			}
-			CZE = {
-				NOT = {
-					is_subject_of = ROOT
-				}
-			}
 		}
 
 		available = {
@@ -6450,6 +6631,12 @@ GER_reichskommissariats = {
 			modifier = {
 				add = 25
 				CZE = { exists = no }
+			}
+			modifier = {
+				add = -300
+				is_historical_focus_on = yes
+				is_in_faction_with = ROM
+				NOT = { has_war_with = SWE }
 			}
 		}
 
@@ -6558,7 +6745,6 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			RKI = {
 				exists = no
 			}
@@ -6812,7 +6998,6 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			RKC = {
 				exists = no
 			}
@@ -7093,7 +7278,6 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			RKC = {
 				exists = yes
 			}
@@ -7188,7 +7372,6 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			RGB = {
 				exists = no
 			}
@@ -7296,6 +7479,10 @@ GER_reichskommissariats = {
 			modifier = {
 				add = 1
 				SCO = { exists = no }
+			}
+			modifier = {
+				add = -30
+				ENG = { has_capitulated = no }
 			}
 		}
 
@@ -7406,7 +7593,6 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			RKC = {
 				exists = yes
 			}
@@ -7526,7 +7712,6 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			RKC = {
 				exists = yes
 			}
@@ -7662,7 +7847,6 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			OR = {
 				AND = {
 					has_country_flag = GER_decided_on_hungarian_status
@@ -7782,7 +7966,6 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			RGB = {
 				exists = yes
 			}
@@ -7901,7 +8084,6 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			has_completed_focus = GER_mittelafrika
 			RNA = {
 				exists = no
@@ -8190,7 +8372,6 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			has_completed_focus = GER_mittelafrika
 			RKA = {
 				exists = no
@@ -8615,7 +8796,6 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			RKA = {
 				exists = yes
 			}
@@ -8712,7 +8892,6 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			has_completed_focus = GER_establish_protectorates_in_america
 			RKV = {
 				exists = no
@@ -9965,7 +10144,6 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_uplift_the_rosenberg_office
 			RUS = {
 				exists = yes
 			}
@@ -11897,18 +12075,6 @@ GER_reichskommissariats = {
 				1020 = {
 				    is_controlled_by_ROOT_or_subject = yes
 				}
-				1066 = {
-				    is_controlled_by_ROOT_or_subject = yes
-				}
-				1067 = {
-				    is_controlled_by_ROOT_or_subject = yes
-				}
-				1068 = {
-				    is_controlled_by_ROOT_or_subject = yes
-				}
-				1069 = {
-				    is_controlled_by_ROOT_or_subject = yes
-				}
 			}
 		}
 
@@ -11992,10 +12158,6 @@ GER_reichskommissariats = {
 				state = 747
 				state = 325
 				state = 671
-				state = 1066 
-				state = 1067 
-				state = 1068 
-				state = 1069 
 				state = 670
 				state = 286
 				state = 741
@@ -12215,9 +12377,6 @@ GER_reichskommissariats = {
 				737 = {
 				    is_controlled_by_ROOT_or_subject = yes
 				}
-				1070 = {
-				    is_controlled_by_ROOT_or_subject = yes
-				}
 				634 = {
 				    is_controlled_by_ROOT_or_subject = yes
 				}
@@ -12254,27 +12413,6 @@ GER_reichskommissariats = {
 				336 = {
 				    is_controlled_by_ROOT_or_subject = yes
 				}
-				1059 = {
-				    is_controlled_by_ROOT_or_subject = yes
-				}
-				1060 = {
-				    is_controlled_by_ROOT_or_subject = yes
-				}
-				1061 = {
-				    is_controlled_by_ROOT_or_subject = yes
-				}
-				1062 = {
-				    is_controlled_by_ROOT_or_subject = yes
-				}
-				1063 = {
-				    is_controlled_by_ROOT_or_subject = yes
-				}
-				1064 = {
-				    is_controlled_by_ROOT_or_subject = yes
-				}
-				1065 = {
-				    is_controlled_by_ROOT_or_subject = yes
-				}
 				724 = {
 				    is_controlled_by_ROOT_or_subject = yes
 				}
@@ -12306,12 +12444,6 @@ GER_reichskommissariats = {
 				    is_controlled_by_ROOT_or_subject = yes
 				}
 				635 = {
-				    is_controlled_by_ROOT_or_subject = yes
-				}
-				1071 = {
-				    is_controlled_by_ROOT_or_subject = yes
-				}
-				1072 = {
 				    is_controlled_by_ROOT_or_subject = yes
 				}
 				636 = {
@@ -12412,11 +12544,9 @@ GER_reichskommissariats = {
 				state = 1023
 				state = 1024
 				state = 1021
-				state = 1070 
 				### IMPASSABLE, INCLUDED BUT NOT REQURED ###
 				state = 674
 				state = 1022
-				state = 1073 
 			}
 		}
 
@@ -13139,7 +13269,7 @@ special_projects = {
 		}
 		days_remove = 180
 		modifier = {
-			civilian_factory_use = 3
+			civilian_factory_use = 5
 		}
 		remove_effect = {
 			28 = {
@@ -13195,19 +13325,6 @@ special_projects = {
 					add_timed_idea = { idea = GER_dismantle_maginot days = 180 }
 				}
 			}
-			if = {
-				limit = {
-					has_dlc = "Peace For Our Time"
-					NOT = {
-						is_special_project_completed = sp:sp_land_large_caliber_kinetic_energy_sabot
-					}
-				}
-
-				custom_effect_tooltip = generic_skip_one_line_tt
-
-				add_timed_idea = { idea = CZE_pfot_fortification_destruction_research days = 180 }
-
-			}
 		}
 	}
 
@@ -13216,27 +13333,6 @@ special_projects = {
 		icon = generic_construction
 
 		available = {
-			if = {
-				limit = {
-					original_tag = CZE
-					has_dlc = "Peace For Our Time"
-				}
-				has_completed_focus = CZE_redirect_the_fortification_councils_funds
-				NOT = {
-					has_completed_focus = CZE_the_second_fortification_program
-				}
-			}
-			else_if = {
-				limit = {
-					original_tag = CZE
-					NOT = {
-						has_dlc = "Peace For Our Time"
-					}
-				}
-				NOT = {
-					has_completed_focus = CZE_sudeten_1
-				}
-			}
 			#has_war = yes
 			controls_state = 69 # Sudetenland
 			controls_state = 972 # Southern Sudetenland
@@ -13252,17 +13348,6 @@ special_projects = {
 			factor = 0
 		}
 		visible = {
-			if = {
-				limit = {
-					original_tag = CZE
-				}
-				NOT = {
-					OR = {
-						has_completed_focus = CZE_the_second_fortification_program
-						has_completed_focus = CZE_sudeten_1
-					}
-				}
-			}
 			#has_war = yes
 			controls_state = 69 # Sudetenland
 			controls_state = 972 # Southern Sudetenland
@@ -13272,54 +13357,50 @@ special_projects = {
 		}
 		days_remove = 180
 		modifier = {
-			civilian_factory_use = 1
+			civilian_factory_use = 3
 		}
-		custom_cost_trigger = {
-			num_of_civilian_factories_available_for_projects > 0
-		}
-		custom_cost_text = decision_cost_civ_factory_1
 		remove_effect = {
 			69 = {
 				set_building_level = {
 					type = bunker
-					level = 0
+					level = 1
 					province = {
 						all_provinces = yes
 						limit_to_border = no
-						level > 0
+						level > 1
 					}
 				}
 			}
 			74 = {
 				set_building_level = {
 					type = bunker
-					level = 0
+					level = 1
 					province = {
 						all_provinces = yes
 						limit_to_border = no
-						level > 0
+						level > 1
 					}
 				}
 			}
 			9 = {
 				set_building_level = {
 					type = bunker
-					level = 0
+					level = 1
 					province = {
 						all_provinces = yes
 						limit_to_border = no
-						level > 0
+						level > 1
 					}
 				}
 			}
 			75 = {
 				set_building_level = {
 					type = bunker
-					level = 0
+					level = 1
 					province = {
 						all_provinces = yes
 						limit_to_border = no
-						level > 0
+						level > 1
 					}
 				}
 			}
@@ -13345,22 +13426,22 @@ special_projects = {
 				72 = {
 					set_building_level = {
 						type = bunker
-						level = 0
+						level = 1
 						province = {
 							all_provinces = yes
 							limit_to_border = no
-							level > 0
+							level > 1
 						}
 					}
 				}
 				71 = {
 					set_building_level = {
 						type = bunker
-						level = 0
+						level = 1
 						province = {
 							all_provinces = yes
 							limit_to_border = no
-							level > 0
+							level > 1
 						}
 					}
 				}
@@ -13379,11 +13460,11 @@ special_projects = {
 				70 = {
 					set_building_level = {
 						type = bunker
-						level = 0
+						level = 1
 						province = {
 							all_provinces = yes
 							limit_to_border = no
-							level > 0
+							level > 1
 						}
 					}
 				}
@@ -13398,7 +13479,7 @@ special_projects = {
 							}
 						}
 					}
-					972 = {
+					664 = {
 						controller = {
 							OR = {
 								tag = ROOT
@@ -13410,22 +13491,22 @@ special_projects = {
 				73 = {
 					set_building_level = {
 						type = bunker
-						level = 0
+						level = 1
 						province = {
 							all_provinces = yes
 							limit_to_border = no
-							level > 0
+							level > 1
 						}
 					}
 				}
-				972 = {
+				664 = {
 					set_building_level = {
 						type = bunker
-						level = 0
+						level = 1
 						province = {
 							all_provinces = yes
 							limit_to_border = no
-							level > 0
+							level > 1
 						}
 					}
 				}
@@ -13433,19 +13514,6 @@ special_projects = {
 		}
 		complete_effect = {
 			add_timed_idea = { idea = GER_dismantle_czechoslovakian_forts days = 180 }
-			if = {
-				limit = {
-					has_dlc = "Peace For Our Time"
-					NOT = {
-						is_special_project_completed = sp:sp_land_large_caliber_kinetic_energy_sabot
-					}
-				}
-
-				custom_effect_tooltip = generic_skip_one_line_tt
-
-				add_timed_idea = { idea = CZE_pfot_fortification_destruction_research days = 180 }
-
-			}
 		}
 	}
 }
@@ -13587,12 +13655,14 @@ GER_austro_hungarian_empire = {
 				OR = {
 					has_government = neutrality
 					neutrality > 0.4
+					exists = no
 				}
 			}
 			HUN = {
 				OR = {
 					has_government = neutrality
 					neutrality > 0.4
+					exists = no
 				}
 			}
 			CZE = {
@@ -13619,10 +13689,25 @@ GER_austro_hungarian_empire = {
 				}
 			}
 			AUS = {
-				exists = yes
+				OR = {
+					has_government = neutrality
+					neutrality > 0.25
+					exists = no
+				}
 			}
 			HUN = {
-				exists = yes
+				OR = {
+					has_government = neutrality
+					neutrality > 0.25
+					exists = no
+				}
+			}
+			CZE = {
+				OR = {
+					has_government = neutrality
+					neutrality > 0.25
+					exists = no
+				}
 			}
 			NOT = { has_global_flag = GER_reformed_austro_hungarian_empire }
 		}
@@ -13633,13 +13718,33 @@ GER_austro_hungarian_empire = {
 		ai_will_do = {
 			factor = 200
 			modifier = {
+				factor = 50
+				CZE = { has_war = no }
+				NOT = { tag = CZE }
+			}
+			modifier = {
+				factor = 50
+				HUN = { has_war = no }
+				NOT = { tag = HUN }
+			}
+			modifier = {
+				factor = 50
+				AUS = { has_war = no }
+				NOT = { tag = AUS }
+			}
+			modifier = {
 				factor = 0
 				original_tag = HUN
+				AUS = { exists = yes }
 			}
 			modifier = {
 				factor = 0
 				original_tag = CZE
-			}
+				OR = {
+					HUN = { exists = yes }
+					AUS = { exists = yes }
+				}
+			}	
 		}
 
 		complete_effect = {
@@ -13690,11 +13795,7 @@ GER_reich_labor_service_cat = {
 		icon = GFX_decision_generic_construction
 
 		ai_will_do = { 
-			base = 10
-			modifier = {
-				factor = 2
-				has_political_power > 100
-			}
+			base = 200
 		}
 
 		available = {
@@ -13779,8 +13880,8 @@ GER_reich_labor_service_cat = {
 		ai_will_do = { 
 			base = 10
 			modifier = {
-				factor = 2
-				has_political_power > 100
+				factor = 0
+				date < 1940.1.1
 			}
 		}
 
@@ -13851,6 +13952,10 @@ GER_reich_labor_service_cat = {
 			modifier = {
 				factor = 2
 				has_political_power > 100
+			}
+			modifier = {
+				factor = 0
+				date < 1940.1.1
 			}
 		}
 
@@ -13963,10 +14068,10 @@ GER_reich_labor_service_cat = {
 		icon = GFX_decision_generic_construction
 
 		ai_will_do = { 
-			base = 10
+			base = 50
 			modifier = {
-				factor = 2
-				has_political_power > 100
+				factor = 0
+				date < 1939.1.1
 			}
 		}
 
@@ -14029,10 +14134,10 @@ GER_reich_labor_service_cat = {
 		icon = GFX_decision_generic_construction
 
 		ai_will_do = { 
-			base = 10
+			base = 25
 			modifier = {
-				factor = 2
-				has_political_power > 100
+				factor = 0
+				date < 1939.1.1
 			}
 		}
 
@@ -17079,8 +17184,9 @@ GER_weltpolitik_cat = {
 		}
 
 		available = {
-			any_controlled_state = {
+			any_state = {
 				is_on_continent = africa
+				is_controlled_by = ROOT
 			}
 		}
 
@@ -17150,8 +17256,9 @@ GER_weltpolitik_cat = {
 		}
 
 		available = {
-			any_controlled_state = {
+			any_state = {
 				is_on_continent = asia
+				is_controlled_by = ROOT
 			}
 		}
 
@@ -20886,13 +20993,9 @@ GER_proletarian_revolution_cat = {
 
 		fire_only_once = yes
 
-		cost = 25
+		cost = 20
 
-		days_remove = 30
-
-		ai_will_do = {
-			base = 15
-		}
+		days_remove = 15
 
 		complete_effect = {
 			set_country_flag = GER_encouraging_proletariat_uprisings_flag
@@ -20916,7 +21019,7 @@ GER_proletarian_revolution_cat = {
 			}
 			multiply_temp_variable = {
 				var = increased_communist_support
-				value = 0.002
+				value = 0.003
 			}
 
 			FROM = { #Decreased Stability based on the amount of factories in the state
@@ -20944,6 +21047,30 @@ GER_proletarian_revolution_cat = {
 				add_dynamic_modifier = {
 					modifier = GER_proletariat_uprising_modifier
 				}
+			}
+		}
+
+		ai_will_do = {
+			base = 4500
+			modifier = {
+				factor = 0
+				communism > 0.55
+			}
+			modifier = {
+				add = 500
+				FROM = { has_state_category = megalopolis }
+			}
+			modifier = {
+				add = 500
+				FROM = { has_state_category = metropolis }
+			}
+			modifier = {
+				add = 150
+				FROM = { has_state_category = large_city }
+			}
+			modifier = {
+				add = 100
+				FROM = { has_state_category = city }
 			}
 		}
 	}
@@ -22160,7 +22287,6 @@ GER_anti_colonialism_category = {
 		}
 
 		target_array = global.colonial_powers
-		
 		target_root_trigger = { original_tag = GER } 
 		# on_map_mode = map_only
 		fire_only_once = yes  

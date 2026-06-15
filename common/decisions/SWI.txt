@@ -40,7 +40,6 @@ SWI_debug_decisions_category = {
 		}
 	}
 
-	#MM: Never used. Unlocalized
 	SWI_add_100MR = {
 		complete_effect = {
 			add_to_variable = {
@@ -2586,10 +2585,6 @@ SWI_absolute_neutrality_decisions_category = {
 		visible = {
 			has_country_flag = SWI_in_breach_of_neutrality
 		}
-
-		target_root_trigger = {
-			original_tag = SWI
-		}
 		
 		priority = 98 
 
@@ -2623,10 +2618,6 @@ SWI_absolute_neutrality_decisions_category = {
 		
 		available = { 
 			always = yes 
-		}
-
-		target_root_trigger = {
-			original_tag = SWI
 		}
  
 		days_remove = 15
@@ -2897,12 +2888,6 @@ SWI_absolute_neutrality_decisions_category = {
 				has_completed_focus = SWI_seek_allied_trade
 			}
 			has_idea = SWI_active_trade_agreement
-			SWI_is_historical_ai = no 
-		}
-
-		target_root_trigger = {
-			original_tag = SWI
-			has_idea = SWI_active_trade_agreement
 		}
 
 		target_trigger = {
@@ -2925,7 +2910,48 @@ SWI_absolute_neutrality_decisions_category = {
 			}
 		}
 		ai_will_do = {
-			base = 0 
+			base = 1000
+			modifier = {
+				add = -2000
+				NOT = { has_dynamic_modifier = { modifier = SWI_seized_gold } }
+				OR = {
+					NOT = { has_global_flag = disabled_equipment_funnelling }
+					has_war = no
+				}
+			}
+			modifier = {
+				add = 200
+				FROM = {
+					is_ai = no
+					NOT = { has_government = ROOT }
+					has_war = yes
+					any_enemy_country = { 
+						has_government = ROOT
+						is_major = yes
+						surrender_progress > 0.5
+					}
+				}
+			}
+			modifier = {
+				add = 200
+				FROM = {
+					is_ai = yes
+					NOT = { has_government = ROOT }
+					has_war = yes
+					tag = GER
+					has_war_with = SOV
+					is_historical_focus_on = yes
+					SOV = { surrender_progress > 0.3 }
+				}
+			}
+			modifier = {
+				add = 7000
+				FROM = {
+					tag = GER
+					has_war_with = ENG
+					ENG = { surrender_progress > 0.20 }
+				}
+			}
 		}
 	}
 
@@ -3006,10 +3032,6 @@ SWI_absolute_neutrality_decisions_category = {
 		allowed = { original_tag = SWI }
 
 		visible = {
-			has_completed_focus = SWI_share_spy_networks
-		}
-
-		target_root_trigger = {
 			has_completed_focus = SWI_share_spy_networks
 		}
 
@@ -3155,10 +3177,6 @@ SWI_absolute_neutrality_decisions_category = {
 			has_completed_focus = SWI_support_allied_espionage
 		}
 
-		target_root_trigger = {
-			has_completed_focus = SWI_support_allied_espionage
-		}
-
 		available = {
 			has_intelligence_agency = yes
 		}
@@ -3288,17 +3306,36 @@ SWI_absolute_neutrality_decisions_category = {
 
 		visible = {
 			has_completed_focus = SWI_axis_gold
+			OR = {
+				NOT = { has_country_flag = recent_fascist_ask }
+				has_country_flag = {
+					flag = recent_fascist_ask
+					days > 15
+				}
+			}
 		}
 		
-		target_root_trigger = {
-			original_tag = SWI
-			has_completed_focus = SWI_axis_gold
-		}		
-
 		target_trigger = {
+			if = {
+				limit = {
+					SWI = { is_subject = yes }
+				}
+				FROM = { 
+					SWI = { is_subject_of = PREV } 
+				}
+			}
 			FROM = {
+				NOT = { has_country_flag = SWI_gold_capped_from_transfer }
+				OR = {
+					is_faction_leader = yes
+					NOT = { tag = ITA }
+					is_ai = no
+				}
 				SWI_is_country_to_balance = yes
-				has_government = fascism 
+				OR = {
+					has_government = fascism 
+					has_government = neutrality
+				}
 				NOT = {
 					has_war_with = ROOT 
 					has_dynamic_modifier = { modifier = SWI_gold_trade_with_switzerland }
@@ -3309,29 +3346,86 @@ SWI_absolute_neutrality_decisions_category = {
 			}
 			NOT = {
 				any_other_country = {
-					has_government = fascism 
+					OR = {
+						has_government = neutrality 
+						has_government = fascism 
+					}
 					has_country_flag = SWI_gold_trading_partner
 				}
 			}
 		}
 
-		cost = 50 
+		cost = 0 
 		complete_effect = {
 			FROM = { country_event = { id = BBA_switzerland_trade.8 hours = 4 } }
+			hidden_effect = {
+				set_country_flag = recent_fascist_ask
+			}
 			effect_tooltip = {
 				custom_effect_tooltip = if_they_accept_tt
 				SWI_increase_gold_trade = yes 
-			}  
+			}    
+			hidden_effect = {
+				FROM = { set_country_flag = recent_gold_trade }
+			}
 		}
 		ai_will_do = {
-			base = 100 
+			base = 0
 			modifier = {
-				add = 200 
-				SWI_is_historical_ai = yes 
+				add = -9999
+				GER = { is_ai = no }
+				GER = { has_war = no }
+				date < 1939.5.1
+			} 
+			modifier = {
+				add = 9999
+				date > 1938.9.1
+			} 
+			modifier = {
+				add = -9999
+				is_historical_focus_on = yes
+				NOT = { ENG = { is_in_faction_with = FRA } }
+				FRA = { is_ai = yes }
+			} 
+			modifier = {
+				FROM = { tag = ITA }
+				add = 9999
+			}  
+			modifier = {
+				is_historical_focus_on = no
+				FROM = { is_ai = yes }
+				add = 500
+			} 
+			modifier = {
+				FROM = { is_ai = no }
+				add = 20
+			} 
+			modifier = {
+				add = 9999
+				OR = {
+					AND = { 
+						GER = { is_ai = yes }
+						ITA = { is_ai = yes }
+					}
+					FRA = { is_ai = no }
+					ENG = { is_ai = no }
+					SOV = { is_ai = no }
+					USA = { is_ai = no }
+					PAN = { is_ai = no }
+					GER = { has_war_with = ENG }
+					GER = { has_war_with = FRA }
+					GER = { has_war_with = SOV }
+				}
 			}
 			modifier = {
-				add = 500
-				SWI_AI_is_fascist = yes 
+				factor = 0
+				FROM = {
+					OR = {
+						tag = GER
+						is_in_faction_with = GER
+					}
+				}
+				has_global_flag = the_league_intervention
 			}
 		}
 	}
@@ -3344,18 +3438,32 @@ SWI_absolute_neutrality_decisions_category = {
 
 		visible = {
 			has_completed_focus = SWI_allied_gold
-		}
-
-		visible = {
-			original_tag = SWI
-			has_completed_focus = SWI_allied_gold
+			OR = {
+				NOT = { has_country_flag = recent_allies_ask }
+				has_country_flag = {
+					flag = recent_allies_ask
+					days > 15
+				}
+			}
 		}
 		
 		target_trigger = {
+			if = {
+				limit = {
+					SWI = { is_subject = yes }
+				}
+				FROM = { 
+					SWI = { is_subject_of = PREV } 
+				}
+			}
 			FROM = {
+				NOT = { has_country_flag = SWI_gold_capped_from_transfer }
 				NOT = { has_war_with = ROOT } 
 				SWI_is_country_to_balance = yes
-				has_government = democratic 
+				OR = {
+					has_government = democratic 
+					has_government = communism
+				} 
 				NOT = {					
 					has_dynamic_modifier = { modifier = SWI_gold_trade_with_switzerland }
 					has_dynamic_modifier = { modifier = SWI_stole_our_gold_reserves }
@@ -3365,27 +3473,76 @@ SWI_absolute_neutrality_decisions_category = {
 			}
 			NOT = {
 				any_other_country = {
-					has_government = democratic 
+					OR = {
+						has_government = democratic 
+						has_government = communism
+					} 
 					has_country_flag = SWI_gold_trading_partner
 				}
 			}
-
-
 		}
 
-		cost = 50 
+		cost = 0 
 		complete_effect = {
 			FROM = { country_event = { id = BBA_switzerland_trade.8 hours = 4 } }
 			effect_tooltip = {
 				custom_effect_tooltip = if_they_accept_tt
 				SWI_increase_gold_trade = yes 
 			}  
+			hidden_effect = {
+				FROM = { set_country_flag = recent_gold_trade }
+			}
+			hidden_effect = {
+				set_country_flag = recent_allies_ask
+			}
 		}
 		ai_will_do = {
-			base = 100 
+			base = 0
 			modifier = {
-				add = 300 
-				SWI_is_historical_ai = yes 
+				add = 9999
+				OR = {
+					AND = {
+						FRA = { is_ai = yes }
+						ENG = { is_ai = yes }
+					}
+					GER = { is_ai = no }
+					ITA = { is_ai = no }
+					COS = { is_ai = no }
+					GER = { has_war_with = ENG }
+					GER = { has_war_with = FRA }
+					GER = { has_war_with = SOV }
+				}
+			}
+			modifier = {
+				add = 9999
+				FRA = { is_ai = no }
+				date > 1938.9.1
+			}
+			modifier = {
+				add = 9999
+				ENG = { is_ai = no }
+				date > 1939.1.1
+			}
+			modifier = {
+				add = 9999
+				date > 1939.3.1
+			}
+			modifier = {
+				is_historical_focus_on = no
+				FROM = { is_ai = yes }
+				add = 500
+			} 
+			modifier = {
+				FROM = { is_ai = no }
+				add = 20
+			}  
+			modifier = {
+				FROM = { tag = ENG }
+				add = 200
+			} 
+			modifier = {
+				FROM = { tag = FRA }
+				add = 2000
 			}
 		}
 	}
@@ -3401,13 +3558,22 @@ SWI_absolute_neutrality_decisions_category = {
 			check_variable = { SWI.SWI_gold_trade < SWI.SWI_max_gold_trade }
 		}
 		target_trigger = {
-			FROM = {											
+			FROM = {		
+				NOT = { has_country_flag = SWI_gold_capped_from_transfer }									
 				has_dynamic_modifier = { modifier = SWI_gold_trade_with_switzerland }
 				check_variable = { SWI_country_gold_trading_level < SWI.SWI_max_country_gold_trading_level }
+				OR = {
+					NOT = { has_country_flag = recent_gold_trade }
+					has_country_flag = {
+						flag = recent_gold_trade
+						days > 180
+					}
+					difficulty < 1
+				}
 			}
 		}
 
-		cost = 50 
+		cost = 0 
 
 		complete_effect = {
 			FROM = { country_event = { id = BBA_switzerland_trade.11 hours = 4 } } 
@@ -3415,12 +3581,39 @@ SWI_absolute_neutrality_decisions_category = {
 				custom_effect_tooltip = if_they_accept_tt
 				FROM = { SWI_increase_gold_trade = yes } 
 			}  
+			hidden_effect = {
+				FROM = { set_country_flag = recent_gold_trade }
+			}
 		}
 		ai_will_do = {
-			base = 100 
+			base = 0 
 			modifier = {
-				add = 200 
-				SWI_is_historical_ai = yes 
+				add = 9999
+				OR = {
+					AND = {
+						FRA = { is_ai = yes }
+						GER = { is_ai = yes }
+					}
+					date > 1939.1.1
+					any_country = {
+						is_neighbor_of = SWI
+						has_war = yes
+					}
+					any_country = {
+						is_axis_ai = yes
+						is_ai = no
+					}
+					any_country = {
+						is_allied_ai = yes
+						is_ai = no
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				date < 1938.1.1
+				FROM = { tag = GER }
+				is_historical_focus_on = yes
 			}
 		}	
 	}
@@ -3435,24 +3628,41 @@ SWI_absolute_neutrality_decisions_category = {
 			OR = {
 				has_completed_focus = SWI_take_a_stance
 				has_completed_focus = SWI_oasis_of_democracy 
+				AND = {
+					OR = {
+						has_global_flag = d_day_crisis
+						has_global_flag = d_day_happened
+						FROM = { 
+							has_war_with = SOV
+							SOV = { surrender_progress > 0.6 }
+						}
+						GER = { surrender_progress > 0.5 }
+						AND = {
+							FROM = {
+								has_war_with = ENG
+								ENG = { surrender_progress > 0.7 }
+							}
+							ENG = { has_government = democratic }
+						}
+					}
+					is_historical_focus_on = yes
+					has_government = democratic
+				}
 			}
 		}
-
-		target_root_trigger = {
-			original_tag = SWI
-		}
-
 		target_trigger = {
 			FROM = {
 				SWI_is_country_to_balance = yes											
-				
+				NOT = { is_in_faction_with = ROOT }
+				NOT = { ROOT = { is_subject_of = FROM } }
+				NOT = { is_subject_of = ROOT }
 				has_government = fascism
 			}
 		}
 		available = {
-			has_dynamic_modifier = { modifier = SWI_gold_trade_with_switzerland }
+			FROM = { has_dynamic_modifier = { modifier = SWI_gold_trade_with_switzerland } }
 		}
-		cost = 50 
+		cost = 5 
 
 		complete_effect = {
 			FROM = {
@@ -3465,13 +3675,26 @@ SWI_absolute_neutrality_decisions_category = {
 					type = topple_government 
 				}			
 			}
+			hidden_effect = {
+				if = {
+					limit = {
+						has_idea = LSM_neutrality_idea		
+						GER = { is_ai = no }
+					}
+					remove_ideas = LSM_neutrality_idea
+				}
+			}
 		}
 		ai_will_do = {
 			base = 200
 			modifier = {
-				factor = 0.1 
-				FROM = { SWI_country_about_to_be_angry = no }
-			} 
+				any_country = {
+					is_allied_ai = yes
+					is_ai = no 
+				}
+				GER = { surrender_progress < 0.1 }
+				factor = 0
+			}
 		}	
 	}
 
@@ -3487,11 +3710,14 @@ SWI_absolute_neutrality_decisions_category = {
 		target_trigger = {
 			FROM = {											
 				has_dynamic_modifier = { modifier = SWI_gold_trade_with_switzerland }
+				NOT = { is_in_faction_with = ROOT }
+				NOT = { ROOT = { is_subject_of = FROM } }
+				NOT = { is_subject_of = ROOT }
 				has_government = democratic
 			}
 		}
 
-		cost = 50 
+		cost = 5 
 
 		complete_effect = {
 			FROM = {
@@ -3825,10 +4051,6 @@ SWI_absolute_neutrality_decisions_category = {
 			has_completed_focus = SWI_fund_resistance_groups
 		}
 
-		target_root_trigger = {
-			has_completed_focus = SWI_fund_resistance_groups
-		}
-
 		cost = 50 
 
 		target_trigger = {
@@ -3953,7 +4175,7 @@ SWI_military_readiness_decisions_category = {
 		ai_will_do = {
 			base = 0 
 			modifier = { #PANIC! 
-				add = 100000
+				add = 300000
 				has_war = yes 
 			}
 		}
@@ -3989,11 +4211,7 @@ SWI_military_readiness_decisions_category = {
 			}
 		}
 		ai_will_do = {
-			base = 0 
-			modifier = {
-				add = 200 
-				check_variable = { SWI_citizen_militia_active_level > 4	}
-			}
+			base = 0
 			modifier = {
 				add = 5  
 				all_enemy_country = {
@@ -4001,7 +4219,7 @@ SWI_military_readiness_decisions_category = {
 				}
 			}
 			modifier = {
-				factor = 0.01
+				add = -50
 				surrender_progress > 0
 			}
 		}
@@ -4310,26 +4528,26 @@ SWI_military_readiness_decisions_category = {
 			}
 			modifier = {
 				factor = 0 
-				check_variable = { SWI_militia_template_level > 40 }
+				check_variable = { SWI_militia_template_level > 100 }
 			}
 		}
 
 		fire_only_once = no 
 		
-		days_remove = 90 
+		days_remove = 30 
 
 		custom_cost_trigger = {
 			check_variable = {
 				var = SWI_military_readiness 
-				value = SWI_mr_max_amount
+				value = SWI_mr_lowest_amount
 				compare = greater_than_or_equals
 			}
 		}
 
-		custom_cost_text = SWI_decision_cost_max_MR
+		custom_cost_text = SWI_decision_cost_lowest_MR
 
 		complete_effect = {
-			SWI_mr_max_reduction = yes 
+			SWI_mr_lowest_reduction = yes 
 		}
 
 		remove_effect = {
@@ -4435,7 +4653,7 @@ SWI_military_readiness_decisions_category = {
 			}
 		}
 
-		days_remove = 30
+		days_remove = 180
 
 		modifier = { 
 			consumer_goods_factor = -0.50
@@ -4473,7 +4691,7 @@ SWI_military_readiness_decisions_category = {
 		fire_only_once = no
 
 
-		days_remove = 45
+		days_remove = 180
 
 		custom_cost_trigger = {
 			check_variable = {
@@ -4490,9 +4708,9 @@ SWI_military_readiness_decisions_category = {
 		}
 
 		modifier = {
-			production_factory_efficiency_gain_factor = 0.05 
-			production_factory_max_efficiency_factor = 0.05
-			production_factory_start_efficiency_factor = 0.05
+			production_factory_efficiency_gain_factor = 0.1 
+			production_factory_max_efficiency_factor = 0.1
+			production_factory_start_efficiency_factor = 0.1
 			production_lack_of_resource_penalty_factor = -0.1
 		}
 		ai_will_do = {
@@ -4542,15 +4760,15 @@ SWI_military_readiness_decisions_category = {
 		custom_cost_trigger = {
 			check_variable = {
 				var = SWI_military_readiness 
-				value = SWI_mr_max_amount
+				value = SWI_mr_lowest_amount
 				compare = greater_than_or_equals
 			}
 		}
 
-		custom_cost_text = SWI_decision_cost_max_MR
+		custom_cost_text = SWI_decision_cost_lowest_MR
 
 		complete_effect = {
-			SWI_mr_max_reduction = yes 
+			SWI_mr_lowest_reduction = yes 
 		}
 
 		remove_effect = {
@@ -4720,8 +4938,9 @@ SWI_military_readiness_decisions_category = {
 				template_name = "Swiss Citizen Militia"
 				support = {
 					engineer = 0
-					recon = 0
-					logistics_company = 0
+					anti_tank = 0
+					artillery = 0
+					anti_air = 0
 				} 
 			}
 		}

@@ -192,7 +192,7 @@ characters = {
 			}
 		}
 		#country_leader = { #Gets his role through an event
-		#	ideology = marxism
+		#	ideology = socialism
 		#	traits = { GER_pragmatic_socialist }
 		#	expire = "1965.1.1.1"
 		#}
@@ -298,6 +298,15 @@ characters = {
 			ledger = army
 			allowed = {
 				original_tag = GER
+			}
+			available = {
+				hidden_trigger = {
+					OR = {
+						is_ai = no
+						NOT = { has_completed_focus = GER_instill_auftragstaktik }
+						date > 1939.1.1
+					}
+				}
 			}
 			traits = {
 				army_regrouping_2
@@ -512,11 +521,11 @@ characters = {
 		}
 		corps_commander = {
 			traits = {  }
-			skill = 2
+			skill = 1
 			attack_skill = 1
 			defense_skill = 1
-			planning_skill = 3
-			logistics_skill = 2
+			planning_skill = 1
+			logistics_skill = 1
 			legacy_id = 3
 		}
 	}
@@ -537,7 +546,10 @@ characters = {
 				original_tag = GER
 			}
 			available = {
-				has_completed_focus = GER_adopt_new_panzer_doctrine
+				OR = {
+					has_completed_focus = GER_military_dictatorship
+					has_completed_focus = GER_adopt_new_panzer_doctrine
+				}
 			}
 			traits = {
 				army_armored_3
@@ -1189,7 +1201,7 @@ characters = {
 		}
 	}
 
-	GER_alexander_von_falkenhausen = { #MM: Deal with the von Falkenhausen plague situation, there are 11 more von Falkenhausen impostors
+	GER_alexander_von_falkenhausen = { #TODO_Manu: Deal with the von Falkenhausen plague situation, there are 11 more von Falkenhausen impostors
 		name = CHI_alexander_von_falkenhausen
 		portraits = {
 			army = {
@@ -1582,13 +1594,24 @@ characters = {
 			allowed = {
 				original_tag = GER
 			}
+			available = {
+				hidden_trigger = {
+					OR = { 
+						is_ai = no
+						NOT = { has_completed_focus = GER_dive_bombers }
+					}
+				}
+			}
 			traits = {
 				close_air_support_proponent
+			}
+			ai_will_do = {
+				factor = 1.000
 			}
 		}
 	}
 
-	GER_walther_wever = { #MM: Died in June 1936, probably remove him
+	GER_walther_wever = { #TODO_Manu: Died in June 1936, probably remove him
 		name = GER_walther_wever
 		portraits = {
 			army = {
@@ -1627,6 +1650,9 @@ characters = {
 			}
 			traits = {
 				dive_bomber
+			}
+			ai_will_do = {
+				factor = 122.000
 			}
 		}
 	}
@@ -1674,12 +1700,28 @@ characters = {
 			allowed = {
 				original_tag = GER
 			}
+			available = {
+				hidden_trigger = {
+					OR = {
+						is_ai = no
+						NOT = { has_completed_focus = GER_instill_auftragstaktik }
+					}
+				}
+			}
+			on_remove = {
+				hidden_effect = {
+					if = {
+						limit = { GER = { is_ai = yes } }
+						GER = { add_political_power = 50 }
+					}
+				}
+			}
 			traits = {
 				army_chief_organizational_2
 			}
 			cost = 100
 			ai_will_do = {
-				factor = 8.000
+				factor = 28.000
 			}
 		}
 	}
@@ -1702,6 +1744,20 @@ characters = {
 			}
 			available = {
 				has_government = fascism
+				hidden_trigger = {
+					OR = {
+						is_ai = no
+						NOT = { has_completed_focus = GER_instill_auftragstaktik }
+					}
+				}
+			}
+			on_remove = {
+				hidden_effect = {
+					if = {
+						limit = { GER = { is_ai = yes } }
+						GER = { add_political_power = 50 }
+					}
+				}
 			}
 			traits = {
 				army_chief_drill_2
@@ -1734,7 +1790,7 @@ characters = {
 			}
 			cost = 100
 			ai_will_do = {
-				factor = 1.000
+				factor = 25.000
 			}
 		}
 	}
@@ -1754,6 +1810,21 @@ characters = {
 			}
 			available = {
 				has_completed_focus = GER_develop_modern_maneuver_warfare
+				has_government = fascism
+				hidden_trigger = {
+					OR = {
+						is_ai = no
+						NOT = { has_completed_focus = GER_instill_auftragstaktik }
+					}
+				}
+			}
+			on_remove = {
+				hidden_effect = {
+					if = {
+						limit = { GER = { is_ai = yes } }
+						GER = { add_political_power = 50 }
+					}
+				}
 			}
 			traits = {
 				army_chief_maneuver_2
@@ -1852,7 +1923,7 @@ characters = {
 				NOT = { has_completed_focus = GER_ascension_of_goring }
 			}
 			visible = {
-				always = no #MM: Part of Inner Circle.
+				always = no #TODO_Manu: Part of Inner Circle. REMOVE COMPLETELY IF NOT USED BY ALT-HIST
 				has_government = fascism
 				NOT = {
 					has_completed_focus = GER_oppose_hitler_ww
@@ -1908,6 +1979,11 @@ characters = {
 							rule = GER_ai_behavior
 							option = KAISER
 						}
+						has_country_flag = GER_AI_RANDOM_KAISERREICH
+						has_game_rule = {
+							rule = GER_ai_behavior
+							option = KAISERREICH
+						}
 						has_country_flag = GER_AI_RANDOM_DEMOCRATIC
 						has_game_rule = {
 							rule = GER_ai_behavior
@@ -1959,7 +2035,7 @@ characters = {
 				original_tag = GER
 			}
 			available = {
-				NOT = { has_government = fascism }
+				NOT = { has_government = fascism } #TODO_Manu: Maybe political focuses?
 				has_completed_focus = GER_reorganize_the_luftwaffe
 			}
 			traits = {
@@ -2312,7 +2388,7 @@ characters = {
 				GER_reich_minister_foreign_affairs_ribbentrop
 			}
 			ai_will_do = {
-				factor = 3
+				factor = 0
 			}
 		}
 	}
@@ -2570,14 +2646,14 @@ characters = {
 				}
 			}
 			visible = {
-				always = no #MM: Part of Inner Circle.
+				always = no #TODO_Manu: Part of Inner Circle. REMOVE COMPLETELY IF NOT USED BY ALT-HIST
 				has_government = fascism
 				NOT = {
 					has_completed_focus = GER_oppose_hitler_ww
 				}
 			}
 			traits = {
-				GER_first_among_equals
+				GER_first_among_equals #TODO_Manu: Maybe change trait
 			}
 		}
 	}
@@ -2610,7 +2686,7 @@ characters = {
 				NOT = { has_completed_focus = GER_ascension_of_himmler }
 			}
 			visible = {
-				always = no #MM: Part of Inner Circle.
+				always = no #TODO_Manu: Part of Inner Circle. REMOVE COMPLETELY IF NOT USED BY ALT-HIST
 				has_government = fascism
 				NOT = {
 					has_completed_focus = GER_oppose_hitler_ww
@@ -2620,7 +2696,7 @@ characters = {
 				custom_effect_tooltip = GER_SS_himmler_recruit
 			}
 			traits = {
-				prince_of_terror
+				prince_of_terror #TODO_Manu: Probably change trait
 			}
 		}
 	}
@@ -2652,7 +2728,7 @@ characters = {
 				}
 			}
 			visible = {
-				always = no #MM: Part of Inner Circle.
+				always = no #TODO_Manu: Part of Inner Circle. REMOVE COMPLETELY IF NOT USED BY ALT-HIST
 				has_government = fascism
 				NOT = {
 					has_completed_focus = GER_oppose_hitler_ww
@@ -3166,7 +3242,7 @@ characters = {
 					has_completed_focus = GER_reestablish_free_elections 
 				}
 				ELSE = {
-					has_completed_focus = GER_monarchist_sentiment
+					has_completed_focus = GER_re_establish_free_elections_ww
 				}
 			}
 			traits = {
@@ -3187,6 +3263,19 @@ characters = {
 			}
 		}
 		# Will work as a dynamic modifier for the Reichskommissariat system
+		#advisor = {
+		#	slot = political_advisor
+		#	idea_token = GER_alfred_rosenberg
+		#	allowed = {
+		#		original_tag = GER
+		#	}
+		#	available = {
+		#		has_government = fascism
+		#	}
+		#	traits = {
+		#		#TODO_Manu: New trait
+		#	}
+		#}		
 	}
 
 	GER_hans_luther = {
@@ -3212,9 +3301,10 @@ characters = {
 			}
 			available = {
 				NOT = { has_government = fascism }
+				#NOT = { has_government = communism } # TODO_Manu: Also not available to commies?
 			}
 			traits = {
-				GER_former_reichsbank_president
+				GER_former_reichsbank_president 
 			}
 			ai_will_do = {
 				base = 2
@@ -3605,7 +3695,7 @@ characters = {
 			idea_token = GER_wilhelm_zaisser
 			allowed = {
 				original_tag = GER
-				has_dlc = "Gotterdammerung"
+				has_dlc = "Gotterdammerung" 
 				has_dlc = "La Resistance"
 			}
 			visible = {
@@ -4057,7 +4147,7 @@ characters = {
 				small = GFX_idea_von_braun
 			}
 		}
-		#advisor = { #MM: Old Theorist role -> Now Scientist
+		#advisor = { #TODO_Manu: Old Trait -> Remove
 		#	cost = 100
 		#	slot = theorist
 		#	idea_token = von_braun

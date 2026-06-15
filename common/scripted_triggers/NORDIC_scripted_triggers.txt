@@ -206,7 +206,10 @@ NORDIC_basic_joint_trigger = {
 			AND = {
 				has_variable = global.NORDIC_alliance_leader
 				NORDIC_is_nordic = yes
-				is_subject = no  
+				OR = {
+					is_subject = no  
+					is_historical_focus_on = yes
+				}
 				is_in_faction_with = var:global.NORDIC_alliance_leader 
 			}	
 		}
@@ -215,7 +218,10 @@ NORDIC_basic_joint_trigger = {
 }
 
 NORDIC_basic_available_trigger = {
-	is_subject = no 
+	OR = {
+		is_subject = no  
+		is_historical_focus_on = yes
+	}
 	NORDIC_basic_joint_trigger = yes	
 	any_allied_country = {
 		NORDIC_basic_joint_trigger = yes

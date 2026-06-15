@@ -558,7 +558,7 @@ characters={
 				
 				cost = 100
 				ai_will_do = {
-					base = 1.000
+					base = 25.000
 				}
 			}
 		}
@@ -1265,6 +1265,9 @@ characters={
 				traits  = {
 					BEL_arms_designer 
 				}
+				ai_will_do = {
+					factor = 10
+				}
 			}
 			name = BEL_dieudonne_salve
 			portraits = {
@@ -1371,6 +1374,13 @@ characters={
 				traits  = {
 					BEL_minister_of_national_defence_deveze 
 				}
+				ai_will_do = {
+					factor = 10
+					modifier = {
+						is_historical_focus_on = no 
+						factor = 0.1
+					}
+				}
 			}
 			advisor={
 				slot = high_command
@@ -1428,7 +1438,7 @@ characters={
 				}
 				cost = 100
 				ai_will_do = {
-					factor = 1.000
+					factor = 2.000
 				}
 			}
 			name = BEL_edouard_van_den_burgen
@@ -1453,6 +1463,9 @@ characters={
 				}	
 				traits  = {
 					financial_expert 
+				}
+				ai_will_do = {
+					base = 10.000
 				}
 			}
 			name = BEL_camille_gutt

@@ -866,7 +866,7 @@ SOV_check_for_a_new_purge_effect = { #Useless now. Leaving it just in case
 SOV_manage_a_regular_purge_effect = { # Phase 2: Set the Area to be purged (admin, army, navy, airforce), then set the actual targets (people), then trigger event (Phase 3)
 	# Randomly choose an area to purge
 	random_list = {
-		25 = { # ADMINISTRATION
+		15 = { # ADMINISTRATION
 			modifier = { #Don't repeat last purge please
 				factor = 0.1
 				check_variable = { SOV_last_regular_purge_area = 1 }
@@ -877,6 +877,10 @@ SOV_manage_a_regular_purge_effect = { # Phase 2: Set the Area to be purged (admi
 					is_character_slot = political_advisor
 					has_character_flag = SOV_potential_target_flag
 				}
+			}
+			modifier = { 
+				factor = 20
+				has_global_flag = SOV_has_early_war
 			}
 			modifier = { #Yagoda is in the NKVD -> He shall be purged
 				factor = 1.5
@@ -899,6 +903,10 @@ SOV_manage_a_regular_purge_effect = { # Phase 2: Set the Area to be purged (admi
 			modifier = { #Don't repeat last purge please
 				factor = 0.1
 				check_variable = { SOV_last_regular_purge_area = 2 }
+			}
+			modifier = { 
+				factor = 20
+				has_war = yes
 			}
 			modifier = { #Someone is a potential target
 				factor = 2
@@ -923,10 +931,14 @@ SOV_manage_a_regular_purge_effect = { # Phase 2: Set the Area to be purged (admi
 			}
 			SOV_pick_regular_purge_army_type_effect = yes
 		}
-		25 = { # NAVY
+		30 = { # NAVY
 			modifier = { #Don't repeat last purge please
 				factor = 0.1
 				check_variable = { SOV_last_regular_purge_area = 3 }
+			}
+			modifier = { 
+				factor = 0.5
+				has_global_flag = SOV_has_early_war
 			}
 			modifier = { #Someone is a potential target
 				factor = 2
@@ -947,10 +959,14 @@ SOV_manage_a_regular_purge_effect = { # Phase 2: Set the Area to be purged (admi
 			}
 			SOV_pick_regular_purge_navy_type_effect = yes
 		}
-		25 = { # AIRFORCE
+		30 = { # AIRFORCE
 			modifier = { #Don't repeat last purge please
 				factor = 0.1
 				check_variable = { SOV_last_regular_purge_area = 4 }
+			}
+			modifier = { 
+				factor = 0.5
+				has_global_flag = SOV_has_early_war
 			}
 			modifier = { #Someone is a potential targets
 				factor = 2
@@ -973,7 +989,7 @@ SOV_manage_a_regular_purge_effect = { # Phase 2: Set the Area to be purged (admi
 SOV_manage_a_great_purge_effect = {
 	# Randomly choose an area to purge
 	random_list = {
-		25 = { # ADMINISTRATION
+		15 = { # ADMINISTRATION
 			modifier = { #Don't repeat last purge please
 				factor = 0
 				check_variable = { SOV_last_great_purge_area = 1 }
@@ -1001,9 +1017,9 @@ SOV_manage_a_great_purge_effect = {
 			}
 			SOV_pick_great_purge_administration_type_effect = yes
 		}
-		25 = { # ARMY
-			modifier = { #Don't repeat last purge please
-				factor = 0
+		60 = { # ARMY
+			modifier = {
+				factor = 0.2 #lmao, keep them dying please
 				check_variable = { SOV_last_great_purge_area = 2 }
 			}
 			modifier = { #Someone is a potential target
@@ -1032,7 +1048,7 @@ SOV_manage_a_great_purge_effect = {
 			}
 			SOV_pick_great_purge_army_type_effect = yes
 		}
-		25 = { # NAVY
+		5 = { # NAVY
 			modifier = { #Don't repeat last purge please
 				factor = 0
 				check_variable = { SOV_last_great_purge_area = 3 }
@@ -1059,7 +1075,7 @@ SOV_manage_a_great_purge_effect = {
 			}
 			SOV_pick_great_purge_navy_type_effect = yes
 		}
-		25 = { # AIRFORCE
+		20 = { # AIRFORCE
 			modifier = { #Don't repeat last purge please
 				factor = 0
 				check_variable = { SOV_last_great_purge_area = 4 }
@@ -1137,6 +1153,10 @@ SOV_pick_regular_purge_administration_type_effect = {
 					has_character_flag = SOV_potential_target_flag
 				}
 			}
+			modifier = {
+				factor = 0.5
+				has_war = yes
+			}
 			SOV_trigger_regular_purge_advisor_accused_effect = yes
 			add_to_temp_variable = { SOV_random_purge_test = 1 } #TEST
 		}
@@ -1145,6 +1165,10 @@ SOV_pick_regular_purge_administration_type_effect = {
 				factor = 0
 				has_idea = SOV_understaffed_bureaucracy
 			}
+			modifier = {
+				factor = 20
+				has_global_flag = SOV_has_early_war
+			}
 			SOV_trigger_regular_purge_civil_servants_purged_effect = yes
 			add_to_temp_variable = { SOV_random_purge_test = 1 } #TEST
 		}
@@ -1152,6 +1176,10 @@ SOV_pick_regular_purge_administration_type_effect = {
 			modifier = { #Beriya is huevo pocho
 				factor = 0
 				has_idea = SOV_lavrenty_beriya
+			}
+			modifier = {
+				factor = 20
+				has_global_flag = SOV_has_early_war
 			}
 			modifier = { #Yagoda is in the NKVD -> He shall be purged
 				factor = 3
@@ -1216,6 +1244,10 @@ SOV_pick_regular_purge_army_type_effect = {
 					has_character_flag = SOV_potential_target_flag
 				}
 			}
+			modifier = { #Someone is a potential target
+				factor = 20
+				has_war = yes
+			}
 			SOV_regular_purge_general_accused_effect = yes
 			add_to_temp_variable = { SOV_random_purge_test = 1 } #TEST
 		}
@@ -1238,7 +1270,7 @@ SOV_pick_regular_purge_army_type_effect = {
 		25 = { # GENERAL ACCUSES GENERAL
 			modifier = { #No pastia no comiercio
 				factor = 0
-				NOT = {
+				NOT = { #TODO_MANU: Need to check for 2 guys fulfilling these conditions here
 					any_army_leader = {
 						SOV_character_can_be_purged = yes
 						NOT = { has_trait = trait_SOV_stalinist }
@@ -8480,9 +8512,19 @@ SOV_exiles_civil_war_start = {
 	# Modify Stability
 	add_stability = -0.15
 	set_cosmetic_tag = SOV_PROVISIONAL
+	IF = {
+		limit = {
+			democratic > 0.25
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.15
+		}
+	}
 
 	### Set up special units
 	# From The Eyes Fear Fokus
+
 	IF = {
 		limit = {
 			has_country_flag = Sov_the_eyes_fear_flag
@@ -8492,6 +8534,10 @@ SOV_exiles_civil_war_start = {
 			hours = 24
 			random_hours = 24
 		}
+	}
+
+	hidden_effect = {
+		set_technology = { blackshirt_assault_battalion_tech = 1 }
 	}
 
 	# From Fascist Youth Focus
@@ -8730,7 +8776,6 @@ SOV_exiles_civil_war_start = {
 	# Initiate Wreckers
 	SOV_launch_wreckers = yes
 
-	# Vasily Flug and Boris Shtefion
 	IF = {
 		limit = {
 			NOT = {
@@ -8853,6 +8898,7 @@ SOV_exiles_civil_war_start = {
 	}
 	
 }
+
 
 SOV_launch_wreckers = {
 	IF = {
@@ -9612,9 +9658,8 @@ SOV_set_up_dynamic_modifiers_civil_war = { #Used for Stalinist side in the CW
 	# Copy Red Army Dynamic Modifier
 	set_variable = { SOS.SOV_the_red_army_mobilization_laws_cost_factor = SOV.SOV_the_red_army_mobilization_laws_cost_factor }
 	set_variable = { SOS.SOV_the_red_army_army_org_factor = SOV.SOV_the_red_army_army_org_factor }
+	set_variable = { SOS.SOV_the_red_army_experience_gain_army_factor = SOV.SOV_the_red_army_experience_gain_army_factor }
 	set_variable = { SOS.SOV_the_red_army_experience_loss_factor = SOV.SOV_the_red_army_experience_loss_factor }
-	set_variable = { SOS.SOV_the_red_army_mastery_loss_factor = SOV.SOV_the_red_army_mastery_loss_factor }
-	set_variable = { SOS.SOV_the_red_army_mastery_loss_factor_inverted = SOV.SOV_the_red_army_mastery_loss_factor_inverted }
 	set_variable = { SOS.SOV_the_red_army_mobilization_speed = SOV.SOV_the_red_army_mobilization_speed }
 	set_variable = { SOS.SOV_the_red_army_conscription_factor = SOV.SOV_the_red_army_conscription_factor }
 	set_variable = { SOS.SOV_the_red_army_modifier_army_sub_unit_cavalry_speed_factor = SOV.SOV_the_red_army_modifier_army_sub_unit_cavalry_speed_factor }

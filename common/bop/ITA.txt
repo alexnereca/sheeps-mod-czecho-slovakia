@@ -51,18 +51,6 @@ ITA_power_balance = {
 			}
 			on_activate = {
 				custom_effect_tooltip = ITA_bop_cap_for_colonies_impact_tt
-				hidden_effect = {
-					IF = {
-						limit = {
-							OR = {
-								has_completed_focus = ITA_culto_del_duce
-								has_completed_focus = ITA_dino_grandi_focus
-								has_completed_focus = ITA_italo_balbo_focus
-							}
-						}
-						country_event = BBA_italy_council_deposes_duce.2
-					}
-				}
 			}
 			on_deactivate = {
 				
@@ -88,7 +76,12 @@ ITA_power_balance = {
 								ruling_only = yes
 							}
 						}
+						is_historical_focus_on = yes
 						NOT = { has_completed_focus = ITA_crush_opposition }
+						NOT = { has_completed_focus = ITA_capo_supremo }
+						NOT = { has_completed_focus = ITA_proclaim_the_italian_empire }
+						NOT = { has_completed_focus = ITA_proclaim_the_italian_empire_a }
+						NOT = { has_completed_focus = ITA_proclaim_the_italian_empire_b }
 					}
 					hidden_effect = {
 						country_event = BBA_italy_council_deposes_duce.1
@@ -112,7 +105,12 @@ ITA_power_balance = {
 			on_activate = {
 				if = {
 					limit = {
+						is_historical_focus_on = yes
 						NOT = { has_completed_focus = ITA_crush_opposition }
+						NOT = { has_completed_focus = ITA_capo_supremo }
+						NOT = { has_completed_focus = ITA_proclaim_the_italian_empire }
+						NOT = { has_completed_focus = ITA_proclaim_the_italian_empire_a }
+						NOT = { has_completed_focus = ITA_proclaim_the_italian_empire_b }
 					}
 					hidden_effect = {
 						country_event = BBA_italy_civil_war.1

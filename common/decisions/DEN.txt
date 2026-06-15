@@ -401,9 +401,20 @@ DEN_balance_of_power_category = {
 		complete_effect = {
 			if = {
 				limit = {
+					check_variable = { ROOT.party_popularity@ruling_party < 0.3 }
+				}
+				add_stability = -0.1
+			}
+			else_if = {
+				limit = {
 					check_variable = { ROOT.party_popularity@ruling_party < 0.6 }
 				}
-				 add_stability = -0.1
+			}
+			else_if = {
+				limit = {
+					check_variable = { ROOT.party_popularity@ruling_party > 0.6 }
+				}
+				add_stability = 0.1
 			}
 			
 			if = {
@@ -456,6 +467,11 @@ DEN_balance_of_power_category = {
 				has_political_power > 200
 				has_war = no
 			}
+			modifier = {
+				add = 2000
+				DEN_communist_ai = yes
+				has_government = democratic
+			}
 		}
 
 		allowed = {
@@ -506,6 +522,11 @@ DEN_balance_of_power_category = {
 				DEN_christmas_moller = { is_country_leader = no }
 				has_political_power > 200
 				has_war = no
+			}
+			modifier = {
+				add = 2000
+				DEN_communist_ai = yes
+				has_government = democratic
 			}
 		}
 
@@ -3853,6 +3874,11 @@ DEN_overlord_category = {
 				factor = 2
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				DEN = { is_ai = yes }
+			}
 		}
 
 		available = {
@@ -3938,7 +3964,7 @@ DEN_overlord_category = {
 		icon = GFX_decision_oppression
 
 		ai_will_do = {
-			base = 5
+			base = 10
 			modifier = {
 				factor = 2
 				ROOT = {
@@ -3973,6 +3999,11 @@ DEN_overlord_category = {
 				DEN = {
 					has_country_flag = DEN_telegram_crisis_flag
 				}
+			}
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				date < 1941.6.1
 			}
 		}
 
@@ -4016,7 +4047,7 @@ DEN_overlord_category = {
 		icon = GFX_decision_eng_trade_unions_demand
 
 		ai_will_do = {
-			base = 10
+			base = 25
 			modifier = {
 				factor = 2
 				ROOT = {
@@ -4045,6 +4076,11 @@ DEN_overlord_category = {
 				    target = DEN
 				    value < -20
 				}
+			}
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				date < 1941.1.1
 			}
 		}
 
@@ -4104,6 +4140,11 @@ DEN_overlord_category = {
 			}
 			modifier = {
 				add = 25
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 0	
+				date < 1941.1.1
 				is_historical_focus_on = yes
 			}
 		}
@@ -4169,6 +4210,11 @@ DEN_overlord_category = {
 
 		ai_will_do = { 
 			base = 100
+			modifier = {
+				factor = 0
+				date < 1941.1.1
+				is_historical_focus_on = yes
+			}
 		}
 
 		available = {
@@ -4250,13 +4296,18 @@ DEN_overlord_category = {
 		icon = GFX_decision_generic_prepare_civil_war
 
 		ai_will_do = { 
-			base = 10
+			base = 25
 			modifier = {
 				factor = 2
 				has_opinion = {
 				    target = DEN
 				    value < 0
 				}
+			}
+			modifier = {
+				factor = 0
+				has_equipment = { infantry_equipment > 40000 }	
+				DEN = { is_ai = yes }
 			}
 		}
 
@@ -4312,13 +4363,18 @@ DEN_overlord_category = {
 		icon = GFX_decision_generic_military
 
 		ai_will_do = { 
-			base = 10
+			base = 25
 			modifier = {
 				factor = 2
 				has_opinion = {
 				    target = DEN
 				    value < 0
 				}
+			}
+			modifier = {
+				factor = 0
+				date < 1941.1.1
+				is_historical_focus_on = yes
 			}
 		}
 
@@ -4459,9 +4515,9 @@ DEN_trade_deal_category = {
 		icon = GFX_decision_eng_trade_unions_support
 
 		ai_will_do = { 
-			base = 0
-			modifier = { #only do this if DEN is the player
-				add = 10
+			base = 5
+			modifier = {
+				add = 5
 				has_opinion = {
 					target = DEN
 					value > 25
@@ -4510,8 +4566,9 @@ DEN_trade_deal_category = {
 			base = 0
 			modifier = {
 				add = 25
-				DEN = {
-					has_added_tension_amount > 24
+				has_opinion = {
+					target = DEN
+					value < -50
 				}
 			}
 		}
@@ -4568,8 +4625,16 @@ DEN_trade_deal_category = {
 			base = 0
 			modifier = {
 				add = 25
-				FROM = {
-					has_added_tension_amount > 24
+				has_opinion = {
+					target = FROM
+					value < -50
+				}
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value < -75
 				}
 			}
 		}
@@ -5708,8 +5773,7 @@ DEN_military_category = {
 			state = 912
 			state = 910
 			state = 337
-			state = 100		#Iceland - If reintegrated
-			#state = 101	#Greenland - Commented out because it has an impassible tile, and the raised units have more men then the entirely of Greenland
+			state = 100
 		}
 
 		target_trigger = {
@@ -7743,7 +7807,7 @@ DEN_return_occupied_territory_category = {
 		ai_will_do = {
 			base = 10
 			modifier = {
-				factor = 1.5
+				factor = 2
 				DEN = { #Denmark controls mainland Denmark
   					controls_state = 37
 					controls_state = 99
@@ -7822,7 +7886,7 @@ DEN_return_occupied_territory_category = {
 		ai_will_do = {
 			base = 10
 			modifier = {
-				factor = 1.5
+				factor = 2
 				DEN = { #Denmark controls mainland Denmark
   					controls_state = 37
 					controls_state = 99

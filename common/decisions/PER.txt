@@ -9,37 +9,67 @@ PER_profit_from_war_category = {
 		ai_will_do = {
 			base = 25
 			modifier = {
-				factor = 2
+				factor = 0
+				has_global_flag = mp_difficulty
+			}
+			modifier = {
+				factor = 0
+				FROM = { is_ai = no }
+				difficulty > 0
+			}
+			modifier = {
+				add = 5000
+				FROM = { is_ai = no }
+				difficulty < 1
+			}
+			modifier = {
+				add = 5000
+				FROM = { is_ai = no } #if a player has befriended iran, always prioritized the player
 				has_opinion = {
 					target = FROM
-					value > 25
+					value > 89
 				}
 			}
 			modifier = {
-				factor = 2
-				has_opinion = {
-					target = FROM
-					value > 50
-				}
-			}
-			modifier = {
-				factor = 0.5
-				has_opinion = {
-					target = FROM
-					value < 0
-				}
-			}
-			modifier = {
-				factor = 2
-				FROM = {
-					is_major = yes
-				}
-			}
-			modifier = {
-				factor = 5
-				strength_ratio = {
-					tag = FROM 
-					ratio < 1
+				add = 500
+				OR = {
+					AND = {
+						FROM = {
+							tag = ENG
+							is_ai = yes
+						}
+						any_country = {
+							is_axis_ai = yes
+							is_ai = no	
+						}
+					}
+					AND = {
+						FROM = {
+							tag = GER
+							is_ai = yes
+						}
+						any_country = {
+							is_allied_ai = yes
+							is_ai = no	
+						}
+					}
+					AND = {
+						FROM = {
+							tag = ENG
+						}
+						NOT = {
+							any_country = {
+								is_axis_ai = yes
+								is_ai = no	
+							}
+						}
+						NOT = {
+							any_country = {
+								is_allied_ai = yes
+								is_ai = no	
+							}
+						}
+					}
 				}
 			}
 		}
@@ -59,6 +89,7 @@ PER_profit_from_war_category = {
 		visible = {	
 			has_completed_focus = PER_profit_from_war
 			NOT = { has_country_flag = PER_sold_oil_flag }
+			NOT = { has_global_flag = LSM_oil_trade_banned }
 		}
 
 		targets = { GER ENG SOV FRA USA JAP }
@@ -88,8 +119,12 @@ PER_profit_from_war_category = {
 						receiver = FROM
 						state = 413
 					}
+					give_resource_rights = {
+						receiver = FROM
+						state = 412
+					}
 				}
-				add_offsite_building = { type = industrial_complex  level = 3 }
+				add_offsite_building = { type = industrial_complex  level = 15 }
 			}
 			custom_effect_tooltip = PER_resource_rights_on_war_tt
 			hidden_effect = {
@@ -248,12 +283,12 @@ PER_memphis_initiative_category = {
 		state_target = any_controlled_state
 		target_trigger = {
 			FROM = {
-				impassable = no	
+				impassable = no
 				AND = {
 					OR = {
 						is_on_continent = middle_east
 						is_core_of = EGY
-						state = 444 #This one is in Asia for some reason, likely cannot be addressed without breaking save games
+						state = 444
 					}
 					NOT = { 
 						is_core_of = ROOT 
@@ -583,7 +618,6 @@ PER_mass_protests = {
 	           	NOT = {
 	           		OR = {
 	           			has_state_flag = PER_established_cell_here
-	           			has_state_flag = PER_state_supports_communists
 	           			has_dynamic_modifier = { modifier = PER_opposition_cell }
 	           			is_capital = yes
 	           		}
@@ -975,18 +1009,31 @@ PER_gulf_decisions_cat = {
 				remove_dynamic_modifier = {
 					modifier = KUR_resistance_modifier
 				}
-				custom_effect_tooltip = generic_skip_one_line_tt
 				OWNER = {
 					create_dynamic_country = {
 						original_tag = KUR
 						676 = {
-							transfer_state_to = KUR
+							transfer_state_to = PREV
 						}
-						IRQ = { #this needs to be specified or the tooltip will look strange
+						set_popularities = {
+							democratic = ROOT.party_popularity_100@democratic
+							neutrality = ROOT.party_popularity_100@neutrality
+							fascism = ROOT.party_popularity_100@fascism
+							communism = ROOT.party_popularity_100@communism
+						}
+						set_politics = {
+							ruling_party = var:ROOT.current_party_ideology_group
+						}
+						KUR = { #this needs to be specified or the tooltip will look strange
 							declare_war_on = { 
-								target = KUR
-								type = take_core_state
+								target = PREV.PREV
+								type = independence_wargoal
 							}
+						}
+						add_equipment_to_stockpile = {
+							type = infantry_equipment
+							amount = 2000
+							producer = PER
 						}
 						add_opinion_modifier = {
 							target = ROOT
@@ -1002,40 +1049,24 @@ PER_gulf_decisions_cat = {
 							id = ROOT
 							value = 1000
 						}
-						hidden_effect = {
-							add_equipment_to_stockpile = {
-								type = infantry_equipment
-								amount = 2000
-								producer = PER
+						division_template = {
+							name = "Kurdish Militia"		
+							is_locked = no
+							force_allow_recruiting = yes
+							# Note: Represents both regular infantry and militia units
+							regiments = {
+								militia = { x = 0 y = 0 }
+								militia = { x = 0 y = 1 }
+								militia = { x = 1 y = 0 }
+								militia = { x = 1 y = 1 }
 							}
-							division_template = {
-								name = "Kurdish Militia"		
-								is_locked = no
-								force_allow_recruiting = yes
-								# Note: Represents both regular infantry and militia units
-								regiments = {
-									militia = { x = 0 y = 0 }
-									militia = { x = 0 y = 1 }
-									militia = { x = 1 y = 0 }
-									militia = { x = 1 y = 1 }
-								}
-								#division_cap = 4
-							}
-							capital_scope = {
-								create_unit = {
-									division = "name = \"Kurdish Militia\" division_template = \"Kurdish Militia\" start_experience_factor = 0.02 start_equipment_factor = 0.75"
-									owner = PREV
-									count = 5
-								}
-							}
-							set_popularities = {
-								democratic = ROOT.party_popularity_100@democratic
-								neutrality = ROOT.party_popularity_100@neutrality
-								fascism = ROOT.party_popularity_100@fascism
-								communism = ROOT.party_popularity_100@communism
-							}
-							set_politics = {
-								ruling_party = var:ROOT.current_party_ideology_group
+							#division_cap = 4
+						}
+						capital_scope = {
+							create_unit = {
+								division = "name = \"Kurdish Militia\" division_template = \"Kurdish Militia\" start_experience_factor = 0.02 start_equipment_factor = 0.75"
+								owner = PREV
+								count = 5
 							}
 						}
 					}
@@ -1195,18 +1226,18 @@ PER_anti_gulf_decisions_cat = {
 	        	has_dynamic_modifier = { modifier = KUR_resistance_modifier }
 	        }
 	    }
-	    on_map_mode = map_and_decisions_view 
+	    on_map_mode = map_and_decisions_view  
 		custom_cost_trigger = {
 			command_power > 49.9
 		}
 		custom_cost_text = decision_cost_CP_50
 		
 		fire_only_once = yes
-		days_remove = 35
+		days_remove = 14
 
-		modifier = {
-			weekly_manpower = -100
-		}
+			  
+						 
+   
 
 		complete_effect = {
 			hidden_effect = {
@@ -1257,6 +1288,11 @@ PER_anti_gulf_decisions_cat = {
 				}
 			}
 		}
+
+		ai_will_do = {
+			base = 9999
+		}
+
 	}
 }
 
@@ -1281,17 +1317,7 @@ PER_plant_resistance_cat = {
 	        FROM = {
 	        	OWNER = {
 	        		NOT = {
-        				original_tag = ROOT
-        				original_tag = KUR
-	        		}
-	        	}
-	        }
-	    }
-	    cancel_trigger = {
-	        FROM = {
-	        	OWNER = {
-	        		OR = {
-        				original_tag = ROOT
+        				tag = ROOT
         				original_tag = KUR
 	        		}
 	        	}
@@ -1308,9 +1334,6 @@ PER_plant_resistance_cat = {
 
 		complete_effect = {
 			hidden_effect = { add_command_power = -25 }
-		}
-
-		remove_effect = {
 			FROM = {
 				add_dynamic_modifier = {
 					modifier = PER_resistance_modifier
@@ -1325,6 +1348,8 @@ PER_plant_resistance_cat = {
 			}
 		}
 
+		remove_effect = {
+		}
 	}
 }
 
@@ -1390,7 +1415,6 @@ PER_kur_azr_independence_cat = {
 					}
 				}
 				custom_effect_tooltip = PER_kur_indy_war_tt
-				custom_effect_tooltip = generic_skip_one_line_tt
 			}
 			IF = {
 				limit = {
@@ -1399,7 +1423,6 @@ PER_kur_azr_independence_cat = {
 					}
 				}
 				custom_effect_tooltip = PER_azr_indy_war_tt
-				custom_effect_tooltip = generic_skip_one_line_tt
 			}
 			hidden_effect = {
 				remove_ideas = PER_azerbaijan_resistance_idea

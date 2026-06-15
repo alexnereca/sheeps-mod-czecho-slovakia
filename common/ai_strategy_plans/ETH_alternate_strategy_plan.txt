@@ -1,4 +1,159 @@
-# By Blood Alone
+
+HOA_focus_plan_puppet_ETH = {
+	name = "Horn of Africa puppet focus plan"
+	desc = ""
+
+	allowed = {
+		OR = {
+			original_tag = ORO	
+			original_tag = SID
+			original_tag = HAR
+			original_tag = GBA
+			original_tag = BEG
+			original_tag = QEM
+			original_tag = TIG
+			original_tag = AFA
+		}
+	}
+	enable = {
+		is_subject = yes
+		is_subject_of = ETH
+		has_DLC = "By Blood Alone"
+	}
+	abort = {
+		is_subject = no
+	}
+
+	ai_national_focuses = {
+		HOA_develop_capitalstate
+		HOA_pave_the_roads
+		HOA_the_state_bank_of_name
+		HOA_the_adjective_industrial_fund
+		HOA_the_steam_locomotive
+		HOA_exploit_national_resources
+		HOA_the_adjective_armed_forces
+		HOA_warrior_tradition
+		HOA_strengthen_the_irregulars
+		HOA_names_finest
+		HOA_utilize_our_strengths
+		HOA_encourage_local_arms_production
+		HOA_the_roars_of_thunder
+		HOA_warfare_from_afar
+
+		HOA_promote_local_crafts
+		HOA_use_the_natural_harbors
+		HOA_the_capital_city_airport
+		HOA_improved_irrigation_systems
+		HOA_state-funded_projects
+		HOA_the_grand_university_of_capital
+		HOA_the_first_album
+		HOA_a_loyal_subject
+		HOA_invite_foreign_settlers
+		HOA_the_capital_railroad
+		HOA_improving_the_educational_system
+		HOA_foreign_investors
+		HOA_research_exchange_programmes
+		HOA_foreign_trained_officials
+		HOA_the_capital_school_of_technology
+	}
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+}
+
+HOA_focus_plan_puppet_others = {
+	name = "Horn of Africa puppet focus plan"
+	desc = ""
+
+	allowed = {
+		OR = {
+			original_tag = ORO	
+			original_tag = SID
+			original_tag = HAR
+			original_tag = GBA
+			original_tag = BEG
+			original_tag = QEM
+			original_tag = TIG
+			original_tag = AFA
+		}
+	}
+	enable = {
+		is_subject = yes
+		NOT = { is_subject_of = ETH }
+		has_DLC = "By Blood Alone"
+	}
+	abort = {
+		is_subject = no
+	}
+
+	ai_national_focuses = {
+		HOA_the_first_album
+		HOA_a_loyal_subject
+		HOA_invite_foreign_settlers
+		HOA_the_capital_railroad
+		HOA_improving_the_educational_system
+		HOA_foreign_investors
+		HOA_research_exchange_programmes
+		HOA_countryadjective_loyalist_advisors
+		HOA_promote_countryadjective_nationalism
+	}
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+}
+HOA_focus_plan_independent = {
+	name = "Horn of Africa puppet focus plan"
+	desc = ""
+
+	allowed = {
+		OR = {
+			original_tag = ORO	
+			original_tag = SID
+			original_tag = HAR
+			original_tag = GBA
+			original_tag = BEG
+			original_tag = QEM
+			original_tag = TIG
+			original_tag = AFA
+		}
+	}
+	enable = {
+		is_subject = no
+		has_DLC = "By Blood Alone"
+	}
+	abort = {
+		is_subject = yes
+	}
+
+	ai_national_focuses = {
+		HOA_the_adjective_armed_forces
+		HOA_warrior_tradition
+		HOA_strengthen_the_irregulars
+		HOA_names_finest
+		HOA_utilize_our_strengths
+		HOA_encourage_local_arms_production
+		HOA_the_roars_of_thunder
+		HOA_warfare_from_afar
+		HOA_the_first_album
+		HOA_political_stability
+	}
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+	focus_factors = {
+		HOA_countryleader = 0.0
+	}
+}
 ETH_BBA_alternative_imperialist_plan = {
 	name = "ETH imperialist plan"
 	desc = ""
@@ -21,32 +176,72 @@ ETH_BBA_alternative_imperialist_plan = {
 	}
 
 	ai_national_focuses = {
-		# Always try to do these as soon as it is available
-		ETH_fait_accompli
+		ETH_the_second_italo-ethiopian_war
+		ETH_renewed_offensive
+		ETH_northern_thrust
+		ETH_mercenaries
+		ETH_the_lessons_of_war
+
+		ETH_rally_around_the_emperor
+		ETH_the_emperor_stays
+		ETH_the_lion_stands_firm
+		ETH_the_heroes_of_ethiopia
+		ETH_volunteers
+		ETH_fait_accompli			
+		ETH_develop_the_capital_region
+		ETH_encourage_local_development
+	
+		ETH_rebuilding_the_country
+		ETH_reintegrate_aussa
+		ETH_unite_the_afar
+		ETH_empower_the_ras
+
+
+		ETH_infrastructure_projects
+		ETH_a_port_of_our_own
+		ETH_ethiopian_shipbuilding
+		ETH_a_federal_empire
+		ETH_develop_the_horn_of_africa
+		
+		ETH_the_state_bank_of_ethiopia
+		ETH_taxing_the_nobility
+		ETH_reform_the_currency
+		ETH_the_state_court
+	
+
+		ETH_increased_factory_output
+		ETH_bomb_proofing
+		ETH_invest_in_the_north
+		ETH_invest_in_the_west
+		ETH_invest_in_the_east
+		ETH_modernizing_the_industry
+		ETH_ethiopian_industrial_research_institute
+		ETH_invite_foreign_prospectors
+		
 		ETH_the_king_of_kings
+		ETH_lord_of_lords	
+		ETH_elect_of_god
 
-		# 1936
-		ETH_rally_around_the_emperor # 35
-		ETH_the_second_italo-ethiopian_war # 35
-		ETH_the_emperor_stays # 35
-		ETH_the_lion_stands_firm # 70 
-		ETH_ecole_militaire_haile_selassie_1er # 35
-		ETH_renewed_offensive # 35
+		ETH_ecole_militaire_haile_selassie_1er
+		ETH_university_of_capital
+		ETH_improve_the_administration
+		ETH_capital_school_of_technology
+		
+		ETH_expand_the_mehal_sefari
+		ETH_tactical_training
+		ETH_camouflage
+		ETH_the_junior_officer_corps
+		ETH_old_reliable
+		ETH_the_common_soldier
 
-		#1937
-		
-		#1938
-		
-		#1939
-		
-		#1940
-		
-		#1941
-		
-		#1942
-				
-		#1943
-		
+		ETH_keep_the_chitet
+		ETH_regional_training_centers
+		ETH_mounted_levies
+		ETH_expand_the_levy
+		ETH_expand_the_kebur_zabagna
+		ETH_regional_supply_depots
+		ETH_promote_the_war_heroes
+		ETH_pan-africanism
 	}
 
 	research = {
@@ -69,6 +264,9 @@ ETH_BBA_alternative_imperialist_plan = {
 		modifier = {
 			factor = 1.0
 		}
+	}
+
+	focus_factors = {
 	}
 
 }
@@ -95,53 +293,64 @@ ETH_stalinist_plan = {
 		
 	}
 	ai_national_focuses = {
-		#AI should prio getting to Soviet Aid and Soviet Mediation. If nothing available, then do Italo-Ethiopian war focuses
-
-		#1936
-		
 		ETH_military_communism
-		ETH_the_second_italo-ethiopian_war
-		ETH_anti_imperialist_agitation
-		ETH_in_the_name_of_the_people		
+		ETH_defending_our_homes
+		ETH_in_the_name_of_the_people	
 		ETH_soviet_aid	
 		ETH_soviet_rifles
-		#ETH_military_advisors
-		ETH_counter_the_armored_threat
-		ETH_soviet_mediation		
+		ETH_clearing_the_skies
+		ETH_soviet_mediation	
+		ETH_develop_the_capital_region
+		ETH_encourage_local_development
 
-		#ETH_renewed_offensive
-		#ETH_northern_thrust
-		ETH_falling_back
-		ETH_the_defense_of_addis_ababa	
-		ETH_a_last_stand
 
-		# AI should focus on building industry after war, then start doing Stalinist mischief across East Africa.
+		ETH_the_second_italo-ethiopian_war
+		ETH_renewed_offensive	
+		ETH_northern_thrust
+		ETH_mercenaries
+		ETH_the_lessons_of_war
 
+		ETH_liberate_aussa
 		ETH_red_army_engineers
-		#1938
+		ETH_mytishchi-ababa_plant
+		ETH_soviet-ethiopian_trade_agreement
 		ETH_transformation_of_nature
 		ETH_heavy_industry
 		ETH_arms_production
-		ETH_develop_the_capital_region
-		ETH_state_owned_industry
-		#1939
+
 		ETH_infrastructure_projects
-		ETH_ecole_militaire_haile_selassie_1er
-		ETH_expand_the_mehal_sefari
-		ETH_tactical_training
-		ETH_mytishchi-ababa_plant
-		ETH_soviet-ethiopian_trade_agreement
-		#1940
 		ETH_a_port_of_our_own
 		ETH_ethiopian_shipbuilding
-		ETH_request_soviet_hulls
-		ETH_freedom_at_gunpoint
-		#1941
+		ETH_develop_the_horn_of_africa
+
 		ETH_increased_factory_output
-		ETH_rapid_industrial_expansion
-		#1942
-				
-		#1943
+		ETH_bomb_proofing
+		ETH_invest_in_the_north
+		ETH_invest_in_the_west
+		ETH_invest_in_the_east
+		ETH_modernizing_the_industry
+		ETH_ethiopian_industrial_research_institute
+		ETH_invite_foreign_prospectors
+
+		ETH_ecole_militaire_haile_selassie_1er
+		ETH_university_of_capital
+		ETH_improve_the_administration
+		ETH_capital_school_of_technology
+		
+		ETH_expand_the_mehal_sefari
+		ETH_tactical_training
+		ETH_camouflage
+		ETH_the_junior_officer_corps
+		ETH_old_reliable
+		ETH_the_common_soldier
+
+		ETH_keep_the_chitet
+		ETH_regional_training_centers
+		ETH_mounted_levies
+		ETH_expand_the_levy
+		ETH_expand_the_kebur_zabagna
+		ETH_regional_supply_depots
+		ETH_promote_the_war_heroes
 	}
 }
 
@@ -166,40 +375,77 @@ ETH_anarcho_communist_plan = {
 	}
 	ai_national_focuses = {
 		ETH_military_communism
-		ETH_the_second_italo-ethiopian_war		
+		ETH_defending_our_homes
+		ETH_in_the_name_of_the_people	
 		ETH_anti_imperialist_agitation
-		ETH_in_the_name_of_the_people
-		#ETH_the_defense_of_addis_ababa	
-		#ETH_a_last_stand
 		ETH_callout_to_the_world
-		ETH_support_from_the_japanese_communists
+
+
+		ETH_humanitarian_aid
 		ETH_peoples_army
 		ETH_peace_negotiations
-		ETH_falling_back
-		ETH_a_last_stand
-		# Only do these if the above are unavailable 
-	
-		#Focus on Industrial Stuff after war
+		ETH_support_spain
+		ETH_the_rif
+		ETH_refuge_for_the_spanish_exiles
+		ETH_develop_the_capital_region
+		ETH_encourage_local_development
+
+
+		ETH_the_second_italo-ethiopian_war
+		ETH_renewed_offensive	
+		ETH_northern_thrust
+		ETH_mercenaries
+		ETH_the_lessons_of_war
+
 		ETH_transformation_of_nature
 		ETH_heavy_industry
 		ETH_arms_production
-		ETH_develop_the_capital_region
-		ETH_encourage_local_development
 		ETH_local_committees
+		ETH_communal_education
 		ETH_seize_the_means
 		ETH_communal_agriculture
-		ETH_increased_factory_output
-		ETH_rapid_industrial_expansion
-		ETH_infrastructure_projects
-		ETH_preparing_for_the_inevitable
-		ETH_communal_education
-		ETH_mass_transit
-		#Make a more anarchist military
-		ETH_ecole_militaire_haile_selassie_1er
-		ETH_keep_the_chitet		
-		#Should only start spreading the revolution after making it work in Ethiopia
 		ETH_african_wildfire
-		ETH_organization_of_african_unity
+		ETH_flames_across_the_sea
+
+		ETH_organization_of_african_unity	
+		ETH_mutual_defense
+		ETH_african_central_bank
+		ETH_executive_council
+		ETH_african_union
+
+		ETH_infrastructure_projects
+		ETH_a_port_of_our_own
+		ETH_ethiopian_shipbuilding
+		ETH_develop_the_horn_of_africa
+
+		ETH_increased_factory_output
+		ETH_bomb_proofing
+		ETH_invest_in_the_north
+		ETH_invest_in_the_west
+		ETH_invest_in_the_east
+		ETH_modernizing_the_industry
+		ETH_ethiopian_industrial_research_institute
+		ETH_invite_foreign_prospectors
+
+		ETH_ecole_militaire_haile_selassie_1er
+		ETH_university_of_capital
+		ETH_improve_the_administration
+		ETH_capital_school_of_technology
+		
+		ETH_expand_the_mehal_sefari
+		ETH_tactical_training
+		ETH_camouflage
+		ETH_the_junior_officer_corps
+		ETH_old_reliable
+		ETH_the_common_soldier
+
+		ETH_keep_the_chitet
+		ETH_regional_training_centers
+		ETH_mounted_levies
+		ETH_expand_the_levy
+		ETH_expand_the_kebur_zabagna
+		ETH_regional_supply_depots
+		ETH_promote_the_war_heroes
 	}
 }
 
@@ -225,27 +471,44 @@ ETH_fascist_collaborationist_plan = {
 	ai_national_focuses = {
 		ETH_reach_out_to_the_italians
 		ETH_sway_the_warlords
-		ETH_expand_the_bodyguard
 		ETH_declare_for_italy
+		ETH_develop_the_capital_region
+		ETH_encourage_local_development
 
-		# Only do these if the above are unavailable 
-		ETH_falling_back
-		ETH_the_defense_of_addis_ababa	
-		ETH_a_last_stand
-		#Focus on Industrial Stuff after war
+
 		ETH_restore_the_country
 		ETH_invite_italian_settlers
 		ETH_amedeos_feast_of_maskal
 		ETH_invite_italian_investors
+		ETH_adopt_the_lira
 		ETH_cooperation
-		ETH_recruit_mercenaries		
-		ETH_develop_the_capital_region
-		ETH_encourage_local_development
-		ETH_increased_factory_output
-		ETH_rapid_industrial_expansion
-		ETH_infrastructure_projects
+		ETH_recruit_mercenaries	
+		ETH_italian_general_staff
+		ETH_request_italian_equipment
+		ETH_outsourced_production
+		ETH_the_italian_language
+		ETH_compensation
+		ETH_the_italo-ethiopian_empire
+
 		ETH_ecole_militaire_haile_selassie_1er
+		ETH_university_of_capital
+		ETH_improve_the_administration
+		ETH_capital_school_of_technology
+		
 		ETH_expand_the_mehal_sefari
+		ETH_tactical_training
+		ETH_camouflage
+		ETH_the_junior_officer_corps
+		ETH_old_reliable
+		ETH_the_common_soldier
+
+		ETH_keep_the_chitet
+		ETH_regional_training_centers
+		ETH_mounted_levies
+		ETH_expand_the_levy
+		ETH_expand_the_kebur_zabagna
+		ETH_regional_supply_depots
+		ETH_promote_the_war_heroes
 	}
 }
 
@@ -271,37 +534,46 @@ ETH_fascist_independent_plan = {
 	ai_national_focuses = {
 		ETH_reach_out_to_the_italians
 		ETH_sway_the_warlords
-		#ETH_expand_the_bodyguard
 		ETH_declare_for_italy
-
-		# Only do these if the above are unavailable 
-		ETH_falling_back
-		ETH_the_defense_of_addis_ababa	
-		ETH_a_last_stand
-		#Restore country and build up a bit of a military again
-		ETH_restore_the_country
-		ETH_the_capital_victory_parade
-		ETH_exploit_french_weakness
-		ETH_assertiveness
-		ETH_cooperation
-		ETH_recruit_mercenaries		
-		ETH_reinforce_dynamic_identity
-		#Focus on industry for a while
 		ETH_develop_the_capital_region
 		ETH_encourage_local_development
-		ETH_increased_factory_output
-		ETH_rapid_industrial_expansion
-		ETH_infrastructure_projects
-		#Improve military again and prepare for breaking away from Italy
-		ETH_ecole_militaire_haile_selassie_1er
-		ETH_expand_the_mehal_sefari
+
+
+		ETH_restore_the_country
+		ETH_the_capital_victory_parade
+		ETH_replace_the_abuna
+		ETH_assertiveness
+		ETH_cooperation
+		ETH_recruit_mercenaries
 		ETH_underground_wargames
-		ETH_set_up_a_customs_barrier
 		ETH_contact_the_exiles
-		ETH_together_for_victory
+		ETH_reinforce_dynamic_identity
+		ETH_set_up_a_customs_barrier
 		ETH_our_enemys_enemy
+
+		ETH_ecole_militaire_haile_selassie_1er
+
+		ETH_keep_the_chitet
+		ETH_regional_training_centers
+		ETH_mounted_levies
+		ETH_expand_the_levy
+
 		ETH_raid_italian_depots
-		#Declare Independence
 		ETH_negusa_nagast
+		ETH_reclaim_the_empire
+		ETH_consolidate_east_africa
+		ETH_university_of_capital
+		ETH_improve_the_administration
+		ETH_capital_school_of_technology
+		
+		ETH_expand_the_mehal_sefari
+		ETH_tactical_training
+		ETH_camouflage
+		ETH_the_junior_officer_corps
+		ETH_old_reliable
+		ETH_the_common_soldier
+		ETH_expand_the_kebur_zabagna
+		ETH_regional_supply_depots
+		ETH_promote_the_war_heroes
 	}
 }

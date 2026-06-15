@@ -227,15 +227,7 @@ country_event = {
 			}
 		}
 		ai_chance = {
-			base = 50
-			modifier = {
-				has_stability < 0.4
-				factor = 0
-			}
-			modifier = {
-				has_political_power > 100
-				factor = 0.5
-			}
+			base = 0
 		}
 		name = stability.21.d
 		add_political_power = -75
@@ -287,9 +279,7 @@ country_event = {
 		custom_effect_tooltip = 30_days_tt
 		set_country_flag = crisis_solution_in_progress
 		random_list = {
-			80 = { country_event = { id = stability.34 days = 30 } } #success
-			20 = { country_event = { id = stability.21 days = 30 } } 
-
+			100 = { country_event = { id = stability.34 days = 30 } } #success
 		}
 	}
 
@@ -299,15 +289,7 @@ country_event = {
 		}
 		name = stability.21.f
 		ai_chance = {
-			base = 50
-			modifier = {
-				has_stability < 0.4
-				factor = 0
-			}
-			modifier = {
-				has_political_power > 100
-				factor = 0.5
-			}
+			base = 0
 		}
 		add_political_power = -80
 		custom_effect_tooltip = 15_days_tt
@@ -353,9 +335,7 @@ country_event = {
 		custom_effect_tooltip = 30_days_tt
 		set_country_flag = crisis_solution_in_progress
 		random_list = {
-			80 = { country_event = { id = stability.37 days = 30 } } #success
-			20 = { country_event = { id = stability.21 days = 30 } } 
-
+			100 = { country_event = { id = stability.37 days = 30 } } #success
 		}
 	}
 
@@ -365,15 +345,7 @@ country_event = {
 		}
 		name = stability.21.h
 		ai_chance = {
-			base = 50
-			modifier = {
-				has_stability < 0.4
-				factor = 0
-			}
-			modifier = {
-				has_political_power > 100
-				factor = 0.5
-			}
+			base = 0
 		}
 		add_political_power = -90
 		custom_effect_tooltip = 15_days_tt
@@ -419,8 +391,7 @@ country_event = {
 		custom_effect_tooltip = 30_days_tt
 		set_country_flag = crisis_solution_in_progress
 		random_list = {
-			80 = { country_event = { id = stability.40 days = 30 } } #success
-			20 = { country_event = { id = stability.21 days = 30 } } 
+			100 = { country_event = { id = stability.40 days = 30 } }
 		}
 	}
 
@@ -470,15 +441,7 @@ country_event = {
 		}
 		name = stability.22.b #violence - level 1
 		ai_chance = {
-			base = 50
-			modifier = {
-				has_stability < 0.4
-				factor = 0
-			}
-			modifier = {
-				has_political_power > 100
-				factor = 0.5
-			}
+			base = 0
 		}
 		custom_effect_tooltip = 30_days_tt
 		set_country_flag = crisis_solution_in_progress
@@ -506,11 +469,9 @@ country_event = {
 				factor = 2
 			}
 		}
-		add_political_power = -125 
+		add_political_power = -150 
 		random_list = {
-			80 = { country_event = { id = strikes_event.3 days = 45 } }#success
-			20 = { country_event = { id = stability.22 days = 45 } } 
-
+			100 = { country_event = { id = strikes_event.3 days = 45 } }#success
 		}
 	}
 	option = { 
@@ -544,22 +505,12 @@ country_event = {
 		name = stability.22.e #negotiations - level 2
 		custom_effect_tooltip = 45_days_tt
 		ai_chance = {
-			base = 50
-			modifier = {
-				has_stability < 0.4
-				factor = 2
-			}
-			modifier = {
-				has_political_power > 100
-				factor = 2
-			}
+			base = 0
 		}
-		add_political_power = -135 
+		add_political_power = -175 
 		set_country_flag = crisis_solution_in_progress
 		random_list = {
-			80 = { country_event = { id = strikes_event.6 days = 45 } }#success
-			20 = { country_event = { id = stability.22 days = 45 } }
-
+			100 = { country_event = { id = strikes_event.6 days = 45 } }#success
 		}
 	}
 	option = { 
@@ -568,15 +519,7 @@ country_event = {
 		}
 		name = stability.22.f #violence - level 3
 		ai_chance = {
-			base = 50
-			modifier = {
-				has_stability < 0.4
-				factor = 0
-			}
-			modifier = {
-				has_political_power > 100
-				factor = 0.5
-			}
+			base = 0
 		}
 		custom_effect_tooltip = 30_days_tt
 		set_country_flag = crisis_solution_in_progress
@@ -604,11 +547,9 @@ country_event = {
 		}
 		custom_effect_tooltip = 45_days_tt
 		set_country_flag = crisis_solution_in_progress
-		add_political_power = -145 
+		add_political_power = -200 
 		random_list = {
-			80 = { country_event = { id = strikes_event.9 days = 45 } }#success
-			20 = { country_event = { id = stability.22 days = 45 } }
-
+			100 = { country_event = { id = strikes_event.9 days = 45 } }
 		}
 	}
 
@@ -656,15 +597,7 @@ country_event = {
 		}
 		name = stability.23.b #violence - level 1
 		ai_chance = {
-			base = 50
-			modifier = {
-				has_stability < 0.4
-				factor = 0
-			}
-			modifier = {
-				has_political_power > 100
-				factor = 0.5
-			}
+			base = 0
 		}
 		custom_effect_tooltip = 30_days_tt
 		set_country_flag = crisis_solution_in_progress
@@ -694,8 +627,7 @@ country_event = {
 		add_political_power = -125 
 		set_country_flag = crisis_solution_in_progress
 		random_list = {
-			80 = { country_event = { id = mutiny_event.3 days = 45 } }#success
-			20 = { country_event = { id = stability.23 days = 45 } } 
+			100 = { country_event = { id = mutiny_event.3 days = 45 } }#success
 
 		}
 	}
@@ -705,15 +637,7 @@ country_event = {
 		}
 		name = stability.23.d #violence - level 2
 		ai_chance = {
-			base = 50
-			modifier = {
-				has_stability < 0.4
-				factor = 0
-			}
-			modifier = {
-				has_political_power > 100
-				factor = 0.5
-			}
+			base = 0
 		}
 		custom_effect_tooltip = 30_days_tt
 		set_country_flag = crisis_solution_in_progress
@@ -743,8 +667,7 @@ country_event = {
 		add_political_power = -135 
 		set_country_flag = crisis_solution_in_progress
 		random_list = {
-			80 = { country_event = { id = mutiny_event.6 days = 45 } }#success
-			20 = { country_event = { id = stability.23 days = 45 } }  
+			100 = { country_event = { id = mutiny_event.6 days = 45 } }#success
 
 		}
 	}
@@ -754,15 +677,7 @@ country_event = {
 		}
 		name = stability.23.f #violence - level 3
 		ai_chance = {
-			base = 50
-			modifier = {
-				has_stability < 0.4
-				factor = 0
-			}
-			modifier = {
-				has_political_power > 100
-				factor = 0.5
-			}
+			base = 0
 		}
 		custom_effect_tooltip = 30_days_tt
 		set_country_flag = crisis_solution_in_progress
@@ -792,9 +707,7 @@ country_event = {
 		set_country_flag = crisis_solution_in_progress
 		add_political_power = -145 
 		random_list = {
-			80 = { country_event = { id = mutiny_event.9 days = 45 } }#success
-			20 = { country_event = { id = stability.23 days = 45 } } 
-
+			100 = { country_event = { id = mutiny_event.9 days = 45 } }#success
 		}
 	}
 }

@@ -12,23 +12,20 @@ mobile_infantry = {
     }
 
     ai_will_do = { 
-        base = 1
-        modifier = {
-            factor = 95
-            original_tag = GER
-        }
-        modifier = {
-            factor = 0.5
-            is_major = no
-        }
+        base = 0
+	modifier = {
+		add = 9999
+		is_light_tank_country = yes
+	}
+	modifier = {
+		add = 9999
+		is_ai_mech_mob = yes
+	}
     
     }
 
     # EFFECTS
     enable_tactic = tactic_overwhelming_fire
-    category_all_infantry = {
-        breakthrough = 0.1
-    }
     effect = {
         add_tech_bonus = {
             bonus = 0.5
@@ -54,9 +51,6 @@ mobile_infantry = {
             category_vehicle_infantry = {
                 max_organisation = 20
             }
-			category_regimental_support_artillery = {
-                soft_attack = 0.15
-            }
         }
         delegated_authority = {
             category_vehicle_infantry = {
@@ -69,10 +63,6 @@ mobile_infantry = {
                 max_organisation = 10
                 maximum_speed = 0.2
             }
-			mot_fire_support = {
-                max_organisation = 5				
-				soft_attack = 0.1
-			}
         }
 
     }
@@ -92,19 +82,7 @@ defensive_postures = {
     }
 
     ai_will_do = {
-        base = 1
-        modifier = {
-            factor = 95
-            OR = {
-                original_tag = ENG
-                original_tag = AST
-                original_tag = NZL
-                original_tag = CAN
-                original_tag = SAF
-                original_tag = ITA
-                original_tag = FIN
-            }
-        }
+        base = 0
     }
 
     #OTHER BASE REWARDS
@@ -118,10 +96,6 @@ defensive_postures = {
     rewards = {
         improvised_fighting_position = {
             dig_in_speed_factor = 0.05
-			fire_support = {
-                supply_consumption = -0.01	
-                soft_attack = 0.2			
-			}
         }
         elastic_operations = {
             category_all_infantry = {
@@ -138,9 +112,6 @@ defensive_postures = {
             category_all_infantry = {
                 soft_attack = 0.1
             }
-			category_regimental_support_artillery = {
-                soft_attack = 0.2				
-			}
         }
         field_construction_training = {
             dig_in_speed_factor = 0.15
@@ -163,19 +134,18 @@ large_unit_tactics = {
     }
 
     ai_will_do = {
-        base = 1
+        base = 2000
         modifier = {
-            factor = 95
+            factor = 0
             OR = {
-                original_tag = SOV
-                original_tag = CHI
-                original_tag = JAP
+	        original_tag = GER
+		is_cavalry_nation = yes
             }
         }
-        modifier = {
-            factor = 0.5
-            is_major = no
-        }
+	modifier = {
+		factor = 0
+		is_light_tank_country = yes
+	}
 
 
     }
@@ -214,13 +184,7 @@ large_unit_tactics = {
                 max_organisation = 10
                 soft_attack = 0.1
             }
-			fire_support = {
-                breakthrough = 0.1			
-			}
-			category_regimental_support_artillery = {
-                soft_attack = 0.1			
-			}
-            army_morale = 0.1
+            army_morale = 0.2
             
         }
         motorization_initiative = {
@@ -252,16 +216,7 @@ assault_infantry = {
     }
 
     ai_will_do = {
-
-        base = 1
-        modifier = {
-            factor = 95
-            original_tag = USA
-        }
-        modifier = {
-            factor = 0.5
-            is_major = no
-        }
+        base = 0
     }
 
     # EFFECTS
@@ -280,20 +235,17 @@ assault_infantry = {
                     soft_attack = 0.2
                 }
             }
-            field_guns = {
-				soft_attack = 0.2
-            }
         }
         organic_battalion_fire_support = {
         #2
-            category_regimental_support_artillery = {
-                soft_attack = 0.1
+            category_support_artillery = {
+                soft_attack = 0.05
             }
-            anti_tank_battery = {
+            anti_tank = {
                 ap_attack = 0.1
                 hard_attack = 0.1
             }
-            anti_air_battery = {
+            anti_air = {
                 air_attack = 0.1
             }
 
@@ -303,18 +255,7 @@ assault_infantry = {
         #3
             category_support_artillery = {
                 max_organisation = 20
-                soft_attack = 0.05
-            }
-			
-			anti_tank = {
-                max_organisation = 20
-                ap_attack = 0.05
-                hard_attack = 0.05
-			}
-			
-			anti_air = {
-                max_organisation = 20
-                air_attack = 0.05
+                soft_attack = 0.1
             }
 
         }
@@ -351,9 +292,6 @@ assault_infantry = {
         #5
             category_support_artillery = {
                 supply_consumption = -0.02
-            }
-            category_regimental_support_artillery = {
-                supply_consumption = -0.01
             }
             light_flame_tank = {
                 battalion_mult = {
@@ -405,11 +343,11 @@ mounted_infantry = {
     }
 
     ai_will_do = { 
-        base = 1
-        modifier = {
-            factor = 0.5
-            is_major = yes
-        }
+        base = 0
+	modifier = {
+		is_cavalry_nation = yes
+		add = 9999
+	}
     }
     category_cavalry = {
         soft_attack = 0.1
@@ -427,7 +365,6 @@ mounted_infantry = {
                 defense = 0.1
             }
         }
-		
         mounted_skirmish_groups = {
             recon = {
                 max_organisation = 10
@@ -447,15 +384,14 @@ mounted_infantry = {
                 max_organisation = 5
             }
         }
-		
         anti_mechanized_cavalry_groups = {
             category_cavalry = {
                 hard_attack = 0.2
                 ap_attack = 0.2
-            }        
-		}    
-		
-		beasts_of_war = {
+            }
+
+        
+}        beasts_of_war = {
             category_cavalry = {
                 maximum_speed = 0.5 
                 max_strength = 0.05 
@@ -499,7 +435,13 @@ commandos = {
     }
 
 
-    ai_will_do = { base = 0 }
+    ai_will_do = { 
+	base = 0 
+		modifier = {
+			add = 9999
+			original_tag = GER
+		}
+	}
     enable_tactic = tactic_infantry_charge
     
     logistics_company = {
@@ -513,7 +455,7 @@ commandos = {
     # EFFECTS
 
     rewards = {
-        isolated_combat_elements = {
+        isolated_combat_elements = { 
             category_light_infantry = {
                 supply_consumption = -0.01
                 reliability = 0.05
@@ -524,13 +466,9 @@ commandos = {
             helicopter_brigade = {
                 casualty_trickleback = 0.05
             }
-            helicopter_field_hospital = {
+             helicopter_field_hospital = {
                 casualty_trickleback = 0.05
-            }			
-            category_regimental_support_artillery = {
-                supply_consumption = -0.01
-                soft_attack = 0.05
-            }
+            }           
 
         }
         security_zone_operations = {
@@ -573,12 +511,6 @@ commandos = {
                     soft_attack = 0.1
                 }
             }
-            anti_tank_battery = {
-                battalion_mult = {
-                    category = category_light_infantry
-                    hard_attack = 0.1
-                }
-            }
             
             infantry = {
                 desert = {
@@ -605,15 +537,7 @@ commandos = {
                 soft_attack = 0.1
                 breakthrough = 0.1
             }
-            category_regimental_support_artillery = {
-                breakthrough = 0.15
-            }
-			fire_support = {
-                breakthrough = 0.15
-			}
-			mot_fire_support = {
-                breakthrough = 0.15
-			}
+            
 
         }
     }
@@ -636,22 +560,34 @@ irregulars = {
     }
 
 
-    ai_will_do = { 
-        base = 1
-        modifier = {
-            factor = 2
-            is_major = no
-        }
-        modifier = {
-            factor = 0
-            NOT = {
-                OR = {
-                has_template_containing_unit = irregular_infantry
-                has_template_containing_unit = militia
-                }
+    	ai_will_do = { 
+        	base = 1
+        	modifier = {
+				factor = 9999
+				OR = {
+					has_template_containing_unit = irregular_infantry
+					has_template_containing_unit = militia
+					AND = {
+						tag = FIN
+						is_historical_focus_on = yes
+					}	
+				}
+				NOT = { has_government = communism }
+			}
+      		 modifier = {
+           		 factor = 0
+               		 NOT = {
+				OR = {
+               	 			has_template_containing_unit = irregular_infantry
+                			has_template_containing_unit = militia
+					AND = {
+						tag = FIN
+						is_historical_focus_on = yes
+               	 			}
+				}
             }
-        }
-    }
+   	 	}
+	}
     irregular_infantry = {
         defense = 0.1
         supply_consumption = -0.05
@@ -723,23 +659,7 @@ peoples_war = {
     xp_type = army
 
     available = {
-        if = {
-            limit = {
-                NOT = {
-                    original_tag = INS
-                }
-            }
-            has_government = communism
-        }
-        else = {
-            OR = {
-                has_government = communism
-                AND = {
-                    original_tag = INS
-                    has_completed_focus = INS_underground_revolution
-                }
-            }
-        }
+        has_government = communism
     }
     visible = {
         has_dlc = "No Compromise, No Surrender"
@@ -748,15 +668,18 @@ peoples_war = {
 
         base = 1
         modifier = {
-            factor = 95
-            original_tag = PRC
+            factor = 9999
+			OR = {
+				has_template_containing_unit = irregular_infantry
+				has_template_containing_unit = militia
+				AND = {
+					tag = FIN
+					is_historical_focus_on = yes
+				}
+				original_tag = PRC
+			}
+			has_government = communism
         }
-
-        modifier = {
-            factor = 2
-            is_major = no
-        }
-
     }
 
     # EFFECTS
@@ -780,30 +703,27 @@ peoples_war = {
             }
 
         }
-		
         destruction_over_land_gains = {
         #2
             mastery = 50
             category_light_infantry = {
-                default_morale = 0.1
+                default_morale = 0.2
             }
             militia = {
                 equipment_capture_factor = 0.01
             }
-			field_guns = {
-				soft_attack = 0.15				
-			}
         }
-		
         quick_decision_offensive_warfare = {
         #3
             militia = {
-               initiative = 0.015
+               initiative = 0.01
                max_organisation = 10
                breakthrough = 0.2
-            } 
+            }
+            
+
+
         }
-		
         people_not_things = {
         #4
             mastery = 50
@@ -832,8 +752,8 @@ great_war_infantry = {
     ai_will_do = {
         base = 1
         modifier = {
-            factor = 95
-            original_tag = FRA
+            factor = 9999
+          	tag = FRA
         }
     }
      # EFFECTS
@@ -849,18 +769,12 @@ great_war_infantry = {
     rewards = {
         traverse_digging = {
             dig_in_speed_factor = 0.05
-			fire_support = {
-                soft_attack = 0.1		
-                defense = 0.1
-			}
             engineer = {
                 battalion_mult = {
                     category = category_light_infantry
                     entrenchment = 0.05
-					add = yes
                 }
             }
-			
             
         }
         sapping_operations = {
@@ -880,9 +794,6 @@ great_war_infantry = {
                     breakthrough = 0.05
                 }
             }
-			category_regimental_support_artillery = {
-                soft_attack = 0.2				
-			}
         }
         field_fortification_emphasis = {
             category_light_infantry = {

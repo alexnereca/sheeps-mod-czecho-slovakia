@@ -909,10 +909,6 @@ ideas = {
 			visible = {
 			}
 
-			research_bonus = {
-				industry = 0.10
-			}
-
 			cost = 100
 					
 			traits = { railway_company } 
@@ -935,10 +931,6 @@ ideas = {
 			}
 
 			visible = {
-			}
-
-			research_bonus = {
-				electronics = 0.10
 			}
 
 			cost = 100

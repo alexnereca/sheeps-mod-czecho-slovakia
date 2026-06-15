@@ -4,7 +4,7 @@ areas = {
         strategic_regions = {
             128
             28
-			232	#Levant
+			232
         }
     }
 
@@ -30,6 +30,12 @@ areas = {
         }
     }
 
+    southern_italy = {
+        strategic_regions = {
+            23
+        }
+    }
+
     sardinia = {
         strategic_regions = {
             169
@@ -48,8 +54,7 @@ areas = {
             25 # greece
             26 # eastern balkans
         }
-    }
-
+    }	 
     UK = {
         strategic_regions = {
             1 
@@ -58,7 +63,6 @@ areas = {
             4
         }
     }
-
     UK_excluding_ni = { #exclude Northern Ireland
         strategic_regions = {
             1 
@@ -75,35 +79,17 @@ areas = {
             182 # west maghreb
         }
     }
-	
-	north_east_africa = {
-		strategic_regions = {
-			225 # tripoli
-			128 # egypt
-			232 # levant
-		}
-	}
-
-	central_north_africa = {
-		 strategic_regions = {
-            225 # trippoli
-            126 # east maghreb
-        }
-	}
-    
-	torch_landing_zone = {
+    torch_landing_zone = {
     	strategic_regions = {
     		126 # east maghreb
 			182 # west maghreb
     	}
     }
-   
-   vichy_mainland = {
+    vichy_mainland = {
     	strategic_regions = {
     		20 # Southern france
     	}
     }
-
 	europe = {
 		continents = {
 			europe
@@ -118,9 +104,9 @@ areas = {
             5 # benelux
             41 # iberia
             209
+		21
             210
             23 # italy
-            21
             7 # germany
             6
             8
@@ -138,8 +124,21 @@ areas = {
 	normandy_landing_zone = {
         strategic_regions = {
             208 # france
+            5 # benelux
+		6
+		275
+        }
+    }
+	
+	just_normandy_landing_zone = {
+        strategic_regions = {
+            208 # france
+        }
+    }
+	
+	south_france_landing_zone = {
+        strategic_regions = {
             20
-            19 # Calais
         }
     }
 
@@ -218,9 +217,7 @@ areas = {
 	home_islands = {
 		strategic_regions = {
 			76 	#Okinawa et al
-			154 # Central Japan 
-			299 # Northern Japan  
-			300 # Southern Japan 
+			154 #Kanto
 			160 #Phillipines - we care about these too!
 		}
 	}
@@ -235,9 +232,6 @@ areas = {
 		strategic_regions = {
 			167 #Papua
 			93
-			92
-			91
-			99
 			158
 			159 #Brunei
 			187
@@ -290,18 +284,7 @@ areas = {
 			272 #W Congo
 		}
 	}
-
-	sub_saharan_africa = {
-		strategic_regions = {
-			140 # Sub-Saharan Africa
-			226 # West Africa
-			183 # Central Africa
-			184 # South West Africa
-			139 # South Africa
-			223 # North South Africa
-		}
-	}
-
+	
 	just_finland = {
 		strategic_regions = {
 			13 #Eastern Finland
@@ -346,21 +329,21 @@ areas = {
 		}
 	}
 
-	guam_area = {
-		strategic_regions = {
-			94
-		}
-	}
-
 	japan = {
 		strategic_regions = {
-			154 # Central Japan 
-			299 # Northern Japan  
-			300 # Southern Japan  
+			528 
+			530
+			529
+			531
+			532
+			535
+			534
+			282
+			533
+			536
+			555
 		}
-	}
-	
-	us_west_coast = {
+	}	us_west_coast = {
 		strategic_regions = {
 			78
 			80
@@ -373,42 +356,6 @@ areas = {
 			105
 			180
 			95
-		}
-	}
-
-	borneo_area = {
-		strategic_regions = {
-			159
-		}
-	}
-
-	sumatra_area = {
-		strategic_regions = {
-			187
-		}
-	}
-
-	java_area = {
-		strategic_regions = {
-			158
-		}
-	}
-
-	bismarck_sea_area = {
-		strategic_regions = {
-			84
-		}
-	}
-
-	kokoda_trail_area = {
-		strategic_regions = {
-			167
-		}
-	}
-
-	north_australia = {
-		strategic_regions = {
-			193
 		}
 	}
 	
@@ -457,18 +404,9 @@ areas = {
 	
 	italy_med_control_zone = {
 		strategic_regions = {
-			69
-			29
-			168
-			202
-		}
-	}
-	
-	med_invasion_zone = {
-		strategic_regions = {
 			169
 			29
-			68
+			168
 		}
 	}
 }

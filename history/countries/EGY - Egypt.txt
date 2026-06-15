@@ -23,9 +23,13 @@ if = {
 	}
 }
 
-set_convoys = 20
+set_oob = "EGY_1936"
 
-#set_cosmetic_tag = EGY_brit_puppet
+set_convoys = 80
+
+set_cosmetic_tag = EGY_brit_puppet
+
+add_ideas = idea_EGY_army_of_egypt
 
 1939.1.1 = {
 
@@ -51,7 +55,6 @@ set_convoys = 20
 		tech_trucks = 1
 
 		#doctrines
-		#air_superiority = 1
 
 		#electronics
 		electronic_mechanical_engineering = 1
@@ -73,7 +76,6 @@ set_convoys = 20
 set_grand_doctrine = grand_battleplan
 set_grand_doctrine = new_fleet_in_being
 set_grand_doctrine = new_strategic_destruction
-
 	complete_special_project = {
 		project = sp:sp_air_radar
 	}

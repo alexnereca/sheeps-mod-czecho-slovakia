@@ -33,6 +33,15 @@ GER_porsche_organization = {
 			NOR_AAT = yes
 		}
 	}
+	
+	visible = {
+		IF = {
+			limit = { FROM = { original_tag = GER } }
+			FROM = {
+				is_ai = no 
+			}
+		}
+	}
 
 	available = {
 		# When in a Foreign MIO, countries need to be at peace with original country
@@ -49,7 +58,7 @@ GER_porsche_organization = {
 			}
 			FROM = { is_in_faction_with = GER }
 		}
-		IF = {
+		ELSE_IF = {
 			limit = {
 				FROM = { original_tag = NOR }
 			}
@@ -272,7 +281,7 @@ GER_henschel_organization = {
 				has_dlc = "By Blood Alone"
 			}
 			AND = {
-				tag = PER
+				original_tag = PER 
 				has_dlc = "Graveyard of Empires"
 				has_dlc = "Arms Against Tyranny"
 			}
@@ -402,7 +411,7 @@ GER_henschel_organization = {
 		}
 
 		available = {
-			has_mio_size > 4
+			has_mio_size > 5
 		}
 
 		on_complete = {
@@ -434,6 +443,9 @@ GER_henschel_organization = {
 
 		any_parent = { generic_mio_trait_interleaved_track_wheels generic_mio_trait_overlapped_track_wheels }
 
+		visible = {
+			FROM = { original_tag = GER }
+		}
 
 		equipment_bonus = {
 			reliability = 0.03
@@ -485,6 +497,9 @@ GER_henschel_organization = {
 
 		any_parent = { generic_mio_trait_adaptable_chassis }
 
+		visible = {
+			FROM = { original_tag = GER }
+		}
 
 		equipment_bonus = {
 			defense = 0.05
@@ -508,6 +523,15 @@ GER_man_organization = {
 			AND = {
 				original_tag = GRE
 				has_dlc = "Battle for the Bosporus"
+			}
+		}
+	}
+	
+	visible = {
+		IF = {
+			limit = { FROM = { original_tag = GER } }
+			FROM = {
+				is_ai = no
 			}
 		}
 	}
@@ -660,6 +684,18 @@ GER_alkett_organization = {
 	
 	allowed = {	
 		original_tag = GER 
+	}
+	
+	visible = {
+		IF = {
+			limit = { FROM = { original_tag = GER } }
+			OR = {
+				FROM = {
+					is_ai = no
+				}
+				date > 1940.1.1
+			}
+		}
 	}
 
 	tree_header_text = {
@@ -837,6 +873,15 @@ GER_daimler_benz_organization = {
 			AND = {
 				original_tag = BEL
 				has_dlc = "Gotterdammerung"
+			}
+		}
+	}
+	
+	visible = {
+		IF = {
+			limit = { FROM = { original_tag = GER } }
+			FROM = {
+				is_ai = no
 			}
 		}
 	}
@@ -1067,6 +1112,15 @@ GER_daimler_benz_organization = {
 GER_deschimag_organization = {
 	include = generic_escort_ship_organization
 	icon = GFX_idea_GER_deschimag
+	
+	visible = {
+		IF = {
+			limit = { FROM = { original_tag = GER } }
+			FROM = {
+				is_ai = no
+			}
+		}
+	}
 
 	override_trait = {
 		token = generic_mio_trait_fleet_escorts
@@ -1168,6 +1222,15 @@ GER_deschimag_organization = {
 GER_germaniawerft_organization = {
 	include = generic_battle_line_ship_organization
 	icon = GFX_idea_germaniawerft
+	
+	visible = {
+		IF = {
+			limit = { FROM = { original_tag = GER } }
+			FROM = {
+				is_ai = no
+			}
+		}
+	}
 
 	override_trait = {
 		token = generic_mio_trait_internal_armor_belt
@@ -1701,6 +1764,15 @@ GER_kriegsmarinewerft_wilhelmshaven_organization = {
 	allowed = {	
 		original_tag = GER 
 	}
+	
+	visible = {
+		IF = {
+			limit = { FROM = { original_tag = GER } }
+			FROM = {
+				is_ai = no
+			}
+		}
+	}
 
 	add_trait = {  
 		token = GER_mio_trait_historical_shipyard
@@ -1801,6 +1873,15 @@ GER_messerschmitt_organization = {
 		OR = {
 			original_tag = GER
 			NOR_AAT = yes 
+		}
+	}
+	
+	visible = {
+		IF = {
+			limit = { FROM = { original_tag = GER } }
+			FROM = {
+				is_ai = no
+			}
 		}
 	}
 
@@ -1945,8 +2026,7 @@ GER_messerschmitt_organization = {
 		relative_position_id = GER_mio_trait_aerodynamic_research_insitute
 
 		visible = {
-				has_dlc = "Gotterdammerung"
-				FROM = { original_tag = GER }
+			has_dlc = "Gotterdammerung"
 		}
 
 		available = {
@@ -1977,6 +2057,16 @@ GER_junkers_organization = {
 			}
 		}
 	}
+	
+	visible = {
+		IF = {
+			limit = { FROM = { original_tag = GER } }
+			FROM = {
+				is_ai = no
+			}
+		}
+	}
+
 	
 	visible = {
 		IF = {
@@ -2123,8 +2213,7 @@ GER_junkers_organization = {
 		relative_position_id = GER_mio_trait_aerodynamic_research_insitute
 
 		visible = {
-				has_dlc = "Gotterdammerung"
-				FROM = { original_tag = GER }
+			has_dlc = "Gotterdammerung"
 		}
 
 		available = {
@@ -2173,6 +2262,14 @@ GER_focke_wulf_organization = {
 			reliability = 0.05
 			air_defence = 0.03
 		} 
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 5
+				has_mio_size > 4
+			}
+		}
 	}
 
 	add_trait = {
@@ -2229,6 +2326,10 @@ GER_focke_wulf_organization = {
 			air_attack = 0.05
 			air_agility = 0.03
 		}
+
+		ai_will_do = {
+			base = 2
+		}
 	}
 
 	add_trait = {
@@ -2247,6 +2348,10 @@ GER_focke_wulf_organization = {
 		equipment_bonus = {
 			air_defence = 0.05
 			air_agility = 0.05
+		}
+
+		ai_will_do = {
+			base = 5
 		}
 	}
 
@@ -2267,6 +2372,10 @@ GER_focke_wulf_organization = {
 			air_range = 0.05
 			air_defence = 0.05
 		} 
+
+		ai_will_do = {
+			base = 5
+		}
 	} 
 
 	add_trait = {
@@ -2317,8 +2426,7 @@ GER_focke_wulf_organization = {
 		relative_position_id = GER_mio_trait_aerodynamic_research_insitute
 
 		visible = {
-				has_dlc = "Gotterdammerung"
-				FROM = { original_tag = GER }
+			has_dlc = "Gotterdammerung"
 		}
 
 		available = {
@@ -2454,7 +2562,7 @@ GER_heinkel_organization = {
 		relative_position_id = generic_mio_trait_pressurized_cockpit
 		all_parents = { generic_mio_trait_pressurized_cockpit }
 
-		limit_to_equipment_type = { mio_cat_eq_only_strategic_bomber }
+		limit_to_equipment_type = { large_plane_airframe }
 
 		equipment_bonus = {
 			air_bombing = 0.05
@@ -2546,8 +2654,7 @@ GER_heinkel_organization = {
 		relative_position_id = GER_mio_trait_aerodynamic_research_insitute
 
 		visible = {
-				has_dlc = "Gotterdammerung"
-				FROM = { original_tag = GER }
+			has_dlc = "Gotterdammerung"
 		}
 
 		available = {
@@ -2557,7 +2664,7 @@ GER_heinkel_organization = {
 			}
 		}
 
-		limit_to_equipment_type = { mio_cat_eq_only_strategic_bomber }
+		limit_to_equipment_type = { large_plane_airframe }
 
 		equipment_bonus = {
 			air_range = 0.1
@@ -2573,6 +2680,16 @@ GER_dornier_organization = {
 	allowed = {	
 		original_tag = GER 
 	}
+	
+	visible = {
+		IF = {
+			limit = { FROM = { original_tag = GER } }
+			FROM = {
+				is_ai = no
+			}
+		}
+	}
+
 
 	add_trait = {
 		token = GER_mio_trait_flying_boat_specialist
@@ -2691,6 +2808,16 @@ GER_arado_flugzeugwerke_organization = {
 	allowed = {	
 		original_tag = GER 
 	}
+	
+	visible = {
+		IF = {
+			limit = { FROM = { original_tag = GER } }
+			FROM = {
+				is_ai = no
+			}
+		}
+	}
+
 
 	add_trait = {
 		token = GER_mio_trait_jet_bomber_innovator
@@ -2796,6 +2923,16 @@ GER_fieseler_organization = {
 	allowed = {	
 		original_tag = GER 
 	}
+	
+	visible = {
+		IF = {
+			limit = { FROM = { original_tag = GER } }
+			FROM = {
+				is_ai = no
+			}
+		}
+	}
+
 
 	add_trait = {
 		token = GER_mio_trait_hamburger_flugzeugbau
@@ -3171,6 +3308,10 @@ GER_mauser_organization = {
 		}
 	}
 
+	ai_will_do = {
+		base = 500
+	}
+
 	add_trait = {
 		token = GER_mio_trait_experienced_manufacturer
 		name = GER_mio_trait_experienced_manufacturer
@@ -3443,6 +3584,18 @@ GER_carl_walther_organization = {
 	allowed = {	
 		original_tag = GER 
 	}
+	
+	visible = {
+		IF = {
+			limit = { FROM = { original_tag = GER } }
+			FROM = {
+				OR = {
+					is_ai = no 
+					NOT = { has_country_flag = mass_infantry_flag }
+				}
+			}
+		}
+	}
 
 	add_trait = {
 		token = GER_mio_trait_innovative_safety_features
@@ -3499,7 +3652,6 @@ GER_auto_union_organization = {
 	
 	allowed = {	
 		original_tag = GER 
-		has_dlc = "La Resistance"
 	}
 
 	add_trait = {
@@ -3563,56 +3715,6 @@ GER_auto_union_organization = {
 		equipment_bonus = {
 			breakthrough = 0.03
 			armor_value = 0.05
-		}
-
-		ai_will_do = {
-			base = 2
-		}
-	}
-}
-
-GER_henschel_kassel_organization = {
-	include = generic_train_organization
-	icon = GFX_idea_GER_henschel_civilian
-	allowed = {
-		original_tag = GER
-	}
-
-	# available = {
-	# 	FROM = {
-	# 		controls_state = 55
-	# 	}
-	# }
-
-	add_trait = {
-		token = GER_mio_trait_lokomotivfabrik_floridsdorf
-		name = GER_mio_trait_lokomotivfabrik_floridsdorf
-		icon = GFX_generic_mio_department_icon_facilities
-		special_trait_background = yes
-
-		position = { x=9 y=0 }
-
-		visible = {
-			FROM = { 
-				original_tag = GER
-			}
-		}
-
-		limit_to_equipment_type = { train_equipment }
-
-		available = {
-			FROM = {
-				OR = {
-					controls_state = 4
-					any_subject_country = {
-						controls_state = 4
-					}	
-				}
-			}
-		}
-
-		production_bonus = {
-			production_capacity_factor = 0.05
 		}
 
 		ai_will_do = {

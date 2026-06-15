@@ -43,7 +43,6 @@ BALTIC_entente = {
 				set_rule = { can_create_factions = yes }
 				create_faction = BALTIC_ENTENTE_FACTION
 			}
-
 			every_country = {
 				limit = {
 					has_country_flag = baltic_entente_flag
@@ -56,11 +55,33 @@ BALTIC_entente = {
 			factor = 200
 			modifier = {
 				factor = 0
-				is_historical_focus_on = no
-				NOT = {
-					has_completed_focus = EST_look_north
-					has_completed_focus = LAT_look_north
-					#has_completed_focus = LIT_look_north #TODO
+				any_other_country = {
+					OR = {
+						tag = LIT
+						tag = LAT
+						tag = EST
+					}
+					NOT = { tag = ROOT }
+					is_in_faction = yes
+				}
+			}
+			modifier = {
+				factor = 0
+				has_war = no
+				GER = { 
+					OR = {
+						has_government = democratic
+						has_government = neutrality
+					}
+					is_faction_leader = yes #trust in Germany
+				}
+				NOT = { 
+					any_other_country = {
+						OR = {
+							has_wargoal_against = ROOT
+							is_justifying_wargoal_against = ROOT
+						}
+					}
 				}
 			}
 		}
@@ -495,7 +516,15 @@ infiltrate_belarus_decisions = {
 		}
 
 		ai_will_do = {
-			base = 10
+			factor = 10
+			modifier = {
+				factor = 0
+				any_state = {
+					is_core_of = BLR
+					NOT = { owner = { tag = SOV } }
+					NOT = { owner = { tag = ROOT } }
+				}
+			}
 		}
 	}
 
@@ -715,6 +744,14 @@ infiltrate_belarus_decisions = {
 
 		ai_will_do = {
 			factor = 200
+			modifier = {
+				factor = 0
+				any_state = {
+					is_core_of = BLR
+					NOT = { owner = { tag = SOV } }
+					NOT = { owner = { tag = ROOT } }
+				}
+			}
 		}
 	}
 }
@@ -737,7 +774,7 @@ BALTIC_forest_brother_resistance_cat = {
 			hidden_trigger = { always = no }
 		}
 
-		days_mission_timeout = 120
+		days_mission_timeout = 180
 		is_good = no
 
 		cancel_trigger = {

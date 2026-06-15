@@ -57,7 +57,7 @@ HOL_obtain_foreign_colonial_investments = {
 
 		fire_only_once = no
 
-		days_remove = 90
+		days_remove = 180
 
 		modifier = {
 			consumer_goods_factor = -0.15
@@ -133,7 +133,7 @@ HOL_obtain_foreign_colonial_investments = {
 
 		fire_only_once = no
 
-		days_remove = 90
+		days_remove = 180
 
 		modifier = {
 			production_speed_buildings_factor = 0.15
@@ -176,11 +176,19 @@ HOL_obtain_foreign_colonial_investments = {
 
 		fire_only_once = no
 
-		days_remove = 120
+		days_remove = 90
 
 		visible = {
 			tag = HOL
 			has_completed_focus = HOL_obtain_foreign_colonial_investments
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_capitulated = yes
+			}
 		}
 
 		remove_effect = {
@@ -273,7 +281,7 @@ HOL_obtain_foreign_colonial_investments = {
 
 		fire_only_once = no
 
-		days_remove = 120
+		days_remove = 90
 
 		visible = {
 			has_completed_focus = HOL_obtain_foreign_colonial_investments
@@ -355,6 +363,13 @@ HOL_obtain_foreign_colonial_investments = {
 		}
 
 		complete_effect = {
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_capitulated = yes
+			}
 		}
 
 	}
@@ -647,7 +662,7 @@ HOL_war_on_pacifism = {
 
 		fire_only_once = no
 
-		days_remove = 60
+		days_remove = 45
 
 		modifier = {
 			war_support_weekly = 0.005
@@ -664,7 +679,7 @@ HOL_war_on_pacifism = {
 		remove_effect = {
 			add_popularity = {
 			    ideology = communism
-			    popularity = 0.05
+			    popularity = 0.025
 			}
 			HOL_shell_shocked_spectator_level_down = yes
 			clr_country_flag = hol_war_on_pacifism_in_progress
@@ -672,6 +687,10 @@ HOL_war_on_pacifism = {
 
 		complete_effect = {
 			set_country_flag = hol_war_on_pacifism_in_progress
+		}
+
+		ai_will_do = {
+			factor = 200
 		}
 
 	}
@@ -707,7 +726,7 @@ HOL_war_on_pacifism = {
 
 		fire_only_once = no
 
-		days_remove = 60
+		days_remove = 45
 
 		modifier = {
 			war_support_weekly = 0.005
@@ -1033,7 +1052,7 @@ HOL_gateway_to_europe_eng_category = {
 
 		available = {
 			has_government = democratic
-			GER = { has_government = fascism }
+			NOT = { GER = { has_government = democratic } }
 		}
 
 		targets = { HOL }
@@ -1051,7 +1070,7 @@ HOL_gateway_to_europe_eng_category = {
 		fire_only_once = no
 
 		ai_will_do = {
-			base = 0.03
+			factor = 0.03
 			modifier = {
 				factor = 2
 				is_historical_focus_on = yes
@@ -1255,7 +1274,7 @@ HOL_gateway_to_europe_ger_category = {
 
 		available = {
 			has_government = fascism
-			ENG = { has_government = democratic }
+			NOT = { ENG = { has_government = fascism } }
 		}
 
 		targets = { HOL }
@@ -1273,7 +1292,7 @@ HOL_gateway_to_europe_ger_category = {
 		fire_only_once = no
 
 		ai_will_do = {
-			base = 0.01
+			factor = 0.01
 			modifier = {
 				factor = 10
 				date > 1939.08.01
@@ -1336,11 +1355,16 @@ HOL_gateway_to_europe_ger_category = {
 				}
 			}
 			modifier = {
-				factor = 0
+				factor = 0				
 				OR = {
 					has_completed_focus = GER_oppose_hitler
 					has_completed_focus = GER_oppose_hitler_ww
 				}
+			}
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				HOL = { is_ai = yes }
 			}
 		}
 
@@ -1484,12 +1508,23 @@ HOL_gateway_to_europe_hol_category = {
 				is_historical_focus_on = yes
 				date > 1940.01.01
 			}
+			modifier = { #funnel the pp
+				add = 200
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				add = 9999
+				ENG = { is_ai = yes }
+				GER = { is_ai = no }
+				is_historical_focus_on = yes
+			}
 			modifier = {
 				factor = 0
 				focus_progress = {
 					focus = HOL_cave_to_the_british
 					progress > 0
 				}
+				ENG = { is_ai = no }
 			}
 			modifier = {
 				factor = 0
@@ -1511,6 +1546,7 @@ HOL_gateway_to_europe_hol_category = {
 				factor = 0
 				has_country_flag = HOL_gateway_to_europe_ai_timer_flag
 				NOT = { date > 1940.01.01 }
+				ENG = { is_ai = no }
 			}
 		}
 
@@ -1598,15 +1634,6 @@ HOL_gateway_to_europe_hol_category = {
 			GER = {
 				exists = yes
 				has_government = fascism
-				if = {
-					limit = {
-						NOT = { has_dlc = "Gotterdammerung" }
-					}
-					NOT = { has_completed_focus = GER_oppose_hitler }
-				}
-				else = {
-					NOT = { has_completed_focus = GER_oppose_hitler_ww }
-				}
 			}
 		}
 
@@ -1629,7 +1656,6 @@ HOL_gateway_to_europe_hol_category = {
 			modifier = {
 				factor = 0
 				is_historical_focus_on = yes
-				date > 1940.01.01
 			}
 			modifier = {
 				factor = 0
@@ -2138,6 +2164,9 @@ political_actions = {
 				has_full_control_of_state = 335
 			}
 		}
+		ai_will_do = {
+			factor = 200
+		}
 
 		cost = 0
 
@@ -2145,12 +2174,6 @@ political_actions = {
 
 		visible = {
 			original_tag = HOL
-			if = {
-				limit = {
-					has_dlc = "Thunder at Our Gates"
-				}
-				always = no
-			}
 		}
 
 		complete_effect = {
@@ -2165,18 +2188,44 @@ political_actions = {
 					set_nationality = HOL
 				}
 			}
-			annex_country = {
-			    target = INS
-			    transfer_troops = yes
+			every_state = {
+				limit = {
+					is_core_of = INS
+					NOT = {
+						OR = {
+							state = 668
+							state = 738
+							state = 669
+						}
+					}
+				}
+				HOL = { 
+					transfer_state = PREV
+				}
 			}
 			every_state = {
 				limit = {
 					is_core_of = INS
+					owner = { tag = HOL }
 				}
 				add_compliance = 70
 			}
 			set_capital = { state = 335 }
 			hidden_effect = { news_event = { id = mtg_news.46 days = 1 } }
+			hidden_effect = { 
+				INS = { 
+					add_timed_idea = { 
+						idea = HOL_relocated_resource_to_technology 
+						days = 730 
+					}
+				} 
+				HOL = { 
+					add_timed_idea = { 
+						idea = HOL_relocated_resource_to_army 
+						days = 1825 
+					}
+				}
+			}
 		}
 	}
 
@@ -2187,6 +2236,9 @@ political_actions = {
 		allowed = {
 			original_tag = HOL
 		}
+		ai_will_do = {
+			factor = 9999
+		}
 
 		available = {
 			is_in_faction_with = BEL
@@ -2195,7 +2247,7 @@ political_actions = {
 			LUX = { has_government = ROOT }
 		}
 
-		cost = 300
+		cost = 150
 
 		fire_only_once = yes
 
@@ -2273,54 +2325,3 @@ political_actions = {
 
 }
 
-foreign_influence = {
-	HOL_recall_conrad_helfrich = {
-		icon = GFX_decision_generic_naval
-
-		priority = 100
-
-		allowed = {
-			original_tag = HOL
-			has_dlc = "Thunder at Our Gates"
-		}
-
-		available = {
-			has_subject = INS
-		}
-
-		ai_will_do = {
-			base = 0
-		}
-
-		cost = 100
-
-		fire_only_once = yes
-
-		visible = {
-			original_tag = HOL
-			NOT = {
-				has_character = HOL_conrad_helfrich
-			}
-		}
-
-		complete_effect = {
-			INS = {
-				country_event = {
-					id = INS_political_events.19
-					hours = 4
-				}
-			}
-			effect_tooltip = {
-				INS = {
-					HOL_conrad_helfrich = {
-						set_nationality = HOL
-					}
-					add_autonomy_score = { 
-						value = 350 
-						localization = HOL_recall_conrad_helfrich
-					}
-				}
-			}
-		}
-	}
-}

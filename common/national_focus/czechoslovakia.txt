@@ -14,7 +14,7 @@
 	default = no
 
 	continuous_focus_position = { x = 50 y = 1100 }
-
+	
 	shared_focus = HABSBURG_part_of_something_bigger
 
 #	focus = {
@@ -66,11 +66,11 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 200
+			factor = 200			
 			modifier = {
 				factor = 0.1
 				HABSBURG_joint_trigger = yes
-			}			
+			}		
 		}
 
 		available = {
@@ -84,24 +84,11 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_RESEARCH }
+		search_filters = { FOCUS_FILTER_MANPOWER }
 
 		completion_reward = {
-
 			army_experience = 10
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-
 			add_ideas = CZE_fortification_focus
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-			
-			add_tech_bonus = {
-				name = CZE_fortification_studies
-				bonus = 0.25
-				uses = 1
-				category = cat_fortification
-			}
 		}
 	}
 
@@ -140,11 +127,9 @@
 		available_if_capitulated = no
 
 		completion_reward = {
-
 			army_experience = 20
 
 			custom_effect_tooltip = generic_skip_one_line_tt
-
 			9 = {
 				add_building_construction = { type = bunker province = 6440 level = 3 instant_build = yes }
 				add_building_construction = { type = bunker province = 6418 level = 3 instant_build = yes }
@@ -152,7 +137,6 @@
 				add_building_construction = { type = bunker province = 9414 level = 3 instant_build = yes }
 				add_building_construction = { type = bunker province = 3462 level = 3 instant_build = yes }
 			}
-
 		}
 	}
 
@@ -264,7 +248,6 @@
 				add_idea = CZE_fortification_focus2
 				remove_idea = CZE_fortification_focus
 			}
-
 			if = {
 				limit = { controls_state = 69 }
 				69 = {
@@ -279,7 +262,6 @@
 					}
 				}
 			}
-
 			if = {
 				limit = { controls_state = 972 }
 				972 = {
@@ -294,7 +276,6 @@
 					}
 				}
 			}
-
 			if = {
 				limit = { controls_state = 9 }
 				9 = {
@@ -310,7 +291,6 @@
 					}
 				}
 			}
-
 			if = {
 				limit = { controls_state = 74 }
 				74 = {
@@ -328,7 +308,6 @@
 					}
 				}
 			}
-
 			if = {
 				limit = { controls_state = 70 }
 				70 = {
@@ -344,7 +323,6 @@
 					}
 				}
 			}
-
 		}
 	}
 
@@ -525,8 +503,7 @@
 						}
 					}
 				}
-			}
-
+			}	
 		}
 	}
 
@@ -718,7 +695,6 @@
 					}
 				}
 			}	
-
 		}
 	}
 
@@ -765,7 +741,7 @@
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		completion_reward = {    
+		completion_reward = {  
 
 			army_experience = 30
 
@@ -933,7 +909,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 
 		completion_reward = {
 			add_ideas = CZE_industrial_legacy_idea
@@ -1012,11 +988,6 @@
 					instant_build = yes
 				}
 			}
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-
-			custom_effect_tooltip = available_political_advisor
-			show_ideas_tooltip = CZE_emil_kolben_dod
 		}
 	}
 
@@ -1102,7 +1073,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 
 		completion_reward = {
 			9 = {
@@ -1120,15 +1091,6 @@
 					level = 1
 					instant_build = yes
 				}
-			}
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-
-			add_tech_bonus = {
-				name = CZE_favor_czechs_3
-				bonus = 0.50
-				uses = 1
-				category = cat_production
 			}
 		}
 	}
@@ -1286,7 +1248,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 
 		completion_reward = {
 			9 = {
@@ -1309,15 +1271,6 @@
 					level = 1
 					instant_build = yes
 				}
-			}
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-
-			add_tech_bonus = {
-				name = CZE_bolster_domestic_construction
-				bonus = 0.25
-				uses = 1
-				category = construction_tech
 			}
 		}
 	}
@@ -1407,11 +1360,6 @@
 
 		completion_reward = {
 			add_ideas = CZE_export_focus1
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-
-			custom_effect_tooltip = available_political_advisor
-			show_ideas_tooltip = CZE_frantisek_machnik_dod
 		}
 	}
 
@@ -1510,7 +1458,7 @@
 	focus = {
 		id = CZE_political_direction
 		icon = GFX_goal_generic_intelligence_exchange
-		x = 9
+		x = 8
 		y = 0
 		relative_position_id = CZE_industrial_legacy
 
@@ -1547,7 +1495,7 @@
 		icon = GFX_focus_generic_soviet_politics
 		prerequisite = { focus = CZE_political_direction }
 		mutually_exclusive = { focus = CZE_democratic_bastion focus = CZE_go_right }
-		x = -3
+		x = -2
 		y = 1
 		relative_position_id = CZE_political_direction
 
@@ -1656,18 +1604,12 @@
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_MANPOWER FOCUS_FILTER_STABILITY }
 
 		completion_reward = {
-			add_political_power = 120
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-
 			if = {
 				limit = { has_idea = CZE_divided_nation }
 				remove_ideas = CZE_divided_nation
-
-				custom_effect_tooltip = generic_skip_one_line_tt
-
 			}
 			add_ideas = CZE_czech_socialism
+			add_political_power = 120
 		}
 	}
 
@@ -1700,13 +1642,9 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_WAR_SUPPORT }
+		search_filters = { FOCUS_FILTER_MANPOWER }
 
 		completion_reward = {
-			add_war_support = 0.05
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-
 			add_ideas = CZE_communism_with_a_human_face
 		}
 	}
@@ -1730,7 +1668,6 @@
 		}
 
 		available = {
-			communism > 0.2
 		}
 
 		bypass = {
@@ -1769,6 +1706,7 @@
 			communism > 0.3
 			SOV_comintern_joinable = yes 
 			is_in_faction = no
+			is_subject = no
 			NOT = {
 				any_other_country = {
 					is_in_faction_with = SOV
@@ -1898,9 +1836,6 @@
 
 		completion_reward = {
 			add_political_power = 200
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-
 			add_ideas = CZE_democratic_bastion
 		}
 	}
@@ -1916,7 +1851,7 @@
 		cost = 2
 
 		ai_will_do = {
-			factor = 75
+			factor = 70
 			modifier = {
 				factor = 0.1
 				HABSBURG_joint_trigger = yes
@@ -1924,7 +1859,6 @@
 		}
 
 		available = {
-			democratic > 0.75
 		}
 
 		bypass = {
@@ -1938,50 +1872,6 @@
 
 		completion_reward = {
 			swap_ideas = { remove_idea = CZE_democratic_bastion add_idea = CZE_beacon_of_liberty }
-		}
-	}
-
-	focus = {
-		id = CZE_healing_a_divided_nation
-		icon = GFX_goal_generic_national_unity
-		prerequisite = { focus = CZE_beacon_of_liberty }
-		x = -1
-		y = 1
-		relative_position_id = CZE_beacon_of_liberty
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0.1
-				HABSBURG_joint_trigger = yes
-			}
-		}
-
-		available = {
-			democratic > 0.80
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		search_filters = { FOCUS_FILTER_POLITICAL }
-
-		completion_reward = {
-			if = {
-				limit = { has_idea = CZE_divided_nation }
-				remove_ideas = CZE_divided_nation
-			}
-			else = {
-				add_political_power = 150
-				add_stability = 0.1
-				add_war_support = 0.1
-			}
 		}
 	}
 
@@ -2067,7 +1957,7 @@
 		icon = GFX_focus_generic_strike_at_democracy1
 		prerequisite = { focus = CZE_political_direction }
 		mutually_exclusive = { focus = CZE_democratic_bastion focus = CZE_go_left }
-		x = 3
+		x = 2
 		y = 1
 		relative_position_id = CZE_political_direction
 
@@ -2106,7 +1996,8 @@
 			add_popularity = {
 				ideology = fascism
 				popularity = 0.05
-			}
+			}	
+			#allow nazi leader
 			custom_effect_tooltip = generic_skip_one_line_tt 
 			every_other_country = {
 				limit = { 
@@ -2160,7 +2051,6 @@
 		}
 
 		available = {
-			fascism > 0.35
 		}
 
 		bypass = {
@@ -2295,7 +2185,6 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
-
 			if = {
 				limit = {
 					has_idea = CZE_divided_nation
@@ -2310,7 +2199,7 @@
 			}
 
 			custom_effect_tooltip = generic_skip_one_line_tt
-
+			
 			country_event = { days = 6 random_days = 5 id = czech.14 }			
 		}
 	}
@@ -2461,7 +2350,7 @@
 	focus = {
 		id = CZE_strategy_decisions
 		icon = GFX_goal_generic_position_armies
-		x = 13
+		x = 12
 		y = 0
 		relative_position_id = CZE_political_direction
 
@@ -2658,6 +2547,7 @@
 		}
 
 		bypass = {
+
 			69 = {
 				NOT = {
 					is_owned_and_controlled_by = ROOT
@@ -2791,11 +2681,6 @@
 					active = no
 				}
 			}
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-
-			custom_effect_tooltip = available_political_advisor
-			show_ideas_tooltip = CZE_karel_englis
 		}
 	}
 
@@ -2831,10 +2716,6 @@
 		search_filters = { FOCUS_FILTER_RESEARCH }
 
 		completion_reward = {
-			army_experience = 5
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-
 			add_doctrine_cost_reduction = {
 				name = land_doc_bonus
 				cost_reduction = 0.75
@@ -2918,6 +2799,9 @@
 			add_breakthrough_progress = {
 				specialization = specialization_air
 				value = 0.5
+						  
+							 
+					   
 			}
 
 			add_ideas = generic_secret_weapons_ns
@@ -3033,6 +2917,7 @@
 				template = faction_template_the_little_entente
 				name = CZE_little_entente
 			}
+			hidden_effect = { set_country_flag = formed_czech_entente_flag }
 		}
 	}
 
@@ -3220,6 +3105,20 @@
 				}
 				add_ideas = CZE_planning_bonus
 			}
+			hidden_effect = {
+				every_other_country = {
+					limit = {
+						is_in_faction_with = ROOT
+						OR = {
+							tag = ROM
+							tag = CZE
+							tag = YUG
+						}
+						is_major = no
+					}
+					set_major = yes	
+				}
+			}
 		}
 	}
 
@@ -3241,6 +3140,7 @@
 				HABSBURG_joint_trigger = yes
 			}
 		}
+		will_lead_to_war_with = HUN
 
 		available = {
 			NOT = {
@@ -3251,8 +3151,11 @@
 		}
 
 		bypass = {
-			HUN = { exists = no }
-			HUN = { is_subject_of = CZE }
+			OR = {
+				HUN = { exists = no }
+				HUN = { is_subject_of = CZE }
+				is_in_faction_with = HUN
+			}
 		}
 
 		cancel_if_invalid = yes
@@ -3264,6 +3167,334 @@
 				type = annex_everything
 				target = HUN
 				expire = 0
+			}
+			hidden_effect = {
+				every_state = {
+					limit = {
+						is_core_of = HUN
+					}
+					add_claim_by = CZE
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = CZE_deal_with_austria
+		icon = GFX_goal_generic_major_war
+		prerequisite = { focus = CZE_deal_with_hungary }
+		prerequisite = { focus = CZE_deal_with_bulgaria }
+		x = 1
+		y = 1
+		relative_position_id = CZE_deal_with_hungary
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 90
+		}
+		will_lead_to_war_with = AUS
+
+		available = {
+			NOT = {
+				is_in_faction_with = AUS
+			}
+			AUS = { exists = yes }
+			AUS = { is_subject = no }
+		}
+
+		bypass = {
+			OR = {
+				AUS = { exists = no }
+				AUS = { is_subject_of = CZE }
+				is_in_faction_with = AUS
+			}
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			create_wargoal = {
+				type = annex_everything
+				target = AUS
+				expire = 0
+			}
+			hidden_effect = {
+				every_state = {
+					limit = {
+						is_core_of = AUS
+					}
+					add_claim_by = CZE
+				}
+			}
+			hidden_effect = {
+				mark_focus_tree_layout_dirty = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CZE_hijack_austria_hungary_empire
+		icon = GFX_focus_proclaim_the_restauration_of_Austria_Hungary
+		prerequisite = { focus = CZE_deal_with_austria }
+		x = 0
+		y = 1
+		relative_position_id = CZE_deal_with_austria
+
+		cost = 10
+
+		allow_branch = {
+			has_completed_focus = CZE_deal_with_austria
+			OR = {
+				any_state = {
+					is_core_of = HUN
+					controller = { tag = CZE }
+				}
+				HUN = { is_subject_of = CZE }
+			}
+		}
+		ai_will_do = {
+			factor = 90
+		}
+
+		available = {
+			OR = {
+				HUN = { is_subject_of = CZE }
+				any_state = {
+					is_core_of = HUN
+					controller = { tag = CZE }
+				}
+			}
+			OR = {
+				AUS = { is_subject_of = CZE }
+				any_state = {
+					is_core_of = AUS
+					controller = { tag = CZE }
+				}
+			}
+		}
+
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			if = {
+				limit = {
+					HUN = { is_subject_of = CZE }
+				}	
+				annex_country = { target = HUN transfer_troops = yes }
+			}
+			if = {
+				limit = {
+					AUS = { is_subject_of = CZE }
+				}	
+				annex_country = { target = AUS transfer_troops = yes }
+			}
+			set_cosmetic_tag = HUN_EMPIRE
+			hidden_effect = { 
+				AUS = { set_cosmetic_tag = AUS_NOT_WHITE }
+			102 = { add_claim_by = ROOT }
+			853 = { add_claim_by = ROOT }
+			103 = { add_claim_by = ROOT }
+			104 = { add_claim_by = ROOT }
+			804 = { add_claim_by = ROOT }
+			109 = { add_claim_by = ROOT }
+			45 = { add_claim_by = ROOT }
+			83 = { add_claim_by = ROOT }
+			76 = { add_claim_by = ROOT }
+			84 = { add_claim_by = ROOT }
+			39 = { add_claim_by = ROOT }
+			163 = { add_claim_by = ROOT }
+			736 = { add_claim_by = ROOT }
+			852 = { add_claim_by = ROOT }
+			850 = { add_claim_by = ROOT }
+			764 = { add_claim_by = ROOT }
+			82 = { add_claim_by = ROOT }
+
+				848 = { add_claim_by = ROOT }
+				153 = { add_claim_by = ROOT }
+				152 = { add_claim_by = ROOT }
+				4 = { add_claim_by = ROOT }
+
+				69 = { add_claim_by = ROOT }
+				9 = { add_claim_by = ROOT }
+				75 = { add_claim_by = ROOT }
+				74 = { add_claim_by = ROOT }
+				72 = { add_claim_by = ROOT }
+				70 = { add_claim_by = ROOT }
+				664 = { add_claim_by = ROOT }
+				71 = { add_claim_by = ROOT }
+				73 = { add_claim_by = ROOT }
+
+				155 = { add_claim_by = ROOT }
+				43 = { add_claim_by = ROOT }
+				154 = { add_claim_by = ROOT }
+
+				88 = { add_claim_by = ROOT }
+				89 = { add_claim_by = ROOT }
+				91 = { add_claim_by = ROOT }
+
+				news_event = { id = wtt_news.56 hours = 6 }
+				set_global_flag = form_austria_hungary_flag
+				set_global_flag = GER_reformed_austro_hungarian_empire
+			}
+			hidden_effect = {
+				every_state = {
+					limit = {
+						OR = {
+							is_core_of = CZE
+							is_claimed_by = CZE
+						}
+						owner = { NOT = { tag = CZE } }
+					}
+					PREV.owner = {
+						CZE = {
+							add_ai_strategy = {
+								type = alliance
+								id = PREV
+								value = -100
+							}
+							add_ai_strategy = {
+								type = befriend
+								id = PREV
+								value = -100
+							}
+							add_ai_strategy = {
+								type = antagonize
+								id = PREV
+								value = 100
+							}
+							add_ai_strategy = {
+								type = conquer
+								id = PREV
+								value = 100
+							}
+							add_ai_strategy = {
+								type = declare_war
+								id = PREV
+								value = 100
+							}
+							add_ai_strategy = {
+								type = prepare_for_war
+								id = PREV
+								value = 100
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = CZE_just_good_business
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = CZE_hijack_austria_hungary_empire }
+		x = 0
+		y = 1
+		relative_position_id = CZE_hijack_austria_hungary_empire
+
+		cost = 10
+
+		allow_branch = {
+			has_completed_focus = CZE_deal_with_austria
+			any_state = {
+				is_core_of = HUN
+				owner = { tag = CZE }
+			}
+		}
+		ai_will_do = {
+			factor = 90
+		}
+
+		available = {
+			if = {
+				limit = { AUS = { exists = yes } }
+				AUS = { exists = no }
+			}
+			if = {
+				limit = { HUN = { exists = yes } }
+				HUN = { exists = no }
+			}
+			if = {
+				limit = { AUS = { exists = no } }
+				any_state = {
+					is_core_of = AUS
+					is_owned_by = CZE
+				}
+			}
+			if = {
+				limit = { HUN = { exists = no } }
+				any_state = {
+					is_core_of = HUN
+					is_owned_by = CZE
+				}
+			}
+			OR = {
+				is_faction_leader = yes
+				NOT = { is_in_faction_with = YUG }
+				NOT = { is_in_faction_with = ROM }
+			}
+		}
+
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			if = {
+				limit = {
+					is_in_faction_with = YUG
+					YUG = { is_subject = no }
+				}
+				if = {
+					limit = { 
+						is_faction_leader = yes 
+					}
+					remove_from_faction = YUG
+				}
+				create_wargoal = {
+					target = YUG
+					type = annex_everything
+				}
+			}
+			if = {
+				limit = {
+					is_in_faction_with = ROM
+					ROM = { is_subject = no }
+				}
+				remove_from_faction = ROM
+				create_wargoal = {
+					target = ROM
+					type = annex_everything
+				}
+			}
+			if = {
+				limit = {
+					NOT = { is_in_faction_with = YUG }
+				}
+				create_wargoal = {
+					target = YUG
+					type = annex_everything
+				}
+			}
+			if = {
+				limit = {
+					NOT = { is_in_faction_with = ROM }
+				}
+				create_wargoal = {
+					target = ROM
+					type = annex_everything
+				}
 			}
 		}
 	}
@@ -3285,6 +3516,7 @@
 				HABSBURG_joint_trigger = yes
 			}
 		}
+		will_lead_to_war_with = BUL
 
 		available = {
 			NOT = {
@@ -3294,13 +3526,17 @@
 			BUL = { is_subject = no }
 			OR = {
 				is_in_faction_with = ROM
-				has_subject = ROM
-				owns_state = 46
+				is_in_faction_with = CZE
+				is_neighbor_of = BUL
 			}
 		}
 
 		bypass = {
-			
+			OR = {
+				BUL = { exists = no }
+				BUL = { is_subject_of = CZE }
+				is_in_faction_with = BUL
+			}
 		}
 
 		cancel_if_invalid = yes
@@ -3308,10 +3544,50 @@
 		available_if_capitulated = no
 
 		completion_reward = {
-			create_wargoal = {
-				type = annex_everything
-				target = BUL
-				expire = 0
+			if = {
+				limit = {
+					NOT = { is_in_faction_with = YUG }
+					NOT = { is_in_faction_with = ROM }
+				}
+				create_wargoal = {
+					type = annex_everything
+					target = BUL
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = { is_in_faction_with = YUG }
+					is_in_faction_with = ROM
+				}
+				ROM = {
+					create_wargoal = {
+						type = annex_everything
+						target = BUL
+					}
+				}
+				every_state = {
+					limit = {
+						is_core_of = BUL
+					}
+					add_claim_by = ROM
+				}
+			}
+			else_if = {
+				limit = {
+					is_in_faction_with = YUG
+				}
+				YUG = {
+					create_wargoal = {
+						type = annex_everything
+						target = BUL
+					}
+				}
+				every_state = {
+					limit = {
+						is_core_of = BUL
+					}
+					add_core_of = YUG
+				}
 			}
 		}
 	}
@@ -3344,7 +3620,11 @@
 		}
 
 		bypass = {
-
+			OR = {
+				HUN = { exists = no }
+				HUN = { is_subject_of = CZE }
+				is_in_faction_with = HUN
+			}
 		}
 
 		cancel_if_invalid = yes
@@ -3364,7 +3644,7 @@
 		y = 1
 		relative_position_id = CZE_strategy_decisions
 
-		cost = 5
+		cost = 10
 
 		ai_will_do = {
 			factor = 60
@@ -3390,7 +3670,7 @@
 			set_rule = {
 				can_send_volunteers = yes
 			}
-			add_ideas = CZE_state_sponsored_recruitment_idea_2
+			add_ideas = foreign_expeditions_focus
 		}
 	}
 	#######################################
@@ -3428,9 +3708,6 @@
 
 		completion_reward = {
 			army_experience = 50
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-
 			add_breakthrough_progress = {
 				specialization = specialization_land
 				value = 0.25
@@ -3856,13 +4133,6 @@
 				uses = 2
 				category = land_doctrine
 			}
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-
-			add_breakthrough_progress = {
-				specialization = specialization_land
-				value = 0.25
-			}
 		}
 	}
 
@@ -3904,9 +4174,6 @@
 				limit = {
 					NOT = { amount_research_slots > 4 }
 				}
-
-				custom_effect_tooltip = generic_skip_one_line_tt
-
 				add_research_slot = 1
 				custom_effect_tooltip = CZE_war_college_effect_tt
 			}
@@ -3948,9 +4215,6 @@
 
 		completion_reward = {
 			air_experience = 100
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-
 			add_breakthrough_progress = {
 				specialization = specialization_air
 				value = 0.25
@@ -4116,11 +4380,6 @@
 
 		completion_reward = {
 			add_ideas = CZE_air_focus
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-
-			custom_effect_tooltip = available_chief_of_airforce
-			show_ideas_tooltip = CZE_alois_vicherek_advisor_idea_reform
 		}
 	}
 
@@ -4300,7 +4559,7 @@
 	focus = {
 		id = CZE_access_to_the_sea
 		icon = GFX_goal_generic_occupy_states_coastal
-		x = 8
+		x = 7
 		y = 0
 		relative_position_id = CZE_military_aeronautical_institute
 
@@ -4334,14 +4593,6 @@
 				specialization = specialization_naval
 				value = 0.25
 			}
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-
-			unlock_decision_tooltip = {
-				decision = CZE_recall_zdenko_hudecek
-				show_effect_tooltip = yes # default is no
-				show_modifiers = yes # default is no
-			} 
 		}
 	}
 
@@ -4364,7 +4615,8 @@
 		}
 
 		available = {
-			any_controlled_state = {
+			any_state = {
+				is_controlled_by = ROOT
 				is_coastal = yes
 			}
 		}
@@ -4615,7 +4867,6 @@
 				days = 240
 				track = submarines
 			}
-
 			add_doctrine_cost_reduction = {
 				name = CZE_raiding_focus
 				cost_reduction = 0.25

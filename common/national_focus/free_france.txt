@@ -86,7 +86,7 @@
 			custom_effect_tooltip = FRA_appeal_to_overseas_territories_tt
 			add_offsite_building = {
 				type = industrial_complex
-				level = 2
+				level = 5
 			}
 			hidden_effect = {
 				country_event = lar_appeal_to_overseas_territories.1
@@ -403,14 +403,12 @@
 		continue_if_invalid = no
 		available_if_capitulated = yes
 		completion_reward = {
-			IF = {
-				limit = {
-					has_idea = FRA_defeatism
-				}
-				remove_ideas = { FRA_defeatism }
-			}
 			load_focus_tree = french_focus
 			#TODO_GABRIEL: Make scripted effect to give correct focuses depending on left/right
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.5
+			}
 		}
 	}
 	focus = {
@@ -445,7 +443,7 @@
 		completion_reward = {
 			add_offsite_building = {
 				type = arms_factory
-				level = 2
+				level = 5
 			}
 			create_corps_commander = {
 				name = "Marie-Pierre Koenig"
@@ -500,7 +498,7 @@
 		completion_reward = {
 			add_equipment_to_stockpile = {
 				type = convoy
-				amount = 50
+				amount = 600
 			}
 			create_navy_leader = {
 				name = "Emilie Muselier"
@@ -615,19 +613,15 @@
 			factor = 1
 		}
 		available = {
-			OR = {
-				IF = {
-					limit = {
-						has_dlc = "Man the Guns"
-					}
-					has_legitimacy > 40
+			if = {
+				limit = {
+					has_dlc = "Man the Guns"
 				}
-				ELSE = {
-					num_of_factories > 14
-				}
-				has_war = no
+				has_legitimacy > 40
 			}
-			
+			else = {
+				num_of_factories > 14
+			}
 		}
 		
 		bypass = {

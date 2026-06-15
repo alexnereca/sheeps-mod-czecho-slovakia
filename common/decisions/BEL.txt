@@ -129,7 +129,7 @@ political_actions = {
 		icon = GFX_decision_generic_welfare
 
 		ai_will_do = {
-			base = 50
+			base = 2500
 		}
 	
 		allowed = {  
@@ -420,7 +420,7 @@ BEL_gold_reserves_cat = {
 		icon = GFX_decision_generic_welfare
 
 		ai_will_do = {
-			base = 1
+			base = 15020
 		}
 
 		available = {
@@ -440,7 +440,7 @@ BEL_gold_reserves_cat = {
 
 		days_remove = 30
 
-		days_re_enable = 365
+		days_re_enable = 270
 
 		cost = 50
 
@@ -892,6 +892,7 @@ BEL_closer_european_union_cat =  {
 			FROM = {
 				exists = yes
 				is_government_in_exile = no
+				is_subject = no
 				
 				NOT = {
 					has_war_with = ROOT
@@ -916,8 +917,8 @@ BEL_closer_european_union_cat =  {
 
 		visible = {
 			FROM = {
-				is_in_faction = no
-				is_subject = no #It has to be here or the decision is cancelled by the taret trigger rather than the cancel trigger if it happens. Cancellation via target trigger doesn't run cancel_effect meaning following decisions get perma-locked by a flag that can't be removed
+				is_subject = no
+				is_in_faction = no #It has to be here or the decision is cancelled by the taret trigger rather than the cancel trigger if it happens. Cancellation via target trigger doesn't run cancel_effect meaning following decisions get perma-locked by a flag that can't be removed
 				OR = { #needs to be here to cancel correctly if there is a ideology flip
 					has_government = neutrality
 					has_government = democratic
@@ -1060,8 +1061,8 @@ BEL_closer_european_union_cat =  {
 		}
 
 		visible = {
-			FROM = { is_government_in_exile = no } 
-			is_subject = no #has to be here or the target trigger will kill the decision rather than the cancel leading to cancel effects not being run
+				is_subject = no
+			FROM = { is_government_in_exile = no } #has to be here or the target trigger will kill the decision rather than the cancel leading to cancel effects not being run
 		}
 
 		available = {

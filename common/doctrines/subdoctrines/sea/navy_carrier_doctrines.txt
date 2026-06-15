@@ -10,8 +10,11 @@ carrier_battlegroups = {
     ai_will_do = { 
         base = 1
         modifier = {
-            factor = 50
-            original_tag = USA
+            factor = 500
+            OR = {
+		original_tag = USA
+		original_tag = JAP
+		}
         }
     }
 
@@ -63,22 +66,7 @@ floating_airfields = {
     }
 
     ai_will_do = { 
-        base = 1
-        modifier = {
-            factor = 25
-            OR = {
-                original_tag = ENG
-                original_tag = FRA
-            }
-        }
-        modifier = {
-            factor = 2
-            is_major = yes 
-        }
-        modifier = {
-            factor = 0
-            is_major = no 
-        }
+        base = 0
     }
 
     # EFFECTS
@@ -247,11 +235,7 @@ massed_carrier_fleet = {
     xp_type = navy
 
     ai_will_do = { 
-        base = 1
-        modifier = {
-            factor = 50
-            original_tag = JAP
-        }
+        base = 0
     }
     available = {
         always = yes
@@ -300,19 +284,7 @@ light_task_forces = {
     xp_type = navy
 
     ai_will_do = { 
-        base = 1
-        modifier = {
-            factor = 25
-            original_tag = GER
-        }
-        modifier = {
-            factor = 25
-            original_tag = ITA
-        }
-        modifier = {
-            factor = 25
-            original_tag = SOV
-        }
+        base = 200
     }
     mastery = { 
         multiplier = 2 

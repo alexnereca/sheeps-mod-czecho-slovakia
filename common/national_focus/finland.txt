@@ -176,6 +176,8 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_MANPOWER FOCUS_FILTER_MILITARY_CHARACTER FOCUS_FILTER_ARMY_XP }
 
 		completion_reward = {
+			#TODO_Manu: Finnish (haha) effects for CW: character re-arrangement, remove some templates when CW over
+
 			hidden_effect = {
 				# SWAP ADVISOR TRAITS TO HIDE TOOLTIP ABOUT DECISIONS
 				FIN_yrjo_leino = {
@@ -342,6 +344,12 @@ focus_tree = {
 					has_country_flag = FIN_cw_trade_unions_flag
 				}
 				subtract_from_variable = { FIN_communist_cw_size_of_breakaway_country = 0.05 }
+			}
+			if = { #Trade Unions
+				limit = {
+					is_ai = yes
+				}
+				set_variable = { FIN_communist_cw_size_of_breakaway_country = 0.2 }
 			}
 
 			start_civil_war = {
@@ -1355,6 +1363,12 @@ focus_tree = {
 		relative_position_id = FIN_approach_the_soviets
 		cost = 10
 		available = {
+			if = {
+				limit = {
+					amount_research_slots > 4
+				}
+				is_major = yes
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_RESEARCH }
@@ -2173,6 +2187,8 @@ focus_tree = {
 		search_filters = {}
 
 		completion_reward = {
+			#TODO_Manu: Possibly unlocks decision to form the Finnish Democratic Republic.
+
 			SOV = {
 				add_ai_strategy = {
 					type = befriend
@@ -3238,7 +3254,10 @@ focus_tree = {
 			has_government = communism
 			is_subject = no
 			all_core_state = {
-				is_controlled_by = ROOT
+				OR = {
+					is_controlled_by = ROOT
+					state = 145
+				}
 			}
 			controls_state = 213 #MURMANSK
 			controls_state = 215 #ONEGA
@@ -5137,6 +5156,7 @@ focus_tree = {
 		cost = 10
 
 		allow_branch = {
+			has_dlc = "Arms Against Tyranny"
 			has_completed_focus = FIN_a_new_course_for_kokoomus
 			OR = {
 				has_country_leader = {
@@ -5602,6 +5622,10 @@ focus_tree = {
 		y = 1
 		relative_position_id = FIN_moderate_politics
 		cost = 5
+
+		bypass = {
+			is_subject = yes
+		}
 		available = {
 			is_subject = no
 			is_in_faction = no
@@ -6173,6 +6197,7 @@ focus_tree = {
 		
 		bypass = {
 			OR = {
+				is_subject_of = SOV
 				is_in_faction_with = GER
 				is_subject_of = GER
 				has_subject = SOV
@@ -6191,6 +6216,10 @@ focus_tree = {
 
 		available = {
 			is_subject = no
+			custom_trigger_tooltip = {
+				tooltip = FIN_winter_war_has_happened_tt
+				has_country_flag = winter_war_happened
+			}
 			NOT = { has_government = communism }
 			NOT = { is_in_faction_with = SOV }
 			NOT = { has_non_aggression_pact_with = SOV }
@@ -6392,6 +6421,7 @@ focus_tree = {
 		relative_position_id = FIN_cooperation_with_germany
 		cost = 5
 		available = {
+			is_subject = no
 		}
 
 		search_filters = { FOCUS_FILTER_HISTORICAL FOCUS_FILTER_ARMY_XP FOCUS_FILTER_RESEARCH FOCUS_FILTER_MILITARY_CHARACTER }
@@ -6400,6 +6430,16 @@ focus_tree = {
 			army_experience = 50
 			add_command_power = 25
 
+			FIN_johan_arajuuri = {
+				remove_trait = {
+					trait = army_infantry_2
+					slot = high_command 
+				}
+				add_trait = {
+					trait = army_infantry_3
+					slot = high_command 
+				}
+			}
 			add_doctrine_cost_reduction = {
 				name = FIN_german_military_advisors
 				cost_reduction = 0.25
@@ -6428,7 +6468,10 @@ focus_tree = {
 			is_subject = no
 			has_dynamic_modifier = { modifier = FIN_finnish_army }
 			all_core_state = {
-				is_controlled_by = ROOT
+				OR = {
+					is_controlled_by = ROOT
+					state = 145
+				}
 			}
 		}
 
@@ -6465,6 +6508,12 @@ focus_tree = {
 			OR = {
 				is_in_faction = yes
 				has_idea = FIN_the_lone_wolf
+			}
+			if = {
+				limit = {
+					amount_research_slots > 4
+				}
+				is_major = yes
 			}
 		}
 
@@ -6509,13 +6558,17 @@ focus_tree = {
 		id = FIN_modernize_the_industry
 		icon = GFX_focus_generic_modernize_industry
 		prerequisite = { focus = FIN_joint_scientific_program }
-		mutually_exclusive = { focus = FIN_modernize_the_army }
+		mutually_exclusive = { }
 		x = -1
 		y = 1
 		relative_position_id = FIN_joint_scientific_program
 		cost = 10
 		available = {
 			has_tech = advanced_machine_tools
+			if = {
+				limit = { has_completed_focus = FIN_modernize_the_army }
+				is_major = yes
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
@@ -6523,7 +6576,7 @@ focus_tree = {
 		completion_reward = {
 			add_tech_bonus = {
 				name = FIN_modernize_the_industry
-				bonus = 0.5
+				bonus = 0.75
 				uses = 2
 				category = industry
 				category = electronics
@@ -6589,13 +6642,17 @@ focus_tree = {
 		id = FIN_modernize_the_army
 		icon = GFX_goal_generic_axis_build_infantry
 		prerequisite = { focus = FIN_joint_scientific_program }
-		mutually_exclusive = { focus = FIN_modernize_the_industry }
+		mutually_exclusive = { }
 		x = 1
 		y = 1
 		relative_position_id = FIN_joint_scientific_program
 		cost = 10
 		available = {
 			has_completed_focus = FIN_suomen_maavoimat
+			if = {
+				limit = { has_completed_focus = FIN_modernize_the_industry }
+				is_major = yes
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_ARMY_XP FOCUS_FILTER_AIR_XP FOCUS_FILTER_NAVY_XP FOCUS_FILTER_MILITARY_CHARACTER }
@@ -6799,8 +6856,9 @@ focus_tree = {
 				NOT = { country_exists = EST }
 				is_in_faction_with = EST
 				has_subject = EST
-				any_controlled_state = {
+				any_state = {
 					is_core_of = EST
+					is_controlled_by = ROOT
 				}
 			}
 			OR = {
@@ -7063,7 +7121,10 @@ focus_tree = {
 		available = {
 			is_subject = no
 			all_core_state = {
-				is_controlled_by = ROOT
+				OR = {
+					is_controlled_by = ROOT
+					state = 145
+				}
 			}
 			controls_state = 213 #MURMANSK
 			controls_state = 215 #ONEGA
@@ -7310,6 +7371,13 @@ focus_tree = {
 				ideology = fascism
 				popularity = 0.1
 			}
+
+			hidden_effect = {
+				if = {
+					limit = { is_ai = yes }
+					add_timed_idea = { idea = strong_fascist_influence days = 365 }
+				}
+			}
 		}
 	}
 	
@@ -7360,8 +7428,13 @@ focus_tree = {
 				has_completed_focus = FIN_prepare_a_military_coup
 				AND = {
 					has_completed_focus = FIN_discredit_the_democratic_system
-					fascism > 0.6
-					has_stability > 0.6
+					OR = {
+						AND = {
+							fascism > 0.5
+							has_stability > 0.4
+						}
+						fascism > 0.6
+					}
 				}
 			}
 		}
@@ -7445,6 +7518,12 @@ focus_tree = {
 						has_country_flag = FIN_cw_support_from_middle_class_flag
 					}
 					subtract_from_variable = { FIN_fascist_cw_size_of_breakaway_country = 0.1 }
+				}
+				if = { #Construction Workers
+					limit = {
+						is_ai = yes
+					}
+					set_variable = { FIN_fascist_cw_size_of_breakaway_country = 0.2 }
 				}
 
 				start_civil_war = {
@@ -7968,36 +8047,36 @@ focus_tree = {
 				}
 
 				#JAPANESE TANKS
-				IF = {
+				if = {
 					limit = {
 						is_in_faction_with = JAP
 					}
-					create_equipment_variant = { #Copy of Light Tank Type 94 Tankette variant in Japanese history file
-						name = "Type 94 Tankette"
+					create_equipment_variant = { #Copy of Light Tank Type 95 Ha-Go variant in Japanese history file
+						name = "Type 95 Ha-Go"
 						type = light_tank_chassis_1
 						parent_version = 0
 						allow_without_tech = yes # Tooltip purposes, tech is required anyways
 						modules = {
-							main_armament_slot = tank_heavy_machine_gun
+							main_armament_slot = tank_small_cannon
 							turret_type_slot = tank_light_one_man_tank_turret
 							suspension_type_slot = tank_bogie_suspension
 							armor_type_slot = tank_riveted_armor
-							engine_type_slot = tank_gasoline_engine 
+							engine_type_slot = tank_diesel_engine
 							special_type_slot_1 = empty
 							special_type_slot_2 = empty
 							special_type_slot_3 = empty
 							special_type_slot_4 = empty
 						}
 						upgrades = {
-							tank_nsb_engine_upgrade = 0
-							tank_nsb_armor_upgrade = 0
+							tank_nsb_engine_upgrade = 2
+							tank_nsb_armor_upgrade = 2
 						}
 						icon = "GFX_JAP_improved_light_tank_medium"
 						model = "JAP_light_armor_entity"
 					}
 					add_equipment_to_stockpile = { 
 						type = light_tank_chassis_1
-						variant_name = "Type 94 Tankette"
+						variant_name = "Type 95 Ha-Go"
 						amount = 50
 						producer = JAP
 					}
@@ -8518,6 +8597,13 @@ focus_tree = {
 		cost = 10
 		available = {
 			is_subject = no
+			hidden_trigger = {
+				OR = {
+					is_ai = no
+					date > 1941.1.1
+					is_in_faction_with = SWE
+				}
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_POLITICAL_CHARACTER FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
@@ -8559,6 +8645,13 @@ focus_tree = {
 		cost = 10
 		available = {
 			is_subject = no
+			hidden_trigger = {
+				OR = {
+					is_ai = no
+					date > 1941.1.1
+					is_in_faction_with = SWE
+				}
+			}
 		}
 
 		bypass = {
@@ -9537,11 +9630,29 @@ focus_tree = {
 	focus = {
 		id = FIN_academic_karelian_society
 		icon = GFX_focus_FIN_academic_karelian_society
-		prerequisite = { focus = FIN_a_fascist_regime }
+		prerequisite = { focus = FIN_a_fascist_regime focus = FIN_finnish_neutrality }
 
 		x = 2
 		y = 0
 		relative_position_id = FIN_patriotic_peoples_movement
+
+		offset = {
+			x = -11
+			y = 0
+			trigger = {
+				OR = {
+					NOT = { has_dlc = "Arms Against Tyranny" }
+					AND = {
+						has_game_rule = {
+							rule = obsolete_focus_branches_visibility
+							option = HIDE
+						}
+						has_completed_focus = FIN_finnish_neutrality
+					}
+				}
+			}
+		}
+
 		cost = 5
 		available = {
 		}
@@ -9561,9 +9672,9 @@ focus_tree = {
 		icon = GFX_focus_FIN_take_over_the_suojeluskunta
 		prerequisite = { focus = FIN_patriotic_peoples_movement focus = FIN_academic_karelian_society }
 
-		x = 1
+		x = -1
 		y = 1
-		relative_position_id = FIN_patriotic_peoples_movement
+		relative_position_id = FIN_academic_karelian_society
 		cost = 10
 		available = {
 		}
@@ -9843,6 +9954,12 @@ focus_tree = {
 		relative_position_id = FIN_military_promotions
 		cost = 10
 		available = {
+			if = {
+				limit = {
+					amount_research_slots > 4
+				}
+				is_major = yes
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH FOCUS_FILTER_POLITICAL_CHARACTER FOCUS_FILTER_STABILITY }
@@ -9885,7 +10002,7 @@ focus_tree = {
 		relative_position_id = FIN_right_wing_policies
 
 		offset = {
-			x = -14
+			x = -11
 			y = 0
 			trigger = {
 				OR = {
@@ -10173,6 +10290,12 @@ focus_tree = {
 		cost = 10
 		available = {
 			has_tech = computing_machine
+			if = {
+				limit = {
+					amount_research_slots > 4
+				}
+				is_major = yes
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_HISTORICAL FOCUS_FILTER_RESEARCH }
@@ -10402,7 +10525,7 @@ focus_tree = {
 			}
 
 			custom_effect_tooltip = generic_skip_one_line_tt
-
+			
 			148 = {
 				add_building_construction = {
 					type = dam
@@ -10419,7 +10542,7 @@ focus_tree = {
 			}
 
 			custom_effect_tooltip = generic_skip_one_line_tt
-
+		 
 			929 = {
 				add_building_construction = {
 					type = dam
@@ -10524,7 +10647,7 @@ focus_tree = {
 		completion_reward = {
 			add_tech_bonus = {
 				name = FIN_vaisala_radiosonde_tests
-				bonus = 0.5
+				bonus = 0.75
 				uses = 2
 				category = electronics
 			}
@@ -11210,7 +11333,10 @@ focus_tree = {
 		relative_position_id = FIN_suomen_maavoimat
 		cost = 10
 		available = {
-			threat > 0.25
+			OR = {
+				threat > 0.25
+				has_war_support > 0.8
+			}
 		}
 
 		continue_if_invalid = yes
@@ -11249,6 +11375,8 @@ focus_tree = {
 			add_to_variable = { FIN_finnish_army_winter_attrition_factor = -0.15 tooltip = winter_attrition_factor_tt }
 
 			army_experience = 15
+
+			#TODO_Manu: Nice to have: Simo Häyä event chain starting here?
 		}
 	}
 	
@@ -11437,6 +11565,21 @@ focus_tree = {
 				set_technology = {
 					winter_logistics_support_tech = 1
 					popup = no
+				}
+				division_template = {
+					name = "Winter Logistics Division"
+					division_names_group = FIN_INF_01
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+					}
+					support = {
+						engineer = { x = 0 y = 0 }
+						winter_logistics_support = { x = 0 y = 1 }
+					}
 				}
 			}
 		}
@@ -11927,6 +12070,22 @@ focus_tree = {
 					long_range_patrol_support_tech = 1
 					popup = no
 				}
+				division_template = {
+					name = "Ski Infantry Division"
+					division_names_group = FIN_INF_01
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+						infantry = { x = 1 y = 2 }
+					}
+					support = {
+						winter_logistics_support = { x = 0 y = 0 }
+						long_range_patrol_support = { x = 0 y = 1 }
+					}
+				}
 			}
 		}
 	}
@@ -11963,7 +12122,7 @@ focus_tree = {
 		prerequisite = { focus = FIN_long_range_patrols }
 		prerequisite = { focus = FIN_finnish_radio_intelligence }
 		prerequisite = { focus = FIN_utilize_the_sami }
-		mutually_exclusive = { focus = FIN_national_armor_focus }
+		mutually_exclusive = { }
 		x = 1
 		y = 1
 		relative_position_id = FIN_long_range_patrols
@@ -11991,7 +12150,7 @@ focus_tree = {
 		icon = GFX_focus_generic_tank_production
 		prerequisite = { focus = FIN_salvaged_and_retooled }
 		prerequisite = { focus = FIN_finnish_radio_intelligence }
-		mutually_exclusive = { focus = FIN_sissi }
+		mutually_exclusive = { }
 		x = 0
 		y = 3
 		relative_position_id = FIN_salvaged_and_retooled
@@ -14334,25 +14493,10 @@ focus_tree = {
 				}
 				add_doctrine_cost_reduction = {
 					name = FIN_marine_jaeger_divisions
-					cost_reduction = 0.5
+					cost_reduction = 0.75
 					uses = 2
-					category = special_forces_doctrine
+					category = cat_marines_doctrine
 				}
-				custom_effect_tooltip = marine_subdoctrines_default_add_mastery_bonus_effect_tooltip
-				hidden_effect = {
-					add_mastery_bonus = {
-						name = FIN_marine_jaeger_divisions
-						bonus = 0.1
-						days = 240
-						sub_doctrine = marines_1
-					}
-					add_mastery_bonus = {
-						name = FIN_marine_jaeger_divisions
-						bonus = 0.1
-						days = 240
-						sub_doctrine = marines_2
-					}
-				}						
 			}
 			
 			add_tech_bonus = {
@@ -14423,7 +14567,7 @@ focus_tree = {
 				}
 				add_tech_bonus = {
 					name = FIN_rapid_raiders
-					bonus = 0.5
+					bonus = 0.75
 					uses = 2
 					category = cat_torpedoes
 					category = naval_mines
@@ -14433,7 +14577,7 @@ focus_tree = {
 			else = {
 				add_tech_bonus = {
 					name = FIN_rapid_raiders
-					bonus = 0.5
+					bonus = 0.75
 					uses = 2
 					category = dd_tech
 				}
@@ -14716,7 +14860,7 @@ focus_tree = {
 				}
 				add_tech_bonus = {
 					name = FIN_deep_sea_raiders
-					bonus = 0.5
+					bonus = 0.75
 					uses = 2
 					category = ss_tech
 					category = cat_torpedoes
@@ -14725,7 +14869,7 @@ focus_tree = {
 			else = {
 				add_tech_bonus = {
 					name = FIN_deep_sea_raiders
-					bonus = 0.5
+					bonus = 0.75
 					uses = 2
 					category = ss_tech
 				}
@@ -15028,7 +15172,7 @@ focus_tree = {
 				navy_experience = 25
 				add_tech_bonus = {
 					name = FIN_sea_mines_strategy
-					bonus = 0.5
+					bonus = 0.75
 					uses = 2
 					category = naval_mines
 				}
@@ -15059,7 +15203,7 @@ focus_tree = {
 				navy_experience = 50
 				add_tech_bonus = {
 					name = FIN_sea_mines_strategy
-					bonus = 0.5
+					bonus = 0.75
 					uses = 2
 					category = dd_tech
 					category = ca_tech
@@ -15389,7 +15533,7 @@ focus_tree = {
 
 			add_tech_bonus = {
 				name = FIN_expansion_towards_the_atlantic
-				bonus = 0.5
+				bonus = 0.75
 				uses = 2
 				category = cv_tech
 				category = bb_tech

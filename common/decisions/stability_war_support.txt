@@ -495,6 +495,12 @@ demobilization = {
 		visible = {
 			has_war = no
 			has_unsupported_economic_law = yes
+			NOT = {
+				AND = {
+					is_historical_focus_on = yes
+					date < 1939.1.1
+				}
+			}
 		}
 		complete_effect = {
 			if = {
@@ -541,7 +547,7 @@ demobilization = {
 			}
 		}
 		ai_will_do = {
-			factor = 500 #should really get on this
+			factor = 500
 		}
 		
 	}
@@ -559,6 +565,12 @@ demobilization = {
 			NOT = {
 				original_tag = SWE
 				SWE = { has_completed_focus = SWE_totalforsvar }
+			}
+			NOT = {
+				AND = {
+					is_historical_focus_on = yes
+					date < 1939.1.1
+				}
 			}
 		}
 		icon = revolt
@@ -683,7 +695,7 @@ demobilization = {
 			always = yes
 		}
 
-		cost = 50
+		cost = 0
 		ai_will_do = {
 			factor = 500
 		}
@@ -748,6 +760,10 @@ demobilization = {
 				NOT = {
 					has_completed_focus = GRE_request_communist_support
 				}
+			}
+			NOT = {
+				is_major = yes
+				date < 1939.1.1 #to prevent AI from going back just because world tension drops right before Anschluss for stupid reason
 			}
 		}
 		visible = {

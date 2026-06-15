@@ -80,8 +80,8 @@
 
 		}
 
-		cancel_if_invalid = yes
-		continue_if_invalid = no
+		cancel_if_invalid = no
+		continue_if_invalid = yes
 		available_if_capitulated = yes
 	
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -1863,6 +1863,7 @@
 				limit = {
 					has_doctrine = mass_assault
 				}
+				
 				add_mastery_bonus = {
 					name = SAF_invite_soviet_advisers
 					bonus = 0.1
@@ -1870,17 +1871,13 @@
 				grand_doctrine = mass_assault
 				}
 			}
-				else = {
+			else = {
 					add_mastery_bonus = {
 					name = SAF_invite_soviet_advisers
 					bonus = 0.05
 					days = 180
 				}
 			}
-			
-
-			
-			
 			add_doctrine_cost_reduction = {
 				name = SAF_invite_soviet_advisers
 				cost_reduction = 0.5
@@ -1994,7 +1991,6 @@
 			}
 		}
 	}
-	
 	############################
 	##### INDUSTRY SECTION #####
 	############################
@@ -2579,7 +2575,12 @@
 		}
 
 		available = {
-			is_subject = no
+			OR = {
+				is_subject = no
+				any_enemy_country = {
+					is_major = yes
+				}
+			}
 		}
 		
 		bypass = {
@@ -2611,14 +2612,13 @@
 		}
 
 		available = {
-			is_subject = no
 			has_war = yes
 			is_in_faction = yes
 			OR = {
 				num_of_factories > 50
 				any_other_country = {
 					is_in_faction_with = ROOT
-					num_of_factories > 50
+					num_of_factories > 300
 				}
 			}
 		}
@@ -3209,7 +3209,6 @@
 
 		completion_reward = {
 			air_experience = 25
-
 			add_mastery_bonus = {
 				name = SAF_perfect_the_cab_rank_technique
 				bonus = 0.1
@@ -3434,14 +3433,12 @@
         search_filters = { FOCUS_FILTER_RESEARCH }
 
 		completion_reward = {
-
 			add_mastery_bonus = {
 				name = SAF_protect_the_trade
 				bonus = 0.1
 				days = 240
 				track = screens
 			}
-			
 		}
 	}
 
@@ -3484,7 +3481,6 @@
 				days = 240 
 				track = submarines
 			}
-			
 		}
 	}
 
@@ -3570,6 +3566,13 @@
 					}
 					set_state_flag = SAF_expand_the_simons_town_base_NB
 				}
+			}
+			if = {
+				limit = {
+					is_in_faction_with = ENG
+					NOT = { has_global_flag = mp_difficulty }
+				}
+				ENG = { add_offsite_building = { type = dockyard level = 1 } }
 			}
 		}
 	}

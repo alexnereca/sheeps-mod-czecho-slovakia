@@ -34,6 +34,16 @@ country_event = { #Motion of No Confidence
 					DEN_rearming_ai = yes
 				}
 			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_country_flag = DEN_AI_RANDOM_COMMUNIST_PLAN
+					has_game_rule = {
+						rule = DEN_ai_behavior
+						option = DEN_communist_plan
+					}
+				}
+			}
 		}
 
 		custom_effect_tooltip = DEN_available_candidates_tt
@@ -61,37 +71,13 @@ country_event = { #Motion of No Confidence
 					neutrality > 0.35
 				}
 			}
-		}
-		trigger = {
-			OR = {
-				has_stability < 0.5
+			modifier = {
+				factor = 100
 				OR = {
-					AND = {
-						has_government = democratic
-						OR = {
-							democratic < 0.5
-							communism > 0.19
-							neutrality > 0.19
-							fascism > 0.19
-						}
-					}
-					AND = {
-						has_government = communism
-						OR = {
-							democratic > 0.19 
-							communism < 0.5 
-							neutrality > 0.19 
-							fascism > 0.19
-						}
-					}
-					AND = {
-						has_government = neutrality
-						OR = {
-							democratic > 0.19 
-							communism  > 0.19 
-							neutrality < 0.5 
-							fascism > 0.19 
-						}
+					has_country_flag = DEN_AI_RANDOM_COMMUNIST_PLAN
+					has_game_rule = {
+						rule = DEN_ai_behavior
+						option = DEN_communist_plan
 					}
 				}
 			}
@@ -409,6 +395,16 @@ country_event = { #Election Campaigns
 			modifier = {
 				factor = 5
 				democratic > 0.5
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_country_flag = DEN_AI_RANDOM_COMMUNIST_PLAN
+					has_game_rule = {
+						rule = DEN_ai_behavior
+						option = DEN_communist_plan
+					}
+				}
 			}			
 		}
 		trigger = {
@@ -444,6 +440,16 @@ country_event = { #Election Campaigns
 			modifier = {
 				factor = 5
 				communism > 0.5
+			}
+			modifier = {
+				factor = 100
+				OR = {
+					has_country_flag = DEN_AI_RANDOM_COMMUNIST_PLAN
+					has_game_rule = {
+						rule = DEN_ai_behavior
+						option = DEN_communist_plan
+					}
+				}
 			}
 		}
 		trigger = {
@@ -607,7 +613,6 @@ country_event = { #Democratic Campaign
 		    popularity = 0.15
 		}
 		add_political_power = -75
-		add_stability = -0.05
 		country_event = { id = denmark_political_events.8 days = 7 }
 	}
 }
@@ -680,7 +685,6 @@ country_event = { #Communist Campaign
 		    popularity = 0.15
 		}
 		add_political_power = -75
-		add_stability = -0.05
 		country_event = { id = denmark_political_events.8 days = 7 }
 	}
 }
@@ -753,7 +757,6 @@ country_event = { #Neutral Campaign
 		    popularity = 0.15
 		}
 		add_political_power = -75
-		add_stability = -0.05
 		country_event = { id = denmark_political_events.8 days = 7 }
 	}
 }
@@ -826,7 +829,6 @@ country_event = { #Fascist Campaign
 		    popularity = 0.15
 		}
 		add_political_power = -75
-		add_stability = -0.05
 		country_event = { id = denmark_political_events.8 days = 7 }
 	}
 }

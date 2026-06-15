@@ -311,6 +311,10 @@ POL_sanation_decisions = {
 		days_remove = 60
 		ai_will_do = {
 			factor = 2
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
 		}
 		modifier = {
 			political_power_gain = -0.05
@@ -341,6 +345,10 @@ POL_sanation_decisions = {
 		days_remove = 60
 		ai_will_do = {
 			factor = 2
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
 		}
 		modifier = {
 			political_power_gain = -0.05
@@ -1948,7 +1956,7 @@ POL_defensive_plans = {
 
 		icon = hol_draw_up_staff_plans
 
-		state_target = any_controlled_state
+		state_target = yes
 		target_root_trigger = {
 			has_completed_focus = POL_local_eastern_plans
 			has_war_with = SOV
@@ -1970,8 +1978,11 @@ POL_defensive_plans = {
 						}
 					}
 				}
+				ROOT = {
+					has_completed_focus = POL_local_eastern_plans
+					has_war_with = SOV
+				}
 			}
-			has_war_with = SOV
 		}
 		target_trigger = {
 			FROM = {
@@ -1992,7 +2003,25 @@ POL_defensive_plans = {
 			}
 		}
 		visible = {
-			has_completed_focus = POL_local_eastern_plans
+			FROM = {
+				OR = {
+					AND = {
+						is_controlled_by = POL
+						any_neighbor_state = {
+							is_controlled_by = SOV
+						}
+					}
+					AND = {
+						is_controlled_by = SOV
+						any_neighbor_state = {
+							is_controlled_by = POL
+						}
+					}
+				}
+				ROOT = {
+					has_completed_focus = POL_local_eastern_plans
+				}
+			}
 		}
 
 		fire_only_once = no
@@ -2018,7 +2047,7 @@ POL_defensive_plans = {
 
 		icon = hol_draw_up_staff_plans
 
-		state_target = any_controlled_state
+		state_target = yes
 
 		available = {
 			FROM = {
@@ -2036,8 +2065,11 @@ POL_defensive_plans = {
 						}
 					}
 				}
+				ROOT = {
+					has_completed_focus = POL_local_western_plans
+					has_war_with = GER
+				}
 			}
-			has_war_with = GER
 		}
 		target_trigger = {
 			FROM = {
@@ -2058,7 +2090,25 @@ POL_defensive_plans = {
 			}
 		}
 		visible = {
-			has_completed_focus = POL_local_western_plans
+			FROM = {
+				OR = {
+					AND = {
+						is_controlled_by = POL
+						any_neighbor_state = {
+							is_controlled_by = GER
+						}
+					}
+					AND = {
+						is_controlled_by = GER
+						any_neighbor_state = {
+							is_controlled_by = POL
+						}
+					}
+				}
+				ROOT = {
+					has_completed_focus = POL_local_western_plans
+				}
+			}
 		}
 
 		fire_only_once = no
@@ -2451,15 +2501,7 @@ POL_support_monarchy_in_LIT_cat = {
 		}
 
 		ai_will_do = {
-			base = 10
-			modifier = {
-				factor = 0
-				FROM = {
-					check_variable = {
-						monarchist_support > 90
-					}
-				}
-			}
+			factor = 9999
 		}
 
 	}
@@ -2515,15 +2557,7 @@ POL_support_monarchy_in_LIT_cat = {
 		}
 
 		ai_will_do = {
-			base = 10
-			modifier = {
-				factor = 0
-				FROM = {
-					check_variable = {
-						monarchist_support > 90
-					}
-				}
-			}
+			factor = 10
 		}
 
 	}
@@ -2600,15 +2634,7 @@ POL_support_monarchy_in_LIT_cat = {
 		}
 
 		ai_will_do = {
-			base = 10
-			modifier = {
-				factor = 0
-				FROM = {
-					check_variable = {
-						monarchist_support > 90
-					}
-				}
-			}
+			factor = 9999
 		}
 
 	}
@@ -2681,15 +2707,7 @@ POL_support_monarchy_in_LIT_cat = {
 		}
 
 		ai_will_do = {
-			base = 10
-			modifier = {
-				factor = 0
-				FROM = {
-					check_variable = {
-						monarchist_support > 90
-					}
-				}
-			}
+			factor = 9999
 		}
 
 	}
@@ -2767,15 +2785,7 @@ POL_support_monarchy_in_LIT_cat = {
 		}
 
 		ai_will_do = {
-			base = 10
-			modifier = {
-				factor = 0
-				FROM = {
-					check_variable = {
-						monarchist_support > 90
-					}
-				}
-			}
+			factor = 10
 		}
 
 	}

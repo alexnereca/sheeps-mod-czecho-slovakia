@@ -2022,7 +2022,7 @@ BUL_internal_factions = {
 					BUL_is_fascist_axis_ai = yes
 					BUL_is_monarchist_ferdinand_ai = yes
 					BUL_is_democratic_liberal_ai = yes
-					#AND = { #MM: Check how the AI performs without this. Might be necessary to not add it to help the FF coup.
+					#AND = { #TODO_Manu: Check how the AI performs without this. Might be necessary to not add it to help the FF coup.
 					#	BUL_is_historical_ai = yes
 					#	date > 1940.6.1
 					#}
@@ -4647,8 +4647,9 @@ BUL_macedonian_revolutionary_organizations = {
 		available = {
 			NOT = { has_country_flag = BUL_macedonian_affairs_ongoing_flag }
 			has_war = yes
-			any_controlled_state = {
+			any_state = {
 				BUL_is_macedonian_state = yes
+				is_fully_controlled_by = ROOT
 			}
 		}
 
@@ -4787,7 +4788,7 @@ BUL_macedonian_revolutionary_organizations = {
 
 		available = {
 			NOT = { has_country_flag = BUL_macedonian_affairs_ongoing_flag }
-			any_controlled_state = {
+			any_state = {
 				BUL_is_macedonian_state = yes
 				is_fully_controlled_by = ROOT
 			}
@@ -5460,17 +5461,7 @@ BUL_the_fatherland_front_dec_cat = {
 		icon = generic_military
 
 		ai_will_do = {
-			base = 2
-			modifier = {
-				factor = 200
-				BUL_is_historical_ai = yes
-				date < 1942.12.12
-				has_political_power > 100
-			}
-			modifier = {
-				factor = 0.5
-				BUL_is_historical_ai = yes
-			}
+			factor = 2000
 		}
 
 		allowed = { original_tag = BUL } 
@@ -5485,7 +5476,7 @@ BUL_the_fatherland_front_dec_cat = {
 			NOT = { has_country_flag = BUL_ff_civil_war_flag }
 		}
 
-		cost = 35
+		cost = 20
 		days_remove = 30
 		days_re_enable = 15
 
@@ -5534,11 +5525,7 @@ BUL_the_fatherland_front_dec_cat = {
 		icon = generic_arrest
 
 		ai_will_do = {
-			base = 4
-			modifier = {
-				factor = 0.25
-				BUL_is_historical_ai = yes
-			}
+			factor = 9999
 		}
 
 		allowed = { original_tag = BUL } 
@@ -5553,7 +5540,7 @@ BUL_the_fatherland_front_dec_cat = {
 			NOT = { has_country_flag = BUL_ff_civil_war_flag }
 		}
 
-		cost = 75
+		cost = 20
 		days_remove = 30
 		days_re_enable = 30
 
@@ -5617,11 +5604,7 @@ BUL_the_fatherland_front_dec_cat = {
 		icon = oppression
 
 		ai_will_do = {
-			base = 10
-			modifier = {
-				factor = 0.1
-				BUL_is_historical_ai = yes
-			}
+			factor = 9999
 		}
 
 		allowed = { original_tag = BUL } 
@@ -5665,7 +5648,7 @@ BUL_the_fatherland_front_dec_cat = {
 			NOT = { has_country_flag = BUL_ff_civil_war_flag }
 		}
 
-		cost = 75
+		cost = 35
 		days_remove = 15
 
 		fire_only_once = yes
@@ -5969,7 +5952,7 @@ BUL_rearmament = {
 				limit = {
 					has_war = no
 				}
-				add_threat = 5
+				add_threat = 3
 			}
 		}
 	}
@@ -8035,11 +8018,11 @@ BUL_negotiate_claims_in_the_balkans = {
 			}
 		}
 
-		cost = 75
+		cost = 50
 
 		fire_only_once = yes
 		
-		complete_effect = {		
+		complete_effect = {	
 			GER = { country_event = { id = bftb_bulgarian_claims.1 hours = 1 } }
 		}
 	}
@@ -8052,19 +8035,66 @@ BUL_negotiate_claims_in_the_balkans = {
 
 		state_target = europe
 		target_root_trigger = {
-			has_completed_focus = BUL_peaceful_development
+			OR = {
+				has_completed_focus = BUL_peaceful_development
+				has_completed_focus = BUL_the_unification_of_the_balkans
+				has_completed_focus = BUL_carry_the_revolution_abroad
+				has_completed_focus = BUL_guardians_of_the_balkans
+				has_completed_focus = BUL_assert_our_claims
+			}
 			is_in_faction = yes
 		}
+		cost = 75
 		target_trigger = {
 			FROM = {
 				BUL_is_balkan_state = yes
 				NOT = { is_controlled_by = BUL }
+				if = {
+					limit = {
+						BUL = { 
+							is_ai = yes 
+							is_in_faction_with = ITA
+						}
+					}
+					NOT = {
+						AND = {
+							is_claimed_by = ITA
+							is_owned_by = ITA
+							NOT = { is_claimed_by = BUL }
+							NOT = { is_core_of = BUL }
+						}
+					}
+				}
+				if = {
+					limit = {
+						BUL = { 
+							is_ai = yes 
+							is_in_faction_with = HUN
+						}
+					}
+					NOT = {
+						AND = {
+							is_claimed_by = HUN
+							is_controlled_by = HUN
+							NOT = { is_claimed_by = BUL }
+							NOT = { is_core_of = BUL }
+						}
+					}
+				}
 				controller = {
 					PREV = {
 						NOT = { is_core_of = PREV }
 						is_fully_controlled_by = PREV
 					}
 					is_in_faction_with = ROOT
+					OR = {
+						is_ai = yes
+						NOT = { has_country_flag = BUL_core_recently_asked }
+						has_country_flag = {
+							flag = BUL_core_recently_asked
+							days > 365
+						}
+					}
 				}
 				any_neighbor_state = {
 					is_fully_controlled_by = BUL
@@ -8073,7 +8103,7 @@ BUL_negotiate_claims_in_the_balkans = {
 		}
 
 		ai_will_do = {
-			base = 0
+			base = 100
 			modifier = {
 				add = 100
 				FROM = {
@@ -8084,21 +8114,16 @@ BUL_negotiate_claims_in_the_balkans = {
 				}
 			}
 			modifier = {
-				factor = 100
+				add = 100
 				is_historical_focus_on = yes
 			}
 			modifier = {
-				factor = 0
-				FROM = {
-					OR = {
-						owner = {
-							has_capitulated = no
-						}
-						controller = {
-							NOT = { has_full_control_of_state = FROM }
-						}
-					}
-				}
+				add = -999
+				has_global_flag = vanilla_history
+			}
+			modifier = {
+				add = -999
+				has_country_flag = asking_for_state_cd_flag
 			}
 		}
 
@@ -8107,7 +8132,13 @@ BUL_negotiate_claims_in_the_balkans = {
 		}
 
 		visible = {
-			has_completed_focus = BUL_peaceful_development
+			OR = {
+				has_completed_focus = BUL_peaceful_development
+				has_completed_focus = BUL_the_unification_of_the_balkans
+				has_completed_focus = BUL_carry_the_revolution_abroad
+				has_completed_focus = BUL_guardians_of_the_balkans
+				has_completed_focus = BUL_assert_our_claims
+			}
 			is_in_faction = yes
 			FROM = {
 				NOT = { is_controlled_by = BUL }
@@ -8122,16 +8153,19 @@ BUL_negotiate_claims_in_the_balkans = {
 					is_in_faction_with = ROOT
 				}
 			}
+			BUL = { NOT = { has_country_flag = asking_for_state_cd_flag } }
 		}
-
-		cost = 25
-
-		fire_only_once = yes
 		
 		complete_effect = {
 			FROM = {
 				controller = {
 					country_event = { id = bftb_bulgarian_claims.7 hours = 1 }
+				}
+			}
+			BUL = { 
+				set_country_flag = {
+					flag = asking_for_state_cd_flag
+					days = 7
 				}
 			}
 			custom_effect_tooltip = BUL_secure_occupation_in_balkan_state_tt
@@ -8145,27 +8179,7 @@ BUL_bulgarian_administration_of_the_balkans = {
 		icon = GFX_decision_generic_nationalism
 
 		ai_will_do = {
-			base = 0
-			modifier = {
-				add = 100
-				FROM = {
-					has_state_flag = BUL_historical_bulgarian_claim_flag
-				}
-			}
-			modifier = {
-				factor = 100
-				is_historical_focus_on = yes
-			}
-			modifier = {
-				add = 0.1
-				OR = {
-					has_government = fascism
-					has_country_leader = {
-						character = BUL_ferdinand_i
-						ruling_only = yes
-					}
-				}
-			}
+			base = 100
 		}
 
 		on_map_mode = map_and_decisions_view
@@ -8207,9 +8221,9 @@ BUL_bulgarian_administration_of_the_balkans = {
 			}
 		}
   
-		cost = 35
+		cost = 20
 
-		days_remove = 70
+		days_remove = 60
 		
 		complete_effect = {
 			FROM = { set_state_flag = BUL_bulgarian_reintegration_campaign_flag }
@@ -8218,7 +8232,7 @@ BUL_bulgarian_administration_of_the_balkans = {
 			    type = infantry_equipment
 			    amount = -500
 			}
-			add_command_power = -15
+			add_command_power = -5
 		}
 
 		remove_effect = {
@@ -8683,7 +8697,7 @@ BUL_the_balkan_federation_dream = {
 			add_manpower = -250
 			add_equipment_to_stockpile = {
 				type = infantry_equipment
-				amount = -1000
+				amount = -500
 				producer = BUL
 			}
 		}
@@ -8827,7 +8841,7 @@ BUL_the_balkan_federation_dream = {
 
 		available = {
 			NOT = { has_war_with = FROM }
-			num_of_civilian_factories_available_for_projects > 5
+			num_of_civilian_factories_available_for_projects > 2
 		}
 		
 		visible = {
@@ -8849,7 +8863,7 @@ BUL_the_balkan_federation_dream = {
 		days_remove = 180
 
 		modifier = {
-			civilian_factory_use = 6
+			civilian_factory_use = 3
 		}
 		
 		complete_effect = {
@@ -8939,7 +8953,7 @@ BUL_the_balkan_federation_dream = {
 		days_remove = 90
 
 		modifier = {
-			consumer_goods_factor = 0.10
+			consumer_goods_factor = 0.05
 		}
 		
 		complete_effect = {
@@ -8981,7 +8995,7 @@ BUL_the_balkan_federation_dream = {
 
 		available = {
 			NOT = { has_war_with = FROM }
-			has_army_experience > 49
+			has_army_experience > 24
 		}
 		
 		visible = {
@@ -9004,17 +9018,17 @@ BUL_the_balkan_federation_dream = {
 		days_remove = 90
 
 		modifier = {
-			weekly_manpower = -300
+			weekly_manpower = -100
 		}
 		
 		complete_effect = {
-			army_experience = -50
+			army_experience = -25
 		}
 
 		remove_effect = {
 			add_war_support = 0.1
 			FROM = {
-				add_manpower = 3600 #90 days of -300 weekly MP
+				add_manpower = 900 #90 days of -300 weekly MP
 				every_unit_leader = {
 					set_nationality = BUL
 				}

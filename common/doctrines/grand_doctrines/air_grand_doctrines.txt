@@ -13,6 +13,10 @@ new_strategic_destruction = {
 
     ai_will_do = { 
         base = 1
+	modifier = {
+		difficulty > 1
+		factor = 0
+	}
     }
 
     tracks = {
@@ -128,8 +132,13 @@ new_battlefield_support = {
 
         modifier = {
             factor = 10
-            is_major = no
+            tag = GER
         }
+	modifier = {
+		difficulty > 1
+		factor = 0
+		NOT = { tag = GER }
+	}
     }
 
     tracks = {
@@ -243,6 +252,16 @@ new_operational_integrity = {
 
     ai_will_do = {
         base = 1
+
+        modifier = {
+            factor = 10
+            is_major = no
+        }
+	modifier = {
+		difficulty > 1
+		factor = 100
+		NOT = { tag = GER }
+	}
     }
 
     tracks = {

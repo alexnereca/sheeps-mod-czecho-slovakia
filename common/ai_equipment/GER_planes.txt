@@ -3,7 +3,7 @@
 GER_fighter = {
 	category = air
 
-	available_for = { GER }
+	available_for = {GER}
 
 	roles = {
 		air_fighter
@@ -22,7 +22,6 @@ GER_fighter = {
 			}
 		}
 
-		history = yes
 		target_variant = {
 			match_value = 1000
 			type = small_plane_airframe_0
@@ -41,7 +40,7 @@ GER_fighter = {
 		}
 	}
 
-	basic_fighter_default = { #BF 109 E ('A' & 'B' in game atm)
+	basic_fighter_default = {
 		priority = {
 			factor = 100
 			modifier = { 
@@ -50,104 +49,62 @@ GER_fighter = {
 			}
 		}
 
-		history = yes
 		target_variant = {
 			match_value = 2000
 			type = small_plane_airframe_1
 			modules = {
-				fixed_main_weapon_slot = aircraft_cannon_1_1x
-				fixed_auxiliary_weapon_slot_1 = light_mg_2x
-				engine_type_slot = engine_2_1x
-				special_type_slot_1 = drop_tanks
-				special_type_slot_2 = armor_plate_small	
-			}
-		}
-
-		allowed_modules = {
-			light_mg_2x
-			aircraft_cannon_1_2x
-			aircraft_cannon_1_1x
-			engine_2_1x
-			armor_plate_small
-			drop_tanks
-		}
-	}
-
-	# known as 'Fw 190 B' in game
-	improved_fighter_default = { #BF 109 G these were basically entirely new airplaens compared to the BF 109 E
-		priority = {
-			factor = 10
-			modifier = { 
-				has_tech = advanced_small_airframe 
-				factor = 0 #let's not waste XP here
-			}
-			modifier = { 
-				has_tech = engines_3 
-				factor = 0 #let's not waste XP here
-			}
-		}
-
-		history = yes
-		target_variant = {
-			match_value = 3000
-			type = small_plane_airframe_2
-			modules = {
-				fixed_main_weapon_slot = aircraft_cannon_1_2x
-				fixed_auxiliary_weapon_slot_1 = light_mg_2x
-				engine_type_slot = engine_2_1x
-				special_type_slot_1 = armor_plate_small
-				special_type_slot_2 = drop_tanks	
-			}
-		}
-
-		allowed_modules = {
-			heavy_mg_2x
-			light_mg_4x
-			aircraft_cannon_1_1x
-			aircraft_cannon_1_2x
-			engine_2_1x
-			armor_plate_small
-			drop_tanks
-			self_sealing_fuel_tanks_small
-			fuel_tanks_small
-		}
-	}
-
-	improved_fighter_improved = { #Fw 190A-5
-		priority = {
-			factor = 10
-			modifier = { 
-				has_tech = advanced_small_airframe 
-				factor = 0 #let's not waste XP here
-			}
-		}
-
-		history = yes
-		target_variant = {
-			match_value = 3500
-			type = small_plane_airframe_2
-			modules = {
 				fixed_main_weapon_slot = aircraft_cannon_1_2x
 				fixed_auxiliary_weapon_slot_1 = aircraft_cannon_1_1x
-				fixed_auxiliary_weapon_slot_2 = light_mg_2x
-				engine_type_slot = engine_3_1x
-				special_type_slot_1 = armor_plate_small
-				special_type_slot_2 = fuel_tanks_small
-				special_type_slot_3 = self_sealing_fuel_tanks_small		
+				engine_type_slot = engine_2_1x
+				special_type_slot_1 = empty
+				special_type_slot_2 = empty	
 			}
 		}
 
 		allowed_modules = {
 			light_mg_4x
-			light_mg_2x
-			aircraft_cannon_1_2x
+			heavy_mg_4x
 			aircraft_cannon_1_1x
-			heavy_mg_2x
+			aircraft_cannon_1_2x
+			engine_2_1x
+			armor_plate_small
+		}
+	}
+
+	improved_fighter_has_tech = { 
+		priority = {
+			factor = 100
+			modifier = { 
+				has_tech = advanced_small_airframe 
+				factor = 0 #let's not waste XP here
+			}
+			modifier = { 
+				has_tech = improved_small_airframe 
+				factor = 10 #let's not waste XP here
+			}
+		}
+
+		target_variant = {
+			match_value = 30000
+			type = small_plane_airframe_2
+			modules = {
+				fixed_main_weapon_slot = heavy_mg_4x
+				fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
+				fixed_auxiliary_weapon_slot_2 = heavy_mg_4x
+				engine_type_slot = engine_3_1x
+				special_type_slot_1 = armor_plate_small
+				special_type_slot_2 = armor_plate_small
+				special_type_slot_3 = self_sealing_fuel_tanks_small #lack rubber	
+			}
+		}
+
+		allowed_modules = {
+			heavy_mg_4x
+			aircraft_cannon_1_2x
 			engine_3_1x
 			armor_plate_small
 			drop_tanks
 			self_sealing_fuel_tanks_small
-			fuel_tanks_small
 		}
 	}
 
@@ -157,27 +114,30 @@ GER_fighter = {
 			factor = 10
 		}
 
-		history = yes
 		target_variant = {
 			match_value = 4000
 			type = small_plane_airframe_3
 			modules = {
-				fixed_main_weapon_slot = aircraft_cannon_1_2x
-				fixed_auxiliary_weapon_slot_1 = aircraft_cannon_1_1x
-				fixed_auxiliary_weapon_slot_2 = aircraft_cannon_1_2x
+				fixed_main_weapon_slot = heavy_mg_4x
+				fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
+				fixed_auxiliary_weapon_slot_2 = heavy_mg_4x
 				engine_type_slot = engine_4_1x
 				special_type_slot_1 = armor_plate_small
 				special_type_slot_2 = drop_tanks
-				special_type_slot_3 = self_sealing_fuel_tanks_small	
+				special_type_slot_3 = fuel_tanks_small	
+				special_type_slot_4 = self_sealing_fuel_tanks_small	
 			}
 		}
 
 		allowed_modules = { 
+			heavy_mg_4x
 			aircraft_cannon_2_2x
 			aircraft_cannon_2_1x
 			engine_4_1x
+			drop_tanks
 			armor_plate_small
 			self_sealing_fuel_tanks_small
+			fuel_tanks_small
 		}
 	}
 	jet_fighter_default = { #Me 262
@@ -185,14 +145,14 @@ GER_fighter = {
 			factor = 100
 		}
 
-		history = yes
 		target_variant = {
 			match_value = 4000
 			type = small_plane_airframe_4
 			modules = {
 				fixed_main_weapon_slot = aircraft_cannon_2_2x
 				fixed_auxiliary_weapon_slot_1 = aircraft_cannon_2_2x
-				engine_type_slot = jet_engine_2x
+				fixed_auxiliary_weapon_slot_2 = aircraft_cannon_2_2x
+				engine_type_slot = engine_4_1x
 				special_type_slot_1 = armor_plate_small
 				special_type_slot_2 = drop_tanks	
 				special_type_slot_3 = self_sealing_fuel_tanks_small	
@@ -204,6 +164,9 @@ GER_fighter = {
 			aircraft_cannon_2_2x
 			jet_engine_2x
 			armor_plate_small
+			engine_4_1x
+			drop_tanks
+			self_sealing_fuel_tanks_small
 		}
 	}
 }
@@ -229,7 +192,6 @@ GER_cas = {
 			}
 		}
 
-		history = yes
 		target_variant = {
 			match_value = 500
 			type = small_plane_cas_airframe_0
@@ -250,23 +212,19 @@ GER_cas = {
 			fuel_tanks_small
 		}
 	}
-	cas_1 = { #Ju 87
+	cas_1 = {
 		priority = {
-			factor = 100
-			
+			factor = 100	
 		}
-
-
-		history = yes
 		target_variant = {
 			match_value = 1000
 			type = small_plane_cas_airframe_1
 			modules = {
 				fixed_main_weapon_slot = bomb_locks
-				fixed_auxiliary_weapon_slot_1 = empty
+				fixed_auxiliary_weapon_slot_1 = bomb_locks
 				engine_type_slot = engine_2_1x
-				special_type_slot_1 = lmg_defense_turret
-				special_type_slot_2 = dive_brakes_small	
+				special_type_slot_1 = armor_plate_small
+				special_type_slot_2 = fuel_tanks_small	
 			}
 			
 		}
@@ -276,62 +234,91 @@ GER_cas = {
 			engine_2_1x
 			armor_plate_small
 			fuel_tanks_small
-			lmg_defense_turret
-			dive_brakes_small
 		}
 	}
-	cas_2 = { #Ju 87 G
+	cas_2 = {
 		priority = {
 			factor = 200
+			modifier = { 
+				date > 1939.12.1
+				factor = 0 #let's not waste XP here
+			}
 		}
-		history = yes
 		target_variant = {
 			match_value = 1500
 			type = small_plane_cas_airframe_2
 			modules = {
 				fixed_main_weapon_slot = bomb_locks
-				fixed_auxiliary_weapon_slot_1 = { 
-					any_of = { 
-						tank_buster_2 
-						tank_buster_1
-					}
-				}
-				engine_type_slot = engine_3_1x
-				special_type_slot_1 = lmg_defense_turret
-				special_type_slot_2 = drop_tanks #not historical, but fixes CAS performance during barbarossa
+				fixed_auxiliary_weapon_slot_1 = bomb_locks
+				engine_type_slot = engine_2_1x
+				special_type_slot_1 = fuel_tanks_small
+				special_type_slot_2 = empty
 			}
 		}
-
 		allowed_modules = {
+			small_bomb_bay
 			bomb_locks
-			drop_tanks
-			tank_buster_2
-			tank_buster_1
-			engine_3_1x
+			engine_2_2x
+			armor_plate_small
+			fuel_tanks_small
 		}
 	}
-	cas_3 = { #HS 129
+	cas_2_improved = {
+		priority = {
+			factor = 2000
+			modifier = { 
+				date < 1939.12.1
+				factor = 0
+			}
+		}
+		target_variant = {
+			match_value = 1500
+			type = small_plane_cas_airframe_2
+			modules = {
+				fixed_main_weapon_slot = heavy_bomb_locks
+				fixed_auxiliary_weapon_slot_1 = bomb_locks
+				fixed_auxiliary_weapon_slot_2 = bomb_locks
+				engine_type_slot = engine_3_1x	
+				special_type_slot_1 = fuel_tanks_small	
+				special_type_slot_2 = fuel_tanks_small	
+				special_type_slot_3 = dive_brakes_small
+			}
+		}
+		allowed_modules = {
+			small_bomb_bay
+			bomb_locks
+			engine_2_2x
+			armor_plate_small
+			engine_3_1x
+			fuel_tanks_small
+			heavy_bomb_locks
+		}
+	}
+	cas_3 = {
 		priority = {
 			factor = 200
 		}
-		history = yes
 		target_variant = {
 			match_value = 2500
 			type = small_plane_cas_airframe_3
 			modules = {
-				fixed_main_weapon_slot = bomb_locks
-				fixed_auxiliary_weapon_slot_1 = tank_buster_2
-				fixed_auxiliary_weapon_slot_2 = empty
-				engine_type_slot = engine_2_2x
-				special_type_slot_1 = empty
-				special_type_slot_2 = empty	
+				fixed_main_weapon_slot = heavy_bomb_locks
+				fixed_auxiliary_weapon_slot_1 = heavy_bomb_locks
+				fixed_auxiliary_weapon_slot_2 = heavy_bomb_locks
+				engine_type_slot = engine_4_1x	
+				special_type_slot_1 = self_sealing_fuel_tanks_small	
+				special_type_slot_2 = fuel_tanks_small		
+				special_type_slot_3 = dive_brakes_small	
 			}
 		}
 
 		allowed_modules = {
-			tank_buster_2
 			bomb_locks
-			engine_2_2x
+			heavy_bomb_locks
+			engine_3_1x
+			engine_4_1x
+			self_sealing_fuel_tanks_small	
+			fuel_tanks_small	
 		}
 	}
 }
@@ -352,7 +339,6 @@ GER_naval_bomber = {
 		priority = {
 			factor = 100
 		}
-		history = yes
 		target_variant = {
 			match_value = 1000
 			type = small_plane_naval_bomber_airframe_1
@@ -376,7 +362,6 @@ GER_naval_bomber = {
 		priority = {
 			factor = 200
 		}
-		history = yes
 		target_variant = {
 			match_value = 1500
 			type = small_plane_naval_bomber_airframe_2
@@ -403,7 +388,6 @@ GER_naval_bomber = {
 		priority = {
 			factor = 200
 		}
-		history = yes
 		target_variant = {
 			match_value = 2000
 			type = small_plane_naval_bomber_airframe_3
@@ -457,7 +441,6 @@ GER_tactical_bomber = {
 				factor = 0 #let's not waste XP here
 			}
 		}
-		history = yes
 		target_variant = {
 			match_value = 2000
 			type = medium_plane_airframe_0
@@ -480,7 +463,6 @@ GER_tactical_bomber = {
 		priority = {
 			factor = 100
 		}
-		history = yes
 		target_variant = {
 			match_value = 3000
 			type = medium_plane_airframe_1
@@ -504,7 +486,6 @@ GER_tactical_bomber = {
 		priority = {
 			factor = 100
 		}
-		history = yes
 		target_variant = {
 			match_value = 3000
 			type = medium_plane_airframe_2
@@ -532,7 +513,6 @@ GER_tactical_bomber = {
 			factor = 100
 		}
 
-		history = yes
 		target_variant = {
 			match_value = 4000
 			type = medium_plane_airframe_3
@@ -561,7 +541,6 @@ GER_tactical_bomber = {
 			factor = 100
 		}
 
-		history = yes
 		target_variant = {
 			match_value = 4000
 			type = medium_plane_airframe_4
@@ -606,14 +585,13 @@ GER_heavy_fighter = {
 		priority = {
 			factor = 100	
 		}
-		history = yes
 		target_variant = {
 			match_value = 1000
 			type = medium_plane_fighter_airframe_1
 			modules = {
-				fixed_main_weapon_slot = light_mg_4x
-				fixed_auxiliary_weapon_slot_1 = aircraft_cannon_1_2x
-				fixed_auxiliary_weapon_slot_2 = empty
+				fixed_main_weapon_slot = heavy_mg_4x
+				fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
+				fixed_auxiliary_weapon_slot_2 = heavy_mg_4x
 				engine_type_slot = engine_2_2x
 				special_type_slot_1 = lmg_defense_turret
 				special_type_slot_2 = empty	
@@ -632,14 +610,13 @@ GER_heavy_fighter = {
 		priority = {
 			factor = 200
 		}
-		history = yes
 		target_variant = {
 			match_value = 1500
 			type = medium_plane_fighter_airframe_2
 			modules = {
 				fixed_main_weapon_slot = heavy_mg_4x
-				fixed_auxiliary_weapon_slot_1 = aircraft_cannon_1_2x
-				fixed_auxiliary_weapon_slot_2 = empty
+				fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
+				fixed_auxiliary_weapon_slot_2 = heavy_mg_4x
 				engine_type_slot = engine_3_2x
 				special_type_slot_1 = empty
 				special_type_slot_2 = empty	
@@ -660,14 +637,13 @@ GER_heavy_fighter = {
 			
 		}
 
-		history = yes
 		target_variant = {
 			match_value = 2000
 			type = medium_plane_fighter_airframe_3
 			modules = {
 				fixed_main_weapon_slot = heavy_mg_4x
-				fixed_auxiliary_weapon_slot_1 = aircraft_cannon_2_2x
-				fixed_auxiliary_weapon_slot_2 = bomb_locks
+				fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
+				fixed_auxiliary_weapon_slot_2 = heavy_mg_4x
 				engine_type_slot = engine_4_2x
 				special_type_slot_1 = empty
 				special_type_slot_2 = empty	
@@ -717,7 +693,6 @@ GER_strategic_bomber = {
 			factor = 10	
 		}
 
-		history = yes
 		target_variant = {
 			match_value = 1000
 			type = large_plane_airframe_1
@@ -746,7 +721,6 @@ GER_strategic_bomber = {
 			
 		}
 
-		history = yes
 		target_variant = {
 			match_value = 2000
 			type = large_plane_airframe_2
@@ -774,7 +748,6 @@ GER_strategic_bomber = {
 			factor = 10
 		}
 
-		history = yes
 		target_variant = {
 			match_value = 4000
 			type = large_plane_airframe_3
@@ -802,7 +775,6 @@ GER_strategic_bomber = {
 			factor = 10
 		}
 
-		history = yes
 		target_variant = {
 			match_value = 5000
 			type = large_plane_airframe_4
@@ -851,7 +823,6 @@ GER_maritime_patrol = {
 			factor = 10
 		}
 
-		history = yes
 		target_variant = {
 			match_value = 1000
 			type = large_plane_maritime_patrol_plane_airframe_1
@@ -882,7 +853,6 @@ GER_maritime_patrol = {
 			
 		}
 
-		history = yes
 		target_variant = {
 			match_value = 2000
 			type = large_plane_maritime_patrol_plane_airframe_2
@@ -914,7 +884,6 @@ GER_maritime_patrol = {
 			factor = 10
 		}
 
-		history = yes
 		target_variant = {
 			match_value = 4000
 			type = large_plane_maritime_patrol_plane_airframe_3

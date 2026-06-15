@@ -78,6 +78,7 @@ missing_garrison_scaled_effect = {
 	}
 }
 
+
 no_garrison = {
 	icon = 1
 	sound_effect = "Martial_Law_Interface_No_Garrison"
@@ -110,32 +111,6 @@ no_garrison = {
 
 	ai_will_do = {
 		base = 0
-
-		modifier = {
-			FROM = {
-				has_government = democratic
-			}
-			has_active_resistance = no
-			add = 200
-		}
-		# if losing, get manpower & equipment back
-		modifier = {
-			FROM = {
-				surrender_progress > 0.15
-			}
-			add = 100
-		}
-		modifier = {
-			FROM = {
-				surrender_progress > 0.4
-			}
-			add = 500
-		}
-
-		modifier = {
-			check_variable  = { uncapped_resistance_target > -0.4 }
-			add = -60
-		}
 	}
 }
 
@@ -151,7 +126,7 @@ autonomous_occupation = {
 		resistance_target 				= +0.10
 		compliance_gain 				= 0.02
 		required_garrison_factor 		= -0.40
-		resistance_damage_to_garrison 	= -0.25
+		resistance_damage_to_garrison 	= -0.30
 	}
 
 	ai_will_do = {
@@ -165,6 +140,24 @@ autonomous_occupation = {
 			}
 			resistance < autonomous_occupation # if we are under base resistance try to build compliance instead
 			add = 500
+		}
+		modifier = {
+			FROM = {
+				has_capitulated = yes
+				has_government = democratic
+			}
+			add = 1000
+		}
+		modifier = {
+			OR = {
+				FROM = {
+					has_war = no
+					has_government = democratic
+				}
+				resistance < 10
+				compliance > 80 #we can sustain this
+			}
+			add = 5000
 		}
 	}
 }
@@ -188,12 +181,59 @@ foreign_civilian_oversight = {
 			check_variable  = { resistance_target_without_law > 0.05}
 			add = 100
 		}
+		modifier = {
+			FROM = { 
+				tag = BUL
+				NOT = { has_government = democratic }  
+			}
+			BUL_is_balkan_state = yes
+			add = 20000
+		}
+
+		modifier = {
+			FROM = {
+				original_tag = SPR
+			}
+			date < 1943.1.1
+
+			add = 2000
+		}
+		modifier = {
+			FROM = { 
+				tag = RAJ
+				has_completed_focus = RAJ_his_majestys_loyal_government
+				NOT = { has_completed_focus = RAJ_the_government_of_india_act } 
+			}
+			add = 20000
+		}
+		modifier = {
+			add = 9999
+			FROM = {
+				tag = RAJ
+				is_subject = yes	
+				OR = {
+					has_completed_focus = RAJ_forward_bloc
+					has_country_flag = RAJ_AI_RANDOM_INDIA_BOSE
+					has_game_rule = {
+						rule = RAJ_ai_behavior
+						option = GOE_INDIA_FASCISM_BOSE
+					}
+					has_country_flag = RAJ_AI_RANDOM_INDIA_HINDUTVA
+					has_game_rule = {
+						rule = RAJ_ai_behavior
+						option = GOE_INDIA_FASCISM_HINDUTVA
+					}
+				}
+			}
+		}
 	}
 }
 
 
 local_police_force_garrison = {
 	icon = 11
+	default_law = yes
+	starting_law = yes
 	sound_effect = "Martial_Law_Interface_Local_Police_Force_Garrison"
 	
 	state_modifier = {
@@ -207,7 +247,7 @@ local_police_force_garrison = {
 
 
 	ai_will_do = {
-		base = 100
+		base = 300
 		modifier = {
 			check_variable  = { resistance_target_without_law > 0.09}
 			add = 200
@@ -264,15 +304,13 @@ liberate_workers_occupation = {
 	}
 
 	ai_will_do = {
-		base = 200
+		base = 7000
 	}
 }
 
 military_governor_occupation = {
 	icon = 6
 	sound_effect = "Martial_Law_Interface_Military_Governor_Occupation"
-	default_law = yes
-	starting_law = yes
 	
 	state_modifier = {
 		resistance_target 			= -0.35
@@ -284,22 +322,9 @@ military_governor_occupation = {
 	}
 	ai_will_do = {
 		base = 0
-
-		#modifier = {
-			#set_temp_variable = { num_factory = building_level@arms_factory }
-			#add_to_temp_variable = { num_factory = building_level@industrial_complex }
-			#check_variable = { num_factory < 1 }
-
-			#add = 50
-		#}
-		#modifier = {
-		#	is_core_of = FROM
-
-		#	add = 150
-		#}
 		modifier = {
 			check_variable  = { resistance_target_without_law > 0.24}
-			add = 400
+			add = 200
 		}
 		
 		modifier = {
@@ -312,7 +337,7 @@ military_governor_occupation = {
 			}
 			check_variable = { garrison_min_support_ratio < requirement_limit }
 
-			add = 400
+			add = 200
 		}
 		
 	}
@@ -335,19 +360,32 @@ martial_law_occupation = {
 		base = 0
 
 		modifier = {
-			check_variable = { resistance_target_without_law > 0.44}
+			check_variable = { resistance_target_without_law > 0.59 }
 
-			set_temp_variable = { resistance_limit = 40 }
+			set_temp_variable = { resistance_limit = 35 }
 			set_temp_variable = { requirement_limit = 0.65 }
 			if = {
 				limit = { occupation_law = martial_law_occupation }
-				set_temp_variable = { resistance_limit = 35 }
+				set_temp_variable = { resistance_limit = 30 }
 				set_temp_variable = { requirement_limit = 0.5 }
 			}
 			check_variable = { garrison_min_support_ratio > requirement_limit }
 			resistance > resistance_limit
 
-			add = 500
+			add = 4000
+		}
+
+		modifier = {
+			check_variable = { resistance_target_without_law > 0.59 }
+
+			set_temp_variable = { resistance_limit = 35 }
+			if = {
+				limit = { occupation_law = martial_law_occupation }
+				set_temp_variable = { resistance_limit = 30 }
+			}
+			resistance > resistance_limit
+
+			add = 4000
 		}
 	}
 }
@@ -474,6 +512,75 @@ harsh_quotas_occupation = {
 
 			add = num_damaged
 		}
+
+		modifier = {
+			FROM = {
+				original_tag = SPR
+			}
+			date < 1943.1.1
+
+			add = -9999
+		}
+
+		modifier = {
+			OR = {
+				is_on_continent = europe
+				is_core_of = USA
+			}
+
+			OR ={
+				AND = {
+					check_variable = { building_level@arms_factory = 1 compare = greater_than }
+					check_variable = { building_level@industrial_complex = 1 compare = greater_than }
+				}
+				check_variable = { building_level@arms_factory = 2 compare = greater_than }
+				check_variable = { building_level@industrial_complex = 2 compare = greater_than }
+			}
+			
+			
+			FROM  = {
+				NOT = { has_government = communism } #we get better occupation law
+			}
+
+			add = 2000
+		}
+
+		modifier = {
+			compliance > 60
+			OR ={
+				AND = {
+					check_variable = { building_level@arms_factory = 2 compare = greater_than }
+					check_variable = { building_level@industrial_complex = 2 compare = greater_than }
+				}
+				check_variable = { building_level@arms_factory = 4 compare = greater_than }
+				check_variable = { building_level@industrial_complex = 4 compare = greater_than }
+			}
+			
+			
+			FROM  = {
+				NOT = { has_government = communism }
+			}
+
+			add = 2000
+		}
+
+		modifier = {
+			set_temp_variable = { resistance_limit = 49 }
+			if = {
+				limit = { occupation_law = martial_law_occupation }
+				set_temp_variable = { resistance_limit = 30 }
+			}
+			resistance > resistance_limit
+
+			add = -1000
+		}
+
+		modifier = {
+			OR = {
+				has_dynamic_modifier = { modifier = idea_RAJ_aden_treaty_port }
+			}
+			add = 9999
+		}
 	}
 }
 
@@ -537,10 +644,9 @@ reconciliation = {
 	}
 
 	ai_will_do = {
-		base = 200
+		base = 9999
 	}
 }
-
 colonial_police = {
 	icon = 13
 	sound_effect = "Martial_Law_Interface_Autonomous_Occupation_Unique_DEM"
@@ -570,7 +676,6 @@ colonial_police = {
 				FROM = { capital_scope = { is_on_continent = africa } }
 			}
 		}
-		
 	}
 
 	state_modifier = { #CHANGES HERE NEED TO BE APPLIED ALSO IN ITA_fake_colonial_police_law idea
@@ -663,8 +768,13 @@ colonial_police_final = {
 	fallback_law = foreign_civilian_oversight
 
 	visible = {
-		original_tag = ITA
-		has_completed_focus = ITA_polizia_dell_africa_italiana
+		OR = {
+			AND = {
+				original_tag = ITA
+				has_completed_focus = ITA_polizia_dell_africa_italiana
+			}
+			original_tag = AOI
+		}
 		OR = {
 			AND = {
 				FROM = { original_tag = ALB }
@@ -682,11 +792,12 @@ colonial_police_final = {
 		local_factories 				= 0.25
 		local_resources 				= 0.25
 		local_manpower 					= 0.05
+
 	}
 
 
 	ai_will_do = {
-		base = 250
+		base = 9999
 		modifier = {
 			check_variable  = { resistance_target_without_law > 0.3}
 			add = 200
@@ -753,48 +864,17 @@ secretaries_general = {
 }
 
 independent_rule = {
-	icon = 15
+	icon = 13
 	sound_effect = "Martial_Law_Interface_Autonomous_Occupation_Unique_DEM"
 
 	fallback_law = foreign_civilian_oversight
 
 	visible = {
 		original_tag = RAJ
-		has_dlc = "Graveyard of Empires"
-		OR = {
-			AND = {
-				has_focus_tree = indian_focus_goe
-				has_completed_focus = RAJ_princely_states_policy
-			}
-			AND = {
-				NOT = {
-					has_focus_tree = indian_focus_goe
-				}
-				any_controlled_state = {
-					OR = {
-						is_core_of = MYS
-						is_core_of = HYD
-						is_core_of = MYS
-						is_core_of = RJP
-						is_core_of = CIP
-						is_core_of = WIS
-						is_core_of = SIN
-						is_core_of = KAS
-						is_core_of = KOL
-						is_core_of = KAS
-						is_core_of = WIS
-						is_core_of = NWF
-						is_core_of = MPU
-						is_core_of = KHL
-						is_core_of = FSS
-						is_core_of = SKK
-						is_core_of = RAS
-						is_core_of = KLT
-					}
-				}	
-			}
+		OR = { 
+			has_completed_focus = RAJ_princely_states_policy
+			has_completed_focus = RAJ_the_jewel_becomes_the_crown
 		}
-
 		FROM = {
 			OR = {
 				original_tag = MYS
@@ -836,59 +916,41 @@ independent_rule = {
 			check_variable  = { resistance_target_without_law > 0.2 }
 			add = 200
 		}
-
-
 		modifier = {
 			check_variable  = { resistance_target_without_law > 0.34}
 			add = 300
 		}
+		modifier = {
+			OR = {
+				AND = {
+					check_variable = { building_level@arms_factory = 1 compare = less_than }
+					check_variable = { building_level@industrial_complex = 1 compare = less_than }
+				}
+				RAJ = {
+					AND = {
+						is_subject = no
+						has_war = no
+					}
+				}
+			}
+			add = 9999
+		}
 	}
 }
 
-# The idea for this law is that we exploit the people to get us extra resources fast, but builds up resistance much quicker
-princely_subjugation = {
-	icon = 14
+
+princely_subjugation= {
+	icon = 13
 	sound_effect = "Martial_Law_Interface_Autonomous_Occupation_Unique_DEM"
 
 	fallback_law = military_governor_occupation
 
 	visible = {
 		original_tag = RAJ
-		has_dlc = "Graveyard of Empires"
-		OR = {
-			AND = {
-				has_focus_tree = indian_focus_goe
-				has_completed_focus = RAJ_princely_states_policy
-			}
-			AND = {
-				NOT = {
-					has_focus_tree = indian_focus_goe
-				}
-				any_controlled_state = {
-					OR = {
-						is_core_of = MYS
-						is_core_of = HYD
-						is_core_of = MYS
-						is_core_of = RJP
-						is_core_of = CIP
-						is_core_of = WIS
-						is_core_of = SIN
-						is_core_of = KAS
-						is_core_of = KOL
-						is_core_of = KAS
-						is_core_of = WIS
-						is_core_of = NWF
-						is_core_of = MPU
-						is_core_of = KHL
-						is_core_of = FSS
-						is_core_of = SKK
-						is_core_of = RAS
-						is_core_of = KLT
-					}
-				}	
-			}	
+		OR = { 
+			has_completed_focus = RAJ_princely_states_policy
+			has_completed_focus = RAJ_the_jewel_becomes_the_crown
 		}
-		
 		FROM = {
 			OR = {
 				original_tag = MYS
@@ -911,15 +973,17 @@ princely_subjugation = {
 				original_tag = KLT
 			}
 		}
+
+		
 	}
 
 	state_modifier = {
-		resistance_target 				= 0.60
-		compliance_gain 				= -0.10
+		resistance_target 				= -0.40
+		compliance_gain 				= -0.05
 		required_garrison_factor 		= 0.15
-		resistance_damage_to_garrison 	= -0.10
-		local_factories 				= 0.60
-		local_resources 				= 0.60
+		resistance_damage_to_garrison 	= 0.50
+		local_factories 				= 1
+		local_resources 				= 1
 
 	}
 
@@ -944,9 +1008,15 @@ princely_subjugation = {
 
 			add = 350
 		}
+		modifier = {
+			OR = {
+				check_variable = { building_level@arms_factory = 0 compare = greater_than }
+				check_variable = { building_level@industrial_complex = 0 compare = greater_than }
+			}
+			add = 9999
+		}
 	}
 }
-
 senbu_occupation_law = {
 	icon = 16
 	sound_effect = "Martial_Law_Interface_Autonomous_Occupation_Unique_DEM"

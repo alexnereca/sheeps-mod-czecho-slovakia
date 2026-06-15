@@ -31,9 +31,9 @@ leader_traits = {
 		random = no
 		sprite = 13
 		
-		max_command_power_mult = 0.1
-		army_core_defence_factor = 0.10
-		army_core_attack_factor = 0.05
+		max_command_power_mult = 0.15
+		army_core_defence_factor = 0.15
+		army_core_attack_factor = 0.15
 		justify_war_goal_time = -0.5
 		generate_wargoal_tension = -1
 		
@@ -99,7 +99,7 @@ leader_traits = {
 		random = no
 		sprite = 13
 			
-		production_speed_buildings_factor = 0.07
+		production_speed_buildings_factor = 0.15
 		stability_factor = 0.05
 		
 		ai_will_do = {
@@ -111,7 +111,7 @@ leader_traits = {
 		random = no
 		sprite = 13
 			
-		research_speed_factor = 0.1
+		research_speed_factor = 0.05
 		stability_factor = 0.05
 		
 		ai_will_do = {
@@ -136,8 +136,8 @@ leader_traits = {
 		random = no
 		sprite = 13
 			
-		trade_laws_cost_factor = -0.15
-		consumer_goods_factor = -0.05
+		trade_laws_cost_factor = -0.25
+		consumer_goods_factor = -0.1
 		production_speed_buildings_factor = 0.05
 		
 		ai_will_do = {
@@ -203,7 +203,7 @@ leader_traits = {
 			
 		communism_drift = 0.05
 		stability_factor = 0.1
-		production_factory_max_efficiency_factor = 0.05
+		production_factory_max_efficiency_factor = 0.10
 		compliance_growth = 0.02
 		
 		ai_will_do = {
@@ -215,8 +215,8 @@ leader_traits = {
 		random = no
 		sprite = 13
 			
-		production_speed_buildings_factor = 0.06
-		production_factory_max_efficiency_factor = 0.05
+		production_speed_buildings_factor = 0.1
+		production_factory_max_efficiency_factor = 0.10
 		communism_drift = 0.03
 		
 		ai_will_do = {
@@ -230,7 +230,7 @@ leader_traits = {
 			
 		resistance_growth = -0.05
 		command_power_gain_mult = 0.15
-		army_core_attack_factor = 0.05
+		army_core_attack_factor = 0.1
 		army_core_defence_factor = 0.1
 		
 		ai_will_do = {
@@ -244,7 +244,7 @@ leader_traits = {
 			
 		resistance_growth = -0.05
 		command_power_gain_mult = 0.25
-		army_core_attack_factor = 0.05
+		army_core_attack_factor = 0.1
 		army_core_defence_factor = 0.1
 		
 		ai_will_do = {
@@ -257,8 +257,8 @@ leader_traits = {
 		sprite = 13
 			
 		stability_factor = 0.1
-		war_support_factor = 0.10
-		army_core_attack_factor = 0.05
+		war_support_factor = 0.15
+		army_core_attack_factor = 0.1
 		army_core_defence_factor = 0.1
 		
 		ai_will_do = {
@@ -270,9 +270,9 @@ leader_traits = {
 		random = no
 		sprite = 13
 			
-		experience_gain_navy = 0.1
-		army_core_attack_factor = 0.05
-		army_core_defence_factor = 0.1
+		experience_gain_navy = 0.15
+		army_core_attack_factor = 0.15
+		army_core_defence_factor = 0.15
 		
 		ai_will_do = {
 			factor = 0
@@ -284,7 +284,7 @@ leader_traits = {
 		sprite = 13
 			
 		neutrality_drift = 0.03
-		army_core_attack_factor = 0.05
+		army_core_attack_factor = 0.1
 		army_core_defence_factor = 0.1
 		
 		ai_will_do = {
@@ -338,7 +338,7 @@ leader_traits = {
 		sprite = 13
 			
 		fascism_drift = 0.05
-		research_speed_factor = 0.15
+		research_speed_factor = 0.06
 		
 		ai_will_do = {
 			factor = 0
@@ -362,7 +362,7 @@ leader_traits = {
 		random = no
 		sprite = 13
 			
-		production_speed_infrastructure_factor = 0.15
+		production_speed_infrastructure_factor = 0.20
 		communism_drift = 0.01
 		stability_factor = 0.1
 		
@@ -441,8 +441,8 @@ leader_traits = {
 		random = no
 		sprite = 13
 			
-		monthly_population = 0.1
-		weekly_manpower = 100
+		monthly_population = 0.3
+		weekly_manpower = 300
 		
 		ai_will_do = {
 			factor = 0
@@ -453,11 +453,16 @@ leader_traits = {
 		random = no
 		sprite = 13
 			
-		monthly_population = 0.1
+		monthly_population = 0.65
 		stability_factor = 0.1
 		
 		ai_will_do = {
-			factor = 0
+			factor = 3
+			modifier = {
+				factor = 0
+				tag = BEL
+				is_historical_focus_on = yes
+			}
 		}
 	}
 
@@ -507,7 +512,8 @@ leader_traits = {
 		random = no
 		sprite = 13
 			
-		industrial_capacity_factory = 0.05
+		drift_defence_factor = 0.3
+		industrial_capacity_factory = 0.15
 		army_core_defence_factor = 0.05
 		
 		ai_will_do = {
@@ -519,8 +525,8 @@ leader_traits = {
 		random = no
 		sprite = 13
 			
-		army_core_attack_factor = 0.05
-		army_core_defence_factor = 0.10
+		army_core_attack_factor = 0.1
+		army_core_defence_factor = 0.15
 		war_support_factor = 0.05
 		
 		ai_will_do = {
@@ -569,7 +575,7 @@ leader_traits = {
 		sprite = 13
 			
 		production_speed_bunker_factor = 0.1
-		production_speed_arms_factory_factor = 0.075
+		production_speed_arms_factory_factor = 0.1
 		army_core_defence_factor = 0.05
 		
 		ai_will_do = {
@@ -608,11 +614,11 @@ leader_traits = {
 		sprite = 13
 			
 		conscription = 0.02
-		political_power_factor = 0.1
-		stability_factor = -0.15
+		political_power_factor = 0.20
+		stability_factor = -0.10
 		
 		ai_will_do = {
-			factor = 0
+			factor = 500
 		}
 	}
 
@@ -620,7 +626,7 @@ leader_traits = {
 		random = no
 		sprite = 13
 			
-		weekly_manpower = 50
+		weekly_manpower = 200
 		communism_drift = 0.02
 		stability_factor = 0.05
 		
@@ -633,7 +639,7 @@ leader_traits = {
 		random = no
 		sprite = 13
 			
-		stability_factor = 0.10
+		stability_factor = 0.2
 		
 		ai_will_do = {
 			factor = 0
@@ -644,9 +650,9 @@ leader_traits = {
 		random = no
 		sprite = 13
 			
-		production_factory_max_efficiency_factor = 0.05
+		production_factory_max_efficiency_factor = 0.1
 		neutrality_drift = 0.03
-		production_speed_industrial_complex_factor = 0.1
+		production_speed_industrial_complex_factor = 0.15
 		
 		ai_will_do = {
 			factor = 0
@@ -659,7 +665,7 @@ leader_traits = {
 			
 		resistance_growth = -0.1
 		compliance_growth = 0.05
-		industrial_capacity_factory = 0.06
+		industrial_capacity_factory = 0.1
 		
 		ai_will_do = {
 			factor = 0
@@ -670,7 +676,7 @@ leader_traits = {
 		random = no
 		sprite = 13
 			
-		political_power_factor = 0.15
+		political_power_factor = 0.2
 		drift_defence_factor = 0.15
 		
 		ai_will_do = {
@@ -683,7 +689,7 @@ leader_traits = {
 		sprite = 13
 			
 		communism_drift = 0.05
-		consumer_goods_factor = -0.07
+		consumer_goods_factor = -0.15
 		industrial_capacity_factory = 0.05
 		
 		ai_will_do = {
@@ -695,8 +701,8 @@ leader_traits = {
 		random = no
 		sprite = 13
 			
-		production_speed_arms_factory_factor = 0.1
-		army_core_defence_factor = 0.06
+		production_speed_arms_factory_factor = 0.15
+		army_core_defence_factor = 0.1
 		
 		ai_will_do = {
 			factor = 0
@@ -749,7 +755,7 @@ leader_traits = {
 		random = no
 		sprite = 13
 			
-		consumer_goods_factor = -0.05
+		consumer_goods_factor = -0.1
 		industrial_capacity_factory = 0.1
 		
 		ai_will_do = {
@@ -762,8 +768,9 @@ leader_traits = {
 		sprite = 13
 			
 		neutrality_drift = 0.08
-		war_support_factor = 0.05
-		stability_factor = 0.05
+		war_support_factor = 0.1
+		stability_factor = 0.1
+		research_speed_factor = -0.02
 		
 		ai_will_do = {
 			factor = 0
@@ -802,7 +809,7 @@ leader_traits = {
 		sprite = 13
 			
 		fascism_drift = 0.06
-		research_speed_factor = 0.1
+		research_speed_factor = 0.05
 		
 		ai_will_do = {
 			factor = 0
@@ -813,11 +820,11 @@ leader_traits = {
 		random = no
 		sprite = 13
 			
-		monthly_population = 0.15
+		monthly_population = 0.35
 		global_building_slots_factor = 0.2
 		
 		ai_will_do = {
-			factor = 0
+			factor = 80
 		}
 	}
 
@@ -826,7 +833,7 @@ leader_traits = {
 		sprite = 13
 			
 		democratic_drift = 0.06
-		political_power_factor = 0.1
+		political_power_factor = 0.15
 		stability_factor = 0.05
 		
 		ai_will_do = {
@@ -838,9 +845,10 @@ leader_traits = {
 		sprite = 10
 		random = no
 
+		production_speed_industrial_complex_factor = 0.1
 		production_speed_infrastructure_factor = 0.1
-		production_speed_rail_way_factor = 0.15
-		production_speed_supply_node_factor = 0.15
+		production_speed_rail_way_factor = 0.1
+		production_speed_supply_node_factor = 0.1
 
 	}
 
@@ -859,10 +867,14 @@ leader_traits = {
 		sprite = 13
 		random = no
 
-		non_core_manpower = 0.04
+		non_core_manpower = 0.15
 		production_speed_buildings_factor = 0.05
-		global_building_slots_factor = 0.15
-		monthly_population = 0.1
+		global_building_slots_factor = 0.1
+		monthly_population = 0.25
+		
+		ai_will_do = {
+			factor = 50
+		}
 
 	}
 
@@ -870,10 +882,10 @@ leader_traits = {
 		sprite = 13
 		random = no
 
-		non_core_manpower = 0.06
+		non_core_manpower = 0.2
 		production_speed_buildings_factor = 0.1
-		global_building_slots_factor = 0.25
-		monthly_population = 0.1
+		global_building_slots_factor = 0.15
+		monthly_population = 0.35
 
 	}
 
@@ -891,7 +903,7 @@ leader_traits = {
 		sprite = 13
 		random = no
 
-		research_speed_factor = 0.06
+		research_speed_factor = 0.1
 		neutrality_drift = 0.05
 
 	}
@@ -901,8 +913,12 @@ leader_traits = {
 		random = no
 
 		trade_laws_cost_factor = -0.25
-		economy_cost_factor = -0.25
+		economy_cost_factor = -0.5
 		consumer_goods_factor = -0.15
+
+		ai_will_do = {
+			factor = 1
+		}
 
 	}
 
@@ -977,7 +993,7 @@ leader_traits = {
 		random = no
 
 		army_attack_factor = 0.05
-		conscription_factor = 0.1
+		conscription_factor = 0.15
 
 	}
 
@@ -997,7 +1013,7 @@ leader_traits = {
 		random = no
 		surrender_limit = 0.2
 		resistance_target = -0.05
-		conscription_factor = 0.1
+		conscription_factor = 0.15
 		war_support_factor = 0.05
 
 	}
@@ -1005,8 +1021,8 @@ leader_traits = {
 	JUNO_cult_of_personality = {
 		sprite = 13
 		random = no
-		army_core_defence_factor = 0.10
-		army_core_attack_factor = 0.05
+		army_core_defence_factor = 0.15
+		army_core_attack_factor = 0.1
 		stability_factor = 0.05
 		war_support_factor = 0.05
 
@@ -1025,11 +1041,8 @@ leader_traits = {
 		random = no
 		sprite = 13
 		
-		stability_factor = 0.1
-		war_support_factor = 0.05
-		army_core_defence_factor = 0.25
-		generate_wargoal_tension = -0.4
-		non_core_manpower = 0.1
+		stability_factor = 0.15
+		army_core_defence_factor = 0.3
 		
 		ai_will_do = {
 			factor = 0
@@ -1054,7 +1067,7 @@ leader_traits = {
 		sprite = 13
 		
 		drift_defence_factor = 0.2
-		army_core_attack_factor = 0.10
+		army_core_attack_factor = 0.15
 		political_power_factor = 0.1
 		
 		ai_will_do = {
@@ -1066,10 +1079,10 @@ leader_traits = {
 		random = no
 		sprite = 13
 		
-		army_core_attack_factor = 0.05
-		army_core_defence_factor = 0.10
-		mobilization_speed = 0.15
-		conscription_factor = 0.1
+		army_core_attack_factor = 0.1
+		army_core_defence_factor = 0.15
+		mobilization_speed = 0.1
+		conscription_factor = 0.15
 		
 		ai_will_do = {
 			factor = 0
@@ -1106,10 +1119,10 @@ leader_traits = {
 		random = no
 		sprite = 13
 			
-		army_core_attack_factor = 0.05
-		army_core_defence_factor = 0.1
-		war_support_factor = 0.1
-		stability_factor = 0.1
+		army_core_attack_factor = 0.15
+		army_core_defence_factor = 0.2
+		war_support_factor = 0.15
+		stability_factor = 0.15
 		command_power_gain_mult = 0.2
 		
 		ai_will_do = {
@@ -1121,10 +1134,10 @@ leader_traits = {
 		random = no
 		sprite = 13
 			
-		resistance_growth = -0.10
-		political_power_factor = 0.15
-		army_core_defence_factor = 0.10
-		army_core_attack_factor = 0.05
+		resistance_growth = -0.15
+		political_power_factor = 0.2
+		army_core_defence_factor = 0.15
+		army_core_attack_factor = 0.1
 		
 		ai_will_do = {
 			factor = 0
@@ -1135,7 +1148,7 @@ leader_traits = {
 		random = no
 		sprite = 13
 			
-		political_power_factor = 0.08
+		political_power_factor = 0.15
 		stability_factor = 0.05
 		war_support_factor = 0.1
 		neutrality_drift = 0.02

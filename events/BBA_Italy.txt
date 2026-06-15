@@ -80,6 +80,12 @@ country_event = {
 				908 = { add_compliance = 50 }
 			}
 			white_peace = FROM
+			if = {
+				limit = {
+					ITA = { has_war_with = AFA }
+				}
+				ITA = { white_peace = AFA }
+			}
 		}
 
 		hidden_effect = {
@@ -177,6 +183,12 @@ country_event = {
 			}
 		}
 		white_peace = FROM
+		if = {
+			limit = {
+				ITA = { has_war_with = AFA }
+			}
+			ITA = { white_peace = AFA }
+		}
 		hidden_effect = {
 			if = {
 				limit = {
@@ -1467,6 +1479,7 @@ unit_leader_event = {
 			set_variable = { ITA_missiolinis_required_civs = ROOT.num_of_civilian_factories }
 			add_to_variable = { ITA_missiolinis_required_civs = ITA_missiolinis_number_of_civs_goal }
 			add_to_variable = { ITA_missiolinis_required_civs = -1 } #So that the trigger in the mission works properly (can only use >, and not >=)
+			#TODO_Manu: Probably this will be a fixed amount of civs in the future. Then we'll have a generic randomly-triggered mission for building factories in general.
 		}
 	}
 
@@ -5596,7 +5609,7 @@ country_event = {
 
 
 # Event to complete first focus in RSI branch without the RDS getting the popup
-country_event = {
+country_event = { #TODO_Manu: Check if this solves the shit
 	id = BBA_italy_civil_war.0
 	hidden = yes
 
@@ -6221,7 +6234,6 @@ country_event = {
 
 	}
 }
-
 #####################
 ###PURGE THE PARTY###
 #####################
@@ -8742,6 +8754,10 @@ country_event = {
 				} 
 				60 = {
 					country_event = { id = BBA_italy_anti_colonialism_events.53 days = ITA_abolish_colonies_event_delay } #refuses
+					modifier = {
+						factor = 0
+						is_ai = yes
+					}
 				}
 			}
 			#Increase delay for next events
@@ -8827,6 +8843,10 @@ country_event = {
 				} 
 				60 = {
 					country_event = { id = BBA_italy_anti_colonialism_events.55 days = ITA_abolish_colonies_event_delay } #refuses
+					modifier = {
+						factor = 0
+						is_ai = yes
+					}
 				}
 			}
 			#Increase delay for next events
@@ -8891,6 +8911,10 @@ country_event = {
 				} 
 				60 = {
 					country_event = { id = BBA_italy_anti_colonialism_events.57 days = ITA_abolish_colonies_event_delay } #refuses
+					modifier = {
+						factor = 0
+						is_ai = yes
+					}
 				}
 			}
 			#Increase delay for next events
@@ -8955,6 +8979,10 @@ country_event = {
 				} 
 				60 = {
 					country_event = { id = BBA_italy_anti_colonialism_events.59 days = ITA_abolish_colonies_event_delay } #refuses
+					modifier = {
+						factor = 0
+						is_ai = yes
+					}
 				}
 			}
 			#Increase delay for next events
@@ -9019,6 +9047,10 @@ country_event = {
 				} 
 				60 = {
 					country_event = { id = BBA_italy_anti_colonialism_events.61 days = ITA_abolish_colonies_event_delay } #refuses
+					modifier = {
+						factor = 0
+						is_ai = yes
+					}
 				}
 			}
 			#Increase delay for next events
@@ -9083,6 +9115,10 @@ country_event = {
 				} 
 				60 = {
 					country_event = { id = BBA_italy_anti_colonialism_events.63 days = ITA_abolish_colonies_event_delay } #refuses
+					modifier = {
+						factor = 0
+						is_ai = yes
+					}
 				}
 			}
 			#Increase delay for next events
@@ -10377,6 +10413,10 @@ country_event = {
 
 		ai_chance = {
 			base = 40
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
 		}
 
 		ITA = {
@@ -10607,7 +10647,6 @@ country_event = {
 		FROM = {
 			transfer_state = 164
 		}
-
 		FROM = {
 			add_opinion_modifier = {
 			    target = ROOT
@@ -10615,9 +10654,12 @@ country_event = {
 			}
 			add_ideas = ITA_dodecanese_treaty_idea
 		}
-		
-		add_to_faction = FROM
-		
+		if = {
+			limit = {
+				NOT = { is_in_faction_with = FROM }
+			}
+			add_to_faction = FROM
+		}
 	}
 }
 
@@ -10632,13 +10674,14 @@ country_event = {
 
 	# alright.. on to the next one I guess
 	option = { 
-		name = BBA_italy_interaction_events.20.a 
+		name = BBA_italy_interaction_events.20.a
 
+		 
 		add_opinion_modifier = {
 		    target = FROM
 		    modifier = faction_traitor
+	
 		}
-		
 	}
 }
 
@@ -10704,7 +10747,6 @@ country_event = {
 		FROM = {
 			transfer_state = 164
 		}
-
 		FROM = {
 			add_opinion_modifier = {
 			    target = ROOT
@@ -10712,9 +10754,12 @@ country_event = {
 			}
 			add_ideas = ITA_dodecanese_treaty_idea
 		}
-		
-		add_to_faction = FROM
-		
+		if = {
+			limit = {
+				NOT = { is_in_faction_with = FROM }
+			}
+			add_to_faction = FROM
+		}
 	}
 }
 
@@ -10728,13 +10773,14 @@ country_event = {
 	is_triggered_only = yes
 
 	# alright.. on to the next one I guess
-	option = { 
+	option = {
 		name = BBA_italy_interaction_events.23.a 
 
 		
 		add_opinion_modifier = {
 		    target = FROM
 		    modifier = faction_traitor
+	
 		}
 		
 	}
@@ -10906,11 +10952,31 @@ country_event = {
 		ai_chance = { 
 			base = 90
 		}
+
+		GER = {
+			declare_war_on = {
+			    target = AUS
+			    type = annex_everything
+			}
+		}
+		848 = {
+			add_claim_by = GER 
+		}
+		153 = {
+			add_claim_by = GER
+		}
+		152 = {
+			add_claim_by = GER
+		}
+		4 = {
+			add_claim_by = GER
+		}
 	}
 
 	# Sadly we must back down...
 	option = { 
 		name = BBA_italy_interaction_events.25.b 
+
 		ai_chance = { 
 			base = 10
 		}
@@ -10920,6 +10986,12 @@ country_event = {
 		add_popularity = {
 		    ideology = fascism
 		    popularity = -0.3
+		}
+
+		hidden_effect = {
+			every_country = {
+				news_event = { hours = 6 id = BBA_italy_interaction_events_news.1 }
+			}
 		}
 	}
 }
@@ -10960,8 +11032,55 @@ country_event = {
 	# alright.. on to the next one I guess
 	option = { 
 		name = BBA_italy_interaction_events.26.a 
-		
-		
+
+		4 = {
+			if = {
+				limit = { is_owned_by = AUS }
+				add_core_of = GER
+			}
+		}
+		152 = {
+			if = {
+				limit = { is_owned_by = AUS }
+				add_core_of = GER
+			}
+		}
+		153 = {
+			if = {
+				limit = { is_owned_by = AUS }
+				add_core_of = GER
+			}
+		}
+		848 = {
+			if = {
+				limit = { is_owned_by = AUS }
+				add_core_of = GER
+			}
+		}
+		AUS = {
+			every_unit_leader = {
+				set_nationality = GER
+			}
+		}
+		annex_country = { target = AUS transfer_troops = yes }
+		add_political_power = 75
+		set_country_flag = AUS_annexed
+		add_war_support = 0.1
+		add_stability = 0.05
+		if = {
+			limit = {
+				has_dlc = "Death or Dishonor"
+				country_exists = YUG
+				YUG = { has_war = no }
+			}
+			country_event = {
+				id = DOD_yugoslavia.30
+				days = 4
+			}
+		}
+		hidden_effect = {
+			news_event = { hours = 6 id = news.36 }
+		}
 	}
 }
 
@@ -11459,6 +11578,10 @@ country_event = {
 
 		ai_chance = {
 			base = 50
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
 		}
 
 		if = {
@@ -11695,6 +11818,10 @@ country_event = {
 
 		ai_chance = {
 			base = 50
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
 		}
 
 		if = { #Send this event if Britain controls the necessary state(s)
@@ -11871,6 +11998,10 @@ country_event = {
 
 		ai_chance = {
 			base = 50
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
 		}
 
 		if = { #Send this event if Britain controls the necessary state(s)
@@ -12026,6 +12157,10 @@ country_event = {
 
 		ai_chance = {
 			base = 50
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
 		}
 
 		if = { #Send this event if Britain controls the necessary state(s)
@@ -12149,6 +12284,10 @@ country_event = {
 
 		ai_chance = {
 			base = 50
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
 		}
 
 		FRA = {

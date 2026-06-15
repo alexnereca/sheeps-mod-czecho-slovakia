@@ -399,7 +399,7 @@ SWE_politics = {
 		}
 	
 		ai_will_do = {
-
+			factor = 20
 		}
 	
 	}
@@ -581,6 +581,9 @@ SWE_politics = {
 			modifier = {
 				add = 150
 				OR = {
+					has_country_flag = SWE_AI_RANDOM_FASCIST_PUPPET
+					has_country_flag = SWE_AI_RANDOM_PUPPET_BACKSTABBER
+					has_country_flag = SWE_AI_RANDOM_FASCIST_INDEPENDENT
 					has_game_rule = {
 						rule = SWE_ai_behavior
 						option = SWE_FASCIST_INDEPENDENT
@@ -599,7 +602,12 @@ SWE_politics = {
 			}
 			modifier = {
 				factor = 0
-				is_historical_focus_on = yes #Failsafe.
+				is_historical_focus_on = yes
+				NOT = { has_global_flag = SOV_has_early_war }
+			}
+			modifier = {
+				add = 25000
+				has_global_flag = SOV_has_early_war
 			}
 		}
 
@@ -690,9 +698,12 @@ SWE_politics = {
 		ai_will_do = {
 			base = 0
 			modifier = {
-				has_game_rule = {
-					rule = SWE_ai_behavior
-					option = SWE_COMMUNISM
+				OR = {
+					has_country_flag = SWE_AI_RANDOM_COMMUNISM
+					has_game_rule = {
+						rule = SWE_ai_behavior
+						option = SWE_COMMUNISM
+					}
 				}
 				add = 170
 			}
@@ -722,9 +733,12 @@ SWE_politics = {
 		ai_will_do ={
 			base = 0
 			modifier = {
-				has_game_rule = {
-					rule = SWE_ai_behavior
-					option = SWE_UNALIGNED
+				OR = {
+					has_country_flag = SWE_AI_RANDOM_UNALIGNED
+					has_game_rule = {
+						rule = SWE_ai_behavior
+						option = SWE_UNALIGNED
+					}
 				}
 				add = 170
 			}
@@ -1272,7 +1286,6 @@ SWE_politics = {
 			}
 
 			SWE = {
-
 				drop_cosmetic_tag = yes
 				set_cosmetic_tag = ENE
 
@@ -1691,6 +1704,17 @@ SWE_ebba_palmstierna_cat = {
 
 		complete_effect = {
 			SWE_ebba_palmstierna = {
+				hidden_effect = {
+					if = {
+						limit = {
+							has_trait = SWE_suffragette
+						}
+						remove_trait = {
+							trait = SWE_suffragette
+							slot = political_advisor 
+						}
+					}
+				}
 				add_trait = {
 					slot = political_advisor
 					trait = SWE_suffragette_research
@@ -1910,7 +1934,7 @@ SWE_rationing_policies = {
 				141 = {
 					add_resource = {
 						type = rubber
-						amount = 8
+						amount = 22
 					}
 				}
 			}
@@ -1922,7 +1946,7 @@ SWE_rationing_policies = {
 				141 = {
 					add_resource = {
 						type = rubber
-						amount = -8
+						amount = -22
 					}
 				}
 			}
@@ -2256,7 +2280,7 @@ SWE_military_matters = {
 				 	}
 				 	add_to_temp_variable = { PREV.supply_level = 8 }
 				}
-		 		
+		 			 	log = "[?supply_level]"
 				if = {
 					limit = {
 						naval_base > 0
@@ -2485,6 +2509,7 @@ SWE_ball_bearings_cat = {
 		visible = {
 			original_tag = SWE
 			has_capitulated = no
+			NOT = { has_global_flag = LSM_ball_trade_banned }
 		}
 		cost = 30 #REMEMBER TO UPDATE AAT_Sweden_ball_bearing.1 to match!!!
 		available = {
@@ -2496,22 +2521,21 @@ SWE_ball_bearings_cat = {
 			}
 		}
 		days_re_enable = 50
-	   target_trigger = {
+	    target_trigger = {
 	    	FROM = {
 	    		is_major = yes
 	    		NOT = { 
-	    			has_war_with = ROOT
+	    			has_war_with = ROOT 
 	    			OR = {
 	    				has_idea = SWE_ball_bearing_idea
 	    				has_idea = SWE_ball_bearing_idea_food_partner
 	    				has_idea = SWE_ball_bearing_idea_research_partner
-    					has_country_flag = SWE_rejected_ball_bearing
 	    			}
 	    		}
         	}
-	   }
+	    }
 
-	   ai_will_do = {
+	    ai_will_do = {
 	    	base = 10
 
 	    	modifier = {
@@ -2525,8 +2549,26 @@ SWE_ball_bearings_cat = {
 
 	    		factor = 10
 	    	}
-	   }
-	   complete_effect = {
+
+	    	modifier = {
+	    		FROM = { tag = SOV }
+			has_global_flag = SOV_has_early_war
+	    		factor = 0
+	    	}
+
+	    	modifier = {
+	    		FROM = { tag = GER }
+			has_global_flag = the_league_intervention
+	    		factor = 0
+	    	}
+
+	    	modifier = {
+	    		FROM = { tag = JAP }
+			has_global_flag = JAP_is_expanding_too_quickly
+	    		factor = 0
+	    	}
+	    }
+	    complete_effect = {
 	    	set_country_flag = {
     			flag = SWE_waiting_for_ball_bearing_response
     			days = 60 #just set to expire in 60 days in case something goes bad
@@ -2536,7 +2578,7 @@ SWE_ball_bearings_cat = {
 	    		set_variable = { PREV.ball_bearing_country_target = THIS }
 	    	}
 	    	country_event = { id = AAT_Sweden_ball_bearing.1 }
-	   } 
+	    } 
 	}
 
 	SWE_revoke_food_trade = {
@@ -2722,6 +2764,10 @@ SWE_appeal_for_support_cat = {
 			}
 			event_option_tooltip = AAT_Sweden_nationalists.8.a 
 		}
+
+		ai_will_do = {
+			base = 0
+		}
 	}
 
 	SWE_appeal_to_industrialists = {
@@ -2752,6 +2798,10 @@ SWE_appeal_for_support_cat = {
 				days = 1
 			}
 			event_option_tooltip = AAT_Sweden_nationalists.9.a 
+		}
+
+		ai_will_do = {
+			base = 0
 		}
 	}
 
@@ -2784,6 +2834,10 @@ SWE_appeal_for_support_cat = {
 			}
 			event_option_tooltip = AAT_Sweden_nationalists.10.a 
 		}
+
+		ai_will_do = {
+			base = 20
+		}
 	}
 
 	SWE_appeal_to_rural_people = {
@@ -2814,6 +2868,10 @@ SWE_appeal_for_support_cat = {
 				days = 1
 			}
 			event_option_tooltip = AAT_Sweden_nationalists.11.a 
+		}
+
+		ai_will_do = {
+			base = 20
 		}
 	}
 
@@ -3032,6 +3090,10 @@ SWE_appeal_for_support_cat = {
 				id = AAT_Sweden_nationalists.14
 				hours = 1
 			}
+		}
+
+		ai_will_do = {
+			base = 20
 		}	
 	}
 
@@ -3114,6 +3176,10 @@ SWE_appeal_for_support_cat = {
 				id = AAT_Sweden_nationalists.15
 				hours = 1
 			}
+		}
+
+		ai_will_do = {
+			base = 20
 		}	
 	}
 
@@ -3128,7 +3194,7 @@ SWE_royalist_buildup = {
 		available = {
 			NOT = { has_country_flag = SWE_royal_visit_in_progress }
 		}
-		cost = 20
+		cost = 10
 		icon = GFX_decision_eng_support_imperialist_coup
 		state_target = yes
 		target_trigger = {
@@ -3144,7 +3210,7 @@ SWE_royalist_buildup = {
 		    }
 		}
 		on_map_mode = map_and_decisions_view 
-		days_remove = 14
+		days_remove = 7
 		complete_effect = {
 			set_country_flag = SWE_royal_visit_in_progress
 		}
@@ -3154,23 +3220,50 @@ SWE_royalist_buildup = {
 				set_state_flag = SWE_royalist_march_occured		
 				add_dynamic_modifier = { modifier = SWE_royal_visit_modifier }
 			}
-			random_list = {
+			if = {
+				limit = { is_ai = no }
+				random_list = {
 				# Bad march
-				25 = {
-					country_event = { id = AAT_Sweden_nationalists.16 days = 1 }
-					event_option_tooltip = AAT_Sweden_nationalists.16.a
-				}
+					15 = {
+						country_event = { id = AAT_Sweden_nationalists.16 days = 1 }
+						event_option_tooltip = AAT_Sweden_nationalists.16.a
+					}
 				# Average march
-				50 = {
-					country_event = { id = AAT_Sweden_nationalists.17 days = 1 }
-					event_option_tooltip = AAT_Sweden_nationalists.17.a
-				}
+					60 = {
+						country_event = { id = AAT_Sweden_nationalists.17 days = 1 }
+						event_option_tooltip = AAT_Sweden_nationalists.17.a
+					}
 				# Good march
-				25 = {
-					country_event = { id = AAT_Sweden_nationalists.18 days = 1 }
-					event_option_tooltip = AAT_Sweden_nationalists.18.a
+					35 = {
+						country_event = { id = AAT_Sweden_nationalists.18 days = 1 }
+						event_option_tooltip = AAT_Sweden_nationalists.18.a
+					}
 				}
 			}
+			if = {
+				limit = { is_ai = yes }
+				random_list = {
+				# Bad march
+					5 = {
+						country_event = { id = AAT_Sweden_nationalists.16 days = 1 }
+						event_option_tooltip = AAT_Sweden_nationalists.16.a
+					}
+				# Average march
+					5 = {
+						country_event = { id = AAT_Sweden_nationalists.17 days = 1 }
+						event_option_tooltip = AAT_Sweden_nationalists.17.a
+					}
+				# Good march
+					90 = {
+						country_event = { id = AAT_Sweden_nationalists.18 days = 1 }
+						event_option_tooltip = AAT_Sweden_nationalists.18.a
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 20
 		}
 	}
 }
@@ -3387,7 +3480,7 @@ SWE_communist_foreign_influence = {
 
 				DEN = {
 					NOT = { has_government = communism }
-					communism > 0.25
+					communism > 0.3
 				}
 			}
 

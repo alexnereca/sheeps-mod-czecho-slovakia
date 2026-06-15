@@ -4,7 +4,7 @@ technology_sharing_group = {
 	name = anglo_mexican_technical_mission
 	desc = anglo_mexican_technical_mission_desc
 	picture = GFX_technology_sharing_default
-	research_sharing_per_country_bonus = 0.05
+	research_sharing_per_country_bonus = 0.15
 
 	available = {
 		is_subject = no
@@ -29,7 +29,7 @@ technology_sharing_group = {
 	name = german_mexican_technical_mission
 	desc = german_mexican_technical_mission_desc
 	picture = GFX_technology_sharing_default
-	research_sharing_per_country_bonus = 0.05
+	research_sharing_per_country_bonus = 0.15
 
 	available = {
 		is_subject = no
@@ -54,7 +54,7 @@ technology_sharing_group = {
 	name = russo_mexican_technical_mission
 	desc = russo_mexican_technical_mission_desc
 	picture = GFX_technology_sharing_default
-	research_sharing_per_country_bonus = 0.05
+	research_sharing_per_country_bonus = 0.15
 
 	available = {
 		is_subject = no
@@ -79,7 +79,7 @@ technology_sharing_group = {
 	name = american_mexican_technical_mission
 	desc = american_mexican_technical_mission_desc
 	picture = GFX_technology_sharing_default
-	research_sharing_per_country_bonus = 0.05
+	research_sharing_per_country_bonus = 0.2
 
 	available = {
 		is_subject = no
@@ -104,7 +104,7 @@ technology_sharing_group = {
 	name = USA_us_ussr_economic_cooperation
 	desc = USA_us_ussr_economic_cooperation_desc
 	picture = GFX_technology_sharing_default
-	research_sharing_per_country_bonus = 0.1
+	research_sharing_per_country_bonus = 0.2
 
 	categories = { industry }
 

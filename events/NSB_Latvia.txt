@@ -235,11 +235,27 @@ country_event = {
 			base = 30
 			modifier = {
 				add = -25
-				FROM = { has_army_size = { size < 40 } }
+				strength_ratio = {
+					tag = LAT
+					ratio > 0.75
+				}
 			}
 			modifier = {
 				add = 100
-				FROM = { has_army_size = { size > 39 } }
+				strength_ratio = {
+					tag = LAT
+					ratio < 0.33
+				}
+			}
+			modifier = {
+				add = 100
+				any_other_country = {
+					OR = {
+						tag = LIT
+						tag = EST
+					}
+					is_ai = no
+				}
 			}
 			modifier = {
 				add = 20
@@ -261,12 +277,18 @@ country_event = {
 		ai_chance = {
 			base = 10
 			modifier = {
-				FROM = { has_army_size = { size > 39 } }
+				strength_ratio = {
+					tag = LAT
+					ratio < 0.33
+				}
 				factor = 0.5
 			}
 			modifier = {
 				add = 20
-				FROM = { has_army_size = { size < 30 } }
+				strength_ratio = {
+					tag = LAT
+					ratio > 0.75
+				}
 			}
 			modifier = {
 				factor = 2
@@ -332,6 +354,12 @@ country_event = {
 		create_wargoal = {
 			type = annex_everything
 			target = FROM
+		}	
+		every_state = {
+			limit = {
+				is_core_of = FROM 
+			}
+			add_claim_by = LAT
 		}
 	}
 }

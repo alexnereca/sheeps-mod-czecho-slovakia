@@ -1790,6 +1790,7 @@ country_event = { #Easter Egg, look away
 		AUS = {
 			exists = no
 		}
+
 	}
 	mean_time_to_happen = {
 		days = 300
@@ -1811,6 +1812,7 @@ country_event = { #Easter Egg, look away
 			}
 		}
 	}
+
 }
 
 country_event = {
@@ -2276,7 +2278,12 @@ country_event = { #SWI is neutral, and seeks trade agreement with neighbor.
 	option = { #Build weapon parts
 		name = BBA_switzerland_trade.1.a
 		ai_chance = {
-			base = 10
+			base = 100
+			modifier = {
+				add = -100
+				date < 1939.1.1
+				tag = GER
+			}
 		}
 		trigger = {
 		}
@@ -2297,7 +2304,12 @@ country_event = { #SWI is neutral, and seeks trade agreement with neighbor.
 	option = { #Civilian stuff
 		name = BBA_switzerland_trade.1.b
 		ai_chance = {
-			base = 10
+			base = 0
+			modifier = {
+				add = 100
+				date < 1939.1.1
+				tag = GER
+			}
 		}
 		trigger = {
 		}
@@ -2319,11 +2331,7 @@ country_event = { #SWI is neutral, and seeks trade agreement with neighbor.
 	option = { #We don't need help from neutrals
 		name = BBA_switzerland_trade.1.c
 		ai_chance = {
-			base = 10
-			modifier = {
-				factor = 0 
-				SWI_country_opinion_is_good = yes 
-			}
+			base = 0
 		}
 		trigger = {
 			has_government = fascism  
@@ -2335,11 +2343,7 @@ country_event = { #SWI is neutral, and seeks trade agreement with neighbor.
 	option = { #No thank you 
 		name = BBA_switzerland_trade.1.d
 		ai_chance = {
-			base = 10 
-			modifier = {
-				factor = 0 
-				SWI_country_opinion_is_good = yes 
-			}
+			base = 0
 		}
 		trigger = {
 			NOT = { has_government = fascism }
@@ -2473,10 +2477,6 @@ country_event = { #A year has passed, does Switzerland want to renew the trade a
 		name = BBA_switzerland_trade.3.a
 		ai_chance = {
 			base = 10
-			modifier = { 
-				factor = 0.5
-				SWI_someone_is_about_to_be_angry = yes 
-			} 
 		}
 		FROM = { country_event = { id = BBA_switzerland_trade.4 hours = 3 } }
 	}
@@ -2484,17 +2484,7 @@ country_event = { #A year has passed, does Switzerland want to renew the trade a
 	option = { #Nah
 		name = BBA_switzerland_trade.3.b
 		ai_chance = {
-			base = 1
-			modifier = {
-				add = 10 
-				FROM = {
-					NOT = { has_government = ROOT }
-				}
-			}
-			modifier = {
-				factor = 0 
-				FROM = { SWI_country_about_to_be_angry = yes }
-			} 
+			base = 0
 		}
 		FROM = { country_event = { id = BBA_switzerland_trade.5 hours = 3 } }
 	}
@@ -2519,6 +2509,10 @@ country_event = { #SWI wants to renew trade agreement
 		name = BBA_switzerland_trade.4.a
 		ai_chance = {
 			base = 10 
+			modifier = {
+				factor = 0
+				has_idea = SWI_trading_with_switzerland_civilian
+			}
 		}
 		FROM = { 
 			country_event = { id = BBA_switzerland_trade.6 hours = 4} 
@@ -2531,7 +2525,7 @@ country_event = { #SWI wants to renew trade agreement
 	option = { #change focus to Civilian 
 		name = BBA_switzerland_trade.4.b
 		ai_chance = {
-			base = 10 
+			base = 0 
 		}
 		trigger = {
 			has_idea = SWI_trading_with_switzerland_military
@@ -2550,7 +2544,7 @@ country_event = { #SWI wants to renew trade agreement
 	option = { #change focus to Military 
 		name = BBA_switzerland_trade.4.c
 		ai_chance = {
-			base = 10 
+			base = 100
 		}
 		trigger = {
 			has_idea = SWI_trading_with_switzerland_civilian
@@ -2569,7 +2563,7 @@ country_event = { #SWI wants to renew trade agreement
 	option = { #Nah, we're fine tack 
 		name = BBA_switzerland_trade.4.d
 		ai_chance = {
-			base = 10
+			base = 0
 			modifier = {
 				factor = 5 
 				SWI_country_positive_opinion = no 
@@ -2697,7 +2691,7 @@ country_event = { #SWI offers gold trade to country
 	option = { #Sounds like a good idea
 		name = BBA_switzerland_trade.8.a
 		ai_chance = {
-			base = 10 
+			base = 100
 			modifier = {
 				factor = 5 
 				OR = {
@@ -2729,7 +2723,7 @@ country_event = { #SWI offers gold trade to country
 	option = { #Can't trust those filthy neutrals
 		name = BBA_switzerland_trade.8.b
 		ai_chance = {
-			base = 10 
+			base = 0
 		}
 
 		hidden_effect = {
@@ -2874,11 +2868,23 @@ country_event = { #Switzerland has seized your gold!!
 	option = { #Ohwell!  
 		name = BBA_switzerland_trade.12.a
 		ai_chance = {
-			base = 10 
+			base = 0 
+			modifier = {
+				add = 100
+				is_historical_focus_on = no
+				surrender_progress < 0.05
+			}
 		}
 		create_wargoal = {
 			target = FROM 
 			type = topple_government 
+		}
+	}
+
+	option = { #Ohwell!  
+		name = BBA_switzerland_trade.12.a
+		ai_chance = {
+			base = 10 
 		}
 	}
 }

@@ -92,6 +92,7 @@ GRE_1936_election_category = {
 			factor = 5
 			modifier = {
 				OR = {
+					has_country_flag = GRE_AI_RANDOM_NEUTRALITY_HISTORICAL
 					AND = {
 						is_historical_focus_on = yes
 						has_game_rule = {
@@ -103,15 +104,17 @@ GRE_1936_election_category = {
 						rule = GRE_ai_behavior
 						option = HISTORICAL
 					}
-					has_country_flag = GRE_AI_NEUTRALITY_HISTORICAL
+					has_country_flag = GRE_AI_RANDOM_MONARCHIST
 					has_game_rule = {
 						rule = GRE_ai_behavior 
 						option = MONARCHIST
 					}
+					has_country_flag = GRE_AI_RANDOM_MONARCHIST_ALTERNATE
 					has_game_rule = {
 						rule = GRE_ai_behavior 
 						option = MONARCHIST_ALTERNATE
 					}
+					has_country_flag = GRE_AI_RANDOM_FASCISM
 					has_game_rule = {
 						rule = GRE_ai_behavior 
 						option = FASCISM
@@ -121,18 +124,22 @@ GRE_1936_election_category = {
 			}
 			modifier = {
 				OR = {
+					has_country_flag = GRE_AI_RANDOM_COMMUNIST
 					has_game_rule = {
 						rule = GRE_ai_behavior 
 						option = COMMUNIST
 					}
+					has_country_flag = GRE_AI_RANDOM_COMMUNIST_ALTERNATE
 					has_game_rule = {
 						rule = GRE_ai_behavior 
 						option = COMMUNIST_ALTERNATE
 					}
+					has_country_flag = GRE_AI_RANDOM_DEMOCRATIC
 					has_game_rule = {
 						rule = GRE_ai_behavior 
 						option = DEMOCRATIC
 					}
+					has_country_flag = GRE_AI_RANDOM_FASCISM_ALTERNATE
 					has_game_rule = {
 						rule = GRE_ai_behavior 
 						option = FASCISM_ALTERNATE
@@ -172,7 +179,7 @@ crisis = {
 		}
 
 		visible = {
-			has_country_leader = { 
+			has_country_leader = {
 				character = GRE_king_george_ii
 				ruling_only = yes
 			}
@@ -411,6 +418,11 @@ GRE_investment_decisions_category = {
 		ai_will_do = {
 			factor = 5
 			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				has_political_power < 300
+			}
+			modifier = {
 				factor = 2
 				is_historical_focus_on = yes
 			}
@@ -489,6 +501,11 @@ GRE_investment_decisions_category = {
 				is_historical_focus_on = yes
 			}
 			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				has_political_power < 300
+			}
+			modifier = {
 				factor = 10
 				has_completed_focus = GRE_bolster_the_schachtplan
 			}
@@ -561,6 +578,11 @@ GRE_investment_decisions_category = {
 			modifier = {
 				factor = 0
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				has_political_power < 300
 			}
 			modifier = {
 				factor = 10
@@ -709,6 +731,11 @@ GRE_investment_decisions_category = {
 		ai_will_do = {
 			factor = 5
 			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				has_political_power < 300
+			}
+			modifier = {
 				factor = 10
 				is_historical_focus_on = yes
 			}
@@ -778,6 +805,11 @@ GRE_investment_decisions_category = {
 				is_historical_focus_on = yes
 			}
 			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				has_political_power < 300
+			}
+			modifier = {
 				factor = 20
 				has_completed_focus = GRE_british_docking_rights
 			}
@@ -838,6 +870,11 @@ GRE_investment_decisions_category = {
 
 		ai_will_do = {
 			factor = 5
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				has_political_power < 300
+			}
 			modifier = {
 				factor = 5
 				is_historical_focus_on = yes
@@ -912,7 +949,7 @@ GRE_investment_decisions_category = {
 			modifier = {
 				factor = 0
 				has_country_leader = {
-					character = GRE_king_george_ii
+				character = GRE_king_george_ii
 					ruling_only = yes
 				}
 				NOT = { has_completed_focus = GRE_realign_ourselves_with_the_central_powers }
@@ -997,6 +1034,11 @@ GRE_investment_decisions_category = {
 		ai_will_do = {
 			factor = 5
 			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				has_political_power < 300
+			}
+			modifier = {
 				factor = 5
 				is_historical_focus_on = yes
 			}
@@ -1069,6 +1111,11 @@ GRE_investment_decisions_category = {
 		ai_will_do = {
 			factor = 5
 			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				has_political_power < 300
+			}
+			modifier = {
 				factor = 5
 				is_historical_focus_on = yes
 			}
@@ -1137,6 +1184,11 @@ GRE_investment_decisions_category = {
 			modifier = {
 				factor = 0
 				is_historical_focus_on = yes
+				has_political_power < 300
+			}
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
 			}
 			modifier = {
 				factor = 30
@@ -1194,6 +1246,11 @@ GRE_investment_decisions_category = {
 
 		ai_will_do = {
 			factor = 1
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				has_political_power < 300
+			}
 			modifier = {
 				factor = 0
 				is_historical_focus_on = yes
@@ -1279,6 +1336,11 @@ GRE_investment_decisions_category = {
 
 		ai_will_do = {
 			factor = 1
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				has_political_power < 300
+			}
 			modifier = {
 				factor = 0
 				is_historical_focus_on = yes
@@ -1778,13 +1840,9 @@ GRE_pay_back_debt_to_the_ifc_category = {
 			}
 		}
 
-		targets = { ENG }
-
 		target_trigger = {
 			FROM = {
-				NOT = {
-					has_war_with = ROOT
-				}
+				tag = ENG
 			}
 		}
 
@@ -1867,13 +1925,9 @@ GRE_pay_back_debt_to_the_ifc_category = {
 			}
 		}
 
-		targets = { FRA }
-
 		target_trigger = {
 			FROM = {
-				NOT = {
-					has_war_with = ROOT
-				}
+				tag = FRA
 			}
 		}
 
@@ -1954,13 +2008,9 @@ GRE_pay_back_debt_to_the_ifc_category = {
 			}
 		}
 
-		targets = { ITA }
-
 		target_trigger = {
 			FROM = {
-				NOT = {
-					has_war_with = ROOT
-				}
+				tag = ITA
 			}
 		}
 
@@ -2047,13 +2097,9 @@ GRE_pay_back_debt_to_the_ifc_category = {
 			}
 		}
 
-		targets = { ENG }
-
 		target_trigger = {
 			FROM = {
-				NOT = {
-					has_war_with = ROOT
-				}
+				tag = ENG
 			}
 		}
 
@@ -2137,15 +2183,11 @@ GRE_pay_back_debt_to_the_ifc_category = {
 			}
 		}
 
-		targets = { FRA }
-
-				target_trigger = {
-					FROM = {
-						NOT = {
-							has_war_with = ROOT
-						}
-					}
-				}
+		target_trigger = {
+			FROM = {
+				tag = FRA
+			}
+		}
 
 		days_remove = 30
 
@@ -2225,13 +2267,9 @@ GRE_pay_back_debt_to_the_ifc_category = {
 			}
 		}
 
-		targets = { ITA }
-
 		target_trigger = {
 			FROM = {
-				NOT = {
-					has_war_with = ROOT
-				}
+				tag = ITA
 			}
 		}
 
@@ -2470,6 +2508,15 @@ GRE_hellenic_academy_category = {
 
 		ai_will_do = {
 			factor = 1
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				NOT = { surrender_progress > 0 }
+			}
+			modifier = {
+				factor = 0
+				FROM = { is_ai = yes }
+			}
 		}
 
 		fire_only_once = yes
@@ -2508,6 +2555,15 @@ GRE_hellenic_academy_category = {
 
 		ai_will_do = {
 			factor = 1
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				NOT = { surrender_progress > 0 }
+			}
+			modifier = {
+				factor = 0
+				FROM = { is_ai = yes }
+			}
 		}
 
 		fire_only_once = yes
@@ -2544,12 +2600,20 @@ GRE_hellenic_academy_category = {
 		}
 
 		ai_will_do = {
-			factor = 1
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				NOT = { surrender_progress > 0 }
+			}
+			modifier = {
+				factor = 0
+				FROM = { is_ai = yes }
+			}
 		}
 
 		fire_only_once = yes
 
-		days_remove = 90
+		days_remove = 180
 
 		targeted_modifier = {
 			tag = FRA
@@ -2583,11 +2647,20 @@ GRE_hellenic_academy_category = {
 
 		ai_will_do = {
 			factor = 1
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				NOT = { surrender_progress > 0 }
+			}
+			modifier = {
+				factor = 0
+				FROM = { is_ai = yes }
+			}
 		}
 
 		fire_only_once = yes
 
-		days_remove = 90
+		days_remove = 180
 
 		targeted_modifier = {
 			tag = ENG
@@ -2621,11 +2694,20 @@ GRE_hellenic_academy_category = {
 
 		ai_will_do = {
 			factor = 1
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				NOT = { surrender_progress > 0 }
+			}
+			modifier = {
+				factor = 0
+				FROM = { is_ai = yes }
+			}
 		}
 
 		fire_only_once = yes
 
-		days_remove = 90
+		days_remove = 180
 
 		targeted_modifier = {
 			tag = SOV

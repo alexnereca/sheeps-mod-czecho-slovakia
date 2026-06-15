@@ -10,7 +10,17 @@ on_actions = {
 						ships_in_area = {
 							area = 53
 							type = capital_ship
-							size < 3
+							size < 2
+						}
+						ships_in_area = {
+							area = 53
+							type = screen_ship
+							size < 10
+						}
+						ships_in_area = {
+							area = 53
+							type = submarine
+							size < 15
 						}
 					}
 
@@ -235,8 +245,7 @@ on_actions = {
 			}
 		}
 		effect = {
-			#Monroe Doctrine
-			
+			#Monroe Doctrine   
 			every_country = {
 				limit = {
 					exists = yes
@@ -247,7 +256,9 @@ on_actions = {
 						tag = CUB
 						tag = DOM
 						tag = HAI
+	   
 					}
+										 
 				}
 				add_ideas = USA_monroe_doctrine_idea
 			}

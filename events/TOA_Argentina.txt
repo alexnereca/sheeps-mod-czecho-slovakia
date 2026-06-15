@@ -312,23 +312,20 @@ country_event = {
 	#Good
 	option = {
 		name =  ARG_political_events.6.a
-		IF = {
-			limit = {
-				FROM = {
-					controls_state = 299
-				}
-			}
+		ai_chance = {
+			base = 70
+		}
+
+		effect_tooltip = {
 			ARG = {
 				transfer_state = 299
+				transfer_state = 720
 			}
 		}
-		IF = {
-			limit = {
-				FROM = {
-					controls_state = 720
-				}
-			}
+
+		hidden_effect = {
 			ARG = {
+				transfer_state = 299
 				transfer_state = 720
 			}
 		}
@@ -347,7 +344,9 @@ country_event = {
 	#Not great, but okay
 	option = {
 		name =  ARG_political_events.7.a
-
+		ai_chance = {
+			base = 30
+		}
 
 		ARG = {
 			add_timed_idea = {
@@ -355,23 +354,17 @@ country_event = {
 				days = 365
 			}
 		}
-		IF = {
-			limit = {
-				FROM = {
-					controls_state = 299
-				}
-			}
+
+		effect_tooltip = {
 			ARG = {
 				transfer_state = 299
+				transfer_state = 720
 			}
 		}
-		IF = {
-			limit = {
-				FROM = {
-					controls_state = 720
-				}
-			}
+
+		hidden_effect = {
 			ARG = {
+				transfer_state = 299
 				transfer_state = 720
 			}
 		}
@@ -390,10 +383,13 @@ country_event = {
 	#Unfortunate
 	option = {
 		name =  ARG_political_events.8.a
+		ai_chance = {
+			base = 30
+		}
 
 		ARG = {
 			add_opinion_modifier = {
-				target = FROM
+				target = ENG
 				modifier = medium_decrease 
 			}
 		}
@@ -2217,7 +2213,7 @@ country_event = {
 	option = {
 		name = ARG_political_events.100.a 
 		ai_chance = {  
-			base = 80
+			base = 100
 		} 
 
 		FROM = {
@@ -2234,7 +2230,7 @@ country_event = {
 	option = {
 		name = ARG_political_events.100.b 
 		ai_chance = {
-			base = 20
+			base = 0
 		} 
 
 		FROM = {

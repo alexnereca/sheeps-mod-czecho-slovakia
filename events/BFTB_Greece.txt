@@ -255,8 +255,8 @@ country_event = {
 			modifier = {
 				factor = 0
 				original_tag = ENG
-				OR = {
-					ENG = {
+				ENG = {
+					OR = {
 						has_completed_focus = ENG_revisit_colonial_policy
 						has_completed_focus = ENG_concessions_to_the_trade_unions
 					}
@@ -268,6 +268,10 @@ country_event = {
 				FRA = {
 					has_completed_focus = FRA_revolution_to_the_utmost
 				}
+			}
+			modifier = {
+				factor = 0
+				has_government = TUR
 			}
 		}
 		if = { 
@@ -310,6 +314,37 @@ country_event = {
 						has_idea = GRE_eee_in_government 
 						has_government = fascism
 					}
+				}
+			}
+			modifier = {
+				add = 200
+				has_government = TUR
+			}
+			modifier = {
+				add = 20
+				TUR = { is_subject = yes }
+				has_war = no
+				OR = {
+					has_stability < 0.50
+					has_war_support < 0.50
+				}
+			}
+			modifier = {
+				add = 20
+				TUR = { is_in_faction = yes }
+				has_war = no
+				OR = {
+					has_stability < 0.50
+					has_war_support < 0.50
+				}
+			}
+			modifier = {
+				add = 20
+				any_country = {
+					is_major = yes
+					NOT = { is_in_faction_with = ROOT }
+					NOT = { has_war_with = ROOT }
+					has_guaranteed = TUR
 				}
 			}
 		}
@@ -1472,7 +1507,7 @@ country_event = {
 	option = {
 		name = bftb_greece.24.a #Aye!
 		ai_chance = {
-			base = 80
+			factor = 80
 			modifier = {
 				factor = 0
 				NOT = { original_tag = GRE }
@@ -1534,7 +1569,7 @@ country_event = {
 	option = {
 		name = bftb_greece.24.b #Nay!
 		ai_chance = {
-			base = 0
+			factor = 0
 			modifier = {
 				factor = 0
 				original_tag = GRE
@@ -2754,6 +2789,7 @@ country_event = {
 				transfer_state = 350
 				transfer_state = 352
 				transfer_state = 353
+				transfer_state = 799
 				transfer_state = 800
 				release_autonomy = { 
 					target = KUR
@@ -2808,7 +2844,6 @@ country_event = {
 						set_compliance = 70
 					}
 				}
-				
 			}
 		}
 		if = { 
@@ -2997,11 +3032,10 @@ country_event = {
 		}
 	}
 }
-
 #Tow the Stalinist Line - Soviet Union is informed of Greece's submission and of Turkey's new hostile move
 country_event = {
 	id = bftb_greece.30
-	title =  bftb_greece.29.t	#reused
+	title = bftb_greece.29.t
 	desc = bftb_greece.30.desc
 	picture = GFX_report_event_tur_military_affair
 
@@ -3663,15 +3697,15 @@ country_event = {
 	
 	option = {
 		name = bftb_greece.50.a 
-		#retire_country_leader = yes
-		
-		add_country_leader_role = {
-			character = GRE_king_george_ii
-			promote_leader = yes
-			country_leader = {
-				ideology = despotism
-				expire = "1965.1.1.1"
-				traits = { divisive_absolute_monarch }
+		retire_country_leader = yes
+		create_country_leader = {
+			name = "George II"
+			desc = "POLITICS_GEORGE_II_DESC"
+			picture = "GFX_portrait_gre_george_ii"
+			expire = "1965.1.1"
+			ideology = despotism
+			traits = {
+				divisive_absolute_monarch
 			}
 		}
 		custom_effect_tooltip = GRE_absolute_monarch_hostile_factions_tt
@@ -3693,9 +3727,9 @@ country_event = {
 	
 	option = {
 		name = bftb_greece.51.a #aid - guns
-		#trigger = {
-		#	has_equipment = { infantry_equipment > 1250 }
-		#}
+		trigger = {
+			has_equipment = { infantry_equipment > 1250 }
+		}
 		ai_chance = {
 			factor = 100
 		}
@@ -3719,9 +3753,9 @@ country_event = {
 	}
 	option = {
 		name = bftb_greece.51.b #aid - support
-		#trigger = {
-		#	has_equipment = { support_equipment > 150 }
-		#}
+		trigger = {
+			has_equipment = { support_equipment > 150 }
+		}
 		ai_chance = {
 			factor = 75
 		}
@@ -3747,7 +3781,7 @@ country_event = {
 	option = {
 		name = bftb_greece.51.c #no aid
 		ai_chance = {
-			factor = 15
+			factor = 0
 		}
 		hidden_effect = { 
 			GRE = {
@@ -4510,62 +4544,36 @@ country_event = {
 	}
 
 	immediate = {
-		IF = {
-			limit = {
-				has_country_leader = {
-					ruling_only = yes
-					character = GRE_eleftherios_venizelos
-				}	
-			}
-			hidden_effect = { 	
-				kill_ideology_leader = democratic
-				create_country_leader = {
-					name = "Themistoklis Sofoulis"
-					desc = "POLITICS_THEMISTOKLIS_SOFOULIS_DESC"
-					picture = GFX_portrait_gre_themistoklis_sofoulis
-					expire = "1965.1.1"
-					ideology = liberalism
-					traits = {
-						professional_crisis_solver
-					}
+		hidden_effect = { 	
+			kill_ideology_leader = democratic
+			create_country_leader = {
+				name = "Themistoklis Sofoulis"
+				desc = "POLITICS_THEMISTOKLIS_SOFOULIS_DESC"
+				picture = GFX_portrait_gre_themistoklis_sofoulis
+				expire = "1965.1.1"
+				ideology = liberalism
+				traits = {
+					professional_crisis_solver
 				}
 			}
-			set_country_flag = GRE_had_venezelos_when_he_died_flag 
-		}
-		ELSE_IF = {
-			limit = {
-				has_character = GRE_eleftherios_venizelos
-			}
-			hidden_effect = {
-				retire_character = GRE_eleftherios_venizelos
-			}	
 		}
 	}
 	
 	option = {
 		name = bftb_greece.71.a 
-
 		add_stability = -0.05
-
-		IF = {
-			limit = {
-				has_country_flag = GRE_had_venezelos_when_he_died_flag 
-			}
-			effect_tooltip = {
-				create_country_leader = {
-					name = "Themistoklis Sofoulis"
-					desc = "POLITICS_THEMISTOKLIS_SOFOULIS_DESC"
-					picture = GFX_portrait_gre_themistoklis_sofoulis
-					expire = "1965.1.1"
-					ideology = liberalism
-					traits = {
-						professional_crisis_solver
-					}
+		effect_tooltip = {
+			create_country_leader = {
+				name = "Themistoklis Sofoulis"
+				desc = "POLITICS_THEMISTOKLIS_SOFOULIS_DESC"
+				picture = GFX_portrait_gre_themistoklis_sofoulis
+				expire = "1965.1.1"
+				ideology = liberalism
+				traits = {
+					professional_crisis_solver
 				}
 			}
 		}
-
-		
 	}
 }
 #Byzantine Party protests
@@ -4901,7 +4909,7 @@ country_event = {
 
 	trigger = {
 		original_tag = GRE
-		GER = { 
+		GER = {  
 			if = {
 				limit = {
 					NOT = { has_dlc = "Gotterdammerung" }
@@ -4915,6 +4923,7 @@ country_event = {
 				has_country_leader = {
 					character = GER_adolf_hitler
 					ruling_only = yes
+	  
 				}
 			}
 		}
@@ -5173,14 +5182,30 @@ country_event = {
 	
 	option = {
 		name = bftb_greece.105.a 
-		start_civil_war = {
-			ruling_party = neutrality
-			ideology = democratic
-			size = 0.5
-			capital = 186
-			states = { 186 184 731 187 }
-			keep_unit_leaders = {
-			   300 304 306
+		if = {
+			limit = { is_ai = no }
+			start_civil_war = {
+				ruling_party = neutrality
+				ideology = democratic
+				size = 0.5
+				capital = 186
+				states = { 186 184 731 187 }
+				keep_unit_leaders = {
+			  	 	300 304 306
+				}
+			}
+		}
+		if = {
+			limit = { is_ai = yes }
+			start_civil_war = {
+				ruling_party = neutrality
+				ideology = democratic
+				size = 0.1
+				capital = 186
+				states = { 186 184 731 187 }
+				keep_unit_leaders = {
+			  	 	300 304 306
+				}
 			}
 		}
 		hidden_effect = { 
