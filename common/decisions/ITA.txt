@@ -131,6 +131,10 @@ ETH_second_italo_ethiopian_war_category = {
 				NOT = { has_full_control_of_state = 550 } #ERITREA
 				NOT = { has_full_control_of_state = 559 } #SOMALILAND
 				NOT = { has_full_control_of_state = 844 } #JUBALAND
+				hidden_trigger = {
+					date > 1936.7.1
+					is_ai = yes
+				}
 			}
 		}
 
@@ -146,6 +150,10 @@ ETH_second_italo_ethiopian_war_category = {
 			effect_tooltip = {
 				custom_effect_tooltip = ITA_transfer_lost_states_tt
 				white_peace = ETH
+				if = {
+					limit = { has_war_with = AFA }
+					white_peace = AFA
+				}
 
 				ITA_manage_italian_defeat_in_ethiopia_effect = yes
 			}
@@ -153,6 +161,27 @@ ETH_second_italo_ethiopian_war_category = {
 
 		ai_will_do = {
 			base = 0
+			modifier = {
+				add = 100
+				is_ai = yes
+				date > 1936.9.1
+				NOT = { ITA = { controls_state = 271 } }
+				ETH = { surrender_progress < 0.5 }
+			}
+			modifier = {
+				add = 100
+				is_ai = yes
+				date > 1937.3.1
+				NOT = { ITA = { controls_state = 271 } }
+				ETH = { surrender_progress < 0.7 }
+			}
+			modifier = {
+				add = 100
+				is_ai = yes
+				date > 1937.9.1
+				NOT = { ITA = { controls_state = 271 } }
+				ETH = { surrender_progress < 0.9 }
+			}
 			modifier = {
 				add = 10
 				NOT = { has_full_control_of_state = 550 } #ERITREA
@@ -179,7 +208,8 @@ ETH_second_italo_ethiopian_war_category = {
 			}
 			modifier = {
 				factor = 0
-				date < 1937.03.01
+				date < 1936.9.1
+				ETH = { surrender_progress > 0.3 }
 			}
 		}
 	}
@@ -763,7 +793,7 @@ ITA_missiolinis = {
 		}
 
 		available = { #GOAL
-			custom_trigger_tooltip = {
+			custom_trigger_tooltip = { #TODO_Manu: This should be replaced by the appropriate check once Red king merges stuff (Factories BUILD check)
 				tooltip = ITA_missiolini_strengthen_heavy_industry_trigger_tt
 				num_of_civilian_factories > ROOT.ITA_missiolinis_required_civs
 			}
@@ -811,15 +841,24 @@ ITA_missiolinis = {
 		}
 
 		available = { #GOAL
-			if = {
-				limit = {
-					ITA_has_missiolini_easier_goals = yes
+			#has_army_manpower = { size > ROOT.ITA_missiolinis_fielded_manpower_goal } #1kk #TODO_Manu: Code support to use vars in has_army_manpower
+			#if = { #FIRST TIME - FIXED AMOUNT #TODO_Manu: NEED CODE SUPPORT (see line above)
+			#	limit = {
+			#		NOT = { has_country_flag = ITA_missiolini_strengthen_the_army_repeatable_flag } #First time it's a fixed amopunt. Then if the mission is repeated it will require +500k MP in the field (compare to current)
+			#	}
+				if = {
+					limit = {
+						ITA_has_missiolini_easier_goals = yes
+					}
+					has_army_manpower = { size > 650000 } #650k
 				}
-				has_army_manpower = { size > 650000 } #650k
-			}
-			else = {
-				has_army_manpower = { size > 750000 } #750k
-			}
+				else = {
+					has_army_manpower = { size > 750000 } #750k
+				}
+			#}
+			#else = { #IF REPEATING
+			#	has_army_manpower = { size > 1000000 } #TODO_Manu: Current MP + 500 -> Code Support for this (has_army_manpower does not take vars)
+			#}
 		}
 
 		activation = {
@@ -864,7 +903,7 @@ ITA_missiolinis = {
 		}
 
 		available = { #GOAL
-			has_equipment = {
+			has_equipment = { #TODO_Manu: Code Support to also get the trucks in the field // Alternatively, check for trucks produced (Code support too!)
 				motorized_equipment_1 > ROOT.ITA_missiolinis_trucks_to_produce
 			}
 		}
@@ -4613,7 +4652,12 @@ ITA_colonial_management_dec_cat = {
 
 		available = {
 			has_completed_focus = ITA_ministry_of_italian_africa
-			has_completed_focus = ITA_the_new_emperor_of_ethiopia
+			if = {
+				limit = {
+					NOT = { has_completed_focus = ITA_solid_progress }
+				}
+				has_completed_focus = ITA_the_new_emperor_of_ethiopia
+			}
 			custom_trigger_tooltip = {
 				tooltip = aoi_required_ethiopian_states
 				AND = {
@@ -4835,22 +4879,38 @@ ITA_colonial_management_dec_cat = {
 
 				set_autonomy = {
 				    target = AOI
-				    autonomy_state = autonomy_puppet
+				    autonomy_state = autonomy_satellite
 				    end_wars = no
 				    end_civil_wars = no
 				}
 
 				AOI = {
-					add_manpower = 100000
+					add_manpower = 120000
 					add_ideas = {
 						AOI_enrico_cerulli
 						AOI_africa_orientale_italiana_idea
+						AOI_seat_of_ethiopian_governance
 					}
-					add_offsite_building = { type = industrial_complex level = 4 }
-					add_offsite_building = { type = arms_factory level = 4 }
+					add_offsite_building = { type = industrial_complex level = 3 }
+					add_offsite_building = { type = arms_factory level = 5 }
 					add_equipment_to_stockpile = {
 					    type = infantry_equipment
-					    amount = 5000
+					    amount = 4000
+					    producer = ITA
+					}
+					add_equipment_to_stockpile = {
+					    type = support_equipment
+					    amount = 200
+					    producer = ITA
+					}
+					add_equipment_to_stockpile = {
+					    type = artillery_equipment
+					    amount = 200
+					    producer = ITA
+					}
+					add_equipment_to_stockpile = {
+					    type = anti_air_equipment
+					    amount = 200
 					    producer = ITA
 					}
 					if = {
@@ -4860,6 +4920,27 @@ ITA_colonial_management_dec_cat = {
 						create_intelligence_agency = yes
 					}
 					set_cosmetic_tag = AOI_Italian
+					set_technology = { irregular_infantry_tech = 1 }
+					division_template = {
+						name = "Italian East African Corp"  
+						division_names_group = ITA_INF_01
+						priority = 1
+
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+							irregular_infantry = { x = 0 y = 4 }
+
+							irregular_infantry = { x = 1 y = 0 }
+							irregular_infantry = { x = 1 y = 1 }
+							artillery_brigade = { x = 2 y = 0 }
+						}
+						support = {		
+							artillery = { x = 0 y = 0 }
+						}
+					}	
 				}
 			}
 		}
@@ -5036,9 +5117,9 @@ ITA_colonial_management_dec_cat = {
 
 	send_more_men_to_the_AOI = {
 
-		cost = 10
+		cost = 0
 
-		days_re_enable = 91
+		days_re_enable = 78
 
 		icon = GFX_decision_eng_blackshirt_march
 
@@ -5051,7 +5132,7 @@ ITA_colonial_management_dec_cat = {
 				exists = yes
 			}
 			ITA = {
-				has_manpower > 10000
+				has_manpower > 300000
 			}
 		}
 
@@ -5075,7 +5156,7 @@ ITA_colonial_management_dec_cat = {
 				limit = {
 					is_owned_and_controlled_by = AOI
 				}
-				add_resistance = -5
+				add_resistance = -3
 			}
 
 			hidden_effect = {
@@ -5085,14 +5166,26 @@ ITA_colonial_management_dec_cat = {
 
 		ai_will_do = {
 			factor = 20
+			modifier = {
+				factor = 0
+				AOI = {
+					OR = {
+						has_manpower > 100000
+						AND = {
+							has_manpower > 50000
+							has_army_manpower = { size > 200000 }
+						}
+					}
+				}
+			}
 		}
 	}
 
 	send_more_weapons_to_the_AOI = {
 
-		cost = 10
+		cost = 0
 
-		days_re_enable = 91
+		days_re_enable = 78
 
 		icon = GFX_decision_generic_prepare_civil_war
 
@@ -5107,17 +5200,22 @@ ITA_colonial_management_dec_cat = {
 			OR = {
 				ITA = {
 					has_equipment = {
-					    infantry_equipment_1 > 2000
+					    infantry_equipment_0 > 5000
 					}
 				}
 				ITA = {
 					has_equipment = {
-					    infantry_equipment_0 > 2000
+					    infantry_equipment_1 > 5000
 					}
 				}
 				ITA = {
 					has_equipment = {
-					    infantry_equipment_2 > 2000
+					    infantry_equipment_2 > 5000
+					}
+				}
+				ITA = {
+					has_equipment = {
+					    infantry_equipment_3 > 5000
 					}
 				}
 			}
@@ -5138,12 +5236,16 @@ ITA_colonial_management_dec_cat = {
 				    target = AOI
 				}
 			}
+		
+			AOI = {
+				army_experience = 15
+			}
 
 			every_state = {
 				limit = {
 					is_owned_and_controlled_by = AOI
 				}
-				add_resistance = -5
+				add_resistance = -3
 			}
 
 			hidden_effect = {
@@ -5173,6 +5275,136 @@ ITA_colonial_management_dec_cat = {
 					}
 				}
 			}
+		}
+	}
+
+	colonial_government_in_north_africa = {
+
+		icon = GFX_decision_generic_colonial_administration
+
+		allowed = {
+			original_tag = ITA # Italy
+		}
+
+		fire_only_once = yes
+
+		available = {
+			has_completed_focus = ITA_ministry_of_italian_africa
+			OR = {
+				LBA = { is_subject_of = ITA }
+				any_state = {
+					is_core_of = LBA
+					is_owned_by = ITA
+				}
+			}
+		}
+
+		visible = {
+			has_completed_focus = ITA_ministry_of_italian_africa
+			original_tag = ITA
+			NOT = { has_global_flag = italian_north_africa_flag }
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				set_global_flag = italian_north_africa_flag
+
+				if = {
+					limit = { 
+						LBA = { exists = no }
+						any_state = {
+							is_core_of = LBA
+							is_owned_by = ITA
+						}
+					}
+					release = LBA
+				}
+
+				set_autonomy = {
+				    	target = LBA
+				    	autonomy_state = autonomy_satellite
+				    	end_wars = no
+				    	end_civil_wars = no
+				}
+
+				LBA = {
+					add_manpower = 120000
+					add_ideas = {
+						ASI_africa_settentrionale_italiana_idea
+					}
+					add_offsite_building = { type = industrial_complex level = 3 }
+					add_offsite_building = { type = arms_factory level = 2 }
+					add_equipment_to_stockpile = {
+					    type = infantry_equipment
+					    amount = 5000
+					    producer = ITA
+					}
+					add_equipment_to_stockpile = {
+					    type = support_equipment
+					    amount = 200
+					    producer = ITA
+					}
+					add_equipment_to_stockpile = {
+					    type = artillery_equipment
+					    amount = 200
+					    producer = ITA
+					}
+					add_equipment_to_stockpile = {
+					    type = anti_air_equipment
+					    amount = 200
+					    producer = ITA
+					}
+					if = {
+						limit = {
+							has_dlc = "La Resistance"
+						}
+						create_intelligence_agency = yes
+					}
+					set_cosmetic_tag = LBA_Italian
+					create_country_leader = {
+						name = "Rodolfo Graziani"
+						picture = GFX_portrait_ITA_rodolfo_graziani
+						expire = "1965.1.1"
+						ideology = fascism_ideology
+						traits = {
+							marshal_of_quanta_sponda
+							governor_general_of_italian_libya
+						}
+					}
+					set_technology = { irregular_infantry_tech = 1 }
+					division_template = {
+						name = "North African Corp"  
+						division_names_group = ITA_INF_01
+						priority = 1
+
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+
+							irregular_infantry = { x = 1 y = 0 }
+							irregular_infantry = { x = 1 y = 1 }
+							irregular_infantry = { x = 2 y = 0 }
+						}
+					}	
+					every_owned_state = {
+						limit = {
+							impassable = no
+						}
+						create_unit = {
+							division = "name = \"North African Corp\" division_template = \"North African Corp\" start_experience_factor = 0.1"  
+							owner = LBA
+							allow_spawning_on_enemy_provs = yes  
+							count = 1
+						}
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 200
 		}
 	}
 
@@ -5546,7 +5778,6 @@ ITA_naval_cooperation_programs_dec_cat = {
 				}
 			}
 		}
-
 		visible = {
 			NOT = { FROM = { has_country_flag = ITA_midget_submarines_flag } } #Used inside visible trigger to check continuously and prevent exploits
 		}
@@ -5790,6 +6021,16 @@ ITA_diplomacy_balkan_decision_category = {
 			}
 			modifier = {
 				factor = 0
+				date < 1940.6.1
+				NOT = { 
+					AND = {
+						has_country_flag = dino_grandi_for_italy 
+						ITA_this_target_is_good = yes
+					}
+				}	
+			}
+			modifier = {
+				factor = 0
 				is_in_faction_with = FROM
 			}
 			modifier = {
@@ -5803,6 +6044,15 @@ ITA_diplomacy_balkan_decision_category = {
 					}
 				}
 				has_global_flag = second_italo_ethiopian_war_flag #Don't attack YUG if you can't handle ETH
+			}
+			modifier = {
+				add = 5000
+				original_tag = ITA
+				ITA_this_target_is_good = yes
+				OR = {
+					has_country_flag = dino_grandi_for_italy 
+					is_historical_focus_on = no
+				}
 			}
 		}
 
@@ -6138,6 +6388,35 @@ ITA_diplomacy_balkan_decision_category = {
 		}
 	}
 
+	ITA_integrate_the_north_african_government = {
+		priority = 40
+
+		icon = GFX_decision_eng_trade_unions_support
+
+		ai_will_do = {
+			base = 0
+		}
+
+		allowed = {
+			original_tag = ITA
+		}
+
+		available = {
+			LBA = { is_subject_of = ITA }
+		}
+
+		visible = {
+			original_tag = ITA
+			LBA = { is_subject_of = ITA }
+		}
+
+		cost = 0
+
+		complete_effect = {
+			annex_country = { target = LBA transfer_troops = yes }
+		}
+	}
+
 	ITA_establish_the_regno_albania = {
 		priority = 40
 
@@ -6146,7 +6425,7 @@ ITA_diplomacy_balkan_decision_category = {
 		ai_will_do = {
 			base = 1 #Peviously 10
 			modifier = { #ITA struggles to garrison puppets that can be naval invaded
-				factor = 0.2
+				factor = 10
 				ITA_is_historical_ai = yes
 			}
 			modifier = {
@@ -6189,7 +6468,7 @@ ITA_diplomacy_balkan_decision_category = {
 			}
 		}
 
-		cost = 50
+		cost = 0
 
 		complete_effect = {
 			ALB = {
@@ -6227,7 +6506,7 @@ ITA_diplomacy_balkan_decision_category = {
 				ITA = {
 					set_autonomy = {
 					    target = ALB
-					    autonomy_state = autonomy_reichsprotectorate
+					    autonomy_state = autonomy_collaboration_government
 					    end_wars = no
 					    end_civil_wars = no
 					}
@@ -6319,7 +6598,7 @@ ITA_diplomacy_balkan_decision_category = {
 			}
 		}
 
-		cost = 50
+		cost = 0
 
 		complete_effect = {
 			MNT = {
@@ -6332,7 +6611,7 @@ ITA_diplomacy_balkan_decision_category = {
 				ITA = {
 					set_autonomy = {
 					    target = MNT
-					    autonomy_state = autonomy_reichskommissariat
+					    autonomy_state = autonomy_collaboration_government
 					    end_wars = no
 					    end_civil_wars = no
 					}
@@ -6473,6 +6752,7 @@ ITA_diplomacy_balkan_decision_category = {
 
 		target_trigger = {
 			FROM = {
+				NOT = { original_tag = ITA }
 				is_subject = no
 				NOT = {
 					has_war_with = ROOT
@@ -6781,12 +7061,10 @@ ITA_diplomacy_balkan_decision_category = {
 		}
 
 		available = {
-			
 			has_completed_focus = ITA_befriend_greece
 			is_faction_leader = yes
 			is_subject = no
 			controls_state = 164
-			
 			GRE = {
 				is_subject = no
 				has_civil_war = no
@@ -6794,7 +7072,6 @@ ITA_diplomacy_balkan_decision_category = {
 					has_government = communism
 				}
 			}
-
 		}
 
 		visible = {
@@ -6802,13 +7079,11 @@ ITA_diplomacy_balkan_decision_category = {
 				exists = yes
 				NOT = { is_in_faction_with = ROOT }
 			}
-			
 			OR = {
 				has_government = neutrality
 				has_government = fascism
 			}
 			controls_state = 164
-			
 			NOT = {
 				has_country_flag = ITA_dodecanese_offered_to_greece
 			}
@@ -6881,8 +7156,11 @@ ITA_diplomacy_balkan_decision_category = {
 			}
 			
 			OR = {
+		  
 				has_government = neutrality
 				has_government = fascism
+	 
+						
 			}
 			controls_state = 164
 			

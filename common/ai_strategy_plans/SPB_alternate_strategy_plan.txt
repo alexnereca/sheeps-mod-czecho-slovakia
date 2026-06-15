@@ -53,16 +53,17 @@ SPB_alternate_plan = {
 		SPA_encourage_local_industrialization
 		SPA_settle_the_succession_question
 		SPA_restore_the_monarchy
-		SPA_stamp_out_the_maquis
 		SPA_dios_patria_rey
-		SPA_found_the_academia_vazquez_de_mella
 		SPA_restore_the_empire
+		SPA_restore_the_iberian_union
+
+		SPA_stamp_out_the_maquis
+		SPA_found_the_academia_vazquez_de_mella
 		SPA_a_fleet_worthy_of_a_king
 		SPA_rebuild_the_battlefleet
 		SPA_imperial_security
 		SPA_the_third_dimension_of_warfare
 		SPA_a_modern_fighter_fleet
-		SPA_restore_the_iberian_union
 	}
 
 	research = {

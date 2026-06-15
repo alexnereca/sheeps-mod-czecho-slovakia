@@ -123,7 +123,7 @@ characters = {
 			}
 			cost = 200
 			ai_will_do = {
-				base = 1.000
+				base = 100.000
 			}
 		}
 	}
@@ -195,7 +195,7 @@ characters = {
 			}
 			cost = 200
 			ai_will_do = {
-				base = 1.000
+				base = 25.000
 			}
 		}
 	}
@@ -614,7 +614,7 @@ characters = {
 			}
 			cost = 100
 			ai_will_do = {
-				base = 1.000
+				base = 0
 			}
 		}
 	}
@@ -882,6 +882,10 @@ characters = {
 			cost = 100
 			ai_will_do = {
 				base = 1.000
+				modifier = {
+					factor = 0
+					date < 1937.1.1
+				}
 			}
 		}
 	}
@@ -908,6 +912,14 @@ characters = {
 			cost = 100
 			ai_will_do = {
 				base = 1.000
+				modifier = {
+					factor = 0
+					date < 1937.1.1
+				}
+				modifier = {
+					factor = 200
+					date > 1939.1.1
+				}
 			}
 		}
 	}
@@ -1074,7 +1086,7 @@ characters = {
 			}
 			cost = 200
 			ai_will_do = {
-				base = 1.000
+				base = 0.000
 			}
 		}
 	}
@@ -1098,7 +1110,7 @@ characters = {
 			}
 			cost = 100
 			ai_will_do = {
-				base = 1.000
+				base = 0.000
 			}
 		}
 	}
@@ -1122,7 +1134,7 @@ characters = {
 			}
 			cost = 100
 			ai_will_do = {
-				base = 1.000
+				base = 0.000
 			}
 		}
 	}
@@ -1146,7 +1158,7 @@ characters = {
 			}
 			cost = 100
 			ai_will_do = {
-				base = 1.000
+				base = 0.000
 			}
 		}
 	}
@@ -1169,11 +1181,11 @@ characters = {
 				NOT = { has_government = communism }
 			}
 			traits = {
-				army_concealment_2
+				army_concealment_3
 			}
 			cost = 100
 			ai_will_do = {
-				base = 1.000
+				base = 25.000
 			}
 		}
 	}
@@ -1200,7 +1212,7 @@ characters = {
 			}
 			cost = 100
 			ai_will_do = {
-				base = 1.000
+				base = 0.000
 			}
 		}
 	}
@@ -1224,7 +1236,7 @@ characters = {
 			}
 			cost = 50
 			ai_will_do = {
-				base = 1.000
+				base = 0.000
 			}
 		}
 	}
@@ -1255,7 +1267,7 @@ characters = {
 			}
 			cost = 100
 			ai_will_do = {
-				base = 1.000
+				base = 25.000
 			}
 		}
 	}
@@ -1282,7 +1294,7 @@ characters = {
 			}
 			cost = 100
 			ai_will_do = {
-				base = 1.000
+				base = 25.000
 			}
 		}
 	}
@@ -1487,14 +1499,6 @@ characters = {
 			cost = 70
 			traits = {
 				traditionalist_theorist 
-			}
-
-			ai_will_do = {
-				base = 1.000
-				modifier = {
-					factor = 100
-					FIN_is_historical_ai = yes
-				}
 			}
 		}
 	}
@@ -1813,14 +1817,21 @@ characters = {
 			}
 
 			ai_will_do = {
-				base = 1.000
+				base = 200.000
 				modifier = {
-					factor = 0.01
+					factor = 0
 					FIN_is_historical_ai = yes
+					fascism > 0.05
 				}
 				modifier = {
-					factor = 100
+					factor = 10
+					FIN_is_historical_ai = yes
+					fascism < 0.01
+				}
+				modifier = {
+					factor = 10
 					FIN_is_fascist_ai = yes
+					fascism < 0.01
 				}
 			}
 		}

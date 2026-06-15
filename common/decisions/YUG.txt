@@ -43,6 +43,7 @@ YUG_peasant_uprisings = {
 					OR = {
 						has_government = communism
 						has_country_flag = banned_communism_flag
+						is_in_faction_with = YUG
 					}
 				}
 			}
@@ -117,6 +118,7 @@ YUG_peasant_uprisings = {
 					OR = {
 						has_government = communism
 						has_country_flag = banned_communism_flag
+						is_in_faction_with = YUG
 					}
 				}
 			}
@@ -191,6 +193,7 @@ YUG_peasant_uprisings = {
 					OR = {
 						has_government = communism
 						has_country_flag = banned_communism_flag
+						is_in_faction_with = YUG
 					}
 				}
 			}
@@ -266,6 +269,7 @@ YUG_peasant_uprisings = {
 					OR = {
 						has_government = communism
 						has_country_flag = banned_communism_flag
+						is_in_faction_with = YUG
 					}
 				}
 			}
@@ -341,6 +345,7 @@ YUG_peasant_uprisings = {
 					OR = {
 						has_government = communism
 						has_country_flag = banned_communism_flag
+						is_in_faction_with = YUG
 					}
 				}
 			}
@@ -416,6 +421,7 @@ YUG_peasant_uprisings = {
 					OR = {
 						has_government = communism
 						has_country_flag = banned_communism_flag
+						is_in_faction_with = YUG
 					}
 				}
 			}
@@ -670,7 +676,7 @@ YUG_peasant_uprisings = {
 			factor = 100
 			modifier = {
 				event_target:YUG_communist_coup_target = {
-					communism < 0.4
+					communism < 0.6
 				}
 				factor = 0
 			}
@@ -692,6 +698,7 @@ YUG_peasant_uprisings = {
 				event_target:YUG_communist_coup_target = {
 					OR = {
 						has_government = communism
+				
 						has_war_with = ROOT
 						is_puppet_of = ROOT
 						communism < 0.1
@@ -699,7 +706,6 @@ YUG_peasant_uprisings = {
 				}
 			}
 		}
-		
 		visible = {
 			original_tag = YUG
 			event_target:YUG_communist_coup_target = {
@@ -718,6 +724,7 @@ YUG_peasant_uprisings = {
 					}
 				}
 			}
+			
 		}
 
 		cost = 0
@@ -825,8 +832,8 @@ YUG_crush_ustasa = {
 						communism = 10
 					}
 					promote_character = {
-						character = CRO_nikola_mandic 
-						ideology = fascism_ideology 
+						character = CRO_nikola_mandic
+						ideology = fascism_ideology
 					}
 					set_temp_variable = { croatia_var = this }
 				}
@@ -1467,7 +1474,6 @@ YUG_progress_crushing_decisions = {
 
 		visible = {
 			tag = YUG
-			has_active_mission = YUG_ustasa_uprising
 			has_completed_focus = YUG_crush_the_ustasa
 			has_country_flag = YUG_raid_villages_flag
 			NOT = { has_global_flag = ustasa_crushed }
@@ -1502,7 +1508,6 @@ YUG_progress_crushing_decisions = {
 
 		visible = {
 			tag = YUG
-			has_active_mission = YUG_ustasa_uprising
 			has_completed_focus = YUG_crush_the_ustasa
 			has_country_flag = YUG_end_recruitment_flag
 			NOT = { has_global_flag = ustasa_crushed }

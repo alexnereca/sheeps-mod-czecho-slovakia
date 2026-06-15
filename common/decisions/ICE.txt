@@ -83,7 +83,7 @@ economy_decisions = {
 					100 = {
 						add_resource = {
 							type = oil
-							amount = 4
+							amount = 12
 						}
 					}
 				}
@@ -91,7 +91,7 @@ economy_decisions = {
 					100 = {
 						add_resource = {
 							type = oil
-							amount = 2
+							amount = 5
 						}
 					}
 				}
@@ -99,7 +99,7 @@ economy_decisions = {
 					100 = {
 						add_resource = {
 							type = oil
-							amount = 8
+							amount = 32
 						}
 						custom_effect_tooltip = no_more_oil_tt
 						set_state_flag = no_more_oil_flag
@@ -337,6 +337,7 @@ ICE_infiltrate_the_british_isles_category = {
 					has_government = communism
 				}
 			}	
+						  
 		}
 	
 		visible = {
@@ -443,14 +444,20 @@ ICE_improve_the_viking_spirit = {
 		}
 
 		available = {
-			has_completed_focus = ICE_the_viking_spirit
+			OR = {
+				has_completed_focus = ICE_the_viking_spirit
+				is_subject = no
+			}
 			NOT = {
 				has_country_flag = ICE_already_improving_the_viking_spirit_flag
 			}
 		}
 
 		visible = {
-			has_completed_focus = ICE_the_viking_spirit
+			OR = {
+				has_completed_focus = ICE_the_viking_spirit
+				is_subject = no
+			}
 		}
 
 		cost = 75
@@ -628,14 +635,20 @@ ICE_improve_the_viking_spirit = {
 		}
 
 		available = {
-			has_completed_focus = ICE_the_viking_spirit
+			OR = {
+				has_completed_focus = ICE_the_viking_spirit
+				is_subject = no
+			}
 			NOT = {
 				has_country_flag = ICE_already_improving_the_viking_spirit_flag
 			}
 		}
 
 		visible = {
-			has_completed_focus = ICE_the_viking_spirit
+			OR = {
+				has_completed_focus = ICE_the_viking_spirit
+				is_subject = no
+			}
 		}
 
 		cost = 75
@@ -813,14 +826,20 @@ ICE_improve_the_viking_spirit = {
 		}
 
 		available = {
-			has_completed_focus = ICE_the_viking_spirit
+			OR = {
+				has_completed_focus = ICE_the_viking_spirit
+				is_subject = no
+			}
 			NOT = {
 				has_country_flag = ICE_already_improving_the_viking_spirit_flag
 			}
 		}
 
 		visible = {
-			has_completed_focus = ICE_the_viking_spirit
+			OR = {
+				has_completed_focus = ICE_the_viking_spirit
+				is_subject = no
+			}
 		}
 
 		cost = 75
@@ -997,14 +1016,20 @@ ICE_improve_the_viking_spirit = {
 		}
 
 		available = {
-			has_completed_focus = ICE_the_viking_spirit
+			OR = {
+				has_completed_focus = ICE_the_viking_spirit
+				is_subject = no
+			}
 			NOT = {
 				has_country_flag = ICE_already_improving_the_viking_spirit_flag
 			}
 		}
 
 		visible = {
-			has_completed_focus = ICE_the_viking_spirit
+			OR = {
+				has_completed_focus = ICE_the_viking_spirit
+				is_subject = no
+			}
 		}
 
 		cost = 75
@@ -1181,14 +1206,20 @@ ICE_improve_the_viking_spirit = {
 		}
 
 		available = {
-			has_completed_focus = ICE_the_viking_spirit
+			OR = {
+				has_completed_focus = ICE_the_viking_spirit
+				is_subject = no
+			}
 			NOT = {
 				has_country_flag = ICE_already_improving_the_viking_spirit_flag
 			}
 		}
 
 		visible = {
-			has_completed_focus = ICE_the_viking_spirit
+			OR = {
+				has_completed_focus = ICE_the_viking_spirit
+				is_subject = no
+			}
 		}
 
 		cost = 75
@@ -1365,7 +1396,10 @@ ICE_improve_the_viking_spirit = {
 		}
 
 		available = {
-			has_completed_focus = ICE_the_viking_spirit
+			OR = {
+				has_completed_focus = ICE_the_viking_spirit
+				is_subject = no
+			}
 			NOT = {
 				has_country_flag = ICE_already_improving_the_viking_spirit_flag
 			}
@@ -1379,7 +1413,10 @@ ICE_improve_the_viking_spirit = {
 		}
 
 		visible = {
-			has_completed_focus = ICE_the_viking_spirit
+			OR = {
+				has_completed_focus = ICE_the_viking_spirit
+				is_subject = no
+			}
 		} 
 
 		cost = 120
@@ -1433,14 +1470,20 @@ ICE_improve_the_viking_spirit = {
 		}
 
 		available = {
-			has_completed_focus = ICE_the_viking_spirit
+			OR = {
+				has_completed_focus = ICE_the_viking_spirit
+				is_subject = no
+			}
 			331 = {
 				is_controlled_by = ROOT
 			}
 		}
 
 		visible = {
-			has_completed_focus = ICE_the_viking_spirit
+			OR = {
+				has_completed_focus = ICE_the_viking_spirit
+				is_subject = no
+			}
 		} 
 
 		cost = 50

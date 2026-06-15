@@ -1333,6 +1333,10 @@ country_event = {
 					is_subject_of = FROM
 				}
 			}
+			modifier = { #Be nice to player tack
+				factor = 100
+				is_historical_focus_on = no
+			}
 		}
 
 		effect_tooltip = {
@@ -1363,6 +1367,10 @@ country_event = {
 			modifier = {
 				factor = 0
 				is_subject_of = FROM
+			}
+			modifier = { #Be nice to player tack
+				factor = 0
+				is_historical_focus_on = no
 			}
 		}
 
@@ -1432,7 +1440,7 @@ country_event = {
 				ROOT = {
 					transfer_state = PREV
 				}
-				add_compliance = 50
+				add_compliance = 80
 			}
 		}
 	}
@@ -1972,6 +1980,10 @@ country_event = {
 					is_subject_of = FROM
 				}
 			}
+			modifier = { #Be nice to player tack
+				factor = 100
+				is_historical_focus_on = no #progress with the event please
+			}
 		}
 
 		effect_tooltip = {
@@ -2127,6 +2139,10 @@ country_event = {
 					is_subject_of = FROM
 					is_in_faction_with = FROM
 				}
+			}
+			modifier = {
+				factor = 0
+				is_historical_focus_on = no #progress with the event please
 			}
 		}
 
@@ -3277,7 +3293,6 @@ country_event = {
 					amount = 300
 					producer = ROOT
 				}
-
 				add_state_claim = 213
 				add_state_claim = 215
 				add_state_claim = 216
@@ -5022,6 +5037,8 @@ country_event = {
 			}
 		}
 
+		#TODO_Manu: Relation modifier so that FIN can send more volunteers to Karelia
+
 		KAR = {
 			if = {
 				limit = {
@@ -6264,7 +6281,7 @@ country_event = {
 				}
 			}
 			add_manpower = -300
-			add_war_support = -0.05
+			add_war_support = -0.075
 		}
 		ELSE_IF = {
 			limit = {
@@ -6276,7 +6293,7 @@ country_event = {
 				}
 			}
 			add_manpower = -350
-			add_war_support = -0.05
+			add_war_support = -0.075
 		}
 		ELSE_IF = {
 			limit = {
@@ -6286,7 +6303,7 @@ country_event = {
 				}
 			}
 			add_manpower = -320
-			add_war_support = -0.05
+			add_war_support = -0.075
 		}
 		ELSE_IF = {
 			limit = {
@@ -6296,7 +6313,7 @@ country_event = {
 				}
 			}
 			add_manpower = -500
-			add_war_support = -0.1
+			add_war_support = -0.15
 		}
 
 		hidden_effect = {

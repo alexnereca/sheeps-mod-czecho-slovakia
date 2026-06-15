@@ -481,15 +481,16 @@ characters={
 				visible = {
 				}
 				available = {
-				NOT = {
-					has_country_leader = {
-						ruling_only = yes
-						character = ARG_nimio_de_anquin
+					NOT = {
+						has_country_leader = {
+							ruling_only = yes
+							character = ARG_nimio_de_anquin
+						}	
 					}
+					NOT = { has_government = democratic }
 				}
 			}
 		}
-	}
 	instance = {
 		allowed = {
 			NOT = {
@@ -1005,6 +1006,24 @@ characters={
 
 				cost = 100
 			}
+
+		advisor = {
+			slot = high_command
+			idea_token = ARG_carlos_marquez2
+			ledger = army
+			allowed = {
+				original_tag  = ARG
+			}
+			available = {
+			}
+			traits = {
+				army_CombinedArms_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 10.000
+			}
+		}
 	}
 
 	ARG_juan_pistarini = {
@@ -1252,7 +1271,7 @@ characters={
 				}
 				cost = 100
 				ai_will_do = {
-					factor = 1.000
+					factor = 0
 				}
 			}
 
@@ -1381,7 +1400,7 @@ characters={
 				}
 				cost = 100
 				ai_will_do = {
-					factor = 1.000
+					factor = 0
 				}
 			}
 		portraits = {
@@ -1818,7 +1837,6 @@ characters={
 			}
 		}
 	}
-
 	#ARG_ezequiel_pedro_paz = {
 	#	
 	#	advisor = {
@@ -1850,11 +1868,11 @@ characters={
 			slot = political_advisor
 			idea_token = ARG_julio_roca
 			allowed  = {
-					original_tag  = ARG
-				}
-				traits  = {
-					silent_workhorse
-				}
+				original_tag  = ARG
+			}
+			traits  = {
+				silent_workhorse
+			}
 		}
 
 		name ="Julio Argentino Pascual Roca"

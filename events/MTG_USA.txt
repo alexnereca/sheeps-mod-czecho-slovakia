@@ -462,7 +462,7 @@ country_event = {
 					partial_economic_mobilisation 
 				}
 				add_manpower = USA.usa_fascists_recruits
-				add_timed_idea = { idea = CSA_spirit_of_rebellion days = 360 }
+				add_timed_idea = { idea = CSA_spirit_of_rebellion days = 720 }
 				add_manpower = 175000
 				add_offsite_building = { type = industrial_complex level = USA.usa_fascists_funds }
 				add_offsite_building = { type = arms_factory level = 5 }
@@ -1414,13 +1414,27 @@ country_event = {
 			multiply_temp_variable = { fascism_support = 100 }
 			set_temp_variable = { neutrality_support = 100 }
 			subtract_from_temp_variable = { neutrality_support = fascism_support }
-			start_civil_war = {
-				ruling_party = neutrality
-				ideology = democratic
-				size = 0.7
-				capital = 357
-				states = { 357 685 }
-				keep_unit_leaders = { 57 }
+			if = {
+				limit = { is_ai = no }
+				start_civil_war = {
+					ruling_party = neutrality
+					ideology = democratic
+					size = 0.7
+					capital = 357
+					states = { 357 685 }
+					keep_unit_leaders = { 57 }
+				}
+			}
+			if = {
+				limit = { is_ai = yes }
+				start_civil_war = {
+					ruling_party = neutrality
+					ideology = democratic
+					size = 0.3
+					capital = 357
+					states = { 357 685 }
+					keep_unit_leaders = { 57 }
+				}
 			}
 			division_template = {
 				name = "Local Volunteers"
@@ -1444,6 +1458,10 @@ country_event = {
 			set_global_flag = USA_civil_war_fired_democrats
 
 			set_cosmetic_tag = USA_CSA
+			if = {
+				limit = { is_ai = yes }
+				add_timed_idea = { idea = CSA_spirit_of_rebellion days = 720 }
+			}
 			random_other_country = {
 				limit = {
 					original_tag = USA
@@ -1984,6 +2002,11 @@ country_event = {
 	option = {
 		name = mtg_usa_civil_war_democrats.23.a
 		add_stability = -0.05
+		set_capital = {
+			state = 362
+			remember_old_capital = no
+		}
+		
 	}
 }
 
@@ -2634,6 +2657,9 @@ country_event = {
 			modifier = {
 				has_war = yes
 				factor = 0
+				NOT = { is_in_faction_with = ENG }
+				NOT = { is_in_faction_with = GER }
+				has_army_manpower = { size  < 2000000 }
 			}
 		}
 		create_wargoal = {
@@ -2750,6 +2776,9 @@ country_event = {
 			modifier = {
 				has_war = yes
 				factor = 0
+				NOT = { is_in_faction_with = ENG }
+				NOT = { is_in_faction_with = GER }
+				has_army_manpower = { size < 2000000 }
 			}
 		}
 		create_wargoal = {
@@ -2862,6 +2891,9 @@ country_event = {
 			modifier = {
 				has_war = yes
 				factor = 0
+				NOT = { is_in_faction_with = ENG }
+				NOT = { is_in_faction_with = GER }
+				has_army_manpower = { size < 2000000 }
 			}
 		}
 		create_wargoal = {
@@ -2922,15 +2954,9 @@ country_event = {
 				}
 				if = {
 					limit = {
-						has_full_control_of_state = 1021
+						has_full_control_of_state = 326
 					}
-					transfer_state = 1021
-				}
-				if = {
-					limit = {
-						has_full_control_of_state = 1065
-					}
-					transfer_state = 1065
+					transfer_state = 326
 				}
 			}
 			if = {
@@ -3009,18 +3035,6 @@ country_event = {
 		}
 		if = {
 			limit = {
-				FROM = { has_full_control_of_state = 1021 }
-			}
-			transfer_state = 1021
-		}
-		if = {
-			limit = {
-				FROM = { has_full_control_of_state = 1065 }
-			}
-			transfer_state = 1065
-		}
-		if = {
-			limit = {
 				FROM = { has_full_control_of_state = 326 }
 			}
 			transfer_state = 326
@@ -3067,6 +3081,9 @@ country_event = {
 			modifier = {
 				has_war = yes
 				factor = 0
+				NOT = { is_in_faction_with = ENG }
+				NOT = { is_in_faction_with = GER }
+				has_army_manpower = { size < 2000000 }
 			}
 		}
 		create_wargoal = {
@@ -3238,6 +3255,9 @@ country_event = {
 			modifier = {
 				has_war = yes
 				factor = 0
+				NOT = { is_in_faction_with = ENG }
+				NOT = { is_in_faction_with = GER }
+				has_army_manpower = { size < 2000000 }
 			}
 		}
 		create_wargoal = {
@@ -3354,6 +3374,9 @@ country_event = {
 			modifier = {
 				has_war = yes
 				factor = 0
+				NOT = { is_in_faction_with = ENG }
+				NOT = { is_in_faction_with = GER }
+				has_army_manpower = { size < 2000000 }
 			}
 		}
 		create_wargoal = {
@@ -3462,6 +3485,9 @@ country_event = {
 			modifier = {
 				has_war = yes
 				factor = 0
+				NOT = { is_in_faction_with = ENG }
+				NOT = { is_in_faction_with = GER }
+				has_army_manpower = { size < 2000000 }
 			}
 		}
 		create_wargoal = {
@@ -3508,10 +3534,6 @@ country_event = {
 				transfer_state = 286
 				transfer_state = 1017
 				transfer_state = 741
-				transfer_state = 1069 
-				transfer_state = 1068 
-				transfer_state = 1066
-				transfer_state = 1067
 			}
 		}
 	}
@@ -3562,12 +3584,8 @@ country_event = {
 			transfer_state = 671
 			transfer_state = 670
 			transfer_state = 286
-			transfer_state = 1017
 			transfer_state = 741
-			transfer_state = 1069 
-			transfer_state = 1068 
-			transfer_state = 1066
-			transfer_state = 1067
+			transfer_state = 1017
 	}
 }
 
@@ -3586,6 +3604,9 @@ country_event = {
 			modifier = {
 				has_war = yes
 				factor = 0
+				NOT = { is_in_faction_with = ENG }
+				NOT = { is_in_faction_with = GER }
+				has_army_manpower = { size < 2000000 }
 			}
 		}
 		create_wargoal = {
@@ -3716,6 +3737,9 @@ country_event = {
 			modifier = {
 				has_war = yes
 				factor = 0
+				NOT = { is_in_faction_with = ENG }
+				NOT = { is_in_faction_with = GER }
+				has_army_manpower = { size < 2000000 }
 			}
 		}
 		create_wargoal = {

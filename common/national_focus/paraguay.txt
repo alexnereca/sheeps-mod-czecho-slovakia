@@ -47,7 +47,10 @@ focus_tree = {
 				character = PAR_rafael_franco 
 			}
 		}
-		mutually_exclusive = { focus = PAR_reach_out_to_european_contacts	 }
+		bypass = {
+			has_civil_war = yes
+		}
+		mutually_exclusive = { }
 		icon = GFX_focus_generic_farmland
 		x = 3
 		y = 0
@@ -76,10 +79,14 @@ focus_tree = {
 				}
 			}
 			else = {
-				has_civil_war = yes
+				OR = {
+					has_civil_war = yes
+					is_major = yes
+				}
 				NOT = { has_war_with = USA }
 			}
 		}
+		mutually_exclusive = { }
 
 		bypass = {
 			NOT = { has_completed_focus = PAR_fedrerista_land_reforms }
@@ -93,7 +100,6 @@ focus_tree = {
 		icon = GFX_focus_generic_befriend_usa
 		x = 15
 		y = 0
-		mutually_exclusive = { focus = PAR_fedrerista_land_reforms }
 		cost = 5
 		search_filters = {  }
 		completion_reward = {
@@ -751,24 +757,15 @@ focus_tree = {
 		cost = 5
 
 		search_filters = {  }
-
 		completion_reward = {
-
 			add_stability = -0.1
 			add_war_support = 0.15
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-
 			set_rule = { CAN_DECLARE_WAR_ON_SAME_IDEOLOGY = yes }
 			set_rule = { can_only_justify_war_on_threat_country = no }
 			set_rule = { can_join_opposite_factions = yes }
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-
 			add_ideas = idea_PAR_emergency_powers
 
 		}
-
 	}
 
 	focus = {
@@ -778,6 +775,7 @@ focus_tree = {
 		}
 
 		bypass = {
+			
 		}
 
 		icon = GFX_focus_SWE_varnplikt
@@ -788,10 +786,20 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
-			add_ideas = tot_economic_mobilisation
-			add_war_support = 0.4
-			add_stability = -0.25
-			activate_decision = women_in_the_workforce
+			add_ideas = extensive_conscription
+			if = {
+				limit = { has_civil_war = yes }
+				add_war_support = 0.4
+				add_stability = -0.25
+				activate_decision = women_in_the_workforce
+				add_ideas = tot_economic_mobilisation
+			}
+			if = {
+				limit = { has_civil_war = no }
+				add_war_support = 0.10
+				add_stability = 0.10
+				add_ideas = war_economy
+			}
 		}
 	}
 
@@ -803,6 +811,7 @@ focus_tree = {
 		}
 
 		bypass = {
+			has_civil_war = no
 		}
 
 		mutually_exclusive = { focus = PAR_goad_bolivia }
@@ -875,6 +884,7 @@ focus_tree = {
 		}
 
 		bypass = {
+			
 		}
 		mutually_exclusive = { focus = PAR_assasinate_rafael_franco }
 		icon = GFX_focus_generic_attack_bolivia
@@ -1259,6 +1269,7 @@ focus_tree = {
 			factor = 50
 		}
 		available = {
+			NOT = { has_government = democratic }
 		}
 
 		search_filters = { FOCUS_FILTER_HISTORICAL FOCUS_FILTER_MANPOWER }
@@ -1487,11 +1498,7 @@ focus_tree = {
 		mutually_exclusive = { }
 		cost = 10
 		search_filters = { FOCUS_FILTER_HISTORICAL }
-
 		completion_reward = {
-
-			set_rule = { can_join_factions = no }
-
 			custom_effect_tooltip = par_has_accepted_american_funds_tt
 			add_timed_idea = {
 				idea = idea_PAR_accepted_american_investment
@@ -1511,7 +1518,6 @@ focus_tree = {
 
 				leave_faction = yes
 			}
-
 		}
 	}
 
@@ -1710,7 +1716,6 @@ focus_tree = {
 
 	focus = {
 		id = PAR_join_the_allies
-
 		available = {
 			is_subject = no
 			OR = {
@@ -1743,11 +1748,7 @@ focus_tree = {
 		mutually_exclusive = { focus = PAR_join_the_axis focus = PAR_join_the_cominterm }
 		cost = 5
 		search_filters = {  }
-
 		completion_reward = {
-
-			set_rule = { can_join_factions = yes }
-
 			if = {
 				limit = {
 					ENG = { 
@@ -1820,11 +1821,10 @@ focus_tree = {
 
 	focus = {
 		id = PAR_join_the_cominterm
-		
 		available = {
 			is_subject = no
 			NOT = { has_war_with = SOV }
-			NOT = { has_idea = idea_PAR_accepted_american_investment }
+			NOT = { has_idea = idea_PAR_accepted_american_investment }												 
 		}
 
 		bypass = {
@@ -1912,13 +1912,13 @@ focus_tree = {
 
 	focus = {
 		id = PAR_join_the_axis
-
 		available = {
-			is_subject = no
 			GER = { has_war = yes }
 			NOT = { has_war_with = GER }
 			NOT = { has_idea = idea_PAR_accepted_american_investment }
 			NOT = { is_in_faction = yes }
+			is_subject = no
+
 		}
 
 		bypass = {
@@ -2068,7 +2068,7 @@ focus_tree = {
 	focus = {
 		id = PAR_neuter_the_guion_rojo
 		available = {
-	
+			has_government = communism
 		}
 
 		bypass = {

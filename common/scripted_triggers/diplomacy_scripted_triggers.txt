@@ -126,6 +126,7 @@ DIPLOMACY_RELEASE_NATION_ENABLE_TRIGGER = {
 				NOT = { has_dlc = "Trial of Allegiance" }
 				NOT = { original_tag = CHL }
 			}
+			
 			OR = {
 				NOT = { original_tag = SOV }
 				FROM = {
@@ -348,44 +349,6 @@ DIPLOMACY_RELEASE_NATION_ENABLE_TRIGGER = {
 			NOT = { FROM = { tag = TRA } }
 		}
 	}
-	if = {
-		limit = {
-			OR = {
-				has_game_rule = {
-					rule = allow_release_nations
-					option = FREE
-				}
-				has_game_rule = {
-					rule = allow_release_nations
-					option = PEACE_ONLY
-				}
-			}
-			FROM = { tag = SDL }
-		}
-		custom_trigger_tooltip = {
-			tooltip = RULE_ALLOW_RELEASE_NATIONS_ALL_NATIONS_SUDETENLAND_TOOLTIP
-			NOT = { FROM = { tag = SDL } }
-		}
-	}
-	if = {
-		limit = {
-			OR = {
-				has_game_rule = {
-					rule = allow_release_nations
-					option = FREE
-				}
-				has_game_rule = {
-					rule = allow_release_nations
-					option = PEACE_ONLY
-				}
-			}
-			FROM = { tag = RUT }
-		}
-		custom_trigger_tooltip = {
-			tooltip = RULE_ALLOW_RELEASE_NATIONS_ALL_NATIONS_RUTHENIA_TOOLTIP
-			NOT = { FROM = { tag = RUT } }
-		}
-	}
 	IF = {
 		limit = {
 			OR = {
@@ -405,58 +368,7 @@ DIPLOMACY_RELEASE_NATION_ENABLE_TRIGGER = {
 		}
 		custom_trigger_tooltip = {
 			tooltip = RULE_ALLOW_RELEASE_NATIONS_NO_SLOVAKIA_TOOLTIP
-			if = {
-				limit = {
-					original_tag = CZE
-				}
-				if = {
-					limit = {
-						OR = {
-							if = {
-								limit = {
-									has_dlc = "Peace For Our Time"
-								}
-								has_country_flag = CZE_cant_release_SLO_anymore_flag #set in MUN_czech_bop.1 event
-							}
-							else = {
-								date > 1936.1.7
-							}
-						}
-					}
-					NOT = {
-						FROM = {
-							tag = SLO 
-						}
-					}
-				}
-			}
-			else = {
-				NOT = {
-					FROM = {
-						tag = SLO 
-					}
-				}
-			}
-		}
-	}
-	if = {
-		limit = {
-			OR = {
-				has_game_rule = {
-					rule = allow_release_nations
-					option = FREE
-				}
-				has_game_rule = {
-					rule = allow_release_nations
-					option = PEACE_ONLY
-				}
-			}
-			original_tag = CZE
-			has_dlc = "Peace For Our Time"
-		}
-		custom_trigger_tooltip = {
-			tooltip = RULE_ALLOW_RELEASE_NATIONS_ALL_NATIONS_SUDETENLAND_TOOLTIP
-			NOT = { FROM = { tag = UKR } }
+			NOT = { FROM = { tag = SLO } }
 		}
 	}
 	if = {
@@ -797,14 +709,9 @@ DIPLOMACY_RELEASE_NATION_ENABLE_TRIGGER = {
 				has_completed_focus = SOV_reconvene_the_zemsky_sobor
 			}
 		}
-		if = {
-			limit = {
-				has_war = yes
-			}
-			custom_trigger_tooltip = {
-				tooltip = RULE_ALLOW_RELEASE_NATIONS_PEACE_ONLY_TOOLTIP
-				has_war = no
-			}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_RELEASE_NATIONS_PEACE_ONLY_TOOLTIP
+			has_war = no
 		}
 		custom_trigger_tooltip = {
 			tooltip = RULE_ALLOW_RELEASE_NATIONS_SOVIET_TOOLTIP
@@ -833,7 +740,6 @@ DIPLOMACY_RELEASE_NATION_ENABLE_TRIGGER = {
 			NOT = { FROM = { tag = KUR } }
 		}
 	}
-
 	if = {
 		limit = {
 			has_game_rule = {
@@ -849,7 +755,7 @@ DIPLOMACY_RELEASE_NATION_ENABLE_TRIGGER = {
 			}
 		}
 		custom_trigger_tooltip = {
-			tooltip = RULE_ALLOW_RELEASE_NATIONS_KURDISTAN_TOOLTIP
+			tooltip = RULE_ALLOW_RELEASE_NATIONS_BLOCKED_TOOLTIP
 			NOT = { FROM = { tag = KUR } }
 		}
 	}
@@ -916,9 +822,7 @@ DIPLOMACY_RELEASE_NATION_ENABLE_TRIGGER = {
 					option = PEACE_ONLY
 				}
 			}
-
 			has_dlc = "Graveyard of Empires"
-			
 			FROM = { tag = DIP }
 		}
 
@@ -947,7 +851,6 @@ DIPLOMACY_RELEASE_NATION_ENABLE_TRIGGER = {
 			}
 		}
 	}
-
 }
 DIPLOMACY_MILACC_ENABLE_TRIGGER = {
 	if = {
@@ -1019,6 +922,7 @@ DIPLOMACY_OFFER_MILACC_ENABLE_TRIGGER = {
 		}
 	}
 }
+
 
 DIPLOMACY_REVOKE_OFFER_MILACC_ENABLE_TRIGGER = {
 	if = {
@@ -1706,6 +1610,14 @@ DIPLOMACY_SEND_VOLUNTEERS_ENABLE_TRIGGER = {
 		else_if = { #Soviet volunteers to China (Communist Soviet -> Only to the supported China)
 			limit = {
 				original_tag = SOV
+				has_idea = SOV_molotov_ribbentrop_pact
+				FROM = { has_war_with = GER }
+			}
+			NOT = { has_idea = SOV_molotov_ribbentrop_pact }
+		}
+		else_if = { #Soviet volunteers to China (Communist Soviet -> Only to the supported China)
+			limit = {
+				original_tag = SOV
 				has_government = communism
 				FROM = { is_literally_china = yes }
 			}
@@ -1754,6 +1666,26 @@ DIPLOMACY_SEND_VOLUNTEERS_ENABLE_TRIGGER = {
 						is_literally_china = yes
 						NOT = { tag = FROM }
 						has_country_flag = SOV_russian_volunteers_in_china_flag
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				ROOT = { 
+					has_country_flag = recall_volunteer_flag
+					is_ai = no 
+				}
+				FROM = { has_country_flag = recall_volunteer_from_flag }
+				NOT = { has_global_flag = mp_difficulty }
+			}
+			custom_trigger_tooltip = {
+				tooltip = RULE_VOLUNTEERS_BANNED_TT
+				OR = {
+					NOT = { ROOT = { has_country_flag = recall_volunteer_flag } }
+					has_country_flag = {
+						flag = recall_volunteer_flag
+						days > 365
 					}
 				}
 			}

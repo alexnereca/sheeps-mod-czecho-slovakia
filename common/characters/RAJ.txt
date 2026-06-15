@@ -132,14 +132,6 @@ characters={
 							NOT = { has_country_flag = has_arrested_bose }
 						}
 					}
-					NOT = {
-						has_idea = idea_RAJ_bose_hiding_raj
-						has_idea = idea_RAJ_bose_hiding_afghanistan
-						has_idea = idea_RAJ_bose_hiding_ussr
-						has_idea = idea_RAJ_bose_hiding_ger
-						has_idea = idea_RAJ_bose_submarine
-						has_idea = idea_RAJ_bose_jap
-					}
 				}
 			}
 			advisor = {
@@ -147,6 +139,15 @@ characters={
 				idea_token = RAJ_subhas_chanda_bose
 				allowed = {
 					original_tag = RAJ
+				}
+				available = {
+					OR = {
+						has_country_flag = has_swayed_bose_to_communism
+						ROOT = { 
+							has_completed_focus = RAJ_forward_bloc 
+							NOT = { has_country_flag = has_arrested_bose }
+						}
+					}
 				}
 
 				visible = {
@@ -158,28 +159,6 @@ characters={
 						}
 					}
 				}
-
-				available = {
-					OR = {
-						has_country_flag = has_swayed_bose_to_communism
-						ROOT = { 
-							has_completed_focus = RAJ_forward_bloc 
-							NOT = { has_country_flag = has_arrested_bose }
-						}
-					}
-					custom_trigger_tooltip = {
-						tooltip = RAJ_bose_is_hiding_tt
-						NOT = {
-							has_idea = idea_RAJ_bose_hiding_raj
-							has_idea = idea_RAJ_bose_hiding_afghanistan
-							has_idea = idea_RAJ_bose_hiding_ussr
-							has_idea = idea_RAJ_bose_hiding_ger
-							has_idea = idea_RAJ_bose_submarine
-							has_idea = idea_RAJ_bose_jap
-						}
-					}
-				}
-				
 				traits = {
 					pragmatic_authoritarian 
 				}
@@ -666,7 +645,7 @@ characters={
 			cost = 100
 
 			ai_will_do = {
-				factor = 0.000
+				factor = 2.000
 			}
 		}	
 	}
@@ -1051,7 +1030,7 @@ characters={
 			}
 			cost = 200
 			ai_will_do = {
-				factor = 1.000
+				factor = 0.000
 			}
 		}
 
@@ -1123,7 +1102,7 @@ characters={
 			}
 			cost = 100
 			ai_will_do = {
-				factor = 1.000
+				factor = 2.000
 			}
 		}
 
@@ -1315,10 +1294,6 @@ characters={
 					original_tag = PAK
 					original_tag = AFG
 					original_tag = RAJ
-					AND = {
-						original_tag = RAJ
-						has_completed_focus = RAJ_the_mughal_uprising
-					}
 				}
 			}
 			traits = {
@@ -1340,7 +1315,7 @@ characters={
 			visible = {
 				NOT = {
 					has_completed_focus = RAJ_royal_indian_navy_mutiny
-				}	
+				}
 			}
 		}
 	}
@@ -1533,7 +1508,7 @@ characters={
 			}
 			cost = 100
 			ai_will_do = {
-				factor = 1.000
+				factor = 3.000
 			}
 		}
 	}
@@ -1557,7 +1532,7 @@ characters={
 			}
 			cost = 200
 			ai_will_do = {
-				factor = 1.000
+				factor = 0.000
 			}
 		}
 	}
@@ -1581,7 +1556,7 @@ characters={
 			}
 			cost = 100
 			ai_will_do = {
-				factor = 1.000
+				factor = 0.000
 			}
 		}		
 	}
@@ -1605,7 +1580,7 @@ characters={
 			}
 			cost = 100
 			ai_will_do = {
-				factor = 1.000
+				factor = 0
 			}
 		}
 	}
@@ -1629,7 +1604,7 @@ characters={
 			}
 			cost = 100
 			ai_will_do = {
-				factor = 1.000
+				factor = 0.000
 			}
 		}		
 	}
@@ -1917,6 +1892,9 @@ characters={
 			traits = {
 				sikh_activist 
 			}
+			ai_will_do = {
+				factor = 500.0
+			}
 		}
 	}
 
@@ -1965,6 +1943,19 @@ characters={
 			traits = {
 				captain_of_industry 
 			}
+			visible = {
+				OR = {
+					is_ai = no
+					NOT = { has_completed_focus = RAJ_rally_the_indian_left }
+				}
+			}
+			ai_will_do = {
+				factor = 1.00
+				modifier = {
+					factor = 0
+					is_historical_focus_on = no
+				}
+			}
 		}
 	}
 
@@ -1980,11 +1971,6 @@ characters={
 			idea_token = RAJ_sir_mohammed_iqbal
 			allowed = {
 				original_tag = RAJ
-			}
-			visible = {
-				PAK = {
-					exists = no
-				}
 			}
 			traits = {
 				muslim_scholar 
@@ -2027,11 +2013,6 @@ characters={
 			traits = {
 				well_mannered_iman 
 			}
-			visible = {
-				PAK = {
-					exists = no
-				}
-			}
 		}
 	}
 
@@ -2049,22 +2030,6 @@ characters={
 		#country_leader = {
 		#	ideology = despotism
 		#	traits = { RAJ_heir_of_the_empire }
-		#	expire = "1965.1.1.1"
-		#	id = -1
-		#}
-	}
-
-	RAJ_abdul_ghaffar_khan = {
-		name = RAJ_abdul_ghaffar_khan
-		portraits = {
-			civilian = {
-				large = GFX_portrait_RAJ_abdul_ghaffar_khan
-				small = GFX_portrait_RAJ_abdul_ghaffar_khan_small
-			}
-		}
-		#country_leader = {
-		#	ideology = despotism
-		#	traits = { RAJ_khudai_khidmatgar_leader }
 		#	expire = "1965.1.1.1"
 		#	id = -1
 		#}
@@ -2661,6 +2626,9 @@ characters={
 			traits = {
 				RAJ_freedom_fighter
 			}
+			ai_will_do = {
+				factor = 5.000
+			}
 		}
 	}
 
@@ -2685,6 +2653,9 @@ characters={
 			traits = {
 				RAJ_trade_union_leader
 			}
+			ai_will_do = {
+				factor = 10.000
+			}
 		}
 	}
 
@@ -2708,6 +2679,9 @@ characters={
 			traits = {
 				RAJ_founder_of_the_csp
 			}
+			ai_will_do = {
+				factor = 2.000
+			}
 		}
 	}
 
@@ -2730,6 +2704,9 @@ characters={
 			}
 			traits = {
 				RAJ_union_leader
+			}
+			ai_will_do = {
+				factor = 25.00
 			}
 		}
 	}
@@ -2939,7 +2916,7 @@ RAJ_GOE_william_rhodes_davis= {
 			}
 			cost = 100
 			ai_will_do = {
-				factor = 1.000
+				factor = 2.000
 			}
 		}	
 	}
@@ -2965,7 +2942,7 @@ RAJ_GOE_william_rhodes_davis= {
 			}
 			cost = 100
 			ai_will_do = {
-				factor = 1.000
+				factor = 0.000
 			}
 		}	
 	}
@@ -3017,7 +2994,7 @@ RAJ_GOE_william_rhodes_davis= {
 			}
 			cost = 100
 			ai_will_do = {
-				factor = 1.000
+				factor = 0.000
 			}
 		}	
 	}
@@ -3105,8 +3082,8 @@ RAJ_GOE_william_rhodes_davis= {
 				original_tag  = RAJ
 				has_dlc = "La Resistance"
 			}
-			available = {
-				#has_completed_focus = 
+			available  = {
+				has_intelligence_agency = yes 
 			}
 			traits  = {
 				head_of_intelligence 

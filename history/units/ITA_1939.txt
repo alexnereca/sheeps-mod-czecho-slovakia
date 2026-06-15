@@ -137,6 +137,8 @@ division_template = { #Blackshirts
 	}
 	support = { 
 		engineer = { x = 0 y = 0 }
+		artillery = { x = 0 y = 1 }
+		anti_air = { x = 0 y = 2 }
 	}
 }
 
@@ -160,6 +162,12 @@ division_template = {
 		infantry = { x = 0 y = 1 }
 		infantry = { x = 0 y = 2 }
 		infantry = { x = 1 y = 0 }
+		irregular_infantry = { x = 2 y = 0 }
+		irregular_infantry = { x = 2 y = 1 }
+	}
+	support = {
+		artillery = { x = 0 y = 0 }
+		anti_air = { x = 0 y = 1 }
 	}
 
 	priority = 0 
@@ -250,6 +258,11 @@ division_template = {
 		irregular_infantry = { x = 0 y = 1 }
 		irregular_infantry = { x = 1 y = 0 }
 		irregular_infantry = { x = 1 y = 1 }
+		irregular_infantry = { x = 2 y = 0 }
+		irregular_infantry = { x = 2 y = 1 }
+	}
+	support = {
+		artillery = { x = 0 y = 0 }
 	}
 	priority = 0 
 }
@@ -262,10 +275,15 @@ division_template = {
 	is_locked = yes
 	# Note: Represents irregular cavalry from the colonies (daskalian, dubats and other "bands")
 	regiments = {
-		cavalry = { x = 0 y = 0 }
-		cavalry = { x = 0 y = 1 }
-		cavalry = { x = 1 y = 0 }
-		#cavalry = { x = 1 y = 1 }
+		irregular_infantry = { x = 0 y = 0 }
+		irregular_infantry = { x = 0 y = 1 }
+		irregular_infantry = { x = 1 y = 0 }
+		irregular_infantry = { x = 1 y = 1 }
+		irregular_infantry = { x = 2 y = 0 }
+		irregular_infantry = { x = 2 y = 1 }
+	}
+	support = {
+		artillery = { x = 0 y = 0 }
 	}
 	priority = 0
 }
@@ -286,6 +304,11 @@ division_template = {
 		irregular_infantry = { x = 0 y = 1 }
 		irregular_infantry = { x = 1 y = 0 }
 		irregular_infantry = { x = 1 y = 1 }
+		irregular_infantry = { x = 2 y = 0 }
+		irregular_infantry = { x = 2 y = 1 }
+	}
+	support = {
+		artillery = { x = 0 y = 0 }
 	}
 	priority = 0 
 }
@@ -305,6 +328,11 @@ division_template = {
 		irregular_infantry = { x = 0 y = 1 }
 		irregular_infantry = { x = 1 y = 0 }
 		irregular_infantry = { x = 1 y = 1 }
+		irregular_infantry = { x = 2 y = 0 }
+		irregular_infantry = { x = 2 y = 1 }
+	}
+	support = {
+		artillery = { x = 0 y = 0 }
 	}
 	priority = 0 
 }
@@ -324,6 +352,11 @@ division_template = {
 		irregular_infantry = { x = 0 y = 1 }
 		irregular_infantry = { x = 1 y = 0 }
 		irregular_infantry = { x = 1 y = 1 }
+		irregular_infantry = { x = 2 y = 0 }
+		irregular_infantry = { x = 2 y = 1 }
+	}
+	support = {
+		artillery = { x = 0 y = 0 }
 	}
 	priority = 0 
 }

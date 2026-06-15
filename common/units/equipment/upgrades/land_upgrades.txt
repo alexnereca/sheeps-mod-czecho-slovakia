@@ -7,7 +7,7 @@ upgrades = {
 
 		linear_cost = {
 			cost_by_level = 1
-			cost_by_level_for_licensed_equipment = 5
+			cost_by_level_for_licensed_equipment = 3
 		}
 
 		level_requirements = {
@@ -109,12 +109,24 @@ upgrades = {
 		maximum_speed = -0.02
 		reliability = -0.05
 		build_cost_ic = 0.05
+
+		level_requirements = {
+			1 = {
+				is_ai = no
+			}
+		}
 	}
 	tank_engine_upgrade = {
 		max_level = 5
 		cost = land
 		maximum_speed = 0.04
 		build_cost_ic = 0.05
+
+		level_requirements = {
+			1 = {
+				is_ai = no
+			}
+		}
 	}	
 	ac_engine_upgrade = {
 		max_level = 5
@@ -126,6 +138,12 @@ upgrades = {
 		cost = land
 		reliability = 0.1
 		build_cost_ic = 0.05
+
+		level_requirements = {
+			1 = {
+				is_ai = no
+			}
+		}
 	}
 	mech_cost_upgrade = {
 		max_level = 5

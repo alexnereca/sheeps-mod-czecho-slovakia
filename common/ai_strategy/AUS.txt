@@ -10,8 +10,9 @@ AUS_dont_ally_germany = {
 	abort = {
 		GER = {
 			OR = {
-				NOT = {
-					has_government = fascism
+				AND = {
+					NOT = { has_government = fascism }
+					has_civil_war = no
 				}
 				is_in_faction_with = AUS #If they somehow end up in the same faction, like the Central Powers, then STAY THERE and don't cause weirdness
 			}
@@ -75,6 +76,7 @@ AUS_dont_panic_train_divisions = {
 		has_dlc = Gotterdammerung
 	}
 	enable = {
+		is_historical_focus_on = yes
 		AUS_is_historical_ai = yes
 		has_completed_focus = AUS_disregard_the_treaties
 		NOT = {
@@ -112,6 +114,7 @@ AUS_panic_train_divisions = {
 		has_dlc = Gotterdammerung
 	}
 	enable = {
+		is_historical_focus_on = yes
 		OR = {
 			has_country_flag = AUS_AI_RANDOM_ANTI_ANSCLUSS_STRESS
 			has_game_rule = {
@@ -251,4 +254,16 @@ AUS_panic_befriend_guarantors_USA = {
 		id = USA
 		value = 150
 	}
+}
+
+AUS_the_call_to_war = {
+	enable = { 
+		AUS_is_historical_ai = no
+	}
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+       		type = force_build_armies
+        	value = 200
+    	}
 }

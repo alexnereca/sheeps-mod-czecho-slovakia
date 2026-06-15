@@ -2,6 +2,7 @@ MTG_naval_treaties = {
 	MTG_abandon_treaty_democratic = {
 
 		icon = generic
+			
 	
 		available = {
 			OR = {
@@ -13,7 +14,7 @@ MTG_naval_treaties = {
 		cost = 150
 		fire_only_once = yes
 		ai_will_do = {
-			base = 0
+			factor = 0
 		}
 	
 		visible = {
@@ -109,7 +110,7 @@ MTG_naval_treaties = {
 					tag = ITA
 					tag = JAP
 				}
-				add = 3
+				add = 1
 			}
 			modifier = {
 				tag = USA
@@ -119,7 +120,7 @@ MTG_naval_treaties = {
 			modifier = {
 				tag = JAP
 				is_historical_focus_on = yes
-				add = 300
+				add = 50
 			}
 			modifier = {
 				tag = JAP
@@ -194,7 +195,6 @@ MTG_naval_treaties = {
 			}
 		}
 	}
-
 	MTG_abandon_treaty_japanese = {
 
 		icon = generic
@@ -486,12 +486,6 @@ MTG_naval_treaties = {
 			}
 			modifier = {
 				is_historical_focus_on = yes
-				FROM = {
-					OR = {
-						tag = JAP
-						tag = ITA
-					}
-				}
 				factor = 0
 			}
 		}
@@ -609,6 +603,16 @@ MTG_naval_treaties = {
 						TAG = USA
 					}
 				}
+				factor = 0
+			}
+			modifier = {
+				ROOT = { 
+					OR = {
+						has_government = democratic 
+						has_government = neutrality #if nonaligned Japan is the only remaining signatory, dont do weird 
+					}
+				}
+				FROM = { has_government = democratic }
 				factor = 0
 			}
 		}

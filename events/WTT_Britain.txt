@@ -63,6 +63,18 @@ country_event = {
 				factor = 2
 				has_opinion = { target = ENG value > 0 }
 			}
+			modifier = {
+				factor = 2
+				has_opinion = { target = ENG value > 25 }
+			}
+			modifier = {
+				factor = 2
+				has_opinion = { target = ENG value > 50 }
+			}
+			modifier = {
+				factor = 2
+				has_opinion = { target = ENG value > 99 }
+			}
 		}
 		name = wtt_britain.25.a
 		ENG = { country_event = { id = wtt_britain.26 } }
@@ -74,7 +86,47 @@ country_event = {
 	#decline
 	option = {
 		ai_chance = {
-			factor = 90
+			factor = 10
+			modifier = {
+				factor = 2
+				ITA = { 
+					is_ai = no 
+					has_war_with = ENG
+				}
+			}
+			modifier = {
+				factor = 1.2
+				GER = { 
+					is_ai = no 
+					has_war_with = ENG
+				}
+			}
+			modifier = {
+				factor = 2
+				ITA = { 
+					has_navy_size = { size > 150 }
+					has_war_with = ENG
+				}
+			}
+			modifier = {
+				factor = 2
+				GER = { 
+					has_navy_size = { size > 150 }
+					has_war_with = ENG
+				}
+			}
+			modifier = {
+				factor = 0.5
+				ENG = { has_navy_size = { size > 300 } }
+			}
+			modifier = {
+				factor = 2
+				ENG = { has_navy_size = { size < 200 } }
+			}
+			modifier = {
+				factor = 2
+				ENG = { surrender_progress > 0.1 }
+			}
 		}
 		name = wtt_britain.25.b
 		ENG = { country_event = { id = wtt_britain.27 } }
@@ -93,6 +145,9 @@ country_event = {
 	#excellent
 	option = {
 		name = wtt_britain.26.a
+		hidden_effect = {
+			USA = { set_country_flag = mers_el_kebir_raid }
+		}
 	}
 }
 

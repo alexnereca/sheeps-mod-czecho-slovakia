@@ -676,6 +676,10 @@ CHL_mapuche_reconcilliation_decisions = {
 
 		ai_will_do = {
 			base = 120
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
 		}
 
 		allowed = {  
@@ -843,6 +847,14 @@ CHL_mapuche_reconcilliation_decisions = {
 
 			hidden_effect = {
 				set_country_flag = CHL_incorporated_mapuche_organizations
+				if = {
+					limit = { 
+						is_ai = yes
+						has_idea = CHL_bartolome_blanche
+					}
+					remove_ideas = CHL_bartolome_blanche
+					add_ideas = CHL_venancio_huenchual
+				}
 			}
 		}
 
@@ -1300,17 +1312,8 @@ CHL_nacista_insurgency_decisions = {
 		ai_will_do = {
 			base = 200
 			modifier = {
-				factor = 0
-				OR = {
-					has_country_flag = CHL_AI_RANDOM_COMMUNIST
-					has_game_rule = {
-						rule = CHL_ai_behavior
-						option = COMMUNIST
-					}
-				}
-				NOT = {
-					has_government = communism
-				}
+				add = 10000
+				is_historical_focus_on = yes
 			}
 		}
 
@@ -1387,19 +1390,10 @@ CHL_nacista_insurgency_decisions = {
 		icon = GFX_decision_eng_trade_unions_support
 
 		ai_will_do = {
-			base = 50
+			base = 5000
 			modifier = {
-				factor = 0
-				OR = {
-					has_country_flag = CHL_AI_RANDOM_COMMUNIST
-					has_game_rule = {
-						rule = CHL_ai_behavior
-						option = COMMUNIST
-					}
-				}
-				NOT = {
-					has_government = communism
-				}
+				add = 10000
+				is_historical_focus_on = yes
 			}
 		}
 
@@ -1478,7 +1472,11 @@ CHL_nacista_insurgency_decisions = {
 		icon = GFX_decision_SWI_no_elected_president
 
 		ai_will_do = {
-			base = 50
+			base = 5000
+			modifier = {
+				add = 10000
+				is_historical_focus_on = yes
+			}
 		}
 
 		allowed = {  
@@ -1575,17 +1573,8 @@ CHL_nacista_insurgency_decisions = {
 				}
 			}
 			modifier = {
-				factor = 0
-				is_historical_focus_on = yes 
-				NOT = {
-					OR = {
-						has_country_flag = CHL_AI_RANDOM_COMMUNIST
-						has_game_rule = {
-							rule = CHL_ai_behavior
-							option = COMMUNIST
-						}
-					}
-				}
+				add = 10000
+				is_historical_focus_on = yes
 			}
 		}
 
@@ -1691,6 +1680,10 @@ CHL_nacista_insurgency_decisions = {
 					}
 				}
 			}
+			modifier = {
+				add = 10000
+				is_historical_focus_on = yes
+			}
 		}
 
 		allowed = {  
@@ -1781,6 +1774,12 @@ CHL_nacista_insurgency_decisions = {
 						option = COMMUNIST
 					}
 				}
+				has_completed_focus = CHL_inflation_control_by_the_central_bank
+			}
+			modifier = {
+				add = 10000
+				is_historical_focus_on = yes
+				has_completed_focus = CHL_inflation_control_by_the_central_bank
 			}
 		}
 
@@ -10183,6 +10182,7 @@ CHL_monarchist_decisions = {
 				add_manpower = 25000
 
 				hidden_effect = {
+					# TODO JA, These should have some kind of new unit icon and 3d models, different from the previous ones
 					division_template = {
 					    name = "New Incan Warriors"
 					    is_locked = no
@@ -10546,6 +10546,7 @@ CHL_monarchist_decisions = {
 				add_manpower = 15000
 
 				hidden_effect = {
+					# TODO JA, These should have some kind of new unit icon and 3d models, different from the previous ones
 					division_template = {
 					    name = "Guianan Warriors"
 					    is_locked = no

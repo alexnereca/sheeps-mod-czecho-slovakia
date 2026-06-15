@@ -91,6 +91,12 @@ tactic_assault = {
 			NOT = { is_fighting_in_terrain = urban }
 		}
 
+		modifier = {
+			factor = 1.5
+
+			is_fighting_in_terrain = urban
+		}
+
 	} #Revisit ideally this should be more common in urban terrain
 	
 	picture = assault
@@ -230,6 +236,10 @@ tactic_delay = {
 	
 	base =  {
 		factor = 4
+		modifier = {
+			add = 2
+			is_winning = no
+		}
 	}
 	picture = delay
 	countered_by = tactic_shock
@@ -312,7 +322,7 @@ tactic_tw_defend = {
 	picture = tw_defend
 	display_phase = tactical_withdrawal
 	
-	combat_width = -0.25
+	combat_width = -0.25		
 	attacker = -0.3
 	defender = -0.05
 }
@@ -404,7 +414,13 @@ tactic_ambush = { #counters shock
 	
 	active = yes
 	
-	base =  { factor = 4 }
+	base =  { 
+		factor = 4 
+		modifier = {
+			add = 4
+			has_trait = ambusher
+		}
+	}
 	picture = ambush
 	countered_by = tactic_breakthrough
 	
@@ -725,6 +741,61 @@ tactic_guerrilla_tactics = { #People's army defender tactic. also for German vol
 	
 	base =  {
 		factor = 4
+		modifier = {
+			add = -4
+			is_amphibious_invasion = yes
+		}
+		modifier = {
+			add = -4
+			is_winning = yes
+			has_reserves = yes
+		}
+		modifier = {
+			add = -2
+			is_fighting_in_terrain = plains
+		}
+		modifier = {
+			add = 1
+			has_trait = ambusher
+		}
+		modifier = {
+			add = 1
+			less_combat_width_than_opponent = yes
+		}
+		modifier = {
+			add = 0.5
+			OR = {
+				has_reserves = no
+				frontage_full = no
+			}
+			OR = {
+				is_fighting_in_terrain = forest
+			}
+		}
+		modifier = {
+			add = 1
+			OR = {
+				has_reserves = no
+				frontage_full = no
+			}
+			OR = {
+				is_fighting_in_terrain = urban 
+				is_fighting_in_terrain = forest 
+				is_fighting_in_terrain = mountain
+				is_fighting_in_terrain = marsh
+			}
+		}
+		modifier = {
+			add = 1
+			OR = {
+				has_reserves = no
+				frontage_full = no
+			}
+			OR = {
+				is_fighting_in_weather = mud 
+				is_fighting_in_weather = snow
+			}
+		}
 	}
 	picture = tactic_guerrilla_tactics
 	
@@ -746,12 +817,17 @@ tactic_human_wave_tactics = { #People's army attacker tactic
 	
 	base =  {
 		factor = 4
+		modifier = {
+			add = 10
+			is_winning = yes
+		}
 	}
 	picture = tactic_human_wave_tactics
-	
+
+	attacker_movement_speed = 0.15
 	combat_width = 0.5
-	attacker = 0.1 
-	defender = 0.1
+	attacker = 0.20
+	defender = 0.10
 }
 
 tactic_banzai_charge = { #Special Japan attacker tactic
@@ -767,10 +843,22 @@ tactic_banzai_charge = { #Special Japan attacker tactic
 	
 	countered_by = tactic_overwhelming_fire
 	
-	base =  { factor = 4 }
+	base =  {
+		factor = 4
+		modifier = {
+			add = 10
+			is_winning = yes
+		} 
+		modifier = {
+			add = 10
+			is_winning = yes
+			has_reserves = yes
+		}
+	}
+
 	picture = tactic_banzai_charge
 	
-	attacker_movement_speed = 0.1
+	combat_width = 0.25
 	attacker = 0.25 
 	defender = 0.1
 }
@@ -786,14 +874,25 @@ tactic_grand_banzai_charge = { #Special Japan attacker tactic
 		phase = no
 	}
 	
-	active = no 
+	active = yes
 	
 	countered_by = tactic_overwhelming_fire
 	
-	base =  { factor = 4 }
+	base =  { 
+		factor = 4 
+		modifier = {
+			add = 10
+			is_winning = yes
+		}
+		modifier = {
+			add = 10
+			is_winning = yes
+			has_reserves = yes
+		}
+	}
 	picture = tactic_banzai_charge
 	
-	attacker_movement_speed = 0.1
+	combat_width = 0.25
 	attacker = 0.3 
 	defender = 0.1
 }
@@ -899,6 +998,10 @@ tactic_barrage = { #Superior firepower attacker tactic
 	
 	base =  {
 		factor = 4
+		modifier = {
+			add = 2
+			is_winning = no
+		}
 	}
 	picture = tactic_barrage
 	
@@ -941,39 +1044,6 @@ tactic_masterful_blitz = { #Improved version of Blitz for Soviets
 	combat_width = 0.1
 	attacker = 0.2
 	defender = -0.2
-}
-
-
-tactic_masterful_delay = { #Improved version of Delay for Czechs
-	only_show_for = CZE
-
-	is_attacker = no
-	trigger = {
-		is_attacker = no
-		phase = no
-		OR = {
-			skill > 2
-			has_trait = trickster
-			has_trait = fast_planner
-			has_trait = ambusher
-			NOT = {
-				has_trait = unyielding_defender
-			}
-			skill_advantage > 1
-		}
-	}
-	
-	active = no
-	
-	base =  {
-		factor = 4
-	}
-	picture = delay
-	countered_by = tactic_shock
-	
-	attacker_movement_speed = -0.30		#
-	attacker = -0.30
-	defender = -0.20
 }
 
 
@@ -1050,7 +1120,7 @@ tactic_sf_barrage = { #Slow moving assault using heavy artillery barrage and art
 		has_artillery_ratio > 0.1
 	}
 	
-	active = yes
+	active = no
 	display_phase = street_fighting
 	
 	base =  {
@@ -1166,7 +1236,7 @@ tactic_sf_ambush = { #countered by mouse holing
 		phase = street_fighting
 	}
 	
-	active = yes
+	active = no
 	display_phase = street_fighting
 	
 	base =  {
@@ -1177,5 +1247,3 @@ tactic_sf_ambush = { #countered by mouse holing
 	defender = 0.25
 	attacker_org_damage_modifier = -0.10
 }
-
-

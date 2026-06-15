@@ -25,16 +25,11 @@ infantry_PRC = {
 		target_template = {
 			
 			support = {
-				engineer = 1
 				artillery = 1
 			}
 			
-			regimental_support = {
-				field_guns = 1
-			}
-
 			regiments = {
-				militia = 10
+				militia = 6
 			}
 		}
 

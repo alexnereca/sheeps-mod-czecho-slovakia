@@ -2787,7 +2787,6 @@ country_event = {
 							has_id = 1104
 							has_id = 1105
 							has_id = 1106
-							is_character = SPR_enrique_lister
 						}
 					}
 					add_unit_leader_trait = trait_SPR_stalinist_loyalties
@@ -7696,7 +7695,7 @@ country_event = {
 				#    planning_skill = 2
 				#    logistics_skill = 3
 				#}
-				add_field_marshal_role = {
+				add_field_marshal_role = { #TODO_Manu: All these guys should be handled with the new char system
 					character = SPR_jose_rovira
 					traits = { infantry_officer politically_connected }
 					skill = 3
@@ -9398,7 +9397,7 @@ country_event = {
 	option = { # Choose first King
 		name = lar_spain.34.a
 		ai_chance = {
-			base = 60
+			base = 66
 		}
 		set_country_flag = SPB_xavier_king
 		custom_effect_tooltip = lar_spain.34.a_tt
@@ -9407,7 +9406,7 @@ country_event = {
 	option = { # Choose second King
 		name = lar_spain.34.b
 		ai_chance = {
-			base = 30
+			base = 34
 		}
 		custom_effect_tooltip = lar_spain.34.b_tt
 	}
@@ -9936,11 +9935,13 @@ country_event = {
 	is_triggered_only = yes
 	
 	option = { # Accept
+		trigger = { NOT = { FROM = { is_subject_of = ROOT } } }
 		name = lar_spain.45.a
 		ai_chance = {
 			base = 5
 			modifier = {
 				factor = 0
+				FROM = { is_ai = no }
 				has_war = no
 				strength_ratio = { tag = FROM ratio > 0.5 }
 				NOT = { is_puppet_of = FROM }
@@ -9963,11 +9964,40 @@ country_event = {
 		}
 		custom_effect_tooltip = GAME_OVER_TT
 	}
+	
+	option = { # Accept
+		trigger = { FROM = { is_subject_of = ROOT } }
+		name = lar_spain.45.a
+		ai_chance = {
+			base = 500
+			modifier = {
+				factor = 0
+				FROM = { is_ai = no }
+			}
+		}
+		effect_tooltip = {
+			ROOT = {
+				annex_country = { target = FROM transfer_troops = yes }
+				set_cosmetic_tag = ESU_POR_unified
+			}
+		}
+		hidden_effect = {
+			FROM = {
+				country_event = { id = lar_spain.46 hours = 18 random_hours = 6 }
+			}
+			news_event = { id = lar_news.16 days = 2 }
+		}
+		custom_effect_tooltip = GAME_OVER_TT
+	}
 
 	option = { # Decline
 		name = lar_spain.45.b
 		ai_chance = {
 			base = 95
+			modifier = {
+				factor = 0
+				FROM = { is_ai = yes }
+			}
 			modifier = {
 				factor = 0.1
 				has_completed_focus = POR_the_royal_iberian_alliance
@@ -10026,6 +10056,7 @@ country_event = {
 	is_triggered_only = yes
 	
 	option = { # Ok
+		trigger = { NOT = { ROOT = { is_subject_of = FROM } } }
 		name = lar_spain.46.a
 		set_cosmetic_tag = ESU_POR_unified
 		every_state = {
@@ -10035,6 +10066,19 @@ country_event = {
 			add_core_of = ROOT
 		}
 		annex_country = { target = FROM transfer_troops = yes }
+	}
+	
+	option = { # Ok
+		trigger = {ROOT = { is_subject_of = FROM } }
+		name = lar_spain.46.a
+		set_cosmetic_tag = ESU_POR_unified
+		every_state = {
+			limit = {
+				is_core_of = ROOT
+			}
+			add_core_of = POR
+		}
+		POR = { annex_country = { target = ROOT transfer_troops = yes } }
 	}
 }
 

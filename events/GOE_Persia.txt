@@ -27,31 +27,7 @@ country_event = { #Iran sells oil
 	option = { #Accept
 		name = PER_industrial_events.1.a
 		ai_chance = {
-			base = 10
-			modifier = {
-				factor = 2
-				has_government = FROM
-			}
-			modifier = {
-				factor = 2
-				has_opinion = {
-					target = FROM
-					value > 24
-				}
-			}
-			modifier = {
-				factor = 2
-				has_opinion = {
-					target = FROM
-					value > 49
-				}
-			}
-			modifier = {
-				factor = 2
-				FROM = {
-					is_major = yes
-				}
-			}
+			base = 100
 		}
 		effect_tooltip = {
 			ROOT = { give_guarantee = FROM }
@@ -60,10 +36,13 @@ country_event = { #Iran sells oil
 					receiver = ROOT
 					state = 413
 				}
-				add_offsite_building = { type = industrial_complex  level = 3 }
+				give_resource_rights = {
+					receiver = ROOT
+					state = 412
+				}
+				add_offsite_building = { type = industrial_complex  level = 8 }
 			}
 		}
-		custom_effect_tooltip = PER_resource_rights_on_war_tt
 		
 		hidden_effect = {
 			FROM = { 
@@ -74,21 +53,7 @@ country_event = { #Iran sells oil
 	option = { #Refuse
 		name = PER_industrial_events.1.b
 		ai_chance = {
-			base = 2
-			modifier = {
-				factor = 5
-				has_opinion = {
-					target = FROM
-					value < 0
-				}
-			}
-			modifier = {
-				factor = 5
-				strength_ratio = {
-				    tag = FROM
-				    ratio > 1.5
-				}
-			}
+			base = 0
 		}
 		set_country_flag = PER_refused_oil_flag
 		FROM = { 
@@ -109,19 +74,19 @@ country_event = { #Iran gives away resource rights
 
 	option = { #Great
 		name = PER_industrial_events.2.a
-		FROM = { 
-			give_guarantee = ROOT 
-			set_country_flag = PER_has_PER_resource_rights
-		}
+		FROM = { give_guarantee = ROOT }
 		ROOT = {
 			give_resource_rights = {
 				receiver = FROM
 				state = 413
 			}
+			give_resource_rights = {
+				receiver = FROM
+				state = 412
+			}
 		}
-		add_offsite_building = { type = industrial_complex  level = 3 }
+		add_offsite_building = { type = industrial_complex  level = 8 }
 		set_country_flag = PER_sold_oil_flag
-		custom_effect_tooltip = PER_resource_rights_on_war_tt
 	}
 }
 country_event = { #FROM doesn't want our oil
@@ -994,9 +959,6 @@ country_event = { #Negotiating Capitulations SOV
 			PER = {
 				every_owned_state = {
 					limit = {
-						any_neighbor_state = {
-							is_controlled_by = SOU
-						}
 						OR = {
 							state = 420 #Gilan
 							state = 1000 #East Azerbaijan
@@ -1073,9 +1035,6 @@ country_event = { #Negotiating Capitulations SOV
 			PER = {
 				every_owned_state = {
 					limit = {
-						any_neighbor_state = {
-							is_controlled_by = SOU
-						}
 						OR = {
 							state = 420 #Gilan
 							state = 1000 #East Azerbaijan
@@ -2131,37 +2090,80 @@ country_event = {
 				tooltip = stability_factor_tt
 			}
 		
-			event_target:SSB_leader = { 
-				country_event = { id = PER_imperial_events.201 hours = 6 random = 8 }
-				add_ai_strategy = {
-					type = befriend
-					id = ROOT
-					value = 100
+			if = {
+				limit = {
+					OR = {
+						TUR = { is_ai = no }
+						PER = { is_ai = no }
+						AFG = { is_ai = no }
+						IRQ = { is_ai = no }
+						is_historical_focus_on = no
+					}
+				}
+				event_target:SSB_leader = { 
+					country_event = { id = PER_imperial_events.201 hours = 6 random = 8 }
+					add_ai_strategy = {
+						type = befriend
+						id = ROOT
+						value = 100
+					}
+				}
+
+				every_country = {
+					limit = {
+						has_dynamic_modifier = { modifier = SSB_saadabad_pact }
+						NOT = { tag = ROOT }
+					}
+					add_ai_strategy = {
+						type = befriend
+						id = ROOT
+						value = 100
+					}
+					diplomatic_relation = {
+						country = ROOT
+						relation = non_aggression_pact
+						active = yes
+					}
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = SSB_saadabad_pact_member
+					}
+					reverse_add_opinion_modifier = {
+				  		target = ROOT
+				    		modifier = SSB_saadabad_pact_member
+					}
 				}
 			}
-
-			every_country = {
+		
+			if = {
 				limit = {
-					has_dynamic_modifier = { modifier = SSB_saadabad_pact }
-					NOT = { tag = ROOT }
+					NOT = {
+						OR = {
+							TUR = { is_ai = no }
+							PER = { is_ai = no }
+							AFG = { is_ai = no }
+							IRQ = { is_ai = no }
+						}
+					}
+					is_historical_focus_on = yes
 				}
-				add_ai_strategy = {
-					type = befriend
-					id = ROOT
-					value = 100
+				event_target:SSB_leader = { 
+					country_event = { id = PER_imperial_events.201 hours = 6 random = 8 }
 				}
-				diplomatic_relation = {
-					country = ROOT
-					relation = non_aggression_pact
-					active = yes
-				}
-				add_opinion_modifier = {
-					target = ROOT
-					modifier = SSB_saadabad_pact_member
-				}
-				reverse_add_opinion_modifier = {
-				    target = ROOT
-				    modifier = SSB_saadabad_pact_member
+
+				every_country = {
+					limit = {
+						has_dynamic_modifier = { modifier = SSB_saadabad_pact }
+						NOT = { tag = ROOT }
+					}
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = trade_preference_to_soviet
+					}
+					reverse_add_opinion_modifier = {
+				  		target = ROOT
+				    		modifier = trade_preference_to_soviet
+					}
 				}
 			}
 		}
@@ -2178,7 +2180,6 @@ country_event = {
 		add_war_support = 0.05
 		hidden_effect = {
 			event_target:SSB_leader = { country_event = { id = PER_imperial_events.202 hours = 6 random = 8 } }
-			set_country_flag = saadabad_pact_rejected
 		}
 	}
 }
@@ -2355,13 +2356,6 @@ country_event = {
 			character = PER_mohammad_mosaddegh 
 			ideology = conservatism 
 		}
-
-		set_party_name = {
-			ideology = democratic
-			long_name = PER_iran_party_dem_long
-			name = PER_iran_party_dem
-		}	
-
 	}
 	# guy 2
 	option = {
@@ -2374,13 +2368,6 @@ country_event = {
 			character = PER_mohammad_ali_foroughi 
 			ideology = conservatism 
 		}
-
-		set_party_name = {
-			ideology = democratic
-			long_name = PER_revival_party_dem_long
-			name = PER_revival_party_dem
-		}	
-
 	}
 	# guy 3
 	#option = {
@@ -2693,17 +2680,6 @@ country_event = {
 		ai_chance = {
 			base = 10
 		}
-
-		set_politics = {
-			ruling_party = neutrality
-			elections_allowed = no 
-		}	
-
-		add_popularity = {
-			ideology = neutrality
-			popularity = 0.2
-		}	
-
 	}
 }
 
@@ -3612,7 +3588,7 @@ country_event = {
 			country_event = {
 				id = PER_communist_events.9
 				days = 1
-			}
+			 }
 		}
 	}
 }
@@ -3770,7 +3746,7 @@ country_event = {
 	title = PER_communist_events.20.t
 	desc = PER_communist_events.20.desc
 	picture = GFX_report_event_generic_read_write
-	fire_only_once = yes
+	fire_only_once = no
 	is_triggered_only = yes
 	# Release the Republic of Mahabad
 	option = {

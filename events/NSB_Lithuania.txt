@@ -119,6 +119,28 @@ country_event = {
 		name = LIT_events.101.a
 		ai_chance = {
 			base = 90
+			modifier = {
+				add = -90
+				POL = {
+					OR = {
+						has_completed_focus = POL_unite_west_slavia
+						has_completed_focus = POL_merge_internal_governments
+					}
+				}
+			}
+			modifier = {
+				add = -90
+				SOV = {
+					check_variable = {
+						num_divisions < 120
+					}	
+				}
+				POL = {
+					check_variable = {
+						num_divisions > 80
+					}	
+				}
+			}
 		}
 		if = {
 			limit = {
@@ -952,10 +974,28 @@ country_event = {
 	
 	is_triggered_only = yes
 	
+	option = {
+		trigger = {
+			POL = { is_subject_of = ROOT }
+		}
+		name = LIT_events.9.c
+		ai_chance = {
+			base = 100
+		}
+		LIT = {
+			puppet = POL
+		}
+	}
+
+	
 	option = { #Sure!
 		name = LIT_events.9.a
 		ai_chance = {
 			base = 30
+			modifier = {
+				factor = 0
+				POL = { is_subject_of = ROOT }
+			}
 		}
 		effect_tooltip = {
 			every_controlled_state = {

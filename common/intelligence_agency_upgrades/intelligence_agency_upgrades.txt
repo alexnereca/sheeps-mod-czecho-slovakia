@@ -11,6 +11,10 @@ branch_intelligence = {
 		
 		ai_will_do = {
 			factor = 1
+			modifier = {
+				has_war = no
+				factor = 0
+			}
 		}
 		
 		modifiers_during_progress = {
@@ -32,6 +36,20 @@ branch_intelligence = {
 		
 		ai_will_do = {
 			factor = 2
+			modifier = {
+				date < 1939.5.1
+				threat < 0.25
+				factor = 0
+			}
+			modifier = {
+				is_major = yes
+				threat > 0.25
+				factor = 20
+			}
+			modifier = {
+				tag = JAP
+				factor = 20
+			}
 		}
 		
 		modifiers_during_progress = {
@@ -54,6 +72,21 @@ branch_intelligence = {
 		
 		ai_will_do = {
 			factor = 1
+			modifier = {
+				is_ai_navy = no
+				factor = 0
+				has_war = no
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = ITA
+					tag = USA
+					tag = JAP
+				}
+				threat > 0.25
+				factor = 20
+			}
 		}
 		
 		modifiers_during_progress = {
@@ -76,6 +109,20 @@ branch_intelligence = {
 
 		ai_will_do = {
 			factor = 1
+			modifier = {
+				date < 1939.5.1
+				has_war = no
+				factor = 0
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = GER
+					tag = USA
+				}
+				has_war = yes
+				factor = 20
+			}
 		}
 		
 		modifiers_during_progress = {
@@ -100,7 +147,19 @@ branch_defense = {
 		sound = Spy_Agency_Defense_Upgrades_Confirm
 		
 		ai_will_do = {
-			factor = 2
+			factor = 4
+			modifier = {
+				tag = SOV
+				factor = 10
+			}
+			modifier = {
+				tag = FRA
+				factor = 10
+			}
+			modifier = {
+				tag = ENG
+				factor = 10
+			}
 		}
 		
 		modifiers_during_progress = {
@@ -140,6 +199,10 @@ branch_defense = {
 		
 		ai_will_do = {
 			factor = 1
+			modifier = {
+				has_offensive_war = no
+				factor = 0
+			}
 		}
 		
 		modifiers_during_progress = {
@@ -169,7 +232,7 @@ branch_operation = {
 		sound = Spy_Agency_Operations_Upgrades_Confirm
 		
 		ai_will_do = {
-			factor = 1
+			factor = 0
 		}
 		
 		modifiers_during_progress = {
@@ -190,7 +253,7 @@ branch_operation = {
 		sound = Spy_Agency_Operations_Upgrades_Confirm
 		
 		ai_will_do = {
-			factor = 1
+			factor = 0
 		}
 	
 		available = {
@@ -215,7 +278,7 @@ branch_operation = {
 		sound = Spy_Agency_Operations_Upgrades_Confirm
 		
 		ai_will_do = {
-			factor = 1
+			factor = 20
 		}
 		
 		modifiers_during_progress = {
@@ -238,6 +301,10 @@ branch_operation = {
 		
 		ai_will_do = {
 			factor = 1
+			modifier = {
+				has_war = no
+				factor = 0
+			}
 		}
 		
 		modifiers_during_progress = {
@@ -259,7 +326,7 @@ branch_operation = {
 		sound = Spy_Agency_Operations_Upgrades_Confirm
 		
 		ai_will_do = {
-			factor = 1
+			factor = 5
 		}
 		
 		modifiers_during_progress = {
@@ -286,6 +353,10 @@ branch_operative = {
 		
 		ai_will_do = {
 			factor = 2
+			modifier = {
+				has_war = no
+				factor = 0
+			}
 		}
 		
 		modifiers_during_progress = {
@@ -313,6 +384,10 @@ branch_operative = {
 
 		ai_will_do = {
 			factor = 1
+			modifier = {
+				has_war = no
+				factor = 0
+			}
 		}
 		
 		modifiers_during_progress = {
@@ -333,7 +408,7 @@ branch_operative = {
 		sound = Spy_Agency_Training_Facilities_Upgrades_Confirm
 
 		ai_will_do = {
-			factor = 1
+			factor = 5
 		}
 		
 		modifiers_during_progress = {
@@ -355,7 +430,7 @@ branch_operative = {
 		sound = Spy_Agency_Training_Facilities_Upgrades_Confirm
 
 		ai_will_do = {
-			factor = 1
+			factor = 0
 		}
 		
 		modifiers_during_progress = {
@@ -377,7 +452,7 @@ branch_operative = {
 		sound = Spy_Agency_Training_Facilities_Upgrades_Confirm
 		
 		ai_will_do = {
-			factor = 1
+			factor = 0
 		}
 		
 		modifiers_during_progress = {
@@ -406,8 +481,15 @@ branch_crypto = {
 		ai_will_do = {
 			base = 2
 			modifier = {
-				factor = 2
-				original_tag = ENG 
+				threat < 0.30
+				NOT = { 
+					OR = {
+						tag = ENG
+						tag = GER
+						tag = USA
+					}
+				}
+				factor = 0
 			}
 		}
 		
@@ -432,6 +514,12 @@ branch_crypto = {
 		
 		ai_will_do = {
 			factor = 2
+			modifier = {
+				threat < 0.70
+				has_war = no
+				date < 1940.1.1
+				factor = 0
+			}
 		}
 		
 		available = {
@@ -462,6 +550,12 @@ branch_crypto = {
 		
 		ai_will_do = {
 			factor = 1
+			modifier = {
+				threat < 0.90
+				has_war = no
+				date < 1940.1.1
+				factor = 0
+			}
 		}
 		
 		available = {
@@ -500,6 +594,12 @@ branch_crypto = {
 		
 		ai_will_do = {
 			factor = 2
+			modifier = {
+				threat < 0.70
+				has_war = no
+				date < 1940.1.1
+				factor = 0
+			}
 		}
 		
 		available = {
@@ -530,6 +630,12 @@ branch_crypto = {
 		
 		ai_will_do = {
 			factor = 1
+			modifier = {
+				threat < 0.70
+				has_war = no
+				date < 1940.1.1
+				factor = 0
+			}
 		}
 		
 		available = {

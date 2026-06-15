@@ -12,11 +12,11 @@ new_mobile_warfare = {
     xp_type = army
 
     ai_will_do = {
-        base = 1
+        base = 9999
 
         modifier = {
             factor = 0
-            is_major = no
+            NOT = { has_country_flag = mobile_warfare_doctrine_flag }
         }
     }
 
@@ -95,10 +95,6 @@ new_mobile_warfare = {
         {
             #Operations
 	        planning_speed = 0.2
-            category_regimental_support_battalions = {
-                max_organisation = 10
-                breakthrough = 0.1
-            }
             enable_tactic = tactic_backhand_blow   
 
             effect = {
@@ -131,11 +127,11 @@ superior_firepower = {
     xp_type = army
 
     ai_will_do = {
-        base = 1
+        base = 9999
 
         modifier = {
-            factor = 0
-            is_major = no
+           factor = 2
+           is_ai_mass_mob = yes
         }
     }
 
@@ -204,11 +200,7 @@ superior_firepower = {
             #Armor
             enable_tactic = tactic_delay
             category_army = {
-                default_morale = 0.1
-            }
-            category_regimental_support_battalions = {
-                soft_attack = 0.05
-                hard_attack = 0.05
+                default_morale = 0.2
             }
 
             effect = {
@@ -229,7 +221,7 @@ superior_firepower = {
             #Operations
             enable_tactic = tactic_tactical_withdrawal
             category_army = {
-                default_morale = 0.2
+                default_morale = 0.4
             }
             planning_decay_rate_factor = -0.1
 
@@ -265,7 +257,12 @@ grand_battleplan = {
     xp_type = army
 
     ai_will_do = {
-        base = 2
+        base = 9999
+
+        modifier = {
+            	factor = 0
+          	is_ai_mass_mob = yes
+        }
     }
 
     tracks = {
@@ -305,10 +302,6 @@ grand_battleplan = {
         {
             #Artillery/Support
             coordination_bonus = 0.1
-            category_regimental_support_battalions = {
-                defense = 0.1
-                entrenchment = 0.2
-            }
             enable_tactic = tactic_overwhelming_fire
 
             effect = {
@@ -401,9 +394,8 @@ mass_assault = {
             #Infantry
             enable_tactic = tactic_human_wave_tactics
             additional_brigade_column_size = 1
-            category_regimental_support_battalions = {
-                supply_consumption = -0.02
-                default_morale = 0.1
+            category_army = {
+                default_morale = 0.15
             }
 
             effect = {
@@ -442,7 +434,7 @@ mass_assault = {
         }
         {
             #Armor
-            land_reinforce_rate = 0.02
+            land_reinforce_rate = 0.07
             enable_tactic = tactic_overwhelming_fire
 
             effect = {

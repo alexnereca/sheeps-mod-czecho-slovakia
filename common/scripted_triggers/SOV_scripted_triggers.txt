@@ -44,7 +44,9 @@ SOV_paranoia_is_medium_level = {
 SOV_paranoia_is_high_level = {
 	custom_trigger_tooltip = {
 		tooltip = SOV_paranoia_is_high_level_tt
-		check_variable = { SOV_paranoia = SOV_paranoia_higher_threshold compare = greater_than_or_equals }
+		OR = {
+			check_variable = { SOV_paranoia = SOV_paranoia_higher_threshold compare = greater_than_or_equals }
+		}
 	}
 }
 
@@ -246,6 +248,11 @@ SOV_is_valid_academy_of_sciences_target = {
 		}
 		AND = {
 			SOV_is_soviet_republic_tag_lax = yes
+			has_government = communism
+			is_subject_of = ROOT
+		}
+		AND = {
+			tag = MON
 			has_government = communism
 			is_subject_of = ROOT
 		}
@@ -1078,6 +1085,19 @@ ANY_comintern_joinable = {
 		NOT = { has_war_with = ROOT }	
 	}
 }
+ANY_comintern_joinable_B = {
+	any_other_country = { 
+		hidden_trigger = { 
+			exists = yes
+			has_capitulated = no
+			capital_scope = { is_on_continent = europe }
+		}
+		has_government = communism 
+		is_faction_leader = yes 
+		has_civil_war = no	
+		NOT = { has_war_with = ROOT }	
+	}
+}
 
 ##########################################################################
 
@@ -1250,7 +1270,9 @@ SOV_is_major_not_original_sov = {
 }
 
 SOV_is_stalinist = {
-	has_completed_focus = SOV_the_centre
+	OR = {
+		has_completed_focus = SOV_the_centre
+	}
 }
 
 SOV_we_want_to_send_ultimatums = {
@@ -1259,6 +1281,10 @@ SOV_we_want_to_send_ultimatums = {
 		focus_progress = {
 			focus = SOV_claims_in_baltic
 			progress > 0.01
+		}
+		AND = {
+			has_completed_focus = SOV_baltic_security
+			NOT = { has_completed_focus = SOV_respect_baltic_self_determination }
 		}
 	}
 	any_other_country = {

@@ -4,27 +4,112 @@ ideas = {
 			allowed = {
 				always = no # Triggered via tech
 			}
-			cancel = {
-				NOT = {
-					has_mastery_level = {
-						amount = 5
-						sub_doctrine = marines_1
-					}
-				}
-			}
 			picture = generic_fascism_drift_bonus
 			equipment_bonus = {
 				amphibious_mechanized_equipment = {
 					build_cost_ic = -0.15 instant = yes
 				}
 			}
-
 			ai_will_do = {
 				factor = 0
 			}
 		}
+
+		anti_soviet_pact = {
+			
+			removal_cost = -1 # Or make removable, with high cost?
+
+			available = {
+				is_subject = no
+				if = {  #anti_soviet_pact has collapsed
+					limit = {
+						is_in_faction = yes
+						NOT = { is_in_faction_with = GER } 
+					} 
+					NOT = { has_war_with = GER }
+					NOT = {
+						any_country = {
+							is_in_faction_with = ROOT
+							has_war_with = GER
+						}
+					}
+				}
+				NOT = { GER = { has_country_flag = LSM_eligibility_nation } } #anti soviet pact has collapsed
+			}
+			
+			allowed = {
+				always = no
+			}
+	
+			ai_will_do = {
+				factor = 0
+			}
+
+			on_add = {
+				if = {
+					limit = { 
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+							is_subject_of = GER 
+						}
+					}
+					add_ideas = anti_soviet_pact_2
+				}
+				remove_relation_modifier = {
+					target = SOV
+					modifier = LSM_coordinate_rearmament
+				}	
+				remove_opinion_modifier = {
+					target = SOV
+					modifier = trade_relation_bonus_high
+				}
+				SOV = {
+					remove_opinion_modifier = {
+						target = PREV
+						modifier = trade_relation_bonus_high
+					}
+					add_relation_modifier = {
+						target = ROOT
+						modifier = LSM_coordinate_rearmament
+					}
+				}
+				remove_opinion_modifier = {
+					target = SOV
+					modifier = trade_relation_bonus_high_1
+				}
+				SOV = {
+					remove_opinion_modifier = {
+						target = ROOT
+						modifier = trade_relation_bonus_high_1
+					}
+				}
+			}
+
+			picture = anti_soviet_pact
+		}
 	}
 	country = {
+
+		anti_soviet_pact_2 = {
+			
+			removal_cost = -1
+
+			available = {
+				is_subject = no
+			}
+			
+			allowed = {
+				always = no
+			}
+	
+			ai_will_do = {
+				factor = 0
+			}
+
+			picture = anti_soviet_pact
+		}
+
 		fascist_assault_divisions = {
 			
 			allowed = {
@@ -167,25 +252,6 @@ ideas = {
 				political_power_factor = 0.2
 				stability_weekly = 0.005
 			}
-		}
-
-		anti_soviet_pact = {
-			
-			removal_cost = -1 # Or make removable, with high cost?
-
-			available = {
-				is_subject = no
-			}
-			
-			allowed = {
-				always = no # Triggered via event
-			}
-	
-			ai_will_do = {
-				factor = 0
-			}
-
-			picture = anti_soviet_pact
 		}
 
 		anti_soviet_pact_refused_call = {
@@ -457,6 +523,5 @@ ideas = {
 				political_power_cost = 0.15
 			}
 		}
-		
 	}
 }

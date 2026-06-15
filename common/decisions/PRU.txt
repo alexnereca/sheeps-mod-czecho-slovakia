@@ -10,31 +10,14 @@ PRU_pastaza_conflict = {
 		icon = GFX_decision_generic_operation
 
 		ai_will_do = {
-			base = 250
-			modifier = {
-				factor = 0
-				is_historical_focus_on = yes
-				date < 1941.1.1
-			}
-			modifier = {
-				add = 500
-				is_historical_focus_on = yes
-				date > 1941.6.1
-			}
+			base = 0
 		}
 
 		allowed = {  
 			original_tag = PRU
 		}
 
-		visible = { 
-			NOT = {
-				owns_state = 490
-			}
-		}
-
 		available = {
-			is_subject = no
 			NOT = {
 				OR = {
 					owns_state = 490
@@ -68,6 +51,12 @@ PRU_pastaza_conflict = {
 		highlight_states = {
 			highlight_state_targets = {
 				state = 490
+			}
+		}
+
+		visible = { 
+			NOT = {
+				owns_state = 490
 			}
 		}
 
@@ -227,18 +216,7 @@ PRU_pastaza_conflict = {
 			original_tag = PRU
 		}
 
-		visible = { 
-			NOT = {
-				owns_state = 490
-				OR = {
-					has_country_flag = PRU_has_ended_their_invasion_won
-					has_country_flag = PRU_has_ended_their_invasion_lost		
-				}
-			}
-		}
-
 		available = {
-			is_subject = no
 			NOT = {
 				owns_state = 490
 				OR = {
@@ -248,7 +226,16 @@ PRU_pastaza_conflict = {
 			}
 			controls_state = 490
 			has_war = yes
-			has_idea = PRU_amazonian_war
+		}
+
+		visible = { 
+			NOT = {
+				owns_state = 490
+				OR = {
+					has_country_flag = PRU_has_ended_their_invasion_won
+					has_country_flag = PRU_has_ended_their_invasion_lost		
+				}
+			}
 		}
 
 		cost = 25
@@ -305,6 +292,19 @@ PRU_pastaza_conflict = {
 			original_tag = PRU
 		}
 
+		available = {
+			NOT = {
+				owns_state = 490
+				controls_state = 490
+				controls_state = 491
+				OR = {
+					has_country_flag = PRU_has_ended_their_invasion_won
+					has_country_flag = PRU_has_ended_their_invasion_lost		
+				}
+			}
+			has_war = yes
+		}
+
 		visible = { 
 			NOT = {
 				owns_state = 490
@@ -315,28 +315,15 @@ PRU_pastaza_conflict = {
 			}
 		}
 
-		available = {
-			is_subject = no
-			NOT = {
-				owns_state = 490
-				controls_state = 490
-				controls_state = 491
-				OR = {
-					has_country_flag = PRU_has_ended_their_invasion_won
-					has_country_flag = PRU_has_ended_their_invasion_lost		
-				}
-			}
-			has_offensive_war = yes
-			has_idea = PRU_amazonian_war
-		}
-
 		cost = 10
  
 		#days_remove = 14  
 
 		fire_only_once = yes
 
-		complete_effect = { 		
+		complete_effect = { 
+
+#			
 
 			every_country = {
 				limit = {
@@ -366,6 +353,7 @@ PRU_pastaza_conflict = {
 
 		}
 	}
+
 
 }
 

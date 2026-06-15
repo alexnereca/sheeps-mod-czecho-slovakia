@@ -76,6 +76,15 @@ SPA_alternate_plan_2 = {
 			tag = SPR
 		}
 		OR = {
+			AND = {
+				has_civil_war = no
+				has_completed_focus = SPA_the_phalanx_ascendant
+			}
+			AND = {
+				has_civil_war = no
+				has_government = fascism
+				is_in_faction_with = FRA
+			}
 			has_country_flag = SPR_AI_RANDOM_FALANGIST
 			has_game_rule = {
 				rule = SPR_ai_behavior 
@@ -108,11 +117,8 @@ SPA_alternate_plan_2 = {
 		SPA_absorb_carlist_remnants
 		SPA_a_one_party_state
 		SPA_develop_all_talent
-		SPA_regional_agrarian_commissions
-		SPA_the_national_syndicalist_state
-		SPA_syndicalize_production
-		SPA_strengthen_the_supreme_reality_of_spain
-		SPA_exemplify_the_art_and_science_of_warfare
+
+		SPA_join_the_axis
 		SPA_national_recovery
 		SPA_fascist_economic_aid
 		SPA_facilitate_pyrenees_freight_transports
@@ -120,12 +126,20 @@ SPA_alternate_plan_2 = {
 		SPA_support_the_war_industry
 		SPA_expand_the_war_industry
 		SPA_the_duty_to_work
+
+
+
+		SPA_regional_agrarian_commissions
+		SPA_the_national_syndicalist_state
+		SPA_syndicalize_production
+		SPA_strengthen_the_supreme_reality_of_spain
+		SPA_exemplify_the_art_and_science_of_warfare
 		SPA_the_will_to_empire
 		SPA_the_national_and_popular_army_of_spain
 		SPA_mandatory_pre_military_training
 		SPA_all_shall_serve
-		SPA_join_the_axis
 		SPA_unite_iberia
+		SPA_absorb_the_portuguese_empire
 		SPA_embrace_the_spanish_destiny
 		SPA_glory_and_wealth_on_the_sea_lanes
 		SPA_improve_domestic_naval_facilities

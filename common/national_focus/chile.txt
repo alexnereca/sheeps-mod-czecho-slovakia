@@ -94,7 +94,7 @@ focus_tree = {
 				popularity = 0.05
 			}	
 
-			add_political_power = 35
+			add_political_power = 50
 
 			hidden_effect = {
 				IF = {
@@ -165,7 +165,7 @@ focus_tree = {
 
 			add_stability = 0.05
 
-			add_political_power = 35
+			add_political_power = 50
 
 			custom_effect_tooltip = CHL_skip_one_line_tt
 
@@ -460,7 +460,7 @@ focus_tree = {
 		mutually_exclusive = {
 		} 
 		
-		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_POLITICAL_CHARACTER FOCUS_FILTER_HISTORICAL FOCUS_FILTER_COMPLETED_BY_EVENT }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_POLITICAL_CHARACTER FOCUS_FILTER_HISTORICAL }
 
 		available = {
 
@@ -1186,6 +1186,8 @@ focus_tree = {
 		
 		completion_reward = {
 
+			add_political_power = 100
+
 			add_country_leader_trait = dictator
 
 			add_stability = -0.15
@@ -1480,6 +1482,8 @@ focus_tree = {
 			custom_effect_tooltip = CHL_skip_one_line_tt
 
 			custom_effect_tooltip = available_political_advisor
+											   
+													   
 			show_ideas_tooltip = CHL_francisco_encina
 			show_ideas_tooltip = CHL_tancredo_pinochet
 			show_ideas_tooltip = CHL_guillermo_araya
@@ -3907,7 +3911,6 @@ focus_tree = {
 		}
 
 		mutually_exclusive = {
-			focus = CHL_expand_the_agricultural_field
 		} 
 		
 		ai_will_do = {
@@ -3938,8 +3941,8 @@ focus_tree = {
 			custom_effect_tooltip = CHL_skip_one_line_tt
 
 			custom_effect_tooltip = CHL_modify_mapuche_nationalism_ns_intro
-			add_to_variable = { CHL_mapuche_nationalism_industrial_capacity_factory = 0.05 tooltip = industrial_capacity_factory_tt }
-			add_to_variable = { CHL_mapuche_nationalism_industrial_capacity_dockyard = 0.05 tooltip = industrial_capacity_dockyard_tt }
+			add_to_variable = { CHL_mapuche_nationalism_industrial_capacity_factory = 0.075 tooltip = industrial_capacity_factory_tt }
+			add_to_variable = { CHL_mapuche_nationalism_industrial_capacity_dockyard = 0.075 tooltip = industrial_capacity_dockyard_tt }
 
 		}
 	}
@@ -3964,7 +3967,6 @@ focus_tree = {
 		}
 
 		mutually_exclusive = {
-			focus = CHL_embrace_indigenous_corporatism
 		} 
 		
 		ai_will_do = {
@@ -4259,13 +4261,19 @@ focus_tree = {
 		dynamic = yes
 
 		icon = {
-			GFX_focus_CHL_taking_back_patagonia_monarchist = {
+			trigger = {
 				NOT = {
 					has_completed_focus = CHL_address_the_mapuche_conflict
 				}
 			}
-			GFX_focus_CHL_taking_back_patagonia_mapuche = yes
+			value = GFX_focus_CHL_taking_back_patagonia_monarchist
 		}
+		icon = {
+			trigger = {
+				has_completed_focus = CHL_address_the_mapuche_conflict
+			}
+			value = GFX_focus_CHL_taking_back_patagonia_mapuche
+		} 
 
 		relative_position_id = CHL_the_patagonian_giants
 		x = 0
@@ -4818,15 +4826,15 @@ focus_tree = {
 					is_owned_by = ROOT
 				}
 			}
-
 			is_subject = no
 			
 		}
 
 		bypass = {
-			any_owned_state = {
+			any_state = {
 				is_core_of = FRA
 				is_on_continent = europe
+				is_owned_by = ROOT
 			}
 		}
 
@@ -5046,8 +5054,6 @@ focus_tree = {
 			hidden_effect = {
 				retire_country_leader = yes
 
-				remove_ideas = CHL_carlos_ibanez
-
 				add_country_leader_role  = {
 					character = CHL_carlos_ibanez
 				    promote_leader = yes
@@ -5062,6 +5068,7 @@ focus_tree = {
 					set_portraits = {
 						civilian = {
 							large = GFX_portrait_CHL_carlos_ibanez_king
+							small = GFX_portrait_CHL_carlos_ibanez_king_small
 						}
 					}
 				}
@@ -5160,8 +5167,8 @@ focus_tree = {
 		}
 
 		available = {	
-			any_owned_state = {
-				is_controlled_by = ROOT
+			any_state = {
+				is_owned_and_controlled_by = ROOT
 				is_coastal = yes
 			}
 		}
@@ -5486,7 +5493,6 @@ focus_tree = {
 		}
 
 		mutually_exclusive = {
-			focus = CHL_unified_in_spirit
 		} 
 		
 		ai_will_do = {
@@ -5592,7 +5598,6 @@ focus_tree = {
 		}
 
 		mutually_exclusive = {
-			focus = CHL_unified_by_will
 		} 
 		
 		ai_will_do = {
@@ -6095,7 +6100,7 @@ focus_tree = {
 		}
 
 		mutually_exclusive = {
-			focus = CHL_work_towards_laissex_faire
+				focus = CHL_work_towards_laissex_faire						 
 		} 
 		
 		ai_will_do = {
@@ -6172,7 +6177,7 @@ focus_tree = {
 		}
 
 		mutually_exclusive = {
-			focus = CHL_establish_corfo
+				focus = CHL_establish_corfo			  
 		} 
 		
 		ai_will_do = {
@@ -6522,7 +6527,10 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL_CHARACTER }
 		
 		completion_reward = {
-			add_stability = 0.05
+
+			add_political_power = -25
+			add_stability = 0.07
+
 			add_war_support = -0.1
 
 			custom_effect_tooltip = CHL_skip_one_line_tt
@@ -6542,14 +6550,28 @@ focus_tree = {
 		dynamic = yes
 
 		icon = {
-			GFX_focus_intervention_spain_nationalists = {
+			trigger = {
 				CHL_has_right_wing_government = yes
 			}
-			GFX_focus_generic_befriend_communist_spain_focus = {
+			value = GFX_focus_intervention_spain_nationalists
+		}
+		icon = {
+			trigger = {
 				CHL_has_left_wing_government = yes
 			}
-			GFX_focus_generic_befriend_republican_spain_focus = yes
-		}
+			value = GFX_focus_generic_befriend_communist_spain_focus
+		} 
+		icon = {
+			trigger = {
+				NOT = {
+					OR = {
+						CHL_has_left_wing_government = yes
+						CHL_has_right_wing_government = yes
+					}
+				}
+			}
+			value = GFX_focus_generic_befriend_republican_spain_focus
+		} 
 
 		relative_position_id = CHL_low_cost_housing
 		x = 5
@@ -6898,6 +6920,50 @@ focus_tree = {
 		
 		completion_reward = {
 
+			if = {
+				limit = {
+					USA = { has_government = democratic }
+				}
+				add_ideas = CHL_align_america_democratic
+				add_popularity = {
+					ideology = democratic
+					popularity = 0.15
+				}
+			}
+
+			if = {
+				limit = {
+					USA = { has_government = neutrality }
+				}
+				add_ideas = CHL_align_america_nonaligned
+				add_popularity = {
+					ideology = neutrality
+					popularity = 0.15
+				}
+			}
+
+			if = {
+				limit = {
+					USA = { has_government = fascism }
+				}
+				add_ideas = CHL_align_america_fascism
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.15
+				}
+			}
+
+			if = {
+				limit = {
+					USA = { has_government = communism }
+				}
+				add_ideas = CHL_align_america_communism
+				add_popularity = {
+					ideology = communism
+					popularity = 0.15
+				}
+			}
+
 			USA = {
 				add_opinion_modifier = {
 					target = ROOT
@@ -7122,7 +7188,7 @@ focus_tree = {
 				limit = {
 					is_owned_and_controlled_by = ROOT 
 				}
-				random_select_amount = 2
+				random_select_amount = 3
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = industrial_complex
@@ -7210,7 +7276,7 @@ focus_tree = {
 				limit = {
 					is_owned_and_controlled_by = ROOT 
 				}
-				random_select_amount = 2
+				random_select_amount = 3
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = arms_factory
@@ -7928,6 +7994,8 @@ focus_tree = {
 
 			army_experience = 15
 
+			add_war_support = 0.05
+
 			custom_effect_tooltip = CHL_skip_one_line_tt
 
 			custom_effect_tooltip = CHL_recruit_young_officers_tt
@@ -8131,9 +8199,9 @@ focus_tree = {
 		
 		completion_reward = {
 
-			add_war_support = 0.10
+			add_war_support = 0.15
 
-			add_political_power = 35
+			add_political_power = 75
 
 			random_country = {
 				limit = {
@@ -8612,7 +8680,7 @@ focus_tree = {
 		}
 
 		mutually_exclusive = {
-			focus = CHL_departamento_de_la_juventad_nacista
+				focus = CHL_departamento_de_la_juventad_nacista								  
 		} 
 		
 		ai_will_do = {
@@ -8651,7 +8719,7 @@ focus_tree = {
 		}
 
 		mutually_exclusive = {
-			focus = CHL_departemento_de_las_tropas_nacistas_de_asalto
+				focus = CHL_departemento_de_las_tropas_nacistas_de_asalto											
 		} 
 		
 		ai_will_do = {
@@ -8805,10 +8873,22 @@ focus_tree = {
 				}
 			}
 			is_subject = no
+			#focus = CHL_socialist_youth
 		}
 
 		bypass = {
-			owns_state = 947
+			OR = {
+				owns_state = 947
+				any_country = {
+					owns_state = 947
+					OR = {
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+						has_war_with = ROOT
+					}
+				}
+			}
+				
 		}
 
 		ai_will_do = {
@@ -9400,12 +9480,12 @@ focus_tree = {
 		ai_will_do = {
 			base = 1.5
 		}
-		available_if_capitulated = no
+		available_if_capitulated = no					   
 
 		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
 
 		available = {
-			is_subject = no
+			is_subject = no	  
 			has_government = fascism
 			has_war_support > 0.79
 			has_idea = CHL_the_francoist_model
@@ -9469,7 +9549,6 @@ focus_tree = {
 		}
 
 		available_if_capitulated = no
-
 		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL }
 
 		available = {
@@ -9965,7 +10044,6 @@ focus_tree = {
 		}
 
 		mutually_exclusive = {
-			focus = CHL_restore_the_old_kingdom
 		} 
 		
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -10276,7 +10354,7 @@ focus_tree = {
 			AND = {
 				controls_state = 687
 				controls_state = 309
-				controls_state =310
+				controls_state = 310
 			}
 		}
 		
@@ -10949,7 +11027,6 @@ focus_tree = {
 		#}
 
 		mutually_exclusive = {
-			focus = CHL_unite_hispanic_america
 		} 
 		
 		ai_will_do = {
@@ -10961,7 +11038,10 @@ focus_tree = {
 		available = {
 			has_government = fascism
 			all_owned_state = {
-				is_controlled_by = ROOT
+				OR = {
+					NOT = { is_core_of = ROOT }
+					is_controlled_by = ROOT
+				}
 			}
 			959 = {
 				is_controlled_by = ROOT
@@ -11024,7 +11104,7 @@ focus_tree = {
 
 			custom_effect_tooltip = CHL_skip_one_line_tt
 
-			drop_cosmetic_tag = yes
+			drop_cosmetic_tag = yes			  
 			set_cosmetic_tag = CHL_fascist_kingdom	
 
 			hidden_effect = {
@@ -11551,7 +11631,7 @@ focus_tree = {
 				controls_state = 944
 				controls_state = 503
 				controls_state = 502
-				controls_state = 969
+				controls_state = 969		
 			}
 		} 
 
@@ -11720,7 +11800,7 @@ focus_tree = {
 					}
 				}
 				has_government = communism
-				is_subject_of = ROOT
+				is_subject_of = ROOT		
 				NOT = {
 					OR = {
 						original_tag = USA
@@ -11739,6 +11819,7 @@ focus_tree = {
 			custom_effect_tooltip = CHL_propose_closer_cooperation_tt
 			every_country = {
 				limit = {
+					is_subject = no
 					capital_scope = {
 						OR = {
 							is_on_continent = south_america
@@ -12034,7 +12115,7 @@ focus_tree = {
 		
 		completion_reward = {
 			add_war_support = 0.1
-			add_political_power = 35
+			add_political_power = 50
 			custom_effect_tooltip = CHL_skip_one_line_tt
 			custom_effect_tooltip = CHL_modify_chilean_economy_ns_intro
 			add_to_variable = { CHL_economy_consumer_goods_factor = -0.05 tooltip = consumer_goods_factor_tt }
@@ -12224,20 +12305,16 @@ focus_tree = {
 			}
 			has_war = no
 		}
-
-		bypass = {
-			OR = {
-				has_government = communism
-				is_in_faction = yes 
-				has_war = yes 
-			}
+		bypass ={
+			has_government = communism
 		}
-
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_HISTORICAL }
 		
 		completion_reward = {
 
 			add_stability = 0.1
+
+			#add_war_support = -0.1
 
 			custom_effect_tooltip = CHL_skip_one_line_tt
 
@@ -12586,7 +12663,6 @@ focus_tree = {
 		}
 
 		mutually_exclusive = {
-			focus = CHL_found_national_steelworks
 		} 
 		
 		ai_will_do = {
@@ -12637,7 +12713,6 @@ focus_tree = {
 		}
 
 		mutually_exclusive = {
-			focus = CHL_enact_stricter_labor_laws
 		} 
 		
 		ai_will_do = {
@@ -12723,6 +12798,19 @@ focus_tree = {
 			}
 			is_in_faction = no
 			is_subject = no
+			hidden_trigger = {
+				if = {
+					limit = { is_historical_focus_on = yes }
+					OR = {
+						is_ai = no
+						AND = {
+							FRA = { has_capitulated = yes }
+							GER = { has_war_with = SOV }
+						}
+						USA = { is_in_faction_with = ENG }
+					}
+				}
+			} 
 		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -12788,7 +12876,6 @@ focus_tree = {
 			has_war_support > 0.89
 
 			is_subject = no
-
 		}
 
 		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_HISTORICAL }
@@ -12838,7 +12925,7 @@ focus_tree = {
 		}
 
 		available = {
-			threat > 0.7
+			threat > 0.5
 
 			948 = {
 				is_owned_and_controlled_by = ROOT
@@ -12973,7 +13060,6 @@ focus_tree = {
 					target = AST
 				}
 			}
-
 			hidden_effect = {
 				news_event = { 
 					id = CHL_news_events.7 
@@ -13011,7 +13097,9 @@ focus_tree = {
 		}
 
 		available = {
+
 			is_subject = no
+			
 		}
 
 		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_MANPOWER FOCUS_FILTER_WAR_SUPPORT }
@@ -13104,10 +13192,6 @@ focus_tree = {
 		x = 56
 		y = 0
 		cost = 10
-
-		mutually_exclusive = {
-			focus = CHL_dissolve_covensa
-		} 
 		
 		ai_will_do = {
 			base = 2
@@ -13254,10 +13338,6 @@ focus_tree = {
 		x = 45
 		y = 0
 		cost = 10
-
-		mutually_exclusive = {
-			focus = CHL_public_works
-		} 
 		
 		ai_will_do = {
 			base = 2
@@ -14490,16 +14570,14 @@ focus_tree = {
 			custom_effect_tooltip = CHL_modify_chilean_economy_ns_intro
 			add_to_variable = { CHL_economy_industrial_capacity_factory = 0.05 tooltip = industrial_capacity_factory_tt }
 
-			custom_effect_tooltip = generic_skip_one_line_tt
-
 			random_state = {
 				limit = {
 					is_owned_and_controlled_by = ROOT
 				}
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
-					level = 1
+					level = 2
 					instant_build = yes
 				}	
 			}
@@ -14549,16 +14627,17 @@ focus_tree = {
 				value = 0.25
 			}
 
-			custom_effect_tooltip = generic_skip_one_line_tt
+			#custom_effect_tooltip = CHL_modify_chilean_economy_ns_intro
+			#add_to_variable = { CHL_economy_industrial_capacity_factory = 0.1 tooltip = industrial_capacity_factory_tt }
 
 			random_state = {
 				limit = {
 					is_owned_and_controlled_by = ROOT
 				}
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
-					level = 1
+					level = 2
 					instant_build = yes
 				}	
 			}

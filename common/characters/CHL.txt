@@ -262,6 +262,9 @@ characters = {
 				traits  = {
 					JUNO_father_of_industrialization 
 				}
+				ai_will_do = {
+					factor = 20
+				}
 			}
 			# This should be gettable later
 			#country_leader = {
@@ -828,7 +831,11 @@ characters = {
 				}
 				
 				traits = {
-					army_cavalry_1
+					army_cavalry_2
+					army_combinedArms_2
+				}
+				ai_will_do = {
+					factor = 3.000
 				}
 			}
 			corps_commander = {
@@ -1512,7 +1519,6 @@ characters = {
 
 	# ONLY recruited with dlc
 	CHL_carlos_ibanez = {
-
 		advisor = {
 			slot = political_advisor
 			idea_token = CHL_carlos_ibanez
@@ -1525,19 +1531,14 @@ characters = {
 				JUNO_ibanismo
 			}
 
-			visible = {
-				NOT = {
-					has_government = communism
-					has_completed_focus = CHL_address_the_mapuche_conflict
-					has_completed_focus = CHL_the_straight_line
-				}
-			}
-
 			available = {
 				NOT = {
-					has_government = communism
-					has_completed_focus = CHL_address_the_mapuche_conflict
-					has_completed_focus = CHL_the_straight_line
+					OR = {
+						has_government = communism
+						has_completed_focus = CHL_address_the_mapuche_conflict
+					}
+				}
+				NOT = {
 					has_country_leader = {
 						ruling_only = yes
 						character = CHL_carlos_ibanez
@@ -1545,8 +1546,15 @@ characters = {
 				}
 			}
 
+			visible = {
+				NOT = {
+					OR = {
+						has_government = communism
+						has_completed_focus = CHL_address_the_mapuche_conflict
+					}
+				}
+			}
 		}
-
 		country_leader = {
 			ideology = centrism
 			expire = "1965.1.1.1"
@@ -1555,7 +1563,6 @@ characters = {
 				JUNO_the_general_president
 			}
 		}
-
 		# This should be gettable later
 		#country_leader = {
 		#	ideology = conservatism
@@ -1565,7 +1572,6 @@ characters = {
 		#		JUNO_the_general_president
 		#	}
 		#}
-
 		corps_commander = {
 			traits = { infantry_leader trait_mountaineer }
 			skill = 3

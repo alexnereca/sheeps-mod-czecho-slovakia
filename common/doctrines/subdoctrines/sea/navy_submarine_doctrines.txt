@@ -12,11 +12,7 @@ wolfpacks = {
     }
 
     ai_will_do = { 
-        base = 1
-        modifier = {
-            factor = 75
-            original_tag = GER
-        }
+        base = 0
     }
 
     # EFFECTS
@@ -73,23 +69,7 @@ submarine_fleet_operations = {
     }
 
     ai_will_do = { 
-        base = 1
-        modifier = {
-            factor = 25
-            original_tag = USA
-        }
-        modifier = {
-            factor = 25
-            original_tag = FRA
-        }
-        modifier = {
-            factor = 25
-            original_tag = ITA
-        }
-        modifier = {
-            factor = 25
-            original_tag = SOV
-        }
+        base = 0
     }
 
     # EFFECTS
@@ -132,11 +112,7 @@ capital_hunters = {
     xp_type = navy
 
     ai_will_do = { 
-        base = 1
-        modifier = {
-            factor = 25
-            original_tag = JAP
-        }
+        base = 500
     }
     available = {
         always = yes
@@ -287,8 +263,11 @@ coastal_minelaying = {
 
     	}
     	clearing_procedures = {
+    		submarine = {
+    			mines_sweeping = 0.2
+    		}
     		destroyer = {
-    			mines_sweeping = 0.25
+    			mines_sweeping = 0.2
     		}
     	}
     }
@@ -328,10 +307,6 @@ long_range_submarines = {
                     surface_detection = 0.1
                     instant = yes
                 }
-                ship_hull_nuclear_submarine = {
-                    surface_detection = 0.1
-                    instant = yes
-                }
             }
             submarine = {
                 max_organisation = 10
@@ -350,10 +325,7 @@ long_range_submarines = {
                 ship_hull_carrier_submarine = {
                     surface_visibility = -0.1
                     instant = yes
-                }
-                ship_hull_nuclear_submarine = {
-                    surface_visibility = -0.05
-                    instant = yes
+
                 }
             }
         }
@@ -371,11 +343,6 @@ long_range_submarines = {
                 }
                 ship_hull_carrier_submarine = {
                     naval_speed = 0.2
-                    instant = yes
-                }
-                ship_hull_nuclear_submarine = {
-                    naval_speed = 0.1
-                    torpedo_attack = 0.1
                     instant = yes
                 }
             }

@@ -740,6 +740,13 @@ country_event = { #Informs Germany of Austria's DNSAP ban
 				factor = 10
 				GER_is_historical_ai = yes
 			}
+			modifier = {
+				factor = 0
+				tag = GER
+				is_ai = yes
+				is_historical_focus_on = yes
+				AUS = { is_ai = yes }
+			}
 		}
 
 		trigger = {
@@ -3217,7 +3224,7 @@ country_event = { #militias causing unrest
 			base = 10
 			modifier = {
 				factor = 5
-				has_stability < 0.3
+				has_stability < 30
 			}
 			modifier = {
 				factor = 5
@@ -4106,6 +4113,12 @@ country_event = { #FROM, Austria, Demands we integrate
 			}
 
 			modifier = {
+				factor = 20
+				FROM = { is_ai = yes }
+				ROOT = { is_ai = yes }
+			}
+
+			modifier = {
 				factor = 10
 				OR = {
 					count_triggers = {
@@ -4957,6 +4970,26 @@ country_event = { #FROM rejects to let ROOT join
 
 		event_option_tooltip = AUS_political_events.40.b
 	}
+
+	option = { #Sad
+		name = AUS_political_events.42.b
+		ai_chance = {
+			base = 100
+		}
+		
+		trigger = {
+			has_completed_focus = AUS_join_the_axis
+		}
+
+		event_option_tooltip = AUS_political_events.40.b
+
+		if = {
+			limit = {
+				has_completed_focus = AUS_join_the_axis
+			}
+			complete_national_focus = AUS_reforming_the_central_powers
+		}
+	}
 }
 
 country_event = { #Austria demands subjugation
@@ -5028,6 +5061,13 @@ country_event = { #Austria demands subjugation
 					has_country_flag = AUS_sent_industrial_suuport_flag
 					has_country_flag = AUS_held_joint_military_exercises_flag
 				}
+			}
+
+			modifier = {
+				factor = 20
+				FROM = { is_ai = yes }
+				ROOT = { is_ai = yes }
+				is_in_faction = no
 			}
 		}
 
@@ -8816,11 +8856,7 @@ country_event = { #Austria cannot join the allies
 		set_rule = { 
 			can_create_factions = yes 
 		}
-		create_faction_from_template = {
-			template = faction_template_GER_mitteleuropa_alliance
-			name = AUS_central_european_alliance
-			icon = GFX_faction_logo_generic_2
-		}
+		create_faction = AUS_central_european_alliance
 	}
 }
 
@@ -9183,7 +9219,20 @@ country_event = { #Event for Germany, Hitler wants Austria
 			NOT = { has_war_with = GER }
 			has_country_flag = AUS_antischluss_active_flag
 		}
-		date > 1937.11.5
+		OR = {
+			AND = {
+				OR = {
+					date > 1937.8.5
+					AND = {
+						is_ai = yes
+						date > 1937.4.1
+					}
+				}
+				is_historical_focus_on = yes
+			}
+			date > 1937.11.1
+			has_global_flag = SOV_has_early_war
+		}
 	}
 
 	fire_only_once = yes

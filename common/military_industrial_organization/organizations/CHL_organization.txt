@@ -62,7 +62,7 @@ CHL_csav_organization = {
 ###########################
 
 CHL_enaer_organization = {
-	include = generic_general_aircraft_organization
+	include = generic_heavy_aircraft_organization
 	#icon = 
 	allowed = {	
 		has_dlc = "Trial of Allegiance"

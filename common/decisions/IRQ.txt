@@ -25,9 +25,23 @@ political_actions = {
 
 		ai_will_do = {
 			factor = 0
+			modifier = {
+				add = 9999
+				is_historical_focus_on = yes
+				any_country = {
+					is_allied_ai = yes
+					is_ai = no
+				}
+				NOT = {
+					any_country = {
+						is_axis_ai = yes
+						is_ai = no
+					}
+				}
+			}
 		}
 
-		complete_effect = {
+		complete_effect = { #TODO_ASD notification event for England
 
 			add_war_support = 0.1
 
@@ -71,21 +85,17 @@ IRQ_arab_free_legion_cat = {
 				}
 			}
 			NOT = { has_country_flag = IRQ_recruiting_arab_legion }
-			
 		}
 
 		target_root_trigger = {
 			original_tag = IRQ
-		}
 
+		}
 		state_target = yes
 		targets = { 292 455 454 677 553 907 448 458 459 461 293 294	658 765 656 }
-
 	    target_trigger = {   
 	    }
-
 	    on_map_mode = map_and_decisions_view 
-
 		custom_cost_trigger = {
 			command_power > 24.9
 			has_equipment = { infantry_equipment > 1999 }
@@ -143,7 +153,7 @@ greater_iraq_decision_cat = {
 
 		target_root_trigger = { original_tag = IRQ }
 
-		state_target = any_controlled_state
+		state_target = any_owned_state
 	    
 	    target_trigger = {
 	        FROM = {
@@ -162,7 +172,7 @@ greater_iraq_decision_cat = {
 	    on_map_mode = map_and_decisions_view 
 	    cost = 50		
 		fire_only_once = yes
-		days_remove = 14 
+		days_remove = 30
 		complete_effect = {
 			hidden_effect = {
 				set_country_flag = { flag = IRQ_coring_state_in_progress value = 1 days = 31 }
@@ -275,109 +285,78 @@ hashemite_federation_cat = {
 				has_government = democratic
 				has_government = neutrality
 			}
-			FROM = {
-				exists = yes
-				NOT = {
-					has_war_with = ROOT
-				}
-				is_subject = no
-			}
 		}
-
 		available = {
 			NOT = { has_country_flag = IRQ_inviting_to_federation_in_progress }
 			FROM = {
-				NOT = {
-					has_country_flag = IRQ_has_permanently_rejected_fed
-				}
-			}
-		}
-
-		target_trigger = {
-			FROM = {
-				NOT = {
-					original_tag = ROOT
-				}
-				capital_scope = {
-					OR = {
-						region = 28
-						region = 232
-						region = 237
-						region = 196
-						region = 236
-						region = 238
-						region = 240
+				OWNER = {
+					NOT = {
+						has_country_flag = IRQ_has_permanently_rejected_fed
 					}
 				}
 			}
 		}
-
-		on_map_mode = map_and_decisions_view
-
-		highlight_states = {
-			highlight_states_trigger = {
-				is_owned_and_controlled_by = FROM
-			}
-		}
-
+		state_target = middle_east
+	    target_trigger = {
+	        FROM = {
+	        	is_capital = yes
+	        	OWNER = {
+	        		is_subject = no
+	        		exists = yes
+	        		NOT = {
+	        			original_tag = ROOT
+	        			has_war_with = ROOT
+	        		}
+	        	}
+	        	OR = {
+	        		region = 28
+	        		region = 232
+	        		region = 237
+	        		region = 196
+	        		region = 236
+	        		region = 238
+					region = 240
+	        	}
+	        }
+	    }
+	    on_map_mode = map_and_decisions_view 
 	    cost = 25
 		fire_only_once = yes
-
 		days_remove = 30
-
 		complete_effect = {
 			set_country_flag = { flag = IRQ_inviting_to_federation_in_progress value = 1 days = 31 }
-			FROM = {
-				set_country_flag = is_the_current_invitation_target_of_IRQ_hashemite_flag
-			}
 		}
-
 		remove_effect = {
-			hidden_effect = {
-				clr_country_flag = IRQ_inviting_to_federation_in_progress
-				every_country = {
-					limit = {
-						has_country_flag = is_the_current_invitation_target_of_IRQ_hashemite_flag
-					}
-					clr_country_flag = is_the_current_invitation_target_of_IRQ_hashemite_flag
-				}
-			}
-			
+			clr_country_flag = IRQ_inviting_to_federation_in_progress
 			FROM = {
-				country_event = {
-					id = IRQ_political_events.26
-					hours = 1
+				OWNER = {
+					country_event = {
+						id = IRQ_political_events.26
+						hours = 1
+					}
 				}
 			}
 			custom_effect_tooltip = generic_higher_opinion_tt
 		}
 
 		cancel_trigger = {
-
-			any_country = {
-				has_country_flag = is_the_current_invitation_target_of_IRQ_hashemite_flag
-				OR = {
-					exists = no
-					is_subject = yes
-					has_war_with = ROOT
+			FROM = {
+				OWNER = {
+					OR = {
+						exists = no
+						is_subject = yes
+						has_war_with = ROOT
+					}
 				}
-			}
-
+			} 
 		}
 
 		cancel_effect = {
 			hidden_effect = {
 				clr_country_flag = IRQ_inviting_to_federation_in_progress
-				every_country = {
-					limit = {
-						has_country_flag = is_the_current_invitation_target_of_IRQ_hashemite_flag
-					}
-					clr_country_flag = is_the_current_invitation_target_of_IRQ_hashemite_flag
-				}
 			}
 		}
 	}
-
 	IRQ_invite_to_federation_africa = {
 		icon = GFX_decision_infiltrate_state
 	
@@ -391,101 +370,72 @@ hashemite_federation_cat = {
 				has_government = democratic
 				has_government = neutrality
 			}
-			FROM = {
-				exists = yes
-				NOT = {
-					has_war_with = ROOT
-				}
-				is_subject = no
-			}
 		}
-
 		available = {
 			NOT = { has_country_flag = IRQ_inviting_to_federation_in_progress }
 			FROM = {
-				NOT = {
-					has_country_flag = IRQ_has_permanently_rejected_fed
-				}
-			}
-		}
-
-		target_trigger = {
-			FROM = {
-				NOT = {
-					original_tag = ROOT
-				}
-				capital_scope = {
-					OR = {
-						region = 128
-						region = 225
-						region = 126
-						region = 182
+				OWNER = {
+					NOT = {
+						has_country_flag = IRQ_has_permanently_rejected_fed
 					}
 				}
 			}
 		}
-
-		on_map_mode = map_and_decisions_view
-
-		highlight_states = {
-			highlight_states_trigger = {
-				is_owned_and_controlled_by = FROM
-			}
-		}
-
-		cost = 25
+		state_target = africa
+	    target_trigger = {
+	        FROM = {
+	        	is_capital = yes
+	        	OWNER = {
+	        		is_subject = no
+	        		exists = yes
+	        		NOT = {
+	        			original_tag = ROOT
+	        			has_war_with = ROOT
+	        		}
+	        	}
+	        	OR = {
+	        		region = 128 
+					region = 225
+					region = 126
+					region = 182
+	        	}
+	        }
+	    }
+	    on_map_mode = map_and_decisions_view 
+	    cost = 25
 		fire_only_once = yes
 		days_remove = 30
-
 		complete_effect = {
-			set_country_flag = { flag = IRQ_inviting_to_federation_in_progress value = 1 days = 31 }
-			FROM = {
-				set_country_flag = is_the_current_invitation_target_of_IRQ_hashemite_flag
-			}
+			set_country_flag = IRQ_inviting_to_federation_in_progress
 		}
-
 		remove_effect = {
-			hidden_effect = {
-				clr_country_flag = IRQ_inviting_to_federation_in_progress
-				every_country = {
-					limit = {
-						has_country_flag = is_the_current_invitation_target_of_IRQ_hashemite_flag
-					}
-					clr_country_flag = is_the_current_invitation_target_of_IRQ_hashemite_flag
-				}
-			}
-			
+			clr_country_flag = IRQ_inviting_to_federation_in_progress
 			FROM = {
-				country_event = {
-					id = IRQ_political_events.26
-					hours = 1
+				OWNER = {
+					country_event = {
+						id = IRQ_political_events.26
+						hours = 1
+					}
 				}
 			}
 			custom_effect_tooltip = generic_higher_opinion_tt
 		}
 
 		cancel_trigger = {
-
-			any_country = {
-				has_country_flag = is_the_current_invitation_target_of_IRQ_hashemite_flag
-				OR = {
-					exists = no
-					is_subject = yes
-					has_war_with = ROOT
+			FROM = {
+				OWNER = {
+					OR = {
+						exists = no
+						is_subject = yes
+						has_war_with = ROOT
+					}
 				}
-			}
-
+			} 
 		}
 
 		cancel_effect = {
 			hidden_effect = {
 				clr_country_flag = IRQ_inviting_to_federation_in_progress
-				every_country = {
-					limit = {
-						has_country_flag = is_the_current_invitation_target_of_IRQ_hashemite_flag
-					}
-					clr_country_flag = is_the_current_invitation_target_of_IRQ_hashemite_flag
-				}
 			}
 		}
 	}

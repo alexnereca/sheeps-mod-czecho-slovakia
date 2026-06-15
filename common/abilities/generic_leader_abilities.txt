@@ -15,8 +15,8 @@ ability = {
 					limit = {
 						has_dlc = "Waking the Tiger"
 					}
-					NOT = {
-						has_completed_focus = CHI_dare_to_die_corps
+					NOT = { 
+						has_completed_focus = CHI_dare_to_die_corps 
 						has_completed_focus = JAP_advance_one_hundred_million_fireballs  
 						has_completed_focus = JAP_tennoheika_banzai  
 						has_completed_focus = CHI_sea_dare_to_die_corps  
@@ -33,37 +33,75 @@ ability = {
 				}
 			}
 		}
-		
 		ai_will_do = {
 			factor = -1
 			modifier = {
-				FROM = {
-					has_war_support > 0.1
-					command_power > 1.5
+				OR = {
+					check_variable = { num_units_offensive_combats_against@fort > 10 }
+					check_variable = { num_units_defensive_combats > 5 }
+					check_variable = { avg_offensive_combat_status < 0.50 }
+					check_variable = { num_units_crossing_river > 10 }
 				}
-				check_variable = { num_units_offensive_combats > 6 }
+				add = -10
+			}
+			modifier = {
+				FROM = {
+					has_war_support > 0.80
+					command_power > 100
+				}
+				check_variable = { num_units_offensive_combats > 15 }
+				check_variable = { num_units_offensive_combats_against@plains > 12 }
+				check_variable = { num_units_defensive_combats < 2 }
+				check_variable = { num_units_crossing_river < 3 }
+
+				check_variable = { avg_unit_planning_ratio > 0.60 }
+				check_variable = { unit_ratio_ready_for_plan > 0.60 }
 				
 				set_temp_variable = { temp = avg_offensive_combat_status }
-				check_variable = { temp > 0.45 }
+				check_variable = { temp > 0.80 }
 				check_variable = { ai_random > temp }
+
+				set_temp_variable = { temp2 = num_units_offensive_combats_against@fort }
+				divide_temp_variable = { temp2 = temp }
+				check_variable = { temp2 < 0.1 }
 				
 				add = 2
+			}
+			modifier = {
+				FROM = {
+					OR = {
+						tag = SOV
+						has_doctrine = mass_assault
+					}
+					command_power < 100
+					any_army_leader = {
+						has_trait = infantry_leader
+						NOT = { has_trait = infantry_expert }
+					}
+				}
+				
+				add = -200
 			}
 		}
 		
 		cost = 0.22
 		duration = 168
-
-		unit_modifiers = {
-			offence = 0.2
-			breakthrough_factor = 0.25
-			org_damage_multiplier = -1.0
-			str_damage_multiplier = 0.6
-			war_support_reduction_on_damage = 0.2
-			cannot_retreat_while_attacking = 1.0
+		
+		one_time_effect = {
+			add_temporary_buff_to_units = {
+				combat_offense = 0.2
+				combat_breakthrough = 0.25
+				org_damage_multiplier = -1.0
+				str_damage_multiplier = 0.6
+				war_support_reduction_on_damage = 0.2
+				cannot_retreat_while_attacking = 1.0
+				
+				days = 7
+				tooltip = ABILITY_FORCE_ATTACK_TOOLTIP
+			}
 		}
 	}
-
+		
 	last_stand = {
 		name = ABILITY_LAST_STAND
 		desc = ABILITY_LAST_STAND_DESC
@@ -89,34 +127,83 @@ ability = {
 		
 		cost = 0.22
 		duration = 168
-
-		unit_modifiers = {
-			defence = 0.2
-			combat_entrenchment = 0.25
-			org_damage_multiplier = -1.0
-			str_damage_multiplier = 0.6
-			war_support_reduction_on_damage = 0.2
-			cannot_retreat_while_defending = 1.0
+		
+		one_time_effect = {
+			add_temporary_buff_to_units = {
+				combat_defense = 0.2
+				combat_entrenchment = 0.25
+				org_damage_multiplier = -1.0
+				str_damage_multiplier = 0.6
+				war_support_reduction_on_damage = 0.2
+				cannot_retreat_while_defending = 1.0
+				
+				days = 7
+				tooltip = ABILITY_LAST_STAND_TOOLTIP
+			}
 		}
-
+		
 		ai_will_do = {
 			factor = -1
 			modifier = {
 				FROM = {
 					has_war_support > 0.4
+					surrender_progress > 0.2
 				}
 				
 				check_variable = { num_units_defensive_combats > 6 }
 				
 				set_temp_variable = { temp = avg_defensive_combat_status }
-				check_variable = { temp < 0.40 }
+				check_variable = { temp < 0.25 }
 				check_variable = { ai_random > temp }
 				
 				add = 2
 			}
+			modifier = {
+				FROM = {
+					has_war_support > 0.1
+					command_power > 90
+				}
+				check_variable = { num_units_defensive_combats > 6 }
+				OR = {
+					check_variable = { num_units_defensive_combats_against@marsh > 6 }
+					check_variable = { num_units_defensive_combats_against@mountain > 6 }
+					check_variable = { num_units_on_climate@hot_climate > 6 }
+					check_variable = { num_units_on_climate@cold_climate > 6 }
+				}
+				
+				set_temp_variable = { temp = avg_defensive_combat_status }
+				check_variable = { temp < 0.45 }
+				check_variable = { ai_random > temp }
+				
+				add = 20
+			}
+			modifier = {
+				is_historical_focus_on = yes
+				check_variable = { num_units_defensive_combats_against@plains > 12 }
+				FROM = {
+					NOT = { tag = HOL }
+					NOT = { tag = BEL }
+				}
+				add = -25
+			}
+			modifier = {
+				FROM = {
+					OR = {
+						tag = SOV
+						has_doctrine = mass_assault
+					}
+					command_power < 100
+					any_army_leader = {
+						has_trait = infantry_leader
+						NOT = { has_trait = infantry_expert }
+					}
+				}
+				
+				add = -200
+			}
 		}
 	}
-
+	
 	staff_office_plan = {
 		name = ABILITY_STAFF_OFFICE_PLAN
 		desc = ABILITY_STAFF_OFFICE_PLAN_DESC
@@ -145,6 +232,11 @@ ability = {
 		ai_will_do = {
 			factor = -1
 			modifier = {
+				check_variable = { num_units_in_combat > 12 }
+				
+				add = -20
+			}
+			modifier = {
 				FROM = {
 					command_power > 2.0
 				}
@@ -153,6 +245,66 @@ ability = {
 				check_variable = { avg_unit_planning_ratio < 0.4 }
 				
 				add = 2
+			}
+			modifier = {
+				FROM = {
+					command_power > 2.0
+				}
+				check_variable = { num_units > 6 }
+				check_variable = { unit_ratio_ready_for_plan > 0.50 }
+				check_variable = { avg_unit_planning_ratio < 0.7 }
+				NOT = {
+					OR = {
+						check_variable = { num_units_with_type@medium_armor > 6 }
+						check_variable = { num_units_with_type@heavy_armor > 6 }
+						check_variable = { num_units_with_type@motorized > 6 }
+						check_variable = { num_units_with_type@mechanized > 6 }
+						check_variable = { num_units_with_type@medium_tank_destroyer_brigade > 6 }
+						check_variable = { num_units_with_type@heavy_tank_destroyer_brigade > 6 }
+						check_variable = { num_units_with_type@marine > 6 }
+						check_variable = { num_units_with_type@mountaineers > 6 }
+					}
+				}
+				
+				add = 2
+			}
+			modifier = {
+				FROM = {
+					command_power > 100.0
+					OR = {
+						tag = GER
+						tag = USA
+					}
+				}
+				OR = {
+					check_variable = { num_units_with_type@medium_armor > 6 }
+					check_variable = { num_units_with_type@heavy_armor > 6 }
+					check_variable = { num_units_with_type@motorized > 6 }
+					check_variable = { num_units_with_type@mechanized > 6 }
+					check_variable = { num_units_with_type@medium_tank_destroyer_brigade > 6 }
+					check_variable = { num_units_with_type@heavy_tank_destroyer_brigade > 6 }
+					check_variable = { num_units_with_type@marine > 6 }
+					check_variable = { num_units_with_type@mountaineers > 6 }
+				}
+				check_variable = { unit_ratio_ready_for_plan > 0.30 }
+				check_variable = { avg_unit_planning_ratio < 0.6 }
+				
+				add = 10
+			}
+			modifier = {
+				FROM = {
+					OR = {
+						tag = SOV
+						has_doctrine = mass_assault 
+					}
+					command_power < 100
+					any_army_leader = {
+						has_trait = infantry_leader
+						NOT = { has_trait = infantry_expert }
+					}
+				}
+				
+				add = -200
 			}
 		}
 	}
@@ -171,12 +323,12 @@ ability = {
 		
 		unit_modifiers = {
 			fort = {
-				attack = 0.2
+				attack = 0.20
 			}
-			fortification_damage = 2.0
-			fortification_collateral_chance = 2.0
+			fortification_damage = 2.5
+			fortification_collateral_chance = 2.5
 		}
-		cost = 0.1
+		cost = 0.07
 		duration = 168
 		
 		
@@ -193,7 +345,7 @@ ability = {
 				divide_temp_variable = { temp2 = temp }
 				check_variable = { temp2 > 0.5 }
 				
-				add = 2
+				add = 25
 			}
 		}
 	}
@@ -288,7 +440,7 @@ ability = {
 				}
 				check_variable = { num_units_crossing_river > 5 }
 				
-				add = 2
+				add = 25
 			}
 		}
 	}
@@ -349,159 +501,6 @@ ability = {
 				set_temp_variable = { temp = avg_units_acclimation@cold_climate }
 				divide_temp_variable = { temp =  num_units }
 				check_variable = { temp < 0.5 }
-				
-				add = 2
-			}
-		}
-	}
-
-	extra_medics = {
-		name = ABILITY_EXTRA_MEDICS
-		desc = ABILITY_EXTRA_MEDICS_DESC
-		
-		sound_effect = ability_local_reserves
-		
-		type = army_leader
-		requires_deployed_hq = yes
-		
-		allowed = {
-			is_leading_army_group = no
-			is_border_war = no
-		}
-		
-		ai_will_do = {
-			factor = -1
-			modifier = {
-				FROM = {
-					has_war_support < 0.2
-					command_power > 2
-				}
-				check_variable = { num_units_offensive_combats > 6 }
-				
-				set_temp_variable = { temp = avg_offensive_combat_status }
-				check_variable = { temp > 0.2 }
-				check_variable = { ai_random > temp }
-				
-				add = 2
-			}
-		}
-		
-		
-		cost = 0.22
-		duration = 336
-		unit_modifiers = {
-			casualty_trickleback = 0.04
-		}
-	}
-
-	deeper_dig_in = {
-		name = ABILITY_DEEPER_DIG_IN
-		desc = ABILITY_DEEPER_DIG_IN_DESC
-		
-		sound_effect = ability_deeper_dig_in
-		
-		type = army_leader
-		requires_deployed_hq = yes
-		
-		allowed = {
-			is_border_war = no
-		}
-		
-		cost = 0.12
-		duration = 168
-		
-		unit_modifiers = {
-			dig_in_speed = 6.0
-		}
-		
-		
-		ai_will_do = {
-			factor = -1
-			modifier = {
-				FROM = {
-					command_power > 2.0
-				}
-				check_variable = { num_units > 6 }
-				check_variable = { unit_ratio_ready_for_plan > 0.6 }
-				check_variable = { avg_unit_entrenchment_ratio < 0.4 }
-				
-				add = 2
-			}
-		}
-	}
-
-	defense_in_depth = {
-		name = ABILITY_DEFENSE_IN_DEPTH
-		desc = ABILITY_DEFENSE_IN_DEPTH_DESC
-		sound_effect = ability_defence_in_depth
-		type = army_leader
-		requires_deployed_hq = yes
-		
-		allowed = {
-			is_border_war = no
-		}
-		
-		unit_modifiers = {
-			max_planning = -0.5
-			max_dig_in = 3
-		}
-		
-		cancelable = yes
-		cost = 0.1
-		duration = -1
-	}
-
-	front_overrun = {
-		name = ABILITY_FRONT_OVERRUN
-		desc = ABILITY_FRONT_OVERRUN_DESC
-		sound_effect = ability_front_overrun
-		type = army_leader
-		requires_deployed_hq = yes
-		
-		allowed = {
-			is_border_war = no
-		}
-		
-		unit_modifiers = {
-			org_loss_when_moving = -0.1
-			planning_decay_rate_factor = -0.2
-			str_damage_multiplier = 0.4
-		}
-		
-		cancelable = yes
-		cost = 0.1
-		duration = -1
-	}
-
-	rotating_reserves = {
-		name = ABILITY_ROTATING_RESERVES
-		desc = ABILITY_ROTATING_RESERVES_DESC
-		
-		sound_effect = ability_local_command
-		
-		type = army_leader
-		requires_deployed_hq = yes
-		
-		allowed = {
-			is_border_war = no
-		}
-		
-		cost = 0.12
-		duration = 168
-		
-		unit_modifiers = {
-			land_reinforce_rate = 0.06 
-		}
-		
-		ai_will_do = {
-			factor = -1
-			modifier = {
-				FROM = {
-					command_power > 6.0
-				}
-				check_variable = { num_units > 6 }
-				check_variable = { num_units_in_combat > 4}
-				check_variable = { avg_combat_status > 0.7}
 				
 				add = 2
 			}

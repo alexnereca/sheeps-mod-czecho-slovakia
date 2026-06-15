@@ -256,15 +256,86 @@ focus_tree = {
 		}
 
 		available = {
-			SOV_comintern_joinable = yes 
-			is_in_faction = no
-			is_subject = no
-			NOT = {
-				any_other_country = {
-					is_in_faction_with = SOV
-					has_war_with = ROM
+			if = {
+				limit = {
+					SOV = {
+						NOT = { has_completed_focus = SOV_the_left_opposition }
+						NOT = { has_completed_focus = SOV_the_right_opposition }
+						NOT = { has_completed_focus = SOV_beaten_but_not_defeated }
+					}
+				}
+				SOV_comintern_joinable = yes 
+				NOT = {
+					any_other_country = {
+						is_in_faction_with = SOV
+						has_war_with = ROM
+					}
 				}
 			}
+			if = {
+				limit = {
+					SOV = {
+						has_completed_focus = SOV_the_left_opposition
+					}
+				}
+				SOV = { has_completed_focus = SOV_long_live_the_workers_government }
+				SOV_comintern_joinable = yes 
+				NOT = {
+					any_other_country = {
+						is_in_faction_with = SOV
+						has_war_with = ROM
+					}
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						has_completed_focus = SOV_the_right_opposition
+					}
+				}
+				SOV = { has_completed_focus = SOV_coup_detat }
+				SOV_comintern_joinable = yes 
+				NOT = {
+					any_other_country = {
+						is_in_faction_with = SOV
+						has_war_with = ROM
+					}
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						has_completed_focus = SOV_beaten_but_not_defeated
+					}
+				}
+				OR = {
+					any_country = {
+						is_major = yes
+						has_government = communism
+						NOT = { tag = SOV }
+						is_faction_leader = yes
+						NOT = { has_war_with = ROM }
+						NOT = {
+							any_country = {
+								is_in_faction_with = PREV
+								has_war_with = ROM
+							}
+						}
+						capital_scope = { is_on_continent = europe }
+					}
+					any_country = {
+						is_neighbor_of = ROM
+						NOT = { tag = SOV }
+						is_major = no
+						communism > 0.3
+						has_war = no
+						is_in_faction = no
+						NOT = { has_war_with = ROM }
+					}
+				}
+			}
+			is_in_faction = no
+			is_subject = no
 		}
 
 		bypass = {
@@ -277,7 +348,88 @@ focus_tree = {
 
 
 		completion_reward = {
-			SOV = { country_event = generic.2 }
+			if = {
+				limit = {
+					SOV = {
+						NOT = { has_completed_focus = SOV_beaten_but_not_defeated }
+					}
+				}
+				SOV = { country_event = generic.2 }
+			}
+			if = {
+				limit = {
+					SOV = {
+						has_completed_focus = SOV_beaten_but_not_defeated
+					}
+					any_country = {
+						is_major = yes
+						has_government = communism
+						is_faction_leader = yes
+						NOT = { tag = SOV }
+						NOT = { has_war_with = ROM }
+						NOT = {
+							any_country = {
+								is_in_faction_with = PREV
+								has_war_with = ROM
+							}
+						}
+						capital_scope = { is_on_continent = europe }
+					}
+				}
+				random_country = {
+					limit = {
+						is_major = yes
+						has_government = communism
+						is_faction_leader = yes
+						NOT = { tag = SOV }
+						NOT = { has_war_with = ROM }
+						NOT = {
+							any_country = {
+								is_in_faction_with = PREV
+								has_war_with = ROM
+							}
+						}
+						capital_scope = { is_on_continent = europe }
+					}
+					country_event = generic.2
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						has_completed_focus = SOV_beaten_but_not_defeated
+					}
+					any_country = {
+						is_neighbor_of = ROM
+						NOT = { tag = SOV }
+						is_major = no
+						communism > 0.3
+						has_war = no
+						is_in_faction = no
+						NOT = { has_war_with = ROM }
+					}
+				}
+				ROM = {  
+					add_popularity = { ideology = communism popularity = 0.30 }
+
+					set_politics = {
+						ruling_party = communism
+					}
+					create_faction = "Balkan Workers Congress"
+				}
+				every_country = {
+					limit = {
+						is_neighbor_of = ROM
+						is_major = no
+						communism > 0.3
+						NOT = { tag = SOV }
+						has_war = no
+						is_in_faction = no
+						NOT = { has_war_with = ROM }
+					}
+					country_event = generic.5
+				}
+			}
 		}
 	}
 
@@ -427,7 +579,10 @@ focus_tree = {
 		available = {
 			GER = { 
 				is_faction_leader = yes
-				has_government = fascism
+				OR = {
+					has_government = neutrality
+					has_government = fascism		
+				}
 			}
 			is_in_faction = no
 			NOT = { has_war_with = GER }
@@ -496,6 +651,16 @@ focus_tree = {
 				}
 				add_resource = {
 					type = oil
+					amount = 6
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 81 }
+				limit = {
+					ROOT = { has_full_control_of_state = PREV }
+				}
+				add_resource = {
+					type = oil
 					amount = 8
 				}
 			}
@@ -506,9 +671,82 @@ focus_tree = {
 					}
 					add_resource = {
 						type = oil
-						amount = 4
+						amount = 5
 					}
 				}
+			}
+		}
+	}
+
+	focus = {
+		id = ROM_oil_for_economic_investment
+		icon = GFX_focus_generic_stockpile_fuel
+		prerequisite = { focus = ROM_join_axis }
+		x = 1
+		y = 1
+		relative_position_id = ROM_join_axis
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			is_in_faction_with = GER
+			GER = { is_faction_leader = yes }
+			46 = { is_fully_controlled_by = ROOT }
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+
+		completion_reward = {
+			GER = { country_event = { id = LSM_equipment.24 } }
+			effect_tooltip = { 
+				GER = {
+					custom_effect_tooltip = needs_approval
+				}
+				give_resource_rights = { receiver = GER state = 46 }
+				GER = { add_timed_idea = { idea = ROM_GER_economic_development days = 180 } }
+				ROM = { add_timed_idea = { idea = ROM_ROM_economic_development days = 730 } }
+				ROM = {
+					random_owned_controlled_state = {
+						prioritize = { 46 }
+						limit = {
+							free_building_slots = {
+								building = infrastructure
+								size > 0
+							}
+						}
+						add_building_construction = {
+							type = infrastructure
+							level = 1
+							instant_build = yes
+						}
+					}
+					random_owned_controlled_state = {
+						prioritize = { 81 }
+						limit = {
+							free_building_slots = {
+								building = infrastructure
+								size > 0
+							}
+						}
+						add_building_construction = {
+							type = infrastructure
+							level = 1
+							instant_build = yes
+						}
+					}
+					custom_effect_tooltip = GER_ROM_dev_tt
+				}	
 			}
 		}
 	}
@@ -517,9 +755,9 @@ focus_tree = {
 		id = ROM_demand_transnistria
 		icon = GFX_goal_generic_occupy_states_ongoing_war
 		prerequisite = { focus = ROM_join_axis }
-		x = 1
-		y = 5
-		relative_position_id = ROM_trade_treaty_with_germany
+		x = 0
+		y = 2
+		relative_position_id = ROM_join_axis
 
 		cost = 10
 
@@ -628,6 +866,7 @@ focus_tree = {
 				template = faction_template_miedzymorze_faction
 				name = ROM_CORDON_SANITAIRE_FACTION
 			}
+			unlock_national_focus = ROM_balkans_dominance
 			if = {
 				limit = {
 					CZE = { 
@@ -816,6 +1055,7 @@ focus_tree = {
 			ENG = {
 				is_faction_leader = yes
 				has_government = democratic
+				NOT = { has_completed_focus = ENG_a_change_in_course }
 			}
 			is_in_faction = no
 			NOT = { has_war_with = ENG }
@@ -1996,8 +2236,7 @@ focus_tree = {
 	focus = {
 		id = ROM_his_majestys_loyal_government
 		icon = GFX_goal_generic_propaganda
-		prerequisite = { focus = ROM_fortify_the_borders }
-		prerequisite = { focus = ROM_align_hungary }
+		prerequisite = { focus = ROM_fortify_the_borders focus = ROM_align_hungary }
 		prerequisite = { focus = ROM_revise_the_constitution }
 		mutually_exclusive = { focus = ROM_flexible_foreign_policy }
 		x = -1
@@ -2012,6 +2251,8 @@ focus_tree = {
 
 		available = {
 			OR = {
+				has_completed_focus = ROM_preserve_greater_romania
+				is_in_faction_with = HUN
 				has_country_flag = ROM_HUN_aligned
 				HUN = { is_subject_of = ROM }
 				AND = {
@@ -2641,7 +2882,6 @@ focus_tree = {
 			764 = {
 				add_claim_by = ROOT
 			}
-
 		}
 	}
 
@@ -2866,7 +3106,6 @@ focus_tree = {
 				}
 				remove_ideas = ROM_the_sentinel_of_the_motherland
 			}
-			
 			add_timed_idea = { idea = ROM_king_carol_emptied_accounts days = 360 }
 			hidden_effect = {
 				news_event = { id = news.323 days = 1 }
@@ -2888,7 +3127,11 @@ focus_tree = {
 			factor = 1
 			modifier = {
 				factor = 0
-				has_completed_focus = ROM_iron_guard
+				OR = {
+					has_completed_focus = ROM_national_christian_party
+					has_completed_focus = ROM_iron_guard
+				}
+				NOT = { GER = { has_idea = endsieg_idea } }
 			}
 		}
 
@@ -2948,11 +3191,11 @@ focus_tree = {
 			}
 			if = {
 				limit = {
-					has_completed_focus = ROM_iron_guard
+					has_idea = ROM_king_carol_ii_hedonist
 				}
-				remove_ideas = ROM_iron_guard
+				remove_ideas = ROM_king_carol_ii_hedonist
 			}
-			
+			remove_ideas = ROM_iron_guard
 			hidden_effect = {
 				news_event = { id = news.322 days = 1 }
 				set_country_flag = can_change_sides_dem
@@ -3244,7 +3487,7 @@ focus_tree = {
 	
 	focus = {
 		id = ROM_white_squadron_focus
-		icon = GFX_focus_SOV_women_in_aviation
+		icon = GFX_goal_generic_build_airforce
 		x = 0
 		y = 1
 		prerequisite = { focus = ROM_expand_the_air_force }
@@ -3345,7 +3588,7 @@ focus_tree = {
 			}
 			add_doctrine_cost_reduction = {
 				name = ROM_air_defense
-				cost_reduction = 0.5
+				cost_reduction = 0.50
 				uses = 1
 				category = air_doctrine
 			}
@@ -3580,8 +3823,6 @@ focus_tree = {
 				days = 240
 				track = fighter_aircraft
 			}
-			
-
 		}
 	}
 
@@ -3820,14 +4061,12 @@ focus_tree = {
 				specialization = specialization_nuclear
 				value = 0.75
 			}
-
 			add_tech_bonus = {
 				name = ROM_nuclear_bomb_project
 				bonus = 1.0
 				uses = 1
 				category = nuclear
 			}
-
 		}
 	}
 

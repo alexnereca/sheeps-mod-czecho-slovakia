@@ -389,9 +389,9 @@ ideas = {
 			removal_cost = -1
 
 			modifier = {
-				production_factory_efficiency_gain_factor = 0.1
+				production_factory_efficiency_gain_factor = 0.25
 				production_factory_max_efficiency_factor = 0.15
-				consumer_goods_factor = -0.01
+				consumer_goods_factor = -0.03
 			}
 		}
 
@@ -413,7 +413,7 @@ ideas = {
 			modifier = {
 				training_time_factor = -0.15
 				conscription_factor = 0.2
-				winter_attrition_factor = -0.10
+				winter_attrition_factor = -0.20
 			}
 		}
 
@@ -433,9 +433,9 @@ ideas = {
 
 			modifier = {
 				training_time_factor = -0.15
-				conscription_factor = 0.2
-				winter_attrition_factor = -0.15
-				army_attack_factor = 0.1
+				conscription_factor = 0.25
+				winter_attrition_factor = -0.25
+				army_attack_factor = 0.15
 				breakthrough_factor = 0.15
 
 			}
@@ -464,7 +464,7 @@ ideas = {
 			removal_cost = -1 
 
 			modifier = {
-				special_forces_cap = 0.08
+				special_forces_cap = 0.15
 				special_forces_training_time_factor = -0.1
 				modifier_army_sub_unit_category_special_forces_max_org_factor = 0.1
 			} 
@@ -485,7 +485,7 @@ ideas = {
 			}
 		}
 
-		#MM: Never used. Not localized
+
 		NOR_mobile_government_ns = {
 			picture = SWE_per_albin_bus
 			allowed = {

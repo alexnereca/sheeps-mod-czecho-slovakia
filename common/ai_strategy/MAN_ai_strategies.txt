@@ -75,3 +75,21 @@ MAN_shoudlnt_be_protected_by_europeans = { # Don't be guaranteed by Axis too eas
 }
 
 
+MAN_eternal_japanese_slave = {
+	allowed = {
+		original_tag = MAN
+	}
+
+	enable = {
+		is_subject_of = JAP
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = build_building
+		id = infrastructure
+		target = 716 
+		value = 2000
+	}
+}
+

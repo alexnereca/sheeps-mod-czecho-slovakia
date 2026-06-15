@@ -70,7 +70,7 @@ country_event = {
 		}
 		
 		ai_chance = {
-			base = 20
+			base = 0
 			modifier = {
 				is_historical_focus_on = yes
 				factor = 0 #don't do this if we are historical!

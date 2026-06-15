@@ -1,6 +1,308 @@
-ITA_unit_production = {
 
-	allowed = {	original_tag = ITA }
+basic_production_AOI = {
+	allowed = {
+		original_tag = AOI
+	}
+	enable = {
+		num_of_military_factories < 20
+	}
+	abort = {
+		num_of_military_factories > 25
+	}
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = infantry
+		value = 1
+	}
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = support
+		value = -1
+	}
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = artillery
+		value = 1
+	}
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = anti_air
+		value = 1
+	}
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = anti_tank
+		value = -1
+	}
+}
+
+
+ITA_SOV_friendship = {
+	allowed = {
+		tag = ITA
+	}
+	enable = {
+		has_government = communism
+		NOT = { has_war_with = SOV }
+		SOV = { has_government = communism }
+		NOT = { SOV = { has_completed_focus = SOV_beaten_but_not_defeated } }
+		date > 1939.1.1
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = alliance
+		id = "SOV"
+		value = 200
+	}
+}
+
+
+ITA_ENG_friendship = {
+	allowed = {
+		tag = ITA
+	}
+	enable = {
+		has_government = democratic
+		NOT = { has_war_with = ENG }
+		ENG = { has_government = democratic }
+		NOT = { ENG = { has_completed_focus = ENG_a_change_in_course } }
+		date > 1939.1.1
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = alliance
+		id = "ENG"
+		value = 200
+	}
+}
+ITA_FRA_friendship = {
+	allowed = {
+		tag = ITA
+	}
+	enable = {
+		has_government = democratic
+		NOT = { has_war_with = FRA }
+		FRA = { has_government = democratic }
+		FRA = { has_completed_focus = FRA_review_foreign_policy }
+		date > 1939.1.1
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = alliance
+		id = "FRA"
+		value = 500 #prioritize France
+	}
+}
+ITA_GER_friendship = {
+	allowed = {
+		tag = ITA
+	}
+	enable = {
+		has_government = democratic
+		NOT = { has_war_with = GER }
+		GER = { has_government = democratic }
+		NOT = { ENG = { has_government = democratic } } 
+		NOT = { FRA = { has_government = democratic } }
+		date > 1939.1.1
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = alliance
+		id = "GER"
+		value = 500 #prioritize France
+	}
+}
+AOI_our_life_in_africa = {
+	reversed = yes
+	allowed = {
+		tag = AOI
+	}
+	enable = { 
+		AOI = { is_subject_of = ITA }
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "AOI"
+		value = 99999
+	}
+}
+LBA_our_life_in_africa = {
+	reversed = yes
+	allowed = {
+		tag = LBA
+	}
+	enable = {
+		LBA = { is_subject_of = ITA }
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "LBA"
+		value = 99999
+	}
+}
+
+AOI_our_life_in_africa2 = {
+	allowed = {
+		tag = AOI
+	}
+	enable = {
+		is_subject_of = ITA
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = front_unit_request
+		state_trigger = {
+			OR = {
+				is_controlled_by = AOI
+				is_owned_by = AOI
+			}
+		}
+		value = 25
+	}
+
+	ai_strategy = {
+		type = front_unit_request
+		state_trigger = {
+			NOT = { is_on_continent = africa }
+		}
+		value = -25
+	}
+
+}
+LBA_our_life_in_africa2 = {
+	allowed = {
+		tag = LBA
+	}
+	enable = {
+		is_subject_of = ITA
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = front_unit_request
+		state_trigger = {
+			OR = {
+				is_controlled_by = LBA
+				is_owned_by = LBA
+			}
+		}
+		value = 25
+	}
+
+	ai_strategy = {
+		type = front_unit_request
+		state_trigger = {
+			NOT = { is_on_continent = africa }
+		}
+		value = -25
+	}
+
+}
+AOI_our_life_in_africa3 = {
+	allowed = {
+		OR = {
+			tag = AOI
+			tag = LBA
+		}
+	}
+	enable = {
+		is_subject_of = ITA
+		check_variable = { num_divisions < 20 }
+	}
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+        	type = force_build_armies
+        	value = 1000
+    	}
+
+	ai_strategy = {
+		type = build_army
+		id = infantry
+		value = 550
+	}
+
+}
+
+ITA_garrison_is_necessary = {
+	allowed = {
+		original_tag = ITA
+	}
+	enable = {
+		has_war_with = ENG
+		has_global_flag = allied_victory_in_africa
+		surrender_progress < 0.2 #they have already landed otherwise
+		OR = {
+			ENG = { is_ai = no }
+			USA = { is_ai = no }
+			PAN = { is_ai = no }
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = garrison
+		value = 60
+	}
+}
+
+ITA_garrison_is_necessary_vs_ai = {
+	allowed = {
+		original_tag = ITA
+	}
+	enable = {
+		has_war_with = ENG
+		has_global_flag = allied_victory_in_africa
+		surrender_progress < 0.2 #they have already landed otherwise
+		AND = {
+			ENG = { is_ai = yes }
+			USA = { is_ai = yes }
+			PAN = { is_ai = yes }
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = garrison
+		value = 20
+	}
+}
+GER_ITA_garrison_is_in_trouble = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		is_in_faction_with = ITA
+		has_war_with = ENG
+		ITA = { surrender_progress > 0.1 }
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = front_unit_request
+		area = italy
+		value = 25
+	}
+
+	ai_strategy = {
+		type = front_unit_request
+		tag = SOV
+		value = -5
+	}
+}
+
+ITA_unit_production = {
+	
+	allowed = { original_tag = ITA }
 	enable = {
 		always = yes
 	}
@@ -23,7 +325,7 @@ ITA_unit_production = {
 	ai_strategy = {
 		type = role_ratio
 		id = mountaineers
-		value = 2
+		value = 25
 	}
 
 	ai_strategy = {
@@ -41,20 +343,20 @@ ITA_unit_production = {
 	ai_strategy = {
 		type = role_ratio
 		id = armor
-		value = 8
+		value = 0
 	}
 
 	ai_strategy = {
 		type = role_ratio
 		id = infantry
-		value = 80
+		value = 65
 	}
 
 	#Air unit factors
 	ai_strategy = {
 		type = unit_ratio
 		id = fighter
-		value = 80
+		value = 40
 	}
 
 	ai_strategy = {
@@ -66,7 +368,7 @@ ITA_unit_production = {
 	ai_strategy = {
 		type = unit_ratio
 		id = tactical_bomber
-		value = 10
+		value = 5
 	}
 
 	ai_strategy = {
@@ -78,7 +380,7 @@ ITA_unit_production = {
 	ai_strategy = {
 		type = unit_ratio
 		id = naval_bomber
-		value = 5
+		value = 50
 	}
 
 	ai_strategy = {
@@ -121,34 +423,37 @@ ITA_unit_production = {
 	ai_strategy = {
 		type = equipment_production_factor
 		id = fighter
-		value = 35
+		value = 30
+	}
+
+	ai_strategy = {
+		type = equipment_production_factor
+		id = naval_bomber
+		value = 15
 	}
 
 	ai_strategy = {
 		type = equipment_production_factor
 		id = infantry
-		value = 40
+		value = 35
 	}
 
 	ai_strategy = {
 		type = equipment_production_factor
 		id = artillery
-		value = 25
+		value = 20
 	}
 }
 
 ITA_trade_with_sweden = {
-	
 	allowed = {
 		original_tag = ITA
 	}
-	
 	enable = {
 		# if we're not communist and they're not communist
 		NOT = { has_government = communism }
 		NOT = { SWE = { has_government = communism } }
 	}
-	
 	abort_when_not_enabled = yes
 
 	ai_strategy = {
@@ -156,7 +461,6 @@ ITA_trade_with_sweden = {
 		id = SWE
 		value = 60
 	}
-	
 }
 
 ITA_trade_with_germany = {
@@ -176,7 +480,50 @@ ITA_trade_with_germany = {
 	}
 }
 
-ITA_stresa_front = {
+latin_ita = {
+	reversed = yes
+	allowed = {
+		original_tag = ITA
+	}
+	enable = {
+		is_historical_focus_on = no
+		NOT = { tag = FRA }
+		NOT = { FRA = { has_government = communism } }
+		date < 1938.1.1
+		ITA = { is_in_faction = no }
+		ITA = { has_government = fascism }
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = alliance
+		id = "ITA"
+		value = -1000
+	}
+}
+
+latin_ita_fra = {
+	reversed = yes
+	allowed = {
+		original_tag = ITA
+	}
+	enable = {
+		is_faction_leader = yes
+		tag = FRA
+		has_completed_focus = FRA_latin_entente
+		ITA = { has_government = fascism }
+		ITA = { is_in_faction = no }
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = alliance
+		id = "ITA"
+		value = 1000
+	}
+}
+
+stresa_front_ita = {
 	allowed = {
 		original_tag = ITA
 	}
@@ -187,17 +534,17 @@ ITA_stresa_front = {
 
 	ai_strategy = {
 		type = alliance
-		id = ENG
+		id = "ENG"
 		value = 400
 	}
 	ai_strategy = {
 		type = alliance
-		id = FRA
+		id = "FRA"
 		value = 400
 	}
 }
 
-ITA_stresa_front_ENG_FRA = {
+stresa_front_eng_fra = {
 	allowed = {
 		OR = {
 			original_tag = FRA
@@ -215,12 +562,12 @@ ITA_stresa_front_ENG_FRA = {
 
 	ai_strategy = {
 		type = alliance
-		id = ITA
+		id = "ITA"
 		value = 400
 	}
 }
 
-ITA_albania_war_goal = {
+albania_war_goal = {
 	allowed = {
 		original_tag = ITA
 	}
@@ -236,12 +583,12 @@ ITA_albania_war_goal = {
 
 	ai_strategy = {
 		type = antagonize
-		id = ALB
+		id = "ALB"
 		value = 200
 	}
 }
 
-ITA_greece_war_goal = {
+greece_war_goal = {
 	allowed = {
 		original_tag = ITA
 	}
@@ -257,31 +604,12 @@ ITA_greece_war_goal = {
 
 	ai_strategy = {
 		type = antagonize
-		id = GRE
+		id = "GRE"
 		value = 200
 	}
 }
 
-ITA_dont_overcommit_to_greece = {
-	allowed = {
-		original_tag = ITA
-	}
-	enable = {
-		has_war_with = GRE
-		has_war_with = ENG
-	}
-	abort_when_not_enabled = yes
-
-	# Don't drain North Africa and other fronts to fight Greece
-	ai_strategy = {
-		type = front_unit_request
-		tag = GRE
-		value = -40
-	}
-
-}
-
-ITA_shore_up_against_france = {
+ita_shore_up_against_france = {
 	allowed = {
 		original_tag = ITA
 	}
@@ -296,15 +624,46 @@ ITA_shore_up_against_france = {
 	ai_strategy = {
 		type = front_unit_request
 
-		# savoy piedmont
-		state = 158
-		state = 735
+		state_trigger = {
+			is_core_of = FRA
+			any_neighbor_state = {
+				is_core_of = SWI
+			}
+		}
+
+		value = 25
+	}
+
+}
+
+fra_shore_up_against_italy = {
+	allowed = {
+		original_tag = FRA
+	}
+	enable = {
+		has_war_with = ITA
+		ITA = {
+			has_capitulated = no
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = front_unit_request
+
+		state_trigger = {
+			is_core_of = ITA
+			any_neighbor_state = {
+				is_core_of = SWI
+			}
+		}
 
 		value = 10
 	}
+
 }
 
-ITA_slow_going_against_france = {
+ita_slow_going_against_france = {
 	allowed = { original_tag = ITA }
 	enable = {
 		is_historical_focus_on = yes
@@ -314,10 +673,10 @@ ITA_slow_going_against_france = {
 			has_capitulated = no
 			surrender_progress < 0.45
 		}
-		GER = { surrender_progress < 0.1 }
+		GER = { surrender_progress < 0.1 } 
 	}
 	abort_when_not_enabled = yes
-
+	
 	ai_strategy = {
 		type = front_control
 
@@ -331,7 +690,7 @@ ITA_slow_going_against_france = {
 		execute_order = no
 		manual_attack = no
 	}
-
+	
 	ai_strategy = {
 		type = front_control
 
@@ -343,9 +702,10 @@ ITA_slow_going_against_france = {
 		ordertype = invasion
 		execute_order = no
 	}
+	
 }
 
-ITA_anti_uk_war_goals = {
+anti_uk_war_goals = {
 	allowed = {
 		original_tag = ITA
 	}
@@ -361,12 +721,12 @@ ITA_anti_uk_war_goals = {
 
 	ai_strategy = {
 		type = antagonize
-		id = ENG
+		id = "ENG"
 		value = 200
 	}
 }
 
-ITA_yugoslavia_war_goal = { 
+yugoslavia_war_goal = { #TODO_Manu: Check this with new focus
 	allowed = {
 		original_tag = ITA
 	}
@@ -383,36 +743,97 @@ ITA_yugoslavia_war_goal = {
 
 	ai_strategy = {
 		type = antagonize
-		id = YUG
+		id = "YUG"
 		value = 200
 	}
 }
 
-ITA_germany_ally = {
+should_like_germany_a_little = {
 	allowed = {
 		original_tag = ITA
 	}
 	enable = {
-		has_completed_focus = ITA_pact_of_steel
+		OR = {
+			is_historical_focus_on = yes
+			date > 1939.1.1
+			GER = { has_war = yes }
+			threat > 0.50
+		}
 		country_exists = GER
+		OR = {
+			GER = { is_ai = yes }	
+			has_global_flag = mp_selected
+		}
+		OR = {
+			has_war = no
+			is_at_peace_exiled_countries_excluded = yes
+		}
+		NOT = { is_in_faction_with = GER }
 	}
 	abort = {
-		NOT = { country_exists = GER }
-	}
-
-	ai_strategy = {
-		type = befriend
-		id = GER
-		value = 100
+		OR = {
+			NOT = { has_government = fascism }
+			GER = { NOT = { has_government = fascism } }
+			is_in_faction_with = GER
+			NOT = { country_exists = GER }
+		}
 	}
 	ai_strategy = {
 		type = alliance
-		id = GER
-		value = 100
+		id = "GER"
+		value = 1000
 	}
 }
 
-ITA_romania_ally = {
+be_wary_of_germany_struggle = {
+	allowed = {
+		original_tag = ITA
+	}
+	enable = {
+		OR = {
+			has_global_flag = vanilla_history
+			GER = { surrender_progress > 0 }
+		}
+		NOT = { is_in_faction_with = GER }
+		country_exists = GER
+		is_historical_focus_on = yes
+	}
+	abort = {
+		OR = {
+			AND = {
+				OR = {
+					has_completed_focus = ITA_pact_of_steel
+					GER = { has_completed_focus = GER_form_rome_berlin_axis}
+				}
+				OR = {
+					FRA = { surrender_progress > 0.6 }
+					AND = {
+						has_global_flag = {
+							flag = danzig_or_war_flag
+							days > 365 
+						}
+						NOT = { GER = { surrender_progress > 0.05 } }
+					}
+				}
+			}
+			is_in_faction_with = GER
+			NOT = { country_exists = GER }
+			NOT = { GER = { has_government = fascism } }
+		}
+	}
+	ai_strategy = {
+		type = befriend
+		id = "GER"
+		value = 1000
+	}
+	ai_strategy = {
+		type = alliance
+		id = "GER"
+		value = -9999
+	}
+}
+
+romania_ally = {
 	allowed = {
 		original_tag = ITA
 	}
@@ -426,17 +847,17 @@ ITA_romania_ally = {
 
 	ai_strategy = {
 		type = befriend
-		id = ROM
+		id = "ROM"
 		value = 200
 	}
 	ai_strategy = {
 		type = alliance
-		id = ROM
+		id = "ROM"
 		value = 200
 	}
 }
 
-ITA_bulgaria_ally = {
+bulgaria_ally = {
 	allowed = {
 		original_tag = ITA
 	}
@@ -450,17 +871,17 @@ ITA_bulgaria_ally = {
 
 	ai_strategy = {
 		type = befriend
-		id = BUL
+		id = "BUL"
 		value = 200
 	}
 	ai_strategy = {
 		type = alliance
-		id = BUL
+		id = "BUL"
 		value = 200
 	}
 }
 
-ITA_yugoslavia_ally = { 
+yugoslavia_ally = { #TODO_Manu: Check this with new focus
 	allowed = {
 		original_tag = ITA
 	}
@@ -474,17 +895,17 @@ ITA_yugoslavia_ally = {
 
 	ai_strategy = {
 		type = befriend
-		id = YUG
+		id = "YUG"
 		value = 100
 	}
 	ai_strategy = {
 		type = alliance
-		id = YUG
+		id = "YUG"
 		value = 100
 	}
 }
 
-ITA_greece_ally = {
+greece_ally = {
 	allowed = {
 		original_tag = ITA
 	}
@@ -498,17 +919,17 @@ ITA_greece_ally = {
 
 	ai_strategy = {
 		type = befriend
-		id = GRE
+		id = "GRE"
 		value = 100
 	}
 	ai_strategy = {
 		type = alliance
-		id = GRE
+		id = "GRE"
 		value = 100
 	}
 }
 
-ITA_turkey_ally = {
+turkey_ally = {
 	allowed = {
 		original_tag = ITA
 	}
@@ -522,17 +943,17 @@ ITA_turkey_ally = {
 
 	ai_strategy = {
 		type = befriend
-		id = TUR
+		id = "TUR"
 		value = 100
 	}
 	ai_strategy = {
 		type = alliance
-		id = TUR
+		id = "TUR"
 		value = 100
 	}
 }
 
-ITA_portugal_ally = {
+portugal_ally = {
 	allowed = {
 		original_tag = ITA
 	}
@@ -546,15 +967,40 @@ ITA_portugal_ally = {
 
 	ai_strategy = {
 		type = befriend
-		id = POR
+		id = "POR"
 		value = 100
 	}
 	ai_strategy = {
 		type = alliance
-		id = POR
+		id = "POR"
 		value = 100
 	}
 }
+
+#ITA_keep_your_nose_clean_for_a_bit
+#{
+#	enable = {
+#		tag = ITA
+#		date < 1940.5.1
+#	}
+#
+#	ai_strategy = {
+ #       type = dont_join_wars_with
+  #      id = GER
+  #      value = 1000000
+  #  }
+ #   ai_strategy = {
+#        type = dont_join_wars_with
+#        id = SLO
+#        value = 1000000
+#    }
+#    ai_strategy = {
+#    	type = diplo_action_desire
+#    	target = join_allies
+#    	id = SLO
+#    	value = -1000
+#    }
+#}
 
 ITA_template_design_1 = {
 	allowed = {
@@ -608,13 +1054,8 @@ ITA_template_design_1 = {
 		id = garrison
 		value = 5
 	}
-
-	ai_strategy = {
-		type = role_ratio
-		id  = militias
-		value = 5
-	}
 }
+
 
 ITA_template_design_2 = {
 	allowed = {
@@ -672,29 +1113,26 @@ ITA_template_design_2 = {
 		id = garrison
 		value = 10
 	}
-
-	ai_strategy = {
-		type = role_ratio
-		id = militias
-		value = 5
-	}
 }
 
+
 # extra scaryness around italy, this together with sufficient enemy superiority will make ai avoid transports around its coast
-ITA_be_careful_transporting_through_the_med = {
+italy_be_careful_transporting_through_the_med = {
 	allowed = {
 		original_tag = ITA
 	}
 	enable = {
 		date < 1942.1.1
 		has_war = yes
-		enemies_naval_strength_ratio > 1
+		enemies_naval_strength_ratio > 2
+		GER = { is_ai = yes }
 	}
 	abort = {
 		OR = {
 			date > 1942.1.1
 			has_war = no
-			enemies_naval_strength_ratio < 1
+			enemies_naval_strength_ratio < 2
+			GER = { is_ai = no }
 		}
 	}
 
@@ -729,37 +1167,106 @@ ITA_be_careful_transporting_through_the_med = {
 	}
 }
 
-ITA_dont_take_claims_on_yug = {
+kill_yugoslavia_on_our_own = {
+	reversed = yes
 	allowed = {
 		original_tag = ITA
 	}
 	enable = {
 		country_exists = YUG
 		is_historical_focus_on = yes
-		date < 1941.4.30
-
-	}
-
-	abort = {
-		OR = {
-			NOT = { country_exists = YUG }
-			date > 1941.5.1 #If Germany won't invade Yugoslavia, then we will!
+		ITA = {
+			OR = {
+				has_wargoal_against = YUG
+				has_war_with = YUG
+			}
+			is_in_faction = yes
+			NOT = {
+				any_country = {
+					OR = {
+						has_guaranteed = YUG
+						has_war_with = ITA
+					}
+					is_major = yes
+					is_neighbor_of = ITA
+					NOT = { tag = ENG }
+					NOT = { is_in_faction_with = ITA }
+				}
+			}
+			NOT = {
+				any_country = {
+					is_major = yes
+					any_enemy_country = {
+						is_in_faction_with = ITA
+					}
+				}
+			}
 		}
+		NOT = { is_subject_of = ITA }
 	}
 
-	ai_strategy = {
-		type = declare_war
-		id = YUG
-		value = -200
-	}
+	abort_when_not_enabled = yes
 
 	ai_strategy = {
-		type = ignore_claim
-		id = YUG
-		value = 1
+		type = dont_defend_ally_borders
+		target = all_mainland_europe
+		value = 500
 	}
 }
 
+kill_yugoslavia_on_our_own_2 = {
+	reversed = yes
+	allowed = {
+		original_tag = ITA
+	}
+	enable = {
+		country_exists = YUG
+		is_historical_focus_on = yes
+		is_in_faction_with = ITA
+		ITA = {
+			OR = {
+				has_wargoal_against = YUG
+				has_war_with = YUG
+			}
+		}
+		NOT = {
+			any_country = {
+				OR = {
+					has_guaranteed = YUG
+					has_war_with = ITA
+				}
+				is_major = yes
+				is_neighbor_of = ITA
+				NOT = { tag = ENG }
+				NOT = { is_in_faction_with = ITA }
+			}
+		}
+		NOT = {
+			any_country = {
+				is_major = yes
+				any_enemy_country = {
+					is_in_faction_with = ITA
+				}
+			}
+		}
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = diplo_action_acceptance
+		id = ITA
+		target = join_allies
+		value = -9999
+	}
+
+	ai_strategy = {
+		type = diplo_action_desire
+		id = ITA
+		target = call_allies
+		value = -9999
+	}
+}
 ITA_naval_role_ratios_historical = {
 	allowed = {
 		has_dlc = "Man the Guns"
@@ -773,19 +1280,13 @@ ITA_naval_role_ratios_historical = {
 	ai_strategy = {
 		type = role_ratio
 		id = naval_capital_bb
-		value = 20
+		value = 20   
 	}
 
 	ai_strategy = {
 		type = unit_ratio
 		id = capital_ship
 		value = 10
-	}
-	
-	ai_strategy = {
-		type = unit_ratio
-		id = screen_ship
-		value = 50
 	}
 
 	ai_strategy = {
@@ -803,7 +1304,7 @@ ITA_naval_role_ratios_historical = {
 	ai_strategy = {
 		type = role_ratio
 		id = naval_screen
-		value = 70
+		value = 50
 	}
 
 	ai_strategy = {
@@ -821,7 +1322,7 @@ ITA_naval_role_ratios_historical = {
 	ai_strategy = {
 		type = role_ratio
 		id = naval_mine_sweeper
-		value = 5
+		value = 5 
 	}
 
 	ai_strategy = {
@@ -831,56 +1332,7 @@ ITA_naval_role_ratios_historical = {
 	}
 }
 
-ITA_share_borders_with_GER_against_SOV = {
-	allowed = {
-		original_tag = ITA
-	}
-	enable = {
-		is_in_faction_with = GER
-		GER = {
-			going_war_with_SOV = yes
-		}
-
-		GER_should_split_SOV_front_with_ITA = yes
-	}
-	abort = {
-		not = {
-			is_in_faction_with = GER
-			GER = {
-				going_war_with_SOV = yes
-			}
-			GER_should_continue_split_SOV_front_with_ITA = yes
-		}
-	}
-
-	ai_strategy = {
-		type = force_defend_ally_borders
-		id = CRO
-		value = 100
-	}
-	ai_strategy = {
-		type = force_defend_ally_borders
-		id = ROM
-		value = 100
-	}
-	ai_strategy = {
-		type = force_defend_ally_borders
-		id = HUN
-		value = 100
-	}
-	ai_strategy = {
-		type = force_defend_ally_borders
-		id = SLO
-		value = 100
-	}
-	ai_strategy = {
-		type = dont_defend_ally_borders
-		id = GER
-		value = 100
-	}
-}
-
-ITA_spain_scw_support_la_resistance = {
+spain_scw_support_ITA_resistance = {
 	allowed = {
 		original_tag = ITA
 		has_dlc = "La Resistance"
@@ -898,12 +1350,12 @@ ITA_spain_scw_support_la_resistance = {
 
 	ai_strategy = {
 		type = support
-		id = SPA
+		id = "SPA"
 		value = 100
 	}
 	ai_strategy = {
 		type = send_volunteers_desire
-		id = SPA
+		id = "SPA"
 		value = 100
 	}
 }
@@ -942,70 +1394,27 @@ ITA_please_help_me_buget_this_my_country_is_dieing = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = artillery
-		value = 2
-	}
-	ai_strategy = {
-		type = equipment_production_min_factories
-		id = armor
 		value = 1
 	}
 }
 
-# Hold africa until we have enemies in our core territory!
 ITA_hold_africa = {
 	allowed = {
 		original_tag = ITA
 	}
 	enable = {
-		date > 1937.6.1
+		date < 1941.1.1
 	}
 	abort = {
-		OR = {
-			any_owned_state = { is_core_of = ITA is_on_continent = europe NOT = { is_controlled_by = ITA } }
-			NOT = { has_war_with = ENG }
-			date > 1942.9.1
-		}
-	}
-	
-	#### North Africa
-	ai_strategy = {
-		type = area_priority
-		id = central_north_africa
-		value = 100
-	}
-	
-	## Tobruk area
-	ai_strategy = {
-		type = put_unit_buffers
-		ratio = 0.025
-
-		states = {
-			451
-			663
-			450
-		}
-		subtract_invasions_from_need = no
-		subtract_fronts_from_need = no
-	}
-
-	## Tripoli area - defend against naval invasions
-	ai_strategy = {
-		type = put_unit_buffers
-		ratio = 0.035
-
-		states = {
-			448 # Tripoli
-			458 # Tunisia
-		}
-		subtract_invasions_from_need = no
-		subtract_fronts_from_need = no
+		any_owned_state = { is_core_of = ITA NOT = { is_controlled_by = ITA } }
+		date > 1941.1.1
 	}
 
 	# Tripoli
 	ai_strategy = {
 		type = theatre_distribution_demand_increase
 		id = 448
-		value = 4
+		value = 2
 	}
 
 	# Benghasi
@@ -1023,143 +1432,6 @@ ITA_hold_africa = {
 	}
 }
 
-ITA_hold_in_north_africa_early = {
-	allowed = { original_tag = ITA }
-	enable = {
-		is_historical_focus_on = yes
-		has_war_with = ENG
-		date < 1940.8.26
-	}
-	abort_when_not_enabled = yes
-
-	# Don't attack in North Africa yet, hold defensive positions
-	ai_strategy = {
-		type = front_control
-		tag = ENG
-		strategic_region = 225 # Tripoli
-		strategic_region = 126 # East Maghreb
-		ratio = 0.5
-		execute_order = no
-		manual_attack = no
-	}
-}
-
-ITA_dont_invade_north_africa_early = {
-	allowed = { original_tag = ITA }
-	enable = {
-		is_historical_focus_on = yes
-		has_war_with = FRA
-		date < 1940.6.15
-	}
-	abort_when_not_enabled = yes
-
-	# Don't push into East Maghreb by land
-	ai_strategy = {
-		type = front_control
-		tag = FRA
-		strategic_region = 126 # East Maghreb
-		execute_order = no
-		manual_attack = no
-	}
-
-	# Don't naval invade France either
-	ai_strategy = {
-		type = invade
-		id = FRA
-		value = -5000
-	}
-}
-
-ITA_push_towards_alexandria = {
-	allowed = {
-		original_tag = ITA
-	}
-	enable = {
-		is_historical_focus_on = yes
-		has_war_with = ENG
-		date > 1940.8.26
-		# Only push once we have secured our position in Libya
-		any_owned_state = {
-			region = 126 # Libyan coast
-			is_controlled_by = ITA
-		}
-		date < 1942.9.1
-	}
-	abort = {
-		OR = {
-			any_owned_state = { is_core_of = ITA is_on_continent = europe NOT = { is_controlled_by = ITA } }
-			NOT = { has_war_with = ENG }
-			date > 1942.9.1
-		}
-	}
-
-	# Push along the coast toward Alexandria
-	ai_strategy = {
-		type = front_control
-		state = 452 # Matrouh
-		ratio = 0.25
-		priority = 80
-		ordertype = front
-		execution_type = rush_weak
-		execute_order = yes
-	}
-
-	ai_strategy = {
-		type = front_control
-		state = 447 # Alexandria
-		ratio = 0.25
-		priority = 60
-		ordertype = front
-		execution_type = rush_weak
-		execute_order = yes
-	}
-
-	ai_strategy = {
-		type = front_unit_request
-		tag = ENG
-		value = 15
-	}
-
-	ai_strategy = {
-		type = front_armor_score
-		id = ENG
-		value = 200
-	}
-}
-
-ITA_abbandon_eth = {
-	allowed = {
-		original_tag = ITA
-	}
-	enable = {
-		date > 1938.6.1
-	}
-	abort_when_not_enabled = yes
-		
-	ai_strategy = {
-		type = front_unit_request
-		value = -35
-
-		state_trigger = {
-			controller = {
-				OR = {
-					tag = AOI 
-					tag = FRA
-					tag = ENG
-					has_war_with = AOI
-				}
-			}
-			OR = {
-				region = 17    
-				region = 274    
-				region = 273    
-				region = 216    
-				region = 217    
-			}
-		}
-	}
-}
-
 # lets not invade until we have europe
 ITA_dont_invade_NOR_until_FRA_falls = {
 	allowed = {
@@ -1169,31 +1441,20 @@ ITA_dont_invade_NOR_until_FRA_falls = {
 
 	enable = {
 		has_war_together_with = GER
-		date < 1942.1.1  # Italy should probably stay out of Norway for a while even if France has capitulated
-		#FRA = {
-		#	has_capitulated = no
-		#}
+		date < 1941.1.1
+		FRA = {
+			has_capitulated = no
+		}
 	}
 
 	abort_when_not_enabled = yes
 
 	ai_strategy = {
 		type = invasion_unit_request
-		tag = NOR
-		value = -100
-	}
-	
-	ai_strategy = {
-		type = invade
-		id = NOR
-		value = -5000
-	}
 
-	ai_strategy = {
-		type = front_unit_request
-		value = -200
-		
 		tag = NOR
+
+		value = -100
 	}
 }
 
@@ -1215,7 +1476,7 @@ ITA_let_germany_handle_polish_front_alone = {
 				}
 			}
 		}
-		date < 1940.8.26
+		date < 1940.8.1
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
@@ -1245,9 +1506,13 @@ ITA_commit_to_ethiopian_theatre = {
 		OR = {
 			NOT = { has_global_flag = second_italo_ethiopian_war_flag }
 			NOT = { country_exists = ETH }
-			date > 1939.6.1
+			date > 1937.6.1
 			any_enemy_country = {
 				is_major = yes
+				capital_scope = { is_on_continent = europe }
+			}
+			any_other_country = {
+				ITA = { has_wargoal_against = PREV }
 				capital_scope = { is_on_continent = europe }
 			}
 		}
@@ -1271,20 +1536,13 @@ ITA_commit_to_ethiopian_theatre = {
 	ai_strategy = {
 		type = area_priority
 		id = horn_of_africa
-		value = 100
+		value = 1000
 	}
-	
-	ai_strategy = {
-		type = front_control
-		ordertype = front
-		ratio = 0.5
-		priority = 600
-		execution_type = rush_weak
-		execute_order = yes
 
-		tag = ETH
-	}
-	
+
+
+
+
 }
 
 ITA_prepare_ethiopian_theatre = {
@@ -1349,6 +1607,7 @@ ITA_prepare_losing_ethiopian_theatre = {
 	}
 }
 
+
 ITA_attack_north = {
 	allowed = {
 		original_tag = ITA
@@ -1373,7 +1632,6 @@ ITA_attack_north = {
 		execute_order = yes
 	}
 }
-
 ITA_attack_south = {
 	allowed = {
 		original_tag = ITA
@@ -1423,7 +1681,6 @@ ITA_attack_addis = {
 		execute_order = yes
 	}
 }
-
 ITA_attack_harar = {
 	allowed = {
 		original_tag = ITA
@@ -1461,9 +1718,10 @@ ITA_prepare_to_invade_afar = {
 	abort_when_not_enabled = yes
 	ai_strategy = {
 		type = prepare_for_war
-		id = AFA
+		id = "AFA"
 		value = 200
 	}
+
 }
 
 ITA_communists_downplay_ethiopian_theatre = {
@@ -1472,7 +1730,7 @@ ITA_communists_downplay_ethiopian_theatre = {
 	}
 	enable = {
 		has_war_with = ETH
-		OR = {
+		OR = {	
 			ITA_is_communist_ai = yes
 			ITA_is_socialist_ai = yes
 		}
@@ -1501,6 +1759,7 @@ ITA_communists_downplay_ethiopian_theatre = {
 	}
 }
 
+
 ITA_prepare_yugoslavian_invasion = {
 	allowed = {
 		original_tag = ITA
@@ -1526,9 +1785,11 @@ ITA_prepare_yugoslavian_invasion = {
 		any_other_country = {
 			is_major = yes
 			OR = {
-				is_justifying_wargoal_against = ROOT
-				has_wargoal_against = ROOT
-				has_war_with = ROOT
+				is_justifying_wargoal_against = ITA
+				has_wargoal_against = ITA
+				has_war_with = ITA
+				ITA = { has_wargoal_against = PREV }
+				ITA = { is_justifying_wargoal_against = PREV }
 			}
 		}
 	}
@@ -1545,18 +1806,6 @@ ITA_prepare_yugoslavian_invasion = {
 	    type = front_unit_request
 	    tag = YUG
 	    value = 300
-	}
-
-	ai_strategy = { #Pull troops from the FRA border in order to be able to invade YUG, mainly from Africa
-	    type = front_unit_request
-	    tag = FRA
-	    value = -70
-	}
-
-	ai_strategy = { #Pull troops from the ENG border in order to be able to invade YUG, mainly from africa
-	    type = front_unit_request
-	    tag = ENG
-	    value = -40
 	}
 }
 
@@ -1576,47 +1825,21 @@ ITA_balbo_ignore_germany = {
 	}
 	ai_strategy = {
 		type = ignore
-		id = GER
+		id = "GER"
 		value = 200
 	}
 }
 
-ITA_invasion_buffer_early = {
+ITA_invasion_buffer = {
 	allowed = {
 		original_tag = ITA
 	}
 	enable = {
 		is_historical_focus_on = yes
-		date > 1941.3.1
-		date < 1942.10.1
-	}
-	abort_when_not_enabled = yes
-
-	ai_strategy = {
-		type = put_unit_buffers
-		states = {
-			156
-			117
-			849
-			157
-			2
-			162
-			161
-			115 #We protect sicily!
+		OR = {
+			has_global_flag = allied_victory_in_africa
+			date > 1942.1.1
 		}
-		ratio = 0.18
-		area = italy
-		subtract_invasions_from_need = no
-		subtract_fronts_from_need = yes
-	}
-}
-ITA_invasion_buffer_late = {
-	allowed = {
-		original_tag = ITA
-	}
-	enable = {
-		is_historical_focus_on = yes
-		date > 1942.10.1
 	}
 	abort_when_not_enabled = yes
 
@@ -1639,6 +1862,35 @@ ITA_invasion_buffer_late = {
 	}
 }
 
+ITA_invasion_buffer_africa = {
+	allowed = {
+		original_tag = ITA
+	}
+	enable = {
+		is_historical_focus_on = yes
+		any_state = {
+			is_core_of = LBA
+			controller = { is_in_faction_with = ITA }
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = put_unit_buffers
+		states = {
+			451
+			448
+			661
+			663
+			114
+		}
+		ratio = 0.15
+		area = italy
+		subtract_invasions_from_need = no
+		subtract_fronts_from_need = yes
+	}
+}
+
 ITA_prepare_british_invasion = {
 	allowed = {
 		original_tag = ITA
@@ -1652,37 +1904,44 @@ ITA_prepare_british_invasion = {
 	}
 
 	abort = {
-		any_other_country = {
-			original_tag = ENG
-			has_government = fascism
+		OR = {
+			any_other_country = {
+				original_tag = ENG
+				has_government = fascism
+			} 
+			has_war_with = ENG
 		}
 	}
 
 	ai_strategy = {
 		type = prepare_for_war
-		id = ENG
+		id = "ENG"
 		value = 200
 	}
 }
 
-ITA_dont_die_in_mountains = {
+dont_die_in_mountains = {
 	allowed = {
 		original_tag = ITA
 	}
 	enable = {
+		date < 1942.5.1
 		country_exists = SWI
-		NOT = { has_war_with = SWI }
+		is_historical_focus_on = no
 	}
-	abort_when_not_enabled = yes
+	abort = {
+		NOT = { country_exists = FRA }
+		date > 1942.5.1
+	}
 
 	ai_strategy = {
 		type = ignore
-		id = SWI
+		id = "SWI"
 		value = 1000
 	}
 }
 
-ITA_ignore_vichy_we_will_annex_them_later = {
+GER_ignore_vichy_we_will_annex_them_later = {
 	allowed = {
 		original_tag = ITA
 	}
@@ -1693,16 +1952,16 @@ ITA_ignore_vichy_we_will_annex_them_later = {
 
 	ai_strategy = {
 		type = ignore
-		id = VIC
+		id = "VIC"
 		value = 100
 	}
 }
 
 ITA_other_priorities = {
 	allowed = { original_tag = ITA }
-	enable = {
+	enable = { 
 		is_historical_focus_on = yes
-		date > 1942.6.1
+		date > 1941.4.6
 		date < 1943.6.6
 		ENG = {
 			is_ai = yes
@@ -1716,48 +1975,19 @@ ITA_other_priorities = {
 		id = north_africa
 		value = -30
 	}
-
+	
 	ai_strategy = {
 		type = front_unit_request
 		area = north_africa
-		value = -50
+		value = -60 
 	}
+	
 }
 
-ITA_ignore_sub_saharan_africa = {
-	allowed = { original_tag = ITA }
-	enable = {
-		is_historical_focus_on = yes
-		has_war_with = ENG
-	}
-	abort_when_not_enabled = yes
-
-	ai_strategy = {
-		type = area_priority
-		id = sub_saharan_africa
-		value = -200
-	}
-	ai_strategy = {
-		type = front_unit_request
-		area = sub_saharan_africa
-		value = -100
-	}
-	ai_strategy = {
-		type = area_priority
-		id = belgian_congo
-		value = -200
-	}
-	ai_strategy = {
-		type = front_unit_request
-		area = belgian_congo
-		value = -100
-	}
-}
-
-# Don't consider joining Italy if they are only at war with GiEs
+# Don't consider joining Italy if they are only at war with GiEs 
 ITA_AXIS_dont_join_against_eth = {
 	allowed = {
-		always = yes
+		always = yes 
 	}
 	enable = {
 		is_in_faction_with = ITA
@@ -1767,6 +1997,7 @@ ITA_AXIS_dont_join_against_eth = {
 				is_government_in_exile = yes
 			}
 		}
+		date < 1941.1.1
 	}
 	abort_when_not_enabled = yes
 
@@ -1783,13 +2014,13 @@ ITA_AXIS_dont_join_against_eth = {
 		value = -1000
 		target = call_allies
 	}
-
+ 
 }
 
 # reverse  AI strat to make italy not call allies while fighting only Ethiopia in exile
 ITA_dont_call_allies = {
 	allowed = {
-		always = yes
+		always = yes 
 	}
 	enable = {
 		is_in_faction_with = ITA
@@ -1798,16 +2029,18 @@ ITA_dont_call_allies = {
 				is_government_in_exile = yes
 			}
 		}
+		date < 1941.1.1
 	}
 	abort_when_not_enabled = yes
-	reversed = yes
+	reversed = yes 
 
 	ai_strategy = {
-		type = diplo_action_desire
+		type = diplo_action_desire 
 		id = ITA
 		value = -1000
 		target = call_allies
 	}
+
 }
 
 # We don't want to join to early, better not risk our forces until the enemy is tired...
@@ -1817,14 +2050,32 @@ ITA_dont_join_ww2_too_early = {
 	}
 	enable = {
 		date < 1940.6.9 # It is ok after historical date
-		FRA = {
-			surrender_progress < 0.05 # If France is falling, it should be safe
+		#if = {
+		#	limit = {
+		#		GER = { is_ai = no }
+		#	}
+		#	NOT = { FRA = { surrender_progress > 0 } }
+		#}
+		if = {
+			limit = {
+				GER = { is_ai = yes }
+			}
+			NOT = { 
+				any_country = {
+					is_in_faction_with = GER
+					capital_scope = { is_on_continent = europe }
+					surrender_progress > 0.03
+				}
+			}
+			NOT = { FRA = { surrender_progress > 0 } }
+			NOT = { GER = { has_war_with = BEL } }
+			NOT = { GER = { has_war_with = YUG } }
 		}
 		is_in_faction_with = ITA
-		GER = { # Only hold back if we're in the Axis together with Germany, Otherwise, we'll do whatever we feel like.
-			is_in_faction_with = ITA
-			is_faction_leader = yes
-		}
+		GER = {
+			is_in_faction_with = ITA 
+			is_faction_leader = yes 
+		} 
 		ITA = {
 			OR = {
 				ITA_is_historical_ai = yes
@@ -1834,7 +2085,7 @@ ITA_dont_join_ww2_too_early = {
 		}
 	}
 	abort_when_not_enabled = yes
-	reversed = yes
+	reversed = yes 
 
 	ai_strategy = {
 		type = diplo_action_desire
@@ -1849,174 +2100,56 @@ ITA_dont_join_ww2_too_early = {
 		value = -1000
 		target = call_allies
 	}
+ 
 }
 
-ITA_air_support_north_africa = {
+ITA_garrison_is_not_necessary_yet = {
 	allowed = {
 		original_tag = ITA
 	}
 	enable = {
-		is_historical_focus_on = yes
-		has_war_with = ENG
-		date < 1942.3.1
+		has_war_with = ETH
+		date < 1937.1.1
 	}
 	abort_when_not_enabled = yes
 
 	ai_strategy = {
-		type = strategic_air_importance
-		id = 225 # Tripoli
-		value = 5500
+		type = garrison
+		value = -9999
 	}
 
 	ai_strategy = {
-		type = strategic_air_importance
-		id = 128 # Egypt
-		value = 3000
-	}
-
-	ai_strategy = {
-		type = strategic_air_importance
-		id = 29 # Central Mediterranean Sea
-		value = 2000
-	}
-}
-
-ITA_air_defense_homeland = {
-	allowed = { original_tag = ITA }
-	enable = {
-		has_war_with = ENG
-		any_owned_state = {
-			is_core_of = ITA
-			is_on_continent = europe
-			NOT = { is_controlled_by = ITA }
+		type = front_unit_request
+		state_trigger = {
+			is_on_continent = europe 
 		}
-	}
-	abort_when_not_enabled = yes
-
-	ai_strategy = {
-		type = strategic_air_importance
-		id = 23 # Italy
-		value = 10000
-	}
-}
-
-ITA_contest_the_med = {
-	allowed = {
-		original_tag = ITA
-	}
-	
-	enable = {
-		OR = {
-			has_war_with = ENG
-			has_war_with = SOU
-			has_war_with = FRA
-		}
-		date > 1939.9.1
-		# We just want to always do this, this is our home coast
-	}
-	
-	abort_when_not_enabled = yes
-	
-	ai_strategy = {
-		type = naval_dominance
-		id = western_med_control_zone
-		value = 80
-	}
-	
-	ai_strategy = {
-		type = naval_dominance
-		id = italy_med_control_zone
-		value = 80
-	}
-}
-
-ITA_naval_role_ratios_produce_screen = {
-	allowed = {
-		has_dlc = "Man the Guns"
-		original_tag = ITA
-	}
-	enable = {
-		has_navy_size = {
-				unit = destroyer
-				size < 100
-			}
-		has_war = yes
-		date < 1943.6.1
-	}
-
-	abort_when_not_enabled = yes
-
-	ai_strategy = {
-		type = role_ratio
-		id = naval_screen
-		value = 400
-	}
-
-	ai_strategy = {
-		type = role_ratio
-		id = naval_mine_sweeper
-		value = 0
-	}
-
-	ai_strategy = {
-		type = role_ratio
-		id = naval_mine_layer
-		value = 0
-	}
-
-	ai_strategy = {
-		type = role_ratio
-		id = naval_cruiser_light
-		value = 150
-	}
-
-	ai_strategy = {
-		type = unit_ratio
-		id = screen_ship
-		value = 300
-	}
-}
-
-ITA_dont_invade_uk_early = {
-	allowed = { 
-		original_tag = ITA
-	}
-	
-	enable = {
-		is_historical_focus_on = yes
-		date < 1942.1.1
-	}
-	
-	abort_when_not_enabled = yes
-	
-	ai_strategy = {
-		type = invade
-		id = ENG
 		value = -500
 	}
-}
 
-ITA_dont_send_air_to_middle_east = {
+	ai_strategy = {
+		type = front_unit_request
+		tag = ETH
+		value = 50
+	}
+}
+ita_get_planning_vs_eth_first = {
 	allowed = { original_tag = ITA }
 	enable = {
 		is_historical_focus_on = yes
-		date > 1941.3.1
+		has_war_with = ETH
+		date < 1936.2.1
 	}
 	abort_when_not_enabled = yes
-
+	
 	ai_strategy = {
-		type = strategic_air_importance
-		id = 28 # Middle East
-		value = -30000
+		type = front_control
+		tag = ETH
+		ratio = 0.0
+		priority = 700
+		ordertype = front
+		execution_type = careful
+		execute_order = no
+		manual_attack = no
 	}
-	ai_strategy = {
-		type = strategic_air_importance
-		id = 232 # Levant
-		value = -30000
-	}
-	ai_strategy = {
-		type = strategic_air_importance
-		id = 116 # Iran
-		value = -30000
-	}
+	
 }

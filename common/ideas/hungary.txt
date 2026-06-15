@@ -267,7 +267,7 @@ ideas = {
 			modifier = {
 				political_power_factor = -0.15
 				consumer_goods_factor = -0.1
-				production_speed_buildings_factor = 0.05
+				production_speed_buildings_factor = 0.10
 				fascism_drift = 0.01
 				custom_modifier_tooltip = HUN_gombos_trade_treaty_arms_market_tt
 			}

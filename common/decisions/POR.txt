@@ -69,40 +69,6 @@ POR_overseas_provinces = {
 			country_event = lar_portugal_overseas_provinces.2
 		}
 	}	
-
-	POR_timor_overseas_territory = {
-
-		icon = infiltrate_state
-
-		available = {
-			has_completed_focus = POR_revert_the_local_autonomy_policies
-			AND = {
-				POR = {
-					controls_state = 721
-				}
-				TML = { exists = no }
-			}
-		}
-
-		cost = 0
-		fire_only_once = yes
-		days_remove = 420 
-		ai_will_do = {
-			factor = 2
-		}
-
-		modifier = {
-			political_power_gain = -0.1
-		}
-		
-		visible = {
-			has_completed_focus = POR_revert_the_local_autonomy_policies
-		}
-		remove_effect = {			
-			country_event = lar_portugal_overseas_provinces.3
-		}
-	}	
-
 }
 
 POR_arms_purchases = {
@@ -479,7 +445,7 @@ POR_arms_purchases = {
 		}
 		complete_effect = {
 			ITA = {
-				country_event = { id = lar_portugal_purchase_ships.1 hours = 3}
+				country_event = { id = lar_portugal_purchase_ships.1 hours = 3 }
 			}
 			set_country_flag = POR_ships_purchase_in_progress_flag
 			set_country_flag = {
@@ -2411,7 +2377,7 @@ POR_monarchist_cause = {
 		fire_only_once = no
 
 		ai_will_do = {
-			base = 5
+			base = 1
 		}
 		visible = {
 			has_completed_focus = POR_a_royal_wedding
@@ -2482,7 +2448,6 @@ POR_monarchist_cause = {
 
 		modifier = {
 			neutrality_drift = 0.1
-			stability_weekly = -0.01
 		}
 
 		days_remove = 180
@@ -2550,7 +2515,7 @@ POR_monarchist_cause = {
 		fire_only_once = no
 
 		ai_will_do = {
-			base = 0 # This is self-saboutaging for the AI 
+			base = 0
 		}
 		visible = {
 			has_completed_focus = POR_a_royal_wedding
@@ -2564,7 +2529,6 @@ POR_monarchist_cause = {
 		modifier = {
 			political_power_gain = -0.5
 			neutrality_drift = 0.1
-			stability_weekly = -0.01
 		}
 		days_remove = 180
 	}
@@ -2744,12 +2708,16 @@ POR_the_spanish_civil_war = {
 		fire_only_once = yes
 
 		ai_will_do = {
-			factor = 1
+			factor = 22
 			modifier = {
 				OR = {
 					has_stability < 0.3
 					has_manpower < 50000
 				}
+				factor = 0
+			}
+			modifier = {
+				is_historical_focus_on = yes
 				factor = 0
 			}
 		}
@@ -2823,7 +2791,11 @@ POR_the_spanish_civil_war = {
 		fire_only_once = yes
 
 		ai_will_do = {
-			factor = 1
+			factor = 22
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
 			modifier = {
 				OR = {
 					has_stability < 0.3
@@ -2902,7 +2874,11 @@ POR_the_spanish_civil_war = {
 		fire_only_once = yes
 
 		ai_will_do = {
-			factor = 1
+			factor = 22
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
 			modifier = {
 				OR = {
 					has_stability < 0.3

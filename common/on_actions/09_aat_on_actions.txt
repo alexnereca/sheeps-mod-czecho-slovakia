@@ -1313,7 +1313,8 @@ on_actions = {
 						country_event = { id = denmark_occupation_event.1 hours = 6 } 
 						set_country_flag = DEN_attacked #Used to check if DEN was attacked by GER in Tests
 					}
-				}	
+				}
+					
 			}
 			#This is done so that Denmark's Election Events will NOT be triggered normally when at war
 			if = {
@@ -1366,6 +1367,7 @@ on_actions = {
 						original_tag = NOR
 						NOT = { has_government = fascism }
 						has_civil_war = no 
+						is_ai = yes
 					}
 				}
 				ROOT = {
@@ -1384,32 +1386,33 @@ on_actions = {
 							hours = 1
 						}
 					}
-					#else_if = {  # Democratic but Quisling is still around
-					#	limit = {
-					#		NOR = {	 
-					#			has_completed_focus = NOR_continue_nygaardsvold_government 
-					#			NOT = { has_completed_focus = NOR_arrest_quisling }
-					#			is_subject = no
-					#		}
-					#	}
-					#	complete_national_focus = NOR_fascist_invasion_of_norway
-					#	var:NOR.NOR_cw_fascist_attacker = {
-					#		country_event = {
-					#			id = AAT_norway.14
-					#			hours = 1 
-					#		}
-					#	}
-					#}
-					#else_if = { # Democratic but Quisling is arrrested
-					# 
-					#	limit = {
-					#		NOR = {
-					#			has_completed_focus = NOR_continue_nygaardsvold_government 
-					#			is_subject = no
-					#		}
-					#	}
-					#	complete_national_focus = NOR_fascist_invasion_of_norway
-					#}
+					else_if = {  # Democratic but Quisling is still around
+						limit = {
+							NOR = {	 
+								has_completed_focus = NOR_continue_nygaardsvold_government 
+								NOT = { has_completed_focus = NOR_get_rid_of_quisling }
+								is_subject = no
+							}
+						}
+						complete_national_focus = NOR_fascist_invasion_of_norway
+						unlock_national_focus = NOR_quislings_coup
+						var:NOR.NOR_cw_fascist_attacker = {
+							country_event = {
+								id = AAT_norway.14
+								hours = 1 
+							}
+						}
+					}
+					else_if = { # Democratic but Quisling is arrrested
+					 
+						limit = {
+							NOR = {
+								has_completed_focus = NOR_continue_nygaardsvold_government 
+								is_subject = no
+							}
+						}
+						complete_national_focus = NOR_fascist_invasion_of_norway
+					}
 				}
 			}
 		}

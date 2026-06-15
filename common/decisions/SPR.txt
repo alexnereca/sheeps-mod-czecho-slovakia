@@ -3293,7 +3293,7 @@ SPR_the_inevitable_civil_war = {
 		}
 
 		highlight_states = {
- 			highlight_state_targets = { state = 167 } 
+			highlight_state_targets = { state = 167 } 
 		}
 
 		on_map_mode = map_only
@@ -14359,6 +14359,7 @@ SPR_expand_resource_extraction = {
 				has_completed_focus = SPA_encourage_local_mining
 				has_completed_focus = SPR_exploit_spains_riches
 				has_completed_focus = SPR_fuel_for_the_war_machine
+				tag = POR
 			}
 		}
 
@@ -14422,6 +14423,7 @@ SPR_expand_resource_extraction = {
 				has_completed_focus = SPA_encourage_local_mining
 				has_completed_focus = SPR_exploit_spains_riches
 				has_completed_focus = SPR_fuel_for_the_war_machine
+				tag = POR
 			}
 		}
 
@@ -14485,6 +14487,7 @@ SPR_expand_resource_extraction = {
 				has_completed_focus = SPA_encourage_local_mining
 				has_completed_focus = SPR_exploit_spains_riches
 				has_completed_focus = SPR_fuel_for_the_war_machine
+				tag = POR
 			}
 		}
 
@@ -14548,6 +14551,7 @@ SPR_expand_resource_extraction = {
 				has_completed_focus = SPA_encourage_local_mining
 				has_completed_focus = SPR_exploit_spains_riches
 				has_completed_focus = SPR_fuel_for_the_war_machine
+				tag = POR
 			}
 		}
 
@@ -14616,6 +14620,7 @@ SPR_expand_resource_extraction = {
 				has_completed_focus = SPA_encourage_local_mining
 				has_completed_focus = SPR_exploit_spains_riches
 				has_completed_focus = SPR_fuel_for_the_war_machine
+				tag = POR
 			}
 		}
 
@@ -14684,6 +14689,7 @@ SPR_expand_resource_extraction = {
 				has_completed_focus = SPA_encourage_local_mining
 				has_completed_focus = SPR_exploit_spains_riches
 				has_completed_focus = SPR_fuel_for_the_war_machine
+				tag = POR
 			}
 		}
 
@@ -14752,6 +14758,7 @@ SPR_expand_resource_extraction = {
 				has_completed_focus = SPA_encourage_local_mining
 				has_completed_focus = SPR_exploit_spains_riches
 				has_completed_focus = SPR_fuel_for_the_war_machine
+				tag = POR
 			}
 		}
 
@@ -14820,6 +14827,7 @@ SPR_expand_resource_extraction = {
 				has_completed_focus = SPA_encourage_local_mining
 				has_completed_focus = SPR_exploit_spains_riches
 				has_completed_focus = SPR_fuel_for_the_war_machine
+				tag = POR
 			}
 		}
 
@@ -18189,13 +18197,10 @@ SPR_recovering_from_civil_war = {
 		icon = generic_civil_support
 
 		available = {
-			FROM = {
-				compliance > 35
-			}
 			has_equipment = {
-			    infantry_equipment > 2000
+			    infantry_equipment > 999
 			}
-			has_army_experience > 10
+			has_army_experience > 25
 		}
 
 		state_target = yes
@@ -18224,14 +18229,14 @@ SPR_recovering_from_civil_war = {
 
 		fire_only_once = yes
 
-		days_remove = 70
+		days_remove = 120
 
 		ai_will_do = {
 			base = 200
 		}
 
 		modifier = {
-			weekly_manpower = -300
+			weekly_manpower = -150
 		}
 
 		visible = {
@@ -18249,9 +18254,9 @@ SPR_recovering_from_civil_war = {
 		complete_effect = {
 			add_equipment_to_stockpile = {
 			    type = infantry_equipment
-			    amount = -2000
+			    amount = -1000
 			}
-			army_experience = -10
+			army_experience = -25
 		}
 
 		remove_effect = {

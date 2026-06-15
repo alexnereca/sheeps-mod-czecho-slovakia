@@ -97,10 +97,10 @@ country_event = {
 		}
 		ROM = { country_event = DOD_romania.11 }
 		add_ai_strategy = {
-			type = alliance
-			id = ROM
-			value = 200
-		}
+					type = alliance
+					id = ROM
+					value = 200
+				}
 	}
 
 	option = { #no
@@ -319,6 +319,14 @@ country_event = {
 				is_in_faction = yes
 				factor = 0.5
 			}
+			modifier = {
+				is_in_faction = yes
+				any_country = {
+					is_neighbor_of = ROM
+					is_in_faction_with = BUL
+				}
+				factor = 0
+			}
 		}
 		ROM = { country_event = DOD_romania.41 }
 	}
@@ -330,6 +338,14 @@ country_event = {
 			modifier = {
 				is_in_faction = no
 				factor = 0.5
+			}
+			modifier = {
+				is_in_faction = yes
+				any_country = {
+					is_neighbor_of = ROM
+					is_in_faction_with = BUL
+				}
+				factor = 10
 			}
 		}
 		ROM = { country_event = DOD_romania.42 }	
@@ -1468,7 +1484,7 @@ country_event = {
 					neutrality < 0.5
 					has_war = no
 					NOT = { has_idea = ROM_mihail_sturdza }
-					NOT = { has_idea = ROM_iuliu_maniu }
+					NOT = { has_idea = generic_democratic_reformer }
 				}
 			}
 		}
@@ -1949,14 +1965,8 @@ country_event = {
 		ai_chance = {
 			factor = 80
 			modifier = {
+				is_in_faction = yes
 				factor = 0
-				OR = {
-					is_in_faction = yes
-					any_other_country = {
-						is_major = yes
-						has_guaranteed = ROOT
-					}
-				}
 			}
 			modifier = {
 				GER = {

@@ -14,7 +14,8 @@ FRA_renault_organization = {
 	icon = GFX_idea_renault
 	allowed = {	
 		OR = {
-			tag = FRA 
+			original_tag = FRA 
+			tag = VIN
 			AND = {
 				tag = ETH 
 				has_dlc = "By Blood Alone"
@@ -79,7 +80,18 @@ FRA_renault_organization = {
 		icon = GFX_generic_mio_trait_icon_maximum_speed
 		special_trait_background = yes
 		
-		position = { x=5 y=0 }   
+		position = { x=5 y=0 }  
+
+		available = {
+			hidden_trigger = {
+				FROM = {
+					OR = { 
+						is_ai = no
+						date > 1940.1.1
+					}
+				}
+			}
+		}
 		
 		limit_to_equipment_type = { medium_tank_chassis }
 		
@@ -99,6 +111,17 @@ FRA_renault_organization = {
 		relative_position_id = generic_mio_trait_single_engine
 		
 		any_parent = { generic_mio_trait_single_engine generic_mio_trait_dual_engine_redundancy }
+
+		available = {
+			hidden_trigger = {
+				FROM = {
+					OR = { 
+						is_ai = no
+						date > 1940.1.1
+					}
+				}
+			}
+		}
 		
 		limit_to_equipment_type = { heavy_tank_chassis }
 		
@@ -115,6 +138,13 @@ FRA_hotchkiss_organization = {
 	allowed = {	
 		tag = FRA 
 		has_dlc = "Arms Against Tyranny"
+	}
+
+	visible = {
+		IF = {
+			limit = { FROM = { original_tag = FRA } }
+			FROM = { is_ai = no }
+		}
 	}
 	add_trait = { 
 		token = FRA_mio_trait_l_35
@@ -142,8 +172,14 @@ FRA_apx_organization = {
 		tag = FRA 
 		has_dlc = "Arms Against Tyranny"
 	}
-}
 
+	visible = {
+		IF = {
+			limit = { FROM = { original_tag = FRA } }
+			FROM = { is_ai = no }
+		}
+	}
+}
 FRA_amx_organization = { 
 	include = generic_tank_organization
 	icon = GFX_idea_generic_tank_manufacturer_2
@@ -159,7 +195,6 @@ FRA_amx_organization = {
 		}
 	}
 }
-
 #####################
 
  ## #  # ### ###   ## 
@@ -183,7 +218,7 @@ FRA_aeb_organization = {
 	include = generic_task_force_ship_organization
 	icon = GFX_idea_FRA_aeb
 	allowed = {	
-		tag = FRA 
+		original_tag = FRA 
 		has_dlc = "Arms Against Tyranny"
 	}
 }
@@ -192,7 +227,7 @@ FRA_acl_organization = {
 	include = generic_battle_line_ship_organization
 	icon = GFX_idea_FRA_acl
 	allowed = {	
-		tag = FRA 
+		original_tag = FRA 
 		has_dlc = "Arms Against Tyranny"
 	}
 }
@@ -203,7 +238,8 @@ FRA_acf_organization = {
 	allowed = {
 		has_dlc = "Arms Against Tyranny"
 		OR = {
-			tag = FRA
+			original_tag = FRA
+			tag = VIN
 			AND = {
 				tag = BRA
 				has_dlc = "Trial of Allegiance"
@@ -244,7 +280,7 @@ FRA_morane_saulnier_organization = {
 	include = generic_light_aircraft_organization
 	icon = GFX_idea_morane_saulnier
 	allowed = {	
-		tag = FRA 
+		original_tag = FRA 
 		has_dlc = "Arms Against Tyranny"
 	}
 }
@@ -254,7 +290,7 @@ FRA_bloch_organization = {
 	icon = GFX_idea_bloch
 	allowed = {	
 		OR = {
-			tag = FRA 
+			original_tag = FRA 
 			AND = {
 				tag = ETH 
 				has_dlc = "By Blood Alone"
@@ -312,7 +348,7 @@ FRA_amiot_organization = {
 	include = generic_heavy_aircraft_organization
 	icon = GFX_idea_amiot
 	allowed = {	
-		tag = FRA 
+		original_tag = FRA 
 		has_dlc = "Arms Against Tyranny"
 	}
 }
@@ -321,7 +357,7 @@ FRA_levasseur_organization = {
 	include = generic_naval_aircraft_organization
 	icon = GFX_idea_levasseur
 	allowed = {	
-		tag = FRA 
+		original_tag = FRA 
 		has_dlc = "Arms Against Tyranny"
 	}
 }
@@ -356,7 +392,7 @@ FRA_panhard_organization = {
 	include = generic_armored_car_organization
 	icon = GFX_idea_FRA_panhard
 	allowed = {	
-		tag = FRA 
+		original_tag = FRA 
 		has_dlc = "La Resistance"
 	}
 }
@@ -451,62 +487,5 @@ FRA_schneider_organization = {
 	icon = GFX_idea_schneider
 	allowed = {	
 		tag = FRA 
-	}
-}
-
-FRA_alsthom_organization = {
-	include = generic_train_organization
-	icon = GFX_idea_FRA_alsthom
-	allowed = {
-		original_tag = FRA
-	}
-
-	research_categories = { train_tech support_tech }
-
-	initial_trait = {
-		name = generic_mio_initial_trait_generic_train_manufacturer
-		limit_to_equipment_type = { 
-			train_equipment 
-			#support_equipment
-		}
-
-		production_bonus = {
-			production_efficiency_cap_factor = 0.03
-		}
-
-		organization_modifier = {
-			military_industrial_organization_research_bonus = 0 #5% from MIO base
-		}
-	}
-
-	add_trait = {
-		token = FRA_mio_trait_scam_facilities
-		name = FRA_mio_trait_scam_facilities
-		icon = GFX_generic_mio_department_icon_facilities
-		special_trait_background = yes
-
-		position = { x=9 y=0 }
-
-		visible = {
-			FROM = { 
-				original_tag = FRA
-			}
-		}
-
-		limit_to_equipment_type = { train_equipment }
-
-		available = {
-			FROM = {
-				controls_state = 28
-			}
-		}
-
-		production_bonus = {
-			production_capacity_factor = 0.05
-		}
-
-		ai_will_do = {
-			base = 2
-		}
 	}
 }

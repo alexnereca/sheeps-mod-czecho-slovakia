@@ -284,8 +284,9 @@ FRA_vichy_france = {
 	}
 	FRA_demand_unification_with_vichy = {
 		available = {
-			country_exists = VIC
-			VIC = {
+			any_country = {
+				tag = VIC
+				exists = yes
 				NOT = {
 					has_war_with = ROOT
 				}
@@ -297,10 +298,25 @@ FRA_vichy_france = {
 			NOT = {
 				tag = VIC
 			}
+			OR = {
+				NOT = { 
+					has_autonomy_state = autonomy_collaboration_government
+				}
+				has_war = no
+			}
+			if = {
+				limit = {
+					any_country = {
+						tag = FRA
+						has_war_with = ROOT
+					}
+				}
+				FRA = { has_completed_focus = FRA_appeal_to_overseas_territories }
+			}
 			country_exists = VIC
 		}
 		ai_will_do = {
-			factor = 200
+			factor = 100
 		}
 		cost = 0
 		fire_only_once = yes
@@ -856,7 +872,7 @@ FRA_spanish_intervention_category = {
 
 		cost = 25
 		ai_will_do = {
-			factor = 1.5
+			factor = 1
 			modifier = {
 				has_stability < 0.3
 				factor = 0
@@ -1305,7 +1321,7 @@ economy_decisions = {
 		cost = 50
 
 		ai_will_do = {
-			factor = 15
+			factor = 10
 			modifier = {
 				has_war = no
 				factor = 0
@@ -1572,6 +1588,7 @@ economy_decisions = {
 					set_mio_name_key = SNCASO
 					add_mio_size = 1
 					add_mio_funds_gain_factor = 0.05
+					
 				}
 				hidden_effect = {
 					mio:FRA_levasseur_organization = {
@@ -2106,10 +2123,6 @@ FRA_intervention_in_overseas_territories = {
 								state = 286
 								state = 741
 								state = 1017
-								state = 1066 
-								state = 1067 
-								state = 1068 
-								state = 1069 
 							}
 						}
 						add_compliance = 5
@@ -2158,10 +2171,6 @@ FRA_intervention_in_overseas_territories = {
 					state = 286
 					state = 741
 					state = 1017
-					state = 1066 
-					state = 1067 
-					state = 1068 
-					state = 1069 
 				}
 				CONTROLLER = {
 					NOT = {
@@ -2190,10 +2199,6 @@ FRA_intervention_in_overseas_territories = {
 						state = 286
 						state = 741
 						state = 1017
-						state = 1066 
-						state = 1067 
-						state = 1068 
-						state = 1069 
 					}
 					not = { is_controlled_by = ROOT }
 					CONTROLLER = {
@@ -2352,7 +2357,7 @@ FRA_intervention_in_overseas_territories = {
 		fire_only_once = yes
 		cost = 25
 		ai_will_do = {
-			factor = 4
+			factor = 3
 		}
 		
 	}
@@ -2586,7 +2591,7 @@ FRA_intervention_in_overseas_territories = {
 		fire_only_once = yes
 		cost = 25
 		ai_will_do = {
-			factor = 4
+			factor = 3
 		}
 	}
 	FRA_prepare_coup_in_west_africa = {
@@ -2619,14 +2624,14 @@ FRA_intervention_in_overseas_territories = {
 			}
 			any_state = {
 				OR = {
-					state = 557
-					state = 272
-					state = 556
-					state = 780
-					state = 779
-					state = 778
-					state = 781
-					state = 776
+						state = 557
+						state = 272
+						state = 556
+						state = 780
+						state = 779
+						state = 778
+						state = 781
+						state = 776
 				}
 				CONTROLLER = {
 					NOT = { has_war_with = ROOT }
@@ -2817,7 +2822,7 @@ FRA_intervention_in_overseas_territories = {
 		fire_only_once = yes
 		cost = 25
 		ai_will_do = {
-			factor = 5
+			factor = 3
 		}
 	}
 	FRA_prepare_coup_in_madagascar = {
@@ -2906,7 +2911,7 @@ FRA_decolonization = {
 			671 = { is_controlled_by = ROOT }
 			670 = { is_controlled_by = ROOT }
 			286 = { is_controlled_by = ROOT }
-			741 = { is_controlled_by = ROOT }	
+			741 = { is_controlled_by = ROOT }		
 			1017 = { is_controlled_by = ROOT }	
 		}
 

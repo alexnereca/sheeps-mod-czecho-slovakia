@@ -21,13 +21,13 @@ POR_fascist_axis_plan = {
 	ai_national_focuses = {
 		#1936
 		POR_estado_novo
-		POR_second_navy_reequipment
 		POR_support_the_spanish_nationalists
+		POR_portuguese_legion
+		POR_national_syndicalism
+		POR_second_navy_reequipment
 		POR_continue_the_public_works
 		POR_instituto_superior_tecnico
 		#1937
-		POR_portuguese_legion
-		POR_national_syndicalism
 		POR_observation_mission
 		POR_arsenal_do_alfeite
 		POR_army_reorganization
@@ -196,6 +196,7 @@ POR_neutrality_monarchist_plan = {
 	}
 	enable = {
 		OR = {
+			has_completed_focus = POR_a_royal_wedding
 			has_country_flag = POR_AI_RANDOM_NEUTRALITY_MONARCHIST
 			has_game_rule = {
 				rule = POR_ai_behavior
@@ -211,59 +212,54 @@ POR_neutrality_monarchist_plan = {
 		
 		#1936
 		POR_estado_novo
+		POR_a_royal_wedding
+		POR_the_return_of_duarte
+		POR_promote_the_monarchist_cause_in_portugal
+		POR_monarchist_uprising_in_brazil
+		POR_the_empire_of_brazil
+		POR_restoration_of_the_monarchy
+		POR_the_kingdom_reunited
+
+
+
 		POR_continue_the_public_works
 		POR_instituto_superior_tecnico
 		POR_food_industries
-		POR_a_royal_wedding
-		
 		#1937
-		POR_the_return_of_duarte
-		POR_promote_the_monarchist_cause_in_portugal
-		POR_restoration_of_the_monarchy
 		POR_second_navy_reequipment
 		POR_support_a_spanish_monarchy_in_the_war
-
-		#1938
 		POR_assist_the_requetes
+		POR_join_the_carlist_fight
+		POR_the_royal_iberian_alliance
+		#1938
 		POR_roads_bridges_and_dams
 		POR_army_reorganization
-		POR_join_the_carlist_fight
 		POR_textile_industry
-
 		#1939
 		POR_arsenal_do_alfeite
-		POR_monarchist_uprising_in_brazil
 		POR_ogme
 		POR_military_vehicles
-		POR_military_research_facilities	
-
+		POR_military_research_facilities		
 		#1940
 		POR_refuse_the_naval_blockade
-		POR_the_royal_iberian_alliance
-		POR_the_empire_of_brazil
-		POR_the_kingdom_reunited
 		POR_a_powerful_merchant_marine	
-
 		#1941
 		POR_colonial_assimilation_policy
 		POR_national_cruiser_production
 		POR_atlantic_defense_strategy
 		POR_mapa_cor_de_rosa
 		POR_metropolitan_army
-
 		#1942
 		POR_merchant_marine_protection
 		POR_standardization
 		POR_submarine_effort
 		POR_rebuild_the_lines_of_torres_vedras
 		POR_colonial_army
-
 		#1943
 		POR_luso_tropicalism
 		POR_corpo_do_estado_maior
 		POR_fuzileiros
 		POR_naval_research_institute
-
 	}		
 
 	focus_factors = {
@@ -275,10 +271,7 @@ POR_neutrality_monarchist_plan = {
 	}
 
 	ideas = {
-		POR_joao_francisco_de_barbosa_azevedo = 10
-		POR_jose_adriano_pequito_rebelo = 5
-		POR_duarte_jose_pacheco = 5
-		POR_fernando_dos_santos_costa = 0
+
 	}
 
 	# Keep small, as it is used as a factor for some things (such as research needs)
@@ -501,6 +494,7 @@ POR_communist_independent_plan = {
 
 	ai_national_focuses = {
 		#1936
+		POR_the_iberian_socialist_union
 		POR_popular_front
 		POR_continue_the_public_works
 		POR_instituto_superior_tecnico
@@ -510,23 +504,23 @@ POR_communist_independent_plan = {
 		POR_nationalize_industry
 		POR_industrial_modernization
 		POR_army_reorganization
-		POR_workers_of_iberia_unite
 		POR_colonial_assimilation_policy
 		#1938
 		POR_corpo_do_estado_maior
 		POR_ogme
 		POR_metropolitan_army
+		POR_unify_leftist_youth_wings
+		POR_reorganization_of_the_communist_party
+		POR_workers_of_iberia_unite
 		POR_roads_bridges_and_dams
 		POR_a_new_industry	
 		#1939
 		POR_second_navy_reequipment
 		POR_portuguese_artillery	
 		POR_military_research_facilities
-		POR_unify_leftist_youth_wings
-		POR_reorganization_of_the_communist_party
 		#1940
-		POR_the_iberian_socialist_union
 		POR_a_powerful_merchant_marine
+		POR_join_the_comintern
 		POR_the_popular_front_bloc
 		POR_latin_american_communism
 		POR_standardization

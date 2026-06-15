@@ -320,7 +320,7 @@ POL_fascist_plan = {
 }
 
 # No Step Back
-POL_NSB_communist_plan = {
+POL_NSB_communist_plan_1 = {
 	name = "POL communist plan"
 	desc = ""
 
@@ -344,60 +344,342 @@ POL_NSB_communist_plan = {
 	ai_national_focuses = {
 		POL_organize_the_peasants_strike
 		POL_woo_morges_staff
+		POL_state_national_council
 		POL_the_four_year_plan
 		POL_central_region_strategy
-		POL_expansion_of_new_towns
-		#1937
-		POL_fill_the_railways_gaps
 		POL_arm_peasant_militia
-		POL_state_national_council
 		POL_communal_governance
 		POL_a_leftist_sejm
 		POL_KPP_focus
+
+		POL_surrender_the_east
 		POL_polish_path_to_socialism
-		#1938
-		POL_anti_imperialism
-		POL_develop_polish_ship_building
-		POL_attract_poles_to_gdynia
-		POL_study_foreign_built_ships
-		POL_expand_gdynia_seaport
-		#1939
+
+		POL_expansion_of_new_towns
 		POL_additional_research_slot1
+
+
+		
+		
+		
+	}
+
+	research = {
+
+	}
+
+	ideas = {
+
+	}
+	traits = {
+	}
+
+	
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}
+POL_NSB_communist_plan_2a = {
+	name = "POL communist plan"
+	desc = ""
+
+	allowed = {
+		original_tag = POL
+	}
+	enable = {
+		has_completed_focus = POL_surrender_the_east
+		OR = {
+			has_country_flag = POL_AI_RANDOM_COMMUNIST
+			has_game_rule = {
+				rule = POL_ai_behavior
+				option = COMMUNIST
+			}
+		}
+		has_DLC = "No Step Back"
+	}
+	abort = {
+		is_subject = yes
+	}
+
+	ai_national_focuses = {
+		POL_polish_peoples_republic
+		POL_soviet_industry
+		POL_soviet_military_staff	
+
+		POL_expansion_of_new_towns
+		POL_additional_research_slot1	
+		POL_fill_the_railways_gaps
+		POL_invest_in_eastern_poland
+		POL_invest_in_the_old_polish_region
+		POL_start_central_industrial_region
+		POL_expand_central_industrial_region
+		POL_modernize_congressional_factories
+		POL_prepare_for_the_next_war
+		POL_plan_west
+		POL_local_western_plans
+		POL_sudeten_mountaineers
+		POL_the_prusya_army
+
+		POL_pressure_for_the_west
+		POL_expand_katowice_mines
+		POL_additional_research_slot2
+		POL_greater_polish_SSR
+		POL_new_military_academy
+		POL_standardisation_of_equipment
+		POL_army_modernisation
+
+	}
+
+	research = {
+
+	}
+
+	ideas = {
+
+	}
+	traits = {
+	}
+
+	
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}
+POL_NSB_communist_plan_2b = {
+	name = "POL communist plan"
+	desc = ""
+
+	allowed = {
+		original_tag = POL
+	}
+	enable = {
+		has_completed_focus = POL_polish_path_to_socialism
+		OR = {
+			has_country_flag = POL_AI_RANDOM_COMMUNIST
+			has_game_rule = {
+				rule = POL_ai_behavior
+				option = COMMUNIST
+			}
+		}
+		has_DLC = "No Step Back"
+		NOT = { ENG = { has_completed_focus = ENG_a_change_in_course } }
+	}
+	abort = {
+		is_subject = yes
+	}
+
+	ai_national_focuses = {
+		POL_anti_imperialism	
+
 		POL_preserve_bougoise_democracy
 		POL_anti_fascist_military
 		POL_preserve_baltic_independence
-		POL_dismantle_fascist_empires
-		#1940
-		POL_social_commonwealth
-		POL_leftist_economics
+
+		POL_expansion_of_new_towns
+		POL_additional_research_slot1	
+		POL_fill_the_railways_gaps
+		POL_invest_in_eastern_poland
 		POL_invest_in_the_old_polish_region
+		POL_start_central_industrial_region
+		POL_expand_central_industrial_region
 		POL_modernize_congressional_factories
-		POL_warsaw_main_railway_station
-		#1941
-		POL_lower_class_education
+		POL_prepare_for_the_next_war
+		POL_plan_west
+		POL_local_western_plans
+		POL_sudeten_mountaineers
+		POL_the_prusya_army
+		POL_expand_katowice_mines
+		POL_additional_research_slot2
+		POL_new_military_academy
+		POL_standardisation_of_equipment
+		POL_army_modernisation
+
+		POL_social_commonwealth
+	}
+
+	research = {
+
+	}
+
+	ideas = {
+
+	}
+	traits = {
+	}
+
+	
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}
+POL_NSB_communist_plan_2c = {
+	name = "POL communist plan"
+	desc = ""
+
+	allowed = {
+		original_tag = POL
+	}
+	enable = {
+		has_completed_focus = POL_polish_path_to_socialism
+		OR = {
+			has_country_flag = POL_AI_RANDOM_COMMUNIST
+			has_game_rule = {
+				rule = POL_ai_behavior
+				option = COMMUNIST
+			}
+		}
+		has_DLC = "No Step Back"
+		ENG = { has_completed_focus = ENG_a_change_in_course }
+	}
+	abort = {
+		is_subject = yes
+	}
+
+	ai_national_focuses = {
+		POL_anti_imperialism	
+
+		POL_anti_capitalist_revolution
+		POL_baltic_socialism
+		POL_dismantle_capitalist_empires
+		POL_social_commonwealth
 		POL_press_for_liberia
-		POL_reopen_the_maritime_and_colonial_league
+		POL_leftist_economics
+		POL_committee_of_national_liberation
+		POL_support_colonial_workers_strikes
+
+		POL_expansion_of_new_towns
+		POL_additional_research_slot1	
+		POL_fill_the_railways_gaps
+		POL_invest_in_eastern_poland
+		POL_invest_in_the_old_polish_region
+		POL_start_central_industrial_region
+		POL_expand_central_industrial_region
+		POL_modernize_congressional_factories
+		POL_prepare_for_the_next_war
+		POL_plan_west
+		POL_local_western_plans
+		POL_sudeten_mountaineers
+		POL_the_prusya_army
+		POL_complete_plan_west
+		POL_plan_east
+		POL_local_eastern_plans
+		POL_belorussian_army
+		POL_ruthenian_army
+		POL_expand_katowice_mines
+		POL_additional_research_slot2
+		POL_new_military_academy
+		POL_standardisation_of_equipment
+		POL_army_modernisation
+
+	}
+
+	research = {
+
+	}
+
+	ideas = {
+
+	}
+	traits = {
+	}
+
+	
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}
+
+POL_NSB_democratic_plan_1a = {
+	name = "POL democratic plan"
+	desc = ""
+
+	allowed = {
+		original_tag = POL
+	}
+	enable = {
+		OR = {
+			has_country_flag = POL_AI_RANDOM_DEMOCRATIC
+			has_game_rule = {
+				rule = POL_ai_behavior
+				option = DEMOCRATIC
+			}
+		}
+		has_DLC = "No Step Back"
+		OR = {
+			NOT = { ENG = { has_completed_focus = ENG_a_change_in_course } }
+			FRA = { has_completed_focus = FRA_utilize_the_leagues }
+		}
+	}
+	abort = {
+		is_subject = yes
+	}
+
+	ai_national_focuses = {
+		POL_organize_the_peasants_strike
+		POL_woo_morges_staff
+		POL_raise_the_black_madonna
+		POL_ease_sanationist_tensions
+		POL_reassemble_the_sejm
+		POL_empower_the_morges
+		POL_elect_a_PSL_leader
+		POL_the_four_year_plan
+		POL_central_region_strategy
+		POL_additional_research_slot1
+		POL_expansion_of_new_towns
+		POL_invest_in_the_peasantry
+
+		POL_preserve_bougoise_democracy
+		POL_anti_fascist_military
+		POL_preserve_baltic_independence
+
+		POL_fill_the_railways_gaps
+		POL_invest_in_eastern_poland
+		POL_invest_in_the_old_polish_region
+		POL_start_central_industrial_region
+		POL_expand_central_industrial_region
+		POL_modernize_congressional_factories
+		POL_prepare_for_the_next_war
+		POL_plan_west
+		POL_local_western_plans
+		POL_sudeten_mountaineers
+		POL_the_prusya_army
+		POL_expand_katowice_mines
+		POL_additional_research_slot2
+		POL_leftist_economics
 		POL_committee_of_national_liberation
 		POL_non_discriminatory_recruitment
-		#1942
 		POL_armia_ludowa
-		
-		
-		
-		#1943
-		
-		
-		
-		
-		
-		
-		
-		
-		#1944
-		
-		
-		
-		
+		POL_new_military_academy
+		POL_standardisation_of_equipment
+		POL_army_modernisation
 		
 	}
 
@@ -426,7 +708,7 @@ POL_NSB_communist_plan = {
 
 }
 
-POL_NSB_democratic_plan = {
+POL_NSB_democratic_plan_1b = {
 	name = "POL democratic plan"
 	desc = ""
 
@@ -442,6 +724,8 @@ POL_NSB_democratic_plan = {
 			}
 		}
 		has_DLC = "No Step Back"
+		ENG = { has_completed_focus = ENG_a_change_in_course }
+		NOT = { FRA = { has_completed_focus = FRA_utilize_the_leagues } }
 	}
 	abort = {
 		is_subject = yes
@@ -450,60 +734,43 @@ POL_NSB_democratic_plan = {
 	ai_national_focuses = {
 		POL_organize_the_peasants_strike
 		POL_woo_morges_staff
-		POL_the_four_year_plan
-		POL_central_region_strategy
-		POL_expansion_of_new_towns
-		#1937
-		POL_fill_the_railways_gaps
-		POL_ease_sanationist_tensions
 		POL_raise_the_black_madonna
+		POL_ease_sanationist_tensions
 		POL_reassemble_the_sejm
 		POL_empower_the_morges
 		POL_elect_a_PSL_leader
-		POL_invest_in_the_peasantry
-		#1938
-		POL_preserve_bougoise_democracy
-		POL_develop_polish_ship_building
-		POL_attract_poles_to_gdynia
-		POL_study_foreign_built_ships
-		POL_expand_gdynia_seaport
-		#1939
+		POL_the_four_year_plan
+		POL_central_region_strategy
 		POL_additional_research_slot1
+		POL_expansion_of_new_towns
+		POL_invest_in_the_peasantry
+
+		POL_morges_pact
+		POL_morges_economic_union
 		POL_anti_fascist_military
-		POL_press_for_liberia
 		POL_preserve_baltic_independence
-		POL_dismantle_fascist_empires
-		#1940
-		POL_social_commonwealth
-		POL_leftist_economics
+		POL_invite_romania_to_morges
+
+		POL_fill_the_railways_gaps
+		POL_invest_in_eastern_poland
 		POL_invest_in_the_old_polish_region
+		POL_start_central_industrial_region
+		POL_expand_central_industrial_region
 		POL_modernize_congressional_factories
-		POL_warsaw_main_railway_station
-		#1941
-		POL_lower_class_education
-		POL_press_for_liberia
-		POL_reopen_the_maritime_and_colonial_league
+		POL_prepare_for_the_next_war
+		POL_plan_west
+		POL_local_western_plans
+		POL_sudeten_mountaineers
+		POL_the_prusya_army
+		POL_expand_katowice_mines
+		POL_additional_research_slot2
+		POL_leftist_economics
 		POL_committee_of_national_liberation
 		POL_non_discriminatory_recruitment
-		#1942
 		POL_armia_ludowa
-		
-		
-		
-		#1943
-		
-		
-		
-		
-		
-		
-		
-		
-		#1944
-		
-		
-		
-		
+		POL_new_military_academy
+		POL_standardisation_of_equipment
+		POL_army_modernisation
 		
 	}
 
@@ -541,6 +808,7 @@ POL_monarchy_commonwealth_plan = {
 	}
 	enable = {
 		OR = {
+			has_completed_focus = POL_claiming_lithuania
 			has_country_flag = POL_AI_RANDOM_COMMONWEALTH
 			has_game_rule = {
 				rule = POL_ai_behavior
@@ -568,26 +836,30 @@ POL_monarchy_commonwealth_plan = {
 		POL_institute_royal_guards
 		#1938
 		POL_arm_monarchist_militants
+		POL_king_of_lithuania
+		POL_LIT_union
+		POL_claim_livonia
+		#1939
+		POL_additional_research_slot1
+		POL_lithuanian_rail
+		POL_merge_the_arms_industries
+		#1940
+		POL_invest_in_the_old_polish_region
+		POL_modernize_congressional_factories
+		POL_warsaw_main_railway_station
 		POL_develop_polish_ship_building
 		POL_attract_poles_to_gdynia
 		POL_study_foreign_built_ships
 		POL_expand_gdynia_seaport
-		#1939
-		POL_additional_research_slot1
-		POL_king_of_lithuania
-		POL_LIT_union
-		POL_lithuanian_rail
-		POL_merge_the_arms_industries
-		#1940
-		POL_claim_livonia
-		POL_invest_in_the_old_polish_region
-		POL_modernize_congressional_factories
-		POL_warsaw_main_railway_station
 		
 		#1941
 		POL_claim_prussia
 		POL_claim_greater_lithuania
 		POL_greater_commonwealth
+		POL_additional_research_slot2
+		POL_start_central_industrial_region
+		POL_invest_in_eastern_poland
+		POL_expand_katowice_mines
 		
 		
 		#1942
@@ -646,6 +918,7 @@ POL_monarchy_romania_plan = {
 	}
 	enable = {
 		OR = {
+			has_completed_focus = POL_hohenzollern
 			has_country_flag = POL_AI_RANDOM_ROMANIA
 			has_game_rule = {
 				rule = POL_ai_behavior
@@ -674,46 +947,24 @@ POL_monarchy_romania_plan = {
 		#1938
 		POL_arm_monarchist_militants
 		POL_king_michaels_coup
+		POL_merge_internal_governments
+		POL_royal_dictatorship
+		POL_demand_slovakia
+		POL_restore_poland_hungary
+		POL_additional_research_slot1
+		#1940
+		POL_invest_in_the_old_polish_region
+		POL_modernize_congressional_factories
+		POL_warsaw_main_railway_station
+		POL_additional_research_slot2
+		POL_start_central_industrial_region
+		POL_invest_in_eastern_poland
+		POL_expand_katowice_mines
 		POL_develop_polish_ship_building
 		POL_attract_poles_to_gdynia
 		POL_study_foreign_built_ships
 		#1939
 		POL_expand_gdynia_seaport
-		POL_additional_research_slot1
-		POL_merge_internal_governments
-		POL_pro_allied_government
-		POL_ROM_join_allies
-		#1940
-		POL_invest_in_the_old_polish_region
-		POL_modernize_congressional_factories
-		POL_warsaw_main_railway_station
-		
-		
-		#1941
-		
-		
-		
-		
-		
-		#1942
-		
-		
-		
-		
-		#1943
-		
-		
-		
-		
-		
-		
-		
-		
-		#1944
-		
-		
-		
-		
 		
 	}
 
@@ -725,8 +976,6 @@ POL_monarchy_romania_plan = {
 
 	}
 	traits = {
-		captain_of_industry = 10
-		popular_figurehead = 5
 	}
 
 	
@@ -751,6 +1000,7 @@ POL_monarchy_bermondtian_plan = {
 	}
 	enable = {
 		OR = {
+			has_completed_focus = POL_cossack_king
 			has_country_flag = POL_AI_RANDOM_BERMONDT
 			has_game_rule = {
 				rule = POL_ai_behavior
@@ -774,51 +1024,32 @@ POL_monarchy_bermondtian_plan = {
 		POL_agrarian_reform
 		POL_cossack_king
 		POL_restore_bermontians
-		POL_develop_polish_ship_building
-		#1938
-		POL_attract_poles_to_gdynia
-		POL_study_foreign_built_ships
-		POL_expand_gdynia_seaport
-		POL_additional_research_slot1
 		POL_demand_LIT_pavel
+		POL_LIT_union		
+		POL_governorate_livonia
+		POL_demand_slovakia_pavel
+		POL_additional_research_slot1
+		POL_invest_in_eastern_poland
+		POL_invest_in_the_old_polish_region
+		POL_modernize_congressional_factories
+		POL_start_central_industrial_region
+		POL_expand_central_industrial_region
 		#1939
 		POL_prepare_for_the_next_war
 		
-		
-		POL_demand_slovakia_pavel
-		POL_governorate_livonia
+
 		#1940
 		POL_seek_german_alignment
 		POL_invest_in_the_old_polish_region
 		POL_modernize_congressional_factories
-		POL_warsaw_main_railway_station
 		
 		#1941
 		POL_assert_eastern_claims_pavel
 		POL_new_military_academy
-		POL_develop_gdansk_ship_building
-		POL_expand_northern_rail
 		POL_complete_the_bermontian_mission
-		#1942
-		
-		
-		
-		
-		#1943
-		
-		
-		
-		
-		
-		
-		
-		
-		#1944
-		
-		
-		
-		
-		
+		POL_additional_research_slot2
+		POL_start_central_industrial_region
+		POL_expand_katowice_mines
 	}
 
 	research = {
@@ -846,22 +1077,23 @@ POL_monarchy_bermondtian_plan = {
 
 }
 
-POL_monarchy_habsburg_plan = {
-	name = "POL habsburg plan"
+POL_monarchy_romanov_plan = {
+	name = "POL bermondtian plan"
 	desc = ""
 
 	allowed = {
 		original_tag = POL
 	}
-	enable = {
+	enable = {		
+		has_DLC = "No Step Back"
 		OR = {
-			has_country_flag = POL_AI_RANDOM_HABSBURG
+			has_completed_focus = POL_romanov
+			has_country_flag = POL_AI_RANDOM_ROMANOV
 			has_game_rule = {
 				rule = POL_ai_behavior
-				option = HABSBURG
+				option = ROMANOV
 			}
 		}
-		has_DLC = "No Step Back"
 	}
 	abort = {
 		is_subject = yes
@@ -876,50 +1108,51 @@ POL_monarchy_habsburg_plan = {
 		#1937
 		POL_fill_the_railways_gaps
 		POL_agrarian_reform
-		POL_habsburg
-		POL_restore_the_diet_of_galicia
-		POL_support_monarchy_in_CZE
-		#1938
-		POL_habsburg_monarchist_militants
+
+		POL_romanov
+		POL_invite_exiled_nobility
+		POL_demand_LIT_pavel
+		POL_LIT_union
+		POL_governorate_livonia
+		POL_demand_slovakia_pavel
+		POL_additional_research_slot1
+		POL_invest_in_eastern_poland
+		POL_invest_in_the_old_polish_region
+		POL_modernize_congressional_factories
+		POL_start_central_industrial_region
+		POL_expand_central_industrial_region
+		POL_pan_slavism
+		POL_additional_research_slot2
+		POL_demand_yugoslav_subjugation
+		POL_ideological_fanaticism
+		
+		
 		POL_develop_polish_ship_building
+		#1938
 		POL_attract_poles_to_gdynia
 		POL_study_foreign_built_ships
 		POL_expand_gdynia_seaport
-		#1939
-		POL_king_of_bohemia
-		POL_additional_research_slot1
 		POL_prepare_for_the_next_war
-		POL_demand_slovakia_pavel
-		POL_governorate_livonia
+		POL_plan_west
+		POL_new_military_academy
+
+
 		#1940
-		POL_soldier_king
-		POL_kings_guard
-		POL_trust_in_the_west
-		POL_invest_in_the_old_polish_region
-		POL_royal_hussars
-		#1941
-		POL_modernize_congressional_factories
+		POL_seek_german_alignment
 		POL_warsaw_main_railway_station
+		
+		#1941
+		POL_assert_eastern_claims_pavel
 		POL_new_military_academy
 		POL_develop_gdansk_ship_building
 		POL_expand_northern_rail
-		POL_royal_officer_corps
+		POL_complete_the_bermontian_mission
 		#1942
 		
-		#1943
-		
-		
-		
-		
-		
-		
-		
-		
-		#1944
-		
-		
-		
-		
+		POL_claim_russia
+		POL_proclaim_slavic_unity
+		POL_expand_katowice_mines
+		POL_demand_pomerania
 		
 	}
 
@@ -931,8 +1164,103 @@ POL_monarchy_habsburg_plan = {
 
 	}
 	traits = {
-		captain_of_industry = 10
-		popular_figurehead = 5
+	}
+
+	
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}
+
+POL_monarchy_habsburg_plan = {
+	name = "POL habsburg plan"
+	desc = ""
+
+	allowed = {
+		original_tag = POL
+	}
+	enable = {
+		OR = {
+			has_completed_focus = POL_habsburg
+			has_country_flag = POL_AI_RANDOM_HABSBURG
+			has_game_rule = {
+				rule = POL_ai_behavior
+				option = HABSBURG
+			}
+		}
+		has_DLC = "No Step Back"
+	}
+	abort = {
+		is_subject = yes
+	}
+
+	ai_national_focuses = {
+		POL_unite_west_slavia
+		POL_assemble_the_regency_council
+		POL_fulfil_fifth_of_november
+		POL_habsburg
+		POL_restore_the_diet_of_galicia
+		POL_support_monarchy_in_CZE
+		#1937
+		POL_fill_the_railways_gaps
+		POL_agrarian_reform
+		POL_soldier_king
+		POL_royal_hussars
+		#1938
+		POL_habsburg_monarchist_militants
+		POL_king_of_bohemia
+		POL_additional_research_slot1
+		POL_the_four_year_plan
+		POL_central_region_strategy
+		POL_expansion_of_new_towns
+		#1940
+		POL_kings_guard
+		POL_royal_officer_corps
+		POL_press_the_habsburg_claim
+		POL_trust_in_the_west
+		POL_align_with_habsburgs
+		POL_join_CZE_industry
+		POL_reclaim_west_slavia
+
+
+
+		POL_develop_polish_ship_building
+		POL_attract_poles_to_gdynia
+		POL_study_foreign_built_ships
+		POL_expand_gdynia_seaport
+		#1939
+		POL_prepare_for_the_next_war
+		POL_demand_slovakia_pavel
+		POL_governorate_livonia
+		POL_invest_in_the_old_polish_region
+		#1941
+		POL_modernize_congressional_factories
+		POL_warsaw_main_railway_station
+		POL_new_military_academy
+		POL_develop_gdansk_ship_building
+		POL_expand_northern_rail
+		POL_additional_research_slot2
+		POL_start_central_industrial_region
+		POL_invest_in_eastern_poland
+		POL_expand_katowice_mines
+		
+	}
+
+	research = {
+
+	}
+
+	ideas = {
+
+	}
+	traits = {
 	}
 
 	
@@ -973,29 +1301,45 @@ POL_NSB_fascist_plan = {
 	}
 
 	ai_national_focuses = {
-		POL_the_four_year_plan
-		POL_central_region_strategy
 		POL_nationalist_constitution
+		POL_integrate_the_falanga
+		POL_integrate_the_endecja
+		POL_empower_falangist_militants
+		POL_siodemki
+
+
+		POL_the_four_year_plan
 		POL_fill_the_railways_gaps
 		POL_agrarian_reform
+		POL_central_region_strategy
 		#1937
-		POL_integrate_the_endecja
 		POL_national_defence_fund
-		POL_warsaw_main_railway_station
-		POL_develop_polish_ship_building
 		POL_additional_research_slot1
 		#1938
-		POL_siodemki
 		POL_attract_poles_to_gdynia
 		POL_study_foreign_built_ships
 		POL_expand_gdynia_seaport
 		POL_sideline_the_sanacja
 		#1939
-		POL_reopen_national_elections
+		POL_riot_of_37
 		POL_prepare_for_the_next_war
 		POL_beck_ribbentrop
+		POL_reassert_silesian_claims
+		POL_support_global_falangism
+		POL_force_polish_upper_class
+		POL_privatize_education
+		POL_state_catholicism
+		POL_demand_LIT
+		POL_the_national_commonwealth
+		POL_anti_germans_abroad
+		POL_prepare_german_line
+		POL_integrate_greater_kashubia
+		POL_radicalize_poles_in_germany
+		POL_anti_blitz_tactics
 		POL_assert_eastern_claims
 		POL_divide_lit
+		POL_warsaw_main_railway_station
+		POL_develop_polish_ship_building
 		#1940
 		POL_german_training
 		POL_german_staff
@@ -1033,8 +1377,6 @@ POL_NSB_fascist_plan = {
 
 	}
 	traits = {
-		captain_of_industry = 10
-		popular_figurehead = 5
 	}
 
 	
@@ -1072,25 +1414,28 @@ POL_NSB_independent_fascist_plan = {
 	}
 
 	ai_national_focuses = {
-		POL_the_four_year_plan
 		POL_nationalist_constitution
+		POL_integrate_the_falanga
+		POL_integrate_the_endecja
+		POL_empower_falangist_militants
+		POL_siodemki
+
+
+		POL_the_four_year_plan
 		POL_fill_the_railways_gaps
 		POL_agrarian_reform
-		POL_clamp_down_on_danzig
 		#1937
-		POL_integrate_the_falanga
 		POL_national_defence_fund
-		POL_warsaw_main_railway_station
-		POL_empower_falangist_militants
 		POL_ban_the_nazi_party
 		#1938
-		POL_integrate_gdansk_industries
 		POL_additional_research_slot1
 		POL_sideline_the_sanacja
-		POL_riot_of_37
 		POL_reassert_silesian_claims
-		#1939
 		POL_support_global_falangism
+		POL_clamp_down_on_danzig
+		POL_integrate_gdansk_industries
+		#1939
+		POL_riot_of_37
 		POL_prepare_for_the_next_war
 		POL_falangist_international
 		POL_state_catholicism
@@ -1100,6 +1445,7 @@ POL_NSB_independent_fascist_plan = {
 		POL_support_falangists_in_the_americas
 		POL_prepare_german_line
 		POL_new_military_academy
+		POL_warsaw_main_railway_station
 		POL_standardisation_of_equipment
 		POL_assert_eastern_claims
 		#1941
@@ -1134,8 +1480,6 @@ POL_NSB_independent_fascist_plan = {
 
 	}
 	traits = {
-		captain_of_industry = 10
-		popular_figurehead = 5
 	}
 
 	

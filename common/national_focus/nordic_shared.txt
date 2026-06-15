@@ -52,16 +52,22 @@ shared_focus = {
 	dynamic = yes 
 	
 	icon = {
-		GFX_focus_NORDIC_dem_form_alliance = {
-			NORDIC_democratic_alliance_viable = yes
+		trigger = {
+			NORDIC_democratic_alliance_viable = yes  
 		}
-		GFX_focus_NORDIC_com_form_alliance = {
-			NORDIC_communist_alliance_viable = yes
+		value = GFX_focus_NORDIC_dem_form_alliance
+	}
+	icon = {
+		trigger = {
+			NORDIC_communist_alliance_viable = yes 
 		}
-		GFX_focus_NORDIC_mon_form_alliance = {
-			NORDIC_monarchist_alliance_viable = yes
+		value = GFX_focus_NORDIC_com_form_alliance
+	}
+	icon = {
+		trigger = {
+			NORDIC_monarchist_alliance_viable = yes 
 		}
-		GFX_focus_NORDIC_dem_form_alliance = yes
+		value = GFX_focus_NORDIC_mon_form_alliance
 	}
 	
 	#prerequisite = { focus = NORDIC_strengthen_ties }
@@ -83,7 +89,7 @@ shared_focus = {
 	}
 
 	offset = {
-		x = -30
+		x = -27
 		y = 0
 		trigger = {
 			has_focus_tree = finnish_focus
@@ -336,14 +342,48 @@ shared_focus = {
 		is_subject = no 
 		NORDIC_alliance_created_already = no 
 		if = {
-			limit = { original_tag = SWE }
-			NOT ={ has_completed_focus = SWE_central_nordic_army_command }
+			limit = { 
+				original_tag = SWE 
+				is_historical_focus_on = no
+			}
+			NOT = { has_completed_focus = SWE_central_nordic_army_command }
 		}
 		if = {
 			limit = { original_tag = FIN }
 			NOT ={ has_completed_focus = FIN_finnish_supremacy_in_the_north }
 		}
 	}
+	bypass = {
+		hidden_trigger = {
+			OR = {
+				AND = {
+					original_tag = SWE 
+					is_historical_focus_on = yes
+					is_subject = no
+					has_completed_focus = SWE_central_nordic_army_command
+					any_country = {
+						NORDIC_is_nordic = yes
+						OR = {
+							is_subject_of = SWE
+							is_in_faction_with = SWE
+						}
+					}
+				}
+				AND = {
+					OR = {
+						is_in_faction_with = SWE
+						is_subject_of = SWE
+					}
+					SWE = { 
+						is_subject = no 
+						has_completed_focus = SWE_central_nordic_army_command
+						has_completed_focus = NORDIC_form_joint_alliance
+					}
+				}
+			}
+		}
+	}
+		
 	ai_will_do = {
 		base = 1
 		modifier = {
@@ -595,16 +635,22 @@ joint_focus = {
 	dynamic = yes
 
 	icon = {
-		GFX_focus_NORDIC_dem_institution_1 = {
-			NORDIC_democratic_alliance_viable = yes
+		trigger = {
+			NORDIC_democratic_alliance_viable = yes 
 		}
-		GFX_focus_NORDIC_com_institution_1 = {
-			NORDIC_communist_alliance_viable = yes
+		value = GFX_focus_NORDIC_dem_institution_1
+	}
+	icon = {
+		trigger = {
+			NORDIC_communist_alliance_viable = yes 
 		}
-		GFX_focus_NORDIC_mon_institution_1 = {
-			NORDIC_monarchist_alliance_viable = yes
+		value = GFX_focus_NORDIC_com_institution_1
+	}
+	icon = {
+		trigger = {
+			NORDIC_monarchist_alliance_viable = yes 
 		}
-		GFX_focus_NORDIC_dem_institution_1 = yes
+		value = GFX_focus_NORDIC_mon_institution_1
 	}
 
 
@@ -792,16 +838,22 @@ joint_focus = {
 	id = NORDIC_second_institution
 
 	icon = {
-		GFX_focus_NORDIC_dem_institution_2 = {
-			NORDIC_democratic_alliance_viable = yes
+		trigger = {
+			NORDIC_democratic_alliance_viable = yes 
 		}
-		GFX_focus_NORDIC_com_institution_2 = {
-			NORDIC_communist_alliance_viable = yes
+		value = GFX_focus_NORDIC_dem_institution_2
+	}
+	icon = {
+		trigger = {
+			NORDIC_communist_alliance_viable = yes 
 		}
-		GFX_focus_NORDIC_mon_institution_2 = {
-			NORDIC_monarchist_alliance_viable = yes
+		value = GFX_focus_NORDIC_com_institution_2
+	}
+	icon = {
+		trigger = {
+			NORDIC_monarchist_alliance_viable = yes 
 		}
-		GFX_focus_NORDIC_dem_institution_2 = yes
+		value = GFX_focus_NORDIC_mon_institution_2
 	}
 
 	dynamic = yes 
@@ -946,16 +998,22 @@ joint_focus = {
 joint_focus = {
 	id = NORDIC_nordic_army
 	icon = {
-		GFX_focus_NORDIC_dem_army = {
-			NORDIC_democratic_alliance_viable = yes
+		trigger = {
+			NORDIC_democratic_alliance_viable = yes 
 		}
-		GFX_focus_NORDIC_com_army = {
-			NORDIC_communist_alliance_viable = yes
+		value = GFX_focus_NORDIC_dem_army
+	}
+	icon = {
+		trigger = {
+			NORDIC_communist_alliance_viable = yes 
 		}
-		GFX_focus_NORDIC_mon_army = {
-			NORDIC_monarchist_alliance_viable = yes
+		value = GFX_focus_NORDIC_com_army
+	}
+	icon = {
+		trigger = {
+			NORDIC_monarchist_alliance_viable = yes 
 		}
-		GFX_focus_NORDIC_dem_army = yes
+		value = GFX_focus_NORDIC_mon_army
 	}
 
 	dynamic = yes 
@@ -1253,16 +1311,22 @@ joint_focus = {
 	id = NORDIC_nordic_navy
 
 	icon = {
-		GFX_focus_NORDIC_dem_navy = {
-			NORDIC_democratic_alliance_viable = yes
+		trigger = {
+			NORDIC_democratic_alliance_viable = yes 
 		}
-		GFX_focus_NORDIC_com_navy = {
-			NORDIC_communist_alliance_viable = yes
+		value = GFX_focus_NORDIC_dem_navy
+	}
+	icon = {
+		trigger = {
+			NORDIC_communist_alliance_viable = yes 
 		}
-		GFX_focus_NORDIC_mon_navy = {
-			NORDIC_monarchist_alliance_viable = yes
+		value = GFX_focus_NORDIC_com_navy
+	}
+	icon = {
+		trigger = {
+			NORDIC_monarchist_alliance_viable = yes 
 		}
-		GFX_focus_NORDIC_dem_navy = yes
+		value = GFX_focus_NORDIC_mon_navy
 	}
 
 	dynamic = yes 
@@ -2149,16 +2213,22 @@ joint_focus = {
 	id = NORDIC_nordic_airforce
 	
 	icon = {
-		GFX_focus_NORDIC_dem_airforce = {
-			NORDIC_democratic_alliance_viable = yes
+		trigger = {
+			NORDIC_democratic_alliance_viable = yes 
 		}
-		GFX_focus_NORDIC_com_airforce = {
-			NORDIC_communist_alliance_viable = yes
+		value = GFX_focus_NORDIC_dem_airforce
+	}
+	icon = {
+		trigger = {
+			NORDIC_communist_alliance_viable = yes 
 		}
-		GFX_focus_NORDIC_mon_airforce = {
-			NORDIC_monarchist_alliance_viable = yes
+		value = GFX_focus_NORDIC_com_airforce
+	}
+	icon = {
+		trigger = {
+			NORDIC_monarchist_alliance_viable = yes 
 		}
-		GFX_focus_NORDIC_dem_airforce = yes
+		value = GFX_focus_NORDIC_mon_airforce
 	}
 
 	dynamic = yes 
@@ -2777,16 +2847,22 @@ joint_focus = {
 	id = NORDIC_nordic_research
 
 	icon = {
-		GFX_focus_NORDIC_dem_research = {
-			NORDIC_democratic_alliance_viable = yes
+		trigger = {
+			NORDIC_democratic_alliance_viable = yes 
 		}
-		GFX_focus_NORDIC_com_research = {
-			NORDIC_communist_alliance_viable = yes
+		value = GFX_focus_NORDIC_dem_research
+	}
+	icon = {
+		trigger = {
+			NORDIC_communist_alliance_viable = yes 
 		}
-		GFX_focus_NORDIC_mon_research = {
-			NORDIC_monarchist_alliance_viable = yes
+		value = GFX_focus_NORDIC_com_research
+	}
+	icon = {
+		trigger = {
+			NORDIC_monarchist_alliance_viable = yes 
 		}
-		GFX_focus_NORDIC_dem_research = yes
+		value = GFX_focus_NORDIC_mon_research
 	}
 
 	dynamic = yes 
@@ -2913,16 +2989,22 @@ joint_focus = {
 	id = NORDIC_nordic_industry
 
 	icon = {
-		GFX_focus_NORDIC_dem_civilian = {
-			NORDIC_democratic_alliance_viable = yes
+		trigger = {
+			NORDIC_democratic_alliance_viable = yes 
 		}
-		GFX_focus_NORDIC_com_civilian = {
-			NORDIC_communist_alliance_viable = yes
+		value = GFX_focus_NORDIC_dem_civilian
+	}
+	icon = {
+		trigger = {
+			NORDIC_communist_alliance_viable = yes 
 		}
-		GFX_focus_NORDIC_mon_civilian = {
-			NORDIC_monarchist_alliance_viable = yes
+		value = GFX_focus_NORDIC_com_civilian
+	}
+	icon = {
+		trigger = {
+			NORDIC_monarchist_alliance_viable = yes 
 		}
-		GFX_focus_NORDIC_dem_civilian = yes
+		value = GFX_focus_NORDIC_mon_civilian
 	}
 
 	dynamic = yes 
@@ -3680,16 +3762,22 @@ joint_focus = {
 	id = NORDIC_nordic_military_industry
 
 	icon = {
-		GFX_focus_NORDIC_dem_materiel = {
-			NORDIC_democratic_alliance_viable = yes
+		trigger = {
+			NORDIC_democratic_alliance_viable = yes 
 		}
-		GFX_focus_NORDIC_com_materiel = {
-			NORDIC_communist_alliance_viable = yes
+		value = GFX_focus_NORDIC_dem_materiel
+	}
+	icon = {
+		trigger = {
+			NORDIC_communist_alliance_viable = yes 
 		}
-		GFX_focus_NORDIC_mon_materiel = {
-			NORDIC_monarchist_alliance_viable = yes
+		value = GFX_focus_NORDIC_com_materiel
+	}
+	icon = {
+		trigger = {
+			NORDIC_monarchist_alliance_viable = yes 
 		}
-		GFX_focus_NORDIC_dem_materiel = yes
+		value = GFX_focus_NORDIC_mon_materiel
 	}
 
 	dynamic = yes

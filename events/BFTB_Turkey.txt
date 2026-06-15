@@ -163,6 +163,16 @@ country_event = {
 				is_historical_focus_on = yes
 				factor = 0
 			}
+			modifier = {
+				OR = {
+					has_country_flag = SOV_AI_RANDOM_COMMUNIST_HISTORICAL_ALTERNATIVE
+					has_game_rule = {
+						rule = SOV_ai_behavior
+						option = HISTORICAL_ALTERNATIVE
+					}
+				}
+				factor = 100
+			}
 		}
 		add_stability = -0.05
 		custom_effect_tooltip = TUR_remaining_defiant_tt
@@ -228,13 +238,20 @@ country_event = {
 	option = {
 		name = bftb_turkey.8.a #we need to stand by Turkey
 		ai_chance = {
-			factor = 30
+			factor = 50
 			modifier = {
-				has_completed_focus = ENG_global_defense
-				factor = 80
+				SOV = { is_ai = yes }
+				factor = 0.5
+			}
+			modifier = {
+				SOV = { is_ai = no }
+				factor = 2 #fking do it
 			}
 		}
 		add_stability = -0.05
+		add_war_support = 0.30
+		add_ideas = partial_economic_mobilisation
+		add_ideas = limited_conscription
 		custom_effect_tooltip = TUR_britain_stands_up_for_turkey_tt
 		hidden_effect = {
 			SOV = { country_event = { id = bftb_turkey.10 hours = 8 } }
@@ -243,15 +260,26 @@ country_event = {
 				relation = guarantee
 				active = yes
 			}
+			every_country = {
+				limit = {
+					is_in_faction_with = ENG
+				}
+				add_stability = -0.05
+				add_war_support = 0.15
+			}
 		}
 	}
 	option = {
 		name = bftb_turkey.8.b #we cannot risk open war with the Soviet Union
 		ai_chance = {
-			factor = 60
+			factor = 50
 			modifier = {
-				has_war_support < 20
-				factor = 40
+				SOV = { is_ai = no }
+				factor = 0.5
+			}
+			modifier = {
+				SOV = { is_ai = yes }
+				factor = 2
 			}
 		}
 		add_political_power = -120
@@ -273,10 +301,10 @@ country_event = {
 	option = {
 		name = bftb_turkey.9.a #we must concede everything to preserve our sovereignty
 		ai_chance = {
-			factor = 45
+			factor = 50
 		}
-		add_stability = -0.1
-		add_war_support = -0.05
+		add_stability = -0.05
+		add_war_support = 0.10
 		custom_effect_tooltip = TUR_straits_remain_demilitarised_tt
 		hidden_effect = {
 			SOV = { country_event = { id = bftb_turkey.11 hours = 8 } }
@@ -285,7 +313,11 @@ country_event = {
 	option = {
 		name = bftb_turkey.9.b #so be it, we stay the course!
 		ai_chance = {
-			factor = 55
+			factor = 50
+			modifier = {
+				factor = 2
+				is_historical_focus_on = no
+			}
 		}
 		add_war_support = 0.1
 		custom_effect_tooltip = TUR_we_remain_committed_tt
@@ -307,6 +339,16 @@ country_event = {
 		name = bftb_turkey.10.a #an invasion is too risky
 		ai_chance = {
 			factor = 85
+			modifier = {
+				OR = {
+					has_country_flag = SOV_AI_RANDOM_COMMUNIST_HISTORICAL_ALTERNATIVE
+					has_game_rule = {
+						rule = SOV_ai_behavior
+						option = HISTORICAL_ALTERNATIVE
+					}
+				}
+				factor = 0
+			}
 		}
 		custom_effect_tooltip = TUR_soviets_allow_militarisation_tt
 		hidden_effect = {
@@ -716,6 +758,7 @@ country_event = {
 						rule = TUR_ai_behavior
 						option = TUR_DEMOCRATIC_KEMALIST
 					}
+					is_historical_focus_on = yes
 				}
 				factor = 100
 			}
@@ -821,6 +864,10 @@ country_event = {
 		}
 		ai_chance = {
 			factor = 15
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
 			modifier = {
 				OR = {
 					has_country_flag = TUR_AI_RANDOM_DEMOCRATIC_ALTERNATE
@@ -2385,7 +2432,7 @@ country_event = {
 				transfer_state_to = TUR
 			}
 		}
-		
+  
 		if = {
 			limit = {
 				NOT = { has_tech = camelry }
@@ -5652,7 +5699,6 @@ country_event = {
 	option = {
 		name = bftb_turkey.134.b #liberal + historic = Bayar and Ismet / Bayar
 		trigger = {
-			# has_idea = TUR_celal_bayar
 			OR = {
 				has_completed_focus = TUR_the_sanayiciler
 				has_completed_focus = TUR_peace_at_home
@@ -5673,10 +5719,10 @@ country_event = {
 			promote_leader = yes
 		}
 	}
-	option = { #
+	option = {
 		name = bftb_turkey.134.c #liberal + historic = Bayar and Ismet / Ismet
 		trigger = {
-			#has_idea = TUR_ismet_inonu
+			
 			OR = {
 				has_completed_focus = TUR_the_sanayiciler
 				has_completed_focus = TUR_peace_at_home
@@ -5706,7 +5752,7 @@ country_event = {
 	option = {
 		name = bftb_turkey.134.d #nationalist
 		trigger = {
-			#has_idea = TUR_fevzi_cakmak_prime_minister
+			has_idea = TUR_fevzi_cakmak_prime_minister
 			has_completed_focus = TUR_reinvigorate_turkish_nationalism
 		}
 		add_country_leader_role = {

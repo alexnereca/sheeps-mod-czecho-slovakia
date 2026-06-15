@@ -4,7 +4,7 @@ technology_sharing_group = {
 	name = CHI_technological_cooperation
 	desc = CHI_technological_cooperation_desc
 	picture = GFX_technology_sharing_default
-	research_sharing_per_country_bonus = 0.05
+	research_sharing_per_country_bonus = 0.15
 
 	available = {
 
@@ -17,7 +17,7 @@ technology_sharing_group = {
 	name = CHI_joint_tank_development
 	desc = CHI_joint_tank_development_desc
 	picture = GFX_technology_sharing_default
-	research_sharing_per_country_bonus = 0.05
+	research_sharing_per_country_bonus = 0.15
 
 	categories = { armor }
 
@@ -38,7 +38,7 @@ technology_sharing_group = {
 	name = JAP_technological_exchange
 	desc = JAP_technological_exchange_desc
 	picture = GFX_technology_sharing_default
-	research_sharing_per_country_bonus = 0.05
+	research_sharing_per_country_bonus = 0.1
 
 	available = {
 		NOT = { has_war_with = GER }
@@ -52,7 +52,7 @@ technology_sharing_group = {
 	name = JAP_german_rocketry
 	desc = JAP_german_rocketry_desc
 	picture = GFX_technology_sharing_default
-	research_sharing_per_country_bonus = 0.05
+	research_sharing_per_country_bonus = 0.2
 
 	categories = { rocketry }
 

@@ -1118,10 +1118,6 @@ country_event = {
 							rule = POL_ai_behavior
 							option = COMMONWEALTH
 						}
-						has_game_rule = {
-							rule = POL_ai_behavior
-							option = DEFAULT
-						}
 					}
 				}
 			}
@@ -1192,10 +1188,6 @@ country_event = {
 							rule = POL_ai_behavior
 							option = ROMANIA
 						}
-						has_game_rule = {
-							rule = POL_ai_behavior
-							option = DEFAULT
-						}
 					}
 				}
 			}
@@ -1220,7 +1212,7 @@ country_event = {
 
 		set_party_name = { 
 			ideology = neutrality 
-			long_name = POL_hohenzollern_sigmaringen
+			long_name = POL_hohenzollern_sigmaringen_long
 			name = POL_hohenzollern_sigmaringen
 		}
 		hidden_effect = {
@@ -1283,10 +1275,6 @@ country_event = {
 						has_game_rule = {
 							rule = POL_ai_behavior
 							option = BERMONDT
-						}
-						has_game_rule = {
-							rule = POL_ai_behavior
-							option = DEFAULT
 						}
 					}
 				}
@@ -1372,11 +1360,7 @@ country_event = {
 	option = {
 		name = NSB_poland_royal_election.4.a
 		ai_chance = {
-			base = 10
-			modifier = {
-				factor = 0
-				always = no
-			}
+			base = 50
 		}
 		load_focus_tree = {
 			tree = polish_focus
@@ -1404,7 +1388,7 @@ country_event = {
 	option = {
 		name = NSB_poland_royal_election.4.b
 		ai_chance = {
-			base = 10
+			base = 0
 		}
 		custom_effect_tooltip = POL_keep_looking_tt
 		hidden_effect = {
@@ -1439,10 +1423,6 @@ country_event = {
 						has_game_rule = {
 							rule = POL_ai_behavior
 							option = HABSBURG
-						}
-						has_game_rule = {
-							rule = POL_ai_behavior
-							option = DEFAULT
 						}
 					}
 				}
@@ -2332,11 +2312,6 @@ country_event = {
 					value < 50
 				}
 			}
-			modifier = {
-				factor = 0
-				#AI strategy stuff TODO
-				always = no
-			}
 		}
 		#custom_effect_tooltip = anti_soviet_path_tt
 		set_politics = {
@@ -2351,16 +2326,11 @@ country_event = {
 		trigger = {
 			SOU = {
 				exists = yes 
-				has_government = communism
+				NOT = { has_completed_focus = SOV_beaten_but_not_defeated }
 			}
 		}
 		ai_chance = {
 			base = 45
-			modifier = {
-				factor = 0
-				#AI strategy stuff 	
-				always = no
-			}
 		}
 		#custom_effect_tooltip = pro_soviet_path_tt
 		if = {
@@ -2742,6 +2712,10 @@ country_event = {
 				POL = {
 					is_ai = no
 				}
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_global_flag = sov_yes_pact }
 			}
 		}
 		hidden_effect = { POL = { country_event = NSB_poland_communist_events.402 } }
@@ -3218,6 +3192,7 @@ country_event = {
 	picture = GFX_report_event_danzig_joins_nazis
 
 	fire_only_once = yes
+
 	is_triggered_only = yes
 	
 	option = {
@@ -3238,11 +3213,17 @@ country_event = {
 					is_major = yes
 					has_government = democratic
 					has_war_with = POL
+					OR = {
+						original_tag = ENG
+						original_tag = FRA
+						original_tag = USA
+						capital_scope = { NOT = { is_on_continent = europe } }
+					}
 					NOT = { has_war_with = ROOT }
 				}
 			}
 			modifier = { #I have already signed Molotov-Ribbentrop
-				factor = 0.2
+				factor = 0
 				has_global_flag = sov_yes_pact
 			}
 			modifier = { #Soviets refused MR Pact
@@ -3288,10 +3269,8 @@ country_event = {
 		ai_chance = {
 			base = 10
 			modifier = {
-				factor = 0 #If the player is doing this, the AI should always say yes.
-				POL = {
-					is_ai = no
-				}
+				factor = 0
+				NOT = { has_global_flag = sov_yes_pact }
 			}
 		}
 		hidden_effect = { POL = { country_event = NSB_polish_fascist_events.102 } }

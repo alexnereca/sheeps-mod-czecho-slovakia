@@ -67,13 +67,7 @@ country_event = {
 	option = {
 		name = mtg_exile_government.3.a
 		ai_chance = {
-			factor = 1
-			modifier = {
-				factor = 0
-				has_navy_size = {
-				    size > 75
-				}
-			}
+			factor = 10
 		}
 		transfer_navy = {
 			target = FROM
@@ -89,13 +83,7 @@ country_event = {
 	option = {
 		name = mtg_exile_government.3.b
 		ai_chance = {
-			factor = 1
-			modifier = {
-				factor = 0
-				has_navy_size = {
-				    size < 25
-				}
-			}
+			factor = 0
 		}
 		FROM = {
 			country_event = { id = mtg_exile_government.5 hours = 6 }

@@ -439,7 +439,7 @@ country_event = {
 	option = {
 		name = czech.1.a #yes
 		ai_chance = {
-			factor = 80
+			factor = 100
 		}
 		CZE = {
 			country_event = { id = czech.17 hours = 6 }
@@ -453,7 +453,7 @@ country_event = {
 	option = {
 		name = czech.1.b
 		ai_chance = {
-			factor = 20
+			factor = 0
 		}
 		CZE = {
 			country_event = { id = czech.18 hours = 6 }
@@ -521,48 +521,10 @@ country_event = {
 		puppet = CZE
 		CZE = {
 			country_event = { id = czech.20 hours = 6 }
-			if = {
-				limit = {
-					has_dlc = "Peace For Our Time"
-				}
-				# transfer_units_fraction= {
-				# 	target = GER
-				# 	stockpile_ratio = 0.75
-				# 	army_ratio = 0.75
-				# 	navy_ratio = 0.75
-				# 	air_ratio = 0.75
-				# }
-				promote_character = CZE_jaroslav_krejchi	#replace Gadja
-				if = {
-					limit = {
-						has_power_balance = {
-							id = CZE_bop_army_readiness
-						}
-					}
-					effect_tooltip = {
-						remove_power_balance = {
-							id = CZE_bop_army_readiness
-						}
-					}
-					hidden_effect = {
-						CZE_bop_stop_the_bop_and_give_final_idea = yes
-						remove_ideas = CZE_ready_for_anything_idea	#normally you get this as a reward for removing, but nu uh, you don't deserve it
-					}
-				}
-			}
 		}
 		
 		hidden_effect = {
-			if = {
-				limit = {
-					RKH = {
-						exists = no #Hey, you never know
-					}
-				}
-				CZE = {
-					set_cosmetic_tag = RKH
-				}
-			}
+			
 		}
 	}
 	
@@ -595,15 +557,9 @@ country_event = {
 			GER = {
 				puppet = CZE
 			}
-			if = {
-				limit = {
-					has_dlc = "Peace For Our Time"
-				}
-				promote_character = CZE_jaroslav_krejchi	#replace Gadja
-			}
 		}
 		hidden_effect = {
-			
+			add_ideas = GER_KR_enhanced
 		}
 	}
 }
@@ -725,7 +681,13 @@ country_event = {
 		}
 		
 		hidden_effect = {
-		
+			ROOT = {
+				add_ai_strategy = {
+					type = alliance
+					id = "CZE"
+					value = 500
+				}
+			}
 		}
 	}
 	
@@ -810,6 +772,13 @@ country_event = {
 		}
 		
 		hidden_effect = {
+			ROOT = {
+				add_ai_strategy = {
+					type = alliance
+					id = "CZE"
+					value = 500
+				}
+			}
 			
 		}
 	}
@@ -910,6 +879,16 @@ country_event = {
 		name = czech.1.b
 		ai_chance = {
 			factor = 40
+			modifier = {
+				OR = {
+					has_country_flag = HUN_AI_RANDOM_AUSTRIA_HUNGARY
+					has_game_rule = {
+						rule = HUN_ai_behavior
+						option = AUSTRIA_HUNGARY
+					}
+				}
+				factor = 0
+			}
 		}
 		CZE = {
 			country_event = { id = czech.34 hours = 6 }
@@ -931,9 +910,10 @@ country_event = {
 	
 	option = {
 		name = czech.33.a
+		add_to_faction = HUN
 		add_opinion_modifier = {
-				target = FROM
-				modifier = border_conflict_reconciled
+			target = FROM
+			modifier = border_conflict_reconciled
 		}
 		if = {
 			limit = { 664 = { is_claimed_by = HUN } }
@@ -943,6 +923,13 @@ country_event = {
 		}
 		
 		hidden_effect = {
+			HUN = {
+				add_ai_strategy = {
+					type = alliance
+					id = "CZE"
+					value = 500
+				}
+			}
 			
 		}
 	}
@@ -957,12 +944,24 @@ country_event = {
 	is_triggered_only = yes
 	
 	option = {
-		name = czech.34.a
+		name = LSM_czech.34.a
+
+		CZE = {
+			create_wargoal = {
+				target = HUN
+				type = annex_everything
+			}	
+		}
+	}
+	
+	option = {
+		name = LSM_czech.34.b
 		
 		hidden_effect = {
 			
 		}
 	}
+
 }
 
 # Czechoslovakia becomes just Czech
@@ -979,21 +978,6 @@ country_event = {
 		}
 		NOT = { has_war_with = SLO }
 		NOT = { has_global_flag = CZE_became_czech }
-		NOT = {
-			AND = {
-				OR = {
-					has_cosmetic_tag = CZE_union
-					has_cosmetic_tag = CZE_second_republic
-					has_cosmetic_tag = CZE_union_expanded
-					has_cosmetic_tag = CZE_fall_of_the_republic
-					has_cosmetic_tag = CZE_CEF
-					has_cosmetic_tag = EUR_UNIFIED
-				}
-				SLO = {
-					is_subject_of = ROOT
-				}
-			}
-		}
 	}
 	
 	mean_time_to_happen = { days = 2 }
@@ -1012,7 +996,6 @@ country_event = {
 	
 	trigger = {
 		original_tag = CZE
-		has_cosmetic_tag = CZE_ONLY	#The DLC autonomist path can reach at least 5 cosmetic tags while having the global flag be true, a union with Poland, the CEF, 2nd republic and Austria-Hungary (=Great Moravia)
 		OR = {
 			owns_state = 70
 			owns_state = 71
@@ -1035,3 +1018,107 @@ country_event = {
 		clr_global_flag = CZE_became_czech
 	}
 }
+
+country_event = {
+	id = czech.37
+	title = czech.37.t
+	desc = czech.37.d
+	picture = GFX_report_event_hitler_handshake
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = czech.37.a
+
+		set_faction_name = "Fun-sized Little Entente"
+	
+		every_country = {
+			limit = {
+				OR = {
+					tag = BUL
+					tag = HUN
+					tag = ALB
+					tag = GRE
+					tag = AUS
+					tag = TUR
+				}
+				NOT = { is_in_faction_with = CZE }
+				has_war = no
+				OR = {
+					AND = {
+						CZE = { has_government = democratic }
+						OR = {
+							has_government = neutrality
+							has_government = democratic
+						}
+					}
+					AND = {
+						CZE = { has_government = fascism }
+						OR = {
+							has_government = neutrality
+							has_government = fascism
+						}
+					}
+					AND = {
+						CZE = { has_government = communism }
+						OR = {
+							has_government = communism
+							has_government = democratic
+						}
+					}
+					AND = {
+						CZE = { has_government = neutrality }
+						OR = {
+							has_government = neutrality
+							has_government = democratic
+						}
+					}
+				}
+			}
+			country_event = { id = generic.5 hours = 3 } 
+		}
+		
+		ai_chance = { 
+			factor = 50
+		}
+	}
+	
+	option = {
+		name = czech.37.b
+
+		remove_from_faction = YUG
+		
+		ai_chance = { 
+			factor = 50
+			modifier = {
+				CZE = { has_government = democratic }
+				factor = 0
+			}
+			modifier = {
+				CZE = { has_government = communism }
+				factor = 0
+			}
+		}
+
+		YUG = { country_event = { id = czech.38 days = 1 } }
+	}
+
+}
+
+country_event = {
+	id = czech.38
+	title = czech.38.t
+	desc = czech.38.d
+	picture = GFX_report_event_hitler_handshake
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = czech.38.a
+
+		create_faction = panslavic_workers_congress
+		hidden_effect = { news_event = { id = news.330 } }
+	}
+
+}
+

@@ -59,6 +59,19 @@ technologies = {
 				}
 				factor = 500
 			}
+			modifier = {
+				factor = 0.1
+				is_ai_navy = no
+			}
+			modifier = {
+				factor = 50
+				OR = {
+					has_idea = crossing_the_atlantic_idea
+					has_idea = crossing_the_pacific_idea
+					num_of_naval_factories > 100
+					has_navy_size = { size > 200 }
+				}
+			}
 		}
 
 		categories = {
@@ -95,7 +108,7 @@ technologies = {
 		enable_equipment_modules = {
 			ship_light_battery_2
 			ship_light_medium_battery_2
-			ship_secondaries_2			
+			ship_secondaries_2		
 		}
 
 
@@ -109,6 +122,19 @@ technologies = {
 			modifier = {
 				has_tech = basic_ship_hull_light
 				factor = 20
+			}
+			modifier = {
+				factor = 0.1
+				is_ai_navy = no
+			}
+			modifier = {
+				factor = 50
+				OR = {
+					has_idea = crossing_the_atlantic_idea
+					has_idea = crossing_the_pacific_idea
+					num_of_naval_factories > 100
+					has_navy_size = { size > 200 }
+				}
 			}
 		}
 
@@ -168,34 +194,34 @@ technologies = {
 
 		ai_will_do = {
 			factor = 1
-			
 			modifier = {
 				has_war = yes
 				factor = 10
 			}
-			
 			modifier = {
-				factor = 2
-				date > 1938.1.1
+				factor = 0.1
+				is_ai_navy = no
 			}
 
 			modifier = {
-				factor = 2
-				date > 1939.1.1
-			}
-			
-			modifier = {
-				factor = 5
+				factor = 800
+				tag = USA
 				OR = {
-					tag = USA
-					tag = ENG
-					tag = JAP
-					tag = ITA
+					date > 1940.1.1
+					has_war = yes
+				}
+				has_navy_experience > 80
+			}
+			modifier = {
+				factor = 50
+				OR = {
+					has_idea = crossing_the_atlantic_idea
+					has_idea = crossing_the_pacific_idea
+					num_of_naval_factories > 100
+					has_navy_size = { size > 200 }
 				}
 			}
-			
 		}
-		
 
 		categories = {
 			naval_artillery
@@ -246,24 +272,22 @@ technologies = {
 				has_tech = improved_ship_hull_light
 				factor = 20
 			}
-			
 			modifier = {
-				factor = 1.5
-				date > 1939.1.1
+				factor = 0.1
+				is_ai_navy = no
 			}
 
 			modifier = {
-				factor = 1.5
-				date > 1940.1.1
+				factor = 80
+				tag = USA
+				date > 1939.1.1
 			}
-			
 			modifier = {
-				factor = 3
+				factor = 50
 				OR = {
-					tag = USA
-					tag = ENG
-					tag = ITA
-					tag = JAP
+					has_idea = crossing_the_atlantic_idea
+					has_idea = crossing_the_pacific_idea
+					num_of_naval_factories > 100
 				}
 			}
 		}
@@ -327,23 +351,19 @@ technologies = {
 				has_war = yes
 				factor = 10
 			}
-			
 			modifier = {
-				factor = 2
-				date > 1942.1.1
+				factor = 0.1
+				is_ai_navy = no
 			}
 
 			modifier = {
-				factor = 2
-				date > 1943.1.1
-			}
-			
-			modifier = {
-				factor = 5
+				factor = 800
+				tag = USA
 				OR = {
-					tag = USA
-					tag = ENG
+					date > 1940.1.1
+					has_war = yes
 				}
+				has_navy_experience > 80
 			}
 		}
 
@@ -385,6 +405,10 @@ technologies = {
 				has_tech = advanced_ship_hull_light
 				factor = 20
 			}
+			modifier = {
+				factor = 0.1
+				is_ai_navy = no
+			}
 		}
 
 		categories = {
@@ -398,7 +422,6 @@ technologies = {
 		}
 		special_project_specialization = { specialization_naval }
 	}
-	
 	basic_heavy_battery = {
 
 		research_cost = 1
@@ -428,6 +451,10 @@ technologies = {
 		ai_will_do = {
 			factor = 1
 			modifier = {
+				factor = 0.1
+				is_ai_navy = no
+			}
+			modifier = {
 				has_tech = basic_ship_hull_heavy
 				factor = 20
 			}
@@ -437,6 +464,14 @@ technologies = {
 					tag = JAP
 				}
 				factor = 2
+			}
+			modifier = {
+				factor = 50
+				OR = {
+					has_idea = crossing_the_atlantic_idea
+					has_idea = crossing_the_pacific_idea
+					num_of_naval_factories > 100
+				}
 			}
 		}
 
@@ -478,6 +513,10 @@ technologies = {
 		ai_will_do = {
 			factor = 1
 			modifier = {
+				factor = 0.1
+				is_ai_navy = no
+			}
+			modifier = {
 				has_tech = improved_ship_hull_heavy
 				factor = 20
 			}
@@ -488,22 +527,18 @@ technologies = {
 				}
 				factor = 2
 			}
-			
-			modifier = {
-				factor = 1.5
-				date > 1939.1.1
-			}
 
 			modifier = {
-				factor = 1.5
-				date > 1940.1.1
+				factor = 80
+				tag = USA
+				date > 1939.1.1
 			}
-			
 			modifier = {
-				factor = 3
+				factor = 50
 				OR = {
-					tag = USA
-					tag = ENG
+					has_idea = crossing_the_atlantic_idea
+					has_idea = crossing_the_pacific_idea
+					num_of_naval_factories > 100
 				}
 			}
 		}
@@ -540,6 +575,10 @@ technologies = {
 
 		ai_will_do = {
 			factor = 1
+			modifier = {
+				factor = 0.1
+				is_ai_navy = no
+			}
 			modifier = {
 				has_tech = advanced_ship_hull_heavy
 				factor = 20
@@ -586,6 +625,7 @@ technologies = {
 			hg_attack = 0.05
 			hg_armor_piercing = 0.05
 		}
+
 		folder = {
 			name = mtgnavalsupportfolder
 			position = { x = 3 y = 7 }
@@ -594,28 +634,30 @@ technologies = {
 		ai_will_do = {
 			factor = 1
 			modifier = {
+				factor = 0.1
+				is_ai_navy = no
+			}
+			modifier = {
 				is_major = yes
 				has_war = yes
 				factor = 5
 			}
-			
-			modifier = {
-				factor = 2
-				date > 1938.1.1
-			}
 
 			modifier = {
-				factor = 2
-				date > 1939.1.1
-			}
-			
-			modifier = {
-				factor = 5
+				factor = 800
+				tag = USA
 				OR = {
-					tag = USA
-					tag = ENG
-					tag = JAP
-					tag = ITA
+					date > 1940.1.1
+					has_war = yes
+				}
+				has_navy_experience > 80
+			}
+			modifier = {
+				factor = 50
+				OR = {
+					has_idea = crossing_the_atlantic_idea
+					has_idea = crossing_the_pacific_idea
+					num_of_naval_factories > 100
 				}
 			}
 
@@ -652,6 +694,7 @@ technologies = {
 			hg_attack = 0.05
 			hg_armor_piercing = 0.05
 		}
+
 		folder = {
 			name = mtgnavalsupportfolder
 			position = { x = 3 y = 16 }
@@ -660,9 +703,30 @@ technologies = {
 		ai_will_do = {
 			factor = 1
 			modifier = {
+				factor = 0.1
+				is_ai_navy = no
+			}
+			modifier = {
 				is_major = yes
 				has_war = yes
 				factor = 5
+			}
+
+			modifier = {
+				factor = 800
+				tag = USA
+				OR = {
+					date > 1940.1.1
+					has_war = yes
+				}
+				has_navy_experience > 80
+			}
+			modifier = {
+				factor = 50
+				OR = {
+					has_idea = crossing_the_atlantic_idea
+					has_idea = crossing_the_pacific_idea
+				}
 			}
 		}
 
@@ -704,12 +768,24 @@ technologies = {
 		ai_will_do = {
 			factor = 2
 			modifier = {
+				factor = 0.1
+				is_ai_navy = no
+			}
+			modifier = {
 				OR = {
 					tag = ENG
 					tag = USA
 					tag = JAP
 				}
 				factor = 20
+			}
+			modifier = {
+				factor = 50
+				OR = {
+					has_idea = crossing_the_atlantic_idea
+					has_idea = crossing_the_pacific_idea
+					num_of_naval_factories > 100
+				}
 			}
 		}
 
@@ -754,12 +830,24 @@ technologies = {
 		ai_will_do = {
 			factor = 2
 			modifier = {
+				factor = 0.1
+				is_ai_navy = no
+			}
+			modifier = {
 				OR = {
 					tag = ENG
 					tag = USA
 					tag = JAP
 				}
 				factor = 20
+			}
+			modifier = {
+				factor = 50
+				OR = {
+					has_idea = crossing_the_atlantic_idea
+					has_idea = crossing_the_pacific_idea
+					num_of_naval_factories > 100
+				}
 			}
 		}
 
@@ -800,6 +888,10 @@ technologies = {
 		ai_will_do = {
 			factor = 2
 			modifier = {
+				factor = 0.1
+				is_ai_navy = no
+			}
+			modifier = {
 				OR = {
 					tag = ENG
 					tag = USA
@@ -822,7 +914,6 @@ technologies = {
 		special_project_specialization = { specialization_naval }
 	}
 
-
 ###  ##  ###  ###  ### ###   ##      #   #  ##  ###   ##  ### ###  ###
  #  #  # #  # #  # #   #  # #  #     #   # #  # #  # #  # #   #  # #  
  #  #  # ###  ###  ##  #  # #  #     # # # #### ###  #### ##  ###  ## 
@@ -835,7 +926,10 @@ technologies = {
 
 		start_year = 1922
 
-
+		path = {
+			leads_to_tech = magnetic_detonator
+			research_cost_coeff = 1
+		}
 
 		path = {
 			leads_to_tech = improved_ship_torpedo_launcher
@@ -844,6 +938,7 @@ technologies = {
 
 		enable_equipment_modules = {
 			ship_torpedo_1
+			torpedo_mounting
 			ship_torpedo_sub_1
 		}
 
@@ -859,6 +954,10 @@ technologies = {
 		ai_will_do = {
 			factor = 2
 			modifier = {
+				factor = 0.1
+				is_ai_navy = no
+			}
+			modifier = {
 				OR = {
 					tag = JAP
 					tag = USA
@@ -870,6 +969,13 @@ technologies = {
 				has_war = yes
 				factor = 3
 			}
+			modifier = {
+				factor = 50
+				OR = {
+					has_idea = crossing_the_atlantic_idea
+					has_idea = crossing_the_pacific_idea
+				}
+			}
 		}
 
 		categories = {
@@ -879,7 +985,7 @@ technologies = {
 			mio_cat_tech_all_screen_ship_and_modules
 			mio_cat_tech_all_cruiser_and_modules
 			mio_cat_tech_all_destroyer_and_modules
-			mio_cat_tech_all_submarine_and_modules #Not really Sub but unlocks tech improving Subs torpedo stuff later #Now it is actually really a Sub Tech
+			mio_cat_tech_all_submarine_and_modules #Not really Sub but unlocks tech improving Subs torpedo stuff later
 		}
 		special_project_specialization = { specialization_naval }
 	}
@@ -888,7 +994,7 @@ technologies = {
 
 		xp_research_type = navy
 		xp_boost_cost = 50
-		xp_research_bonus = 1.50
+		xp_research_bonus = 2.00
 		research_cost = 2.5
 
 		start_year = 1936
@@ -931,6 +1037,10 @@ technologies = {
 		ai_will_do = {
 			factor = 2
 			modifier = {
+				factor = 0.1
+				is_ai_navy = no
+			}
+			modifier = {
 				OR = {
 					tag = JAP
 					tag = USA
@@ -945,6 +1055,24 @@ technologies = {
 			modifier = {
 				tag = JAP #Japan wants torpedoes EXTRA HARD
 				factor = 2
+			}
+
+			modifier = {
+				factor = 80
+				OR = {
+					tag = USA
+					tag = ENG
+				}
+				date > 1939.1.1
+				has_navy_experience > 100
+			}
+			modifier = {
+				factor = 50
+				OR = {
+					has_idea = crossing_the_atlantic_idea
+					has_idea = crossing_the_pacific_idea
+					num_of_naval_factories > 100
+				}
 			}
 		}
 
@@ -964,12 +1092,13 @@ technologies = {
 
 		xp_research_type = navy
 		xp_boost_cost = 50
-		xp_research_bonus = 1.50
+		xp_research_bonus = 2.00
 		research_cost = 2.5
 		path = {
 			leads_to_tech = modern_ship_torpedo_launcher
 			research_cost_coeff = 1
 		}
+
 		start_year = 1942
 		destroyer = {
 			naval_torpedo_hit_chance_factor = 0.1
@@ -984,7 +1113,6 @@ technologies = {
 			naval_torpedo_hit_chance_factor = 0.1
 		}
 		naval_torpedo_reveal_chance_factor = -0.25
-		
 		folder = {
 			name = mtgnavalsupportfolder
 			position = { x = 0 y = 16 }
@@ -992,6 +1120,10 @@ technologies = {
 
 		ai_will_do = {
 			factor = 2
+			modifier = {
+				factor = 0.1
+				is_ai_navy = no
+			}
 			modifier = {
 				OR = {
 					tag = JAP
@@ -1004,6 +1136,23 @@ technologies = {
 				has_war = yes
 				factor = 3
 			}
+
+			modifier = {
+				factor = 80
+				OR = {
+					tag = USA
+					tag = ENG
+				}
+				date > 1939.1.1
+				has_navy_experience > 100
+			}
+			modifier = {
+				factor = 50
+				OR = {
+					has_idea = crossing_the_atlantic_idea
+					has_idea = crossing_the_pacific_idea
+				}
+			}
 		}
 
 		categories = {
@@ -1017,7 +1166,6 @@ technologies = {
 		}
 		special_project_specialization = { specialization_naval }
 	}
-	
 	improved_ship_torpedo_launcher = {
 
 		research_cost = 1.5
@@ -1028,15 +1176,16 @@ technologies = {
 			leads_to_tech = magnetic_detonator
 			research_cost_coeff = 1
 		}
+
 		on_research_complete = {
 			custom_effect_tooltip = torpedo_advice_tt
 		}
 
 		enable_equipment_modules = {
 			ship_torpedo_2
-			ship_torpedo_sub_2			
+			ship_torpedo_sub_2	
 		}
-		
+
 
 
 		folder = {
@@ -1047,20 +1196,17 @@ technologies = {
 		ai_will_do = {
 			factor = 2
 			modifier = {
+				factor = 0.1
+				is_ai_navy = no
+			}
+			modifier = {
 				tag = JAP
 				factor = 5
 			}
-			
+
 			modifier = {
-				factor = 1.5
-				date > 1937.1.1
-			}
-			modifier = {
-				factor = 1.5
-				date > 1938.1.1
-			}
-			modifier = {
-				factor = 1.5
+				factor = 80
+				tag = USA
 				date > 1939.1.1
 			}
 		}
@@ -1072,17 +1218,14 @@ technologies = {
 			mio_cat_tech_all_screen_ship_and_modules
 			mio_cat_tech_all_cruiser_and_modules
 			mio_cat_tech_all_destroyer_and_modules
-			mio_cat_tech_all_submarine_and_modules
 		}
 		special_project_specialization = { specialization_naval }
 	}
-	
 	advanced_ship_torpedo_launcher = {
 
 		research_cost = 1.5
 
 		start_year = 1940
-
 
 		path = {
 			leads_to_tech = homing_torpedo
@@ -1095,9 +1238,9 @@ technologies = {
 
 		enable_equipment_modules = {
 			ship_torpedo_3
-			ship_torpedo_sub_3			
+			ship_torpedo_sub_3	
 		}
-		
+
 
 
 		folder = {
@@ -1108,17 +1251,18 @@ technologies = {
 		ai_will_do = {
 			factor = 2
 			modifier = {
+				factor = 0.1
+				is_ai_navy = no
+			}
+			modifier = {
 				tag = JAP
 				factor = 5
 			}
-			modifier = {
-				factor = 1.5
-				date > 1941.1.1
-			}
 
 			modifier = {
-				factor = 1.5
-				date > 1942.1.1
+				factor = 80
+				tag = USA
+				date > 1939.1.1
 			}
 		}
 
@@ -1129,11 +1273,9 @@ technologies = {
 			mio_cat_tech_all_screen_ship_and_modules
 			mio_cat_tech_all_cruiser_and_modules
 			mio_cat_tech_all_destroyer_and_modules
-			mio_cat_tech_all_submarine_and_modules
 		}
 		special_project_specialization = { specialization_naval }
 	}
-	
 	modern_ship_torpedo_launcher = {
 
 		research_cost = 1.5
@@ -1142,7 +1284,7 @@ technologies = {
 
 		enable_equipment_modules = {
 			ship_torpedo_4
-			ship_torpedo_sub_4			
+			ship_torpedo_sub_4		
 		}
 
 		on_research_complete = {
@@ -1158,6 +1300,10 @@ technologies = {
 		ai_will_do = {
 			factor = 2
 			modifier = {
+				factor = 0.1
+				is_ai_navy = no
+			}
+			modifier = {
 				tag = JAP
 				factor = 5
 			}
@@ -1170,7 +1316,6 @@ technologies = {
 			mio_cat_tech_all_screen_ship_and_modules
 			mio_cat_tech_all_cruiser_and_modules
 			mio_cat_tech_all_destroyer_and_modules
-			mio_cat_tech_all_submarine_and_modules
 		}
 		special_project_specialization = { specialization_naval }
 	}
@@ -1193,18 +1338,19 @@ technologies = {
 		naval_critical_effect_factor = -0.1
 		xp_research_type = navy
 		xp_boost_cost = 50
-		xp_research_bonus = 1.50
+		xp_research_bonus = 2.00
 		folder = {
 			name = mtgnavalsupportfolder
 			position = { x = 0 y = 1 }
 		}
 
 		ai_will_do = {
-			factor = 1
+			factor = 3
 			modifier = {
-				factor = 0
-				date < 1937.1.1
+				factor = 0.1
+				is_ai_navy = no
 			}
+
 			modifier = {
 				has_navy_size = { size < 10 }
 				factor = 0.1
@@ -1221,6 +1367,21 @@ technologies = {
 			modifier = {
 				has_war = yes
 				factor = 2
+			}
+
+			modifier = {
+				factor = 80
+				tag = USA
+				has_war = yes
+				has_navy_experience > 80
+			}
+			modifier = {
+				factor = 50
+				OR = {
+					has_idea = crossing_the_atlantic_idea
+					has_idea = crossing_the_pacific_idea
+					num_of_naval_factories > 100
+				}
 			}
 		}
 
@@ -1248,7 +1409,7 @@ technologies = {
 		naval_critical_effect_factor = -0.1
 		xp_research_type = navy
 		xp_boost_cost = 50
-		xp_research_bonus = 1.50
+		xp_research_bonus = 2.00
 		folder = {
 			name = mtgnavalsupportfolder
 			position = { x = 0 y = 6 }
@@ -1257,8 +1418,8 @@ technologies = {
 		ai_will_do = {
 			factor = 3
 			modifier = {
-				factor = 0
-				date < 1939.1.1
+				factor = 0.1
+				is_ai_navy = no
 			}
 			modifier = {
 				is_historical_focus_on = yes
@@ -1272,6 +1433,21 @@ technologies = {
 			modifier = {
 				has_war = yes
 				factor = 2
+			}
+
+			modifier = {
+				factor = 80
+				tag = USA
+				has_war = yes
+				has_navy_experience > 80
+			}
+			modifier = {
+				factor = 50
+				OR = {
+					has_idea = crossing_the_atlantic_idea
+					has_idea = crossing_the_pacific_idea
+					num_of_naval_factories > 100
+				}
 			}
 		}
 
@@ -1295,12 +1471,11 @@ technologies = {
 		naval_critical_effect_factor = -0.1
 		xp_research_type = navy
 		xp_boost_cost = 50
-		xp_research_bonus = 1.50
+		xp_research_bonus = 2.00
 		path = {
 			leads_to_tech = sp_improved_repair_ship
 			research_cost_coeff = 1
 		}
-
 		folder = {
 			name = mtgnavalsupportfolder
 			position = { x = 0 y = 12 }
@@ -1309,8 +1484,8 @@ technologies = {
 		ai_will_do = {
 			factor = 3
 			modifier = {
-				factor = 0
-				date < 1941.1.1
+				factor = 0.1
+				is_ai_navy = no
 			}
 			modifier = {
 				is_historical_focus_on = yes
@@ -1324,6 +1499,21 @@ technologies = {
 			modifier = {
 				has_war = yes
 				factor = 2
+			}
+
+			modifier = {
+				factor = 80
+				tag = USA
+				has_war = yes
+				has_navy_experience > 80
+			}
+			modifier = {
+				factor = 50
+				OR = {
+					has_idea = crossing_the_atlantic_idea
+					has_idea = crossing_the_pacific_idea
+					num_of_naval_factories > 100
+				}
 			}
 		}
 
@@ -1365,42 +1555,47 @@ technologies = {
 		}
 		xp_research_type = navy
 		xp_boost_cost = 50
-		xp_research_bonus = 1.50
+		xp_research_bonus = 2.00
 		folder = {
 			name = mtgnavalsupportfolder
 			position = { x = 0 y = 1 }
 		}
 
 		ai_will_do = {
-			factor = 1
+			factor = 3
+			modifier = {
+				factor = 0.1
+				is_ai_navy = no
+			}
 			modifier = {
 				has_navy_size = { size < 10 }
 				factor = 0.1
 			}
-			
 			modifier = {
 				has_war = yes
 				factor = 2
 			}
-			
-			modifier = {				
-				OR = {
-					tag = USA
-					tag = ENG
-					tag = JAP
-					tag = ITA
-				}
-				factor = 5
-			}
-			
 			modifier = {
-				factor = 2
-				date > 1938.1.1
+				tag = JAP
+				factor = 5
 			}
 
 			modifier = {
-				factor = 2
-				date > 1939.1.1
+				factor = 80
+				OR = {
+					tag = USA
+					tag = ENG
+				}
+				date > 1938.1.1
+				has_navy_experience > 80
+			}
+			modifier = {
+				factor = 50
+				OR = {
+					has_idea = crossing_the_atlantic_idea
+					has_idea = crossing_the_pacific_idea
+					num_of_naval_factories > 100
+				}
 			}
 		}
 
@@ -1418,7 +1613,7 @@ technologies = {
 	fire_control_methods_2 = {
 		xp_research_type = navy
 		xp_boost_cost = 50
-		xp_research_bonus = 1.50
+		xp_research_bonus = 2.00
 		research_cost = 2.5
 		path = {
 			leads_to_tech = fire_control_methods_3
@@ -1443,31 +1638,36 @@ technologies = {
 		}
 
 		ai_will_do = {
-			factor = 1
+			factor = 3
+			modifier = {
+				factor = 0.1
+				is_ai_navy = no
+			}
 			modifier = {
 				has_war = yes
 				factor = 2
 			}
-			
-			modifier = {				
-				OR = {
-					tag = USA
-					tag = ENG
-					tag = JAP
-					tag = ITA
-				}
-				date > 1939.1.1
-				factor = 5
-			}
-			
 			modifier = {
-				factor = 2
-				date > 1940.1.1
+				tag = JAP
+				factor = 5
 			}
 
 			modifier = {
-				factor = 2
-				date > 1941.1.1
+				factor = 80
+				OR = {
+					tag = USA
+					tag = ENG
+				}
+				date > 1938.1.1
+				has_navy_experience > 80
+			}
+			modifier = {
+				factor = 50
+				OR = {
+					has_idea = crossing_the_atlantic_idea
+					has_idea = crossing_the_pacific_idea
+					num_of_naval_factories > 100
+				}
 			}
 		}
 
@@ -1507,31 +1707,43 @@ technologies = {
 		}
 		xp_research_type = navy
 		xp_boost_cost = 50
-		xp_research_bonus = 1.50
+		xp_research_bonus = 2.00
 		folder = {
 			name = mtgnavalsupportfolder
 			position = { x = 0 y = 12 }
 		}
 
 		ai_will_do = {
-			factor = 1
+			factor = 3
+			modifier = {
+				factor = 0.1
+				is_ai_navy = no
+			}
 			modifier = {
 				has_war = yes
 				factor = 2
 			}
-			modifier = {				
+			modifier = {
+				tag = JAP
+				factor = 5
+			}
+
+			modifier = {
+				factor = 80
 				OR = {
 					tag = USA
 					tag = ENG
-					tag = JAP
-					tag = ITA
 				}
-				date > 1941.1.1
-				factor = 5
+				date > 1938.1.1
+				has_navy_experience > 80
 			}
 			modifier = {
-				factor = 0.1
-				original_tag = GER				
+				factor = 50
+				OR = {
+					has_idea = crossing_the_atlantic_idea
+					has_idea = crossing_the_pacific_idea
+					num_of_naval_factories > 100
+				}
 			}
 		}
 
@@ -1637,6 +1849,10 @@ technologies = {
 		ai_will_do = {
 			factor = 1
 			modifier = {
+				factor = 0.1
+				is_ai_navy = no
+			}
+			modifier = {
 				OR = {
 					tag = GER
 					tag = USA
@@ -1674,6 +1890,10 @@ technologies = {
 
 		ai_will_do = {
 			factor = 1.5
+			modifier = {
+				factor = 0.1
+				is_ai_navy = no
+			}
 			modifier = {
 				OR = {
 					tag = GER
@@ -1728,7 +1948,7 @@ technologies = {
 					tag = ENG
 					tag = SOV
 				}
-				factor = 4
+				factor = 6
 			}
 			modifier = {
 				has_war = yes
@@ -1737,6 +1957,10 @@ technologies = {
 			modifier = {
 				is_major = no
 				factor = 2
+			}
+			modifier = {
+				factor = 0.1
+				is_ai_navy = no
 			}
 		}
 
@@ -1807,11 +2031,6 @@ technologies = {
 		research_cost = 2
 
 		start_year = 1940
-
-		#path = {
-		#	leads_to_tech = modern_naval_mines
-		#	research_cost_coeff = 1
-		#}
 
 		path = {
 			leads_to_tech = airdrop_mines
@@ -1892,6 +2111,10 @@ technologies = {
 				}
 				factor = 7
 			}
+			modifier = {
+				factor = 0.1
+				is_ai_navy = no
+			}
 		}
 
 		categories = {
@@ -1906,7 +2129,6 @@ technologies = {
 		allow_branch = {
 			has_dlc = "By Blood Alone"
 		}
-
 
 		research_cost = 1
 
@@ -1931,6 +2153,10 @@ technologies = {
 				}
 				factor = 7
 			}
+			modifier = {
+				factor = 0.1
+				is_ai_navy = no
+			}
 		}
 
 		categories = {
@@ -1941,45 +2167,6 @@ technologies = {
 		special_project_specialization = { specialization_naval }
 	}
 
-	#modern_naval_mines = {
-
-	#	research_cost = 2
-
-	#	start_year = 1945
-
-	#	path = {
-	#		leads_to_tech = airsweep_mines
-	#		research_cost_coeff = 1
-	#	}
-	#	path = {
-	#		leads_to_tech = airsweep_mines_bba
-	#		research_cost_coeff = 1
-	#	}
-
-	#	naval_mines_damage_factor = 0.2 # more boom for the boom box
-	#	folder = {
-	#		name = mtgnavalsupportfolder
-	#		position = { x = 0 y = 19 }
-	#	}
-
-	#	ai_will_do = {
-	#		factor = 1
-	#		modifier = {
-	#			tag = USA
-	#			factor = 3
-	#		}
-	#	}
-
-	#	categories = {
-	#		naval_mines
-	#		naval_minelaying
-	#		naval_equipment
-	#		mio_cat_tech_all_screen_ship_and_modules
-	#		mio_cat_tech_all_cruiser_and_modules
-	#		mio_cat_tech_all_destroyer_and_modules
-	#	}
-	#	special_project_specialization = { specialization_naval }
-	#}
 
 	airsweep_mines = {
 		allow_branch = {
@@ -2045,7 +2232,11 @@ technologies = {
 		special_project_specialization = { specialization_naval }
 	}
 
-	mtg_transport = { 
+	mtg_transport = { #WHEN BALANCING - ALSO FIX REGULAR NAVAL TREE
+
+		xp_research_type = navy
+		xp_boost_cost = 200
+		xp_research_bonus = 2.50
 
 		transport_capacity = -0.33
 		naval_invasion_prep_days = -10
@@ -2076,9 +2267,14 @@ technologies = {
 			name = mtgnavalsupportfolder
 			position = { x = 0 y = 1 }
 		}
-
 		ai_will_do = {
 			factor = 1
+
+			modifier = {
+				factor = 5000
+				tag = SOV
+				has_war = yes
+			}
 
 			modifier = {
 				factor = 0.5
@@ -2086,8 +2282,20 @@ technologies = {
 			}
 
 			modifier = {
+				factor = 500
+				any_owned_state = { is_coastal = yes }
+				has_navy_size = { size > 15 }
+				has_war = yes
+			}
+
+			modifier = {
 				factor = 2
 				tag = USA
+			}
+
+			modifier = {
+				factor = 25
+				date > 1940.1.1
 			}
 			modifier = {
 				has_war_with = JAP
@@ -2103,6 +2311,11 @@ technologies = {
 				factor = 2
 				tag = ENG
 			}
+
+			modifier = {
+				factor = 5000
+				has_country_flag = d_day_prep_flag
+			}
 		}
 
 		categories = {
@@ -2114,12 +2327,15 @@ technologies = {
 
 	mtg_landing_craft = {
 
+		xp_research_type = navy
+		xp_boost_cost = 200
+		xp_research_bonus = 2.50
+
 		#invasion_preparation = -0.25
 		amphibious_invasion_defence = 0.15
 		naval_invasion_prep_days = -10
 		naval_invasion_division_cap = 4 
 		naval_invasion_plan_cap = 3	
-		#naval_invasion_capacity = 20
 
 		path = {
 			leads_to_tech = mtg_tank_landing_craft
@@ -2162,7 +2378,12 @@ technologies = {
 				factor = 2
 			}
 			modifier = {
-				factor = 50
+				factor = 5
+				tag = USA
+				has_navy_experience > 300
+			}
+			modifier = {
+				factor = 150
 				tag = JAP
 				OR = {
 					has_war_with = USA
@@ -2170,7 +2391,7 @@ technologies = {
 						OR = {
 							has_capitulated = yes
 							exists = no
-		                    is_subject_of = JAP
+		                    			is_subject_of = JAP
 						}
 					}
 				}
@@ -2190,6 +2411,34 @@ technologies = {
 				has_war_with = GER
 				GER = { has_war_with = SOV }
 			}
+
+			modifier = {
+				factor = 100
+				OR = {
+					tag = ENG
+					tag = USA
+				}
+				is_historical_focus_on = yes
+				date > 1939.7.1
+			}
+			modifier = {
+				factor = 200
+				has_country_flag = d_day_prep_flag
+			}
+			modifier = {
+				has_war_with = JAP
+				is_major = yes
+				NOT = {
+					any_country = {
+						is_neighbor_of = ROOT
+						is_major = yes
+						has_war_with = ROOT
+						NOT = { tag = JAP }
+						has_capitulated = no
+					}
+				}
+				factor = 20
+			}
 		}
 
 		categories = {
@@ -2201,12 +2450,15 @@ technologies = {
 
 	mtg_tank_landing_craft = {
 
+		xp_research_type = navy
+		xp_boost_cost = 200
+		xp_research_bonus = 2.50
+
 		amphibious_invasion = 0.25
 		amphibious_invasion_defence = 0.5
 		naval_invasion_prep_days = -10
-		naval_invasion_division_cap = 5 
-		naval_invasion_plan_cap = 4			
-		#naval_invasion_capacity = 100
+		naval_invasion_division_cap = 15 
+		naval_invasion_plan_cap = 4	
 
 		research_cost = 2
 		start_year = 1944
@@ -2224,7 +2476,7 @@ technologies = {
 			}
 
 			modifier = {
-				factor = 20
+				factor = 2
 				tag = USA
 			}
 			modifier = {
@@ -2239,6 +2491,60 @@ technologies = {
 			modifier = {
 				factor = 2
 				tag = ENG
+			}
+
+			modifier = {
+				factor = 100
+				OR = {
+					tag = ENG
+					tag = USA
+				}
+				is_historical_focus_on = yes
+				date > 1941.1.1
+			}
+			modifier = {
+				factor = 5
+				tag = USA
+				has_navy_experience > 300
+			}
+			modifier = {
+				factor = 500
+				has_country_flag = d_day_prep_flag
+			}
+			modifier = {
+				has_war_with = JAP
+				is_major = yes
+				NOT = {
+					any_country = {
+						is_neighbor_of = ROOT
+						is_major = yes
+						has_war_with = ROOT
+						NOT = { tag = JAP }
+						has_capitulated = no
+					}
+				}
+				factor = 20
+			}
+			modifier = {
+				factor = 150
+				tag = JAP
+				any_enemy_country = {
+					is_major = yes
+					capital_scope = {
+						OR = {
+							is_on_continent = europe
+							is_on_continent = north_america
+						}
+					}
+				}
+				has_navy_size = { size > 200 }
+				NOT = {
+					any_enemy_country = {
+						has_navy_size = { size > 300 }
+					}
+				}
+				is_japanese_endsieg = no
+				date > 1941.11.1
 			}
 		}
 
@@ -2329,8 +2635,6 @@ technologies = {
 		}
 		special_project_specialization = { specialization_naval }	
 	}
-
-	#### SUPPORT & REPAIR SHIPS ####
 
 	sp_improved_support_ship = {
 		allow_branch = {

@@ -9,7 +9,7 @@
  #################### 
 
  BRA_bernadini_organization = {
- 	include = generic_medium_tank_organization
+ 	include = generic_tank_organization
  	icon = GFX_idea_BRA_bernardini
  	allowed = {	
  		has_dlc = "Trial of Allegiance"
@@ -85,7 +85,7 @@ BRA_amrj_organization = {
 ###########################
 
 BRA_embraer_organization = {
-	include = generic_general_aircraft_organization
+	include = generic_range_focused_aircraft_organization
 	icon = GFX_idea_BRA_embraer
 	allowed = {	
 		has_dlc = "Trial of Allegiance"

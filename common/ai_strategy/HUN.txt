@@ -41,7 +41,7 @@ HUN_unit_production_early = {
 	ai_strategy = {
 		type = role_ratio
 		id = mobile
-		value = 15
+		value = 0
 	}
 
 	ai_strategy = {
@@ -90,7 +90,7 @@ HUN_unit_production_early = {
 	ai_strategy = {
 		type = unit_ratio
 		id = heavy_fighter
-		value = 20
+		value = 0
 	}
 
 	### Naval unit factors ###
@@ -182,13 +182,13 @@ HUN_unit_production_mid = {
 	ai_strategy = {
 		type = role_ratio
 		id = armor
-		value = 20
+		value = 30
 	}
 
 	ai_strategy = {
 		type = role_ratio
 		id = mobile
-		value = 10
+		value = 0
 	}
 
 	ai_strategy = {
@@ -328,13 +328,13 @@ HUN_unit_production_late = {
 	ai_strategy = {
 		type = role_ratio
 		id = armor
-		value = 20
+		value = 50
 	}
 
 	ai_strategy = {
 		type = role_ratio
 		id = mobile
-		value = 15
+		value = 0
 	}
 
 	ai_strategy = {
@@ -436,344 +436,6 @@ HUN_unit_production_late = {
 		value = 25
 	}
 }
-
-HUN_research_early = {
-	allowed = {
-		original_tag = HUN
-	}
-	enable = {
-		always = yes
-	}
-	abort_when_not_enabled = yes
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = interwar_artillery
-		value = 250
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = artillery1
-		value = 250
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = basic_small_airframe
-		value = 250
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = engines_2
-		value = 250
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = basic_medium_tank_chassis
-		value = 500
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = support_weapons
-		value = 100
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = support_weapons2
-		value = 150
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = infantry_weapons2
-		value = 150
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = improved_infantry_weapons
-		value = 150
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = motorised_infantry
-		value = 1000
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = tech_recon
-		value = 150
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = tech_engineers
-		value = 150
-	}
-
-	# And then down-prio a few things...
-	ai_strategy = {
-		type = research_weight_factor
-		id = air_torpedoe_1
-		value = -500
-	}
-}
-
-HUN_research_mid = {
-	allowed = {
-		original_tag = HUN
-	}
-	enable = {
-		date > 1940.1.1
-	}
-	abort_when_not_enabled = yes
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = antiair1
-		value = 250
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = antiair2
-		value = 250
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = antitank1
-		value = 250
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = antitank2
-		value = 250
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = artillery2
-		value = 250
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = artillery3
-		value = 250
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = artillery4
-		value = 250
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = improved_small_airframe
-		value = 250
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = engines_3
-		value = 250
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = aa_hmg
-		value = 250
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = aa_cannon_1
-		value = 250
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = improved_medium_tank_chassis
-		value = 250
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = improved_light_tank_chassis
-		value = 250
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = improved_infantry_weapons_2
-		value = 150
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = advanced_infantry_weapons
-		value = 150
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = support_weapons3
-		value = 150
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = support_weapons4
-		value = 150
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = tech_maintenance_company
-		value = 150
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = tech_maintenance_company
-		value = 150
-	}
-}
-
-HUN_research_late = {
-	allowed = {
-		original_tag = HUN
-	}
-	enable = {
-		date > 1943.1.1
-	}
-	abort_when_not_enabled = yes
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = antiair2
-		value = 250
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = antiair3
-		value = 250
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = antiair4
-		value = 250
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = antitank2
-		value = 250
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = antitank3
-		value = 250
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = antitank4
-		value = 250
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = artillery4
-		value = 250
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = advanced_small_airframe
-		value = 250
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = engines_4
-		value = 250
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = aa_cannon_2
-		value = 250
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = advanced_medium_tank_chassis
-		value = 250
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = improved_light_tank_chassis
-		value = 250
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = mechanised_infantry
-		value = 250
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = improved_infantry_weapons_2
-		value = 150
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = advanced_infantry_weapons
-		value = 150
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = support_weapons4
-		value = 150
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = infantry_at
-		value = 150
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = tech_field_hospital
-		value = 150
-	}
-
-	ai_strategy = {
-		type = research_weight_factor
-		id = tech_logistics_company
-		value = 150
-	}
-}
-
 HUN_build_up_army = {
 	allowed = {
 		original_tag = HUN
@@ -821,6 +483,8 @@ germany_dont_ally_historical = {
 	enable = {
 		is_historical_focus_on = yes
 		country_exists = GER
+		date < 1939.1.1
+		has_global_flag = vanilla_history
 	}
 	abort = {
 		is_in_faction_with = GER #got here somehow, might as well stay
@@ -954,50 +618,5 @@ germany_hungary_kaiser = {
 		type = support
 		id = "HUN"
 		value = 200
-	}
-}
-
-HUN_does_the_eastern_front = { #Pfot, HUN will share front similar to Italian behavior
-	allowed = { 
-		tag = HUN
-	}
-
-	enable = {
-		GER = {
-			going_war_with_SOV = yes
-			is_ai = yes #You'd get in the way of a player
-		}
-		ROOT = {
-			is_in_faction_with = GER
-			surrender_progress < 0.01 #Nothing bad is happening at home
-			any_neighbor_country = {
-				NOT = {
-					has_war_with = ROOT
-				}
-			}
-		}
-	}
-
-	abort_when_not_enabled = yes
-
-	ai_strategy = {
-		type = force_defend_ally_borders
-		id = ROM
-		value = 100
-	}
-	ai_strategy = {
-		type = force_defend_ally_borders
-		id = SLO
-		value = 100
-	}
-	ai_strategy = {
-		type = dont_defend_ally_borders
-		id = GER
-		value = 100
-	}
-	ai_strategy = {
-    	type = front_unit_request
-    	tag = SOV
-    	value = 100
 	}
 }

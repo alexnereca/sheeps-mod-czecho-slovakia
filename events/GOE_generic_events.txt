@@ -15,97 +15,14 @@ country_event = {
 	# Support Vichy
 	option = {
 		name = GOE_generic_events.1.a
+		trigger = { 
+			surrender_progress < 0.30
+		}
 		ai_chance = {
 			base = 10
 		}
-		trigger = {
-			has_capitulated = no # Can only switch sides if they have not already capitulated, i.e been captured by for example another Axis member  
-		}
 		# Syria supports us
 		hidden_effect = {
-
-			# Check if any of our states are to go as spoils to Iraq or other enemies 
-			# Deir az Zur 
-			IF = {
-				limit = {
-					680 = {
-						is_owned_by = ROOT
-						NOT = {
-							is_controlled_by = ROOT
-						}
-					}
-				}
-				680 = {
-					controller = {
-						transfer_state = PREV
-					}
-				}
-			}
-			# Alexandretta 
-			IF = {
-				limit = {
-					799 = {
-						is_owned_by = ROOT
-						NOT = {
-							is_controlled_by = ROOT
-						}
-					}
-				}
-				799 = {
-					controller = {
-						transfer_state = PREV
-					}
-				}
-			}
-			# Aleppo 
-			IF = {
-				limit = {
-					677 = {
-						is_owned_by = ROOT
-						NOT = {
-							is_controlled_by = ROOT
-						}
-					}
-				}
-				677 = {
-					controller = {
-						transfer_state = PREV
-					}
-				}
-			}
-			# Damascus  
-			IF = {
-				limit = {
-					554 = {
-						is_owned_by = ROOT
-						NOT = {
-							is_controlled_by = ROOT
-						}
-					}
-				}
-				554 = {
-					controller = {
-						transfer_state = PREV
-					}
-				}
-			}
-			# Lebanon  
-			IF = {
-				limit = {
-					553 = {
-						is_owned_by = ROOT
-						NOT = {
-							is_controlled_by = ROOT
-						}
-					}
-				}
-				553 = {
-					controller = {
-						transfer_state = PREV
-					}
-				}
-			}
-
 			OVERLORD = {
 				end_puppet = ROOT
 			}
@@ -115,15 +32,6 @@ country_event = {
 					original_tag = SYR
 				}
 				set_cosmetic_tag = SYR_vichy
-				add_country_leader_role = {
-					character = FRA_henri_dentz
-					promote_leader = yes
-					country_leader = {
-						ideology = fascism_ideology
-						expire = "1960.1.1.1" 
-						traits = { eager_collaborator } 
-					}
-				}	
 			}
 			IF = {
 				limit = {
@@ -137,16 +45,15 @@ country_event = {
 				id = GOE_generic_events.2
 				hours = 1
 			}
-			puppet = {
-			    target = ROOT
-			    end_wars = yes
-			    end_civil_wars = no 
-			}
+			puppet = ROOT
 		}
 	}	
 	# Support Free France
 	option = {
 		name = GOE_generic_events.1.b
+		trigger = { 
+			surrender_progress < 0.80
+		}
 		ai_chance = {
 			base = 0
 			modifier = {
@@ -179,9 +86,10 @@ country_event = {
 				add = 10
 				is_historical_focus_on = no
 			}
-		}
-		trigger = {
-			has_capitulated = no # Can only declare independence if they have not already capitulated, i.e been captured by for example another Axis member  
+			modifier = {
+				add = 50
+				surrender_progress > 0.30
+			}
 		}
 		# Syria betrays us
 		VIC = {
@@ -190,106 +98,10 @@ country_event = {
 				hours = 1
 			}
 		}
-
-		# Check if any of our states are to go as spoils to Iraq or other enemies 
-		# Deir az Zur 
-		IF = {
-			limit = {
-				680 = {
-					is_owned_by = ROOT
-					NOT = {
-						is_controlled_by = ROOT
-					}
-				}
-			}
-			680 = {
-				controller = {
-					transfer_state = PREV
-				}
-			}
-		}
-		# Alexandretta 
-		IF = {
-			limit = {
-				799 = {
-					is_owned_by = ROOT
-					NOT = {
-						is_controlled_by = ROOT
-					}
-				}
-			}
-			799 = {
-				controller = {
-					transfer_state = PREV
-				}
-			}
-		}
-		# Aleppo 
-		IF = {
-			limit = {
-				677 = {
-					is_owned_by = ROOT
-					NOT = {
-						is_controlled_by = ROOT
-					}
-				}
-			}
-			677 = {
-				controller = {
-					transfer_state = PREV
-				}
-			}
-		}
-		# Damascus  
-		IF = {
-			limit = {
-				554 = {
-					is_owned_by = ROOT
-					NOT = {
-						is_controlled_by = ROOT
-					}
-				}
-			}
-			554 = {
-				controller = {
-					transfer_state = PREV
-				}
-			}
-		}
-		# Lebanon  
-		IF = {
-			limit = {
-				553 = {
-					is_owned_by = ROOT
-					NOT = {
-						is_controlled_by = ROOT
-					}
-				}
-			}
-			553 = {
-				controller = {
-					transfer_state = PREV
-				}
-			}
-		}
-
 		OVERLORD = {
 			end_puppet = ROOT
 		}
 		drop_cosmetic_tag = yes
-
-		every_country = {
-			limit = {
-				has_war_with = ROOT
-			}
-			white_peace = ROOT
-		}
-		IF = {
-			limit = {
-				is_in_faction = yes 
-			}
-			leave_faction = yes 
-		}
 		custom_effect_tooltip = GOE_generic_events_1_tt
 	}
 }

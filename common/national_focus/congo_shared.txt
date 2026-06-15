@@ -768,28 +768,16 @@
 
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH FOCUS_FILTER_HISTORICAL }
 
-		text_icon = CONGO_COG_focus_style
+		text_icon = CONGO_BEL_COG_focus_style
 
 		joint_trigger = {
 			CONGO_is_a_congo_viable_nation = yes 
 		}
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			NOT = {	
 				OR = {
@@ -1178,21 +1166,9 @@
 		}
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			NOT = {	
 				OR = {
@@ -1382,21 +1358,9 @@
 		}
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			NOT = {	
 				OR = {
@@ -1546,21 +1510,9 @@
 		text_icon = CONGO_BEL_COG_focus_style
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			AND = {
 				OR = {
@@ -2063,22 +2015,10 @@
 			CONGO_is_a_congo_viable_nation = yes 
 		}
 
-		available = {
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+		available = { 
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			custom_trigger_tooltip = {
 				tooltip = CONGO_jungle_industry_available_tt
@@ -2415,6 +2355,21 @@
 					localization = CONGO_belgian_devaluation
 				}
 
+				hidden_effect = {
+					if = {
+						limit = { 
+							COG = { is_ai = yes }
+						}
+				
+						COG = {
+							add_autonomy_score = { 
+								value = -250
+								localization = CONGO_belgian_devaluation
+							}
+						}
+					}
+				}
+	
 				custom_effect_tooltip = generic_skip_one_line_tt
 
 				custom_effect_tooltip = modify_COG_belgian_congo_colonial_dynamic_modifier_tt
@@ -2444,6 +2399,21 @@
 				add_autonomy_score = { 
 					value = -250
 					localization = CONGO_belgian_devaluation
+				}
+
+				hidden_effect = {
+					if = {
+						limit = { 
+							COG = { is_ai = yes }
+						}
+				
+						COG = {
+							add_autonomy_score = { 
+								value = -250
+								localization = CONGO_belgian_devaluation
+							}
+						}
+					}
 				}
 
 				custom_effect_tooltip = generic_skip_one_line_tt
@@ -2515,26 +2485,14 @@
 		}
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			OR = {
 				AND = {
-					any_country_with_original_tag = {
-						original_tag_to_check = FRA
+					any_country = {
+						original_tag = FRA
 						has_capitulated = yes
 					}
 					772 = {
@@ -2736,21 +2694,9 @@
 
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			OR = {
 				original_tag = BEL
@@ -2780,6 +2726,21 @@
 				add_autonomy_score = {  
 					value = -100
 					localization = CONGO_force_publique
+				}
+
+				hidden_effect = {
+					if = {
+						limit = { 
+							COG = { is_ai = yes }
+						}
+				
+						COG = {
+							add_autonomy_score = { 
+								value = -500
+								localization = CONGO_force_publique
+							}
+						}
+					}
 				}
 
 				custom_effect_tooltip = generic_skip_one_line_tt
@@ -2816,6 +2777,22 @@
 				add_autonomy_score = {  
 					value = -100
 					localization = CONGO_force_publique
+				}
+
+				hidden_effect = {
+					if = {
+						limit = { 
+							COG = { is_ai = yes }
+						}
+				
+						COG = {
+							add_autonomy_score = { 
+								value = -500
+								localization = CONGO_force_publique
+							}
+							add_to_variable = { BEL.COG_force_publique_autonomy_gain = -0.4 tooltip = autonomy_gain_tt }
+						}
+					}
 				}
 
 				custom_effect_tooltip = generic_skip_one_line_tt
@@ -3031,21 +3008,9 @@
 					is_owned_and_controlled_by = COG
 				}
 			}
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			NOT = {	
 				OR = {
@@ -3082,6 +3047,21 @@
 					value = 100
 					localization = CONGO_prince_leopold_mine
 				}	
+
+				hidden_effect = {
+					if = {
+						limit = { 
+							COG = { is_ai = yes }
+						}
+				
+						COG = {
+							add_autonomy_score = { 
+								value = -200
+								localization = CONGO_prince_leopold_mine
+							}
+						}
+					}
+				}
 			}
 			ELSE_IF = {
 				limit = {
@@ -3167,21 +3147,9 @@
 		}
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			NOT = {	
 				OR = {
@@ -3343,21 +3311,9 @@
 					}
 				}
 			}
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			NOT = {	
 				OR = {
@@ -3561,21 +3517,9 @@
 		}
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			custom_trigger_tooltip = {
 				tooltip = CONGO_jungle_industry_available_tt
@@ -3926,21 +3870,9 @@
 		}
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			BEL = {
 				is_major = yes
@@ -4198,21 +4130,9 @@
 		}
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			#NOT = {
 			#	has_global_flag = COG_force_publique_reformed_flag
@@ -4398,21 +4318,9 @@
 		}
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			#NOT = {
 			#	has_global_flag = COG_force_publique_reformed_flag
@@ -4513,21 +4421,9 @@
 		}
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			#NOT = {
 			#	has_global_flag = COG_force_publique_reformed_flag
@@ -4840,21 +4736,9 @@
 		}
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			NOT = {	
 				OR = {
@@ -5070,21 +4954,9 @@
 		}
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			CONGO_at_least_six_focuses_done = yes 
 			NOT = {	
@@ -5231,21 +5103,9 @@
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_HISTORICAL FOCUS_FILTER_TFV_AUTONOMY }
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			custom_trigger_tooltip = {
 				tooltip = CONGO_jungle_industry_available_tt
@@ -5327,67 +5187,12 @@
 								controls_state = 741
 							}
 						}
-						OR = {
-							controls_state = 1017
-							any_country = {
-								OR = {
-									is_subject_of = PREV
-									is_ally_with = PREV
-								}
-								controls_state = 1017
-							}
-						}
-						OR = {
-							controls_state = 1066
-							any_country = {
-								OR = {
-									is_subject_of = PREV
-									is_ally_with = PREV
-								}
-								controls_state = 1066
-							}
-						}
-						OR = {
-							controls_state = 1067
-							any_country = {
-								OR = {
-									is_subject_of = PREV
-									is_ally_with = PREV
-								}
-								controls_state = 1067
-							}
-						}
-						OR = {
-							controls_state = 1068
-							any_country = {
-								OR = {
-									is_subject_of = PREV
-									is_ally_with = PREV
-								}
-								controls_state = 1068
-							}
-						}
-						OR = {
-							controls_state = 1069
-							any_country = {
-								OR = {
-									is_subject_of = PREV
-									is_ally_with = PREV
-								}
-								controls_state = 1069
-							}
-						}
 					}
 				}
 			}
 			custom_trigger_tooltip = {
 				tooltip = CONGO_expanded_rubber_plantations_available_malaya_tt
 				336 = { controller = { has_war_with = ROOT } }
-				1060 = { controller = { has_war_with = ROOT } }
-				1064 = { controller = { has_war_with = ROOT } }
-				1063 = { controller = { has_war_with = ROOT } }
-				1062 = { controller = { has_war_with = ROOT } }
-				1061 = { controller = { has_war_with = ROOT } }
 			}
 			NOT = {	
 				OR = {
@@ -5795,21 +5600,9 @@
 		}
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			#NOT = {
 			#	has_global_flag = COG_force_publique_reformed_flag
@@ -5908,21 +5701,9 @@
 		}
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			NOT = {
 				has_global_flag = COG_force_publique_reformed_flag
@@ -6202,21 +5983,9 @@
 		}
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			NOT = {	
 				OR = {
@@ -6344,21 +6113,9 @@
 		}
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			NOT = {	
 				OR = {
@@ -6432,7 +6189,7 @@
 				add_autonomy_score = { 
 					value = -250
 					localization = CONGO_chefs_coutumiers
-				}	
+				}		
 
 				custom_effect_tooltip = generic_skip_one_line_tt
 
@@ -6581,21 +6338,9 @@
 		}
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			NOT = {	
 				OR = {
@@ -6858,21 +6603,9 @@
 		}
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			#NOT = {
 			#	has_global_flag = COG_force_publique_reformed_flag
@@ -7121,21 +6854,9 @@
 		}
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			NOT = {	
 				OR = {
@@ -7389,21 +7110,9 @@
 		}
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			NOT = {	
 				OR = {
@@ -7559,21 +7268,9 @@
 		}
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			NOT = {	
 				OR = {
@@ -7839,21 +7536,9 @@
 		}
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			#NOT = {
 			#	has_global_flag = COG_force_publique_reformed_flag
@@ -8287,21 +7972,9 @@
 		}
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			NOT = {	
 				OR = {
@@ -8392,21 +8065,9 @@
 		}
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			NOT = {	
 				OR = {
@@ -8593,21 +8254,9 @@
 		}
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			NOT = {	
 				OR = {
@@ -8717,21 +8366,9 @@
 		}
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			NOT = {	
 				OR = {
@@ -8883,21 +8520,9 @@
 		}
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			CONGO_at_least_fourteen_focuses_done = yes
 			NOT = {	
@@ -8990,21 +8615,9 @@
 		}
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			NOT = { 
 				has_global_flag = COG_force_publique_reformed_flag
@@ -9028,7 +8641,7 @@
 					popup = no
 				} 
 			}
-			add_ideas = COG_brown_water_navy_idea
+			add_ideas = BRA_brown_water_navy_idea
 
 			hidden_effect = {
 				CONGO_one_more_focus_done = yes
@@ -9062,21 +8675,9 @@
 		}
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			295 = {
 				OR = {
@@ -9597,6 +9198,23 @@
 						}
 					}
 				}
+				hidden_effect = {
+					COG = { add_ideas = CONGO_BEL_soldier }
+					BEL = { add_ideas = BEL_CONGO_soldier }
+					if = {
+						limit = { 
+							BEL = { is_ai = yes }
+							COG = { is_ai = yes }
+						}
+						COG = {
+							transfer_units_fraction = {
+								target = BEL
+								size = 1
+							}
+						}
+						BEL = { add_manpower = 200000 }
+					}
+				}
 				#custom_effect_tooltip = generic_skip_one_line_tt
 
 				custom_effect_tooltip = CONGO_overseas_department_of_belgium_tt
@@ -9693,21 +9311,9 @@
 		}
 
 		available = { 
-			OR = {
-				AND = {
-					original_tag = BEL
-					BEL = {
-						any_subject_country = {
-							original_tag = COG
-						}
-					}
-				}
-				AND = {
-					original_tag = COG
-					COG = {
-						is_subject_of = BEL
-					}
-				}
+			any_country = {
+				original_tag = COG
+				is_subject_of = BEL
 			}
 			NOT = {
 				has_completed_focus = COG_national_committee_for_liberation
@@ -9807,12 +9413,7 @@
 		bypass = {
 			COG = {
 				is_subject = no
-				NOT = {
-					any_country = {
-						original_tag = COG
-						has_war_with = PREV
-					}
-				}
+				has_war = no
 			}
 		}
 
@@ -10137,18 +9738,10 @@
 				}
 				IF = {
 					limit = { NOT = { is_faction_leader = yes } }
-					IF = {
-						limit = {
-							has_dlc = "No Compromise, No Surrender"
-						}
-						set_rule = { can_create_factions = yes }
-						create_faction_from_template = faction_template_COG_african_union_faction
-						add_faction_initiative = 1
+					set_rule = { 
+						can_create_factions	= yes
 					}
-					ELSE = {
-						set_rule = { can_create_factions = yes }
-						create_faction_from_template = faction_template_COG_african_union_faction
-					}
+					create_faction = COG_african_union_faction
 					every_other_country = {
 						limit = { is_subject_of = ROOT }
 						ROOT = {

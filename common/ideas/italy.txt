@@ -748,33 +748,6 @@ ideas = {
 				compliance_growth = 0.2
 			}
 		}
-
-		umberto_idea = {
-
-			name = ITA_prince_umberto_king
-
-			picture = umberto_idea
-
-			allowed = {
-				original_tag = ITA
-			}
-
-			available = {
-				NOT = {
-					has_government = neutrality #remove if King in power
-				}
-			}
-
-			allowed_civil_war = {
-				NOT = { has_government = fascism }
-			}
-			
-			removal_cost = -1
-			
-			modifier = {
-				party_popularity_stability_factor = 0.15 
-			}
-		}
                         
 
 		ITA_offensive_in_ethiopia = {
@@ -1531,7 +1504,7 @@ ideas = {
 			}
 
 			modifier = {
-				army_bonus_air_superiority_factor = 0.05
+				air_superiority_bonus_in_combat = 0.05
 				air_cas_present_factor = 0.05
 				experience_gain_air_factor = 0.1
 			}
@@ -1556,7 +1529,7 @@ ideas = {
 			}
 
 			modifier = {
-				army_bonus_air_superiority_factor = 0.1
+				air_superiority_bonus_in_combat = 0.1
 				air_cas_present_factor = 0.1
 				experience_gain_air_factor = 0.15
 			}
@@ -1600,8 +1573,7 @@ ideas = {
 			}
 
 			modifier = {
-				civilian_intel_to_others = -0.1
-				army_intel_to_others = -0.1
+				local_intel_to_enemies = -0.1
 			}
 		}
 
@@ -1623,8 +1595,7 @@ ideas = {
 			}
 
 			modifier = {
-				civilian_intel_to_others = -0.15
-				army_intel_to_others = -0.15
+				local_intel_to_enemies = -0.15
 			}
 		}
 
@@ -2523,6 +2494,7 @@ ideas = {
 				communism_drift = 0.01
 				resistance_damage_to_garrison_on_our_occupied_states = 0.1
 				operative_slot = 1
+				#TODO_Manu: Allows generation of female generals, aces and admirals
 			}
 		}
 
@@ -2544,6 +2516,7 @@ ideas = {
 				weekly_manpower = 400
 				communism_drift = 0.01
 				resistance_damage_to_garrison_on_our_occupied_states = 0.1
+				#TODO_Manu: Allows generation of female generals, aces and admirals
 			}
 		}
 
@@ -3059,6 +3032,61 @@ ideas = {
 			}
 		}
 
+		AOI_seat_of_ethiopian_governance = {
+
+			picture = generic_fascism_rising
+	
+			removal_cost = -1	
+	
+			allowed = {
+				original_tag = AOI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+		
+			#available = {
+			#	controls_state = 271
+			#}	
+		
+			#on_remove = {
+			#	add_ideas = AOI_seat_of_ethiopian_governance_2
+			#}
+	
+			modifier = {
+				surrender_limit = 1
+				custom_modifier_tooltip = AOI_seat_of_ethiopian_governance_tt
+			}
+		}
+
+		AOI_seat_of_ethiopian_governance_2 = {
+
+			picture = generic_fascism_rising
+	
+			removal_cost = -1	
+	
+			allowed = {
+				original_tag = AOI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+		
+			available = {
+				NOT = { controls_state = 271 }
+			}		
+		
+			on_remove = {
+				add_ideas = AOI_seat_of_ethiopian_governance
+			}
+	
+			modifier = {
+				surrender_limit = 0.15
+			}
+		}
+
 
 		ITA_divino_duce_1 = {
 
@@ -3289,11 +3317,39 @@ ideas = {
 
 			
 			modifier = {
-				resistance_damage_to_garrison = -0.15
+				resistance_damage_to_garrison = -0.25
 				non_core_manpower = 0.25
-				industry_repair_factor = 0.3
-				consumer_goods_factor = -0.15
-				weekly_manpower = 150 
+				consumer_goods_factor = -0.25
+				weekly_manpower = 250
+				out_of_supply_factor = -0.25
+			}
+			
+			rule = {
+				can_create_collaboration_government = no
+			}
+		}
+
+		ASI_africa_settentrionale_italiana_idea = { 
+	
+			picture = ITA_aoi
+	
+			removal_cost = -1	
+	
+			allowed = { 
+				original_tag = ITA
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				weekly_manpower = 500
+				out_of_supply_factor = -0.10
+			}
+			
+			rule = {
+				can_create_collaboration_government = no
 			}
 		}
 
@@ -4503,91 +4559,6 @@ ideas = {
 			
 			traits = { motorized_equipment_manufacturer }
 		}
-
-		ITA_ansaldo_manufacturer = { #NORTH
-
-			name = "ITA_ansaldo_train_organization"
-
-			picture = AUS_ansaldo
-			
-			allowed = {
-				original_tag = ITA
-			}
-
-			visible = {
-				NOT = {
-					AND = {
-						has_completed_focus = ITA_new_industrialization_program
-						has_completed_focus = ITA_strengthen_northern_industry
-					}
-				}
-			}
-
-			research_bonus = {
-				train_tech = 0.15
-				support_tech = 0.07
-			}
-
-			equipment_bonus = {
-				train_equipment = {
-					build_cost_ic = -0.10
-					armor_value = 0.10
-					air_attack = 0.10
-					instant = yes
-				}
-			}
-
-			cost = 150
-
-			traits = { train_equipment_manufacturer }
-
-			ai_will_do = {
-				factor = 0
-			}
-		}
-
-		ITA_ansaldo_manufacturer_improved = { #NORTH
-
-			name = "ITA_ansaldo_train_organization"
-
-			picture = AUS_ansaldo
-			
-			allowed = {
-				original_tag = ITA
-			}
-
-			visible = {
-				has_completed_focus = ITA_new_industrialization_program
-				has_completed_focus = ITA_strengthen_northern_industry
-			}
-
-			research_bonus = {
-				train_tech = 0.15
-				support_tech = 0.07
-				armor = 0.05
-			}
-
-			equipment_bonus = {
-				train_equipment = {
-					build_cost_ic = -0.15
-					armor_value = 0.15
-					air_attack = 0.15
-					instant = yes
-				}
-				support_equipment = {
-					build_cost_ic = -0.05
-					instant = yes
-				}
-			}
-
-			cost = 150
-
-			traits = { train_equipment_manufacturer }
-
-			ai_will_do = {
-				factor = 0
-			}
-		}
 	}
 
 	industrial_concern = {
@@ -4876,6 +4847,10 @@ ideas = {
 			research_bonus = {
 				electronics = 0.15
 			}
+
+			ai_will_do = {
+   				factor = 1
+   			}
 			
 			traits = { electronics_concern }
 		}
@@ -4902,6 +4877,10 @@ ideas = {
 			research_bonus = {
 				electronics = 0.2
 			}
+
+			ai_will_do = {
+   				factor = 5
+   			}
 			
 			traits = { electronics_concern }
 

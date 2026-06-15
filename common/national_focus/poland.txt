@@ -1754,6 +1754,7 @@ focus_tree = {
 				uses = 1
 				category = air_doctrine
 			}
+			#1x50% research bonus to Air Doctrine Research
 		}
 	}
 
@@ -1994,7 +1995,7 @@ focus_tree = {
 				category = jet_technology
 				category = rocketry
 			}
-
+			#2x50% research to Rockets and Jet Engine Research
 		}
 	}
 
@@ -2569,7 +2570,7 @@ focus_tree = {
 		available_if_capitulated = yes
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
-			add_political_power = 75
+			add_political_power = 100
 			POL_sanation_left_opposition_up = yes
 			POL_sanation_right_opposition_down = yes
 			custom_effect_tooltip = available_theorist
@@ -2606,7 +2607,7 @@ focus_tree = {
 			add_doctrine_cost_reduction = {
 				name = POL_prepare_for_the_next_war
 				cost_reduction = 0.5
-				uses = 2
+				uses = 3
 				category = land_doctrine
 			}
 		}
@@ -2643,6 +2644,7 @@ focus_tree = {
 			add_ideas = {
 				POL_right_paramilitarism_idea
 			}
+			army_experience = 30
 		}
 	}
 
@@ -2835,6 +2837,10 @@ focus_tree = {
 					type = annex_everything
 					target = LAT
 				}
+				every_state = {
+					limit = { is_core_of = LAT }
+					add_claim_by = POL
+				}
 			}
 			#Poland demands Estonian annexation
 			if = {
@@ -2853,6 +2859,10 @@ focus_tree = {
 				create_wargoal = {
 					type = annex_everything
 					target = EST
+				}
+				every_state = {
+					limit = { is_core_of = EST }
+					add_claim_by = POL
 				}
 			}
 		}
@@ -3082,6 +3092,10 @@ focus_tree = {
 					type = puppet_wargoal_focus
 					target = LIT
 				}
+				every_state = {
+					limit = { is_core_of = LIT }
+					add_claim_by = POL
+				}
 			}
 			if = {
 				limit = {
@@ -3109,6 +3123,10 @@ focus_tree = {
 					type = puppet_wargoal_focus
 					target = LAT
 				}
+				every_state = {
+					limit = { is_core_of = LAT }
+					add_claim_by = POL
+				}
 			}
 			if = {
 				limit = {
@@ -3135,6 +3153,10 @@ focus_tree = {
 				create_wargoal = {
 					type = puppet_wargoal_focus
 					target = EST
+				}
+				every_state = {
+					limit = { is_core_of = EST }
+					add_claim_by = POL
 				}
 			}
 		}
@@ -3297,7 +3319,6 @@ focus_tree = {
 		
 		search_filters = { FOCUS_FILTER_POLITICAL } 
 		completion_reward = {
-
 			IF = {
 				limit = {
 					has_dlc = "No Compromise, No Surrender"
@@ -3310,7 +3331,6 @@ focus_tree = {
 				set_rule = { can_create_factions = yes }
 				create_faction = POL_baltic_alliance
 			}
-
 			hidden_effect = {
 				if = {
 					limit = {
@@ -4700,6 +4720,8 @@ focus_tree = {
 				has_war_with = GER
 				GER = { has_wargoal_against = ROOT }
 				has_government = democratic
+				NOT = { ENG = { has_government = democratic } }
+				NOT = { GER = { has_government = democratic } }
 			}
 		}
 
@@ -5039,6 +5061,10 @@ focus_tree = {
 				create_wargoal = {
 					type = annex_everything
 					target = LIT
+				}
+				every_state = {
+					limit = { is_core_of = LIT }
+					add_claim_by = POL
 				}
 			}
 		}
@@ -5702,6 +5728,26 @@ focus_tree = {
 				tooltip = at_most_35_dem_tt
 				democratic < 0.36
 			}
+			if = {
+				limit = {
+					SOV = { has_completed_focus = SOV_the_left_opposition }
+					POL = { is_ai = yes }
+				}
+				SOV = {
+					has_completed_focus = SOV_left_opposition_coup
+					has_civil_war = no
+				}
+			}
+			if = {
+				limit = {
+					SOV = { has_completed_focus = SOV_the_right_opposition }
+					POL = { is_ai = yes }
+				}
+				SOV = {
+					has_completed_focus = SOV_coup_detat
+					has_civil_war = no
+				}
+			}
 		}
 
 		ai_will_do = {
@@ -6179,9 +6225,12 @@ focus_tree = {
 			is_subject = no
 			has_war = no
 			communism > 0.4
-			has_country_leader = {
-				character = POL_maria_koszutska
-				ruling_only = yes
+			OR = {
+				has_country_leader = {
+					character = POL_maria_koszutska
+					ruling_only = yes
+				}
+				NOT = { SOV = { has_government = communism } }
 			}
 		}
 
@@ -6349,13 +6398,44 @@ focus_tree = {
 			set_rule = {
 				can_create_factions = yes
 			}
-			create_faction_from_template = {
-				template = faction_template_defensive_democratic
-				name = POL_morges_pact
-				icon = GFX_faction_logo_generic_11
+			if = {
+				limit = {
+					FRA = { is_in_faction = no }
+				}
+				create_faction_from_template = {
+					template = faction_template_defensive_democratic
+					name = POL_morges_pact
+					icon = GFX_faction_logo_generic_11
+				}
+				FRA = {
+					country_event = NSB_poland_events.7
+				}
 			}
-			FRA = {
-				country_event = NSB_poland_events.7
+			if = {
+				limit = {
+					FRA = { 
+						is_in_faction = yes
+						is_faction_leader = yes 
+					}
+				}
+				FRA = {
+					country_event = { id = generic.2 hours = 4 random_hours = 4 }
+				}
+			}
+			if = {
+				limit = {
+					FRA = { 
+						is_in_faction = yes
+						is_faction_leader = no 
+					}
+				}
+				random_country = {
+					limit = {
+						is_in_faction_with = FRA
+						is_faction_leader = yes
+					}
+					country_event = { id = generic.2 hours = 4 random_hours = 4 }
+				}
 			}
 		}
 	}
@@ -6383,6 +6463,7 @@ focus_tree = {
 		completion_reward = {
 			add_offsite_building = { type = industrial_complex level = 2 }
 			add_ideas = { POL_morges_economic_union }
+			FRA = { add_ideas = { POL_morges_economic_union } }
 		}
 	}
 
@@ -6449,7 +6530,6 @@ focus_tree = {
 				}
 				set_faction_manifest = faction_manifest_between_the_seas
 			}
-			
 			if = {
 				limit = {
 					ROM = {
@@ -6615,6 +6695,7 @@ focus_tree = {
 				LIT = {
 					country_event = { id = NSB_poland_communist_events.2 hours = 12 }
 				}
+												 
 				custom_effect_tooltip = if_they_accept_tt
 				effect_tooltip = {
 					puppet = LIT
@@ -6630,6 +6711,10 @@ focus_tree = {
 				create_wargoal = {
 					type = topple_government
 					target = LIT
+				}
+				every_state = {
+					limit = { is_core_of = LIT }
+					add_claim_by = POL
 				}
 			}
 			if = {
@@ -6659,6 +6744,10 @@ focus_tree = {
 					type = topple_government
 					target = LAT
 				}
+				every_state = {
+					limit = { is_core_of = LAT }
+					add_claim_by = POL
+				}
 			}
 			if = {
 				limit = {
@@ -6671,6 +6760,7 @@ focus_tree = {
 				EST = {
 					country_event = { id = NSB_poland_communist_events.2 hours = 12 }
 				}
+												 
 				custom_effect_tooltip = if_they_accept_tt
 				effect_tooltip = {
 					puppet = EST
@@ -6686,6 +6776,10 @@ focus_tree = {
 				create_wargoal = {
 					type = topple_government
 					target = EST
+				}
+				every_state = {
+					limit = { is_core_of = EST }
+					add_claim_by = POL
 				}
 			}
 		}
@@ -6872,6 +6966,10 @@ focus_tree = {
 					type = topple_government
 					target = LIT
 				}
+				every_state = {
+					limit = { is_core_of = LIT }
+					add_claim_by = POL
+				}
 			}
 			if = {
 				limit = {
@@ -6901,6 +6999,10 @@ focus_tree = {
 					type = topple_government
 					target = LAT
 				}
+				every_state = {
+					limit = { is_core_of = LAT }
+					add_claim_by = POL
+				}
 			}
 			if = {
 				limit = {
@@ -6929,6 +7031,10 @@ focus_tree = {
 				create_wargoal = {
 					type = topple_government
 					target = EST
+				}
+				every_state = {
+					limit = { is_core_of = EST }
+					add_claim_by = POL
 				}
 			}
 		}
@@ -8032,7 +8138,10 @@ focus_tree = {
 							monarchist_support > 79
 						}
 					}
-					has_war = no
+					OR = {
+						NOT = { surrender_progress > 0.02 }
+						has_war = no
+					}
 				}
 			}
 		}
@@ -8114,6 +8223,7 @@ focus_tree = {
 		}
 		
 		bypass = {
+			CZE = { exists = no }
 		}
 
 		available_if_capitulated = yes
@@ -8498,15 +8608,9 @@ focus_tree = {
 					is_faction_leader = yes
 				}
 				NOT = { has_war_with = ROOT }
-				OR = {
-					has_country_leader = {
-						character = HUN_otto_von_habsburg
-						ruling_only = yes
-					}
-					has_country_leader = {
-						character = HUN_joseph_august_von_habsburg
-						ruling_only = yes
-					}
+				has_country_leader = {
+					character = HUN_otto_von_habsburg
+					ruling_only = yes
 				}
 			}
 			NOT = {
@@ -8655,27 +8759,6 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-
-			custom_effect_tooltip = available_industrial_concern
-			show_ideas_tooltip = CZE_csd
-			if = {
-				limit = {
-					has_dlc = "Peace For Our Time"
-				}
-				custom_effect_tooltip = generic_skip_one_line_tt
-				if = {
-					limit = {
-						has_dlc = "Arms Against Tyranny"
-					}
-					unlock_military_industrial_organization_tooltip = mio:CZE_CKD_plzen_organization
-				}
-				else = {
-					custom_effect_tooltip = available_designer
-					show_ideas_tooltip = CZE_CKD_plzen
-				}
-			}
 		}
 	}
 
@@ -8735,27 +8818,6 @@ focus_tree = {
 					type = industrial_complex
 					level = 1
 					instant_build = yes
-				}
-			}
-			if = {
-				limit = {
-					has_dlc = "Peace For Our Time"
-				}
-
-				custom_effect_tooltip = generic_skip_one_line_tt
-
-				custom_effect_tooltip = available_industrial_concern
-				show_ideas_tooltip = CZE_walter_co
-				custom_effect_tooltip = generic_skip_one_line_tt
-				if = {
-					limit = {
-						has_dlc = "Arms Against Tyranny"
-					}
-					unlock_military_industrial_organization_tooltip = mio:CZE_zbrojovka_vsetin_organization
-				}
-				else = {
-					custom_effect_tooltip = available_designer
-					show_ideas_tooltip = CZE_zbrojovka_vsetin
 				}
 			}
 		}
@@ -8818,30 +8880,6 @@ focus_tree = {
 					type = arms_factory
 					level = 1
 					instant_build = yes
-				}
-			}
-			if = {
-				limit = {
-					has_dlc = "Peace For Our Time"
-				}
-
-				custom_effect_tooltip = generic_skip_one_line_tt
-
-				if = {
-					limit = {
-						has_dlc = "Arms Against Tyranny"
-					}
-					unlock_military_industrial_organization_tooltip = mio:CZE_skoda_plzen_tank_destroyer_organization
-					unlock_military_industrial_organization_tooltip = mio:CZE_ceska_zbrojovka_uhersky_brod_organization
-				}
-				else = {
-					custom_effect_tooltip = available_designer
-					show_ideas_tooltip = CZE_skoda_plzen_tank_destroyer
-
-					custom_effect_tooltip = generic_skip_one_line_tt
-
-					custom_effect_tooltip = available_designer
-					show_ideas_tooltip = CZE_ceska_zbrojovka_uhersky_brod
 				}
 			}
 		}
@@ -8978,6 +9016,9 @@ focus_tree = {
 				planning_skill=2
 				logistics_skill=4
 				legacy_id=-1
+			}
+			hidden_effect = {
+				set_technology = { cossack_horse_tech = 1 }
 			}
 			division_template = {
 				name = "Oddział im. Bermonta"
@@ -9302,7 +9343,6 @@ focus_tree = {
 				EST = {
 					exists = yes
 					is_subject = no
-					has_war = no
 					NOT = {
 						is_in_faction_with = ROOT
 					}
@@ -9310,7 +9350,6 @@ focus_tree = {
 				LAT = {
 					exists = yes
 					is_subject = no
-					has_war = no
 					NOT = {
 						is_in_faction_with = ROOT
 					}
@@ -9332,7 +9371,6 @@ focus_tree = {
 					EST = {
 						exists = yes
 						is_subject = no
-						has_war = no
 						NOT = {
 							is_in_faction_with = ROOT
 						}
@@ -9342,13 +9380,16 @@ focus_tree = {
 					type = annex_everything
 					target = EST
 				}
+				every_state = {
+					limit = { is_core_of = EST }
+					add_claim_by = POL
+				}
 			}
 			if = {
 				limit = {
 					LAT = {
 						exists = yes
 						is_subject = no
-						has_war = no
 						NOT = {
 							is_in_faction_with = ROOT
 						}
@@ -9357,6 +9398,10 @@ focus_tree = {
 				create_wargoal = {
 					type = annex_everything
 					target = LAT
+				}
+				every_state = {
+					limit = { is_core_of = LAT }
+					add_claim_by = POL
 				}
 			}
 			#Also triggers NSB_poland_pavel_events.1
@@ -9934,14 +9979,14 @@ focus_tree = {
 					infantry = { x = 0 y = 0 }
 					infantry = { x = 0 y = 1 }
 					infantry = { x = 0 y = 2 }
-					infantry = { x = 0 y = 3 }
+		
 					infantry = { x = 1 y = 0 }
 					infantry = { x = 1 y = 1 }
 					infantry = { x = 1 y = 2 }
-					infantry = { x = 1 y = 3 }
-
-					artillery_brigade = { x = 2 y = 0 }
+		
+					infantry = { x = 2 y = 0 }
 					artillery_brigade = { x = 2 y = 1 }
+					artillery_brigade = { x = 2 y = 2 }
 				}
 				support = {
 					engineer = { x = 0 y = 0 }
@@ -10098,7 +10143,10 @@ focus_tree = {
 							monarchist_support > 79
 						}
 					}
-					has_war = no
+					OR = {
+						NOT = { surrender_progress > 0.02 }
+						has_war = no
+					}
 				}
 			}
 		}
@@ -10136,6 +10184,10 @@ focus_tree = {
 					target = LIT
 					type = puppet_wargoal_focus
 				}
+				every_state = {
+					limit = { is_core_of = LIT }
+					add_claim_by = POL
+				}
 			}
 		}
 	}
@@ -10157,16 +10209,18 @@ focus_tree = {
 		available = {
 			OR = {
 				LIT = { is_subject_of = ROOT }
-				AND = {
-					all_state = {
-						OR = {
-							NOT = { is_core_of = LIT }
-							is_owned_by = ROOT
-						}
+				all_state = {
+					OR = {
+						NOT = { is_core_of = LIT }
+						is_owned_by = ROOT
 					}
-					core_compliance = {
-						occupied_country_tag = LIT
-						value > 50
+				}
+				AND = {
+					is_historical_focus_on = no
+					NOT = { country_exists = LIT }
+					any_state = {
+						is_core_of = LIT
+						is_owned_by = ROOT
 					}
 				}
 			}
@@ -10630,6 +10684,10 @@ focus_tree = {
 					target = EST
 					type = annex_everything
 				}
+				every_state = {
+					limit = { is_core_of = EST }
+					add_claim_by = POL
+				}
 			}
 			if = {
 				limit = {
@@ -10643,6 +10701,10 @@ focus_tree = {
 				create_wargoal = {
 					target = LAT
 					type = annex_everything
+				}
+				every_state = {
+					limit = { is_core_of = LAT }
+					add_claim_by = POL
 				}
 			}
 		}
@@ -10886,7 +10948,10 @@ focus_tree = {
 							monarchist_support > 79
 						}
 					}
-					has_war = no
+					OR = {
+						NOT = { surrender_progress > 0.02 }
+						has_war = no
+					}
 				}
 			}
 		}
@@ -11304,7 +11369,10 @@ focus_tree = {
 				HUN = {
 					exists = yes
 					is_subject = no
-					has_war = no
+					OR = {
+						NOT = { surrender_progress > 0.02 }
+						has_war = no
+					}
 					NOT = {
 						is_in_faction_with = ROOT
 					}
@@ -11489,6 +11557,13 @@ focus_tree = {
 			add_ideas = POL_nationalist_constitution
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = POL_roman_dmowski
+			if = {
+				limit = { has_global_flag = SOV_has_early_war }
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.05
+				}
+			}
 		}
 	}
 
@@ -11522,6 +11597,13 @@ focus_tree = {
 			show_ideas_tooltip = POL_jan_mosdorf
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = POL_jerzy_rutkowski
+			if = {
+				limit = { has_global_flag = SOV_has_early_war }
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.05
+				}
+			}
 		}
 	}
 
@@ -11549,6 +11631,13 @@ focus_tree = {
 		completion_reward = {
 			add_ideas = {
 				POL_right_paramilitarism_idea
+			}
+			if = {
+				limit = { has_global_flag = SOV_has_early_war }
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.05
+				}
 			}
 		}
 	}
@@ -11583,6 +11672,13 @@ focus_tree = {
 			show_ideas_tooltip = POL_joachim_stefan_bartoszewicz
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = POL_tadeusz_bielecki
+			if = {
+				limit = { has_global_flag = SOV_has_early_war }
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.05
+				}
+			}
 		}
 	}
 	focus = {
@@ -11611,6 +11707,13 @@ focus_tree = {
 			swap_ideas = {
 				add_idea = POL_nationalist_constitution_1
 				remove_idea = POL_nationalist_constitution
+			}
+			if = {
+				limit = { has_global_flag = SOV_has_early_war }
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.05
+				}
 			}
 		}
 	}
@@ -11642,6 +11745,13 @@ focus_tree = {
 			add_popularity = {
 				ideology = neutrality
 				popularity = -0.2
+			}
+			if = {
+				limit = { has_global_flag = SOV_has_early_war }
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.10
+				}
 			}
 		}
 	}
@@ -12373,9 +12483,7 @@ focus_tree = {
 		available_if_capitulated = no
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
-
 		completion_reward = {
-
 			set_rule = { can_create_factions = yes }
 			if = {
 				limit = {
@@ -12390,7 +12498,6 @@ focus_tree = {
 			else = {
 				set_faction_name = POL_falangist_international
 			}
-
 			if = {
 				limit = {
 					SPR = {
@@ -12727,6 +12834,10 @@ focus_tree = {
 				create_wargoal = {
 					type = annex_everything
 					target = LIT
+				}
+				every_state = {
+					limit = { is_core_of = LIT }
+					add_claim_by = POL
 				}
 			}
 		}
@@ -13672,7 +13783,7 @@ focus_tree = {
 					is_faction_leader = no
 				}
 				set_rule = { can_create_factions = yes }
-				create_faction_from_template = faction_template_miedzymorze_faction
+				create_faction = miedzymorze_faction
 			}
 			else = {
 				set_faction_name = miedzymorze_faction
@@ -13973,7 +14084,7 @@ focus_tree = {
 		prerequisite = { focus = POL_finno_polish_pact }
 		available = {
 			is_faction_leader = yes
-			SWE= {
+			SWE = {
 				is_subject = no
 				is_in_faction = no
 				NOT = { has_war_with = ROOT }
@@ -14002,7 +14113,7 @@ focus_tree = {
 		prerequisite = { focus = POL_finno_polish_pact }
 		available = {
 			is_faction_leader = yes
-			NOR= {
+			NOR = {
 				is_subject = no
 				is_in_faction = no
 				NOT = { has_war_with = ROOT }
@@ -14338,6 +14449,7 @@ focus_tree = {
 			ITA = {
 				OR = {
 					is_in_faction = no
+					
 					AND = {
 						is_in_faction_with = GER
 						NOT = {
@@ -15161,7 +15273,6 @@ focus_tree = {
 				uses = 1
 				category = nuclear
 			}
-
 		}
 	}
 
@@ -15250,28 +15361,6 @@ focus_tree = {
 				85 = { is_demilitarized_zone = no }
 			}
 			has_civil_war = no
-		}
-		bypass_effect = {
-			85 = {
-				remove_dynamic_modifier = {
-					modifier = international_city
-				}
-				add_dynamic_modifier = {
-					modifier = international_city_2
-				}
-				force_enable_resistance = { 
-					clear = no
-					occupier = POL
-					occupied = DNZ
-				}
-				start_resistance = DNZ
-				set_resistance = 40
-				set_compliance = 30
-				add_resistance_target = { 
-					amount = 30
-					tooltip = clamp_down_on_danzig_tt
-				}
-			}
 		}
 
 		available_if_capitulated = yes
@@ -15436,21 +15525,6 @@ focus_tree = {
 
 		available_if_capitulated = yes
 		completion_reward = {
-			85 = {
-				force_enable_resistance = { 
-					clear = yes
-					occupier = POL
-					occupied = DNZ
-				}
-				POL_remove_danzig_effect = yes
-				set_state_name = "Gdańsk"
-			}
-			set_province_name = {
-				id = 362
-				name = "Gdańsk"
-			}
-		}
-		bypass_effect = {
 			85 = {
 				force_enable_resistance = { 
 					clear = yes

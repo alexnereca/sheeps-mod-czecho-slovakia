@@ -23,7 +23,7 @@
 		prerequisite = {}
 		mutually_exclusive = { }
 		
-		cost = 10
+		cost = 1
 		ai_will_do = {
 			factor = 1
 		}
@@ -62,7 +62,7 @@
 		}
 		relative_position_id = VIC_emergency_powers_to_petain
 		
-		cost = 10
+		cost = 5
 		ai_will_do = {
 			factor = 1
 		}
@@ -95,7 +95,7 @@
 		}
 		relative_position_id = VIC_the_national_revolution
 		
-		cost = 10
+		cost = 5
 		ai_will_do = {
 			factor = 1
 		}
@@ -114,8 +114,8 @@
 			add_tech_bonus = {
 				name = VIC_long_term_economic_planning
 				category = industry
-				uses = 2
-				bonus = 1
+				uses = 5
+				bonus = 1.5
 			}
 		}
 	}
@@ -133,7 +133,7 @@
 		}
 		relative_position_id = VIC_long_term_economic_planning
 		
-		cost = 10
+		cost = 5
 		ai_will_do = {
 			factor = 1
 		}
@@ -155,14 +155,14 @@
 					is_core_of = ROOT
 					free_building_slots = {
 						building = industrial_complex
-						size > 1
+						size > 2
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 3
 				add_building_construction = {
 					type = industrial_complex
-					level = 2
+					level = 3
 					instant_build = yes
 				}
 			}
@@ -182,7 +182,7 @@
 		}
 		relative_position_id = VIC_aid_small_businesses
 		
-		cost = 10
+		cost = 5
 		ai_will_do = {
 			factor = 1
 		}
@@ -215,7 +215,7 @@
 		}
 		relative_position_id = VIC_the_national_revolution
 		
-		cost = 10
+		cost = 5
 		ai_will_do = {
 			factor = 1
 		}
@@ -250,7 +250,7 @@
 		}
 		relative_position_id = VIC_down_with_marianne
 		
-		cost = 10
+		cost = 5
 		ai_will_do = {
 			factor = 1
 		}
@@ -285,7 +285,7 @@
 		}
 		relative_position_id = VIC_up_with_jean_darc
 		
-		cost = 10
+		cost = 5
 		ai_will_do = {
 			factor = 1
 		}
@@ -318,7 +318,7 @@
 		}
 		relative_position_id = VIC_the_national_revolution
 		
-		cost = 10
+		cost = 5
 		ai_will_do = {
 			factor = 1
 		}
@@ -334,7 +334,7 @@
 		available_if_capitulated = no
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
-			add_war_support = 0.05
+			add_war_support = 0.15
 		}
 	}
 	focus = {
@@ -351,14 +351,11 @@
 		}
 		relative_position_id = VIC_prosecute_the_losers
 		
-		cost = 10
+		cost = 5
 		ai_will_do = {
 			factor = 1
 		}
 		available = {
-			16 = {
-				is_controlled_by = GER
-			}
 		}
 		
 		bypass = {
@@ -386,7 +383,7 @@
 		}
 		relative_position_id = VIC_concessions_to_the_germans
 		
-		cost = 10
+		cost = 5
 		ai_will_do = {
 			factor = 1
 		}
@@ -426,7 +423,7 @@
 		}
 		relative_position_id = VIC_celebrate_motherhood
 		
-		cost = 10
+		cost = 5
 		ai_will_do = {
 			factor = 1
 		}
@@ -459,21 +456,21 @@
 		}
 		relative_position_id = VIC_a_nation_reborn
 		
-		cost = 10
+		cost = 5
 		ai_will_do = {
 			factor = 1
-			modifier = {
-				is_historical_focus_on = yes
-				NOT = {
-					GER = { owns_state = 219 } 
-				}
-				factor = 0
-			}
 		}
 		available = {
-			16 = {
-				NOT = {
-					is_controlled_by = ROOT
+			hidden_trigger = {
+				OR = {
+					is_ai = no
+					NOT = { GER = { has_war_with = SOV } }
+					is_historical_focus_on = no
+					any_enemy_country = { is_ai = no }
+				}
+				OR = {
+					difficulty < 3
+					difficulty > 3
 				}
 			}
 		}
@@ -489,6 +486,7 @@
 				can_join_factions = yes
 				can_not_declare_war = no
 				can_create_factions = yes
+				can_decline_call_to_war = no
 			}
 			remove_occupation_cost_effect = yes
 			if = {
@@ -552,9 +550,9 @@
 		}
 		relative_position_id = VIC_emergency_powers_to_petain
 		
-		cost = 10
+		cost = 1
 		ai_will_do = {
-			factor = 1
+			factor = 10
 		}
 		available = {
 			
@@ -719,13 +717,13 @@
 					is_coastal = yes
 					free_building_slots = {
 						building = dockyard
-						size > 1
+						size > 2
 						include_locked = yes
 					}
 				}
 				add_building_construction = {
 					type = dockyard
-					level = 2
+					level = 3
 					instant_build = yes
 				}
 			}
@@ -777,7 +775,7 @@
 		}
 		relative_position_id = VIC_hidden_materials
 		
-		cost = 10
+		cost = 20
 		ai_will_do = {
 			factor = 1
 		}
@@ -796,8 +794,8 @@
 			add_doctrine_cost_reduction = {
 				name = VIC_analyze_our_defeat
 				category = land_doctrine
-				uses = 2
-				cost_reduction = 0.5
+				uses = 5
+				cost_reduction = 0.75
 			}
 		}
 	}

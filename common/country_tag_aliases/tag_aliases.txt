@@ -73,7 +73,13 @@ SPD = {
 
 VIC = {
 	original_tag = FRA
-	has_focus_tree = vichy_french_focus
+	OR = { 
+		has_focus_tree = vichy_french_focus
+		AND = {
+			is_in_faction_with = GER
+			has_government = fascism
+		}
+	}
 }
 
 BUZ = {

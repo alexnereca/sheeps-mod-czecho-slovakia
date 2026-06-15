@@ -1,3 +1,4 @@
+
 GER_collaboration_on_NOR = {
 	allowed = {
 		tag = GER
@@ -9,6 +10,7 @@ GER_collaboration_on_NOR = {
 			exists = yes
 			has_capitulated = no
 			NOT = { is_ally_with = GER }
+			has_focus_tree = generic_focus
 		}
 		# only try before end of 1941 (and continue if already doing)
 		OR = {

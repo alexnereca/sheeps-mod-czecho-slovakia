@@ -1928,14 +1928,6 @@ country_event = {
 				long_name = SWE_aat_hogern_long
 			}		
 		}
-		else = {
-			SWE_gosta_bagge = {
-				remove_trait = {
-					trait = SWE_minor_opposition_party_in_power
-					ideology = liberalism
-				}
-			}
-		}
 	}
 
 	#Wigfors
@@ -2625,6 +2617,13 @@ country_event = {
 	is_triggered_only = yes
 	
 	option = { #Food stuffs -stability
+		ai_chance = {
+			base = 10
+			modifier = {
+				var:ball_bearing_country_target = { is_ai = yes }
+				factor = 0
+			}
+		}
 		name = AAT_Sweden_ball_bearing.1.a
 		var:ball_bearing_country_target = {
 			country_event = {
@@ -2646,6 +2645,13 @@ country_event = {
 	}
 
 	option = { #Army experience
+		ai_chance = {
+			base = 10
+			modifier = {
+				var:ball_bearing_country_target = { is_ai = no }
+				factor = 0
+			}
+		}
 		name = AAT_Sweden_ball_bearing.1.b
 		var:ball_bearing_country_target = {
 			country_event = {
@@ -2669,6 +2675,9 @@ country_event = {
 	}
 
 	option = { #research
+		ai_chance = {
+			base = 0
+		}
 		name = AAT_Sweden_ball_bearing.1.c
 		var:ball_bearing_country_target = {
 			country_event = {
@@ -2735,7 +2744,7 @@ country_event = {
 	option = { #Decline
 		name = AAT_Sweden_ball_bearing.2.b
 		ai_chance = {
-			base = 1
+			base = 0
 		}
 		FROM = {
 			country_event = {
@@ -3206,26 +3215,10 @@ country_event = {
 		}
 		set_country_flag = SWE_has_rangers
 		add_doctrine_cost_reduction = {
-		 	name = SWE_special_forces
 		 	cost_reduction = 0.65
 		 	uses = 1
-		 	category = special_forces_doctrine
-		 }
-		custom_effect_tooltip = mountaineer_subdoctrines_default_add_mastery_bonus_effect_tooltip
-		hidden_effect = {
-			add_mastery_bonus = {
-				name = SWE_special_forces
-				bonus = 0.1
-				days = 240
-				sub_doctrine = mountaineers_1
-			}
-			add_mastery_bonus = {
-				name = SWE_special_forces
-				bonus = 0.1
-				days = 240
-				sub_doctrine = mountaineers_2
-			}
-		}	
+		 	category = cat_mountaineers_doctrine
+		 } 
 	}
 	# Marines
 	option = { 
@@ -3247,26 +3240,10 @@ country_event = {
 		}
 		set_country_flag = SWE_has_marines
 		add_doctrine_cost_reduction = {
-		 	name = SWE_special_forces
 		 	cost_reduction = 0.65
 		 	uses = 1
-		 	category = special_forces_doctrine
-		 }
-		custom_effect_tooltip = mountaineer_subdoctrines_default_add_mastery_bonus_effect_tooltip
-		hidden_effect = {
-			add_mastery_bonus = {
-				name = SWE_special_forces
-				bonus = 0.1
-				days = 240
-				sub_doctrine = mountaineers_1
-			}
-			add_mastery_bonus = {
-				name = SWE_special_forces
-				bonus = 0.1
-				days = 240
-				sub_doctrine = mountaineers_2
-			}
-		}		  
+		 	category = cat_marines_doctrine
+		 } 
 	}
 	# Paratroopers
 	option = { 
@@ -3288,26 +3265,10 @@ country_event = {
 		}
 		set_country_flag = SWE_has_paratroopers
 		add_doctrine_cost_reduction = {
-			name = SWE_special_forces
 			cost_reduction = 0.65
 			uses = 1
-			category = special_forces_doctrine
-		}
-		custom_effect_tooltip = paratrooper_subdoctrines_default_add_mastery_bonus_effect_tooltip
-		hidden_effect = {
-			add_mastery_bonus = {
-				name = SWE_special_forces
-				bonus = 0.1
-				days = 240
-				sub_doctrine = paratroopers_1
-			}
-			add_mastery_bonus = {
-				name = SWE_special_forces
-				bonus = 0.1
-				days = 240
-				sub_doctrine = paratroopers_2
-			}
-		}		 
+			category = cat_paratroopers_doctrine
+		} 
 	}
 }
 
@@ -3595,6 +3556,11 @@ country_event = { #yes
 				}
 				factor = 3
 			}
+
+			modifier = {
+				factor = 0
+				has_global_flag = SOV_has_early_war
+			}
 		}
 		effect_tooltip = {
 			FROM = {
@@ -3767,6 +3733,11 @@ country_event = { #yes
 					ratio < 0.7
 				}
 			}
+
+			modifier = {
+				factor = 0
+				has_global_flag = SOV_has_early_war
+			}
 		}
 		effect_tooltip = {
 			FROM = {
@@ -3934,6 +3905,11 @@ country_event = {
 		name = AAT_Sweden.39.a
 		ai_chance = {
 			base = 9
+
+			modifier = {
+				factor = 0
+				has_global_flag = SOV_has_early_war
+			}
 		}
 
 		FROM = {
@@ -4075,8 +4051,13 @@ country_event = { #yes
 				factor = 3
 				strength_ratio = {
 					tag = FROM
-					ratio > 0.3 # previously implemented as 'ratio < 0.7', which was not the expected effect
+					ratio < 0.7
 				}
+			}
+
+			modifier = {
+				factor = 0
+				has_global_flag = SOV_has_early_war
 			}
 		}
 		effect_tooltip = {
@@ -4195,6 +4176,11 @@ country_event = { #yes
 		name = AAT_Sweden.43.b
 		ai_chance = {
 			base = 1
+
+			modifier = {
+				factor = 0
+				has_global_flag = SOV_has_early_war
+			}
 
 			modifier = {
 				OR = {
@@ -4340,6 +4326,11 @@ country_event = {
 		name = AAT_Sweden.48.a
 		ai_chance = {
 			base = 9
+
+			modifier = {
+				factor = 0
+				has_global_flag = SOV_has_early_war
+			}
 		}
 
 		FROM = {
@@ -4534,6 +4525,11 @@ country_event = { #yes
 					ratio < 0.7
 				}
 			}
+
+			modifier = {
+				factor = 0
+				has_global_flag = SOV_has_early_war
+			}
 		}
 		effect_tooltip = { #Don't need to add cores because we can integrate them properly this way
 			FROM = {
@@ -4653,6 +4649,11 @@ country_event = {
 
 				has_country_flag = SWE_NOR_surrendered_narvik
 				add = 5
+			}
+
+			modifier = {
+				factor = 0
+				has_global_flag = SOV_has_early_war
 			}
 		}
 		
@@ -6208,6 +6209,8 @@ country_event = { #sweden paid
 	option = { #cool
 		name = AAT_Sweden_flashpoints.82.a
 		add_timed_idea = { idea = SWE_aland_agreement_fin days = 365 }
+		add_political_power = 50
+		add_stability = 0.05
 	}
 }
 
@@ -7820,6 +7823,11 @@ country_event = {
 					}
 				}
 				factor = 2
+			}
+
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 50
 			}
 			
 			modifier = {

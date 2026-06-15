@@ -123,8 +123,24 @@ TUR_the_constitutional_arrows_category = {
 		ai_will_do = {
 			factor = 5
 			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
+				has_stability > 0.90
+				add = -10
+			}
+			modifier = {
+				has_stability < 0.60
+				add = 10
+			}
+			modifier = {
+				has_stability < 0.50
+				add = 10
+			}
+			modifier = {
+				has_stability < 0.40
+				add = 10
+			}
+			modifier = {
+				has_stability < 0.30
+				add = 100
 			}
 		}
 
@@ -334,10 +350,30 @@ TUR_the_constitutional_arrows_category = {
 		cost = 75
 
 		ai_will_do = {
-			factor = 5
+			base = 5
 			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
+				has_war_support > 0.50
+				add = -10
+			}
+			modifier = {
+				has_war_support < 0.50
+				add = 10
+			}
+			modifier = {
+				has_war_support < 0.40
+				add = 10
+			}
+			modifier = {
+				has_war_support < 0.30
+				add = 10
+			}
+			modifier = {
+				has_war_support < 0.20
+				add = 10
+			}
+			modifier = {
+				has_war_support < 0.10
+				add = 10
 			}
 		}
 
@@ -612,10 +648,18 @@ TUR_the_constitutional_arrows_category = {
 		cost = 75
 
 		ai_will_do = {
-			factor = 5
+			base = 5
 			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
+				num_of_civilian_factories_available_for_projects < 10
+				add = -10
+			}
+			modifier = {
+				has_idea = partial_economic_mobilisation
+				add = 10
+			}
+			modifier = {
+				num_of_civilian_factories_available_for_projects > 10
+				add = 10
 			}
 		}
 
@@ -981,10 +1025,6 @@ TUR_industrial_projects_category = {
 
 		ai_will_do = {
 			factor = 5
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
-			}
 		}
 
 		complete_effect = {
@@ -1003,7 +1043,6 @@ TUR_industrial_projects_category = {
 					instant_build = yes
 				}
 			}
-			custom_effect_tooltip = generic_skip_one_line_tt
 			remove_ideas = TUR_financing_private_enterprise
 		}
 	}
@@ -1053,10 +1092,6 @@ TUR_industrial_projects_category = {
 
 		ai_will_do = {
 			factor = 5
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
-			}
 		}
 
 		complete_effect = {
@@ -1075,7 +1110,6 @@ TUR_industrial_projects_category = {
 					instant_build = yes
 				}
 			}
-			custom_effect_tooltip = generic_skip_one_line_tt
 			remove_ideas = TUR_financing_private_enterprise
 		}
 	}
@@ -1125,10 +1159,6 @@ TUR_industrial_projects_category = {
 
 		ai_will_do = {
 			factor = 5
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
-			}
 		}
 
 		complete_effect = {
@@ -1147,7 +1177,6 @@ TUR_industrial_projects_category = {
 					instant_build = yes
 				}
 			}
-			custom_effect_tooltip = generic_skip_one_line_tt
 			remove_ideas = TUR_financing_private_enterprise
 		}
 	}
@@ -1198,10 +1227,6 @@ TUR_industrial_projects_category = {
 
 		ai_will_do = {
 			factor = 5
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
-			}
 		}
 
 		complete_effect = {
@@ -1220,7 +1245,6 @@ TUR_industrial_projects_category = {
 					instant_build = yes
 				}
 			}
-			custom_effect_tooltip = generic_skip_one_line_tt
 			remove_ideas = TUR_financing_private_enterprise
 		}
 	}
@@ -1273,10 +1297,6 @@ TUR_industrial_projects_category = {
 
 		ai_will_do = {
 			factor = 5
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
-			}
 		}
 
 		complete_effect = {
@@ -1311,7 +1331,6 @@ TUR_industrial_projects_category = {
 					instant_build = yes
 				}
 			}
-			custom_effect_tooltip = generic_skip_one_line_tt
 			remove_ideas = TUR_financing_private_enterprise
 		}
 	}
@@ -1361,10 +1380,6 @@ TUR_industrial_projects_category = {
 
 		ai_will_do = {
 			factor = 5
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
-			}
 		}
 
 		complete_effect = {
@@ -1383,14 +1398,11 @@ TUR_industrial_projects_category = {
 					instant_build = yes
 				}
 			}
-			custom_effect_tooltip = generic_skip_one_line_tt
 			remove_ideas = TUR_financing_private_enterprise
-			custom_effect_tooltip = generic_skip_one_line_tt
 			add_popularity = {
    				ideology = fascism
    	 			popularity = 0.05
 			}
-			custom_effect_tooltip = generic_skip_one_line_tt
 			IF = {
 				limit = {
 					has_dlc = "Arms Against Tyranny"
@@ -1453,10 +1465,6 @@ TUR_industrial_projects_category = {
 
 		ai_will_do = {
 			factor = 5
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
-			}
 		}
 
 		complete_effect = {
@@ -1475,9 +1483,7 @@ TUR_industrial_projects_category = {
 					instant_build = yes
 				}
 			}
-			custom_effect_tooltip = generic_skip_one_line_tt
 			remove_ideas = TUR_financing_private_enterprise
-			custom_effect_tooltip = generic_skip_one_line_tt
 			if = {
 				limit = {
 					NOT = { has_dlc = "By Blood Alone" }
@@ -1535,10 +1541,6 @@ TUR_industrial_projects_category = {
 
 		ai_will_do = {
 			factor = 5
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
-			}
 		}
 
 		complete_effect = {
@@ -1557,7 +1559,6 @@ TUR_industrial_projects_category = {
 					instant_build = yes
 				}
 			}
-			custom_effect_tooltip = generic_skip_one_line_tt
 			remove_ideas = TUR_financing_private_enterprise
 		}
 	}
@@ -1607,10 +1608,6 @@ TUR_industrial_projects_category = {
 
 		ai_will_do = {
 			factor = 5
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
-			}
 		}
 
 		complete_effect = {
@@ -1629,7 +1626,6 @@ TUR_industrial_projects_category = {
 					instant_build = yes
 				}
 			}
-			custom_effect_tooltip = generic_skip_one_line_tt
 			remove_ideas = TUR_financing_private_enterprise
 		}
 	}
@@ -1665,10 +1661,6 @@ TUR_industrial_projects_category = {
 
 		ai_will_do = {
 			factor = 5
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
-			}
 		}
 
 		complete_effect = {
@@ -1684,7 +1676,6 @@ TUR_industrial_projects_category = {
 				amount = 4
 				state = 347
 			}
-			custom_effect_tooltip = generic_skip_one_line_tt
 			347 = {
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
@@ -1693,7 +1684,6 @@ TUR_industrial_projects_category = {
 					instant_build = yes
 				}
 			}
-			custom_effect_tooltip = generic_skip_one_line_tt
 			remove_ideas = TUR_financing_private_enterprise
 			set_country_flag = TUR_karabuk_iron_steel_factory_modernised_flag
 		}
@@ -1729,7 +1719,6 @@ TUR_industrial_projects_category = {
 
 		complete_effect = {
 			add_stability = 0.05
-			custom_effect_tooltip = available_industrial_concern
 			show_ideas_tooltip = petrol_ofisi
 			hidden_effect = {
 				set_country_flag = TUR_petrol_ofisi_formed 
@@ -1922,11 +1911,7 @@ economy_decisions = {
 		cost = 120
 
 		ai_will_do = {
-			factor = 5
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
-			}
+			factor = 10
 		}
 
 		complete_effect = {
@@ -1959,11 +1944,7 @@ economy_decisions = {
 		cost = 120
 
 		ai_will_do = {
-			factor = 5
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
-			}
+			factor = 10
 		}
 
 		complete_effect = {
@@ -2052,7 +2033,7 @@ economy_decisions = {
 		}
 
 		remove_effect = {
-			FROM = { country_event = { id = bftb_turkey.126 } }
+			FROM = { country_event = { id = bftb_turkey.1260 } }
 			custom_effect_tooltip = TUR_investment_opinion_tt
 			clr_country_flag = TUR_investment_pursued
 		}
@@ -2077,7 +2058,7 @@ economy_decisions = {
 
 		days_remove = 60
 
-		cost = 25
+		cost = 0
 
 		fire_only_once = no
 
@@ -2097,15 +2078,31 @@ economy_decisions = {
 					value < 50
 				}
 			}
-			modifier = { #Our attention and PP is needed elsewhere
-				factor = 0
-				has_war = yes
-				TUR = { is_ai = yes }
+			modifier = {
+				factor = 0.35
+				num_of_available_civilian_factories < 10
 			}
-			modifier = { #Our attention and PP is needed elsewhere
-				factor = 0.5
-				has_war = yes
-				TUR = { is_ai = no }
+			modifier = {
+				factor = 0
+				tag = SOV
+				is_historical_focus_on = yes
+				TUR = { is_ai = yes } #backstabber
+			}
+			modifier = {
+				factor = 0
+				tag = GER
+				is_historical_focus_on = yes
+				TUR = { is_ai = yes } #backstabber
+			}
+			modifier = {
+				factor = 0
+				tag = ITA
+				is_historical_focus_on = yes
+				TUR = { is_ai = yes } #backstabber
+			}
+			modifier = {
+				factor = 25
+				TUR = { is_ai = no } #backstabber but you are a human so I will let you do it
 			}
 		}
 
@@ -2180,7 +2177,7 @@ economy_decisions = {
 
 		days_remove = 90
 
-		cost = 30
+		cost = 0
 
 		fire_only_once = no
 
@@ -2192,6 +2189,32 @@ economy_decisions = {
 					target = TUR
 					value > 75
 				}
+			}
+			modifier = {
+				factor = 0.35
+				num_of_available_civilian_factories < 10
+			}
+			modifier = {
+				factor = 0
+				tag = SOV
+				is_historical_focus_on = yes
+				TUR = { is_ai = yes } #backstabber
+			}
+			modifier = {
+				factor = 0
+				tag = GER
+				is_historical_focus_on = yes
+				TUR = { is_ai = yes } #backstabber
+			}
+			modifier = {
+				factor = 0
+				tag = ITA
+				is_historical_focus_on = yes
+				TUR = { is_ai = yes } #backstabber
+			}
+			modifier = {
+				factor = 25
+				TUR = { is_ai = no } #backstabber but you are a human so I will let you do it
 			}
 		}
 
@@ -2269,7 +2292,7 @@ economy_decisions = {
 
 		days_remove = 120
 
-		cost = 50
+		cost = 25
 
 		fire_only_once = no
 
@@ -2278,6 +2301,28 @@ economy_decisions = {
 			modifier = {
 				factor = 0.35
 				num_of_available_civilian_factories < 10
+			}
+			modifier = {
+				factor = 0
+				tag = SOV
+				is_historical_focus_on = yes
+				TUR = { is_ai = yes } #backstabber
+			}
+			modifier = {
+				factor = 0
+				tag = GER
+				is_historical_focus_on = yes
+				TUR = { is_ai = yes } #backstabber
+			}
+			modifier = {
+				factor = 0
+				tag = ITA
+				is_historical_focus_on = yes
+				TUR = { is_ai = yes } #backstabber
+			}
+			modifier = {
+				factor = 25
+				TUR = { is_ai = no } #backstabber but you are a human so I will let you do it
 			}
 		}
 
@@ -2494,16 +2539,10 @@ TUR_kurdish_state_management_category = {
 		}
 
 		ai_will_do = {
-			factor = 5
+			factor = 50
 			modifier = {
 				factor = 10
 				has_political_power > 250
-			}
-			modifier = {
-				has_manpower < 50000
-				has_war = yes
-				has_political_power < 200
-				factor = 0 # don't waste pp if you need to up your conscription laws!
 			}
 			modifier = {
 				factor = 10
@@ -2514,6 +2553,16 @@ TUR_kurdish_state_management_category = {
 				has_stability < 0.25 #let's not risk it
 				350 = { compliance < 25 }
 			}
+			modifier = {
+				factor = 350.infrastructure_level
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_stability < 0.25 #let's not risk it
+					350 = { resistance > 60 }
+				}
+			}
 		}
 
 		complete_effect = {
@@ -2522,8 +2571,11 @@ TUR_kurdish_state_management_category = {
 			random_list = {
 				55 = {
 					modifier = {
+						factor = 350.infrastructure_level
+					}
+					modifier = {
 						factor = 0.25
-						350 = { resistance > 30 }
+						350 = { resistance > 40 }
 					}
 					modifier = {
 						add = 5
@@ -2666,16 +2718,10 @@ TUR_kurdish_state_management_category = {
 			}
 		}
 		ai_will_do = {
-			factor = 5
+			factor = 50
 			modifier = {
 				factor = 10
 				has_political_power > 250
-			}
-			modifier = {
-				has_manpower < 50000
-				has_war = yes
-				has_political_power < 200
-				factor = 0 # don't waste pp if you need to up your conscription laws!
 			}
 			modifier = {
 				factor = 10
@@ -2686,6 +2732,16 @@ TUR_kurdish_state_management_category = {
 				has_stability < 0.25 #let's not risk it
 				353 = { compliance < 25 }
 			}
+			modifier = {
+				factor = 353.infrastructure_level
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_stability < 0.25 #let's not risk it
+					353 = { resistance > 60 }
+				}
+			}
 		}
 
 		complete_effect = {
@@ -2694,8 +2750,11 @@ TUR_kurdish_state_management_category = {
 			random_list = {
 				55 = {
 					modifier = {
+						factor = 353.infrastructure_level
+					}
+					modifier = {
 						factor = 0.25
-						353 = { resistance > 30 }
+						353 = { resistance > 40 }
 					}
 					modifier = {
 						add = 5
@@ -2837,16 +2896,10 @@ TUR_kurdish_state_management_category = {
 			}
 		}
 		ai_will_do = {
-			factor = 5
+			factor = 50
 			modifier = {
 				factor = 10
 				has_political_power > 250
-			}
-			modifier = {
-				has_manpower < 50000
-				has_war = yes
-				has_political_power < 200
-				factor = 0 # don't waste pp if you need to up your conscription laws!
 			}
 			modifier = {
 				factor = 10
@@ -2857,6 +2910,16 @@ TUR_kurdish_state_management_category = {
 				has_stability < 0.25 #let's not risk it
 				800 = { compliance < 25 }
 			}
+			modifier = {
+				factor = 800.infrastructure_level
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_stability < 0.25 #let's not risk it
+					800 = { resistance > 60 }
+				}
+			}
 		}
 
 		complete_effect = {
@@ -2865,8 +2928,11 @@ TUR_kurdish_state_management_category = {
 			random_list = {
 				55 = {
 					modifier = {
+						factor = 800.infrastructure_level
+					}
+					modifier = {
 						factor = 0.25
-						800 = { resistance > 30 }
+						800 = { resistance > 40 }
 					}
 					modifier = {
 						add = 5
@@ -2988,16 +3054,10 @@ TUR_kurdish_state_management_category = {
 		custom_cost_text = TUR_decision_cost_kurd_rebels
 
 		ai_will_do = {
-			factor = 5
+			factor = 250
 			modifier = {
 				factor = 10
 				has_political_power > 250
-			}
-			modifier = {
-				has_manpower < 50000
-				has_war = yes
-				has_political_power < 200
-				factor = 0 # don't waste pp if you need to up your conscription laws!
 			}
 			modifier = {
 				factor = 10
@@ -3007,6 +3067,16 @@ TUR_kurdish_state_management_category = {
 				factor = 0.25
 				has_stability < 0.25 #let's not risk it
 				352 = { compliance < 25 }
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_stability < 0.25 #let's not risk it
+					352 = { resistance > 60 }
+				}
+			}
+			modifier = {
+				factor = 352.infrastructure_level
 			}
 		}
 		visible = {
@@ -3037,8 +3107,11 @@ TUR_kurdish_state_management_category = {
 			random_list = {
 				55 = {
 					modifier = {
+						factor = 352.infrastructure_level
+					}
+					modifier = {
 						factor = 0.25
-						352 = { resistance > 30 }
+						352 = { resistance > 40 }
 					}
 					modifier = {
 						add = 5
