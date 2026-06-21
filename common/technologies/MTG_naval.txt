@@ -210,6 +210,7 @@ technologies = {
 					tag = USA
 				}
 			}
+			
 			modifier = {
 				factor = 0.1
 				is_ai_navy = no
@@ -220,6 +221,7 @@ technologies = {
 				tag = USA
 				date > 1939.1.1
 			}
+
 			modifier = {
 				factor = 50
 				OR = {
@@ -311,10 +313,12 @@ technologies = {
 				factor = 4
 				tag = ENG
 			}
+			
 			modifier = {
 				factor = 0.1
 				is_ai_navy = no
 			}
+
 			modifier = {
 				factor = 50
 				OR = {
@@ -337,6 +341,42 @@ technologies = {
 		}
 		special_project_specialization = { specialization_naval }
 	}
+
+	#improved_seaplane_tender = {
+	#	enable_equipment_modules = {
+	#		ship_seaplane_tender_2
+	#	}
+	#	on_research_complete = {
+	#		custom_effect_tooltip = seaplane_tender_advice_tt
+	#	}
+
+	#	research_cost = 0.75
+
+	#	start_year = 1936
+
+	#	folder = {
+	#		name = mtgnavalfolder
+	#		position = { x = 1 y = 0 }
+	#	}
+
+	#	ai_will_do = {
+	#		base = 2
+
+	#		modifier = {
+	#			has_navy_size = { size < 10 }
+	#			factor = 0.1
+	#		}
+	#	}
+
+	#	categories = {
+	#		naval_equipment
+	#		dd_tech
+	#		ship_modules_tech
+	#		mio_cat_tech_all_screen_ship_and_modules
+	#		mio_cat_tech_all_destroyer_and_modules
+	#	}
+	#	special_project_specialization = { specialization_naval }	
+	#}
 
  ##  #  # ### ###      ## #  # ###  #   #  ##  ###  ### #  # ###
 #  # ## #  #   #      #   #  # #  # ## ## #  # #  #  #  ## # #
@@ -803,7 +843,7 @@ technologies = {
 			mio_cat_tech_all_destroyer_and_modules
 		}
 		special_project_specialization = { specialization_naval }
-	}
+	}	
 	
 	modern_sonar = {
 		enable_equipment_modules = {
@@ -874,7 +914,6 @@ technologies = {
 		}
 		special_project_specialization = { specialization_naval }
 	}
-
  ##  ###  #  # ###  ## ### ###   ##
 #  # #  # #  #  #  #   #   #  # #
 #    ###  #  #  #   #  ##  ###   #
@@ -1229,7 +1268,6 @@ technologies = {
 		categories = {
 			naval_armor
 			naval_equipment
-			#cl_tech
 			ca_tech
 			ship_modules_tech
 			mio_cat_tech_all_capital_ship_and_modules
@@ -1576,7 +1614,7 @@ technologies = {
 
 		folder = {
 			name = mtgnavalfolder
-			position = {  x = 0 y = 8 }
+			position = {  x = 0 y = 5 }
 		}
 
 		ai_will_do = {
@@ -1627,12 +1665,12 @@ technologies = {
 
 		folder = {
 			name = mtgnavalfolder
-			position = {  x = 0 y = 14 }
+			position = {  x = 0 y = 8 }
 		}
 
 		ai_will_do = {
 			factor = 1
-
+			
 			modifier = {
 				factor = 4
 				OR = {
@@ -1743,7 +1781,7 @@ early_ship_hull_carrier = {
 					PROJECT = sp_naval_escort_carrier	
 				}
 			}
-		}
+		}		
 
 		research_cost = 1.5
 
@@ -2081,6 +2119,15 @@ early_ship_hull_carrier = {
 					has_idea = crossing_the_pacific_idea
 				}
 			}
+			modifier = {
+            	factor = 1.5
+            	date > 1939.1.1
+            }
+
+            modifier = {
+            	factor = 1.5
+            	date > 1940.1.1
+            }
 		}
 
 		categories = {
@@ -2340,6 +2387,7 @@ early_ship_hull_carrier = {
 			always = no
 		}
 	}
+
 ### SPECIAL PROJECTS TECHS ###
 
 	sp_aip_engine_improved_tech = {
@@ -2479,7 +2527,7 @@ early_ship_hull_carrier = {
 
 	sp_naval_proximity_fuze_tech = {
 		#HIDDEN EFFECT FOR THE PROXIMITY FUZE 
-		navy_anti_air_attack_factor = 0.25 #Remember to adjust sp_naval_proximity_fuze_custom_tt when changing value
+		navy_anti_air_attack_factor = 0.25
 		research_cost = 1
 		start_year = 1940
 		
@@ -2569,5 +2617,4 @@ early_ship_hull_carrier = {
 			always = no
 		}
 	}
-
 }

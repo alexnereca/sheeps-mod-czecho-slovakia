@@ -108,7 +108,7 @@ technologies = {
 		enable_equipment_modules = {
 			ship_light_battery_2
 			ship_light_medium_battery_2
-			ship_secondaries_2		
+			ship_secondaries_2			
 		}
 
 
@@ -194,10 +194,12 @@ technologies = {
 
 		ai_will_do = {
 			factor = 1
+			
 			modifier = {
 				has_war = yes
 				factor = 10
 			}
+			
 			modifier = {
 				factor = 0.1
 				is_ai_navy = no
@@ -212,6 +214,7 @@ technologies = {
 				}
 				has_navy_experience > 80
 			}
+			
 			modifier = {
 				factor = 50
 				OR = {
@@ -221,7 +224,9 @@ technologies = {
 					has_navy_size = { size > 200 }
 				}
 			}
+			
 		}
+		
 
 		categories = {
 			naval_artillery
@@ -272,6 +277,7 @@ technologies = {
 				has_tech = improved_ship_hull_light
 				factor = 20
 			}
+			
 			modifier = {
 				factor = 0.1
 				is_ai_navy = no
@@ -282,6 +288,7 @@ technologies = {
 				tag = USA
 				date > 1939.1.1
 			}
+			
 			modifier = {
 				factor = 50
 				OR = {
@@ -351,6 +358,7 @@ technologies = {
 				has_war = yes
 				factor = 10
 			}
+			
 			modifier = {
 				factor = 0.1
 				is_ai_navy = no
@@ -363,7 +371,6 @@ technologies = {
 					date > 1940.1.1
 					has_war = yes
 				}
-				has_navy_experience > 80
 			}
 		}
 
@@ -422,6 +429,7 @@ technologies = {
 		}
 		special_project_specialization = { specialization_naval }
 	}
+	
 	basic_heavy_battery = {
 
 		research_cost = 1
@@ -527,12 +535,13 @@ technologies = {
 				}
 				factor = 2
 			}
-
+			
 			modifier = {
 				factor = 80
 				tag = USA
 				date > 1939.1.1
 			}
+
 			modifier = {
 				factor = 50
 				OR = {
@@ -625,7 +634,6 @@ technologies = {
 			hg_attack = 0.05
 			hg_armor_piercing = 0.05
 		}
-
 		folder = {
 			name = mtgnavalsupportfolder
 			position = { x = 3 y = 7 }
@@ -642,7 +650,7 @@ technologies = {
 				has_war = yes
 				factor = 5
 			}
-
+			
 			modifier = {
 				factor = 800
 				tag = USA
@@ -652,6 +660,7 @@ technologies = {
 				}
 				has_navy_experience > 80
 			}
+			
 			modifier = {
 				factor = 50
 				OR = {
@@ -694,7 +703,6 @@ technologies = {
 			hg_attack = 0.05
 			hg_armor_piercing = 0.05
 		}
-
 		folder = {
 			name = mtgnavalsupportfolder
 			position = { x = 3 y = 16 }
@@ -914,6 +922,7 @@ technologies = {
 		special_project_specialization = { specialization_naval }
 	}
 
+
 ###  ##  ###  ###  ### ###   ##      #   #  ##  ###   ##  ### ###  ###
  #  #  # #  # #  # #   #  # #  #     #   # #  # #  # #  # #   #  # #  
  #  #  # ###  ###  ##  #  # #  #     # # # #### ###  #### ##  ###  ## 
@@ -985,7 +994,7 @@ technologies = {
 			mio_cat_tech_all_screen_ship_and_modules
 			mio_cat_tech_all_cruiser_and_modules
 			mio_cat_tech_all_destroyer_and_modules
-			mio_cat_tech_all_submarine_and_modules #Not really Sub but unlocks tech improving Subs torpedo stuff later
+			mio_cat_tech_all_submarine_and_modules #Not really Sub but unlocks tech improving Subs torpedo stuff later #Now it is actually really a Sub Tech
 		}
 		special_project_specialization = { specialization_naval }
 	}
@@ -1098,7 +1107,6 @@ technologies = {
 			leads_to_tech = modern_ship_torpedo_launcher
 			research_cost_coeff = 1
 		}
-
 		start_year = 1942
 		destroyer = {
 			naval_torpedo_hit_chance_factor = 0.1
@@ -1113,6 +1121,7 @@ technologies = {
 			naval_torpedo_hit_chance_factor = 0.1
 		}
 		naval_torpedo_reveal_chance_factor = -0.25
+		
 		folder = {
 			name = mtgnavalsupportfolder
 			position = { x = 0 y = 16 }
@@ -1166,6 +1175,7 @@ technologies = {
 		}
 		special_project_specialization = { specialization_naval }
 	}
+	
 	improved_ship_torpedo_launcher = {
 
 		research_cost = 1.5
@@ -1176,16 +1186,15 @@ technologies = {
 			leads_to_tech = magnetic_detonator
 			research_cost_coeff = 1
 		}
-
 		on_research_complete = {
 			custom_effect_tooltip = torpedo_advice_tt
 		}
 
 		enable_equipment_modules = {
 			ship_torpedo_2
-			ship_torpedo_sub_2	
+			ship_torpedo_sub_2
 		}
-
+		
 
 
 		folder = {
@@ -1203,7 +1212,7 @@ technologies = {
 				tag = JAP
 				factor = 5
 			}
-
+			
 			modifier = {
 				factor = 80
 				tag = USA
@@ -1218,14 +1227,17 @@ technologies = {
 			mio_cat_tech_all_screen_ship_and_modules
 			mio_cat_tech_all_cruiser_and_modules
 			mio_cat_tech_all_destroyer_and_modules
+			mio_cat_tech_all_submarine_and_modules
 		}
 		special_project_specialization = { specialization_naval }
 	}
+	
 	advanced_ship_torpedo_launcher = {
 
 		research_cost = 1.5
 
 		start_year = 1940
+
 
 		path = {
 			leads_to_tech = homing_torpedo
@@ -1238,9 +1250,9 @@ technologies = {
 
 		enable_equipment_modules = {
 			ship_torpedo_3
-			ship_torpedo_sub_3	
+			ship_torpedo_sub_3			
 		}
-
+		
 
 
 		folder = {
@@ -1258,7 +1270,6 @@ technologies = {
 				tag = JAP
 				factor = 5
 			}
-
 			modifier = {
 				factor = 80
 				tag = USA
@@ -1273,9 +1284,11 @@ technologies = {
 			mio_cat_tech_all_screen_ship_and_modules
 			mio_cat_tech_all_cruiser_and_modules
 			mio_cat_tech_all_destroyer_and_modules
+			mio_cat_tech_all_submarine_and_modules
 		}
 		special_project_specialization = { specialization_naval }
 	}
+	
 	modern_ship_torpedo_launcher = {
 
 		research_cost = 1.5
@@ -1284,7 +1297,7 @@ technologies = {
 
 		enable_equipment_modules = {
 			ship_torpedo_4
-			ship_torpedo_sub_4		
+			ship_torpedo_sub_4			
 		}
 
 		on_research_complete = {
@@ -1316,6 +1329,7 @@ technologies = {
 			mio_cat_tech_all_screen_ship_and_modules
 			mio_cat_tech_all_cruiser_and_modules
 			mio_cat_tech_all_destroyer_and_modules
+			mio_cat_tech_all_submarine_and_modules
 		}
 		special_project_specialization = { specialization_naval }
 	}
@@ -1350,7 +1364,6 @@ technologies = {
 				factor = 0.1
 				is_ai_navy = no
 			}
-
 			modifier = {
 				has_navy_size = { size < 10 }
 				factor = 0.1
@@ -1476,6 +1489,7 @@ technologies = {
 			leads_to_tech = sp_improved_repair_ship
 			research_cost_coeff = 1
 		}
+
 		folder = {
 			name = mtgnavalsupportfolder
 			position = { x = 0 y = 12 }
@@ -1571,6 +1585,7 @@ technologies = {
 				has_navy_size = { size < 10 }
 				factor = 0.1
 			}
+			
 			modifier = {
 				has_war = yes
 				factor = 2
@@ -1579,7 +1594,7 @@ technologies = {
 				tag = JAP
 				factor = 5
 			}
-
+            # TODO: Should JAP and ITA be added here like in pdx patch?
 			modifier = {
 				factor = 80
 				OR = {
@@ -1589,6 +1604,7 @@ technologies = {
 				date > 1938.1.1
 				has_navy_experience > 80
 			}
+
 			modifier = {
 				factor = 50
 				OR = {
@@ -1647,11 +1663,12 @@ technologies = {
 				has_war = yes
 				factor = 2
 			}
+
 			modifier = {
 				tag = JAP
 				factor = 5
 			}
-
+			# TODO: Should JAP and ITA be added here like in pdx patch?
 			modifier = {
 				factor = 80
 				OR = {
@@ -1661,6 +1678,7 @@ technologies = {
 				date > 1938.1.1
 				has_navy_experience > 80
 			}
+
 			modifier = {
 				factor = 50
 				OR = {
@@ -1733,6 +1751,8 @@ technologies = {
 				OR = {
 					tag = USA
 					tag = ENG
+					tag = JAP
+					tag = ITA
 				}
 				date > 1938.1.1
 				has_navy_experience > 80
@@ -2032,6 +2052,11 @@ technologies = {
 
 		start_year = 1940
 
+		#path = {
+		#	leads_to_tech = modern_naval_mines
+		#	research_cost_coeff = 1
+		#}
+
 		path = {
 			leads_to_tech = airdrop_mines
 			research_cost_coeff = 1
@@ -2130,6 +2155,7 @@ technologies = {
 			has_dlc = "By Blood Alone"
 		}
 
+
 		research_cost = 1
 
 		start_year = 1942
@@ -2167,6 +2193,45 @@ technologies = {
 		special_project_specialization = { specialization_naval }
 	}
 
+	#modern_naval_mines = {
+
+	#	research_cost = 2
+
+	#	start_year = 1945
+
+	#	path = {
+	#		leads_to_tech = airsweep_mines
+	#		research_cost_coeff = 1
+	#	}
+	#	path = {
+	#		leads_to_tech = airsweep_mines_bba
+	#		research_cost_coeff = 1
+	#	}
+
+	#	naval_mines_damage_factor = 0.2 # more boom for the boom box
+	#	folder = {
+	#		name = mtgnavalsupportfolder
+	#		position = { x = 0 y = 19 }
+	#	}
+
+	#	ai_will_do = {
+	#		factor = 1
+	#		modifier = {
+	#			tag = USA
+	#			factor = 3
+	#		}
+	#	}
+
+	#	categories = {
+	#		naval_mines
+	#		naval_minelaying
+	#		naval_equipment
+	#		mio_cat_tech_all_screen_ship_and_modules
+	#		mio_cat_tech_all_cruiser_and_modules
+	#		mio_cat_tech_all_destroyer_and_modules
+	#	}
+	#	special_project_specialization = { specialization_naval }
+	#}
 
 	airsweep_mines = {
 		allow_branch = {
@@ -2267,6 +2332,7 @@ technologies = {
 			name = mtgnavalsupportfolder
 			position = { x = 0 y = 1 }
 		}
+
 		ai_will_do = {
 			factor = 1
 
@@ -2335,7 +2401,7 @@ technologies = {
 		amphibious_invasion_defence = 0.15
 		naval_invasion_prep_days = -10
 		naval_invasion_division_cap = 4 
-		naval_invasion_plan_cap = 3	
+		naval_invasion_plan_cap = 3
 
 		path = {
 			leads_to_tech = mtg_tank_landing_craft
@@ -2391,7 +2457,7 @@ technologies = {
 						OR = {
 							has_capitulated = yes
 							exists = no
-		                    			is_subject_of = JAP
+		                    is_subject_of = JAP
 						}
 					}
 				}
@@ -2635,6 +2701,8 @@ technologies = {
 		}
 		special_project_specialization = { specialization_naval }	
 	}
+
+	#### SUPPORT & REPAIR SHIPS ####
 
 	sp_improved_support_ship = {
 		allow_branch = {

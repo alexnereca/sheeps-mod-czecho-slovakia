@@ -229,7 +229,7 @@ technologies = {
 		special_project_specialization = { specialization_air }
 		
 
-		
+
 		ai_will_do = {
 			factor = 2
 			
@@ -324,6 +324,7 @@ technologies = {
 				localization_key = SP_UNLOCK_PROJECT
 				PROJECT = sp_air_jet_engine	
 			}
+			
 		}				
 
 		research_cost = 2
@@ -379,7 +380,7 @@ technologies = {
 				}
 				NOT = { has_global_flag = vanilla_history }
 			}
-			
+
 			modifier = {
 				factor = 0.1
 				tag = GER
@@ -967,6 +968,7 @@ technologies = {
 				num_of_military_factories < 30
 				factor = 0.1
 			}
+			
 			modifier = {
 				factor = 5
 				tag = ENG
@@ -1615,7 +1617,7 @@ technologies = {
 			mio_cat_all_light_aircraft_and_modules
 		}
 		special_project_specialization = { specialization_air }
-		
+
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -1693,7 +1695,7 @@ technologies = {
 			mio_cat_all_light_aircraft_and_modules
 		}
 		special_project_specialization = { specialization_air }
-		
+
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -2196,7 +2198,6 @@ technologies = {
 				factor = 50
 			}
 		}
-
 	}
 
 	engines_2 = {
