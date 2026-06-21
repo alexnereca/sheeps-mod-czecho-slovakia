@@ -1071,6 +1071,7 @@ country_event = {
 					autonomy_state = autonomy_free
 				}
 			}
+			
 		}
 		if = {
 			limit = {
@@ -1405,6 +1406,12 @@ country_event = {
 			transfer_state = 670
 			transfer_state = 671
 			transfer_state = 741
+			transfer_state = 1069 
+			transfer_state = 1017
+			transfer_state = 1068 
+			transfer_state = 286 
+			transfer_state = 1066
+			transfer_state = 1067
 		}
 	}
 }
@@ -1423,7 +1430,13 @@ country_event = {
 			event_target:free_france = {
 				transfer_state = 670
 				transfer_state = 671
-				transfer_state = 74
+				transfer_state = 741 
+				transfer_state = 1069 
+				transfer_state = 1017
+				transfer_state = 1068 
+				transfer_state = 286 
+				transfer_state = 1066
+				transfer_state = 1067
 			}
 		}
 	}
@@ -2282,6 +2295,14 @@ country_event = {
 		effect_tooltip = {
 			FROM = {
 				puppet = PREV
+				IF = {
+					limit = {
+						ROOT = {
+							has_subject = COG
+						}
+					}
+					puppet = COG 
+				}
 			}
 		}
 	}
@@ -2319,7 +2340,6 @@ country_event = {
 			limit = { is_subject_of = BEL }
 			FRA = { puppet = PREV }
 		}
-		puppet = FROM
 		hidden_effect = {
 			if = {
 				limit = { 
@@ -2328,7 +2348,10 @@ country_event = {
 				}
 				GER = { annex_country = { target = LUX transfer_troops = no } }
 			}
+#           Handled above in the is_subject_of
+#			puppet = COG
 		}
+		puppet = FROM
 	}
 }
 #response event for France - country refuses
@@ -2391,6 +2414,14 @@ country_event = {
 		effect_tooltip = {
 			FRA = {
 				puppet = PREV
+				IF = {
+					limit = {
+						ROOT = {
+							has_subject = COG
+						}
+					}
+					puppet = COG 
+				}
 				transfer_state = 34
 				transfer_state = 980
 			}
@@ -2425,6 +2456,14 @@ country_event = {
 		name = lar_split_belgium.2.a #agree
 		ai_chance = {
 			factor = 100
+		}
+		IF = {
+			limit = {
+				FROM = {
+					has_subject = COG
+				}
+			}
+			puppet = COG
 		}
 		puppet = FROM
 		transfer_state = 34
@@ -3116,14 +3155,6 @@ country_event = {
 				NOT = { is_in_faction_with = FROM }
 			}
 			FROM = { add_to_faction = ROOT }
-		}
-		if = {
-			limit = { 
-				FROM = { is_ai = yes }
-			}
-			FROM = {
-				add_ideas = FRA_due_compensation
-			}
 		}
 		load_focus_tree = french_focus
 		unlock_national_focus = FRA_revive_the_national_bloc
