@@ -1444,7 +1444,7 @@ country_event = {
 }
 
 ## Purge - Fighting defensive war against major
-#country_event = { #------------------------------------> No longer happening (NSB) -> TODO_Manu: Maybe adapt it to NSB
+#country_event = { #------------------------------------> No longer happening (NSB)
 #	id = soviet.46
 #	title = soviet.46.t
 #	desc = soviet.46.d
@@ -2384,6 +2384,9 @@ country_event = {
 						is_controlled_by = SOV
 						any_other_country = {
 							controls_state = 70
+							NOT = {	#no taking Slovakia from a comintern Slovakia/Czechoslovakia
+								owns_state = 70
+							}
 							is_in_faction_with = SOV
 							SOV = { is_faction_leader = yes }
 						}
@@ -2400,6 +2403,9 @@ country_event = {
 						is_controlled_by = SOV
 						any_other_country = {
 							controls_state = 71
+							NOT = {	#no taking Slovakia from a comintern Slovakia/Czechoslovakia
+								owns_state = 71
+							}
 							is_in_faction_with = SOV
 							SOV = { is_faction_leader = yes }
 						}
@@ -2416,6 +2422,9 @@ country_event = {
 						is_controlled_by = SOV
 						any_other_country = {
 							controls_state = 664
+							NOT = {	#no taking Slovakia from a comintern Slovakia/Czechoslovakia
+								owns_state = 664
+							}
 							is_in_faction_with = SOV
 							SOV = { is_faction_leader = yes }
 						}
@@ -2635,8 +2644,8 @@ country_event = {
 			is_subject = no
 		}
 		OR = {
-			NOT = {GER = {has_government = fascism}}
-			GER = {exists = no}
+			NOT = { GER = { has_government = fascism } }
+			GER = { exists = no }
 		}
 	}
 	fire_only_once = yes
@@ -2651,6 +2660,7 @@ country_event = {
 			idea = communist_influence
 			days = 730
 		}	
+
 		SOV = {
 			country_event = {
 				id = soviet.71
@@ -2760,7 +2770,7 @@ country_event = {
 #		name = soviet.73.a
 #	}
 #}
-# Soviet event for Poland refusing to join sphere after Yalta 
+# Soviet event for Poland refusing to join sphere after Yalta
 country_event = {
 	id = soviet.72
 	title = soviet.72.t
@@ -2821,6 +2831,7 @@ country_event = {
 	}
 }
 
+
 # Polish event for Returning occupied territory
 country_event = {
 	id = soviet.74
@@ -2849,7 +2860,7 @@ country_event = {
 				popularity = 0.05
 			}
 		}
-		FROM  ={
+		FROM = {
 			every_owned_state = {
 				limit = {
 					is_core_of = POL 
