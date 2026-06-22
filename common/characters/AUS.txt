@@ -387,6 +387,7 @@ characters = {
 			portraits = { 
 				civilian = {
 					large = "GFX_portrait_AUS_alfred_klahr"
+					small = "GFX_portrait_AUS_alfred_klahr_small"	#PfoT addition for in exile
 				}
 			}
 			country_leader = {
@@ -408,6 +409,7 @@ characters = {
 			portraits = {
 				civilian = {
 					large = "GFX_portrait_AUS_alfred_klahr"
+					small = "GFX_portrait_AUS_alfred_klahr_small"	#PfoT addition for in exile
 				}
 			}
 			country_leader = {
@@ -2005,7 +2007,7 @@ characters = {
 	AUS_godwin_von_brumowski = { 
 		advisor = {
 			
-			slot = air_chief
+			slot = high_command
 			idea_token = AUS_godwin_von_brumowski
 			allowed = {
 				original_tag = AUS
@@ -2702,15 +2704,15 @@ characters = {
 			idea_token = AUS_josef_brunner
 			ledger = air
 			allowed = {
-					original_tag = AUS
-				}
-				traits = {
-					air_air_superiority_2
-				}
-				cost = 100
-				ai_will_do = {
-					base = 1
-				}
+				original_tag = AUS
+			}
+			traits = {
+				air_air_superiority_2
+			}
+			cost = 100
+			ai_will_do = {
+				base = 1
+			}
 		}
 		name = AUS_josef_brunner
 		portraits = {

@@ -1,43 +1,4 @@
 characters={
-
-	FRA_marcel_deat = {
-		name = FRA_marcel_deat
-		portraits = {
-			civilian = {	
-				large = GFX_portrait_FRA_marcel_deat
-				small = GFX_portrait_FRA_marcel_deat_small
-			}
-		}
-		#country_leader = {
-		#	ideology = fascism_ideology
-		#	traits = {  }
-		#	expire = "1949.1.1.12"
-		#	id = -1
-		#}
-		advisor = {
-			slot = political_advisor
-			idea_token = FRA_marcel_deat
-			allowed  = {
-				original_tag = FRA
-			}
-			available  = {
-				OR = {
-					has_government = fascism
-					has_government = neutrality
-				}
-			}
-			cost = 150
-			traits  = {
-				FRA_neo_jacobin
-			}
-			do_effect  = {
-			}
-			ai_will_do  = {
-				base = 1.000
-			}
-		}
-	}
-
 	FRA_pierre_laval={ #Democratic Leader
 		name=FRA_pierre_laval
 		portraits={
@@ -234,6 +195,8 @@ characters={
 					has_country_flag = vichy_france
 				}
 			}
+			#TODO: I have no idea why they have costs twice and with different decimal counts
+			cost = 50.000
 			traits = {
 				army_chief_offensive_2
 			}
@@ -251,6 +214,12 @@ characters={
 			planning_skill=2
 			logistics_skill=1
 			legacy_id=0
+
+			visible = {
+				NOT = {
+					has_country_flag = vichy_france
+				}
+			}
 		}
 	}
 
@@ -271,15 +240,40 @@ characters={
 				original_tag = FRA
 			}
 			available = {
-				has_completed_focus = FRA_defensive_focus
+				OR = {
+					has_completed_focus = FRA_defensive_focus
+					has_country_flag = vichy_france
+				}
 			}
-			cost = 100.000
+			#TODO: I have no idea why they have costs twice and with different decimal counts
+			cost = 50.000
 			traits = {
 				army_chief_defensive_2
 			}
 			cost = 50
 			ai_will_do = {
 				factor = 500.000
+			}
+		}
+		advisor={
+			cost = 100
+			slot = theorist
+			idea_token = maxime_weygand
+			ledger = army
+			allowed = {
+				original_tag = FRA
+			}
+			available = {
+				OR = {
+					has_completed_focus = FRA_defensive_focus
+					has_country_flag = vichy_france
+				}
+			}
+			traits = {
+				military_theorist
+			}
+			ai_will_do = {
+				base = 0.5
 			}
 		}
 		
@@ -317,6 +311,11 @@ characters={
 			ai_will_do = {
 				factor = 1.000
 			}
+			visible = {
+				NOT = {
+					has_country_flag = vichy_france
+				}
+			}
 		}
 		
 		field_marshal={
@@ -327,6 +326,11 @@ characters={
 			planning_skill=4
 			logistics_skill=2
 			legacy_id=0
+			visible = {
+				NOT = {
+					has_country_flag = vichy_france
+				}
+			}
 		}
 	}
 
@@ -346,6 +350,11 @@ characters={
 			planning_skill=2
 			logistics_skill=2
 			legacy_id=0
+			visible = {
+				NOT = {
+					has_country_flag = vichy_france
+				}
+			}
 		}
 	}
 
@@ -462,7 +471,6 @@ characters={
 				factor = 8.000
 			}
 		}
-
 		
 		corps_commander={
 			traits={ career_officer trait_reckless armor_officer }
@@ -572,6 +580,11 @@ characters={
 			planning_skill=1
 			logistics_skill=2
 			legacy_id=0
+			visible = {
+				NOT = {
+					has_country_flag = vichy_france
+				}
+			}
 		}
 	}
 
@@ -591,22 +604,32 @@ characters={
 			planning_skill=2
 			logistics_skill=2
 			legacy_id=0
+			visible = {
+				NOT = {
+					has_country_flag = vichy_france
+				}
+			}
 		}
 		advisor={
-			slot = high_command
-			idea_token = henry_freydenberg
-			ledger = army
-			allowed = {
-				original_tag = FRA
-			}
-			traits = {
-				army_infantry_1
-			}
-			cost = 50
-			ai_will_do = {
-				factor = 15.000
-			}
-		}
+        	slot = high_command
+        	idea_token = henry_freydenberg
+        	ledger = army
+        	allowed = {
+        		original_tag = FRA
+        	}
+        	traits = {
+        		army_infantry_1
+        	}
+        	cost = 50
+        	ai_will_do = {
+        		factor = 15.000
+        	}
+        	visible = {
+            	NOT = {
+            		has_country_flag = vichy_france
+            	}
+            }
+        }
 	}
 
 	FRA_rene_olry={
@@ -740,6 +763,11 @@ characters={
 			ai_will_do = {
 				factor = 1.000
 			}
+			visible = {
+				NOT = {
+					has_country_flag = vichy_france
+				}
+			}
 		}
 		
 		navy_leader={
@@ -750,6 +778,11 @@ characters={
 			maneuvering_skill=2
 			coordination_skill=2
 			legacy_id=0
+			visible = {
+				NOT = {
+					has_country_flag = vichy_france
+				}
+			}
 		}
 	}
 
@@ -934,6 +967,10 @@ characters={
 			cost =  50
 			ai_will_do = {
 				factor = 1.000
+				modifier = {
+					factor = 2
+					has_capitulated = yes
+				}
 			}
 		}		
 	}
@@ -1105,11 +1142,94 @@ characters={
 			}
 			cost = 100
 			ai_will_do = {
-				factor = 2.000
+				factor = 2
 			}
 		}
 	}
 
+
+	FRA_jean_romatet = {
+		name=FRA_jean_romatet
+		portraits={
+			army={
+				small="GFX_Portrait_France_Generic_land_9_small" 
+			}
+		}
+		advisor={
+			slot = air_chief
+			idea_token = FRA_jean_romatet 
+			allowed = {
+				original_tag = FRA
+			}
+			visible = {
+				has_country_flag = vichy_france
+			}
+			traits = {
+				air_chief_old_guard
+			}
+			cost =  50
+			ai_will_do = {
+				factor = 2
+			}
+		}
+	}
+
+	FRA_joseph_doumenc = {
+		name=FRA_joseph_doumenc
+		portraits={
+			army={
+				small="GFX_Portrait_France_Generic_land_7_small" 
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = FRA_joseph_doumenc
+			ledger = air
+			allowed = {
+				original_tag = FRA
+			}
+			visible = {
+				has_country_flag = vichy_france
+			}
+			traits = {
+				army_regrouping_1
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 1.000
+			}
+		}
+	}
+
+	FRA_emile_laure = {
+		name=FRA_emile_laure
+		portraits={
+			army={
+				small="GFX_Portrait_France_Generic_land_6_small" 
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = FRA_emile_laure
+			ledger = air
+			allowed = {
+				original_tag = FRA
+			}
+			visible = {
+				has_country_flag = vichy_france
+			}
+			traits = {
+				army_cavalry_1
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 1.000
+			}
+		}
+	}
+
+
+	
 
 	### MILITARY HIGH COMMAND ###
 
@@ -1307,16 +1427,16 @@ characters={
 				original_tag  = FRA
 			}
 			available  = {
-				or  = {
+				OR = {
 					has_completed_focus  = FRA_right_wing_rhetoric 
 					has_completed_focus  = FRA_utilize_the_leagues 
 					has_focus_tree  = vichy_french_focus
 				}
-				if  = {
+				IF  = {
 					limit  = {
 						has_dlc = "Man the Guns"
 					}
-					not  = {
+					NOT  = {
 						has_autonomy_state  = autonomy_supervised_state
 					}
 				}
@@ -1325,24 +1445,62 @@ characters={
 				fascist_demagogue 
 			}
 			do_effect  = {
-				not  = {
+				NOT  = {
 					has_government  = fascism 
 				}
 			}
 			on_add  = {
-				if  = {
+				IF  = {
 					limit  = {
-						not  = {
+						NOT  = {
 							owner = { tag = VIC }
 						}
 					}
 					owner = {
-						country_event  = lar_france_political_violence.2
+						country_event = lar_france_political_violence.2
 					}
 				}
 			}
+			ai_will_do = {
+				factor = 0.000
+			}
+		}
+	}
+
+	FRA_marcel_deat = {
+		name = FRA_marcel_deat
+		portraits = {
+			civilian = {	
+				large = GFX_portrait_FRA_marcel_deat
+				small = GFX_portrait_FRA_marcel_deat_small
+			}
+		}
+		#country_leader = {
+		#	ideology = fascism_ideology
+		#	traits = {  }
+		#	expire = "1949.1.1.12"
+		#	id = -1
+		#}
+		advisor = {
+			slot = political_advisor
+			idea_token = FRA_marcel_deat
+			allowed  = {
+				original_tag = FRA
+			}
+			available  = {
+				OR = {
+					has_government = fascism
+					has_government = neutrality
+				}
+			}
+			cost = 150
+			traits  = {
+				FRA_neo_jacobin
+			}
+			do_effect  = {
+			}
 			ai_will_do  = {
-				factor  = 0.000
+				base = 1.000
 			}
 		}
 	}
@@ -1405,9 +1563,9 @@ characters={
 		}
 	}
 
-	FRA_charles_maurras={
-		name=FRA_charles_maurras
-		portraits={
+	FRA_charles_maurras = {
+		name = FRA_charles_maurras
+		portraits = {
 			civilian = {
 				large = GFX_portrait_FRA_charles_maurras
 				small = GFX_portrait_FRA_charles_maurras_small
@@ -1420,13 +1578,16 @@ characters={
 				original_tag  = FRA
 			}
 			available  = {
+			#TOOD: Why OR OR OR? (A || B ) || ( C || D ) == A || B || C || D right?
 				OR = {
-					has_completed_focus = FRA_integralism 
-					has_completed_focus = FRA_orleanist_restoration 
-				}
-				or  = {
-					has_government  = fascism 
-					has_government  = neutrality 
+					OR = {
+						has_completed_focus = FRA_integralism 
+						has_completed_focus = FRA_orleanist_restoration 
+					}
+					OR  = {
+						has_government  = fascism 
+						has_government  = neutrality 
+					}
 				}
 			}
 			visible  = {
@@ -1461,8 +1622,10 @@ characters={
 				has_dlc = "La Resistance"
 			}
 			available  = {
-				has_completed_focus  = FRA_national_regeneration 
-				has_government  = fascism 
+				OR = {
+					has_completed_focus  = FRA_national_regeneration 
+					has_government  = fascism 
+				}
 			}
 			cost  = 75.000
 			traits  = {
@@ -1502,6 +1665,37 @@ characters={
 			}
 			ai_will_do  = {
 				factor  = 1.000
+			}
+		}
+	}
+
+	FRA_georges_valois = {
+		name = FRA_georges_valois
+		portraits = {
+			army = {
+				small = GFX_portrait_FRA_georges_valois_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = FRA_georges_valois
+			allowed  = {
+				original_tag = FRA
+			}
+			available  = {
+				OR = {
+					has_government = fascism
+					has_government = neutrality
+				}
+			}
+			cost = 150
+			traits  = {
+				FRA_national_syndicalist 
+			}
+			do_effect  = {
+			}
+			ai_will_do  = {
+				base = 1.000
 			}
 		}
 	}
@@ -1766,39 +1960,46 @@ characters={
 			traits  = {
 				head_of_intelligence 
 			}
+			ai_will_do  = {
+				factor  = 0.25
+			}
 		}
 	}
 
-	FRA_georges_valois = {
-		name = FRA_georges_valois
-		portraits = {
-			army = {
-				small = GFX_portrait_FRA_georges_valois_small
-			}
-		}
-		advisor = {
-			slot = political_advisor
-			idea_token = FRA_georges_valois
-			allowed  = {
-				original_tag = FRA
-			}
-			available  = {
-				OR = {
-					has_government = fascism
-					has_government = neutrality
-				}
-			}
-			cost = 150
-			traits  = {
-				FRA_national_syndicalist 
-			}
-			do_effect  = {
-			}
-			ai_will_do  = {
-				base = 1.000
-			}
-		}
-	}
+
+  #####                                                              
+ #     #   ####   #  ######  #    #  #####  #   ####   #####   ####  
+ #        #    #  #  #       ##   #    #    #  #         #    #      
+  #####   #       #  #####   # #  #    #    #   ####     #     ####  
+       #  #       #  #       #  # #    #    #       #    #         # 
+ #     #  #    #  #  #       #   ##    #    #  #    #    #    #    # 
+  #####    ####   #  ######  #    #    #    #   ####     #     ####  
+
+	# OLD combo character theorist for both Curies, now each one is an independent person with their own dreams.
+	#FRA_frederic_irene_joliot_curie={
+	#	name=FRA_frederic_irene_joliot_curie
+	#	portraits={
+	#		army={
+	#			small="GFX_idea_frederic_irene_joliot_curie"
+	#		}
+	#	}
+	#	advisor={
+	#		cost = 100
+	#		slot = theorist
+	#		idea_token = frederic_irene_joliot_curie
+	#		ledger = army
+	#		allowed = {
+	#			original_tag = FRA
+	#		}
+	#		research_bonus = {
+	#			nuclear = 0.150
+	#		}
+	#		traits = {
+	#			nuclear_scientist
+	#		}
+	#	}
+	#}
+
 	FRA_irene_joliot_curie = {
 		name = FRA_irene_joliot_curie
 		portraits = {

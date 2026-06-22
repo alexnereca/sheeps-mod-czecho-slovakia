@@ -66,7 +66,7 @@ characters={
 			}
 		}
 
-		country_leader={
+		country_leader={ #This country leader role is copied as Non-Aligned if Churchill is sent to RAJ - Changes here should be applied in event GOE_RAJ_loyalist.11
 			ideology=conservatism
 			traits = {
 				british_bulldog
@@ -116,7 +116,7 @@ characters={
 				economic_organizer 
 			}
 			ai_will_do  = {
-				factor  = 1.000
+				base = 1
 			}
 		}
 		
@@ -169,7 +169,7 @@ characters={
 				}
 			}
 			ai_will_do  = {
-				factor  = 0.000
+				base = 0
 			}
 		}
 		
@@ -212,6 +212,15 @@ characters={
 		}
 	}
 
+	ENG_robert_menzies={ #Through AST focus tree, Australian PM Menzies can become leader in ENG
+		name=AST_robert_menzies
+		portraits={
+			civilian={
+				large = GFX_portrait_AST_robert_menzies
+			}
+		}
+	}
+
 	ENG_alan_brooke={
 		name=ENG_alan_brooke
 		portraits={
@@ -244,7 +253,7 @@ characters={
 			}
 			cost = 200
 			ai_will_do = {
-				factor = 0.50
+				base = 0.5
 			}
 		}
 		
@@ -340,7 +349,7 @@ characters={
 			}
 			cost = 100
 			ai_will_do = {
-				factor = 0.500
+				base = 0.5
 			}
 		}
 		
@@ -493,12 +502,12 @@ characters={
 				military_theorist
 			}
 			ai_will_do = {
-				factor = 2.000
+				base = 2
 				modifier = {
-					has_idea_with_trait = industrial_concern
-					has_idea_with_trait = silent_workhorse
-					factor = 10.000
-				}
+                	has_idea_with_trait = industrial_concern
+                	has_idea_with_trait = silent_workhorse
+                	factor = 10.000
+                }
 			}
 		}
 		
@@ -793,7 +802,7 @@ characters={
 			}
 			cost = 100
 			ai_will_do = {
-				factor = 1.000
+				base = 1
 			}
 		}
 		
@@ -867,7 +876,7 @@ characters={
 			}
 			cost = 100
 			ai_will_do = {
-				factor = 0.700
+				base = 0.7
 			}
 		}
 		
@@ -903,7 +912,8 @@ characters={
 			}
 			cost = 100
 			ai_will_do = {
-				factor = 0.600
+				base = 0.6
+
 				modifier = {
 					date > 1937.3.1
 					factor = 500
@@ -1202,7 +1212,7 @@ characters={
 				blitzkrieg_theorist
 			}
 			ai_will_do = {
-				factor = 1.000
+				base = 1
 			}
 		}
 	}
@@ -1285,7 +1295,7 @@ characters={
 			}
 			cost = 100
 			ai_will_do = {
-				factor = 2.000
+				base = 2
 			}
 		}
 	}
@@ -1313,7 +1323,7 @@ characters={
 			}
 			cost = 100
 			ai_will_do = {
-				factor = 0.800
+				base = 0.8
 			}
 		}
 	}
@@ -1336,7 +1346,7 @@ characters={
 			}
 			cost =  50
 			ai_will_do = {
-				factor = 1.000
+				base = 1
 			}
 		}
 	}
@@ -1362,7 +1372,7 @@ characters={
 			}
 			cost = 100
 			ai_will_do = {
-				factor = 4.000
+				base = 4
 			}
 		}
 	}
@@ -1385,7 +1395,7 @@ characters={
 			}
 			cost = 100
 			ai_will_do = {
-				factor = 1.000
+				base = 1.000
 			}
 		}
 	}
@@ -1408,7 +1418,7 @@ characters={
 			}
 			cost = 100
 			ai_will_do = {
-				factor = 1.000
+				base = 1.000
 			}
 		}		
 	}
@@ -1440,7 +1450,7 @@ characters={
 			}
 			cost = 100
 			ai_will_do = {
-				factor = 2.000
+				base = 2
 			}
 		}
 	}
@@ -1464,7 +1474,7 @@ characters={
 			}
 			cost = 100
 			ai_will_do = {
-				factor = 4.500
+				base = 4.5
 			}
 		}
 	}
@@ -1488,7 +1498,7 @@ characters={
 			}
 			cost = 100
 			ai_will_do = {
-				factor = 1.000
+				base = 1
 			}
 		}
 	}
@@ -1512,7 +1522,7 @@ characters={
 			}
 			cost = 100
 			ai_will_do = {
-				factor = 0.00
+				base = 0
 			}
 		}
 	}
@@ -1541,7 +1551,7 @@ characters={
 			}
 			cost = 200
 			ai_will_do = {
-				factor = 1.000
+				base = 1.000
 			}
 		}
 	}
@@ -1565,7 +1575,7 @@ characters={
 			}
 			cost = 100
 			ai_will_do = {
-				factor = 0.200
+				base = 0.2
 			}
 		}
 	}
@@ -1591,7 +1601,7 @@ characters={
 			}
 			cost = 50
 			ai_will_do = {
-				factor = 50.0
+				base = 50
 			}
 		}
 	}
@@ -1645,7 +1655,7 @@ characters={
 				}
 			}
 			ai_will_do  = {
-				factor  = 0.000
+				base = 0
 			}
 		}		
 	}
@@ -1688,7 +1698,7 @@ characters={
 				}
 			}
 			ai_will_do  = {
-				factor  = 0.000
+				base = 0
 			}
 		}
 	}
@@ -1721,13 +1731,13 @@ characters={
 				silent_workhorse 
 			}
 			ai_will_do  = {
-				factor  = 2.000
+				base = 2
 				modifier  = {
 					has_country_leader = {
 						character = ENG_stanley_baldwin
 						ruling_only = yes 
 					}
-					factor  = 10.000
+					factor = 10
 				}
 			}
 		}		
@@ -1769,7 +1779,7 @@ characters={
 				war_industrialist 
 			}
 			ai_will_do  = {
-				factor  = 2.000
+				base = 2
 			}
 		}
 	}
@@ -1810,7 +1820,7 @@ characters={
 				quartermaster_general 
 			}
 			ai_will_do  = {
-				factor  = 1.000
+				base = 1.000
 			}
 		}
 	}
@@ -1836,7 +1846,7 @@ characters={
 				princess_of_terror 
 			}
 			ai_will_do  = {
-				factor  = 1.000
+				base = 1.0
 			}
 		}
 	}
@@ -1870,7 +1880,7 @@ characters={
 				socialist_novelist 
 			}
 			ai_will_do  = {
-				factor  = 1.000
+				base = 1.0
 			}
 		}
 	}
@@ -1914,7 +1924,7 @@ characters={
 				red_suffragette 
 			}
 			ai_will_do  = {
-				factor  = 25.000
+				base = 25
 			}
 			on_add = {
 				owner = {
@@ -1956,7 +1966,7 @@ characters={
 				old_figurehead 
 			}
 			ai_will_do  = {
-				factor  = 1.000
+				base = 1
 			}
 		}
 	}
@@ -2360,6 +2370,9 @@ characters={
 			traits  = {
 				head_of_intelligence 
 			}
+			ai_will_do  = {
+				base = 0.5
+			}
 		}
 	}
 
@@ -2381,10 +2394,10 @@ characters={
 				}
 			}
 			ai_will_do  = {
-				factor  = 1.000
+				base = 1
 				modifier  = {
-					has_political_power < 200.000
-					factor  = 0.000
+					has_political_power < 200
+					factor = 0
 				}
 			}
 			allowed  = {
@@ -2396,6 +2409,17 @@ characters={
 			}
 		}
 	}
+
+
+
+  #####                                                              
+ #     #   ####   #  ######  #    #  #####  #   ####   #####   ####  
+ #        #    #  #  #       ##   #    #    #  #         #    #      
+  #####   #       #  #####   # #  #    #    #   ####     #     ####  
+       #  #       #  #       #  # #    #    #       #    #         # 
+ #     #  #    #  #  #       #   ##    #    #  #    #    #    #    # 
+  #####    ####   #  ######  #    #    #    #   ####     #     ####  
+
 
 	ENG_james_chadwick = {
 		name = ENG_james_chadwick
