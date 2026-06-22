@@ -27,6 +27,8 @@ autonomy_state = {
 		lend_lease_tension_with_overlord = -0.30
 
 		research_sharing_per_country_bonus_factor = -0.5
+
+		faction_influence_contribution_factor = -0.75
 	}
 	
 	ai_subject_wants_higher = {
@@ -88,7 +90,7 @@ autonomy_state = {
 		if = {
 			limit = {
 				original_tag = RAJ
-				NOT = { has_focus_tree = indian_focus_goe }			
+				NOT = { has_focus_tree = indian_focus_goe	}			
 			}
 			has_completed_focus = RAJ_cripps_mission
 		}

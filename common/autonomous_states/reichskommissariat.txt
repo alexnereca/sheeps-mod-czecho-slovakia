@@ -3,7 +3,6 @@ autonomy_state = {
 	
 	is_puppet = yes
 	
-	use_overlord_color = yes
 	min_freedom_level = 0.2
 	
 	manpower_influence = 0.9
@@ -32,6 +31,8 @@ autonomy_state = {
 		peace_score_ratio_transferred_to_overlord = 0.1
 		lend_lease_tension_with_overlord = -0.20
 		resistance_target = -0.1
+		
+		faction_influence_contribution_factor = -0.5
 	}
 	
 	ai_subject_wants_higher = {
@@ -76,10 +77,6 @@ autonomy_state = {
 	
 	can_take_level = {
 		#trigger here
-	}
-
-	can_lose_level = {
-		#trigger here
 		IF = {
 			limit = {
 				original_tag = COG
@@ -89,5 +86,9 @@ autonomy_state = {
 				has_completed_focus = CONGO_overseas_department_of_belgium
 			}
 		}
+	}
+
+	can_lose_level = {
+		#trigger here
 	}
 }
