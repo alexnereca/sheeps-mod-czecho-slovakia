@@ -50,6 +50,7 @@ leader_traits = {
 
 	renaissance_man = {
 		sprite = 5
+
 		political_power_factor = 0.2
 		research_speed_factor = 0.05
 
@@ -70,6 +71,7 @@ leader_traits = {
 
 	anti_shah_democrat = {
 		sprite = 5
+
 		political_power_factor = 0.1
 		neutrality_acceptance = -15
 		democratic_drift = 0.05
