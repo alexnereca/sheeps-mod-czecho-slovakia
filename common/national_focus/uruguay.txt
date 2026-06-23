@@ -96,12 +96,11 @@ focus_tree = {
 		search_filters = {  FOCUS_FILTER_HISTORICAL FOCUS_FILTER_STABILITY }
 		completion_reward = {
 			add_stability = 0.05
-			random_state = {
+			random_core_state = {
 				limit = {
 					is_controlled_by = ROOT
-					is_core_of = ROOT
 				}
-				prioritize = { 946 945 } #optional: to pick those states first if they fulfill the limit
+				prioritize = { 946 945 }
 				add_extra_state_shared_building_slots = 1
 				increase_state_category = yes
 			}
@@ -189,7 +188,7 @@ focus_tree = {
 			SOV = {
 				add_opinion_modifier = {
 					target = PREV 
-					modifier = SWE_embargoed_us
+					modifier = embargo
 				}
 			}
 		}
@@ -384,6 +383,7 @@ focus_tree = {
 				ideology = fascism
 				popularity = 0.05
 			}
+			custom_effect_tooltip = generic_skip_one_line_tt
 			add_ideas = {
 				idea_GUAY_electrification_of_the_country
 			}
@@ -402,6 +402,7 @@ focus_tree = {
 					INDENT = "    "
 				}
 			}
+			custom_effect_tooltip = generic_skip_one_line_tt
 			add_fascist_influence = yes
 
 		}
@@ -542,28 +543,35 @@ focus_tree = {
 
 	focus = {
 		id = URG_the_fuhrmann_plan
+
 		prerequisite = { focus = URG_establish_the_german_uruguayan_cultural_center  }
-		available = {
+
+		available = { 
 			is_subject = no
 			fascism > 0.5 
 		}
+
 		mutually_exclusive = { }
+
 		icon = GFX_focus_hol_war_on_pacifism
+
 		x = 0
 		y = 1
+
 		cost = 10
+
 		relative_position_id = URG_establish_the_german_uruguayan_cultural_center
+
 		search_filters = { FOCUS_FILTER_POLITICAL  }
+
 		completion_reward = {
+
 			set_politics = {
 				ruling_party = fascism
 				elections_allowed = no
-				#last_election = "YYYY.MM.DD"
-				#election_frequency = <months>
-				#long_name = <loc_string> # Optional
-				#name = <loc_string># Optional
 			}
-			if  ={
+
+			if = {
 				limit = {
 					has_dlc = "No Step Back"
 					NOT = { has_tech = gwtank_chassis }
@@ -625,8 +633,6 @@ focus_tree = {
 			    }
 			}
 
-
-
 			division_template = {
 				name = "Tractor Tanks"
 				priority = 2
@@ -668,25 +674,26 @@ focus_tree = {
 			add_timed_idea = {
 			 	idea = political_turmoil
 			 	days = 365
-			 }
+			}
 
-			 if = {
-			 	limit = {
-			 		GER = {
-			 			has_government = fascism
-			 			exists = yes
-			 			has_capitulated = no
-			 			NOT = { is_in_faction_with = ROOT }
-			 		}
-			 	}
-			 	GER = {
-			 		country_event = {
-			 			id = generic.2
-			 			hours = 2 # optional - can take hours/days/months
-			 			random_hours = 2 # optional - can take hours/days/months
-			 		}
-			 	}
-			 }
+			if = {
+				limit = {
+					GER = {
+						has_government = fascism
+						exists = yes
+						has_capitulated = no
+						NOT = { is_in_faction_with = ROOT }
+					}
+				}
+				GER = {
+					country_event = {
+						id = generic.2
+						hours = 2 # optional - can take hours/days/months
+						random_hours = 2 # optional - can take hours/days/months
+					}
+				}
+			}
+
 		}
 	}
 
@@ -954,7 +961,7 @@ focus_tree = {
 		relative_position_id = URG_rapid_industrialization
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_HISTORICAL }
 		completion_reward = {
-			air_experience = 25
+			air_experience = 25 # was 40
 			add_breakthrough_progress = {
 				specialization = specialization_air
 				value = 0.25
@@ -964,6 +971,8 @@ focus_tree = {
 				amount = 40 
 				producer = URG
 			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
 
 			random_core_state = {
 				limit = {
@@ -983,7 +992,6 @@ focus_tree = {
 	focus = {
 		id = URG_conaprole
 		available = {
-			
 		}
 		prerequisite = { focus = URG_rapid_industrialization }
 		mutually_exclusive = { }
@@ -1064,7 +1072,7 @@ focus_tree = {
 		x = -11
 		y = 0
 		available = { 
-			has_country_flag = URG_terra_election
+			has_country_flag = URG_terra_election 
 			NOT = { has_completed_focus = URG_accion_revisionista_del_uruguay }
 		}
 
@@ -1408,12 +1416,17 @@ focus_tree = {
 				}
 			} 
 		}
+
 		cost = 5
+
 		relative_position_id = URG_break_diplomatic_relations_with_the_axis
+
 		prerequisite = { focus = URG_break_diplomatic_relations_with_the_axis  focus = URG_anticentralism }
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
+
 		completion_reward = {
+
 			add_popularity = {
 				ideology = democratic
 				popularity = 0.15
@@ -1577,7 +1590,7 @@ focus_tree = {
 				limit = {
 					ROOT = { has_full_control_of_state = PREV }
 				}
-				prioritize = { 946 945 } #optional: to pick those states first if they fulfill the limit
+				prioritize = { 946 945 }
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = industrial_complex
@@ -1662,13 +1675,20 @@ focus_tree = {
 		}
 
 		icon = GFX_focus_generic_self_management
+		
 		x = 1
 		y = 1
+
 		available = {  }
+
 		cost = 5
+
 		prerequisite = { focus = URG_blanco_victory focus = URG_colorado_victory }
+
 		relative_position_id = URG_blanco_victory
+
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_STABILITY }
+
 		completion_reward = {
 			add_ideas = {
 				idea_URG_traditionalism
