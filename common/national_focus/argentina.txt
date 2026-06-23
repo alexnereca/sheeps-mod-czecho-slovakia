@@ -113,6 +113,7 @@ focus_tree = {
 		relative_position_id = ARG_roberto_maria_ortiz
 		mutually_exclusive = { focus = ARG_work_with_the_nationalists }
 		cost = 10
+
 		available = {
 			any_owned_state = {
 				is_controlled_by = ROOT
@@ -122,10 +123,6 @@ focus_tree = {
 				    include_locked = yes
 				}
 			}
-		} 
-
-		ai_will_do = {
-			factor = 20
 		}
 
 		bypass = {
@@ -139,6 +136,10 @@ focus_tree = {
 					}
 				}
 			}
+		}
+
+		ai_will_do = {
+			factor = 20
 		}
 
 		search_filters = { FOCUS_FILTER_HISTORICAL FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
@@ -622,7 +623,6 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_HISTORICAL }
 
 		completion_reward = { 
-			 
 			IF = {
 				limit = {
 					has_dlc = "Arms Against Tyranny"
@@ -1061,7 +1061,7 @@ focus_tree = {
 			
 			hidden_effect = {
 				remove_dynamic_modifier = {
-					modifier = ARG_growing_nationalism_modifier
+  				modifier = ARG_growing_nationalism_modifier
   				}
 			}
 		}
@@ -1171,7 +1171,6 @@ focus_tree = {
 					NOT = { has_tech = atomic_research }
 					has_tech = experimental_rockets
 				}
-
 				add_tech_bonus = {
 					name = ARG_arma_maravillosa_bonus
 					bonus = 0.5
@@ -1183,7 +1182,6 @@ focus_tree = {
 			    	value = 0.5
 				}
 			}
-
 			ELSE = {
 				set_technology = {
 					atomic_research = 1
@@ -1324,7 +1322,7 @@ focus_tree = {
 			has_global_flag = scw_over
 			SPA = {
 				has_capitulated = no
-				owns_state = 297	
+				owns_state = 297
 			}
 			
 			custom_trigger_tooltip = {
@@ -1374,8 +1372,8 @@ focus_tree = {
 						}
 					}
 					has_civil_war = no
+					}
 				}
-			}
 			else = {
 				any_country = {
 					original_tag = SPR
@@ -1542,10 +1540,11 @@ focus_tree = {
 		ai_will_do = {
 			factor = 20
 		}
-		
+
 		bypass = {
 			has_country_flag = ARG_worst_timeline_flag
 		}
+
 		search_filters = {  FOCUS_FILTER_MANPOWER  FOCUS_FILTER_STABILITY  FOCUS_FILTER_POLITICAL FOCUS_FILTER_POLITICAL_CHARACTER }
 
 		completion_reward = { 
@@ -1622,6 +1621,7 @@ focus_tree = {
 		bypass = {
 			has_country_flag = ARG_worst_timeline_flag
 		}
+
 		search_filters = { FOCUS_FILTER_STABILITY  FOCUS_FILTER_POLITICAL }
 
 		completion_reward = { 
@@ -1750,7 +1750,7 @@ focus_tree = {
 		mutually_exclusive = { focus = ARG_join_the_axis }
 		cost = 10
 		available = {
-			is_subject = no	  
+			is_subject = no
 			is_in_faction = no
 		}
 
@@ -1802,7 +1802,7 @@ focus_tree = {
 		mutually_exclusive = { focus = ARG_argentina_first }
 		cost = 10
 		available = {
-			is_subject = no	  
+			is_subject = no
 			GER = {
 				exists = yes
 				has_government = fascism
@@ -2993,8 +2993,6 @@ focus_tree = {
 				ideology = neutrality
 				popularity = -0.05
 			}
-
-			#possible TODO, add advisors? Unsure which Advisors were to be added here so feel free to make changes here Eilidh!
 		}
 	}
 
@@ -3317,8 +3315,7 @@ focus_tree = {
 			 	name = ARG_royal_airforce_influence_bonus
 			 	bonus = 0.5
 			 	uses = 3
-			 	category = air_equipment # optional 
-			 	# technology  = technology_id # optional
+			 	category = air_equipment 
 			 } 
 
 			 IF = {
@@ -3651,6 +3648,7 @@ focus_tree = {
 				has_government = democratic
 			}
 		}
+
 		ai_will_do = {
 			factor = 10
 		}
@@ -3684,7 +3682,7 @@ focus_tree = {
 		mutually_exclusive = { focus = ARG_join_the_allies }
 		cost = 10
 		available = {
-			is_subject = no	  
+			is_subject = no
 			is_in_faction = no
 		}
 
@@ -3807,8 +3805,8 @@ focus_tree = {
 							is_on_continent = south_america
 						}
 
-						has_government = democratic
-						is_in_faction = no
+					has_government = democratic
+					is_in_faction = no
 
 						NOT = {
 							OR = {
@@ -3998,7 +3996,24 @@ focus_tree = {
 		relative_position_id = ARG_envoy_to_london
 		cost = 10
 		available = {
+			NOT = {
+				299 = {
+					is_owned_and_controlled_by = ROOT
+				}
+				720 = {
+					is_owned_and_controlled_by = ROOT
+				}
+			}
 		}
+		bypass = {
+			299 = {
+				is_owned_and_controlled_by = ROOT
+			}
+			720 = {
+				is_owned_and_controlled_by = ROOT
+			}
+		}
+
 
 		ai_will_do = {
 			factor = 5
@@ -4007,14 +4022,20 @@ focus_tree = {
 		search_filters = { }
 
 		completion_reward = { 
-			ENG = {
+			every_other_country = {
+				limit = {
+					OR = {
+						controls_state = 299
+						controls_state = 720
+					}
+				}
 				country_event = {
-				id = ARG_political_events.5
-				hours = 1
+					id = ARG_political_events.5
+					hours = 1
+				}
 			}
 		}
 	}
-}
 
 	focus = { #COOPERATION
 		id = ARG_improving_the_islands
@@ -4760,8 +4781,8 @@ focus_tree = {
 		completion_reward = { 
 
 			ARG_fanny_edelman = { 
-					promote_character = yes 
-				}
+				promote_character = yes 
+			}
 
 			create_faction_from_template = {
 				template = faction_template_POR_popular_front_bloc
@@ -4769,16 +4790,16 @@ focus_tree = {
 				icon = GFX_faction_logo_generic_14
 			}
 
-				hidden_effect = {
-					IF = {
-						limit = {
-							has_idea = ARG_fanny_edelman
-						}
-						remove_ideas = ARG_fanny_edelman
+			hidden_effect = {
+				IF = {
+					limit = {
+						has_idea = ARG_fanny_edelman
 					}
+					remove_ideas = ARG_fanny_edelman
 				}
 			}
 		}
+	}
 
 	focus = { #COMMUNIST
 		id = ARG_women_in_industry
@@ -5795,18 +5816,18 @@ focus_tree = {
 
 		completion_reward = { 
 			random_core_state = {
-				limit = {
-					free_building_slots = {
-						building = infrastructure
-						size > 0
-					}
-					is_owned_and_controlled_by = ROOT
+			limit = {
+				free_building_slots = {
+					building = infrastructure
+					size > 0
 				}
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
+				is_owned_and_controlled_by = ROOT
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
 				}
 			}
 		}
@@ -6340,7 +6361,7 @@ focus_tree = {
 				has_completed_focus = ARG_cut_ties_with_britain
 				has_completed_focus = ARG_viva_la_revolucion
 			}
-			has_civil_war = no	 
+			has_civil_war = no
 		}
 
 		ai_will_do = {

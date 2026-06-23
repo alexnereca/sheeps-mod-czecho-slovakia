@@ -2414,6 +2414,7 @@ focus_tree = {
 				specialization = specialization_land
 				value = 0.5
 			}
+
 			add_tech_bonus = {
 				name = CAN_the_valentine_tank
 				bonus = 1.0
@@ -2425,8 +2426,9 @@ focus_tree = {
 				ahead_reduction = 2
 				bonus = 1.0
 				uses = 1
-				category = cat_light_armor
+				category = cat_medium_armor
 			}
+
 		}
 	}
 
@@ -3040,6 +3042,7 @@ focus_tree = {
 			}
 		}
 	}
+
 	focus = {
 		id = CAN_habakkuk_carrier
 		icon = GFX_goal_generic_navy_carrier
@@ -3291,7 +3294,8 @@ focus_tree = {
 					}
 				}
 			}
-		}	
+		}
+		
 		bypass = {
 
 		}
@@ -3382,6 +3386,7 @@ focus_tree = {
 					}
 				}
 			}
+
 		}
 	}
 
@@ -4037,9 +4042,9 @@ focus_tree = {
 					}
 				}
 				leave_faction = yes
-				set_rule = {
-					can_join_factions = no
-				}
+			}
+			set_rule = {
+				can_join_factions = no
 			}
 			swap_ideas = {
 				remove_idea = CAN_communist_ideals_2
@@ -4626,6 +4631,7 @@ focus_tree = {
 				specialization = specialization_air
 				value = 0.25
 			}
+
 			add_tech_bonus = {
 				name = CAN_the_pacific_coast_air_defence_radar_system
 				bonus = 1.0
@@ -4670,6 +4676,7 @@ focus_tree = {
 				specialization = specialization_air
 				value = 0.25
 			}
+
 			add_tech_bonus = {
 				name = CAN_the_pacific_coast_air_defence_radar_system
 				bonus = 1.0
@@ -5029,13 +5036,15 @@ focus_tree = {
 				specialization = specialization_air
 				value = 0.5
 			}
+
 			add_tech_bonus = {
 				name = CAN_the_sabre_project
 				ahead_reduction = 2
-				uses = 1
+				uses = 1 # was 2
 				category = rocketry
 				category = jet_technology
 			}
+
 		}
 	}
 
@@ -5144,6 +5153,7 @@ focus_tree = {
 		completion_reward = {
 
 			navy_experience = 25
+
 			add_tech_bonus = {
 				name = CAN_destroyer_effort
 				bonus = 1.0
@@ -5151,6 +5161,7 @@ focus_tree = {
 				uses = 1
 				category = dd_tech
 			}
+
 		}
 	}
 
@@ -5161,6 +5172,8 @@ focus_tree = {
 		x = -1
 		y = 2
 		relative_position_id = CAN_halifax_shipyards
+
+		mutually_exclusive = { focus = CAN_heavy_cruiser_effort }
 
 		cost = 10
 
@@ -5246,7 +5259,7 @@ focus_tree = {
 					name = CAN_heavy_cruiser_effort
 					bonus = 0.5
 					uses = 1
-					category = cat_ship_medium_battery
+					category = cat_ship_heavy_battery
 				}
 			}
 		}
@@ -5309,6 +5322,8 @@ focus_tree = {
 					track = screens
 				}
 			}
+			
+			
 			add_doctrine_cost_reduction = {
 				name = CAN_escort_fleet
 				cost_reduction = 0.25
@@ -5415,8 +5430,9 @@ focus_tree = {
 						    degaussing = 1
 						}
 					}
+					}
 				}
-			}
+			
 			if = {
 				limit = {
 						NOT = {
@@ -5425,7 +5441,7 @@ focus_tree = {
 					}
 				add_ideas = CAN_degauss_ship_hulls
 			}
-		}
+		}	
 	}
 
 	focus = {
