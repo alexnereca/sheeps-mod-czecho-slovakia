@@ -982,9 +982,9 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_POLITICAL_CHARACTER FOCUS_FILTER_HISTORICAL }
 	
 		completion_reward = {
-						
+
 			add_research_slot = 1
-									   
+
 			IF = {
 				limit = {
 					NOT = {
@@ -1015,6 +1015,7 @@ focus_tree = {
 				localization_key = available_scientist_one_line_tt
 				CHARACTER = DEN_niels_bohr
 			}	
+			
 		}
 	}
 
@@ -5657,6 +5658,7 @@ focus_tree = {
 					popularity = 0.15
 				}
 			}
+			
 
 			if = {
 				limit = {
@@ -8170,9 +8172,24 @@ focus_tree = {
 			add_doctrine_cost_reduction = {
 				name = DEN_train_mountain_infantry
 				cost_reduction = 0.5
-				uses = 2
-				category = cat_mountaineers_doctrine
+				uses = 1
+				category = special_forces_doctrine
 			}
+			custom_effect_tooltip = mountaineer_subdoctrines_default_add_mastery_bonus_effect_tooltip
+			hidden_effect = {
+				add_mastery_bonus = {
+					name = DEN_train_mountain_infantry
+					bonus = 0.1
+					days = 240
+					sub_doctrine = mountaineers_1
+				}
+				add_mastery_bonus = {
+					name = DEN_train_mountain_infantry
+					bonus = 0.1
+					days = 240
+					sub_doctrine = mountaineers_2
+				}
+			}			
 		}
 	}
 
@@ -10035,8 +10052,8 @@ focus_tree = {
 			add_doctrine_cost_reduction = {
 				name = DEN_slaedepatruljen_sirius
 				cost_reduction = 0.25
-				uses = 2
-				category = cat_mountaineers_doctrine
+				uses = 1
+				category = special_forces_doctrine
 			}
 		}
 	}
@@ -11567,10 +11584,25 @@ focus_tree = {
 
 			add_doctrine_cost_reduction = {
 				name = DEN_fromandskorpset
-				cost_reduction = 0.5
+				cost_reduction = 0.25
 				uses = 2
-				category = cat_marines_doctrine
+				category = special_forces_doctrine
 			}
+			custom_effect_tooltip = marine_subdoctrines_default_add_mastery_bonus_effect_tooltip
+			hidden_effect = {
+				add_mastery_bonus = {
+					name = FIN_marine_jaeger_divisions
+					bonus = 0.1
+					days = 240
+					sub_doctrine = marines_1
+				}
+				add_mastery_bonus = {
+					name = FIN_marine_jaeger_divisions
+					bonus = 0.1
+					days = 240
+					sub_doctrine = marines_2
+				}
+			}			
 		}
 	}
 
@@ -11820,10 +11852,25 @@ focus_tree = {
 
 			add_doctrine_cost_reduction = {
 				name = DEN_unify_flyvevabnet
-				cost_reduction = 0.5
+				cost_reduction = 0.25
 				uses = 2
-				category = cat_paratroopers_doctrine
+				category = special_forces_doctrine
 			}
+			custom_effect_tooltip = paratrooper_subdoctrines_default_add_mastery_bonus_effect_tooltip
+			hidden_effect = {
+				add_mastery_bonus = {
+					name = DEN_unify_flyvevabnet
+					bonus = 0.1
+					days = 240
+					sub_doctrine = paratroopers_1
+				}
+				add_mastery_bonus = {
+					name = DEN_unify_flyvevabnet
+					bonus = 0.1
+					days = 240
+					sub_doctrine = paratroopers_2
+				}
+			}			
 		}
 	}
 
@@ -12079,12 +12126,26 @@ focus_tree = {
 				category = naval_bomber
 				category = cv_tech
 			}
-
 			add_doctrine_cost_reduction = {
 				name = DEN_torpedofly
-				cost_reduction = 0.5
-				uses = 2
-				category = cat_paratroopers_doctrine
+				cost_reduction = 0.25
+				uses = 1
+				category = special_forces_doctrine
+			}
+			custom_effect_tooltip = paratrooper_subdoctrines_default_add_mastery_bonus_effect_tooltip
+			hidden_effect = {
+				add_mastery_bonus = {
+					name = DEN_torpedofly
+					bonus = 0.1
+					days = 240
+					sub_doctrine = paratroopers_1
+				}
+				add_mastery_bonus = {
+					name = DEN_torpedofly
+					bonus = 0.1
+					days = 240
+					sub_doctrine = paratroopers_2
+				}
 			}
 		}
 	}
@@ -12282,6 +12343,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_AIR_XP FOCUS_FILTER_RESEARCH }
 
 		completion_reward = {
+
 			air_experience = 25
 			
 			DEN_improve_flyvevabnet_NS = yes
