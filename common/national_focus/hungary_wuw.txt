@@ -5340,6 +5340,9 @@ focus_tree = {
 		available_if_capitulated = no
 
 		completion_reward = {
+
+
+
 			add_mastery_bonus = {
 				name = wuw_HUN_the_legacy_of_the_isonzo_front
 				bonus = 0.2
@@ -7478,16 +7481,17 @@ focus_tree = {
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 
-			set_rule = { can_create_factions = yes }
 			IF = {
 				limit = {
 					has_dlc = "No Compromise, No Surrender"
 				}
+				set_rule = { can_create_factions = yes }
 				create_faction_from_template = faction_template_balkan_pact
 				add_faction_initiative = 1
 				custom_effect_tooltip = generic_skip_one_line_tt
 			}
 			ELSE = {
+				set_rule = { can_create_factions = yes }
 				create_faction_from_template = faction_template_balkan_pact
 				custom_effect_tooltip = generic_skip_one_line_tt
 			}
@@ -9883,6 +9887,7 @@ focus_tree = {
 				limit = {
 					SLO = {
 						exists = yes
+						is_subject = no
 						owns_state = 664
 					}
 				}
@@ -9893,7 +9898,12 @@ focus_tree = {
 					664 = {
 						NOT = {
 							OR = {
-								is_owned_by = SLO
+								AND = {
+									is_owned_by = SLO
+									SLO = {
+										is_subject = no
+									}
+								}
 								is_owned_by = CZE
 								is_owned_by = ROOT
 							}
@@ -9902,7 +9912,15 @@ focus_tree = {
 				}
 				random_country = {
 					limit = {
-						owns_state = 664
+						OR = {
+							AND = {
+								owns_state = 664
+								is_subject = no
+							}
+							any_subject_country = {
+								owns_state = 664
+							}
+						}
 					}
 					country_event = {
 						id = WW_hungary.7
@@ -11347,7 +11365,7 @@ focus_tree = {
 						country_event = generic.5
 						add_ai_strategy = {
 							type = alliance
-							id = "HUN"
+							id = HUN
 							value = 200
 						}
 					}
@@ -16547,8 +16565,7 @@ focus_tree = {
 		}
 
 		available = {
-			any_state = {
-				is_controlled_by = ROOT
+			any_controlled_state = {
 				is_coastal = yes
 			}
 			wuw_HUN_does_not_have_trianon = yes
@@ -17481,8 +17498,7 @@ focus_tree = {
 		}
 
 		available = {
-			any_state = {
-				is_owned_by = ROOT
+			any_owned_state = {
 				is_core_of = ROOT
 			}
 			#has_country_flag = HUN_activated_huba_1_flag
@@ -17694,8 +17710,7 @@ focus_tree = {
 		}
 
 		available = {
-			any_state = {
-				is_owned_by = ROOT
+			any_owned_state = {
 				is_core_of = ROOT
 			}
 			#has_country_flag = HUN_activated_huba_1_flag
@@ -20365,9 +20380,8 @@ focus_tree = {
 		}
 
 		available = {
-			any_state = {
+			any_controlled_state = {
 				is_coastal = yes
-				is_controlled_by = ROOT
 			}
 		}
 
@@ -20537,6 +20551,7 @@ focus_tree = {
 				days = 240
 				grand_doctrine = new_base_strike
 			}
+
 			add_doctrine_cost_reduction = {
 				name = wuw_HUN_a_reformed_navy
 				cost_reduction = 0.25
@@ -20783,9 +20798,8 @@ focus_tree = {
 
 		available = {
 			has_tech = basic_ship_hull_heavy
-			any_state = {
+			any_controlled_state = {
 				is_coastal = yes
-				is_controlled_by = ROOT
 			}
 		}
 
