@@ -65,6 +65,56 @@ focus_tree = {
 		y = 0
 	}
 
+	shortcut = {
+		name = PER_navy_shortcut
+		target = PER_establish_the_navy
+		trigger = {
+		    has_dlc = "Graveyard of Empires"
+		}
+	}
+	shortcut = {
+		name = PER_air_shortcut
+		target = PER_establish_airforce
+		trigger = {
+		    has_dlc = "Graveyard of Empires"
+		}
+	}
+	shortcut = {
+		name = PER_army_shortcut
+		target = PER_restructure_army
+		trigger = {
+		    has_dlc = "Graveyard of Empires"
+		}
+	}
+	shortcut = {
+		name = PER_industry_shortcut
+		target = PER_modernizing_iran
+		trigger = {
+		    has_dlc = "Graveyard of Empires"
+		}
+	}
+	shortcut = {
+		name = PER_fight_for_iran_shortcut
+		target = PER_fight_for_iran
+		trigger = {
+		    has_dlc = "Graveyard of Empires"
+		}
+	}
+	shortcut = {
+		name = PER_neutral_shortcut
+		target = PER_the_pahlavi_imperium 
+		trigger = {
+		    has_dlc = "Graveyard of Empires"
+		}
+	}
+	shortcut = {
+		name = PER_democratic_shortcut
+		target = PER_rally_the_reformers
+		trigger = {
+		    has_dlc = "Graveyard of Empires"
+		}
+	}
+
 	#################################
 	###### INDUSTRIAL BRANCH ########
 	#################################
@@ -1053,6 +1103,42 @@ focus_tree = {
 		}
 	}
 
+	focus = { #INDUSTRIAL
+		id = PER_a_modern_iran
+		icon = GFX_focus_AFG_a_modern_economy
+		prerequisite = { focus = PER_profit_from_war focus = PER_oil_baron}
+		prerequisite = { focus = PER_metropolitan_iran }
+		prerequisite = { focus = PER_food_for_all }
+		prerequisite = { focus = PER_women_vote }
+		prerequisite = { focus = PER_feat_of_engineering }
+		prerequisite = { focus = PER_educational_reforms }
+
+		x = 0
+		y = 6
+		relative_position_id = PER_modernizing_iran
+		cost = 5
+		
+		available = {
+			is_subject = no
+		}
+
+		ai_will_do = {
+			factor = 5
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = PER_modernizing_iran_idea
+				add_idea = PER_a_modern_iran_idea
+			}
+
+		}
+	}
+
 	################################
 	######### ARMY BRANCH ##########
 	################################
@@ -1060,7 +1146,7 @@ focus_tree = {
 	focus = { #ARMY
 		id = PER_restructure_army
 		icon = GFX_focus_PER_restructure_army
-		x = 32
+		x = 29
 		y = 0
 		relative_position_id = PER_modernizing_iran
 		cost = 5
@@ -1176,8 +1262,7 @@ focus_tree = {
 		cost = 10
 		
 		available = {
-			any_state = {
-				is_owned_by = ROOT
+			any_owned_state = {
 				is_controlled_by = ROOT
 				free_building_slots = {
 				    building = arms_factory
@@ -1188,14 +1273,13 @@ focus_tree = {
 		}
 
 		bypass = {
-			NOT = {
-				any_state = {
-					is_owned_by = ROOT
-					is_controlled_by = ROOT
+			all_owned_state = {
+				OR = {
+					NOT = { is_controlled_by = ROOT }
 					free_building_slots = {
-					    building = arms_factory
-					    size > 2
-					    include_locked = yes
+						building = arms_factory
+						size < 2
+						include_locked = no
 					}
 				}
 			}
@@ -1431,8 +1515,7 @@ focus_tree = {
 		cost = 10
 
 		available = {
-			any_state = {
-				is_owned_by = ROOT
+			any_owned_state = {
 				is_controlled_by = ROOT
 				free_building_slots = {
 				    building = arms_factory
@@ -1443,14 +1526,13 @@ focus_tree = {
 		}
 
 		bypass = {
-			NOT = {
-				any_state = {
-					is_owned_by = ROOT
-					is_controlled_by = ROOT
+			all_owned_state = {
+				OR = {
+					NOT = { is_controlled_by = ROOT }
 					free_building_slots = {
-					    building = arms_factory
-					    size > 2
-					    include_locked = yes
+						building = arms_factory
+						size < 2
+						include_locked = no
 					}
 				}
 			}
@@ -1747,7 +1829,7 @@ focus_tree = {
 		}
 
 		completion_reward = {
-		
+			
 			add_mastery= {
 				amount = 100
 				track = combat_support
@@ -1913,7 +1995,7 @@ focus_tree = {
 		id = PER_special_units
 		icon = GFX_goal_generic_special_forces
 		prerequisite = { focus = PER_restructure_army }
-		x = 12
+		x = 11
 		y = 1
 		relative_position_id = PER_restructure_army
 		cost = 5
@@ -2283,11 +2365,12 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			if = {
+
+			IF = {
 				limit = {
 					NOT = { has_facility_specialization = specialization_land }
 				}
-				if = {
+				IF = {
 					limit = {
 						266 = {
 							is_fully_controlled_by = ROOT
@@ -2302,8 +2385,12 @@ focus_tree = {
 							province = 10768
 						}
 					}
+					add_breakthrough_progress = {
+						specialization = specialization_land
+						value = 0.25
+					}
 				}
-				else = {
+				ELSE = {
 					random_owned_controlled_state = {
 						limit = {
 							can_construct_building = land_facility
@@ -2312,8 +2399,19 @@ focus_tree = {
 							land_facility = 1
 						}
 					}
+					add_breakthrough_progress = {
+						specialization = specialization_land
+						value = 0.25
+					}
 				}
 			}
+			ELSE = {
+				add_breakthrough_progress = {
+					specialization = specialization_land
+					value = 1
+				}
+			}
+
 		}
 	}
 
@@ -2353,11 +2451,15 @@ focus_tree = {
 		}
 
 		completion_reward = {
-				add_tech_bonus = {
-					name = nuclear_bonus
-					bonus = 0.5
-					uses = 1
-					category = nuclear
+			add_tech_bonus = {
+				name = nuclear_bonus
+				bonus = 0.5
+				uses = 1
+				category = nuclear
+			}
+			add_breakthrough_progress = {
+				specialization = specialization_nuclear
+				value = 0.25
 			}
 		}
 	}
@@ -2384,11 +2486,12 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			if = {
+
+			IF = {
 				limit = {
 					NOT = { has_facility_specialization = specialization_nuclear }
 				}
-				if = {
+				IF = {
 					limit = {
 						266 = {
 							is_fully_controlled_by = ROOT
@@ -2403,8 +2506,13 @@ focus_tree = {
 							province = 10768
 						}
 					}
+					custom_effect_tooltip = generic_skip_one_line_tt
+					add_breakthrough_progress = {
+						specialization = specialization_nuclear
+						value = 0.5
+					}
 				}
-				else = {
+				ELSE = {
 					random_owned_controlled_state = {
 						limit = {
 							can_construct_building = nuclear_facility
@@ -2413,8 +2521,20 @@ focus_tree = {
 							nuclear_facility = 1
 						}
 					}
+					custom_effect_tooltip = generic_skip_one_line_tt
+					add_breakthrough_progress = {
+						specialization = specialization_nuclear
+						value = 0.5
+					}
 				}
 			}
+			ELSE = {
+				add_breakthrough_progress = {
+					specialization = specialization_nuclear
+					value = 1
+				}
+			}
+
 		}
 	}
 
@@ -2425,7 +2545,7 @@ focus_tree = {
 	focus = { #AIRFORCE
 		id = PER_establish_airforce
 		icon = GFX_focus_PER_establish_airforce
-		x = 55
+		x = 51
 		y = 0
 		relative_position_id = PER_modernizing_iran
 		cost = 5
@@ -2978,7 +3098,7 @@ focus_tree = {
 	focus = { #NAVY
 		id = PER_establish_the_navy
 		icon = GFX_focus_PER_establish_the_navy
-		x = 63
+		x = 59
 		y = 0
 		relative_position_id = PER_modernizing_iran
 		cost = 5
@@ -3095,7 +3215,7 @@ focus_tree = {
 		id = PER_persian_gulf_fleet
 		icon = GFX_focus_PER_persian_gulf_fleet
 		prerequisite = { focus = PER_officers_to_italy focus = PER_construct_naval_bases }
-		x = 0
+		x = 1
 		y = 1
 		relative_position_id = PER_officers_to_italy
 		mutually_exclusive = { focus = PER_bolster_the_caspian }
@@ -3201,7 +3321,7 @@ focus_tree = {
 		id = PER_coastal_defense_initiative
 		icon = GFX_focus_FIN_coastal_defense
 		prerequisite = { focus = PER_construct_naval_bases }
-		x = 2
+		x = 1
 		y = 1
 		relative_position_id = PER_construct_naval_bases
 		cost = 5
@@ -3222,7 +3342,7 @@ focus_tree = {
 		id = PER_bolster_the_caspian
 		icon = GFX_focus_PER_bolster_the_caspian
 		prerequisite = { focus = PER_construct_naval_bases focus = PER_officers_to_italy }
-		x = 0
+		x = -1
 		y = 1
 		relative_position_id = PER_construct_naval_bases
 		mutually_exclusive = { focus = PER_persian_gulf_fleet }
@@ -3263,7 +3383,7 @@ focus_tree = {
 		id = PER_purchase_foreign_ships
 		icon = GFX_goal_generic_navy_battleship
 		prerequisite = { focus = PER_bolster_the_caspian focus = PER_persian_gulf_fleet }
-		x = 2
+		x = 1
 		y = 1
 		relative_position_id = PER_persian_gulf_fleet
 		cost = 10
@@ -3835,8 +3955,7 @@ focus_tree = {
 		
 		available = {
 			has_government = neutrality
-			any_state = {
-				is_owned_by = ROOT
+			any_owned_state = {
 				is_controlled_by = ROOT
 				free_building_slots = {
 				    building = arms_factory
@@ -3847,14 +3966,13 @@ focus_tree = {
 		}
 
 		bypass = {
-			NOT = {
-				any_state = {
-					is_owned_by = ROOT
-					is_controlled_by = ROOT
+			all_owned_state = {
+				OR = {
+					NOT = { is_controlled_by = ROOT }
 					free_building_slots = {
-					    building = arms_factory
-					    size > 2
-					    include_locked = yes
+						building = arms_factory
+						size < 2
+						include_locked = no
 					}
 				}
 			}
@@ -4113,8 +4231,7 @@ focus_tree = {
 		available = {
 			has_government = neutrality
 			has_war = no
-			any_state = {
-				is_owned_by = ROOT
+			any_owned_state = {
 				is_controlled_by = ROOT
 				free_building_slots = {
 				    building = arms_factory
@@ -4125,14 +4242,13 @@ focus_tree = {
 		}
 
 		bypass = {
-			NOT = {
-				any_state = {
-					is_owned_by = ROOT
-					is_controlled_by = ROOT
+			all_owned_state = {
+				OR = {
+					NOT = { is_controlled_by = ROOT }
 					free_building_slots = {
-					    building = arms_factory
-					    size > 1
-					    include_locked = yes
+						building = arms_factory
+						size < 1
+						include_locked = no
 					}
 				}
 			}
@@ -4641,6 +4757,45 @@ focus_tree = {
 
 		completion_reward = {
 			add_country_leader_trait = PER_savior_of_iran
+		}
+	}
+
+
+
+	focus = { #HISTORICAL
+		id = PER_we_survived
+		icon = GFX_focus_PER_iran_for_iranians
+		prerequisite = { focus = PER_we_will_survive focus = PER_establish_northern_buffer_states }
+		x = -2
+		y = 1
+		relative_position_id = PER_we_will_survive
+		cost = 5
+		
+		available = {
+			has_war_with_major = no
+			is_subject = no
+		}
+
+		bypass = {
+
+		}
+
+		allow_branch = {
+
+		}
+
+		ai_will_do = {
+			factor = 20
+		}
+
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+			FOCUS_FILTER_POLITICAL
+		}
+
+		completion_reward = {
+			add_stability = 0.15
+			add_political_power = 150
 		}
 	}
 
@@ -5331,8 +5486,8 @@ focus_tree = {
 							 }
 						}
 						country_event = {
-						id = PER_imperial_events.180
-						hours = 12
+							id = PER_imperial_events.180
+							hours = 12
 						}
 					}
 					ELSE_IF = {
@@ -6048,7 +6203,6 @@ focus_tree = {
 		allow_branch = {
 			has_global_flag = SOV_agreed_anglo_soviet_invasion_of_iran_flag
 			has_completed_focus = PER_swear_fealty
-			
 		}
 
 		ai_will_do = {
@@ -9563,47 +9717,67 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			IF = {
-				limit = {
-					neutrality > 0.5
-				}
-				start_civil_war = {
-					ruling_party = democratic
-					ideology = neutrality #SPLITTING TAG
-					size = party_popularity@neutrality
-					states = all  #these will be filtered, not to worry!
-					states_filter = { #only states that do not have this modifier goes to 		non-communist
-						OR = {
-							#state = 64
-							NOT = {
-								has_dynamic_modifier = {
-									modifier = PER_opposition_cell
-								}
-							}
-						}	
-					}
-				}
-				hidden_effect = {
-					set_global_flag = PER_civil_war_happened
-				}
-				set_party_name = {
-					ideology = democratic
-					name = PER_provisional_government
-					long_name = PER_provisional_government_long
-				}
-			}
-			ELSE = {
-				set_party_name = {
-					ideology = democratic
-					name = PER_provisional_government
-					long_name = PER_provisional_government_long
-				}
-				set_politics = {
+
+			effect_tooltip = {
+				set_politics = { 
 					ruling_party = democratic
 					elections_allowed = yes
 				}
+				
+				set_party_name = {
+					ideology = democratic
+					name = PER_provisional_government
+					long_name = PER_provisional_government_long
+				}
+
+				custom_effect_tooltip = PER_force_abdication_tt
 			}
-			remove_dynamic_modifier = { modifier = PER_opposition_modifier }
+
+			hidden_effect = {
+				IF = {
+					limit = {
+						neutrality > 0.5
+					}
+					start_civil_war = {
+						ruling_party = democratic
+						ideology = neutrality #SPLITTING TAG
+						size = party_popularity@neutrality
+						states = all  #these will be filtered, not to worry!
+						states_filter = { #only states that do not have this modifier goes to 		non-communist
+							OR = {
+								#state = 64
+								NOT = {
+									has_dynamic_modifier = {
+										modifier = PER_opposition_cell
+									}
+								}
+							}	
+						}
+					}
+					hidden_effect = {
+						set_global_flag = PER_civil_war_happened
+					}
+					set_party_name = {
+						ideology = democratic
+						name = PER_provisional_government
+						long_name = PER_provisional_government_long
+					}
+				}
+				ELSE = {
+					set_party_name = {
+						ideology = democratic
+						name = PER_provisional_government
+						long_name = PER_provisional_government_long
+					}
+					set_politics = {
+						ruling_party = democratic
+						elections_allowed = yes
+					}
+				}
+				remove_dynamic_modifier = { modifier = PER_opposition_modifier }
+			}
+
+			
 		}
 	}
 
@@ -9698,7 +9872,7 @@ focus_tree = {
 			PER = { 
 				country_event = {
 					id = PER_imperial_events.220
-					hours = 1
+					hours = 0
 				}
 			}
 			hidden_effect = {
@@ -9872,6 +10046,9 @@ focus_tree = {
 
 		completion_reward = {
 			add_research_slot = 1 
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
 			custom_effect_tooltip = {
 				localization_key = available_scientist_one_line_tt
 				CHARACTER = PER_kazem_hasibi
@@ -9910,6 +10087,43 @@ focus_tree = {
 
 		completion_reward = {
 			add_ideas = PER_invite_foreign_investors
+		}
+	}
+
+	focus = { #DEMOCRATIC 
+		id = PER_secularize_the_state
+		icon = GFX_focus_AFG_parliamentary_democracy #GFX_focus_PER_forced_secularization
+		prerequisite = { focus = PER_continue_westernization }
+		x = 3
+		y = 1
+		relative_position_id = PER_continue_westernization
+		cost = 10
+		
+		available = {
+			has_government = democratic
+		}
+
+		bypass = {
+
+		}
+
+		allow_branch = {
+
+		}
+
+		ai_will_do = {
+			factor = 80
+		}
+
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = PER_islamic_traditions_ns
+  				add_idea = PER_secularized_state_democratic_idea 
+			}
 		}
 	}
 
@@ -9955,16 +10169,15 @@ focus_tree = {
 				add_dynamic_modifier = {
 					modifier = PER_technological_modifier
 				}
-				log = "Added modifier"
 			}
 			else = {
 				custom_effect_tooltip = PER_increase_faculty_staffing_budget_tt
-				log = "Modifies modifier"
 			}
 
 			add_to_variable = { PER_technological_modifier_research_speed_factor = 0.03 tooltip = research_speed_factor_tt }
 			add_to_variable = { PER_technological_modifier_special_project_speed_factor = 0.05 tooltip = special_project_speed_factor_tt}
 
+			custom_effect_tooltip = generic_skip_one_line_tt
 
 			custom_effect_tooltip = {
 				localization_key = available_scientist_one_line_tt
@@ -10016,17 +10229,17 @@ focus_tree = {
 				add_dynamic_modifier = {
 					modifier = PER_technological_modifier
 				}
-				log = "Added modifier"
 			}
 			else = {
 				custom_effect_tooltip = PER_increase_faculty_staffing_budget_tt
-				log = "modifies modifier"
 			}
 
 			add_to_variable = { PER_technological_modifier_production_cost_air_facility_factor = 0.1 tooltip = production_speed_air_facility_factor_tt }
 			add_to_variable = { PER_technological_modifier_production_cost_land_facility_factor = 0.1 tooltip = production_speed_land_facility_factor_tt}
 			add_to_variable = { PER_technological_modifier_production_cost_naval_facility_factor = 0.1 tooltip = production_speed_naval_facility_factor_tt }
 			add_to_variable = { PER_technological_modifier_production_cost_nuclear_facility_factor = 0.1 tooltip = production_speed_nuclear_facility_factor_tt}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
 
 			add_breakthrough_progress = {
 				specialization = specialization_air
@@ -10277,6 +10490,7 @@ focus_tree = {
 		}
 
 		completion_reward = {
+
 			IF = {
 				limit = {
 					has_dlc = "No Compromise, No Surrender"
@@ -10289,7 +10503,9 @@ focus_tree = {
 				set_rule = { can_create_factions = yes }
 				create_faction = PER_islamic_faction
 			}
+
 		}
+
 	}
 
 	#focus = { #DEMOCRATIC
@@ -10908,6 +11124,18 @@ focus_tree = {
 						}
 					}
 					set_state_flag = PER_state_supports_communists
+					IF = {
+						limit = {
+							NOT = {
+								has_dynamic_modifier = {
+									modifier = PER_opposition_cell
+								}	
+							}
+						}
+						add_dynamic_modifier = {
+							modifier = PER_opposition_cell
+						}
+					}
 				}
 			}
 		}
@@ -10990,48 +11218,61 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			remove_dynamic_modifier = { modifier = PER_opposition_modifier }
-			IF = {
-				limit = {	
-					communism < 0.5
-				}
-				start_civil_war = {
-					ruling_party = communism
-					ideology = neutrality #SPLITTING TAG
-					size = party_popularity@neutrality
-					states = all  #these will be filtered, not to worry!
-					states_filter = { #only states that do not have this modifier goes to 		non-communist
-						OR = {
-							#state = 64
-							NOT = {
-								has_dynamic_modifier = {
-									modifier = PER_opposition_cell
-								}
-								has_state_flag = PER_state_supports_communists
-							}
-						}	
-					}
-				}
-				hidden_effect = {
-					set_global_flag = PER_civil_war_happened
-				}
-				every_state = {
-					limit = {
-						has_dynamic_modifier = { modifier = PER_opposition_cell }
-					}
-					remove_dynamic_modifier = { modifier = PER_opposition_cell }
-				}
-			}
-			ELSE = {
+
+			effect_tooltip = {
 				set_politics = { 
 					ruling_party = communism
 					elections_allowed = no
 				}
 
-				hidden_effect = {
-					set_country_flag = PER_civil_war_was_bypassed
+				custom_effect_tooltip = PER_iranian_socialist_revolution_tt
+			}
+
+			hidden_effect = {
+				remove_dynamic_modifier = { modifier = PER_opposition_modifier }
+				IF = {
+					limit = {	
+						communism < 0.5
+					}
+					start_civil_war = {
+						ruling_party = communism
+						ideology = neutrality #SPLITTING TAG
+						size = party_popularity@neutrality
+						states = all  #these will be filtered, not to worry!
+						states_filter = { #only states that do not have this modifier goes to 		non-communist
+							OR = {
+								#state = 64
+								NOT = {
+									has_dynamic_modifier = {
+										modifier = PER_opposition_cell
+									}
+									has_state_flag = PER_state_supports_communists
+								}
+							}	
+						}
+					}
+					hidden_effect = {
+						set_global_flag = PER_civil_war_happened
+					}
+					every_state = {
+						limit = {
+							has_dynamic_modifier = { modifier = PER_opposition_cell }
+						}
+						remove_dynamic_modifier = { modifier = PER_opposition_cell }
+					}
+				}
+				ELSE = {
+					set_politics = { 
+						ruling_party = communism
+						elections_allowed = no
+					}
+
+					hidden_effect = {
+						set_country_flag = PER_civil_war_was_bypassed
+					}
 				}
 			}
+			
 		}
 	}
 
@@ -11091,6 +11332,15 @@ focus_tree = {
 						id = ROOT
 						value = 300
 					}
+					add_ai_strategy = { 
+						type = befriend 
+						id = ROOT
+						value = 300
+					}
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = large_increase
+					}	
 				}
 			}
 			ELSE_IF = {
@@ -11275,60 +11525,7 @@ focus_tree = {
 
 		completion_reward = {
 			custom_effect_tooltip = PER_appease_the_seperatists_tt
-			IF = {
-				limit = {
-					AZR = {
-						exists = no
-					}
-					any_owned_state = {
-						is_core_of = AZR
-					}
-				}
-				release_puppet = AZR
-				set_autonomy = {
-					target = AZR
-					autonomous_state = autonomy_satellite
-					freedom_level = 0.2
-				}
-			}
-			ELSE = {
-				create_dynamic_country = {
-					original_tag = AZR
-					IF = {
-						limit = {
-							419 = { OWNER = { tag = ROOT } }
-						}
-						419 = {
-							transfer_state_to = PREV
-						}
-					}
-					IF = {
-						limit = {
-							1000 = { OWNER = { tag = ROOT } }
-						}
-						1000 = {
-							transfer_state_to = PREV
-						}
-					}
-					set_popularities = {
-						democratic = ROOT.party_popularity_100@democratic
-						neutrality = ROOT.party_popularity_100@neutrality
-						fascism = ROOT.party_popularity_100@fascism
-						communism = ROOT.party_popularity_100@communism
-					}
-					set_politics = {
-						ruling_party = communism
-					}
-					ROOT = {
-						puppet = PREV
-						set_autonomy = {
-							target = PREV
-							autonomous_state = autonomy_satellite
-							freedom_level = 0.2
-						}
-					}
-				}
-			}
+
 			IF = {
 				limit = {
 					KUR = {
@@ -11383,9 +11580,72 @@ focus_tree = {
 					}
 				}
 			}
+
+			IF = {
+				limit = {
+					AZR = {
+						exists = no
+					}
+					any_owned_state = {
+						is_core_of = AZR
+					}
+				}
+				release_puppet = AZR
+				set_autonomy = {
+					target = AZR
+					autonomous_state = autonomy_satellite
+					freedom_level = 0.2
+				}
+			}
+			ELSE = {
+				create_dynamic_country = {
+					original_tag = AZR
+					IF = {
+						limit = {
+							419 = { OWNER = { tag = ROOT } }
+						}
+						419 = {
+							transfer_state_to = PREV
+						}
+					}
+					IF = {
+						limit = {
+							1000 = { OWNER = { tag = ROOT } }
+						}
+						1000 = {
+							transfer_state_to = PREV
+						}
+					}
+					set_popularities = {
+						democratic = ROOT.party_popularity_100@democratic
+						neutrality = ROOT.party_popularity_100@neutrality
+						fascism = ROOT.party_popularity_100@fascism
+						communism = ROOT.party_popularity_100@communism
+					}
+					set_politics = {
+						ruling_party = communism
+					}
+					ROOT = {
+						puppet = PREV
+						set_autonomy = {
+							target = PREV
+							autonomous_state = autonomy_satellite
+							freedom_level = 0.2
+						}
+					}
+				}
+			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			
 			remove_ideas = PER_azerbaijan_resistance_idea
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
 			remove_ideas = PER_kurdistan_resistance_idea
+
 		}
+		
 	}
 
 	focus = { #COMMUNIST
@@ -11505,6 +11765,7 @@ focus_tree = {
 				}
 				set_technology = { fuel_silos = 1 }
 			}
+
 			IF = {
 				limit = {
 					NOT = { has_tech = synth_oil_experiments }
@@ -12234,6 +12495,7 @@ focus_tree = {
 				}
 				create_faction_from_template = faction_template_PER_communist_faction
 			}
+			
 			every_other_country = {
 				limit = {
 					OR = {
@@ -12802,7 +13064,7 @@ focus_tree = {
 		cost = 5
 		
 		available = {
-
+			has_government = communism
 		}
 
 		bypass = {
@@ -13058,7 +13320,7 @@ focus_tree = {
 	focus = { #Fascism
 		id = PER_iranian_culture
 		icon = GFX_focus_ITA_generic_fascist_workers
-		x = 10
+		x = 11
 		y = 1
 		relative_position_id = PER_stage_mass_protests
 		prerequisite = { focus = PER_stage_mass_protests focus = PER_propagate_political_literature }
