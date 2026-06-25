@@ -2491,8 +2491,8 @@
 			}
 			OR = {
 				AND = {
-					any_country = {
-						original_tag = FRA
+					any_country_with_original_tag = {
+						original_tag_to_check = FRA
 						has_capitulated = yes
 					}
 					772 = {
@@ -5187,12 +5187,67 @@
 								controls_state = 741
 							}
 						}
+						OR = {
+							controls_state = 1017
+							any_country = {
+								OR = {
+									is_subject_of = PREV
+									is_ally_with = PREV
+								}
+								controls_state = 1017
+							}
+						}
+						OR = {
+							controls_state = 1066
+							any_country = {
+								OR = {
+									is_subject_of = PREV
+									is_ally_with = PREV
+								}
+								controls_state = 1066
+							}
+						}
+						OR = {
+							controls_state = 1067
+							any_country = {
+								OR = {
+									is_subject_of = PREV
+									is_ally_with = PREV
+								}
+								controls_state = 1067
+							}
+						}
+						OR = {
+							controls_state = 1068
+							any_country = {
+								OR = {
+									is_subject_of = PREV
+									is_ally_with = PREV
+								}
+								controls_state = 1068
+							}
+						}
+						OR = {
+							controls_state = 1069
+							any_country = {
+								OR = {
+									is_subject_of = PREV
+									is_ally_with = PREV
+								}
+								controls_state = 1069
+							}
+						}
 					}
 				}
 			}
 			custom_trigger_tooltip = {
 				tooltip = CONGO_expanded_rubber_plantations_available_malaya_tt
 				336 = { controller = { has_war_with = ROOT } }
+				1060 = { controller = { has_war_with = ROOT } }
+				1064 = { controller = { has_war_with = ROOT } }
+				1063 = { controller = { has_war_with = ROOT } }
+				1062 = { controller = { has_war_with = ROOT } }
+				1061 = { controller = { has_war_with = ROOT } }
 			}
 			NOT = {	
 				OR = {
@@ -6189,7 +6244,7 @@
 				add_autonomy_score = { 
 					value = -250
 					localization = CONGO_chefs_coutumiers
-				}		
+				}	
 
 				custom_effect_tooltip = generic_skip_one_line_tt
 
@@ -8641,7 +8696,7 @@
 					popup = no
 				} 
 			}
-			add_ideas = BRA_brown_water_navy_idea
+			add_ideas = COG_brown_water_navy_idea
 
 			hidden_effect = {
 				CONGO_one_more_focus_done = yes
@@ -9413,7 +9468,12 @@
 		bypass = {
 			COG = {
 				is_subject = no
-				has_war = no
+				NOT = {
+					any_country = {
+						original_tag = COG
+						has_war_with = PREV
+					}
+				}
 			}
 		}
 
@@ -9738,10 +9798,18 @@
 				}
 				IF = {
 					limit = { NOT = { is_faction_leader = yes } }
-					set_rule = { 
-						can_create_factions	= yes
+					IF = {
+						limit = {
+							has_dlc = "No Compromise, No Surrender"
+						}
+						set_rule = { can_create_factions = yes }
+						create_faction_from_template = faction_template_COG_african_union_faction
+						add_faction_initiative = 1
 					}
-					create_faction = COG_african_union_faction
+					ELSE = {
+						set_rule = { can_create_factions = yes }
+						create_faction_from_template = faction_template_COG_african_union_faction
+					}
 					every_other_country = {
 						limit = { is_subject_of = ROOT }
 						ROOT = {
