@@ -384,8 +384,7 @@ ideas = {
 				political_power_factor = -0.1
 				stability_factor = 0.1
 				surrender_limit = 0.1
-				democratic_drift = 0.05
-				stability_weekly = 0.001
+				democratic_drift = 0.03
 			}
 		}
 
@@ -651,7 +650,7 @@ ideas = {
 		}
 
 		BRA_romanticize_the_old_empire_idea = {
-			picture = bra_monarchist_uprising
+			picture = por_monarchist_uprising
 			allowed = {
 				original_tag = BRA
 			}
@@ -667,7 +666,7 @@ ideas = {
 		}
 
 		BRA_undermine_democracy_idea = {
-			picture = bra_monarchist_uprising
+			picture = EST_democratic_opposition
 			allowed = {
 				original_tag = BRA
 			}

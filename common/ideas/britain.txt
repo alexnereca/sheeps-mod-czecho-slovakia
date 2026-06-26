@@ -172,6 +172,26 @@ ideas = {
 				consumer_goods_factor = -0.15
 			}
 		}
+
+		ENG_evacuated_colonial_assets = {
+			
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = tur_balkan_central_bank_wealthy_greece
+			
+			modifier = {
+				consumer_goods_factor = -0.1
+			}
+		}
+
 		ENG_blitz_spirit_idea = {
 			
 			allowed = {
@@ -1447,7 +1467,7 @@ ideas = {
 			on_remove = {
 				add_research_slot = 1
 			}
-			
+
 			modifier = {
 				autonomy_gain = 0.5
 			}
@@ -2168,7 +2188,47 @@ ideas = {
 			modifier = {
 			}
 		}
+
+		ENG_crewe_works_manufacturer = {
+
+			name = "ENG_crewe_works_organization"
+
+			picture = ENG_crewe
+
+			allowed = {
+				original_tag = ENG
+			}
+
+			available = {
+			}
+
+			visible = {
+			}
+
+			research_bonus = {
+				train_tech = 0.15
+				support_tech = 0.07
+			}
+
+			equipment_bonus = {
+				train_equipment = {
+					build_cost_ic = -0.10
+					armor_value = 0.10
+					air_attack = 0.10
+					instant = yes
+				}
+			}
+
+			cost = 150
+
+			traits = { train_equipment_manufacturer }
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
 	}
+
 	industrial_concern = {
 				
 		aioc = {
@@ -2176,8 +2236,6 @@ ideas = {
 			allowed = {
 				original_TAG = ENG
 			}
-			
-
 			
 			research_bonus = {
 				industry = 0.15
@@ -2189,7 +2247,7 @@ ideas = {
 			}
 
 			ai_will_do = {
-				factor = 2
+				base = 2
 				modifier = {
 					has_idea_with_trait = silent_workhorse
 					factor = 10
@@ -2202,8 +2260,6 @@ ideas = {
 			allowed = {
 				original_TAG = ENG
 			}
-			
-
 			
 			research_bonus = {
 				electronics = 0.15
