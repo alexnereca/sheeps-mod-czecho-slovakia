@@ -1,7 +1,7 @@
 ####### NO STEP BACK! #######
 @DAYS_DETERMINED = 180 #Used for propaganda campaign SOV_heroes_forward -> Value should be the same as SOV_default_propaganda_campaign_duration
 
-debug_decisions = { #TODO_Manu: Comment these out
+debug_decisions = {
 	SOV_debug_show_paranoia_system = { #This is a duplicate of the decision present in the Paranoia category
 		priority = 202
 
@@ -596,7 +596,6 @@ SOV_paranoia_system = {
 				SOV_is_right_opposition = yes
 				has_country_flag = SOV_assassinated_stalin_flag
 			}
-						 
 		}
 
 		days_remove = SOV_reinforce_officer_ranks_days
@@ -949,7 +948,7 @@ SOV_paranoia_system = {
 
 
 
-	SOV_DEBUG_ACTIVATE_PARANOIA = { #TODO_Manu: Comment out
+	SOV_DEBUG_ACTIVATE_PARANOIA = {
 		priority = 281
 
 		icon = eng_ally_imperialist_coup
@@ -975,7 +974,7 @@ SOV_paranoia_system = {
 		}
 	}
 
-	SOV_DEBUG_DEACTIVATE_PARANOIA = { #TODO_Manu: Comment out
+	SOV_DEBUG_DEACTIVATE_PARANOIA = {
 		priority = 281
 
 		icon = eng_ally_imperialist_coup
@@ -1001,7 +1000,7 @@ SOV_paranoia_system = {
 		}
 	}
 
-	SOV_DEBUG_show_debug_purge_decisions = { #TODO_Manu: Comment out
+	SOV_DEBUG_show_debug_purge_decisions = {
 		priority = 281
 
 		icon = eng_ally_imperialist_coup
@@ -1027,7 +1026,7 @@ SOV_paranoia_system = {
 		}
 	}
 
-	SOV_DEBUG_hide_debug_purge_decisions = { #TODO_Manu: Comment out
+	SOV_DEBUG_hide_debug_purge_decisions = {
 		priority = 201
 
 		icon = eng_ally_imperialist_coup
@@ -6634,7 +6633,7 @@ SOV_diplomacy_middle_east_decision_category = {
 					type = puppet_wargoal_focus
 				}
 			}
-			else = { #SOV + ENG invading together
+			else = { #SOV + ENG invading together, SOV perspective
 				if = { #SOV triggers the actual effects
 					limit = {
 						original_tag = SOV
@@ -6661,6 +6660,7 @@ SOV_diplomacy_middle_east_decision_category = {
 					hidden_effect = { news_event = { id = nsb_news.104 days = 4 random_days = 2 } } #Only ENG sends the news event.
 				}
 			}
+
 			activate_mission = SOV_operation_countenance
 			if = { #Activate mission for ENG if joint operation
 				limit = {
@@ -6808,6 +6808,7 @@ SOV_diplomacy_middle_east_decision_category = {
 ############
 
 SOV_diplomacy_asia_decision_category = {
+
 	SOV_send_infantry_equipment_asia = {
 		priority = 50
 
@@ -15720,8 +15721,8 @@ SOV_soviet_civil_war_dec_cat = {
 					region = 147
 					region = 263
 					region = 151
-					region = 261 
-					region = 262 
+					region = 261
+					region = 262
 					region = 149
 					region = 256
 					region = 257
@@ -16718,8 +16719,8 @@ SOV_soviet_civil_war_dec_cat = {
 					region = 147
 					region = 263
 					region = 151
-					region = 261 
-					region = 262 
+					region = 261
+					region = 262
 					region = 149
 					region = 256
 					region = 257
@@ -16742,8 +16743,8 @@ SOV_soviet_civil_war_dec_cat = {
 							region = 147
 							region = 263
 							region = 151
-							region = 261 
-							region = 262 
+							region = 261
+							region = 262
 							region = 149
 							region = 256
 							region = 257
@@ -18065,7 +18066,7 @@ political_actions = {
 		}
 
 		ai_will_do = {
-			factor = 0
+			base = 0
 		}
 	}
 
@@ -18100,7 +18101,7 @@ SOV_panslavic_nationalism = {
 		fire_only_once = yes
 		days_remove = 90
 		ai_will_do = {
-			factor = 1
+			base = 1
 		}
 
 		remove_effect = {
@@ -18250,7 +18251,7 @@ SOV_panslavic_nationalism = {
 		fire_only_once = yes
 		days_remove = 90
 		ai_will_do = {
-			factor = 1
+			base = 1
 		}
 
 		remove_effect = {
@@ -18343,7 +18344,7 @@ SOV_panslavic_nationalism = {
 		cost = 25
 		fire_only_once = yes
 		ai_will_do = {
-			factor = 1
+			base = 1
 		}
 
 		complete_effect = {
@@ -18362,16 +18363,15 @@ SOV_polish_territory = {
 		}
 
 		visible = {
-			POL = { 
-				exists = yes 
+			POL = {
+				exists = yes
 				is_subject_of = ROOT
 				NOT = { has_completed_focus = POL_surrender_the_east }
 			}
-			any_state = {
+			any_owned_state = {
 				is_core_of = POL
-				is_owned_by = ROOT
 				OR = {
-					
+
 					any_country_with_core = {
 						not = { tag = POL }
 					}
@@ -18387,7 +18387,7 @@ SOV_polish_territory = {
 			base = 50
 			modifier = {
 				NOT = {
-					has_war_with = GER 
+					has_war_with = GER
 				}
 				factor = 5
 			}
@@ -18397,7 +18397,7 @@ SOV_polish_territory = {
 			POL = {
 				country_event = {
 					id = soviet.74
-					hours = 4 
+					hours = 4
 					random_hours = 4
 				}
 				custom_effect_tooltip = if_they_accept_newline_tt
@@ -18406,8 +18406,8 @@ SOV_polish_territory = {
 						add_stability = 0.05
 					}
 					POL = {
-						add_autonomy_score = { 
-							value = -250 
+						add_autonomy_score = {
+							value = -250
 							localization = POL_accepted_states
 						}
 						add_popularity = {
@@ -18418,10 +18418,10 @@ SOV_polish_territory = {
 					ROOT  ={
 						every_owned_state = {
 							limit = {
-								is_core_of = POL 
+								is_core_of = POL
 								OR = {
 									# Białystok
-									state = 97 
+									state = 97
 									# Uncontested Polish Cores
 									NOT = {
 										any_country_with_core = {
@@ -18429,7 +18429,7 @@ SOV_polish_territory = {
 										}
 									}
 								}
-								
+
 							}
 							transfer_state_to = POL
 						}
@@ -18438,18 +18438,18 @@ SOV_polish_territory = {
 				custom_effect_tooltip = if_they_refuse_newline_tt
 				effect_tooltip = {
 					POL = {
-						add_autonomy_score = { 
-							value = 250 
+						add_autonomy_score = {
+							value = 250
 							localization = POL_refused_states
 						}
 					}
 					ROOT = {
 						every_owned_state = {
 							limit = {
-								is_core_of = POL 
+								is_core_of = POL
 								OR = {
 									# Białystok
-									state = 97 
+									state = 97
 									# Uncontested Polish Cores
 									NOT = {
 										any_country_with_core = {
@@ -18457,11 +18457,11 @@ SOV_polish_territory = {
 										}
 									}
 								}
-								
+
 							}
-							remove_core_of = POL  
+							remove_core_of = POL
 							add_core_of = SOV
-							add_claim_by = POL 
+							add_claim_by = POL
 						}
 					}
 				}
