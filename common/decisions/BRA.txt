@@ -137,8 +137,8 @@ BRA_ensure_support_cat = {
 		state_target = yes
 		target_trigger = {
 		    FROM = {
-		    	is_fully_controlled_by = ROOT
 		    	is_core_of = ROOT
+				is_fully_controlled_by = ROOT
 		       	NOT = {
 		       		has_state_flag = BRA_gained_support
 		       	}
@@ -590,7 +590,7 @@ BRA_mercosul_decisions = {
 		    			tag = ROOT
 		    		}
 				is_in_faction = no
-		    		OR = { 
+		    		OR = {
 		    			is_subject = no
 		    			is_subject_of = ROOT
 		    		}
@@ -1207,7 +1207,7 @@ BRA_us_of_south_america_cat = {
 			}
 		}
 		complete_effect = {
-			set_country_flag = BRA_invite_country_in_progress	
+			set_country_flag = BRA_invite_country_in_progress
 		}
 		remove_effect = {
 			custom_effect_tooltip = BRA_invite_to_organization_of_american_states_tt
@@ -1430,3 +1430,5 @@ political_actions = {
 
 
 }
+
+
