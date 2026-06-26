@@ -119,8 +119,25 @@ ideas = {
 
 			cancel_if_invalid = no
 
-			ai_will_do = {
-   				factor = 0
+			on_add = {
+				if = {
+					limit = {
+						has_dlc = "Thunder at Our Gates"
+						original_tag = SIA
+						NOT = { has_idea = civilian_economy }
+					}
+					if = {
+						limit = { check_variable = { SIA_current_economy_law > 0 } }
+						SIA_decrease_military_approval = yes
+						SIA_increase_civilian_approval = yes
+					}
+					else = {
+						SIA_increase_military_approval = yes
+						SIA_decrease_civilian_approval = yes
+					}
+
+					set_variable = { SIA_current_economy_law = 0 }
+				}
 			}
 		}
 
@@ -205,6 +222,21 @@ ideas = {
 						}
 					}
 				}
+				if = {
+					limit = {
+						original_tag = CZE
+						has_dlc = "Peace For Our Time"
+					}
+					custom_trigger_tooltip = {
+						tooltip = CZE_bop_no_industrialists_tt
+						NOT = {
+							OR = {
+								has_idea = CZE_industrialists_veto
+								has_idea = CZE_industrialists_veto_2
+							}
+						}
+					}
+				}
 			}
 			on_add = {
 				if = {
@@ -214,6 +246,25 @@ ideas = {
 						has_defensive_war = no
 					}
 					USA_congress_large_opposition = yes
+				}
+
+				if = {
+					limit = {
+						has_dlc = "Thunder at Our Gates"
+						original_tag = SIA
+						NOT = { has_idea = low_economic_mobilisation }
+					}
+					if = {
+						limit = { check_variable = { SIA_current_economy_law > 1 } }
+						SIA_decrease_military_approval = yes
+						SIA_increase_civilian_approval = yes
+					}
+					else = {
+						SIA_increase_military_approval = yes
+						SIA_decrease_civilian_approval = yes
+					}
+
+					set_variable = { SIA_current_economy_law = 1 }
 				}
 			}
 
@@ -232,6 +283,12 @@ ideas = {
 
 			ai_will_do = {
    				factor = 2
+
+   				modifier = {
+					factor = 20
+
+					is_major = yes
+				}
 				modifier = {
 					has_war_support > 0.25
 					factor = 0 #don't even look at it if you could be taking partial mob
@@ -325,6 +382,21 @@ ideas = {
 						}
 					}
 				}
+				if = {
+					limit = {
+						original_tag = CZE
+						has_dlc = "Peace For Our Time"
+					}
+					custom_trigger_tooltip = {
+						tooltip = CZE_bop_no_industrialists_tt
+						NOT = {
+							OR = {
+								has_idea = CZE_industrialists_veto
+								has_idea = CZE_industrialists_veto_2
+							}
+						}
+					}
+				}
 			}
 
 			cost = 150
@@ -347,6 +419,25 @@ ideas = {
 						has_defensive_war = no
 					}
 					USA_congress_large_opposition = yes
+				}
+
+				if = {
+					limit = {
+						has_dlc = "Thunder at Our Gates"
+						original_tag = SIA
+						NOT = { has_idea = partial_economic_mobilisation }
+					}
+					if = {
+						limit = { check_variable = { SIA_current_economy_law > 2 } }
+						SIA_decrease_military_approval = yes
+						SIA_increase_civilian_approval = yes
+					}
+					else = {
+						SIA_increase_military_approval = yes
+						SIA_decrease_civilian_approval = yes
+					}
+
+					set_variable = { SIA_current_economy_law = 2 }
 				}
 			}
 			ai_will_do = {
@@ -522,6 +613,21 @@ ideas = {
 						}
 					}
 				}
+				if = {
+					limit = {
+						original_tag = CZE
+						has_dlc = "Peace For Our Time"
+					}
+					custom_trigger_tooltip = {
+						tooltip = CZE_bop_no_industrialists_tt
+						NOT = {
+							OR = {
+								has_idea = CZE_industrialists_veto
+								has_idea = CZE_industrialists_veto_2
+							}
+						}
+					}
+				}
 			}
 
 			cost = 150
@@ -545,11 +651,31 @@ ideas = {
 					}
 					USA_congress_large_opposition = yes
 				}
+
+				if = {
+					limit = {
+						has_dlc = "Thunder at Our Gates"
+						original_tag = SIA
+						NOT = { has_idea = war_economy }
+					}
+					if = {
+						limit = { check_variable = { SIA_current_economy_law > 3 } }
+						SIA_decrease_military_approval = yes
+						SIA_increase_civilian_approval = yes
+					}
+					else = {
+						SIA_increase_military_approval = yes
+						SIA_decrease_civilian_approval = yes
+					}
+
+					set_variable = { SIA_current_economy_law = 3 }
+				}
 			}
 			ai_will_do = {
    				factor = 5
 
 				modifier = {
+					# If we CAN go for total mobilization and have enough manpower for it, skip war economy, it's only a waste of PP
 					factor = 0
 					has_country_flag = recently_changed_to_war_economy_flag
 					has_idea = tot_economic_mobilisation
@@ -731,6 +857,21 @@ ideas = {
 						}
 					}
 				}
+				if = {
+					limit = {
+						original_tag = CZE
+						has_dlc = "Peace For Our Time"
+					}
+					custom_trigger_tooltip = {
+						tooltip = CZE_bop_no_industrialists_tt
+						NOT = {
+							OR = {
+								has_idea = CZE_industrialists_veto
+								has_idea = CZE_industrialists_veto_2
+							}
+						}
+					}
+				}
 			}
 			on_add = {
 				if = {
@@ -741,10 +882,30 @@ ideas = {
 					}
 					USA_congress_large_opposition = yes
 				}
+
+				if = {
+					limit = {
+						has_dlc = "Thunder at Our Gates"
+						original_tag = SIA
+						NOT = { has_idea = tot_economic_mobilisation }
+					}
+					if = {
+						limit = { check_variable = { SIA_current_economy_law > 4 } }
+						SIA_decrease_military_approval = yes
+						SIA_increase_civilian_approval = yes
+					}
+					else = {
+						SIA_increase_military_approval = yes
+						SIA_decrease_civilian_approval = yes
+					}
+
+					set_variable = { SIA_current_economy_law = 4 }
+				}
 			}
 			ai_will_do = {
    				factor = 0
    			}
+
 			cost = 150
 			removal_cost = -1
 
@@ -864,7 +1025,6 @@ ideas = {
 				consumer_goods_expected_value = 0.15
 				production_speed_buildings_factor = -0.15
 				factory_energy_consumption = 0.25
-				production_speed_infrastructure_factor = 0.50
 			}
 
 			cancel_if_invalid = no
@@ -1209,10 +1369,33 @@ ideas = {
 					has_idea = uncontrolled_exports #Poland should try and escape this as soon as they can
 				}
 				modifier = {
-					factor = 9999
-					tag = USA
-					date > 1938.6.1
-					has_idea = free_trade
+                	factor = 9999
+                	tag = USA
+                	date > 1938.6.1
+                	has_idea = free_trade
+                }
+   			}
+
+   			on_add = {
+				if = {
+					limit = {
+						has_dlc = "Thunder at Our Gates"
+						original_tag = SIA
+						NOT = { has_idea = export_focus }
+					}
+					if = {
+						limit = { check_variable = { SIA_current_trade_law > 0 } }
+
+
+						SIA_increase_military_approval = yes
+						SIA_decrease_civilian_approval = yes
+					}
+					else = {
+						SIA_decrease_military_approval = yes
+						SIA_increase_civilian_approval = yes
+					}
+
+					set_variable = { SIA_current_trade_law = 0 }
 				}
    			}
 		}
@@ -1258,7 +1441,6 @@ ideas = {
 						hidden_trigger = { always = no } #NEED TO HAVE AN ALWAYS AS AN END STATEMENT IF URE USING AN IF ELSE IN AN OR STATEMENT OTHERWISE THE EVALUATION BREAKS!!
 					}
 				}
-
 
 				if = {
 					limit = {
@@ -1338,13 +1520,45 @@ ideas = {
 					}
 				}
    			}
+
+   			on_add = {
+				if = {
+					limit = {
+						has_dlc = "Thunder at Our Gates"
+						original_tag = SIA
+						NOT = { has_idea = limited_exports }
+					}
+					if = {
+						limit = { check_variable = { SIA_current_trade_law > 1 } }
+
+
+						SIA_increase_military_approval = yes
+						SIA_decrease_civilian_approval = yes
+					}
+					else = {
+						SIA_decrease_military_approval = yes
+						SIA_increase_civilian_approval = yes
+					}
+
+					set_variable = { SIA_current_trade_law = 1 }
+				}
+   			}
 		}
 
 		autarkic_economy = {
 			visible = {
-				original_tag = GER
-				has_completed_focus = GER_autarky_efforts
-				NOT = { has_completed_focus = GER_autarky_achieved }
+				OR = {
+					AND = {
+						original_tag = GER
+						has_completed_focus = GER_autarky_efforts
+						NOT = { has_completed_focus = GER_autarky_achieved }
+					}
+					AND = {
+						has_dlc = "Thunder at Our Gates"
+						original_tag = AST
+						has_completed_focus = AST_autarky
+					}
+				}
 			}
 
 			available = {
@@ -1429,6 +1643,7 @@ ideas = {
 
 
 			available = {
+
 				has_war = yes
 				OR = {
 					has_government = fascism
@@ -1437,7 +1652,7 @@ ideas = {
 				OR = {
 					has_idea = war_economy
 					has_idea = tot_economic_mobilisation
-					if = {
+					IF = {
 						limit = {
 							original_tag = GER
 						}
@@ -1452,13 +1667,14 @@ ideas = {
 					NOT = { has_opinion_modifier = MR_pact }
 				}
 
-				if = {
+				IF = {
 					limit = {
 						original_tag = CHI
 						has_dlc = "Waking the Tiger"
 					}
 					NOT = { has_idea = CHI_nine_power_treaty }
 				}
+
 			}
 
 			rule = {
@@ -1483,32 +1699,62 @@ ideas = {
 
    				modifier = {
 					factor = 0
+
 					is_major = no
 					is_in_faction = yes
 					has_war = yes
 				}
+
+				# minors not at war should want to get the bonuses from free trade
 				modifier = {
 					factor = 0
+
 					is_major = no
 					has_war = no
 				}
+
 				modifier = {
 					factor = 0
 					is_subject = yes
 				}
 
+					# don't take if we have a reasonable sized ally
+					# since they will require our trades
 				modifier = {
-					factor = 0
+                	factor = 0
 					has_large_ally_not_pick_closed_economy = yes
 				}
 				modifier = { #Germany should keep its Autarkic Economy
-					factor = 0.1
+					factor = 0.5
 					original_tag = GER
 					is_in_faction = yes
 					OR = {
 						has_idea = autarkic_economy
 						has_idea = autarkic_economy_improved
 					}
+				}
+   			}
+
+   			on_add = {
+				if = {
+					limit = {
+						has_dlc = "Thunder at Our Gates"
+						original_tag = SIA
+						NOT = { has_idea = closed_economy }
+					}
+					if = {
+						limit = { check_variable = { SIA_current_trade_law > 2 } }
+
+
+						SIA_increase_military_approval = yes
+						SIA_decrease_civilian_approval = yes
+					}
+					else = {
+						SIA_decrease_military_approval = yes
+						SIA_increase_civilian_approval = yes
+					}
+
+					set_variable = { SIA_current_trade_law = 2 }
 				}
    			}
 		}
