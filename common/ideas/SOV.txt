@@ -16,7 +16,7 @@ ideas = {
 
 			removal_cost = -1
 
-			picture = SOV_second_five_year_plan_ccp_2d_sov_compatibility
+			picture = SOV_second_five_year_plan_ccp_2d_sov_compatibility # New GFX entry pointing to the original icon, so it can be safely overwritten by CCP 2D Sov Art without impacting other content using the same icon
 
 			allowed = {
 				always = no
@@ -35,7 +35,7 @@ ideas = {
 
 			removal_cost = -1
 
-			picture = SOV_third_five_year_plan_ccp_2d_sov_compatibility
+			picture = SOV_third_five_year_plan_ccp_2d_sov_compatibility # New GFX entry pointing to the original icon, so it can be safely overwritten by CCP 2D Sov Art without impacting other content using the same icon
 
 			allowed = {
 				always = no
@@ -1839,6 +1839,14 @@ ideas = {
 			}
 
 			on_remove = {
+				#var:SOV_capital_for_soviet_imports = { #This is where the German capital is stored and where Soviet Imports state modifier was added
+				#	if = {
+				#		limit = {
+				#			has_dynamic_modifier = { modifier = SOV_soviet_imports }
+				#		}
+				#		remove_dynamic_modifier = { modifier = SOV_soviet_imports }
+				#	}
+				#}
 			}
 
 			modifier = {
@@ -1913,7 +1921,7 @@ ideas = {
 
 			modifier = {
 				army_org_factor = -0.1
-				experience_gain_army_factor = -1
+				experience_gain_army_factor = -0.9
 				army_org_regain = -0.15
 				custom_modifier_tooltip = SOV_military_reorganization_ns_removal_tt
 			}
@@ -2745,7 +2753,7 @@ ideas = {
 
 		SOV_the_local_soviets_idea = {
 
-			picture = generic_morale_bonus
+			picture = SOV_the_local_soviets_idea_nsb_ccp_sov_compatibility
 			removal_cost = -1
 
 			allowed = {
@@ -4620,11 +4628,11 @@ ideas = {
 							has_country_flag = SOV_accepted_OKMO
 						}
 					}
-				}
+				}	
 			}
 
 			available = {
-				if = {
+				IF = {
 					limit = {
 						NOT = { has_dlc = "No Compromise, No Surrender" }
 						OR = {
@@ -4663,6 +4671,7 @@ ideas = {
 
 			allowed = {
 				original_tag = SOV
+
 			}
 
 			visible = {
@@ -9732,6 +9741,45 @@ ideas = {
 					build_cost_ic = -0.05
 				}
 			}
+		}
+
+		SOV_kolomna_manufacturer = {
+			name = "[SOV_kolomna_locomotive_plant_name_dynamic]"
+
+			picture = SOV_kolomna_alt
+
+			allowed = {
+				original_tag = SOV
+			}
+
+			available = {
+			}
+
+			visible = {
+			}
+
+			
+			ai_will_do = {
+				factor = 0
+			}
+
+			research_bonus = {
+				train_tech = 0.15
+				support_tech = 0.07
+			}
+
+			equipment_bonus = {
+				train_equipment = {
+					build_cost_ic = -0.10
+					armor_value = 0.10
+					air_attack = 0.10
+					instant = yes
+				}
+			}
+
+			cost = 150
+
+			traits = { train_equipment_manufacturer }
 		}
 	}
 
