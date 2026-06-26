@@ -19,6 +19,32 @@ ideas = {
 			}
 
 			cancel_if_invalid = no
+			on_add = {
+				if = {
+					limit = { SIA_should_add_national_savings_bond = yes }
+					SIA_refresh_nsb_spirit = yes
+					add_ideas = idea_SIA_nsb_disarmed_nation
+				}
+
+				if = {
+					limit = {
+						has_dlc = "Thunder at Our Gates"
+						original_tag = SIA
+						NOT = { has_idea = disarmed_nation }
+					}
+					if = {
+						limit = { check_variable = { SIA_current_manpower_law > -1 } }
+						SIA_decrease_military_approval = yes
+						SIA_increase_civilian_approval = yes
+					}
+					else = {
+						SIA_increase_military_approval = yes
+						SIA_decrease_civilian_approval = yes
+					}
+
+					set_variable = { SIA_current_manpower_law = -1 }
+				}
+			}
 		}
 
 		volunteer_only = {
@@ -110,6 +136,33 @@ ideas = {
 			default = yes
 
 			cancel_if_invalid = no
+
+			on_add = {
+				if = {
+					limit = { SIA_should_add_national_savings_bond = yes }
+					SIA_refresh_nsb_spirit = yes
+					add_ideas = idea_SIA_nsb_volunteer_only
+				}
+
+				if = {
+					limit = {
+						has_dlc = "Thunder at Our Gates"
+						original_tag = SIA
+						NOT = { has_idea = volunteer_only }
+					}
+					if = {
+						limit = { check_variable = { SIA_current_manpower_law > 0 } }
+						SIA_decrease_military_approval = yes
+						SIA_increase_civilian_approval = yes
+					}
+					else = {
+						SIA_increase_military_approval = yes
+						SIA_decrease_civilian_approval = yes
+					}
+
+					set_variable = { SIA_current_manpower_law = 0 }
+				}
+			}
 		}
 
 		limited_conscription = {
@@ -126,9 +179,18 @@ ideas = {
 				if = {
 					limit = {
 						original_tag = AST
-						has_dlc = "Together for Victory"
+						NOT = {
+							has_dlc = "Thunder at Our Gates"
+						}
 					}
 					has_completed_focus = AST_citizen_military_forces
+				}
+				if = {
+					limit = {
+						original_tag = AST
+						has_dlc = "Thunder at Our Gates"
+					}
+					AST_conscription_level_limited_conscription = yes
 				}
 				if = {
 					limit = {
@@ -323,39 +385,65 @@ ideas = {
 					factor = 10
 				}
 				modifier = {
-					factor = 100
-					OR = {
-						is_ai_mass_mob = yes
-						is_ai_mech_mob = yes
-					}
-					OR = {
-						has_idea = volunteer_only
-						has_idea = disarmed_nation
-					}
-				}
-				modifier = {
-					factor = 0
-					has_idea = volunteer_only
-					date < 1937.4.1
-					NOT = { 
-						AND = {
-							tag = POR 
-							is_historical_focus_on = yes
-						}
-					}
-					NOT = {
-						OR = {
-							has_active_mission = JAP_army_faction_demands_conscription_law_change
-							has_active_mission = JAP_naval_faction_demands_conscription_law_change
-						}
-					}
-				}
-				modifier = {
-					factor = 0
-					has_idea = extensive_conscription
-				}
+                	factor = 100
+                	OR = {
+                		is_ai_mass_mob = yes
+                		is_ai_mech_mob = yes
+                	}
+                	OR = {
+                		has_idea = volunteer_only
+                		has_idea = disarmed_nation
+                	}
+                }
+                modifier = {
+                	factor = 0
+                	has_idea = volunteer_only
+                	date < 1937.4.1
+                	NOT = {
+                		AND = {
+                			tag = POR
+                			is_historical_focus_on = yes
+                		}
+                	}
+                	NOT = {
+                		OR = {
+                			has_active_mission = JAP_army_faction_demands_conscription_law_change
+                			has_active_mission = JAP_naval_faction_demands_conscription_law_change
+                		}
+                	}
+                }
+                modifier = {
+                	factor = 0
+                	has_idea = extensive_conscription
+                }
 			}
 
+			on_add = {
+				if = {
+					limit = { SIA_should_add_national_savings_bond = yes }
+					SIA_refresh_nsb_spirit = yes
+					add_ideas = idea_SIA_nsb_limited_conscription
+				}
+
+				if = {
+					limit = {
+						has_dlc = "Thunder at Our Gates"
+						original_tag = SIA
+						NOT = { has_idea = limited_conscription }
+					}
+					if = {
+						limit = { check_variable = { SIA_current_manpower_law > 1 } }
+						SIA_decrease_military_approval = yes
+						SIA_increase_civilian_approval = yes
+					}
+					else = {
+						SIA_increase_military_approval = yes
+						SIA_decrease_civilian_approval = yes
+					}
+
+					set_variable = { SIA_current_manpower_law = 1 }
+				}
+			}
 			cancel_if_invalid = no
 		}
 
@@ -469,10 +557,17 @@ ideas = {
 				if = {
 					limit = {
 						original_tag = AST
-						has_dlc = "Together for Victory"
 					}
-					has_completed_focus = AST_citizen_military_forces
-					has_completed_focus = AST_fight_work_or_perish
+					IF = {
+						limit = {
+							has_dlc = "Thunder at Our Gates"
+						}
+						AST_conscription_level_extensive_conscription = yes
+					}
+					ELSE = {
+						has_completed_focus = AST_citizen_military_forces
+						has_completed_focus = AST_fight_work_or_perish
+					}
 				}
 				if = {
 					limit = {
@@ -775,6 +870,33 @@ ideas = {
 			}
 
 			cancel_if_invalid = no
+
+			on_add = {
+				if = {
+					limit = { SIA_should_add_national_savings_bond = yes }
+					SIA_refresh_nsb_spirit = yes
+					add_ideas = idea_SIA_nsb_extensive_conscription
+				}
+
+				if = {
+					limit = {
+						has_dlc = "Thunder at Our Gates"
+						original_tag = SIA
+						NOT = { has_idea = extensive_conscription }
+					}
+					if = {
+						limit = { check_variable = { SIA_current_manpower_law > 2 } }
+						SIA_decrease_military_approval = yes
+						SIA_increase_civilian_approval = yes
+					}
+					else = {
+						SIA_increase_military_approval = yes
+						SIA_decrease_civilian_approval = yes
+					}
+
+					set_variable = { SIA_current_manpower_law = 2 }
+				}
+			}
 		}
 
 		service_by_requirement = {
@@ -834,10 +956,17 @@ ideas = {
 				if = {
 					limit = {
 						original_tag = AST
-						has_dlc = "Together for Victory"
 					}
-					has_completed_focus = AST_citizen_military_forces
-					has_completed_focus = AST_fight_work_or_perish
+					IF = {
+						limit = {
+							has_dlc = "Thunder at Our Gates"
+						}
+						AST_conscription_level_service_by_requirement = yes
+					}
+					ELSE = {
+						has_completed_focus = AST_citizen_military_forces
+						has_completed_focus = AST_fight_work_or_perish
+					}
 				}
 
 				if = {
@@ -998,6 +1127,7 @@ ideas = {
 					factor = 0.1
 					NOT = { tag = CHI }
 					NOT = { tag = SOV }
+					NOT = { AND = { tag = GER date > 1940.11.1 } }
 					manpower_per_military_factory >  3000
 					NOT = { has_country_flag = pure_infantry }
 				}
@@ -1128,6 +1258,33 @@ ideas = {
 			}
 
 			cancel_if_invalid = no
+
+			on_add = {
+				if = {
+					limit = { SIA_should_add_national_savings_bond = yes }
+					SIA_refresh_nsb_spirit = yes
+					add_ideas = idea_SIA_nsb_service_by_requirement
+				}
+
+				if = {
+					limit = {
+						has_dlc = "Thunder at Our Gates"
+						original_tag = SIA
+						NOT = { has_idea = service_by_requirement }
+					}
+					if = {
+						limit = { check_variable = { SIA_current_manpower_law > 3 } }
+						SIA_decrease_military_approval = yes
+						SIA_increase_civilian_approval = yes
+					}
+					else = {
+						SIA_increase_military_approval = yes
+						SIA_decrease_civilian_approval = yes
+					}
+
+					set_variable = { SIA_current_manpower_law = 3 }
+				}
+			}
 		}
 
 		all_adults_serve = {
@@ -1157,10 +1314,17 @@ ideas = {
 				if = {
 					limit = {
 						original_tag = AST
-						has_dlc = "Together for Victory"
 					}
-					has_completed_focus = AST_citizen_military_forces
-					has_completed_focus = AST_fight_work_or_perish
+					IF = {
+						limit = {
+							has_dlc = "Thunder at Our Gates"
+						}
+						AST_conscription_level_all_adults_serve = yes
+					}
+					ELSE = {
+						has_completed_focus = AST_citizen_military_forces
+						has_completed_focus = AST_fight_work_or_perish
+					}
 				}
 
 				if = {
@@ -1368,20 +1532,41 @@ ideas = {
 					}
 					add_ideas = FIN_militarized_society
 				}
-				#set_country_flag = { doesn't work
-				#	flag = recently_changed_conscription_law
-				#	days = 730
-				#}
+				if = {
+                	limit = {
+                		is_ai = yes
+                	}
+                	hidden_effect = {
+                		add_timed_idea = {
+                			idea = recently_changed_conscription_law_idea
+                			days = 730
+                		}
+                	}
+                }
+
+				if = {
+					limit = { SIA_should_add_national_savings_bond = yes }
+					SIA_refresh_nsb_spirit = yes
+					add_ideas = idea_SIA_nsb_all_adults_serve
+				}
+
 				if = {
 					limit = {
-						is_ai = yes
+						has_dlc = "Thunder at Our Gates"
+						original_tag = SIA
+						NOT = { has_idea = all_adults_serve }
 					}
-					hidden_effect = {
-						add_timed_idea = {
-							idea = recently_changed_conscription_law_idea
-							days = 730
-						}
+					if = {
+						limit = { check_variable = { SIA_current_manpower_law > 4 } }
+						SIA_decrease_military_approval = yes
+						SIA_increase_civilian_approval = yes
 					}
+					else = {
+						SIA_increase_military_approval = yes
+						SIA_decrease_civilian_approval = yes
+					}
+
+					set_variable = { SIA_current_manpower_law = 4 }
 				}
 			}
 
@@ -1429,10 +1614,17 @@ ideas = {
 				if = {
 					limit = {
 						original_tag = AST
-						has_dlc = "Together for Victory"
 					}
-					has_completed_focus = AST_citizen_military_forces
-					has_completed_focus = AST_fight_work_or_perish
+					IF = {
+						limit = {
+							has_dlc = "Thunder at Our Gates"
+						}
+						AST_conscription_level_scraping_the_barrel = yes
+					}
+					ELSE = {
+						has_completed_focus = AST_citizen_military_forces
+						has_completed_focus = AST_fight_work_or_perish
+					}
 				}
 
 				if = {
@@ -1555,14 +1747,14 @@ ideas = {
 					NOT = {
 						has_idea = AUS_treaty_of_saint_germain_en_laye
 					}
-				}		
+				}
 				IF = {
 					limit = {
 						has_dlc	= "Graveyard of Empires"
 						original_tag = AFG
 					}
 					has_completed_focus = AFG_adopt_nufus
-				}
+				}	
 			}
 
 			ai_will_do = {
@@ -1625,6 +1817,31 @@ ideas = {
 						NOT = { has_idea = FIN_militarized_society }
 					}
 					add_ideas = FIN_militarized_society
+				}
+
+				if = {
+					limit = { SIA_should_add_national_savings_bond = yes }
+					SIA_refresh_nsb_spirit = yes
+					add_ideas = idea_SIA_nsb_scraping_the_barrel
+				}
+
+				if = {
+					limit = {
+						has_dlc = "Thunder at Our Gates"
+						original_tag = SIA
+						NOT = { has_idea = scraping_the_barrel }
+					}
+					if = {
+						limit = { check_variable = { SIA_current_manpower_law > 5 } }
+						SIA_decrease_military_approval = yes
+						SIA_increase_civilian_approval = yes
+					}
+					else = {
+						SIA_increase_military_approval = yes
+						SIA_decrease_civilian_approval = yes
+					}
+
+					set_variable = { SIA_current_manpower_law = 5 }
 				}
 			}
 
