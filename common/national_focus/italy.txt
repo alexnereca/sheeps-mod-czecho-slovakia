@@ -3899,7 +3899,8 @@ focus_tree = {
         	add_stability = -0.05
         	add_war_support = -0.05
         	add_timed_idea = { idea = ITA_a_meeting_at_the_high_table days = 30 }
-        }
+            }
+	    }
 	}
 
 	focus = {
@@ -24131,7 +24132,4 @@ focus_tree = {
 			}
 		}
 	}
-
-
-
 }
