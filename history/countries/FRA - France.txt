@@ -1,4 +1,4 @@
-﻿capital = 16
+﻿capital = 16 # Paris/Ile de France
 
 if = {
 	limit = {
@@ -80,26 +80,19 @@ if = {
 		puppet = LEB
 	}
 }
+
 set_research_slots = 3
 IF = {
 	limit = {
-		
 		has_dlc = "Gotterdammerung"
-						   
-   
-  
-				 
-			  
-									
-					  
 	}
 	set_stability = 0.45 # Was 0.5, but they now get +5% from the Eiffel Tower
 	ELSE = {
 		set_stability = 0.5
 	}
 }
-add_command_power = 20
 
+add_command_power = 20
 
 complete_special_project = {
 	project = sp:sp_naval_cruiser_submarine
@@ -136,6 +129,7 @@ set_technology = {
 
 set_grand_doctrine = grand_battleplan
 set_grand_doctrine = new_fleet_in_being
+
 if = {
 	limit = {
 		NOT = { has_dlc = "No Step Back" }
@@ -231,8 +225,9 @@ if = {
 1939.1.1 = {
 
 	add_political_power = 899
-	add_command_power = 200
+	add_command_power = 100
 
+	#adding ministers
 	add_ideas = {
 		FRA_charles_tillon
 		francois_darlan
@@ -247,25 +242,19 @@ if = {
 		#laws
 		partial_economic_mobilisation
 	}
-												
+
 	complete_national_focus = FRA_begin_rearmament
 	complete_national_focus = FRA_form_the_popular_front
 	complete_national_focus = FRA_reform_the_labour_laws
 	complete_national_focus = FRA_the_blum_viollette_proposal
-															  
 	complete_national_focus = FRA_review_foreign_policy
-														
 	complete_national_focus = FRA_intervention_in_spain
 	complete_national_focus = FRA_buy_time
 	complete_national_focus = FRA_defensive_focus
-													
 	complete_national_focus = FRA_firepower_kills
 	complete_national_focus = FRA_go_with_britain
-											  
 	complete_national_focus = FRA_devalue_the_franc
-												   
 	complete_national_focus = FRA_invest_in_the_metropole
-			complete_national_focus = FRA_defensive_focus
 
 	give_guarantee = POL
 	ENG = { add_to_faction = FRA }
@@ -321,6 +310,13 @@ if = {
 		support_weapons = 1
 		support_weapons2 = 1
 
+		#doctrines
+		#Air
+		#force_rotation = 1
+		#ighter_baiting = 1
+		#low_echelon_support = 1
+		#dispersed_fighting = 1
+
 		#electronics
 		electronic_mechanical_engineering = 1
 		radio = 1
@@ -351,6 +347,7 @@ add_mastery = {
     amount = 100
     sub_doctrine = great_war_infantry
 }
+
 	complete_special_project = {
 		project = sp:sp_air_radar
 	}
@@ -481,7 +478,10 @@ recruit_character = FRA_francois_darlan
 recruit_character = FRA_jeanmarie_charles_abrial
 recruit_character = FRA_jeanpierre_esteva
 recruit_character = FRA_jean_de_laborde
-#recruit_character = FRA_denis_guillaumat
+recruit_character = FRA_jean_romatet
+recruit_character = FRA_emile_laure
+recruit_character = FRA_joseph_doumenc
+# recruit_character = FRA_denis_guillaumat # Has been removed to make way for Charles Maurras, but might be readded
 recruit_character = FRA_philippe_fequant
 recruit_character = FRA_victor_denain
 recruit_character = FRA_jean_marie_abrial
@@ -496,7 +496,6 @@ recruit_character = FRA_louis_kahn
 recruit_character = FRA_robert_odic
 recruit_character = FRA_jean_francois_jannekeyn
 recruit_character = FRA_emile_muselier
-
 recruit_character = FRA_alfred_heurtaux
 recruit_character = FRA_rene_prioux
 recruit_character = FRA_pierre_alombert_goget
@@ -519,12 +518,14 @@ recruit_character = FRA_jacques_duclos
 recruit_character = FRA_marcel_bucard
 recruit_character = FRA_georges_valois
 recruit_character = FRA_marcel_deat
+
 recruit_character = FRA_irene_joliot_curie
 recruit_character = FRA_frederic_joliot_curie
 recruit_character = FRA_francois_hussenot
 recruit_character = FRA_louis_renault
 recruit_character = FRA_henri_edmond_fouche
 recruit_character = FRA_joseph_bethenod
+
 if = {
 	limit = {
 		OR = {
