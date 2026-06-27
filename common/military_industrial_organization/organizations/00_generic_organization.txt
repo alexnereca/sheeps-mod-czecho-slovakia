@@ -606,6 +606,7 @@ generic_infantry_tank_organization = {
 		ap_attack = 0.1
 		}
 	}
+
 	trait = {
 		token = generic_mio_trait_adaptable_chassis
 		name = generic_mio_trait_adaptable_chassis
@@ -620,12 +621,11 @@ generic_infantry_tank_organization = {
 			production_efficiency_cap_factor = 0.05
 			production_efficiency_gain_factor = 0.05
 		}
+		ai_will_do = {
+        	base = 25
+        }
 	}
 
-		ai_will_do = {
-			base = 25
-		}
-	}
 	trait = {
 		token = generic_mio_trait_medium_tank_specialization
 		name = generic_mio_trait_medium_tank_specialization
