@@ -1507,7 +1507,7 @@ country_event = {
 	option = {
 		name = bftb_greece.24.a #Aye!
 		ai_chance = {
-			factor = 80
+			base = 80
 			modifier = {
 				factor = 0
 				NOT = { original_tag = GRE }
@@ -1569,7 +1569,7 @@ country_event = {
 	option = {
 		name = bftb_greece.24.b #Nay!
 		ai_chance = {
-			factor = 0
+			base = 0
 			modifier = {
 				factor = 0
 				original_tag = GRE
@@ -2789,7 +2789,6 @@ country_event = {
 				transfer_state = 350
 				transfer_state = 352
 				transfer_state = 353
-				transfer_state = 799
 				transfer_state = 800
 				release_autonomy = { 
 					target = KUR
@@ -2844,6 +2843,7 @@ country_event = {
 						set_compliance = 70
 					}
 				}
+				
 			}
 		}
 		if = { 
@@ -3032,10 +3032,11 @@ country_event = {
 		}
 	}
 }
+
 #Tow the Stalinist Line - Soviet Union is informed of Greece's submission and of Turkey's new hostile move
 country_event = {
 	id = bftb_greece.30
-	title = bftb_greece.29.t
+	title =  bftb_greece.29.t	#reused
 	desc = bftb_greece.30.desc
 	picture = GFX_report_event_tur_military_affair
 
@@ -3697,15 +3698,15 @@ country_event = {
 	
 	option = {
 		name = bftb_greece.50.a 
-		retire_country_leader = yes
-		create_country_leader = {
-			name = "George II"
-			desc = "POLITICS_GEORGE_II_DESC"
-			picture = "GFX_portrait_gre_george_ii"
-			expire = "1965.1.1"
-			ideology = despotism
-			traits = {
-				divisive_absolute_monarch
+		#retire_country_leader = yes
+		
+		add_country_leader_role = {
+			character = GRE_king_george_ii
+			promote_leader = yes
+			country_leader = {
+				ideology = despotism
+				expire = "1965.1.1.1"
+				traits = { divisive_absolute_monarch }
 			}
 		}
 		custom_effect_tooltip = GRE_absolute_monarch_hostile_factions_tt
@@ -4544,36 +4545,62 @@ country_event = {
 	}
 
 	immediate = {
-		hidden_effect = { 	
-			kill_ideology_leader = democratic
-			create_country_leader = {
-				name = "Themistoklis Sofoulis"
-				desc = "POLITICS_THEMISTOKLIS_SOFOULIS_DESC"
-				picture = GFX_portrait_gre_themistoklis_sofoulis
-				expire = "1965.1.1"
-				ideology = liberalism
-				traits = {
-					professional_crisis_solver
+		IF = {
+			limit = {
+				has_country_leader = {
+					ruling_only = yes
+					character = GRE_eleftherios_venizelos
+				}	
+			}
+			hidden_effect = { 	
+				kill_ideology_leader = democratic
+				create_country_leader = {
+					name = "Themistoklis Sofoulis"
+					desc = "POLITICS_THEMISTOKLIS_SOFOULIS_DESC"
+					picture = GFX_portrait_gre_themistoklis_sofoulis
+					expire = "1965.1.1"
+					ideology = liberalism
+					traits = {
+						professional_crisis_solver
+					}
 				}
 			}
+			set_country_flag = GRE_had_venezelos_when_he_died_flag 
+		}
+		ELSE_IF = {
+			limit = {
+				has_character = GRE_eleftherios_venizelos
+			}
+			hidden_effect = {
+				retire_character = GRE_eleftherios_venizelos
+			}	
 		}
 	}
 	
 	option = {
 		name = bftb_greece.71.a 
+
 		add_stability = -0.05
-		effect_tooltip = {
-			create_country_leader = {
-				name = "Themistoklis Sofoulis"
-				desc = "POLITICS_THEMISTOKLIS_SOFOULIS_DESC"
-				picture = GFX_portrait_gre_themistoklis_sofoulis
-				expire = "1965.1.1"
-				ideology = liberalism
-				traits = {
-					professional_crisis_solver
+
+		IF = {
+			limit = {
+				has_country_flag = GRE_had_venezelos_when_he_died_flag 
+			}
+			effect_tooltip = {
+				create_country_leader = {
+					name = "Themistoklis Sofoulis"
+					desc = "POLITICS_THEMISTOKLIS_SOFOULIS_DESC"
+					picture = GFX_portrait_gre_themistoklis_sofoulis
+					expire = "1965.1.1"
+					ideology = liberalism
+					traits = {
+						professional_crisis_solver
+					}
 				}
 			}
 		}
+
+		
 	}
 }
 #Byzantine Party protests
@@ -4909,7 +4936,7 @@ country_event = {
 
 	trigger = {
 		original_tag = GRE
-		GER = {  
+		GER = { 
 			if = {
 				limit = {
 					NOT = { has_dlc = "Gotterdammerung" }
@@ -4923,7 +4950,6 @@ country_event = {
 				has_country_leader = {
 					character = GER_adolf_hitler
 					ruling_only = yes
-	  
 				}
 			}
 		}

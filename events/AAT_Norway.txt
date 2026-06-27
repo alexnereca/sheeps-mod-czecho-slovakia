@@ -96,7 +96,6 @@ country_event = { # Fascists Ransack Trotsky's residence
 			base = 10
 			modifier = {
 				factor = 10 
-
 			}
 		}
 		trigger = {
@@ -753,6 +752,7 @@ country_event = { # Quisling's Historical Coup event
 		custom_effect_tooltip = NOR_delay_coup_TT
 		NOR = { set_country_flag = NOR_delayed_quislings_coup } 
 	}
+	#TODO_TA add Rally behind the King option under certain conditions
 }
 
 country_event = { # Asking Germany if they want Quisling or not 
@@ -1071,7 +1071,7 @@ country_event = { # They accepted our demands
 					}
 					transfer_State_to = NOR
 					add_core_of = NOR
-				}			
+				}
 			}
 			917 = {
 				if = {
@@ -1080,7 +1080,7 @@ country_event = { # They accepted our demands
 					}
 					transfer_State_to = NOR
 					add_core_of = NOR
-				}			
+				}
 			}
 			clr_country_flag = NOR_claiming_sweden 
 		}
@@ -2821,17 +2821,9 @@ country_event = { # Hey, wanna invest?
 	id = AAT_norway_allied.1
 	title = AAT_norway_allied.1.t
 	desc = AAT_norway_allied.1.desc
-
-	picture = report_event_generic_construction_site
-
-	trigger = { 
-	}
+	picture = GFX_report_event_generic_construction_site
 
 	is_triggered_only = yes
-
-	immediate = {
-		hidden_effect = {}
-	}
 
 	option = { # Sure why not
 		name = AAT_norway_allied.1.a
@@ -2839,8 +2831,13 @@ country_event = { # Hey, wanna invest?
 			base = 50
 
 		}
+
 		trigger = {  
 		}
+		add_political_power = -50
+		custom_effect_tooltip = generic_skip_one_line_tt
+
+		custom_effect_tooltip = we_will_gain_tt
 		add_timed_idea = {
 			idea = NOR_investing_in_norway_ns
 			days = 365
@@ -2850,8 +2847,17 @@ country_event = { # Hey, wanna invest?
 			target = FROM
 			modifier = NOR_investing_in_norway
 		}
-
+		custom_effect_tooltip = generic_skip_one_line_tt
+		custom_effect_tooltip = they_will_gain_tt
 		event_option_tooltip = AAT_norway_allied.2.a
+		hidden_effect = {
+			FROM = {
+				country_event = {
+					id = AAT_norway_allied.2
+					hours = 2
+				}
+			}
+		}
 	}
 
 	option = { # Not worth the effort
