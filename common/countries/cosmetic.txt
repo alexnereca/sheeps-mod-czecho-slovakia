@@ -1,28 +1,3 @@
-SOV_SANTA = {
-    color = rgb { 224 5 5 }
-    color_ui = rgb { 193 81 81 }
-}
-
-LBA_Italian = {
-	color = rgb { 0 153 51 }
-    	color_ui = rgb { 0 153 51 }
-}
-
-VIN_FRA = {
-	color = rgb { 30 33 105 }
-	color_ui = rgb { 30 33 105 }
-}
-
-VIN_INC = {
-	color = rgb { 193 81 81 }
-	color_ui = rgb { 193 81 81 }
-}
-
-AST_australasian = {
-	color = rgb { 1 33 105 }
-	color_ui = rgb { 1 33 105 }
-}
-
 MAL_UK = {
     color = rgb { 201 56 93 }
     color_ui = rgb { 255 73 121 }
@@ -1945,4 +1920,9 @@ CZE_fascist_color = {
 CZE_first_monarchy_color = {
 	color = rgb { 111 110 137 }
 	color_ui = rgb { 111 110 137 }
+}
+
+AST_australasia = {
+	color = rgb { 0 102 180 }
+	color_ui = rgb { 0 102 180 }
 }
