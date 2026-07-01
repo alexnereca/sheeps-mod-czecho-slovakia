@@ -12170,6 +12170,14 @@ focus_tree = {
 					has_war_with = ROOT
 				}
 			}
+			INS = {
+				OR = {
+					exists = no
+					NOT = {
+						has_cosmetic_tag = INS_UNION
+					}
+				}
+			}
 			BEL = {
 				OR = {
 					exists = no
@@ -12190,6 +12198,14 @@ focus_tree = {
 			is_subject = no
 			OR = {
 				NOT = { HOL = { is_in_faction_with = GER } }
+				if = {
+					limit = {
+						INS = {
+							has_cosmetic_tag = INS_UNION
+						}
+					}
+					NOT = { INS = { is_in_faction_with = GER } }
+				}
 				NOT = { BEL = { is_in_faction_with = GER } }
 				NOT = { LUX = { is_in_faction_with = GER } }
 			}
@@ -33728,7 +33744,7 @@ focus_tree = {
 					state = 737
 					state = 684
 					state = 633
-					state = 634 # If Bougainville is ever made it's own state switch this and the associated decision from 634 to that!
+					state = 1070 # If Bougainville is ever made it's own state switch this and the associated decision from 634 to that!
 					state = 646
 					state = 726
 					state = 725
@@ -34746,6 +34762,7 @@ focus_tree = {
 						controls_state = 894
 						controls_state = 893
 						controls_state = 634
+						controls_state = 1070
 					}
 				}
 				display_individual_scopes = yes
@@ -34770,6 +34787,7 @@ focus_tree = {
 							state = 894
 							state = 893
 							state = 634
+							state = 1070
 						}
 					}
 					add_to_array = {
@@ -36621,6 +36639,7 @@ focus_tree = {
 			add_state_claim = 541
 			add_state_claim = 546
 			add_state_claim = 737
+            add_state_claim = 1070
 			add_state_claim = 684
 			add_state_claim = 633
 			add_state_claim = 646
