@@ -96,17 +96,17 @@ last_stand = {
     conscription = 0.05
 
     ai_will_do = {
-
         base = 0
-	modifier = {
-		add = 9999
+	    modifier = {
+		    add = 9999
 		OR = {
 			has_government = democratic
 			has_government = neutrality
-		}
+		    }
 		is_major = no
 		check_if_tag_needs_to_withdraw_from_europe = no
         }
+       }
 
     rewards = {
         werwolf_groups = {
@@ -162,8 +162,8 @@ infiltration_tactics = {
         modifier = {
             factor = 500
             OR = {
-		original_tag = JAP
-		}
+                original_tag = JAP
+            }
         }
 
     }
@@ -271,11 +271,10 @@ grand_assault = {
             	OR = {
                 	original_tag = FRA
                 	original_tag = ITA
-			original_tag = GER
+			        original_tag = GER
             	}
 		check_if_tag_needs_to_withdraw_from_europe = no
         }
-
     }
 
     # EFFECTS
@@ -371,10 +370,10 @@ deep_battle = {
         modifier = {
             	add = 9999
             	original_tag = SOV
-		OR = {
-			has_doctrine = new_mobile_warfare
-			has_doctrine = mass_assault
-		}
+		    OR = {
+			    has_doctrine = new_mobile_warfare
+			    has_doctrine = mass_assault
+		    }
         }
 
     }
@@ -503,9 +502,8 @@ deep_battle_no_lar = {
         modifier = {
             add = 9999
             original_tag = SOV
-		has_doctrine = mass_assault
+		    has_doctrine = mass_assault
         }
-
     }
 
     # EFFECTS
@@ -624,7 +622,6 @@ guerilla_war = {
 		add = 9999
 		check_if_tag_needs_to_withdraw_from_europe = yes
         }
-    
     }
 
     # EFFECTS
@@ -721,9 +718,7 @@ rapid_domination = {
     }
 
     ai_will_do = {
-
         base = 0
-
     }
 
     # EFFECTS
