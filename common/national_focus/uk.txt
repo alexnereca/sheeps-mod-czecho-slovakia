@@ -9044,6 +9044,7 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_POLITICAL}	
 		completion_reward = {
 			add_political_power = 120
+			custom_effect_tooltip = generic_skip_one_line_tt
 			every_country = {
 				limit = {
 					OR = {
@@ -9829,6 +9830,7 @@ focus_tree = {
 				add_faction_goal = faction_goal_imperial_glory
 				custom_effect_tooltip = generic_skip_one_line_tt
 			}
+
 			# Singapore
 			336 = {
 				if = {
@@ -9894,6 +9896,7 @@ focus_tree = {
 					}
 				}								
 			}
+			custom_effect_tooltip = generic_skip_one_line_tt
 			# Nova Scotia
 			464 = {
 				if = {
@@ -10014,7 +10017,7 @@ focus_tree = {
 					name = "Lord Edward Halifax"
 					ruling_only = yes
 				}
-				NOT	= {	has_character = ENG_winston_churchill } #MM: GoE content if he is transferred to India via event chain triggered by focus RAJ_the_jewel_becomes_the_crown
+				NOT = {	has_character = ENG_winston_churchill } #MM: GoE content if he is transferred to India via event chain triggered by focus RAJ_the_jewel_becomes_the_crown
 			}
 		}
 
@@ -10061,6 +10064,7 @@ focus_tree = {
 				set_rule = { can_puppet = yes }
 			}
 			set_rule = { can_send_volunteers = yes }
+			custom_effect_tooltip = generic_skip_one_line_tt
 			add_ideas = ENG_no_further_appeasement_idea
 			hidden_effect = { news_event = { id = mtg_news.16 days = 1 } }
 		}
@@ -10136,7 +10140,9 @@ focus_tree = {
 
 	focus = {
 		id = ENG_secure_the_oil_imports
+
 		prerequisite = { focus = ENG_kickstart_the_war_industry }
+
 		available = { 
 			is_subject = no
 			OR = {
@@ -10636,12 +10642,18 @@ focus_tree = {
 		} #UK at war with fascist/commie. iraq is fascist/commie
 
 		bypass = {
-			IRQ = { exists = no }
+			IRQ = { 
+				OR = {
+					exists = no 
+					has_war_with = ROOT
+					is_subject_of = ROOT 
+				}
+			}
 		}
 
 		will_lead_to_war_with = IRQ
 		prerequisite = { focus = ENG_home_defence }
-		icon = GFX_goal_generic_occupy_states_ongoing_war
+		icon = GFX_focus_generic_attack_iraq
 		x = -6
 		y = 1
 		offset = {
@@ -10716,7 +10728,6 @@ focus_tree = {
 					custom_effect_tooltip = PER_preemptive_invasion_of_iran_tt
 				}
 			}
-			
 			ELSE = {
 				create_wargoal = {
 					type = take_state_focus
@@ -10963,7 +10974,7 @@ focus_tree = {
 			}			
 		}
 		prerequisite = { focus = ENG_home_defence }
-		icon = GFX_goal_generic_position_armies
+		icon = GFX_focus_generic_attack_nordic_territory
 		x = -3
 		y = 1
 		offset = {
