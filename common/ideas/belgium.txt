@@ -639,7 +639,7 @@ ideas = {
 			modifier = {
 				send_volunteer_size = 3
 				send_volunteer_divisions_required = -1
-				send_volunteers_tension = -0.75
+				send_volunteers_tension = -1
 			}
 		}
 
@@ -937,7 +937,7 @@ ideas = {
 		BEL_kirov = {
 			name = kirov
 
-			picture = kirov
+			picture = SOV_kirov
 
 			allowed = {
 				original_tag = BEL
