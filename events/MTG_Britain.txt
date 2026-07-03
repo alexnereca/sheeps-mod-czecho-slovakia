@@ -2562,7 +2562,7 @@ country_event = {
 			}
 		}
 		hidden_effect = {
-			was_raj_a_subject = yes  
+			was_uk_dominion_a_subject = yes
 			every_country = {
 				limit = {
 					has_country_flag = is_starting_puppet_of_uk
