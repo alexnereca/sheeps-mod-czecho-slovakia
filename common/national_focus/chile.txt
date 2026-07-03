@@ -3964,9 +3964,7 @@ focus_tree = {
 			focus = CHL_adopt_mapundungun
 		}
 
-		mutually_exclusive = {
-			focus = CHL_embrace_indigenous_corporatism
-		} 
+		mutually_exclusive = { }
 		
 		ai_will_do = {
 			base = 1

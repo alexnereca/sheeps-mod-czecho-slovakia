@@ -279,7 +279,7 @@ infantry_ENG = {
 			
 			regiments = {
 				infantry = 9
-				artilery_brigade = 2
+				artillery_brigade = 2
 			}
 		}
 	}

@@ -1134,8 +1134,8 @@ BRA_remove_economy_modifier = {
 					compare = greater_than
 				}				 						
 			}
-			remove_dynamic_modifier = { modifier = BRA_undiversified_economy_modifier }
 		}
+        remove_dynamic_modifier = { modifier = BRA_undiversified_economy_modifier }
 	}
 	IF = {
 		limit = {

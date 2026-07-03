@@ -5173,7 +5173,7 @@ focus_tree = {
 		y = 2
 		relative_position_id = CAN_halifax_shipyards
 
-		mutually_exclusive = { focus = CAN_heavy_cruiser_effort }
+		mutually_exclusive = { }
 
 		cost = 10
 
