@@ -28,6 +28,9 @@ infantry_MEX = {
 			regiments = {
 				infantry = 7
 			}
+			regimental_support = {
+				fire_support = 2
+			}
 		
 			support = {
 				artillery = 1
@@ -54,6 +57,9 @@ infantry_MEX = {
 		target_template = {
 			regiments = {
 				infantry = 10
+			}
+			regimental_support = {
+				fire_support = 3
 			}
 		
 			support = {
@@ -84,6 +90,9 @@ infantry_MEX = {
 		target_template = {
 			regiments = {
 				infantry = 22
+			}
+			regimental_support = {
+                fire_support = 5
 			}
 		
 			support = {

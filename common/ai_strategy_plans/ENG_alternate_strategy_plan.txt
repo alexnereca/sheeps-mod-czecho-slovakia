@@ -67,7 +67,7 @@ ENG_alternate_democratic_plan = {
 	# Keep small, as it is used as a factor for some things (such as research needs)
 	# Recommended around 1.0. Useful for relation between plans
 	weight = {
-		factor = 1.0
+		base = 1.0
 		modifier = {
 			factor = 1.0
 		}
@@ -236,7 +236,7 @@ ENG_alternate_unaligned_plan = {
 	# Keep small, as it is used as a factor for some things (such as research needs)
 	# Recommended around 1.0. Useful for relation between plans
 	weight = {
-		factor = 1.0
+		base = 1.0
 		modifier = {
 			factor = 1.0
 		}
@@ -328,7 +328,7 @@ ENG_alternate_fascist_plan = {
 	# Keep small, as it is used as a factor for some things (such as research needs)
 	# Recommended around 1.0. Useful for relation between plans
 	weight = {
-		factor = 1.0
+		base = 1.0
 		modifier = {
 			factor = 1.0
 		}

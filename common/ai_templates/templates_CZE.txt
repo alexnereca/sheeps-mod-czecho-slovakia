@@ -35,6 +35,9 @@ infantry_CZE = {
 				infantry = 10
 				light_armor = 2
 			}
+			regimental_support = {
+				fire_support = 3
+			}
 		}
 	}
 	

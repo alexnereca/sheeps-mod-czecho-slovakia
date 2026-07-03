@@ -114,7 +114,7 @@ ENG_historical_plan = {
 	# Keep small, as it is used as a factor for some things (such as research needs)
 	# Recommended around 1.0. Useful for relation between plans
 	weight = {
-		factor = 1.0
+		base = 1.0
 		modifier = {
 			factor = 1.0
 		}
@@ -214,7 +214,7 @@ ENG_historical_plan_grand_fascist_coaltion = {
 	# Keep small, as it is used as a factor for some things (such as research needs)
 	# Recommended around 1.0. Useful for relation between plans
 	weight = {
-		factor = 1.0
+		base = 1.0
 		modifier = {
 			factor = 1.0
 		}
@@ -292,7 +292,7 @@ ENG_historical_plan_stresa_front_with_france_or_just_churchill = {
 	# Keep small, as it is used as a factor for some things (such as research needs)
 	# Recommended around 1.0. Useful for relation between plans
 	weight = {
-		factor = 1.0
+		base = 1.0
 		modifier = {
 			factor = 1.0
 		}

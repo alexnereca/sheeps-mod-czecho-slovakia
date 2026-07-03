@@ -46,6 +46,10 @@ motorized_div_generic = {
 			regiments = {
 				mountaineers = 9
 			}
+
+			regimental_support = {
+				fire_support = 3
+			}
 		}
 	}
 
@@ -82,6 +86,10 @@ motorized_div_generic = {
 				mot_anti_tank_brigade = 1
 				mot_anti_air_brigade = 1
 			}
+
+			regimental_support = {
+				mot_fire_support = 5
+			}
 		}
 	}
 
@@ -108,6 +116,10 @@ motorized_div_generic = {
 
 			regiments = {
 				mountaineers = 8
+			}
+			
+			regimental_support = {
+				fire_support = 2
 			}
 		}
 	}
@@ -154,6 +166,9 @@ mobile_div_generic = {
 			regiments = {
 				motorized = 9
 			}
+			regimental_support = {
+				mot_fire_support = 3
+			}
 		}
 	}
 
@@ -185,6 +200,9 @@ mobile_div_generic = {
 
 			regiments = {
 				mechanized = 9
+			}
+			regimental_support = {
+				mot_fire_support = 3
 			}
 		}
 	}
@@ -218,6 +236,9 @@ anti_armor_generic = {
 
 			regiments = {
 				mountaineers = 9
+			}
+			regimental_support = {
+				fire_support = 3
 			}
 		}
 	}
@@ -309,6 +330,10 @@ armor_generic = {
 				medium_armor = 8
 				motorized = 8
 			}
+			regimental_support = {
+				mot_fire_support = 2
+				medium_tank_destroyer_support = 2
+			}
 		}
 		replace_at_match = 0.8
 		replace_with = medium_armor_2_default
@@ -353,6 +378,10 @@ armor_generic = {
 				medium_armor = 8
 				motorized = 8
 			}
+			regimental_support = {
+				mot_fire_support = 2
+				medium_tank_destroyer_support = 2
+			}
 		}
 		replace_at_match = 0.8
 		replace_with = modern_armor_default
@@ -392,6 +421,10 @@ armor_generic = {
 			regiments = {
 				medium_armor = 8
 				mechanized = 8
+			}
+			regimental_support = {
+				mot_fire_support = 2
+				medium_tank_destroyer_support = 2
 			}
 		}
 	}
@@ -437,6 +470,9 @@ garrison_generic = {
 			regiments = {
 				infantry = 6
 			}
+			regimental_support = {
+				fire_support = 2
+			}
 		}
 	}
 
@@ -460,6 +496,9 @@ garrison_generic = {
 			
 			regiments = {
 				infantry = 6
+			}
+			regimental_support = {
+				fire_support = 2
 			}
 		}
 	}
@@ -489,6 +528,9 @@ suppression_generic = {
 		target_template = {
 			regiments = {
 				cavalry = 10
+			}
+			regimental_support = {
+				fire_support = 3
 			}
 		}
 	}
@@ -603,6 +645,9 @@ infantry_generic = {
 			regiments = {
 				infantry = 9
 			}
+			regimental_support = {
+				fire_support = 3
+			}
 		}
 		replace_at_match = 0.9
 		replace_with = infantry_improved
@@ -641,6 +686,9 @@ infantry_generic = {
 				anti_air_brigade = 1
 				anti_tank_brigade = 1
 				infantry = 15
+			}
+			regimental_support = {
+				fire_support = 5
 			}
 		}
 	}
@@ -686,6 +734,9 @@ infantry_generic = {
 			
 			regiments = {
 				infantry = 7
+			}
+			regimental_support = {
+				fire_support = 2
 			}
 		}
 	}
@@ -735,6 +786,9 @@ infantry_generic = {
 			regiments = {
 				infantry = 7
 			}
+			regimental_support = {
+				fire_support = 2
+			}
 		}
 	}
 
@@ -772,6 +826,9 @@ infantry_generic = {
 
 			regiments = {
 				infantry = 7
+			}
+			regimental_support = {
+				fire_support = 2
 			}
 		}
 	}
@@ -826,6 +883,9 @@ infantry_generic = {
 				infantry = 10
 				anti_tank_brigade = 1
 			}
+			regimental_support = {
+				fire_support = 3
+			}
 		}
 	}
 	infantry_mech_mob = {
@@ -851,6 +911,9 @@ infantry_generic = {
 			regiments = {
 				mechanized = 11
 				mot_anti_tank_brigade = 1
+			}
+			regimental_support = {
+				mot_fire_support = 3
 			}
 		}
 	}
@@ -912,6 +975,9 @@ mountaineers_generic = {
 			regiments = {
 				mountaineers = 18
 			}
+			regimental_support = {
+                fire_support = 5
+			}
 		}
 		
 	}
@@ -934,6 +1000,9 @@ mountaineers_generic = {
 			
 			regiments = {
 				mountaineers = 6
+			}
+			regimental_support = {
+				fire_support = 2
 			}
 		}
 	}
@@ -990,6 +1059,9 @@ marines_generic = {
 			regiments = {
 				marine = 18
 			}
+			regimental_support = {
+				fire_support = 5
+			}
 		}
 
 	}
@@ -1028,6 +1100,9 @@ marines_generic = {
 				mechanized = 2
 				mot_anti_tank_brigade = 1
 			}
+			regimental_support = {
+				fire_support = 5
+			}
 		}
 	}
 	marine_amtrac = {
@@ -1057,6 +1132,9 @@ marines_generic = {
 				mechanized = 7
 				mot_anti_tank_brigade = 1
 				mot_anti_air_brigade = 1
+			}
+			regimental_support = {
+				mot_fire_support = 5
 			}
 		}
 	}

@@ -45,6 +45,9 @@ infantry_CHI = {
 			regiments = {
 				infantry = 8
 			}
+			regimental_support = {
+				fire_support = 2
+			}
 		
 			support = {
 				anti_air = 1
@@ -79,6 +82,9 @@ infantry_CHI = {
 			regiments = {
 				infantry = 5
 			}
+			regimental_support = {
+				fire_support = 1
+			}
 		
 			support = {
 				rangers_support = 1
@@ -106,6 +112,9 @@ infantry_CHI = {
 		target_template = {
 			regiments = {
 				infantry = 8
+			}
+			regimental_support = {
+				fire_support = 2
 			}
 		
 			support = {
@@ -142,6 +151,9 @@ infantry_CHI = {
 			regiments = {
 				infantry = 5
 			}
+			regimental_support = {
+				fire_support = 1
+			}
 		}
 	}
 
@@ -171,6 +183,9 @@ infantry_CHI = {
 			regiments = {
 				infantry = 22
 			}
+			regimental_support = {
+                fire_support = 5
+			}
 		}
 	}
 
@@ -194,6 +209,9 @@ infantry_CHI = {
 			
 			regiments = {
 				infantry = 15
+			}
+			regimental_support = {
+				fire_support = 5
 			}
 		}
 	}

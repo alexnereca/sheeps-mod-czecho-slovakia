@@ -58,6 +58,10 @@ armored_ITA = {
 				mot_anti_air_brigade = 1
 				camelry = 8
 			}
+			regimental_support = {
+				fire_support = 2
+				medium_tank_destroyer_support = 3
+			}
 		}
 	}
 }
@@ -103,6 +107,9 @@ garrison_ITA = {
 			regiments = {
 				infantry = 9
 			}
+			regimental_support = {
+				fire_support = 3
+			}
 		}
 	}
 
@@ -138,6 +145,9 @@ garrison_ITA = {
 			
 			regiments = {
 				infantry = 4
+			}
+			regimental_support = {
+				fire_support = 1
 			}
 		}
 	}
@@ -180,6 +190,9 @@ infantry_ITA = {
 			regiments = {
 				infantry = 10
 				anti_tank_brigade = 1
+			}
+			regimental_support = {
+				fire_support = 3
 			}
 		}
 	}
@@ -226,6 +239,9 @@ mountaineers_ITA = {
 				mountaineers = 16
 				anti_tank_brigade = 2
 			}
+			regimental_support = {
+				fire_support = 5
+			}
 		}
 	}
 }
@@ -266,6 +282,9 @@ marines_ITA = {
 			
 			regiments = {
 				marine = 9
+			}
+			regimental_support = {
+				fire_support = 3
 			}
 		}
 	}
@@ -310,6 +329,9 @@ paratroopers_ITA = {
 			regiments = {
 				paratrooper= 5 
 			}
+			regimental_support = {
+				fire_support = 1
+			}
 		}
 	}
 }
@@ -343,6 +365,9 @@ militia_ITA = {
 			
 			regiments = {
 				militia = 12
+			}
+			regimental_support = {
+				fire_support = 4
 			}
 		}
 	}

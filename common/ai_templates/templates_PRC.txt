@@ -31,6 +31,9 @@ infantry_PRC = {
 			regiments = {
 				militia = 6
 			}
+			regimental_support = {
+				fire_support = 2
+			}
 		}
 
 		replace_at_match = 0.5

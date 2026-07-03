@@ -29,6 +29,9 @@ infantry_RAJ = {
 				infantry = 9
 				artillery_brigade = 1
 			}
+			regimental_support = {
+				fire_support = 3
+			}
 		
 			support = {
 				artillery = 1
@@ -55,6 +58,9 @@ infantry_RAJ = {
 				artillery_brigade = 3
 				anti_tank_brigade = 1
 				anti_air_brigade = 1
+			}
+			regimental_support = {
+				fire_support = 5
 			}
 		
 			support = {
@@ -101,6 +107,9 @@ mountaineers_RAJ = {
 			
 			regiments = {
 				mountaineers = 10
+			}
+			regimental_support = {
+				fire_support = 3
 			}
 		}
 	}

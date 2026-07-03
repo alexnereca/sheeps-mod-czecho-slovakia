@@ -32,6 +32,9 @@ infantry_BEL = {
 				infantry = 8
 				anti_tank_brigade = 3
 			}
+			regimental_support = {
+				fire_support = 2
+			}
 		}
 	}
 }
@@ -63,6 +66,9 @@ mountaineers_BEL = {
 			regiments = {
 				mountaineers = 8
 				anti_tank_brigade = 3
+			}
+			regimental_support = {
+				fire_support = 2
 			}
 		}
 	}

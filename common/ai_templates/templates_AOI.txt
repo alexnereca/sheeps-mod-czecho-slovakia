@@ -27,6 +27,9 @@ infantry_AOI = {
 			regiments = {
 				irregular_infantry = 7
 			}
+			regimental_support = {
+				fire_support = 2
+			}
 		
 			support = {
 				artillery = 1
@@ -52,6 +55,9 @@ infantry_AOI = {
 		target_template = {
 			regiments = {
 				irregular_infantry = 7
+			}
+			regimental_support = {
+				fire_support = 2
 			}
 		
 			support = {
@@ -80,7 +86,10 @@ infantry_AOI = {
 			regiments = {
 				irregular_infantry = 22
 			}
-		
+			regimental_support = {
+                fire_support = 5
+			}
+
 			support = {
 				anti_air = 1
 				artillery = 1
@@ -134,6 +143,9 @@ mountaineers_AOI = {
 			regiments = {
 				mountaineers = 7
 			}
+			regimental_support = {
+				fire_support = 2
+			}
 		}
 	}
 
@@ -157,6 +169,9 @@ mountaineers_AOI = {
 			
 			regiments = {
 				mountaineers = 18
+			}
+			regimental_support = {
+				fire_support = 5
 			}
 		}
 	}
