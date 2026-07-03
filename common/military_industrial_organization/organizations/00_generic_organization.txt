@@ -433,72 +433,6 @@ generic_infantry_tank_organization = {
 	}
 
 	trait = {
-		token = generic_mio_trait_single_engine
-		name = generic_mio_trait_single_engine
-		icon = GFX_generic_mio_trait_icon_breakthrough
-
-		position = { x=0 y=0 }
-
-		mutually_exclusive = { generic_mio_trait_dual_engine_redundancy }
-		
-		equipment_bonus = {
-			breakthrough = 0.05
-		}
-	}
-
-
-
-	trait = {
-		token = generic_mio_trait_dual_engine_redundancy
-		name = generic_mio_trait_dual_engine_redundancy
-		icon = GFX_generic_mio_trait_icon_reliability
-
-		position = { x=2 y=0 }
-
-		mutually_exclusive = { generic_mio_trait_single_engine }
-		
-		equipment_bonus = {
-			reliability = 0.05
-		}
-
-
-	}
-
-	trait = {
-		token = generic_mio_trait_interleaved_track_wheels
-		name = generic_mio_trait_interleaved_track_wheels
-		icon = GFX_generic_mio_trait_icon_maximum_speed
-
-		position = { x=0 y=2 }
-		relative_position_id = generic_mio_trait_single_engine
-
-		any_parent = { generic_mio_trait_single_engine generic_mio_trait_dual_engine_redundancy }
-
-		mutually_exclusive = { generic_mio_trait_overlapped_track_wheels }
-
-		equipment_bonus = {
-			maximum_speed = 0.05
-		}
-	}
-
-	trait = {
-		token = generic_mio_trait_overlapped_track_wheels
-		name = generic_mio_trait_overlapped_track_wheels
-		icon = GFX_generic_mio_trait_icon_defense
-		
-		position = { x=0 y=2 }
-		relative_position_id = generic_mio_trait_dual_engine_redundancy
-		
-		any_parent = { generic_mio_trait_single_engine generic_mio_trait_dual_engine_redundancy }
-
-		mutually_exclusive = { generic_mio_trait_interleaved_track_wheels }
-
-		equipment_bonus = {
-			defense = 0.05
-		}
-	}
-
-	trait = {
 		token = generic_mio_trait_battle_tank_specifications
 		name = generic_mio_trait_battle_tank_specifications
 		icon = GFX_generic_mio_department_icon_tank_general_armor
@@ -508,21 +442,6 @@ generic_infantry_tank_organization = {
 		equipment_bonus = {
 			armor_value = 0.03
 			defense = 0.03
-		}
-	}
-
-	trait = {
-		token = generic_mio_trait_adaptable_turret_ring
-		name = generic_mio_trait_adaptable_turret_ring
-		icon = GFX_generic_mio_trait_icon_hard_attack
-		
-		position = { x=-3 y=1 }
-		relative_position_id = generic_mio_trait_battle_tank_specifications
-		
-		any_parent = { generic_mio_trait_battle_tank_specifications }
-
-		ai_will_do = {
-			base = 50
 		}
 	}
 
@@ -732,7 +651,7 @@ generic_infantry_tank_organization = {
 		}
 
 		ai_will_do = {
-			base = 1
+			base = 50
 		}
 	}
 
