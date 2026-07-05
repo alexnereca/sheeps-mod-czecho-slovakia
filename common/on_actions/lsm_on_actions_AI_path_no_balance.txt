@@ -1706,48 +1706,48 @@ on_actions = {
 							15 = { PER = { set_country_flag = PER_AI_RANDOM_FASCISM } }
 						}
 					}
-				}	
-			}
-
-			PHI = {
-				IF = {
-					limit = {
-						OR = {
-							AND = {
-								is_historical_focus_on = no
-								has_game_rule = {
-									rule = PHI_AI_BEHAVIOR
-									option = DEFAULT
-								}
-							}
-							has_game_rule = {
-								rule = PHI_AI_BEHAVIOR
-								option = RANDOM
-							}
-						}
-					}
-					random_list = {
-						40 = {
-							PHI = { set_country_flag = PHI_AI_RANDOM_HISTORICAL }
-						}
-						15 = {
-							PHI = { set_country_flag = PHI_AI_RANDOM_FASCIST }
-						}
-						10 = {
-							PHI = { set_country_flag = PHI_AI_RANDOM_MONARCHIST }
-						}
-						25 = {
-							PHI = { set_country_flag = PHI_AI_RANDOM_COMMUNIST }
-						}
-						15 = {
-							PHI = { set_country_flag = PHI_AI_RANDOM_FLEXIBLE }
-						}
-						05 = {
-							PHI = { set_country_flag = PHI_AI_RANDOM_MACARTHUR }
-						}
-					}
 				}
-			}	
+
+			    PHI = {
+			    	IF = {
+			    		limit = {
+			    			OR = {
+			    				AND = {
+			    					is_historical_focus_on = no
+			    					has_game_rule = {
+			    						rule = PHI_AI_BEHAVIOR
+			    						option = DEFAULT
+			    					}
+			    				}
+			    				has_game_rule = {
+			    					rule = PHI_AI_BEHAVIOR
+			    					option = RANDOM
+			    				}
+			    			}
+			    		}
+			    		random_list = {
+			    			40 = {
+			    				PHI = { set_country_flag = PHI_AI_RANDOM_HISTORICAL }
+			    			}
+			    			15 = {
+			    				PHI = { set_country_flag = PHI_AI_RANDOM_FASCIST }
+			    			}
+			    			10 = {
+			    				PHI = { set_country_flag = PHI_AI_RANDOM_MONARCHIST }
+			    			}
+			    			25 = {
+			    				PHI = { set_country_flag = PHI_AI_RANDOM_COMMUNIST }
+			    			}
+			    			15 = {
+			    				PHI = { set_country_flag = PHI_AI_RANDOM_FLEXIBLE }
+			    			}
+			    			05 = {
+			    				PHI = { set_country_flag = PHI_AI_RANDOM_MACARTHUR }
+			    			}
+			    		}
+			    	}
+			    }
+			}
 		}
 	}
 }
