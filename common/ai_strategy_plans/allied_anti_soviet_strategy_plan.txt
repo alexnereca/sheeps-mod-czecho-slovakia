@@ -1,4 +1,4 @@
-ENG_historical_plan = {
+ENG_historical_plan_sov_early_war = {
 	name = "United Kingdom historical plan"
 	desc = "Historical behavior for United Kingdom"
 

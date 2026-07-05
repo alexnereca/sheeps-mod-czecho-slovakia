@@ -35,7 +35,7 @@ NZL_alternate_democratic = {
 		#1937									
 		NZL_taranaki_oil											
 		NZL_bureau_of_industry										
-		NZL_industrial_conscription									
+		#NZL_industrial_conscription
 		NZL_department_of_scientific_and_industrial_research		
 		NZL_transfer_the_new_zealand_division						
 		#1938										
@@ -141,7 +141,7 @@ NZL_alternate_fascist = {
 		#1937									
 		NZL_taranaki_oil											
 		NZL_bureau_of_industry										
-		NZL_industrial_conscription									
+		#NZL_industrial_conscription
 		NZL_department_of_scientific_and_industrial_research		
 		NZL_transfer_the_new_zealand_division						
 		#1938										
@@ -248,7 +248,7 @@ NZL_alternate_communist = {
 		#1937									
 		NZL_taranaki_oil											
 		NZL_bureau_of_industry										
-		NZL_industrial_conscription									
+		#NZL_industrial_conscription
 		NZL_department_of_scientific_and_industrial_research		
 		NZL_transfer_the_new_zealand_division						
 		#1938										

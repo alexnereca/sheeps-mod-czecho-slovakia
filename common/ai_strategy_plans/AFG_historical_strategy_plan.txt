@@ -253,7 +253,7 @@ AFG_historical_plan_2 = {
 	}
 
 }
-AFG_historical_plan_2 = {
+AFG_historical_plan_3 = {
 	name = "Afghanistan Historical Plan"
 	desc = ""
 

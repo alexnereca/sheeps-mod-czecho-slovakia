@@ -36,7 +36,7 @@ NZL_historical = {
 		NZL_bureau_of_industry
 
 		NZL_department_of_scientific_and_industrial_research
-		NZL_industrial_conscription
+		#NZL_industrial_conscription
 		NZL_army_reforms
 		NZL_charlton_automatic_rifle
 		NZL_domestic_arms_industry
