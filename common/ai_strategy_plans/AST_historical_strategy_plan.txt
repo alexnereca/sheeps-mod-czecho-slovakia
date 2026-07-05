@@ -100,8 +100,8 @@ AST_historical = {
 
 	allowed = {
 		original_tag = AST
-		has_dlc = "Together for Victory"
-	}	
+    	NOT = {	has_dlc = "Thunder at Our Gates" }
+	}
 	enable = {
 		has_dlc = "No Step Back"
 		OR = {
@@ -216,8 +216,8 @@ AST_historical_2 = {
 
 	allowed = {
 		original_tag = AST
-		has_dlc = "Together for Victory"
-	}	
+    	NOT = {	has_dlc = "Thunder at Our Gates" }
+	}
 	enable = {
 		NOT = { has_dlc = "No Step Back" }
 		OR = {

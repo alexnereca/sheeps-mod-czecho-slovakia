@@ -4,6 +4,9 @@ HOL_colonial_alternate_democratic_plan = {
 
 	allowed = {
 		original_tag = HOL
+		NOT = {
+			has_dlc = "Thunder at Our Gates"
+		}
 	}
 	enable = {
 		OR = {
@@ -99,6 +102,9 @@ HOL_continental_alternate_democratic_plan = {
 
 	allowed = {
 		original_tag = HOL
+		NOT = {
+			has_dlc = "Thunder at Our Gates"
+		}
 	}
 	enable = {
 		OR = {
@@ -184,6 +190,9 @@ HOL_lead_the_minor_democracies_democratic_plan = {
 
 	allowed = {
 		original_tag = HOL
+		NOT = {
+			has_dlc = "Thunder at Our Gates"
+		}
 	}
 	enable = {
 		OR = {
@@ -278,6 +287,9 @@ HOL_alternate_communist_plan = {
 
 	allowed = {
 		original_tag = HOL
+		NOT = {
+			has_dlc = "Thunder at Our Gates"
+		}
 	}
 	enable = {
 		OR = {
@@ -379,6 +391,9 @@ HOL_alternate_fascist_plan = {
 
 	allowed = {
 		original_tag = HOL
+		NOT = {
+			has_dlc = "Thunder at Our Gates"
+		}
 	}
 	enable = {
 		OR = {
@@ -476,6 +491,9 @@ HOL_alternate_monarchist_plan_first_step = {
 
 	allowed = {
 		original_tag = HOL
+		NOT = {
+			has_dlc = "Thunder at Our Gates"
+		}
 	}
 	enable = {
 		OR = {
@@ -549,6 +567,9 @@ HOL_alternate_monarchist_plan_second_step_a = {
 
 	allowed = {
 		original_tag = HOL
+		NOT = {
+			has_dlc = "Thunder at Our Gates"
+		}
 	}
 	enable = {
 		has_completed_focus = HOL_prepare_the_inundation_lines
@@ -618,6 +639,9 @@ HOL_alternate_monarchist_plan_second_step_b = {
 
 	allowed = {
 		original_tag = HOL
+		NOT = {
+			has_dlc = "Thunder at Our Gates"
+		}
 	}
 	enable = {
 		has_completed_focus = HOL_prepare_the_inundation_lines
@@ -689,6 +713,9 @@ HOL_alternate_monarchist_plan_third_step = {
 
 	allowed = {
 		original_tag = HOL
+		NOT = {
+			has_dlc = "Thunder at Our Gates"
+		}
 	}
 	enable = {
 		has_completed_focus = HOL_prepare_the_inundation_lines

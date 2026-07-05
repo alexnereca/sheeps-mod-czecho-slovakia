@@ -281,8 +281,9 @@ AST_alternate_democratic = {
 
 	allowed = {
 		original_tag = AST
-		has_dlc = "Together for Victory"
+    	NOT = {	has_dlc = "Thunder at Our Gates" }
 	}
+
 	enable = {
 		OR = {
 			has_country_flag = AST_AI_RANDOM_DEMOCRATIC_ALTERNATE 
@@ -403,7 +404,7 @@ AST_alternate_fascist = {
 
 	allowed = {
 		original_tag = AST
-		has_dlc = "Together for Victory"
+    	NOT = {	has_dlc = "Thunder at Our Gates" }
 	}
 	enable = {
 		OR = {
@@ -539,7 +540,7 @@ AST_alternate_communist = {
 
 	allowed = {
 		original_tag = AST
-		has_dlc = "Together for Victory"
+    	NOT = {	has_dlc = "Thunder at Our Gates" }
 	}
 	enable = {
 		OR = {

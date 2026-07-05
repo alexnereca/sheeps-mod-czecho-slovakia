@@ -29,7 +29,9 @@ NZL_historical = {
 
 	ai_national_focuses = {		
 		NZL_expand_the_nzpaf					
-		NZL_national_roads_board									
+		NZL_ministry_of_public_works
+		NZL_national_roads_board
+		NZL_restart_the_onekaka_ironworks
 		NZL_new_zealand_steel										
 		NZL_wairarapa_sheep_farms
 		NZL_taranaki_oil
