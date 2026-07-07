@@ -4,6 +4,9 @@ HOL_historical_plan = {
 
 	allowed = {
 		original_tag = HOL
+		NOT = {
+        	has_dlc = "Thunder at Our Gates"
+        }
 	}
 	enable = {
 		OR = {

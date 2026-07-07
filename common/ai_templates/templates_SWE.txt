@@ -24,6 +24,9 @@ armor_SWE = {
 				armored_car = 11
 				motorized = 7
 			}
+			regimental_support = {
+				mot_fire_support = 5
+			}
 		
 			support = {
 				artillery = 1
@@ -62,6 +65,9 @@ infantry_SWE = {
 				artillery_brigade = 4
 				anti_air_brigade = 1
 				anti_tank_brigade = 1
+			}
+			regimental_support = {
+				fire_support = 3
 			}
 		
 			support = {

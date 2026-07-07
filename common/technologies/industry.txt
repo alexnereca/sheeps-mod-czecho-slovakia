@@ -4,7 +4,6 @@ technologies = {
 	
 		production_factory_max_efficiency_factor = 0.1
 		equipment_conversion_speed = 0.2
-
 		
 		path = {
 			leads_to_tech = improved_machine_tools 
@@ -18,11 +17,6 @@ technologies = {
 
 		path = {
 			leads_to_tech = dispersed_industry
-			research_cost_coeff = 1
-		}
-
-		path = {
-			leads_to_tech = coal_refining
 			research_cost_coeff = 1
 		}
 		
@@ -130,7 +124,6 @@ technologies = {
 					}
 				}
 			}
-
 		}
 		
 		categories = {
@@ -359,7 +352,7 @@ technologies = {
 				}
 				date < 1942.5.1
 			}	
-			
+
 		}
 		
 		categories = {
@@ -368,9 +361,8 @@ technologies = {
 		}
 	}
 
-	#Conversion branch - Enabled in DoD
+	#Conversion branch - Enabled in DoD - Repurposed for Coal Energy Gain in NCNS - To be replaced in future
 	improved_equipment_conversion = {
-	
 		energy_gain_factor = 0.15
 		#equipment_conversion_speed = 0.40
 
@@ -405,13 +397,11 @@ technologies = {
 			industry
 			cat_production
 			construction_tech
-			excavation_tech	
+			excavation_tech
 		}
 	}
 	
 	advanced_equipment_conversion = {
-		
-		
 		energy_gain_factor = 0.15
 		#equipment_conversion_speed = 0.40
 
@@ -430,7 +420,7 @@ technologies = {
 				factor = 2
 				date > "1937.1.1"
 			}
-
+			
 			modifier = {
 				factor = 0
 				NOT = { has_government = fascism }
@@ -488,7 +478,7 @@ technologies = {
 					}
 				}
 			}
-
+			
 			modifier = {
 				factor = 0
 				is_ai_tech_slave = yes
@@ -719,7 +709,7 @@ technologies = {
 		
 		ai_will_do = {
 			factor = 250
-			
+
 			modifier = {
 				factor = 0
 				tag = AST
@@ -738,11 +728,12 @@ technologies = {
 					}
 				}
 			}
-
+			
 			modifier = {
 				factor = 500
 				date > "1936.5.1"
 			}
+
 			modifier = {
 				factor = 0
 				is_ai_tech_slave = yes
@@ -1487,7 +1478,7 @@ technologies = {
 				tag = SOV
 				not_ready_for_tier_4_tech = yes
 				factor = 0
-			}				
+			}
 		}		
 	}
 	
@@ -1524,6 +1515,7 @@ technologies = {
 			# FIN effect from focus Tire Factory at Nokia
 			if = {
 				limit = {
+				#TODO: is the dlc really needed? the has_dlc is missing in normal files.
 					has_dlc = "Arms Against Tyranny"
 					tag = FIN
 					has_completed_focus = FIN_tire_factory_at_nokia
@@ -1584,7 +1576,7 @@ technologies = {
 				    	category = industry
 				}
 				date < 1937.5.1
-			}			
+			}
 		}
 		
 		ai_research_weights = {
@@ -1648,7 +1640,7 @@ technologies = {
 			modifier = {
 				factor = 0.5
 				oil > 30
-			}	
+			}			
 			modifier = {
 				tag = SOV
 				date < "1943.1.1" #bro we don't even use tanks
@@ -1922,7 +1914,7 @@ technologies = {
 			modifier = {
 				factor = 0.5
 				rubber > 30
-			}
+			}			
 			modifier = {
 				has_built = { 
   					type = synthetic_refinery
@@ -2026,7 +2018,7 @@ technologies = {
   					value = 20 
 				}
 				factor = resource_imported@rubber
-			}			
+			}
 			modifier = {
 				tag = SOV
 				date > "1943.1.1" #we have built refineries 
@@ -2234,7 +2226,8 @@ technologies = {
 	
 	construction1 = {
 		
-		production_speed_buildings_factor = 0.10
+		production_speed_buildings_factor = 0.1
+		#production_speed_buildings_powered_factor = 0.05 
 		industry_repair_factor = 0.10
 
 		path = {
@@ -2265,7 +2258,7 @@ technologies = {
 				tag = LUX
 				has_war = no
 			}
-			
+
 			modifier = {
 				factor = 5
 				date > "1937.1.1"
@@ -2447,7 +2440,8 @@ technologies = {
 	
 	construction2 = {
 
-		production_speed_buildings_factor = 0.10
+		production_speed_buildings_factor = 0.1
+		#production_speed_buildings_powered_factor = 0.075 
 		industry_repair_factor = 0.10
 		
 		path = {
@@ -2557,7 +2551,7 @@ technologies = {
 		
 		local_resources_factor = 0.10
 		local_resources_coal_factor = 0.05
-		
+
 		path = {
 			research_cost_coeff = 1
 		}
@@ -2570,6 +2564,7 @@ technologies = {
 			construction_tech
 			excavation_tech
 		}
+
 		
 		folder = {
 			name = industry_folder
@@ -2684,9 +2679,9 @@ technologies = {
 	
 	construction3 = {
 
-		production_speed_buildings_factor = 0.10
+		production_speed_buildings_factor = 0.1
+		#production_speed_buildings_powered_factor = 0.075
 		industry_repair_factor = 0.10
-		
 		path = {
 			leads_to_tech = construction4 
 			research_cost_coeff = 1
@@ -2758,7 +2753,7 @@ technologies = {
 				tag = SOV
 				date > 1938.1.1
 			}	
-			
+
 			modifier = {
 				tag = SOV
 				not_ready_for_tier_5_tech = yes
@@ -2799,7 +2794,7 @@ technologies = {
 		
 		local_resources_factor = 0.10
 		local_resources_coal_factor = 0.05
-		
+
 		path = {
 			research_cost_coeff = 1
 		}
@@ -2934,7 +2929,8 @@ technologies = {
 	
 	construction4 = {
 
-		production_speed_buildings_factor = 0.10
+		production_speed_buildings_factor = 0.1
+		#production_speed_buildings_powered_factor = 0.1 
 		industry_repair_factor = 0.10
 
 		on_research_complete = {
@@ -3028,7 +3024,7 @@ technologies = {
 		
 		local_resources_factor = 0.10
 		local_resources_coal_factor = 0.05
-		
+
 		path = {
 			research_cost_coeff = 1
 		}
@@ -3149,7 +3145,8 @@ technologies = {
 	
 	construction5 = {
 
-		production_speed_buildings_factor = 0.10
+		production_speed_buildings_factor = 0.1
+		#production_speed_buildings_powered_factor = 0.1
 		industry_repair_factor = 0.10
 		
 		path = {
@@ -3225,7 +3222,7 @@ technologies = {
 		
 		local_resources_factor = 0.10
 		local_resources_coal_factor = 0.05
-		
+
 		path = {
 			research_cost_coeff = 1
 		}
@@ -3340,5 +3337,5 @@ technologies = {
 				}
 			}
 		}
-	}			
+	}	
 }

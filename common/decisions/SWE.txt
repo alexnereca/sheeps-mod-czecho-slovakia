@@ -1286,6 +1286,7 @@ SWE_politics = {
 			}
 
 			SWE = {
+
 				drop_cosmetic_tag = yes
 				set_cosmetic_tag = ENE
 
@@ -2280,7 +2281,7 @@ SWE_military_matters = {
 				 	}
 				 	add_to_temp_variable = { PREV.supply_level = 8 }
 				}
-		 			 	log = "[?supply_level]"
+		 		
 				if = {
 					limit = {
 						naval_base > 0
@@ -2521,11 +2522,11 @@ SWE_ball_bearings_cat = {
 			}
 		}
 		days_re_enable = 50
-	    target_trigger = {
+	   target_trigger = {
 	    	FROM = {
 	    		is_major = yes
 	    		NOT = { 
-	    			has_war_with = ROOT 
+	    			has_war_with = ROOT
 	    			OR = {
 	    				has_idea = SWE_ball_bearing_idea
 	    				has_idea = SWE_ball_bearing_idea_food_partner
@@ -2533,9 +2534,9 @@ SWE_ball_bearings_cat = {
 	    			}
 	    		}
         	}
-	    }
+	   }
 
-	    ai_will_do = {
+	   ai_will_do = {
 	    	base = 10
 
 	    	modifier = {
@@ -2578,7 +2579,7 @@ SWE_ball_bearings_cat = {
 	    		set_variable = { PREV.ball_bearing_country_target = THIS }
 	    	}
 	    	country_event = { id = AAT_Sweden_ball_bearing.1 }
-	    } 
+	   } 
 	}
 
 	SWE_revoke_food_trade = {
@@ -3094,7 +3095,7 @@ SWE_appeal_for_support_cat = {
 
 		ai_will_do = {
 			base = 20
-		}	
+		}
 	}
 
 	SWE_implement_rural_reforms = {
@@ -3180,7 +3181,7 @@ SWE_appeal_for_support_cat = {
 
 		ai_will_do = {
 			base = 20
-		}	
+		}
 	}
 
 }

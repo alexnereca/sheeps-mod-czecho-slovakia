@@ -176,8 +176,6 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_MANPOWER FOCUS_FILTER_MILITARY_CHARACTER FOCUS_FILTER_ARMY_XP }
 
 		completion_reward = {
-			#TODO_Manu: Finnish (haha) effects for CW: character re-arrangement, remove some templates when CW over
-
 			hidden_effect = {
 				# SWAP ADVISOR TRAITS TO HIDE TOOLTIP ABOUT DECISIONS
 				FIN_yrjo_leino = {
@@ -2187,8 +2185,6 @@ focus_tree = {
 		search_filters = {}
 
 		completion_reward = {
-			#TODO_Manu: Possibly unlocks decision to form the Finnish Democratic Republic.
-
 			SOV = {
 				add_ai_strategy = {
 					type = befriend
@@ -5156,7 +5152,6 @@ focus_tree = {
 		cost = 10
 
 		allow_branch = {
-			has_dlc = "Arms Against Tyranny"
 			has_completed_focus = FIN_a_new_course_for_kokoomus
 			OR = {
 				has_country_leader = {
@@ -6856,9 +6851,8 @@ focus_tree = {
 				NOT = { country_exists = EST }
 				is_in_faction_with = EST
 				has_subject = EST
-				any_state = {
+				any_controlled_state = {
 					is_core_of = EST
-					is_controlled_by = ROOT
 				}
 			}
 			OR = {
@@ -8047,7 +8041,7 @@ focus_tree = {
 				}
 
 				#JAPANESE TANKS
-				if = {
+				IF = {
 					limit = {
 						is_in_faction_with = JAP
 					}
@@ -10525,7 +10519,7 @@ focus_tree = {
 			}
 
 			custom_effect_tooltip = generic_skip_one_line_tt
-			
+
 			148 = {
 				add_building_construction = {
 					type = dam
@@ -10542,7 +10536,7 @@ focus_tree = {
 			}
 
 			custom_effect_tooltip = generic_skip_one_line_tt
-		 
+
 			929 = {
 				add_building_construction = {
 					type = dam
@@ -11375,8 +11369,6 @@ focus_tree = {
 			add_to_variable = { FIN_finnish_army_winter_attrition_factor = -0.15 tooltip = winter_attrition_factor_tt }
 
 			army_experience = 15
-
-			#TODO_Manu: Nice to have: Simo Häyä event chain starting here?
 		}
 	}
 	
@@ -14493,10 +14485,25 @@ focus_tree = {
 				}
 				add_doctrine_cost_reduction = {
 					name = FIN_marine_jaeger_divisions
-					cost_reduction = 0.75
+					cost_reduction = 0.5
 					uses = 2
-					category = cat_marines_doctrine
+					category = special_forces_doctrine
 				}
+				custom_effect_tooltip = marine_subdoctrines_default_add_mastery_bonus_effect_tooltip
+				hidden_effect = {
+					add_mastery_bonus = {
+						name = FIN_marine_jaeger_divisions
+						bonus = 0.1
+						days = 240
+						sub_doctrine = marines_1
+					}
+					add_mastery_bonus = {
+						name = FIN_marine_jaeger_divisions
+						bonus = 0.1
+						days = 240
+						sub_doctrine = marines_2
+					}
+				}						
 			}
 			
 			add_tech_bonus = {

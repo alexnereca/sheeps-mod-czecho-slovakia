@@ -178,7 +178,6 @@ ideas = {
 				fascism_drift = 0.08
 			}
 		}
-
 		idea_RAJ_bhoodan_movement = {
 			picture = SOV_third_five_year_plan_civilian
 			allowed = {
@@ -412,7 +411,7 @@ ideas = {
 				mic_to_overlord_factor = -1
 				extra_trade_to_overlord_factor = -1
 				ai_join_ally_desire_factor = -2000
-				
+
 			}
 
 			cancel = {
@@ -920,6 +919,42 @@ ideas = {
 			modifier = {
 				autonomy_gain = 0.1
 				consumer_goods_factor = -0.1
+			}
+		}
+
+		independent_rule_occupation_law_fake_idea = { #Used for tooltip purposes
+			name = independent_rule
+			removal_cost = -1
+				
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				resistance_target 				= -0.1
+				compliance_gain 				=  0.03
+				required_garrison_factor 		= -0.5
+				resistance_damage_to_garrison	= -0.5
+				local_resources 				= -0.35
+				local_factories 				= -0.35
+			}
+		}
+
+		princely_subjugation_occupation_law_fake_idea = { #Used for tooltip purposes
+			name = princely_subjugation
+			removal_cost = -1
+				
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				resistance_target 				= 0.60
+				compliance_gain 				= -0.10
+				required_garrison_factor 		= 0.15
+				resistance_damage_to_garrison 	= -0.10
+				local_factories 				= 0.60
+				local_resources 				= 0.60
 			}
 		}
 
@@ -1564,7 +1599,6 @@ ideas = {
 				industrial_capacity_factory = -0.15
 				industrial_capacity_dockyard = -0.15
 				stability_factor = -0.15
-				
 			}
 		}
 
@@ -1736,6 +1770,7 @@ ideas = {
 					category = cat_mass_assault
 				}
 			}
+				
 
 			on_remove = {
 				if = {
@@ -2150,6 +2185,7 @@ ideas = {
 					uses = 1
 					category = cat_mobile_warfare
 				}
+				
 			}
 
 			cancel = {
@@ -2188,13 +2224,15 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-
+				
 			on_add = {
 				add_doctrine_cost_reduction = {
 					cost_reduction = 0.1
 					uses = 1
 					category = ss_tech
 				}
+
+				
 			}
 			cancel = {
 				has_completed_focus = RAJ_give_me_blood_and_i_will_grant_you_freedom
@@ -2238,6 +2276,7 @@ ideas = {
 					uses = 1
 					category = cat_grand_battle_plan
 				}
+				
 			}
 
 			cancel = {
@@ -2301,7 +2340,6 @@ ideas = {
 				send_volunteer_size = 6
 				send_volunteers_tension = -1
 				embargo_threshold_factor = -5
-
 			}
 		}
 
@@ -2809,6 +2847,7 @@ ideas = {
 			}
 		}
 
+
 		### LOYALIST BRANCH ###
 
 		RAJ_high_import_duties = {
@@ -3149,13 +3188,12 @@ ideas = {
 				has_dlc = "Graveyard of Empires"
 			}
 
-
 			available = {
 				always = yes
 			}
 
 			visible = {
-				check_variable = { khadi_level = 0 }
+				check_variable = { global.khadi_level = 0 }
 			}
 
 			research_bonus = {
@@ -3181,7 +3219,7 @@ ideas = {
 			}
 
 			visible = {
-				check_variable = { khadi_level = 1 }
+				check_variable = { global.khadi_level = 1 }
 			}
 
 			equipment_bonus = {
@@ -3207,7 +3245,7 @@ ideas = {
 			}
 
 			visible = {
-				check_variable = { khadi_level = 2 }
+				check_variable = { global.khadi_level = 2 }
 			}
 
 			available = {
@@ -3241,7 +3279,7 @@ ideas = {
 			}
 
 			visible = {
-				check_variable = { khadi_level = 3 }
+				check_variable = { global.khadi_level = 3 }
 			}
 
 			available = {
@@ -3276,7 +3314,7 @@ ideas = {
 			}
 			name = RAJ_gun_and_shell_factory_cossipore
 			visible = {
-				check_variable = { RAJ.gun_and_shell_level = 0 }
+				check_variable = { global.gun_and_shell_level = 0 }
 			}
 			
 			research_bonus = {
@@ -3299,8 +3337,9 @@ ideas = {
 			}
 			
 			visible = {
-				check_variable = { RAJ.gun_and_shell_level = 1 }
+				check_variable = { global.gun_and_shell_level = 1 }
 			}
+			
 			equipment_bonus = {
 				artillery_equipment = {
 					soft_attack = 0.06
@@ -3332,8 +3371,9 @@ ideas = {
 
 
 			visible = {
-				check_variable = { RAJ.gun_and_shell_level = 2 }
+				check_variable = { global.gun_and_shell_level = 2 }
 			}
+			
 			equipment_bonus = {
 				artillery_equipment = {
 					soft_attack = 0.06
@@ -3368,8 +3408,9 @@ ideas = {
 
 
 			visible = {
-				check_variable = { RAJ.gun_and_shell_level = 3 }
+				check_variable = { global.gun_and_shell_level = 3 }
 			}
+			
 			equipment_bonus = {
 				artillery_equipment = {
 					soft_attack = 0.06
@@ -3398,7 +3439,6 @@ ideas = {
 			picture = raj_ordnance_factory_medak
 
 			allowed = {
-
 				has_dlc = "Graveyard of Empires" 
 				is_raj_or_raj_inheritor = yes
 			}

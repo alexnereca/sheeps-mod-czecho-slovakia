@@ -336,6 +336,7 @@ country_event = {
 		name = GOE_RAJ.10.a
 		ai_chance = {
 			base = 2.5
+
 		}
 		FROM = {
 			every_other_country = {
@@ -1175,7 +1176,6 @@ country_event = {
 				is_historical_focus_on = no
 				add = 1
 			}
-
 		}
 
 		if = {
@@ -1210,7 +1210,7 @@ country_event = {
 				NOT = { ENG = { has_completed_focus = ENG_concessions_to_the_trade_unions } }
 			}
 		}
-		was_raj_a_subject = yes
+		was_uk_dominion_a_subject = yes
 		add_ideas = idea_RAJ_the_long_goodbye
 		if = {
 			limit = {
@@ -1356,6 +1356,7 @@ country_event = {
 		ai_chance = {
 			base = 1
 		}
+
 
         ENG = { 
             country_event = { id = GOE_RAJ.16 hours = 2 } 
@@ -1649,8 +1650,7 @@ country_event = {
 	is_triggered_only = yes
 	title = GOE_RAJ.39.t
 	desc = GOE_RAJ.39.desc
-	picture = GFX_report_event_molotov_ribentrop_handshake
-	
+	picture = GFX_report_event_partition_of_india
 	option = {
 		name = GOE_RAJ.39.a
 		set_country_flag = RAJ_communist_unions_promised_worker_safety 
@@ -1686,7 +1686,7 @@ country_event = {
 	is_triggered_only = yes
 	title = GOE_RAJ.40.t
 	desc = GOE_RAJ.40.desc
-	picture = GFX_report_event_german_troops_paris
+	picture = GFX_report_event_generic_destroyed_vehicles
 	
 	option = {
 		name = GOE_RAJ.40.a
@@ -1702,7 +1702,7 @@ country_event = {
 	is_triggered_only = yes
 	title = GOE_RAJ.41.t
 	desc = GOE_RAJ.41.desc
-	picture = GFX_report_event_gre_city_siege
+	picture = GFX_report_event_indian_parade #GFX_report_event_gre_city_siege
 	
 	option = {
 		name = GOE_RAJ.41.a
@@ -1740,7 +1740,7 @@ country_event = {
 	is_triggered_only = yes
 	title = GOE_RAJ.42.t
 	desc = GOE_RAJ.42.desc
-	picture = GFX_report_event_bul_ff_troops_yugoslavia
+	picture = GFX_report_event_indian_soldiers #GFX_report_event_bul_ff_troops_yugoslavia
 	
 	option = {
 		name = GOE_RAJ.42.a
@@ -1756,7 +1756,7 @@ country_event = {
 	is_triggered_only = yes
 	title = GOE_RAJ.43.t
 	desc = GOE_RAJ.43.desc
-	picture = GFX_report_event_france_tank_production
+	picture = GFX_report_event_indian_parade
 	
 	option = {
 		name = GOE_RAJ.43.a
@@ -4210,6 +4210,7 @@ country_event = {
 	}
 }
 
+
 ###########################
 ##### LOYALIST BRANCH #####
 ###########################
@@ -5190,6 +5191,10 @@ country_event = {
 
 	}
 }
+
+
+
+
 
 ##########
 # FAMINE #
@@ -7903,5 +7908,30 @@ news_event = {
 
 	option = {
 		name = GOE_RAJ_news.3.a
+	}
+}
+
+# Hindustan United
+news_event = {
+	id = GOE_RAJ_news.4
+	title = GOE_RAJ_news.4.t
+	desc = GOE_RAJ_news.4.desc
+	picture = GFX_news_event_generic_parliament
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = GOE_RAJ_news.4.a
+		trigger = {
+			TAG = FROM
+		}
+	}
+	option = {
+		name = GOE_RAJ_news.4.b
+		trigger = { 
+			NOT = { TAG = FROM }
+		} 
 	}
 }

@@ -38,6 +38,9 @@ armored_CAN = {
 				amphibious_mechanized = 10
 				mechanized = 5
 			}
+			regimental_support = {
+				mot_fire_support = 5
+			}
 		}
 	}
 
@@ -62,6 +65,10 @@ armored_CAN = {
 			regiments = {
 				medium_armor = 4
 				mechanized = 5
+			}
+			regimental_support = {
+				mot_fire_support = 1
+				medium_tank_destroyer_support = 1
 			}
 		}
 	}
@@ -99,6 +106,9 @@ infantry_CAN = {
 			regiments = {
 				infantry = 9
 			}
+			regimental_support = {
+				fire_support = 3
+			}
 		}
 	}
 	infantry_mass_mob_CAN_2 = {
@@ -121,6 +131,9 @@ infantry_CAN = {
 			
 			regiments = {
 				mechanized = 9
+			}
+			regimental_support = {
+				mot_fire_support = 3
 			}
 		}
 	}
@@ -161,6 +174,9 @@ marines_CAN = {
 				mot_anti_tank_brigade = 1
 				amphibious_mechanized = 10
 				mechanized = 5
+			}
+			regimental_support = {
+				mot_fire_support = 5
 			}
 		}
 	}

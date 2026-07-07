@@ -82,10 +82,10 @@ RAJ_GOE_independence_movement = {
 			original_tag = RAJ
 			has_completed_focus = RAJ_promote_violence_against_the_british	
 		}
+		target_array = RAJ.owned_states_at_game_start
 		target_trigger = {			
 			FROM = {
 				has_resistance = yes
-				is_in_array = { RAJ.owned_states_at_game_start = THIS }
 				is_controlled_by = ROOT
 			}
 		}
@@ -179,12 +179,13 @@ RAJ_GOE_independence_movement = {
 			original_tag = RAJ
 			has_completed_focus = RAJ_protest_against_the_howell_monument	
 		}
+
+		target_array = RAJ.owned_states_at_game_start
+
 		target_trigger = {			
 			FROM = {
 				is_core_of = ROOT
-				is_in_array = { RAJ.owned_states_at_game_start = THIS }
 				is_controlled_by = ROOT
-
 			}
 		}
 		
@@ -340,7 +341,7 @@ RAJ_GOE_sikh_recruitment_cat = {
 				has_completed_focus = RAJ_punjab_autonomy
 				has_completed_focus = RAJ_the_punjab_accord
 			}
-			NOT = {
+			NOT = { 
 				has_dynamic_modifier = {
 				 	modifier = idea_RAJ_sikh_approval_2
 				} 
@@ -370,7 +371,7 @@ RAJ_GOE_sikh_recruitment_cat = {
 		remove_effect = {
 			if = {
 				limit = {
-					NOT = {has_template = "Sikh Division"}			   
+					NOT = {has_template = "Sikh Division"}
 				}
 				division_template = {
 					name = "Sikh Division"
@@ -875,6 +876,7 @@ political_actions = {
 				has_decision = RAJ_GOE_azad_hind_radio_fascism
 			}
 		}
+
 		cost = 25
 		days_remove = 120
 
@@ -927,6 +929,7 @@ political_actions = {
 				has_decision = RAJ_GOE_azad_hind_radio_unaligned
 			}
 		}
+
 		cost = 25
 		days_remove = 120
 
@@ -980,6 +983,7 @@ political_actions = {
 				has_decision = RAJ_GOE_azad_hind_radio_unaligned
 			}
 		}
+		
 		cost = 25
 		days_remove = 120
 
@@ -1106,6 +1110,7 @@ RAJ_akhand_bharat_cat = {
 			}
 			NOT = { has_dynamic_modifier = { modifier = idea_RAJ_famine_country } }
 		}
+
 		visible = {
 			BAN = {
 				any_core_state = {
@@ -1355,8 +1360,8 @@ RAJ_akhand_bharat_cat = {
 			SRL = { custom_effect_tooltip = RAJ_akhand_bharat_annex_subject }
 		}	
 	}
-	
-		RAJ_akhand_bharat_claim_princely = {
+
+	RAJ_akhand_bharat_claim_princely = {
 		icon = generic_civil_support
 		allowed = { 
 			is_raj_or_raj_inheritor = yes
@@ -1795,12 +1800,15 @@ RAJ_akhand_bharat_cat = {
 					}
 				}
 			}
+
 			all_of_scopes = {
 				array = RAJ.owned_states_at_game_start
 				is_fully_controlled_by = ROOT
 				is_core_of = ROOT
 			}
+
 		}
+
 		visible = {
 			always = yes
 		}
@@ -2115,6 +2123,8 @@ RAJ_GOE_partition_cat = {
 		    	}
     		}
 
+
+
     		hidden_effect = {
     			if = {
     				limit = {
@@ -2218,6 +2228,7 @@ RAJ_GOE_partition_cat = {
 
 	RAJ_GOE_cease_hostilities = {
 		priority = 30
+
 	    available = {
 	    	has_war_with = PAK
 	    	
@@ -2226,7 +2237,8 @@ RAJ_GOE_partition_cat = {
 	    	
 	    	NOT = { has_completed_focus = RAJ_india_united }
 	    	NOT = { has_global_flag = RAJ_GOE_partition_is_over }
-		}
+	    }
+
 	    cost = 0
 
 	    complete_effect = {
@@ -3263,8 +3275,10 @@ RAJ_GOE_mughal_independence_category = {
 				}
 				set_country_flag = RAJ_mughal_captured_states
 			}
-			
-						#SOUTHERN INDIA
+
+
+
+			#SOUTHERN INDIA
 			if = {
 				limit = {
 					429 = { is_controlled_by = RAJ } 
@@ -3285,9 +3299,10 @@ RAJ_GOE_mughal_independence_category = {
 				983 = { set_state_flag = RAJ_mughal_captured_states  }
 			}
 
-			#WESTERN INDIA
+			#CENTARL WESTERN INDIA
 			if = {
 				limit = {
+
 					433 = { is_controlled_by = RAJ }
 					428 = { is_controlled_by = RAJ }
 					437 = { is_controlled_by = RAJ }
@@ -3298,15 +3313,15 @@ RAJ_GOE_mughal_independence_category = {
 				428 = { set_state_flag = RAJ_mughal_captured_states } 
 				437 = { set_state_flag = RAJ_mughal_captured_states } 
 			}
+			#WESTERN INDIA
 			if = {
 				limit = {
 					443 = { is_controlled_by = RAJ } 
 					989 = { is_controlled_by = RAJ }
-
 				}
 
 				443 = { set_state_flag = RAJ_mughal_captured_states } 
-				989 = { set_state_flag = RAJ_mughal_captured_states }
+				989 = { set_state_flag = RAJ_mughal_captured_states } 
 			}
 
 			#EASTERN INDIA
@@ -3328,7 +3343,7 @@ RAJ_GOE_mughal_independence_category = {
 				434 = { set_state_flag = RAJ_mughal_captured_states } 
 			}
 
-			#NORTHERN INDIA
+			#NORTHERN CENTRAL INDIA
 			if = {
 				limit = {
 					440  = { is_controlled_by = RAJ }  
@@ -3338,8 +3353,9 @@ RAJ_GOE_mughal_independence_category = {
 
 				440 = { set_state_flag = RAJ_mughal_captured_states } 
 				986 = { set_state_flag = RAJ_mughal_captured_states } 
-				439 = { set_state_flag = RAJ_mughal_captured_states } 
+				439 = { set_state_flag = RAJ_mughal_captured_states }  
 			}
+
 			#NORTHEN INDIA
 			if = {
 				limit = {
@@ -3350,6 +3366,7 @@ RAJ_GOE_mughal_independence_category = {
 				441 = { set_state_flag = RAJ_mughal_captured_states } 
 				787 = { set_state_flag = RAJ_mughal_captured_states } 
 			}
+
 
 			#CENTRAL INDIA
 			if = {
@@ -3369,6 +3386,7 @@ RAJ_GOE_mughal_independence_category = {
 				435 = { set_state_flag = RAJ_mughal_captured_states } 
 				991 = { set_state_flag = RAJ_mughal_captured_states } 
 			}
+
 			RAJ = {
 				country_event = {
 					id = GOE_RAJ_mughals_peace_deal.1
@@ -3401,10 +3419,9 @@ RAJ_GOE_mughal_independence_category = {
 					}
 				}
 			}
-			
 		}
 	}
-	
+
 	RAJ_GOE_enforced_peace_decision_eng = {
 		icon = GFX_decision_revolt
 		allowed = {
@@ -3895,6 +3912,7 @@ political_actions = {
 	#}
 	
 }
+
 RAJ_GOE_communism_infiltration_cat = {
 	RAJ_communist_unions_promised_worker_safety_mission = {
 		icon = generic_civil_support
@@ -4269,6 +4287,7 @@ RAJ_GOE_communism_infiltration_cat = {
 		
 		cost = 30
 		fire_only_once = yes
+
 		complete_effect = {
 			set_country_flag = RAJ_has_met_with_kremlin
 			add_equipment_to_stockpile = { 
@@ -5306,11 +5325,11 @@ RAJ_peasant_uprisings_cat = {
 			}
 		}
 	}
-
-
-
 }
- 
+
+
+### LOYALIST BRANCH ###
+
 political_actions = {
 	RAJ_return_churchill = {
 		priority = 100

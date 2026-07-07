@@ -59,7 +59,7 @@ USA_chrysler_organization = {
 				tag = MEX 
 				has_dlc = "Man the Guns"
 			}
-			NOR_AAT = yes 
+			NOR_AAT = yes
 		}
 	}
 
@@ -174,7 +174,7 @@ USA_army_ordnance_department_organization = {
 		}
 	}
 
-	add_trait = { 
+	add_trait = {
 		token = USA_mio_trait_periscope_sights
 		name = USA_mio_trait_periscope_sights
 		icon = GFX_generic_mio_department_icon_tank_medium_tank_armor
@@ -624,7 +624,6 @@ USA_lockheed_organization = {
 	}
 	
 	equipment_type = {
-		mio_cat_eq_all_small_plane
 		mio_cat_eq_all_medium_plane 
 		transport_plane_equipment
 	}
@@ -720,7 +719,7 @@ USA_douglas_aircraft_company_organization = {
 		relative_position_id = generic_mio_trait_heavily_armed_aircraft
 
 		any_parent = { generic_mio_trait_air_brakes generic_mio_trait_wingborne_fuel_tanks }
-		any_parent = { generic_mio_trait_heavily_armed_aircraft }
+		any_parent = {generic_mio_trait_heavily_armed_aircraft }
 			
 		equipment_bonus = {
 			air_ground_attack = 0.1
@@ -757,7 +756,7 @@ USA_boeing_organization = {
 		relative_position_id = generic_mio_trait_flying_fortress
 		
 		any_parent = { generic_mio_trait_flying_fortress }
-		limit_to_equipment_type = { large_plane_airframe large_plane_maritime_patrol_plane_airframe }
+		limit_to_equipment_type = { mio_cat_eq_only_strategic_bomber large_plane_maritime_patrol_plane_airframe }
 			
 		equipment_bonus = {
 			air_defence = 0.1
@@ -782,7 +781,7 @@ USA_grumman_organization = {
 			FROM = { is_ai = no }
 		}
 	}
-	
+
 	add_trait = {
 		token = USA_mio_trait_smooth_finish
 		name = USA_mio_trait_smooth_finish
@@ -828,6 +827,7 @@ USA_grumman_organization = {
 		}
 	}
 }
+
 
 ################################### 
 
@@ -1005,13 +1005,218 @@ USA_rock_island_arsenal_organization = {
 			production_efficiency_gain_factor = 0.25
 		}
 	}
+
 }
+
 USA_sikorsky_organization = {
 	include = generic_helicopter_organization
 	icon = GFX_idea_generic_helicopter_1
 	
 	allowed = {	
 		original_tag = USA 
-		has_dlc = "Gotterdammerung"	
+		has_dlc = "Gotterdammerung"		
+	}
+}
+
+USA_baldwin_locomotive_works_organization = {
+	include = generic_train_organization
+	icon = GFX_idea_USA_blw
+	allowed = {
+		original_tag = USA
+	}
+
+	equipment_type = { train_equipment railway_gun_equipment support_equipment armor }
+	research_categories = { train_tech support_tech }
+
+	tree_header_text = {
+		text = mio_header_tank_production
+		x = 0.11
+	}
+
+	tree_header_text = {
+		text = mio_header_design_and_production
+		x = 5
+	}
+
+	tree_header_text = {
+		text = mio_header_support
+		x = 2
+	}
+
+	tree_header_text = {
+		text = mio_header_weapons
+		x = 8
+	}
+
+	initial_trait = {
+		name = generic_mio_initial_trait_generic_train_manufacturer
+		limit_to_equipment_type = { 
+			train_equipment 
+			#support_equipment
+		}
+
+		production_bonus = {
+			production_efficiency_cap_factor = 0.03
+		}
+
+		organization_modifier = {
+			military_industrial_organization_research_bonus = 0 #5%
+		}
+	}
+
+	override_trait = {
+		token = generic_mio_trait_material_improvements
+
+		position = { x=4 y=0 }
+	}
+
+	override_trait = {
+		token = generic_mio_trait_joint_stock_scheme
+
+		position = { x=6 y=0 }
+	}
+
+	
+	# override_trait = {
+	# 	token = generic_mio_trait_improved_wagon_design
+	#
+	# 	position = { x=-2 y=1 }
+	# 	relative_position_id = generic_mio_trait_improved_axle_fitting
+	# }
+
+	add_trait = {
+		token = generic_mio_trait_compulsory_tank_designer
+		name = generic_mio_trait_compulsory_tank_designer
+		icon = GFX_generic_mio_department_icon_tank_general_production
+		special_trait_background = yes
+
+		position = { x=0 y=0 }
+
+		visible = {
+			FROM = { 
+				original_tag = USA
+			}
+		}
+
+		available = {
+			FROM = {
+				has_completed_focus = USA_department_of_defense
+			}
+		}
+
+		limit_to_equipment_type = { armor }
+
+		equipment_bonus = {
+			maximum_speed = 0.05
+			reliability = -0.05
+			armor_value = 0.05
+		}
+
+		production_bonus = {
+			production_efficiency_gain_factor = 0.02
+		}
+	}
+
+	add_trait = {
+		token = generic_mio_trait_off_the_board_designs
+		name = generic_mio_trait_off_the_board_designs
+		icon = GFX_generic_mio_department_icon_tank_general_line_efficiency
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_compulsory_tank_designer
+
+		visible = {
+			FROM = { 
+				original_tag = USA
+			}
+		}
+
+		all_parents = { generic_mio_trait_compulsory_tank_designer }
+
+		limit_to_equipment_type = { armor }
+
+		production_bonus = {
+			production_capacity_factor = 0.03
+			production_efficiency_gain_factor = 0.03
+		}
+	}
+
+	add_trait = {
+		token = generic_mio_trait_armor_improvements
+		name = generic_mio_trait_armor_improvements
+		icon = GFX_generic_mio_department_icon_tank_general_armor
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_off_the_board_designs
+
+		visible = {
+			FROM = { 
+				original_tag = USA
+			}
+		}
+
+		all_parents = { generic_mio_trait_off_the_board_designs }
+
+		limit_to_equipment_type = { armor }
+
+		equipment_bonus = {
+			defense = 0.05
+			armor_value = 0.05
+		}
+	}
+
+	add_trait = {
+		token = generic_mio_trait_improved_tracks
+		name = generic_mio_trait_improved_tracks
+		icon = GFX_generic_mio_department_icon_tank_general_engine
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_armor_improvements
+
+		visible = {
+			FROM = { 
+				original_tag = USA
+			}
+		}
+
+		all_parents = { generic_mio_trait_armor_improvements }
+
+		limit_to_equipment_type = { armor }
+
+		equipment_bonus = {
+			maximum_speed = 0.05
+		}
+
+		production_bonus = {
+			production_capacity_factor = 0.02
+		}
+	}
+
+	add_trait = {
+		token = generic_mio_trait_additional_anti_aircraft_machine_guns
+		name =  generic_mio_trait_additional_anti_aircraft_machine_guns
+		icon = GFX_generic_mio_department_icon_tank_general_aa
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_improved_tracks
+
+		visible = {
+			FROM = { 
+				original_tag = USA
+			}
+		}
+
+		all_parents = { generic_mio_trait_improved_tracks }
+
+		limit_to_equipment_type = { armor }
+
+		equipment_bonus = {
+			defense = 0.05
+			air_attack = 0.10
+		}
 	}
 }

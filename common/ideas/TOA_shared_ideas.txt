@@ -1,7 +1,6 @@
 ideas = {
 	country = {
 
-
 		SMB_dreadnought_debt_fake_for_tooltip = { #The purpose of this NS is to display a generic name in the tooltip when used in the scripted effect SMB_dreadnought_debt_fake_for_tooltip
 			
 			allowed = {
@@ -253,7 +252,7 @@ ideas = {
 				always = yes
 			}
 
-			#picture = 
+			picture = generic_flexible_foreign_policy 
 
 			modifier = {
 				army_core_defence_factor = 0.05
@@ -331,7 +330,6 @@ ideas = {
 						}
 						remove_from_array = { global.monroe_doctrine_countries_to_destabilize = ROOT }
 						#log = "[THIS.GetName] (country) Was removed from standard Array"
-											
 					}
 
 					IF = {

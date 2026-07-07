@@ -219,7 +219,7 @@ technologies = {
 			tank_radio_2
 			lc_radio_2 #Module for Land Cruiser
 		}
-		
+
 		ai_will_do = {
 			factor = 1.5
 			
@@ -307,7 +307,7 @@ technologies = {
 			}
 			modifier = {
 				factor = 5
-				date > "1939.8.1"
+				date > "1942.3.1"
 			}
 			modifier = {
 				factor = 500
@@ -1265,7 +1265,7 @@ technologies = {
 				factor = 100
 				tag = USA
 			}
-			
+
 		}
 		
 		categories = {
@@ -1598,7 +1598,11 @@ technologies = {
 		motorized_rocket_brigade = {
 			soft_attack = 0.1
 		}
-		
+
+		rocket_battery = {
+			soft_attack = 0.1
+		}
+
 		research_cost = 1
 		start_year = 1943
 		

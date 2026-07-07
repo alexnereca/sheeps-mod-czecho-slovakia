@@ -10,7 +10,6 @@ equipments = {
 			#infantry #Removing inf type 
 			mechanized
 		}
-		year = 1936
 
 		upgrades = {
 			tank_reliability_upgrade

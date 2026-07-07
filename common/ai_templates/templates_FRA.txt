@@ -38,6 +38,10 @@ armored_FRA = {
 				heavy_tank_destroyer_brigade = 8
 				camelry = 7
 			}
+			regimental_support = {
+				fire_support = 2
+				medium_tank_destroyer_support = 2
+			}
 		}
 	}
 
@@ -75,6 +79,10 @@ armored_FRA = {
 				heavy_tank_destroyer_brigade = 8
 				mechanized = 7
 			}
+			regimental_support = {
+				mot_fire_support = 2
+				medium_tank_destroyer_support = 2
+			}
 		}
 	}
 
@@ -106,6 +114,10 @@ armored_FRA = {
 				heavy_tank_destroyer_brigade = 10
 				mechanized = 8
 			}
+			regimental_support = {
+				mot_fire_support = 2
+				medium_tank_destroyer_support = 3
+			}
 		}
 	}
 
@@ -136,6 +148,10 @@ armored_FRA = {
 				medium_armor = 9
 				camelry = 7
 			}
+			regimental_support = {
+				fire_support = 2
+				medium_tank_destroyer_support = 3
+			}
 		}
 	}
 
@@ -165,6 +181,10 @@ armored_FRA = {
 				heavy_tank_destroyer_brigade = 5
 				mechanized = 13
 			}
+			regimental_support = {
+				mot_fire_support = 4
+				medium_tank_destroyer_support = 1
+			}
 		}
 	}
 
@@ -190,6 +210,10 @@ armored_FRA = {
 			regiments = {
 				heavy_armor = 5
 				mechanized = 13
+			}
+			regimental_support = {
+				mot_fire_support = 4
+				medium_tank_destroyer_support = 1
 			}
 		}
 	}
@@ -233,6 +257,9 @@ infantry_FRA_ahistorical = {
 				infantry = 7
 				artillery_brigade = 1
 			}
+			regimental_support = {
+				fire_support = 2
+			}
 		}
 	}
 	infantry_2_FRA_ahist = {
@@ -261,6 +288,9 @@ infantry_FRA_ahistorical = {
 				infantry = 9
 				artillery_brigade = 2
 			}
+			regimental_support = {
+				fire_support = 3
+			}
 		}
 	}
 	infantry_3_FRA_ahist = {
@@ -285,6 +315,9 @@ infantry_FRA_ahistorical = {
 			regiments = {
 				infantry = 9
 				artillery_brigade = 3
+			}
+			regimental_support = {
+				fire_support = 3
 			}
 		}
 	}
@@ -328,6 +361,9 @@ infantry_FRA = {
 			regiments = {
 				infantry = 8
 			}
+			regimental_support = {
+				fire_support = 2
+			}
 		}
 	}
 
@@ -368,6 +404,9 @@ infantry_FRA = {
 				anti_tank_brigade = 1
 				anti_air_brigade = 1
 			}
+			regimental_support = {
+				fire_support = 5
+			}
 		}
 	}
 
@@ -396,6 +435,9 @@ infantry_FRA = {
 
 			regiments = {
 				infantry = 8
+			}
+			regimental_support = {
+				fire_support = 2
 			}
 		}
 	}
@@ -427,6 +469,9 @@ infantry_FRA = {
 			regiments = {
 				heavy_tank_destroyer_brigade = 1
 				infantry = 8
+			}
+			regimental_support = {
+				fire_support = 3
 			}
 		}
 	}
@@ -464,6 +509,10 @@ infantry_FRA = {
 				heavy_tank_destroyer_brigade = 5
 				infantry = 15
 			}
+			regimental_support = {
+				fire_support = 5
+				medium_tank_destroyer_support = 1
+			}
 		}
 	}
 }
@@ -499,6 +548,9 @@ garrison_FRA = {
 
 			regiments = {
 				infantry = 6
+			}
+			regimental_support = {
+				fire_support = 2
 			}
 		}
 	}

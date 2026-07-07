@@ -39,6 +39,10 @@ armor_ENG = {
 				medium_armor = 8
 				motorized = 8
 			}
+			regimental_support = {
+				mot_fire_support = 2
+                medium_tank_destroyer_support = 2
+			}
 		}
 	}
 
@@ -73,6 +77,10 @@ armor_ENG = {
 			regiments = {
 				medium_armor = 8
 				mechanized = 8
+			}
+			regimental_support = {
+				mot_fire_support = 2
+				medium_tank_destroyer_support = 2
 			}
 		}
 
@@ -109,6 +117,10 @@ armor_ENG = {
 				medium_tank_destroyer_brigade = 8
 				motorized = 8
 			}
+			regimental_support = {
+				mot_fire_support = 2
+				medium_tank_destroyer_support = 2
+			}
 		}
 	}
 	medium_armor_default_ENG_dlc_2 = {
@@ -139,6 +151,10 @@ armor_ENG = {
 			regiments = {
 				medium_tank_destroyer_brigade = 8
 				motorized = 8
+			}
+			regimental_support = {
+				mot_fire_support = 2
+				medium_tank_destroyer_support = 2
 			}
 		}
 	}
@@ -171,6 +187,10 @@ armor_ENG = {
 				medium_tank_destroyer_brigade = 8
 				motorized = 8
 			}
+			regimental_support = {
+				mot_fire_support = 2
+				medium_tank_destroyer_support = 2
+			}
 		}
 	}
 
@@ -202,6 +222,10 @@ armor_ENG = {
 			regiments = {
 				medium_tank_destroyer_brigade = 8
 				mechanized = 8
+			}
+			regimental_support = {
+				mot_fire_support = 2
+				medium_tank_destroyer_support = 2
 			}
 		}
 
@@ -252,6 +276,9 @@ infantry_ENG = {
 			regiments = {
 				infantry = 9
 			}
+			regimental_support = {
+				fire_support = 3
+			}
 		}
 	}
 
@@ -279,7 +306,10 @@ infantry_ENG = {
 			
 			regiments = {
 				infantry = 9
-				artilery_brigade = 2
+				artillery_brigade = 2
+			}
+			regimental_support = {
+				fire_support = 3
 			}
 		}
 	}
@@ -314,6 +344,9 @@ infantry_ENG = {
 				artillery_brigade = 2
 				anti_air_brigade = 1
 				anti_tank_brigade = 1
+			}
+			regimental_support = {
+				fire_support = 4
 			}
 		}
 	}
@@ -350,6 +383,9 @@ infantry_ENG = {
 				anti_air_brigade = 1
 				anti_tank_brigade = 1
 			}
+			regimental_support = {
+				fire_support = 4
+			}
 		}
 	}
 
@@ -380,6 +416,9 @@ infantry_ENG = {
 				artillery_brigade = 2
 				anti_air_brigade = 1
 				anti_tank_brigade = 1
+			}
+			regimental_support = {
+				fire_support = 4
 			}
 		}
 	}
@@ -427,6 +466,10 @@ mountaineers_ENG = {
 				amphibious_mechanized = 13
 				medium_tank_destroyer_brigade = 5
 			}
+			regimental_support = {
+				mot_fire_support = 4
+				medium_tank_destroyer_support = 1
+			}
 		}
 	}
 	mountaineers_has_ranger_ENG = {
@@ -455,6 +498,10 @@ mountaineers_ENG = {
 				amphibious_mechanized = 13
 				medium_tank_destroyer_brigade = 5
 			}
+			regimental_support = {
+				mot_fire_support = 4
+				medium_tank_destroyer_support = 1
+			}
 		}
 	}
 	mountaineers_has_pioneer_ENG = {
@@ -482,6 +529,10 @@ mountaineers_ENG = {
 			regiments = {
 				amphibious_mechanized = 13
 				medium_tank_destroyer_brigade = 5
+			}
+			regimental_support = {
+				mot_fire_support = 4
+				medium_tank_destroyer_support = 1
 			}
 		}
 	}
@@ -513,6 +564,10 @@ mountaineers_ENG = {
 				amphibious_mechanized = 13
 				medium_tank_destroyer_brigade = 5
 			}
+			regimental_support = {
+				mot_fire_support = 4
+				medium_tank_destroyer_support = 1
+			}
 		}
 	}
 	mountaineers_default_USA_no_dlc = {
@@ -538,6 +593,10 @@ mountaineers_ENG = {
 			regiments = {
 				heavy_armor = 5
 				amphibious_mechanized = 13
+			}
+			regimental_support = {
+				mot_fire_support = 4
+				medium_tank_destroyer_support = 1
 			}
 		}
 	}
@@ -578,6 +637,10 @@ marines_ENG = {
 				marine = 10
 				mountaineers = 5
 			}
+			regimental_support = {
+				fire_support = 4
+				medium_tank_destroyer_support = 1
+			}
 		}
 	}
 	marine_full_tech_no_flame_ENG = {
@@ -605,6 +668,10 @@ marines_ENG = {
 				medium_tank_destroyer_brigade = 3
 				marine = 10
 				mountaineers = 5
+			}
+			regimental_support = {
+				fire_support = 4
+				medium_tank_destroyer_support = 1
 			}
 		}
 	}
@@ -634,6 +701,10 @@ marines_ENG = {
 				marine = 10
 				mountaineers = 5
 			}
+			regimental_support = {
+				fire_support = 4
+				medium_tank_destroyer_support = 1
+			}
 		}
 	}
 	marine_default_USA_no_dlc = {
@@ -660,6 +731,10 @@ marines_ENG = {
 				medium_armor = 3
 				marine = 10
 				mountaineers = 5
+			}
+			regimental_support = {
+				fire_support = 4
+				medium_tank_destroyer_support = 1
 			}
 		}
 	}
@@ -701,6 +776,10 @@ paratrooper_ENG = {
 				marine = 10
 				mountaineers = 5
 			}
+			regimental_support = {
+				fire_support = 4
+				medium_tank_destroyer_support = 1
+			}
 		}
 	}
 	para_role_full_tech_ENG = {
@@ -729,6 +808,10 @@ paratrooper_ENG = {
 				marine = 10
 				mountaineers = 5
 			}
+			regimental_support = {
+				fire_support = 4
+				medium_tank_destroyer_support = 1
+			}
 		}
 	}	
 	para_default_USA_no_dlc = {
@@ -755,6 +838,10 @@ paratrooper_ENG = {
 				heavy_armor = 3
 				marine = 10
 				mountaineers = 5
+			}
+			regimental_support = {
+				fire_support = 4
+				medium_tank_destroyer_support = 1
 			}
 		}
 	}
@@ -795,6 +882,9 @@ garrison_ENG = {
 			
 			regiments = {
 				infantry = 8
+			}
+			regimental_support = {
+				fire_support = 2
 			}
 		}
 	}

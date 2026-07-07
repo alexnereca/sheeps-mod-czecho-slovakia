@@ -33,6 +33,9 @@ infantry_tungsten_nation_ahist = {
 				infantry = 6
 				artillery_brigade = 2
 			}
+			regimental_support = {
+				fire_support = 2
+			}
 		
 			support = {
 				artillery = 1
@@ -55,6 +58,9 @@ infantry_tungsten_nation_ahist = {
 			regiments = {
 				infantry = 8
 				artillery_brigade = 3
+			}
+			regimental_support = {
+				fire_support = 3
 			}
 		
 			support = {

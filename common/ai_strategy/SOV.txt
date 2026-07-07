@@ -1523,12 +1523,19 @@ dont_give_a_fuck_about_sinkiang = {
 		original_tag = SOV
 	}
 	enable = {
-		has_completed_focus = SOV_two_red_flags
-		country_exists = PRC
-		SIK = { is_ai = yes }
+	OR = {
+	    AND = {
+		    has_completed_focus = SOV_two_red_flags
+		    country_exists = PRC
+		    SIK = { is_ai = yes }
+		}
+		# Don't get in a two front war against JAP while preparing to defend against operation Barbarossa
+		SIK = { has_war_with = JAP }
+		}
 	}
 	abort = {
 		NOT = { country_exists = PRC }
+		NOT = { SIK = { has_war_with = JAP } }
 	}
 
 	ai_strategy = {

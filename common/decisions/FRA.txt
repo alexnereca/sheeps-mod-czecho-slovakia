@@ -1588,7 +1588,6 @@ economy_decisions = {
 					set_mio_name_key = SNCASO
 					add_mio_size = 1
 					add_mio_funds_gain_factor = 0.05
-					
 				}
 				hidden_effect = {
 					mio:FRA_levasseur_organization = {
@@ -2123,6 +2122,10 @@ FRA_intervention_in_overseas_territories = {
 								state = 286
 								state = 741
 								state = 1017
+								state = 1066 
+								state = 1067 
+								state = 1068 
+								state = 1069 
 							}
 						}
 						add_compliance = 5
@@ -2171,6 +2174,10 @@ FRA_intervention_in_overseas_territories = {
 					state = 286
 					state = 741
 					state = 1017
+					state = 1066 
+					state = 1067 
+					state = 1068 
+					state = 1069 
 				}
 				CONTROLLER = {
 					NOT = {
@@ -2199,6 +2206,10 @@ FRA_intervention_in_overseas_territories = {
 						state = 286
 						state = 741
 						state = 1017
+						state = 1066 
+						state = 1067 
+						state = 1068 
+						state = 1069 
 					}
 					not = { is_controlled_by = ROOT }
 					CONTROLLER = {
@@ -2591,7 +2602,7 @@ FRA_intervention_in_overseas_territories = {
 		fire_only_once = yes
 		cost = 25
 		ai_will_do = {
-			factor = 3
+			factor = 4
 		}
 	}
 	FRA_prepare_coup_in_west_africa = {
@@ -2624,14 +2635,14 @@ FRA_intervention_in_overseas_territories = {
 			}
 			any_state = {
 				OR = {
-						state = 557
-						state = 272
-						state = 556
-						state = 780
-						state = 779
-						state = 778
-						state = 781
-						state = 776
+					state = 557
+					state = 272
+					state = 556
+					state = 780
+					state = 779
+					state = 778
+					state = 781
+					state = 776
 				}
 				CONTROLLER = {
 					NOT = { has_war_with = ROOT }
@@ -2911,7 +2922,7 @@ FRA_decolonization = {
 			671 = { is_controlled_by = ROOT }
 			670 = { is_controlled_by = ROOT }
 			286 = { is_controlled_by = ROOT }
-			741 = { is_controlled_by = ROOT }		
+			741 = { is_controlled_by = ROOT }	
 			1017 = { is_controlled_by = ROOT }	
 		}
 

@@ -1,4 +1,8 @@
+
+# The Narvik Crisis
 ENG_narvik_crisis_cat = {
+
+	# Launch Plan R4
 	ENG_narvik_crisis = {
 		icon = generic_operation
 		available = {
@@ -102,6 +106,7 @@ ENG_narvik_crisis_cat = {
 		}
 	}
 
+	# Sabotage the Swedish Mines
 	ENG_narvik_crisis_blow_up_mines = {
 		icon = generic_operation
 		available = {
@@ -179,7 +184,8 @@ ENG_narvik_crisis_cat = {
 		}
 	}
 
-	ENG_explode_the_swedish_iron_ore_mine = { # warning for Canada
+	# Plan R4 
+	ENG_explode_the_swedish_iron_ore_mine = { 
 
 		icon = eng_support_imperialist_coup
 		
@@ -219,9 +225,10 @@ ENG_narvik_crisis_cat = {
 	}
 }
 
-
+# Organize the Blackshirts
 ENG_organize_the_blackshirts = {
 
+	# Urge Restraint
 	ENG_urge_restraint = {
 
 		icon = eng_propaganda_campaigns
@@ -254,6 +261,7 @@ ENG_organize_the_blackshirts = {
 		}
 	}
 
+	# Blackshirt March In Northern Ireland
 	ENG_blackshirt_march_in_northern_ireland = {
 
 		icon = eng_blackshirt_march
@@ -264,7 +272,7 @@ ENG_organize_the_blackshirts = {
 		}
 
 		highlight_states = {
-			highlight_state_targets = { state = 119 } 
+ 			highlight_state_targets = { state = 119 } 
 		}
 
 		on_map_mode = map_only
@@ -330,6 +338,7 @@ ENG_organize_the_blackshirts = {
 		}
 	}
 
+	# Blackshirt March in the Highlands
 	ENG_blackshirt_march_in_the_highlands = {
 
 		icon = eng_blackshirt_march
@@ -406,6 +415,7 @@ ENG_organize_the_blackshirts = {
 		}
 	}
 
+	# Blackshirt March on the Isle of Man
 	ENG_blackshirt_march_on_the_isle_of_man = {
 
 		icon = eng_blackshirt_march
@@ -482,6 +492,7 @@ ENG_organize_the_blackshirts = {
 		}
 	}
 
+	# Blackshirt March in Aberdeenshire
 	ENG_blackshirt_march_in_aberdeenshire = {
 
 		icon = eng_blackshirt_march
@@ -492,8 +503,8 @@ ENG_organize_the_blackshirts = {
 		}
 
 		highlight_states = {
- highlight_state_targets = { state = 136 } 
-}
+ 			highlight_state_targets = { state = 136 }
+		}
 
 		on_map_mode = map_only
 
@@ -558,6 +569,7 @@ ENG_organize_the_blackshirts = {
 		}
 	}
 
+	# Blackshirt March in Cumbria
 	ENG_blackshirt_march_in_cumbria = {
 
 		icon = eng_blackshirt_march
@@ -634,6 +646,7 @@ ENG_organize_the_blackshirts = {
 		}
 	}
 
+	# Blackshirt March in Lanark
 	ENG_blackshirt_march_in_lanark = {
 
 		icon = eng_blackshirt_march
@@ -644,8 +657,8 @@ ENG_organize_the_blackshirts = {
 		}
 
 		highlight_states = {
- highlight_state_targets = { state = 133 } 
-}
+ 			highlight_state_targets = { state = 133 }
+		}
 
 		on_map_mode = map_only
 
@@ -710,6 +723,7 @@ ENG_organize_the_blackshirts = {
 		}
 	}
 
+	# Blackshirt March in Lothian
 	ENG_blackshirt_march_in_lothian = {
 
 		icon = eng_blackshirt_march
@@ -720,8 +734,8 @@ ENG_organize_the_blackshirts = {
 		}
 
 		highlight_states = {
- highlight_state_targets = { state = 121 } 
-}
+ 			highlight_state_targets = { state = 121 }
+		}
 
 		on_map_mode = map_only
 
@@ -786,6 +800,7 @@ ENG_organize_the_blackshirts = {
 		}
 	}
 
+	# Blackshirt March in Northumberland
 	ENG_blackshirt_march_in_northern_england = {
 
 		icon = eng_blackshirt_march
@@ -862,6 +877,7 @@ ENG_organize_the_blackshirts = {
 		}
 	}
 
+	# Blackshirt March in Yorkshire
 	ENG_blackshirt_march_in_yorkshire = {
 
 		icon = eng_blackshirt_march
@@ -872,8 +888,8 @@ ENG_organize_the_blackshirts = {
 		}
 
 		highlight_states = {
- highlight_state_targets = { state = 130 } 
-}
+ 			highlight_state_targets = { state = 130 }
+		}
 
 		on_map_mode = map_only
 
@@ -934,6 +950,7 @@ ENG_organize_the_blackshirts = {
 		}
 	}
 
+	# Blackshirt March in Lancashire
 	ENG_blackshirt_march_in_lancashire = {
 
 		icon = eng_blackshirt_march
@@ -944,8 +961,8 @@ ENG_organize_the_blackshirts = {
 		}
 
 		highlight_states = {
- highlight_state_targets = { state = 132 } 
-}
+ 			highlight_state_targets = { state = 132 }
+		}
 
 		on_map_mode = map_only
 
@@ -1006,6 +1023,7 @@ ENG_organize_the_blackshirts = {
 		}
 	}
 
+	# Blackshirt March in Wales
 	ENG_blackshirt_march_in_wales = {
 
 		icon = eng_blackshirt_march
@@ -1016,8 +1034,8 @@ ENG_organize_the_blackshirts = {
 		}
 
 		highlight_states = {
- highlight_state_targets = { state = 122 } 
-}
+ 			highlight_state_targets = { state = 122 } 
+		}
 
 		on_map_mode = map_only
 
@@ -1082,6 +1100,7 @@ ENG_organize_the_blackshirts = {
 		}
 	}
 
+	# Blackshirt March in West Midlands
 	ENG_blackshirt_march_in_west_midlands = {
 
 		icon = eng_blackshirt_march
@@ -1092,8 +1111,8 @@ ENG_organize_the_blackshirts = {
 		}
 
 		highlight_states = {
- highlight_state_targets = { state = 128 } 
-}
+ 			highlight_state_targets = { state = 128 } 
+		}
 
 		on_map_mode = map_only
 
@@ -1154,6 +1173,7 @@ ENG_organize_the_blackshirts = {
 		}
 	}
 
+	# Blackshirt March in East Midlands 
 	ENG_blackshirt_march_in_east_midlands = {
 
 		icon = eng_blackshirt_march
@@ -1164,8 +1184,8 @@ ENG_organize_the_blackshirts = {
 		}
 
 		highlight_states = {
- highlight_state_targets = { state = 129 } 
-}
+ 			highlight_state_targets = { state = 129 } 
+		}
 
 		on_map_mode = map_only
 
@@ -1230,6 +1250,7 @@ ENG_organize_the_blackshirts = {
 		}
 	}
 
+	# Blackshirt March in East Anglia
 	ENG_blackshirt_march_in_east_anglia = {
 
 		icon = eng_blackshirt_march
@@ -1240,8 +1261,8 @@ ENG_organize_the_blackshirts = {
 		}
 
 		highlight_states = {
- highlight_state_targets = { state = 125 } 
-}
+ 			highlight_state_targets = { state = 125 } 
+		}
 
 		on_map_mode = map_only
 
@@ -1306,6 +1327,7 @@ ENG_organize_the_blackshirts = {
 		}
 	}
 
+	# Blackshirt March in Gloucestershire
 	ENG_blackshirt_march_in_gloucestershire = {
 
 		icon = eng_blackshirt_march
@@ -1316,8 +1338,8 @@ ENG_organize_the_blackshirts = {
 		}
 
 		highlight_states = {
- highlight_state_targets = { state = 338 } 
-}
+ 			highlight_state_targets = { state = 338 } 
+		}
 
 		on_map_mode = map_only
 
@@ -1382,6 +1404,7 @@ ENG_organize_the_blackshirts = {
 		}
 	}
 
+	# Blackshirt March in London
 	ENG_blackshirt_march_in_london = {
 
 		icon = eng_blackshirt_march
@@ -1392,8 +1415,8 @@ ENG_organize_the_blackshirts = {
 		}
 
 		highlight_states = {
- highlight_state_targets = { state = 126 } 
-}
+ 			highlight_state_targets = { state = 126 } 
+		}
 
 		on_map_mode = map_only
 
@@ -1465,6 +1488,7 @@ ENG_organize_the_blackshirts = {
 		}
 	}
 
+	# Blackshirt March in Cornwall
 	ENG_blackshirt_march_in_cornwall = {
 
 		icon = eng_blackshirt_march
@@ -1475,8 +1499,8 @@ ENG_organize_the_blackshirts = {
 		}
 
 		highlight_states = {
- highlight_state_targets = { state = 123 } 
-}
+ 			highlight_state_targets = { state = 123 } 
+		}
 
 		on_map_mode = map_only
 
@@ -1546,6 +1570,7 @@ ENG_organize_the_blackshirts = {
 		}
 	}
 
+	# Blackshirt March in Sussex
 	ENG_blackshirt_march_in_sussex = {
 
 		icon = eng_blackshirt_march
@@ -1556,8 +1581,8 @@ ENG_organize_the_blackshirts = {
 		}
 
 		highlight_states = {
- highlight_state_targets = { state = 127 } 
-}
+ 			highlight_state_targets = { state = 127 } 
+		}
 
 		on_map_mode = map_only
 
@@ -1622,6 +1647,7 @@ ENG_organize_the_blackshirts = {
 		}
 	}
 
+	# March on Downing Street
 	ENG_march_on_downing_street = {
 
 		icon = eng_blackshirt_march
@@ -1649,6 +1675,7 @@ ENG_organize_the_blackshirts = {
 		}
 	}
 
+	# Reconciliatory Speech
 	ENG_reconciliatory_speech = {
 
 		icon = eng_blackshirt_march
@@ -1704,6 +1731,7 @@ ENG_organize_the_blackshirts = {
 		}
 	}
 
+	# Hold Anti-German Speech
 	ENG_speech_against_germany = {
 
 		icon = eng_blackshirt_speech
@@ -1819,6 +1847,7 @@ ENG_organize_the_blackshirts = {
 		}
 	}
 
+	# Enact The Mosley Plan
 	ENG_the_mosley_plan = {
 
 		icon = generic_construction
@@ -1853,7 +1882,6 @@ ENG_organize_the_blackshirts = {
 	}
 
 }
-
 
 # Home Defense
 ENG_homeland_defense_decision_cat = {
@@ -2304,8 +2332,10 @@ ENG_homeland_defense_decision_cat = {
 
 }
 
+# Appeal to Imperial Loyalists
 ENG_appeal_to_imperial_loyalists = {
 	
+	# Foment Canadian Imperialist Uprising
 	ENG_support_imperialist_coup_in_canada = {
 
 		icon = eng_support_imperialist_coup
@@ -2409,6 +2439,7 @@ ENG_appeal_to_imperial_loyalists = {
 		}
 	}
 
+	# Imperialist Uprising Imminent
 	ENG_support_imperialist_coup_in_canada_mission_1 = { # warning for Canada
 
 		icon = eng_support_imperialist_coup
@@ -2426,8 +2457,10 @@ ENG_appeal_to_imperial_loyalists = {
 		}
 
 		visible = {
-			tag = CAN
-			ENG = { has_country_flag = ENG_prepare_coup_in_CAN }
+			hidden_trigger = {
+				tag = CAN
+				ENG = { has_country_flag = ENG_prepare_coup_in_CAN }
+			}
 		}
 
 		cancel_if_not_visible = yes
@@ -2478,6 +2511,7 @@ ENG_appeal_to_imperial_loyalists = {
 		}
 	}
 
+	# Suppress the Imperialist Uprising
 	ENG_suppress_imperialist_coup_in_canada = {
 
 		icon = eng_support_imperialist_coup
@@ -2506,11 +2540,13 @@ ENG_appeal_to_imperial_loyalists = {
 		fire_only_once = no
 
 		visible = {
-			OR = {
-				ENG = { has_country_flag = ENG_prepare_coup_in_CAN }
-				has_country_flag = CAN_suppressing_coup
+			hidden_trigger = {
+				OR = {
+					ENG = { has_country_flag = ENG_prepare_coup_in_CAN }
+					has_country_flag = CAN_suppressing_coup
+				}
+				NOT = { has_country_flag = ENG_prepare_coup_in_CAN_reset_flag }
 			}
-			NOT = { has_country_flag = ENG_prepare_coup_in_CAN_reset_flag }
 		}
 
 		cancel_if_not_visible = yes
@@ -2540,6 +2576,7 @@ ENG_appeal_to_imperial_loyalists = {
 		}
 	}
 
+	# Canadian Uprising Suppressed
 	ENG_support_imperialist_coup_in_canada_mission_2 = { # warning for Britain
 
 		icon = eng_support_imperialist_coup
@@ -2577,6 +2614,7 @@ ENG_appeal_to_imperial_loyalists = {
 		}
 	}
 
+	# Renew Support for Canadian Uprising
 	ENG_renew_support_for_imperialist_coup_in_canada = {
 
 		icon = eng_support_imperialist_coup
@@ -2801,8 +2839,10 @@ ENG_appeal_to_imperial_loyalists = {
 		}
 
 		visible = {
-			tag = SAF
-			ENG = { has_country_flag = ENG_prepare_coup_in_SAF }
+			hidden_trigger = {
+				tag = SAF
+				ENG = { has_country_flag = ENG_prepare_coup_in_SAF }
+			}
 		}
 
 		cancel_if_not_visible = yes
@@ -2881,11 +2921,13 @@ ENG_appeal_to_imperial_loyalists = {
 		fire_only_once = no
 
 		visible = {
-			OR = {
-				FROM = { has_country_flag = ENG_prepare_coup_in_SAF }
-				has_country_flag = SAF_suppressing_coup
+			hidden_trigger = {
+				OR = {
+					FROM = { has_country_flag = ENG_prepare_coup_in_SAF }
+					has_country_flag = SAF_suppressing_coup
+				}
+				NOT = { has_country_flag = ENG_prepare_coup_in_SAF_reset_flag }
 			}
-			NOT = { has_country_flag = ENG_prepare_coup_in_SAF_reset_flag }
 		}
 
 		cancel_if_not_visible = yes
@@ -3190,8 +3232,10 @@ ENG_appeal_to_imperial_loyalists = {
 		}
 
 		visible = {
-			tag = AST
-			ENG = { has_country_flag = ENG_prepare_coup_in_AST }
+			hidden_trigger = {
+				tag = AST
+				ENG = { has_country_flag = ENG_prepare_coup_in_AST }
+			}
 		}
 
 		cancel_if_not_visible = yes
@@ -3216,14 +3260,22 @@ ENG_appeal_to_imperial_loyalists = {
 					}
 					add_opinion_modifier = { target = ENG modifier = ENG_imperial_loyalist }
 					set_cosmetic_tag = ENG_imperialist_australia
-					create_country_leader = {
-						name = "William Birdwood"
-						desc = "POLITICS_WILLIAM_BIRDWOOD_DESC"
-						picture = GFX_portrait_William_Birdwood
-						expire = "1965.1.1"
-						ideology = centrism
-						traits = {
-							
+					IF = {
+						limit = {
+							has_dlc = "Thunder at Our Gates"
+						}
+						#This will recruit default centrism leader, A. Hore-Ruthven
+					}
+					ELSE = {
+						create_country_leader = {
+							name = "William Birdwood"
+							desc = "POLITICS_WILLIAM_BIRDWOOD_DESC"
+							picture = GFX_portrait_William_Birdwood
+							expire = "1965.1.1"
+							ideology = centrism
+							traits = {
+
+							}
 						}
 					}
 				}
@@ -3280,11 +3332,13 @@ ENG_appeal_to_imperial_loyalists = {
 		fire_only_once = no
 
 		visible = {
-			OR = {
-				FROM = { has_country_flag = ENG_prepare_coup_in_AST }
-				has_country_flag = AST_suppressing_coup
+			hidden_trigger = {
+				OR = {
+					FROM = { has_country_flag = ENG_prepare_coup_in_AST }
+					has_country_flag = AST_suppressing_coup
+				}
+				NOT = { has_country_flag = ENG_prepare_coup_in_AST_reset_flag }
 			}
-			NOT = { has_country_flag = ENG_prepare_coup_in_AST_reset_flag }
 		}
 
 		cancel_if_not_visible = yes
@@ -3603,8 +3657,10 @@ ENG_appeal_to_imperial_loyalists = {
 		}
 
 		visible = {
-			tag = NZL
-			ENG = { has_country_flag = ENG_prepare_coup_in_NZL }
+			hidden_trigger = {
+				tag = NZL
+				ENG = { has_country_flag = ENG_prepare_coup_in_NZL }
+			}
 		}
 
 		cancel_if_not_visible = yes
@@ -3683,11 +3739,13 @@ ENG_appeal_to_imperial_loyalists = {
 		fire_only_once = no
 
 		visible = {
-			OR = {
-				FROM = { has_country_flag = ENG_prepare_coup_in_NZL }
-				has_country_flag = NZL_suppressing_coup
+			hidden_trigger = {
+				OR = {
+					FROM = { has_country_flag = ENG_prepare_coup_in_NZL }
+					has_country_flag = NZL_suppressing_coup
+				}
+				NOT = { has_country_flag = ENG_prepare_coup_in_NZL_reset_flag }
 			}
-			NOT = { has_country_flag = ENG_prepare_coup_in_NZL_reset_flag }
 		}
 
 		cancel_if_not_visible = yes
@@ -5808,44 +5866,53 @@ ENG_concessions_to_the_trade_unions = {
 
 		activation = {
 			tag = ENG
-			OR = {
-				has_country_flag = ENG_trade_unions_demand_minister_appointment_1
-				has_country_flag = ENG_trade_unions_demand_minister_appointment_2
-				has_country_flag = ENG_trade_unions_demand_minister_appointment_3
-				has_country_flag = ENG_trade_unions_demand_minister_appointment_4
-				has_country_flag = ENG_trade_unions_demand_minister_appointment_5
-				has_country_flag = ENG_trade_unions_demand_minister_appointment_6
-				has_country_flag = ENG_trade_unions_demand_minister_appointment_7
-				has_country_flag = ENG_trade_unions_demand_minister_appointment_8
-				has_country_flag = ENG_trade_unions_demand_minister_appointment_9
-				has_country_flag = ENG_trade_unions_demand_minister_appointment_10
-				has_country_flag = ENG_trade_unions_demand_minister_appointment_11
-				has_country_flag = ENG_trade_unions_demand_minister_appointment_12
-				has_country_flag = ENG_trade_unions_demand_minister_appointment_13
-				has_country_flag = ENG_trade_unions_demand_minister_appointment_14
-				has_country_flag = ENG_trade_unions_demand_minister_appointment_15
+
+			custom_trigger_tooltip = {
+				tooltip = ENG_trade_unions_demand_minister_appointment_1
+				OR = {
+					has_country_flag = ENG_trade_unions_demand_minister_appointment_1
+					has_country_flag = ENG_trade_unions_demand_minister_appointment_2
+					has_country_flag = ENG_trade_unions_demand_minister_appointment_3
+					has_country_flag = ENG_trade_unions_demand_minister_appointment_4
+					has_country_flag = ENG_trade_unions_demand_minister_appointment_5
+					has_country_flag = ENG_trade_unions_demand_minister_appointment_6
+					has_country_flag = ENG_trade_unions_demand_minister_appointment_7
+					has_country_flag = ENG_trade_unions_demand_minister_appointment_8
+					has_country_flag = ENG_trade_unions_demand_minister_appointment_9
+					has_country_flag = ENG_trade_unions_demand_minister_appointment_10
+					has_country_flag = ENG_trade_unions_demand_minister_appointment_11
+					has_country_flag = ENG_trade_unions_demand_minister_appointment_12
+					has_country_flag = ENG_trade_unions_demand_minister_appointment_13
+					has_country_flag = ENG_trade_unions_demand_minister_appointment_14
+					has_country_flag = ENG_trade_unions_demand_minister_appointment_15
+				}
 			}
+			
+			
 			NOT = { has_country_flag = ENG_trade_unions_demand_minister_appointment }
 		}
 
 		visible = {
 			tag = ENG
-			OR = {
-				has_country_flag = ENG_trade_unions_demand_minister_appointment_1
-				has_country_flag = ENG_trade_unions_demand_minister_appointment_2
-				has_country_flag = ENG_trade_unions_demand_minister_appointment_3
-				has_country_flag = ENG_trade_unions_demand_minister_appointment_4
-				has_country_flag = ENG_trade_unions_demand_minister_appointment_5
-				has_country_flag = ENG_trade_unions_demand_minister_appointment_6
-				has_country_flag = ENG_trade_unions_demand_minister_appointment_7
-				has_country_flag = ENG_trade_unions_demand_minister_appointment_8
-				has_country_flag = ENG_trade_unions_demand_minister_appointment_9
-				has_country_flag = ENG_trade_unions_demand_minister_appointment_10
-				has_country_flag = ENG_trade_unions_demand_minister_appointment_11
-				has_country_flag = ENG_trade_unions_demand_minister_appointment_12
-				has_country_flag = ENG_trade_unions_demand_minister_appointment_13
-				has_country_flag = ENG_trade_unions_demand_minister_appointment_14
-				has_country_flag = ENG_trade_unions_demand_minister_appointment_15
+			custom_trigger_tooltip = {
+				tooltip = ENG_trade_unions_demand_minister_appointment_1
+				OR = {
+					has_country_flag = ENG_trade_unions_demand_minister_appointment_1
+					has_country_flag = ENG_trade_unions_demand_minister_appointment_2
+					has_country_flag = ENG_trade_unions_demand_minister_appointment_3
+					has_country_flag = ENG_trade_unions_demand_minister_appointment_4
+					has_country_flag = ENG_trade_unions_demand_minister_appointment_5
+					has_country_flag = ENG_trade_unions_demand_minister_appointment_6
+					has_country_flag = ENG_trade_unions_demand_minister_appointment_7
+					has_country_flag = ENG_trade_unions_demand_minister_appointment_8
+					has_country_flag = ENG_trade_unions_demand_minister_appointment_9
+					has_country_flag = ENG_trade_unions_demand_minister_appointment_10
+					has_country_flag = ENG_trade_unions_demand_minister_appointment_11
+					has_country_flag = ENG_trade_unions_demand_minister_appointment_12
+					has_country_flag = ENG_trade_unions_demand_minister_appointment_13
+					has_country_flag = ENG_trade_unions_demand_minister_appointment_14
+					has_country_flag = ENG_trade_unions_demand_minister_appointment_15
+				}
 			}
 			NOT = { has_country_flag = ENG_trade_unions_demand_minister_appointment }
 		}
@@ -5855,7 +5922,6 @@ ENG_concessions_to_the_trade_unions = {
 		is_good = no
 
 		complete_effect = {
-			add_stability = 0.02
 			
 		}
 
@@ -6008,7 +6074,7 @@ ENG_concessions_to_the_trade_unions = {
 
 		complete_effect = {
 			add_stability = 0.02
-			
+
 		}
 
 		timeout_effect = {
@@ -6189,7 +6255,7 @@ ENG_concessions_to_the_trade_unions = {
 
 		complete_effect = {
 			add_stability = 0.02
-			
+
 		}
 
 		timeout_effect = {
@@ -6362,7 +6428,7 @@ ENG_concessions_to_the_trade_unions = {
 
 		complete_effect = {
 			add_stability = 0.02
-			
+
 		}
 
 		timeout_effect = {
@@ -6535,7 +6601,7 @@ ENG_concessions_to_the_trade_unions = {
 
 		complete_effect = {
 			add_stability = 0.02
-			
+
 		}
 
 		timeout_effect = {
@@ -6708,7 +6774,7 @@ ENG_concessions_to_the_trade_unions = {
 
 		complete_effect = {
 			add_stability = 0.02
-			
+
 		}
 
 		timeout_effect = {
@@ -6861,7 +6927,7 @@ ENG_concessions_to_the_trade_unions = {
 
 		complete_effect = {
 			add_stability = 0.02
-			
+
 		}
 
 		timeout_effect = {
@@ -7014,7 +7080,7 @@ ENG_concessions_to_the_trade_unions = {
 
 		complete_effect = {
 			add_stability = 0.02
-			
+
 		}
 
 		timeout_effect = {
@@ -7153,7 +7219,7 @@ ENG_concessions_to_the_trade_unions = {
 
 		complete_effect = {
 			add_stability = 0.15
-			
+
 		}
 
 		timeout_effect = {
@@ -7661,11 +7727,9 @@ ENG_move_to_secure_the_dominions = {
 
 		complete_effect = {
 			FROM = {
-				set_politics = { ruling_party = fascism elections_allowed = no }
-				add_popularity = { ideology = fascism popularity = 0.2 }
-				add_timed_idea = { idea = fascist_influence days = 730 }
-				CAN_enforce_loyalty = yes
-				country_event = { id = mtg_britain.65 }
+				country_event = {
+					id =  mtg_britain.200 hours = 1
+				}
 			}
 		}
 
@@ -7727,13 +7791,9 @@ ENG_move_to_secure_the_dominions = {
 
 		complete_effect = {
 			FROM = {
-				custom_effect_tooltip = ENG_replace_government_communism_tt
-				set_politics = { ruling_party = communism elections_allowed = no }
-				add_popularity = { ideology = communism popularity = 0.2 }
-				add_timed_idea = { idea = communist_influence days = 730 }
-				hidden_effect = { set_country_flag = ENG_remain_as_puppet }
-				CAN_enforce_loyalty = yes
-				country_event = { id = mtg_britain.65 }
+				country_event = {
+					id =  mtg_britain.200 hours = 1
+				}
 			}
 		}
 
@@ -7940,11 +8000,9 @@ ENG_move_to_secure_the_dominions = {
 
 		complete_effect = {
 			FROM = {
-				set_politics = { ruling_party = fascism elections_allowed = no }
-				add_popularity = { ideology = fascism popularity = 0.2 }
-				add_timed_idea = { idea = fascist_influence days = 730 }
-				SAF_enforce_loyalty = yes
-				country_event = { id = mtg_britain.65 }
+				country_event = {
+					id =  mtg_britain.200 hours = 1
+				}
 			}
 		}
 
@@ -8000,13 +8058,9 @@ ENG_move_to_secure_the_dominions = {
 
 		complete_effect = {
 			FROM = {
-				custom_effect_tooltip = ENG_replace_government_communism_tt
-				set_politics = { ruling_party = communism elections_allowed = no }
-				add_popularity = { ideology = communism popularity = 0.2 }
-				add_timed_idea = { idea = communist_influence days = 730 }
-				hidden_effect = { set_country_flag = ENG_remain_as_puppet }
-				SAF_enforce_loyalty = yes
-				country_event = { id = mtg_britain.65 }
+				country_event = {
+					id =  mtg_britain.200 hours = 1
+				}
 			}
 		}
 
@@ -8190,6 +8244,7 @@ ENG_move_to_secure_the_dominions = {
 		target_trigger = {
 			FROM = {
 				original_tag = RAJ
+
 			}
 		}
 
@@ -8320,11 +8375,9 @@ ENG_move_to_secure_the_dominions = {
 
 		complete_effect = {
 			FROM = {
-				set_politics = { ruling_party = fascism elections_allowed = no }
-				add_popularity = { ideology = fascism popularity = 0.2 }
-				add_timed_idea = { idea = fascist_influence days = 730 }
-				RAJ_enforce_loyalty = yes
-				country_event = { id = mtg_britain.65 }
+				country_event = {
+					id =  mtg_britain.200 hours = 1
+				}
 			}
 		}
 
@@ -8415,13 +8468,9 @@ ENG_move_to_secure_the_dominions = {
 
 		complete_effect = {
 			FROM = {
-				custom_effect_tooltip = ENG_replace_government_communism_tt
-				set_politics = { ruling_party = communism elections_allowed = no }
-				add_popularity = { ideology = communism popularity = 0.2 }
-				add_timed_idea = { idea = communist_influence days = 730 }
-				hidden_effect = { set_country_flag = ENG_remain_as_puppet }
-				RAJ_enforce_loyalty = yes
-				country_event = { id = mtg_britain.65 }
+				country_event = {
+					id =  mtg_britain.200 hours = 1
+				}
 			}
 		}
 
@@ -8631,11 +8680,9 @@ ENG_move_to_secure_the_dominions = {
 
 		complete_effect = {
 			FROM = {
-				set_politics = { ruling_party = fascism elections_allowed = no }
-				add_popularity = { ideology = fascism popularity = 0.2 }
-				add_timed_idea = { idea = fascist_influence days = 730 }
-				AST_enforce_loyalty = yes
-				country_event = { id = mtg_britain.65 }
+				country_event = {
+					id =  mtg_britain.200 hours = 1
+				}
 			}
 		}
 
@@ -8692,13 +8739,9 @@ ENG_move_to_secure_the_dominions = {
 
 		complete_effect = {
 			FROM = {
-				custom_effect_tooltip = ENG_replace_government_communism_tt
-				set_politics = { ruling_party = communism elections_allowed = no }
-				add_popularity = { ideology = communism popularity = 0.2 }
-				add_timed_idea = { idea = communist_influence days = 730 }
-				hidden_effect = { set_country_flag = ENG_remain_as_puppet }
-				AST_enforce_loyalty = yes
-				country_event = { id = mtg_britain.65 }
+				country_event = {
+					id =  mtg_britain.200 hours = 1
+				}
 			}
 		}
 
@@ -8902,11 +8945,9 @@ ENG_move_to_secure_the_dominions = {
 
 		complete_effect = {
 			FROM = {
-				set_politics = { ruling_party = fascism elections_allowed = no }
-				add_popularity = { ideology = fascism popularity = 0.2 }
-				add_timed_idea = { idea = fascist_influence days = 730 }
-				NZL_enforce_loyalty = yes
-				country_event = { id = mtg_britain.65 }
+				country_event = {
+					id =  mtg_britain.200 hours = 1
+				}
 			}
 		}
 
@@ -8961,13 +9002,9 @@ ENG_move_to_secure_the_dominions = {
 
 		complete_effect = {
 			FROM = {
-				custom_effect_tooltip = ENG_replace_government_communism_tt
-				set_politics = { ruling_party = communism elections_allowed = no }
-				add_popularity = { ideology = communism popularity = 0.2 }
-				add_timed_idea = { idea = communist_influence days = 730 }
-				hidden_effect = { set_country_flag = ENG_remain_as_puppet }
-				NZL_enforce_loyalty = yes
-				country_event = { id = mtg_britain.65 }
+				country_event = {
+					id =  mtg_britain.200 hours = 1
+				}
 			}
 		}
 
@@ -9622,7 +9659,7 @@ political_actions = {
 					id = wtt_britain_lease_azores.1
 					hours = 6
 				}	
-			}								
+			}
 		}
 	}
 
@@ -10413,7 +10450,7 @@ ENG_enforce_the_naval_treaties = {
 		fire_only_once = no
 
 		ai_will_do = {
-			factor = 10
+			base = 10
 		}
 
 		visible = {

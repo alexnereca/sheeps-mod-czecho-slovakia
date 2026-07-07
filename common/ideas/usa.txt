@@ -1342,9 +1342,29 @@ ideas = {
 				equipment_capture = 0.125
 				consumer_goods_factor = -0.25	
 				conscription_factor = 0.25
-			}			
+			}
 		}
-	
+
+		ABDA_maintain_strategic_flexibility_spirit = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_sea_focused_navy
+
+			modifier = {
+				industrial_capacity_dockyard = 0.10
+				navy_max_range_factor = 0.10
+			}
+		}
+
 	}
 
 
@@ -1379,6 +1399,7 @@ ideas = {
 					PHI_SEA = yes
 				}
 			}
+			
 			available = {
 				if = {
 					limit = {
@@ -1397,7 +1418,6 @@ ideas = {
 					}
 				}
 			}
-
 			
 			research_bonus = {
 				armor = 0.15
@@ -1579,8 +1599,6 @@ ideas = {
 				}
 			}
 			
-
-			
 			research_bonus = {
 				naval_equipment = 0.15
 			}
@@ -1663,8 +1681,6 @@ ideas = {
 				}
 			}
 			
-
-			
 			research_bonus = {
 				air_equipment = 0.15
 			}
@@ -1722,8 +1738,6 @@ ideas = {
 					}
 				}
 			}
-			
-
 			
 			research_bonus = {
 				air_equipment = 0.15
@@ -1846,8 +1860,6 @@ ideas = {
 				}
 			}
 			
-
-			
 			research_bonus = {
 				infantry_weapons = 0.15
 			}
@@ -1856,6 +1868,7 @@ ideas = {
 			
 			modifier = {
 			}
+
 		}
 		
 		ford_motor_company = {
@@ -1886,8 +1899,6 @@ ideas = {
 					}
 				}
 			}
-			
-
 			
 			research_bonus = {
 				motorized_equipment = 0.15
@@ -1930,8 +1941,6 @@ ideas = {
 				}
 			}
 			
-
-			
 			research_bonus = {
 				artillery = 0.15
 			}
@@ -1940,6 +1949,64 @@ ideas = {
 			
 			modifier = {
 			}
+		}
+
+		USA_baldwin_locomotive_works_manufacturer = {
+
+			name = "USA_baldwin_locomotive_works_organization"
+
+			picture = USA_blw
+
+			allowed = {
+				original_tag = USA
+			}
+
+			available = {
+			}
+
+			visible = {
+			}
+
+			research_bonus = {
+				train_tech = 0.15
+				support_tech = 0.07
+			}
+
+			equipment_bonus = {
+				train_equipment = {
+					build_cost_ic = -0.10
+					armor_value = 0.10
+					air_attack = 0.10
+					instant = yes
+				}
+			}
+
+			cost = 150
+
+			traits = { train_equipment_manufacturer }
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+
+		USA_sikorsky = {
+
+			name = "USA_sikorsky_organization"
+
+			picture = generic_helicopter_1
+
+			allowed = {
+				original_tag = USA
+				has_dlc = "Gotterdammerung"
+			}
+
+			research_bonus = {
+				support_tech = 0.05
+				air_equipment = 0.05
+			}
+
+			traits = { helicopter_equipment_manufacturer }
 		}
 	}
 	

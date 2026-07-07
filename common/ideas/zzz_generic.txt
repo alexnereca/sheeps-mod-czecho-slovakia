@@ -17,6 +17,8 @@ ideas = {
 			}
 		}
 
+		
+
 		continuous_naval_production = {
 			allowed = {
 				always = no
@@ -101,7 +103,7 @@ ideas = {
 			}		
 		}
 
-#		sp_multi_charge_large_caliber_gun_small_size_ns = { #TODO_Manu: Used for Small version of V-3 SP. Uncomment if Code Support gets implemented 
+#		sp_multi_charge_large_caliber_gun_small_size_ns = { #MM: Used for Small version of V-3 SP. Uncomment if Code Support gets implemented 
 #			allowed = {
 #				always = no
 #			}
@@ -174,6 +176,7 @@ ideas = {
 				repair_speed_factor = -0.25
 			}
 		}
+		
 		TO_chose_neutrality = {
 
 			picture = generic_pp_unity_bonus
@@ -335,6 +338,7 @@ ideas = {
 				communism_acceptance = 85
 			}
 		}
+
 		democratic_influence = {
 			
 			
@@ -355,6 +359,7 @@ ideas = {
 				democratic_acceptance = 85
 			}
 		}
+		
 		neutrality_influence = {
 			allowed = {
 				always = no
@@ -570,7 +575,8 @@ ideas = {
 				research_speed_factor = 0.035
 			}
 		}
-		# from decision
+
+		# Secret Weapons
 		generic_secret_weapons_ns = {
 			
 			allowed = {
@@ -589,6 +595,8 @@ ideas = {
 				special_project_speed_factor = 0.05
 			}
 		}
+
+		# from decision
 		paramilitary_training = {
 			
 			allowed = {
@@ -1397,12 +1405,11 @@ ideas = {
 			}
 			
 			removal_cost = -1
-			picture = generic_pp_unity_bonus
-			#TODO_ASD: Set correct icon - idea_generic_org_of_african_unity
+			picture = generic_org_of_african_unity
+			
 			modifier = {
 			}
 		}
-
 
 		special_project_consumer_costs_high = { 
 			allowed = {
@@ -1455,6 +1462,7 @@ ideas = {
 			}
 		}
 	}
+
 	# TECHNOLOGY
 	tank_manufacturer = { 
 	
@@ -1465,7 +1473,7 @@ ideas = {
 			picture = generic_tank_manufacturer_1
 			
 			allowed = {
-				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = BEL tag = CZE tag = FIN } }
+				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = BEL tag = CZE tag = FIN tag = SLO tag = RKH } }
 				NOT = {
 					has_allowed_idea_with_traits = { idea = tank_manufacturer limit = 1 }
 				}
@@ -1515,6 +1523,8 @@ ideas = {
 						has_dlc = "Gotterdammerung"
 					}
 				}
+
+				PHI_SEA = no
 			}
 			
 			cost = 150
@@ -1537,7 +1547,7 @@ ideas = {
 			picture = generic_naval_manufacturer_1
 
 			allowed = {
-				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = SWE tag = HUN tag = CZE tag = FIN } }
+				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = SWE tag = HUN tag = CZE tag = FIN tag = RKH } }
 				NOT = {
 					has_allowed_idea_with_traits = { idea = naval_manufacturer limit = 1 }
 				}
@@ -1591,6 +1601,15 @@ ideas = {
 						has_dlc = "Gotterdammerung"
 					}
 				}
+
+				NOT = {
+					AND = {
+						tag = INS
+						has_dlc = "Thunder at Our Gates"
+					}
+				}
+
+				PHI_SEA = no
 			}
 			
 			cost = 150
@@ -1667,6 +1686,15 @@ ideas = {
 						has_dlc = "Gotterdammerung"
 					}
 				}
+
+				NOT = {
+					AND = {
+						tag = INS
+						has_dlc = "Thunder at Our Gates"
+					}
+				}
+
+				PHI_SEA = no
 			}
 			
 			cost = 150
@@ -1684,7 +1712,7 @@ ideas = {
 			picture = generic_air_manufacturer_3
 
 			allowed = {
-				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = ROM tag = FIN } }
+				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = ROM tag = FIN tag = SLO tag = CZE } }
 				NOT = {
 					has_allowed_idea_with_traits = { idea = medium_aircraft_manufacturer limit = 1 }
 				}
@@ -1739,6 +1767,14 @@ ideas = {
 					}
 				}
 
+				NOT = {
+					AND = {
+						tag = INS
+						has_dlc = "Thunder at Our Gates"
+					}
+				}
+
+				PHI_SEA = no
 			}
 			
 			cost = 150
@@ -1798,10 +1834,9 @@ ideas = {
 				}
 				NOT = {
 					AND = {
-						OR = { tag = CHL tag = ARG}
+						OR = { tag = CHL tag = ARG }
 						has_dlc = "Trial of Allegiance"
 					}
-					has_dlc = "Trial of Allegiance"
 				}
 
 				NOT = {
@@ -1810,6 +1845,15 @@ ideas = {
 						has_dlc = "Gotterdammerung"
 					}
 				}
+
+				NOT = {
+					AND = {
+						OR = { tag = INS tag = AST }
+						has_dlc = "Thunder at Our Gates"
+					}
+				}
+
+				PHI_SEA = no
 			}
 			
 			cost = 150
@@ -1827,7 +1871,7 @@ ideas = {
 			picture = generic_naval_manufacturer_2
 
 			allowed = {
-				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = CAN tag = ROM tag = YUG tag = FIN } }
+				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = CAN tag = ROM tag = YUG tag = FIN tag = CZE tag = SLO tag = RKH } }
 				NOT = {
 					has_allowed_idea_with_traits = { idea = naval_aircraft_manufacturer limit = 1 }
 				}
@@ -1869,7 +1913,6 @@ ideas = {
 						OR = { tag = CHL tag = ARG }
 						has_dlc = "Trial of Allegiance"
 					}
-									
 				}
 
 				NOT = {
@@ -1879,6 +1922,14 @@ ideas = {
 					}
 				}
 
+				NOT = {
+					AND = {
+						OR = { tag = INS tag = AST }
+						has_dlc = "Thunder at Our Gates"
+					}
+				}
+
+				PHI_SEA = no
 			}
 			
 			cost = 150
@@ -1976,12 +2027,22 @@ ideas = {
 							original_tag = NXM
 							original_tag = GSM
 							original_tag = KHM
-							original_tag = KUM 
+							original_tag = KUM
 						}
 						has_dlc = "No Compromise, No Surrender"
 					}
 				}
-			}
+			NOT = {
+					AND = {
+						OR = {
+							original_tag = SIA
+							original_tag = AST
+							original_tag = INS
+						}
+
+						has_dlc = "Thunder at Our Gates"
+					}
+				}			}
 			
 			cost = 150
 			removal_cost = 10
@@ -1998,7 +2059,7 @@ ideas = {
 			picture = generic_electronics_concern_1
 
 			allowed = {
-				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = FIN } }
+				NOT = { OR = { original_tag = GER original_tag = ENG original_tag = SOV original_tag = FRA original_tag = ITA original_tag = JAP original_tag = USA original_tag = FIN } }
 				NOT = {
 					has_allowed_idea_with_traits = { idea = electronics_concern limit = 1 }
 				}
@@ -2074,6 +2135,16 @@ ideas = {
 						has_dlc = "No Compromise, No Surrender"
 					}
 				}
+
+				NOT = {
+					AND = {
+						OR = {
+							original_tag = AST
+							original_tag = INS
+						}
+						has_dlc = "Thunder at Our Gates"
+					}
+				}
 			}
 			
 			cost = 150
@@ -2135,6 +2206,13 @@ ideas = {
 					AND = {
 						OR = { tag = HUN tag = AUS }
 						has_dlc = "Gotterdammerung"
+					}
+				}
+
+				NOT = {
+					AND = {
+						tag = INS
+						has_dlc = "Thunder at Our Gates"
 					}
 				}
 			}
@@ -2260,6 +2338,8 @@ ideas = {
 						has_dlc = "Gotterdammerung"
 					}
 				}
+
+				
 			}
 			
 			cost = 150

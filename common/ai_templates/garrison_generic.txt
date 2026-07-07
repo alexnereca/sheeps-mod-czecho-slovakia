@@ -19,6 +19,9 @@ suppression_generic2 = {
 			regiments = {
 				cavalry = 10
 			}
+		regimental_support = {
+			fire_support = 3
+		}
 		}
 	}
 }

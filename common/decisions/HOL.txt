@@ -65,7 +65,10 @@ HOL_obtain_foreign_colonial_investments = {
 
 		visible = {
 			tag = HOL
-			has_completed_focus = HOL_obtain_foreign_colonial_investments
+			OR = {
+				has_completed_focus = HOL_obtain_foreign_colonial_investments
+				has_completed_focus = HOL_obtain_foreign_colonial_investments_taog
+			}
 		}
 
 		remove_effect = {
@@ -133,7 +136,7 @@ HOL_obtain_foreign_colonial_investments = {
 
 		fire_only_once = no
 
-		days_remove = 180
+		days_remove = 90
 
 		modifier = {
 			production_speed_buildings_factor = 0.15
@@ -141,7 +144,10 @@ HOL_obtain_foreign_colonial_investments = {
 
 		visible = {
 			tag = HOL
-			has_completed_focus = HOL_obtain_foreign_colonial_investments
+			OR = {
+				has_completed_focus = HOL_obtain_foreign_colonial_investments
+				has_completed_focus = HOL_obtain_foreign_colonial_investments_taog
+			}
 		}
 
 		remove_effect = {
@@ -180,16 +186,19 @@ HOL_obtain_foreign_colonial_investments = {
 
 		visible = {
 			tag = HOL
-			has_completed_focus = HOL_obtain_foreign_colonial_investments
+			OR = {
+				has_completed_focus = HOL_obtain_foreign_colonial_investments
+				has_completed_focus = HOL_obtain_foreign_colonial_investments_taog
+			}
 		}
 
 		ai_will_do = {
-			base = 0
-			modifier = {
-				add = 1
-				has_capitulated = yes
-			}
-		}
+        	base = 0
+        	modifier = {
+        		add = 1
+        		has_capitulated = yes
+        	}
+        }
 
 		remove_effect = {
 			695 = {
@@ -284,7 +293,10 @@ HOL_obtain_foreign_colonial_investments = {
 		days_remove = 90
 
 		visible = {
-			has_completed_focus = HOL_obtain_foreign_colonial_investments
+			OR = {
+				has_completed_focus = HOL_obtain_foreign_colonial_investments
+				has_completed_focus = HOL_obtain_foreign_colonial_investments_taog
+			}
 		}
 
 		remove_effect = {
@@ -364,6 +376,7 @@ HOL_obtain_foreign_colonial_investments = {
 
 		complete_effect = {
 		}
+
 		ai_will_do = {
 			base = 0
 			modifier = {
@@ -1292,7 +1305,7 @@ HOL_gateway_to_europe_ger_category = {
 		fire_only_once = no
 
 		ai_will_do = {
-			factor = 0.01
+			base = 0.01
 			modifier = {
 				factor = 10
 				date > 1939.08.01
@@ -1355,7 +1368,7 @@ HOL_gateway_to_europe_ger_category = {
 				}
 			}
 			modifier = {
-				factor = 0				
+				factor = 0
 				OR = {
 					has_completed_focus = GER_oppose_hitler
 					has_completed_focus = GER_oppose_hitler_ww
@@ -1504,13 +1517,14 @@ HOL_gateway_to_europe_hol_category = {
 		ai_will_do = {
 			factor = 0.1
 			modifier = {
-				factor = 10
-				is_historical_focus_on = yes
-				date > 1940.01.01
-			}
-			modifier = { #funnel the pp
-				add = 200
-				is_historical_focus_on = yes
+				factor = 200
+				OR = {
+				    is_historical_focus_on = yes
+					HOL_check_plan_historical = yes
+					HOL_check_plan_colonial_alternate_democratic = yes
+					HOL_check_plan_continental_alternate_democratic = yes
+					HOL_check_plan_lead_the_minor_democracies = yes
+				}
 			}
 			modifier = {
 				add = 9999
@@ -1655,7 +1669,13 @@ HOL_gateway_to_europe_hol_category = {
 			factor = 0.1
 			modifier = {
 				factor = 0
-				is_historical_focus_on = yes
+				OR = {
+				    is_historical_focus_on = yes
+					HOL_check_plan_historical = yes
+					HOL_check_plan_colonial_alternate_democratic = yes
+					HOL_check_plan_continental_alternate_democratic = yes
+					HOL_check_plan_lead_the_minor_democracies = yes
+				}
 			}
 			modifier = {
 				factor = 0
@@ -2159,9 +2179,9 @@ political_actions = {
 					is_subject_of = HOL
 					has_autonomy_state = autonomy_integrated_puppet
 					compare_autonomy_progress_ratio < 0.6
-					has_full_control_of_state = 335
+					has_full_control_of_state = 1058
 				}
-				has_full_control_of_state = 335
+				has_full_control_of_state = 1058
 			}
 		}
 		ai_will_do = {
@@ -2174,6 +2194,12 @@ political_actions = {
 
 		visible = {
 			original_tag = HOL
+			if = {
+				limit = {
+					has_dlc = "Thunder at Our Gates"
+				}
+				always = no
+			}
 		}
 
 		complete_effect = {
@@ -2188,20 +2214,9 @@ political_actions = {
 					set_nationality = HOL
 				}
 			}
-			every_state = {
-				limit = {
-					is_core_of = INS
-					NOT = {
-						OR = {
-							state = 668
-							state = 738
-							state = 669
-						}
-					}
-				}
-				HOL = { 
-					transfer_state = PREV
-				}
+			annex_country = {
+			    target = INS
+			    transfer_troops = yes
 			}
 			every_state = {
 				limit = {
@@ -2210,7 +2225,7 @@ political_actions = {
 				}
 				add_compliance = 70
 			}
-			set_capital = { state = 335 }
+			set_capital = { state = 1058 }
 			hidden_effect = { news_event = { id = mtg_news.46 days = 1 } }
 			hidden_effect = { 
 				INS = { 
@@ -2325,3 +2340,54 @@ political_actions = {
 
 }
 
+foreign_influence = {
+	HOL_recall_conrad_helfrich = {
+		icon = GFX_decision_generic_naval
+
+		priority = 100
+
+		allowed = {
+			original_tag = HOL
+			has_dlc = "Thunder at Our Gates"
+		}
+
+		available = {
+			has_subject = INS
+		}
+
+		ai_will_do = {
+			base = 0
+		}
+
+		cost = 100
+
+		fire_only_once = yes
+
+		visible = {
+			original_tag = HOL
+			NOT = {
+				has_character = HOL_conrad_helfrich
+			}
+		}
+
+		complete_effect = {
+			INS = {
+				country_event = {
+					id = INS_political_events.19
+					hours = 4
+				}
+			}
+			effect_tooltip = {
+				INS = {
+					HOL_conrad_helfrich = {
+						set_nationality = HOL
+					}
+					add_autonomy_score = { 
+						value = 350 
+						localization = HOL_recall_conrad_helfrich
+					}
+				}
+			}
+		}
+	}
+}

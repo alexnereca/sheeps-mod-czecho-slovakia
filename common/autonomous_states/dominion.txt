@@ -9,7 +9,7 @@ autonomy_state = {
 		desc = "RULE_DESC_IS_A_SUBJECT"
 	
 		can_not_declare_war = yes
-		can_decline_call_to_war = no
+		can_decline_call_to_war = yes
 		can_be_spymaster = yes
 	}
 	
@@ -19,6 +19,7 @@ autonomy_state = {
 		overlord_trade_cost_factor = -0.25
 		peace_score_ratio_transferred_to_overlord = 0.05
 		lend_lease_tension_with_overlord = -0.1
+		faction_influence_contribution_factor = -0.1
 	}
 	
 	ai_subject_wants_higher = {
@@ -105,10 +106,21 @@ autonomy_state = {
 			limit = {
 				original_tag = AST
 			}
-			OR = {
-				has_completed_focus = AST_adopt_westminster
-				has_completed_focus = AST_abandon_the_westminster_system
-				has_completed_focus = AST_sever_ties_with_uk
+			IF = {
+				limit = {
+					has_dlc = "Thunder at Our Gates"
+				}
+				OR = {
+					has_completed_focus = AST_ratify_westminster_adoption_act
+					has_completed_focus = AST_refuse_british_wars
+				}
+			}
+			ELSE = {
+				OR = {
+					has_completed_focus = AST_adopt_westminster
+					has_completed_focus = AST_abandon_the_westminster_system
+					has_completed_focus = AST_sever_ties_with_uk
+				}
 			}
 		}
 		if = {
@@ -146,7 +158,6 @@ autonomy_state = {
 				has_dlc = "Graveyard of Empires"
 				NOT = { has_completed_focus = RAJ_his_majestys_loyal_government }
 			}
-
 			OR = {
 				has_completed_focus = RAJ_a_secular_state
 				has_completed_focus = RAJ_united_bengal
@@ -176,26 +187,32 @@ autonomy_state = {
 				original_tag = RAJ
 				has_dlc = "Graveyard of Empires"
 				has_completed_focus = RAJ_his_majestys_loyal_government
-				NOT = { has_idea = idea_RAJ_the_long_goodbye }
 			}
 			has_completed_focus = RAJ_the_dominion_of_india
 			has_completed_focus = RAJ_keep_calm_and_carry_on
 			has_completed_focus = RAJ_holding_the_gates_of_india
 		}
 		if = {
+        	limit = {
+        		original_tag = RAJ
+        		has_dlc = "Graveyard of Empires"
+        		has_completed_focus = RAJ_his_majestys_loyal_government
+        		has_idea = idea_RAJ_the_long_goodbye
+        	}
+        	has_idea = idea_RAJ_the_long_goodbye
+        }
+		if = {
 			limit = {
-				original_tag = RAJ
-				has_dlc = "Graveyard of Empires"
-				has_completed_focus = RAJ_his_majestys_loyal_government
-				has_idea = idea_RAJ_the_long_goodbye
+				original_tag = INS
 			}
-			has_idea = idea_RAJ_the_long_goodbye
+			NOT = {
+				has_idea = idea_INS_netherlands_most_precious_jewel
+			}
 		}
-				
 	}
 
 	can_lose_level = {
-		if = {
+		IF = {
 			limit = {
 				OVERLORD = { original_tag = BEL } 
 				original_tag = COG

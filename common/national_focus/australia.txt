@@ -1533,9 +1533,8 @@
 		}
 
 		available = {
-			any_state = {
+			any_controlled_state = {
 				is_coastal = yes
-				is_controlled_by = ROOT
 			}
 		}
 		
@@ -1612,9 +1611,8 @@
 		}
 
 		available = {
-			any_state = {
+			any_controlled_state = {
 				is_coastal = yes
-				is_controlled_by = ROOT
 			}
 		}
 		
@@ -1713,6 +1711,7 @@
 				days = 120
 				track = screens
 			}
+
 			add_doctrine_cost_reduction = {
 				name = AST_protect_overseas_commerce
 				cost_reduction = 0.25
@@ -1758,6 +1757,7 @@
 				days = 120
 				track = submarines
 			}
+
 			add_doctrine_cost_reduction = {
 				name = AST_fly_the_jolly_roger
 				cost_reduction = 0.25
@@ -2662,6 +2662,7 @@
 		}
 
 		available = {
+
 		}
 		
 		bypass = {
@@ -2951,6 +2952,7 @@
 		}
 
 		available = {
+			is_subject = no
 			has_war = yes
 			is_in_faction = yes
 			OR = {
@@ -3310,17 +3312,17 @@
 			if = { 
 				limit = {
 					ENG = { has_idea = ENG_george_vi }
-				}
-				country_event = { id = tfv_australia.90 }
-			}
+					}
+					country_event = { id = tfv_australia.90 }
+					}
 			if = { 
 				limit = {
 					ENG = { has_country_flag = edward_viii_married_wallis_simpson } 
-				}	
-				country_event = { id = tfv_australia.92 } 				  
+					}
+					country_event = { id = tfv_australia.92 } 
+				}
 			}
 		}
-	}
 
 	focus = {
 		id = AST_the_singapore_strategy
@@ -3370,64 +3372,66 @@
 
 		completion_reward = {
 			ENG = {
-				country_event = { id = tfv_australia.1 }
-			}
-
-		}
-	}
-
-	focus = {
-		id = AST_the_push_for_australasia
-		icon = GFX_focus_generic_court
-		prerequisite = { focus = AST_the_singapore_strategy }
-		x = 1
-		y = 1
-		relative_position_id = AST_the_singapore_strategy
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 0
-		}
-
-		available = {
-			is_in_faction_with = ENG
-			ENG = { has_government = ROOT }
-			NZL = {
-				is_subject_of = ENG
-			}
-		}
-		
-		bypass = {
-			OR = {
-				NOT = {
-					OR = {
-						723 = {
-							is_owned_by = NZL
-						}
-						284 = {
-							is_owned_by = NZL
-						}
-					}
-				}
-				NOT = {
-					NZL = {
-						is_subject_of = ENG
-					}
+				country_event = { 
+					id = tfv_australia.1 
+					hours = 6
 				}
 			}
 		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-
-		completion_reward = {
-			ENG = {
-				country_event = { id = LSM_ENG_churchill.800 }
-			}
-		}
 	}
+
+		focus = {
+    		id = AST_the_push_for_australasia
+    		icon = GFX_focus_generic_court
+    		prerequisite = { focus = AST_the_singapore_strategy }
+    		x = 1
+    		y = 1
+    		relative_position_id = AST_the_singapore_strategy
+
+    		cost = 10
+
+    		ai_will_do = {
+    			factor = 0
+    		}
+
+    		available = {
+    			is_in_faction_with = ENG
+    			ENG = { has_government = ROOT }
+    			NZL = {
+    				is_subject_of = ENG
+    			}
+    		}
+
+    		bypass = {
+    			OR = {
+    				NOT = {
+    					OR = {
+    						723 = {
+    							is_owned_by = NZL
+    						}
+    						284 = {
+    							is_owned_by = NZL
+    						}
+    					}
+    				}
+    				NOT = {
+    					NZL = {
+    						is_subject_of = ENG
+    					}
+    				}
+    			}
+    		}
+
+    		cancel_if_invalid = yes
+    		continue_if_invalid = no
+    		available_if_capitulated = no
+
+    		completion_reward = {
+    			ENG = {
+    				country_event = { id = LSM_ENG_churchill.800 }
+    			}
+    		}
+    	}
 
 	focus = {
 		id = AST_adopt_westminster
@@ -3511,7 +3515,7 @@
 			AST = {
   				modify_tech_sharing_bonus = {
      				id = commonwealth_research
-     				bonus = 0.05 
+     				bonus = 0.05  
 				}
 			}
 		}
@@ -3547,6 +3551,36 @@
 				controller = { is_in_faction_with = ROOT }
 			}
 			333 = {
+				controller = { is_in_faction_with = ROOT }
+			}
+			1059 = {
+				controller = { is_in_faction_with = ROOT }
+			}
+			1023 = {
+				controller = { is_in_faction_with = ROOT }
+			}
+			1024 = {
+				controller = { is_in_faction_with = ROOT }
+			}
+			1021 = {
+				controller = { is_in_faction_with = ROOT }
+			}
+			1060 = {
+				controller = { is_in_faction_with = ROOT }
+			}
+			1063 = {
+				controller = { is_in_faction_with = ROOT }
+			}
+			1064 = {
+				controller = { is_in_faction_with = ROOT }
+			}
+			1062 = {
+				controller = { is_in_faction_with = ROOT }
+			}
+			1061 = {
+				controller = { is_in_faction_with = ROOT }
+			}
+			1065 = {
 				controller = { is_in_faction_with = ROOT }
 			}
 		}
@@ -3588,10 +3622,51 @@
 					instant_build = yes
 				}
 
-				#border inland bunker
+				#Extra fort on naval bases
 				add_building_construction = {
 					type = bunker
-					province = 4310
+					province = {
+						all_provinces = yes
+						limit_to_naval_base = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					province = {
+						all_provinces = yes
+						limit_to_naval_base = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+
+			}
+
+			1062 = {
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+
+				#Fortify entire coastline
+				add_building_construction = {
+					type = bunker
+					province = {
+						all_provinces = yes
+						limit_to_coastal = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					province = {
+						all_provinces = yes
+						limit_to_coastal = yes
+					}
 					level = 2
 					instant_build = yes
 				}
@@ -3612,6 +3687,190 @@
 						all_provinces = yes
 						limit_to_naval_base = yes
 					}
+					level = 2
+					instant_build = yes
+				}
+
+			}
+
+			1061 = {
+
+				#Fortify entire coastline
+				add_building_construction = {
+					type = bunker
+					province = {
+						all_provinces = yes
+						limit_to_coastal = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					province = {
+						all_provinces = yes
+						limit_to_coastal = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+
+				#Extra fort on naval bases
+				add_building_construction = {
+					type = bunker
+					province = {
+						all_provinces = yes
+						limit_to_naval_base = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					province = {
+						all_provinces = yes
+						limit_to_naval_base = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+
+			}
+
+			1063 = {
+
+				#Fortify entire coastline
+				add_building_construction = {
+					type = bunker
+					province = {
+						all_provinces = yes
+						limit_to_coastal = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					province = {
+						all_provinces = yes
+						limit_to_coastal = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+
+				#Extra fort on naval bases
+				add_building_construction = {
+					type = bunker
+					province = {
+						all_provinces = yes
+						limit_to_naval_base = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					province = {
+						all_provinces = yes
+						limit_to_naval_base = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+
+			}
+
+			1060 = {
+
+				#Fortify entire coastline
+				add_building_construction = {
+					type = bunker
+					province = {
+						all_provinces = yes
+						limit_to_coastal = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					province = {
+						all_provinces = yes
+						limit_to_coastal = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+
+				#Extra fort on naval bases
+				add_building_construction = {
+					type = bunker
+					province = {
+						all_provinces = yes
+						limit_to_naval_base = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					province = {
+						all_provinces = yes
+						limit_to_naval_base = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+
+			}
+
+			1064 = {
+
+				#Fortify entire coastline
+				add_building_construction = {
+					type = bunker
+					province = {
+						all_provinces = yes
+						limit_to_coastal = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					province = {
+						all_provinces = yes
+						limit_to_coastal = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+
+				#Extra fort on naval bases
+				add_building_construction = {
+					type = bunker
+					province = {
+						all_provinces = yes
+						limit_to_naval_base = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					province = {
+						all_provinces = yes
+						limit_to_naval_base = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+
+				#border inland bunker
+				add_building_construction = {
+					type = bunker
+					province = 4310
 					level = 2
 					instant_build = yes
 				}
@@ -3659,7 +3918,135 @@
 					instant_build = yes
 				}
 			}
+
+			1059 = {
+				#Fortify entire coastline
+				add_building_construction = {
+					type = bunker
+					province = {
+						all_provinces = yes
+						limit_to_coastal = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					province = {
+						all_provinces = yes
+						limit_to_coastal = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+
+				#Extra fort on naval bases
+				add_building_construction = {
+					type = bunker
+					province = {
+						all_provinces = yes
+						limit_to_naval_base = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					province = {
+						all_provinces = yes
+						limit_to_naval_base = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+			}
+
+			1023 = {
+				#Fortify entire coastline
+				add_building_construction = {
+					type = bunker
+					province = {
+						all_provinces = yes
+						limit_to_coastal = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					province = {
+						all_provinces = yes
+						limit_to_coastal = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+
+				#Extra fort on naval bases
+				add_building_construction = {
+					type = bunker
+					province = {
+						all_provinces = yes
+						limit_to_naval_base = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					province = {
+						all_provinces = yes
+						limit_to_naval_base = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+			}
+
+			1024 = {
+				#Fortify entire coastline
+				add_building_construction = {
+					type = bunker
+					province = {
+						all_provinces = yes
+						limit_to_coastal = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					province = {
+						all_provinces = yes
+						limit_to_coastal = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+
+				#Extra fort on naval bases
+				add_building_construction = {
+					type = bunker
+					province = {
+						all_provinces = yes
+						limit_to_naval_base = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					province = {
+						all_provinces = yes
+						limit_to_naval_base = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+			}
+
 		}
+
 	}
 
 	focus = {
@@ -3758,7 +4145,7 @@
 		id = AST_never_another_gallipoli
 		icon = GFX_focus_AST_never_gallipoli
 		mutually_exclusive = { focus = AST_support_the_policy_of_appeasement }
-		x = 38
+		x = 37
 		y = 0
 
 		cost = 10
@@ -3799,7 +4186,7 @@
 		search_filters = { FOCUS_FILTER_TFV_AUTONOMY }
 
 		completion_reward = {
-			set_rule = { can_decline_call_to_war = yes }
+			remove_ideas = AST_unratified_westminster_act_idea
 			add_autonomy_ratio = {
 				value = 0.2
 				localization = AST_never_another_gallipoli
@@ -4203,6 +4590,9 @@
 				USA = {
 					country_event = { id = tfv_australia.32 } #Ask USA to join faction
 				}
+				else = {
+					country_event = { id = tfv_australia.31 } #Start faction without asking USA
+				}
 			}
 		}
 	}
@@ -4597,14 +4987,7 @@
 		}
 
 		available = {
-			if = {
-				limit = { not = { has_government = fascism } }
-				has_autonomy_state = autonomy_dominion
-			}
-			if = {
-				limit = { has_government = fascism } 
-				has_autonomy_state = autonomy_satellite
-			}
+			has_autonomy_state = autonomy_dominion
 			MAL = {
 				is_puppet_of = ENG
 			}
@@ -4645,7 +5028,7 @@
 			modifier = {
 				JAP = { has_capitulated = yes }
 				factor = 0
-				}
+			}
 		}
 
 		available = {
@@ -5314,4 +5697,8 @@
 			}
 		}
 	}
-}
+
+
+
+
+}		

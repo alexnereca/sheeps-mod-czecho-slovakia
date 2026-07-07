@@ -29,6 +29,9 @@ infantry_NEP = {
 				mountaineers = 6
 				infantry = 3
 			}
+			regimental_support = {
+				fire_support = 3
+			}
 		
 			support = {
 				artillery = 1
@@ -52,6 +55,9 @@ infantry_NEP = {
 			regiments = {
 				mountaineers = 6
 				infantry = 3
+			}
+			regimental_support = {
+				fire_support = 3
 			}
 		
 			support = {
@@ -110,6 +116,9 @@ mountaineers_NEP = {
 			
 			regiments = {
 				mountaineers = 6
+			}
+			regimental_support = {
+				fire_support = 2
 			}
 		}
 	}

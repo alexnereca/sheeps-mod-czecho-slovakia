@@ -22,6 +22,9 @@ infantry_AUS = {
 			regiments = {
 				infantry = 6
 			}
+			regimental_support = {
+				fire_support = 2
+			}
 		
 			support = {
 				artillery = 1
@@ -42,6 +45,9 @@ infantry_AUS = {
 		target_template = {
 			regiments = {
 				militia = 6
+			}
+			regimental_support = {
+				fire_support = 2
 			}
 		
 			support = {
@@ -67,6 +73,9 @@ infantry_AUS = {
 		target_template = {
 			regiments = {
 				militia = 6
+			}
+			regimental_support = {
+				fire_support = 2
 			}
 		
 			support = {

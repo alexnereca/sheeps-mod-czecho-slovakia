@@ -239,6 +239,11 @@ country_event = {
 				original_tag = SOV 
 				FROM = { has_completed_focus = wuw_HUN_join_the_comintern }
 			}
+			modifier = {
+				factor = 10
+				original_tag = SOV 
+				FROM = { has_completed_focus = PER_soviet_alignment }
+			}
 		}
 		add_to_faction = FROM
 		FROM = { country_event = { id = generic.3 hours = 6 } }
@@ -353,7 +358,7 @@ country_event = {
 	option = { #Reject
 		name = generic.2.f
 		ai_chance = {
-			factor = 50
+			base = 50
 			
 			modifier = {
 				factor = 0.5
@@ -411,7 +416,7 @@ country_event = {
 			}
 
 			modifier = {
-				factor = 100
+				factor = 10
 				FROM = {
 					OR = {
 						is_subject = yes
@@ -440,6 +445,17 @@ country_event = {
 				FROM = {
 					original_tag = HUN
 					has_completed_focus = wuw_HUN_join_the_comintern
+				}
+			}
+
+			modifier = { # It ruins the entire path if SOV says no so just don't
+				factor = 0
+				FROM = {
+					original_tag = SIA
+					OR = {
+						has_completed_focus = SIA_join_the_allies
+						has_completed_focus = SIA_unseat_the_government
+					}
 				}
 			}
 
@@ -501,6 +517,7 @@ country_event = {
 			}
 			set_global_flag = ENG_accepted_GER_diplomatic_overtures
 		}
+
 	}
 	option = {
 		name = generic.3.b
@@ -525,7 +542,6 @@ country_event = {
 			}
 			set_global_flag = ENG_accepted_GER_diplomatic_overtures
 		}
-
 
 	}
 	option = {
@@ -552,6 +568,7 @@ country_event = {
 			}
 			set_global_flag = ENG_accepted_GER_diplomatic_overtures
 		}
+
 	}
 	option = {
 		name = generic.3.e
@@ -590,6 +607,7 @@ country_event = {
 			}
 			set_global_flag = ENG_accepted_GER_diplomatic_overtures
 		}
+		
 	}
 }
 
@@ -762,6 +780,8 @@ country_event = {
 			}
 		}
 	}
+
+
 
 	is_triggered_only = yes
 	
@@ -1094,6 +1114,7 @@ country_event = {
 					has_completed_focus = SOV_covert_support_for_spanish_poum
 				}
 			}
+
 			modifier = {
 				factor = 0
 				FROM = { 
@@ -1187,6 +1208,7 @@ country_event = {
 				mark_focus_tree_layout_dirty = yes
 			}
 		}
+
 	}
 	option = {
 		name = generic.3.b
@@ -1210,7 +1232,6 @@ country_event = {
 			}
 		}
 
-
 	}
 	option = {
 		name = generic.3.c
@@ -1233,6 +1254,7 @@ country_event = {
 				mark_focus_tree_layout_dirty = yes
 			}
 		}
+
 	}
 	option = {
 		name = generic.3.e
@@ -1269,6 +1291,7 @@ country_event = {
 				mark_focus_tree_layout_dirty = yes
 			}
 		}
+		
 	}
 }
 
@@ -1808,64 +1831,6 @@ country_event = {
 		name = generic.16.a
 		effect_tooltip = {
 			add_opinion_modifier = { target = FROM modifier = rejected_demands }
-		}
-	}	
-}
-
-# Notification event that leader has gotten sick
-unit_leader_event = {
-	id = generic.17
-	title = generic.17.t
-	desc = generic.17.d
-	
-	picture = GFX_report_event_military_planning
-
-	is_triggered_only = yes
-
-	immediate = {
-		hidden_effect = {
-			FROM = {
-				set_unit_leader_flag = {
-					flag = recently_sick
-					value = 1
-					days = 180
-				}
-			}
-		}
-	}
-
-	option = {
-		name = unfortunate
-		effect_tooltip = {
-			FROM = {
-				add_timed_unit_leader_trait = {
-					trait = sick
-					days = 30
-				}
-			}
-		}
-	}	
-}
-
-# Notification event that leader has been wounded
-country_event = {
-	id = generic.18
-	title = generic.18.t
-	desc = generic.18.d
-	
-	picture = GFX_report_event_military_planning
-
-	is_triggered_only = yes
-
-	option = {
-		name = unfortunate
-		effect_tooltip = {
-			FROM = {
-				add_timed_unit_leader_trait = {
-					trait = wounded
-					days = 90
-				}
-			}
 		}
 	}	
 }

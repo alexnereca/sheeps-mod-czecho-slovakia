@@ -931,7 +931,7 @@ SOV_manage_a_regular_purge_effect = { # Phase 2: Set the Area to be purged (admi
 			}
 			SOV_pick_regular_purge_army_type_effect = yes
 		}
-		30 = { # NAVY
+		25 = { # NAVY
 			modifier = { #Don't repeat last purge please
 				factor = 0.1
 				check_variable = { SOV_last_regular_purge_area = 3 }
@@ -1270,7 +1270,7 @@ SOV_pick_regular_purge_army_type_effect = {
 		25 = { # GENERAL ACCUSES GENERAL
 			modifier = { #No pastia no comiercio
 				factor = 0
-				NOT = { #TODO_MANU: Need to check for 2 guys fulfilling these conditions here
+				NOT = {
 					any_army_leader = {
 						SOV_character_can_be_purged = yes
 						NOT = { has_trait = trait_SOV_stalinist }
@@ -8524,7 +8524,6 @@ SOV_exiles_civil_war_start = {
 
 	### Set up special units
 	# From The Eyes Fear Fokus
-
 	IF = {
 		limit = {
 			has_country_flag = Sov_the_eyes_fear_flag
@@ -8776,6 +8775,7 @@ SOV_exiles_civil_war_start = {
 	# Initiate Wreckers
 	SOV_launch_wreckers = yes
 
+	# Vasily Flug and Boris Shtefion
 	IF = {
 		limit = {
 			NOT = {
@@ -8898,7 +8898,6 @@ SOV_exiles_civil_war_start = {
 	}
 	
 }
-
 
 SOV_launch_wreckers = {
 	IF = {
@@ -9660,6 +9659,8 @@ SOV_set_up_dynamic_modifiers_civil_war = { #Used for Stalinist side in the CW
 	set_variable = { SOS.SOV_the_red_army_army_org_factor = SOV.SOV_the_red_army_army_org_factor }
 	set_variable = { SOS.SOV_the_red_army_experience_gain_army_factor = SOV.SOV_the_red_army_experience_gain_army_factor }
 	set_variable = { SOS.SOV_the_red_army_experience_loss_factor = SOV.SOV_the_red_army_experience_loss_factor }
+	set_variable = { SOS.SOV_the_red_army_mastery_loss_factor = SOV.SOV_the_red_army_mastery_loss_factor }
+	set_variable = { SOS.SOV_the_red_army_mastery_loss_factor_inverted = SOV.SOV_the_red_army_mastery_loss_factor_inverted }
 	set_variable = { SOS.SOV_the_red_army_mobilization_speed = SOV.SOV_the_red_army_mobilization_speed }
 	set_variable = { SOS.SOV_the_red_army_conscription_factor = SOV.SOV_the_red_army_conscription_factor }
 	set_variable = { SOS.SOV_the_red_army_modifier_army_sub_unit_cavalry_speed_factor = SOV.SOV_the_red_army_modifier_army_sub_unit_cavalry_speed_factor }

@@ -40,6 +40,8 @@ set_technology = {
 	tech_support = 1		
 	tech_engineers = 1
 	tech_recon = 1
+	#trench_warfare = 1
+	#fleet_in_being = 1
 	fuel_silos = 1
 	fuel_refining = 1
 	basic_train = 1
@@ -135,6 +137,8 @@ if = {
 	recruit_character = RAJ_mughal_industrialist
 	recruit_character = RAJ_silent_mughal
 	recruit_character = RAJ_backroom_mughal
+	recruit_character = RAJ_abdul_ghaffar_khan
+	recruit_character = RAJ_GOE_muhammad_musa
 	
 	else = {
 		recruit_character = RAJ_karam_singh_mann
@@ -301,6 +305,7 @@ set_cosmetic_tag = RAJ_UK # British Raj
 		add_dynamic_modifier = {
 			modifier = idea_RAJ_independence_movement
 		}
+
 		complete_national_focus = RAJ_purna_swaraj
 		complete_national_focus = RAJ_uplifting_the_people_of_india
 		complete_national_focus = RAJ_tenancy_reforms
@@ -354,6 +359,19 @@ set_cosmetic_tag = RAJ_UK # British Raj
 
 	
 	set_technology = {
+		
+		#doctrines
+		#Air
+		#force_rotation = 1
+		#fighter_baiting = 1
+		#grand_battle_plan = 1
+		#trench_warfare = 1
+		#prepared_defense = 1
+		#battlefleet_concentration = 1
+		#subsidiary_carrier_role = 1
+		#convoy_sailing = 1
+		#convoy_escorts = 1
+		#submarine_operations = 1
 
 		#electronics
 		electronic_mechanical_engineering = 1
@@ -487,16 +505,6 @@ set_variable = { RAJ_fyp_production_factory_max_efficiency_factor = 0 }
 
 if = {
 	limit = {
-		is_historical_focus_on = yes
-	}
-	430 = {
-	 	set_variable = { global.famine_state = THIS }
-	}
-	
-}
-
-if = {
-	limit = {
 		has_dlc = "Graveyard of Empires"
 	}
 
@@ -530,6 +538,7 @@ if = {
 		add_core_of = RAJ
 	}
 }
+
 if = {
 	limit = {
 		has_start_date < 1939.1.1
@@ -542,8 +551,8 @@ if = {
 	limit = {
 		NOT = { has_dlc = "Arms Against Tyranny" }
 	}
-	set_variable = { khadi_level = 0 }
-	set_variable = { gun_and_shell_level = 0 }
+	set_variable = { global.khadi_level = 0 }
+	set_variable = { global.gun_and_shell_level = 0 }
 }
 
 set_variable = { RAJ_recruitment_offices_timeout_max = 12 } 

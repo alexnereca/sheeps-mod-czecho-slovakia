@@ -1,4 +1,4 @@
-German_alternate_kaiser = {
+German_alternate_kaiser_GD = {
 	name = "German Alternate plan to restore the Kaiser"
 	desc = "Wir wollen unsren Kaiser Wilhelm wiederhaben!"
 

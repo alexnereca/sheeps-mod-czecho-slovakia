@@ -460,7 +460,7 @@ focus_tree = {
 		mutually_exclusive = {
 		} 
 		
-		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_POLITICAL_CHARACTER FOCUS_FILTER_HISTORICAL }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_POLITICAL_CHARACTER FOCUS_FILTER_HISTORICAL FOCUS_FILTER_COMPLETED_BY_EVENT }
 
 		available = {
 
@@ -1482,8 +1482,6 @@ focus_tree = {
 			custom_effect_tooltip = CHL_skip_one_line_tt
 
 			custom_effect_tooltip = available_political_advisor
-											   
-													   
 			show_ideas_tooltip = CHL_francisco_encina
 			show_ideas_tooltip = CHL_tancredo_pinochet
 			show_ideas_tooltip = CHL_guillermo_araya
@@ -3941,8 +3939,8 @@ focus_tree = {
 			custom_effect_tooltip = CHL_skip_one_line_tt
 
 			custom_effect_tooltip = CHL_modify_mapuche_nationalism_ns_intro
-			add_to_variable = { CHL_mapuche_nationalism_industrial_capacity_factory = 0.075 tooltip = industrial_capacity_factory_tt }
-			add_to_variable = { CHL_mapuche_nationalism_industrial_capacity_dockyard = 0.075 tooltip = industrial_capacity_dockyard_tt }
+			add_to_variable = { CHL_mapuche_nationalism_industrial_capacity_factory = 0.05 tooltip = industrial_capacity_factory_tt }
+			add_to_variable = { CHL_mapuche_nationalism_industrial_capacity_dockyard = 0.05 tooltip = industrial_capacity_dockyard_tt }
 
 		}
 	}
@@ -3966,8 +3964,7 @@ focus_tree = {
 			focus = CHL_adopt_mapundungun
 		}
 
-		mutually_exclusive = {
-		} 
+		mutually_exclusive = { }
 		
 		ai_will_do = {
 			base = 1
@@ -4261,19 +4258,13 @@ focus_tree = {
 		dynamic = yes
 
 		icon = {
-			trigger = {
+			GFX_focus_CHL_taking_back_patagonia_monarchist = {
 				NOT = {
 					has_completed_focus = CHL_address_the_mapuche_conflict
 				}
 			}
-			value = GFX_focus_CHL_taking_back_patagonia_monarchist
+			GFX_focus_CHL_taking_back_patagonia_mapuche = yes
 		}
-		icon = {
-			trigger = {
-				has_completed_focus = CHL_address_the_mapuche_conflict
-			}
-			value = GFX_focus_CHL_taking_back_patagonia_mapuche
-		} 
 
 		relative_position_id = CHL_the_patagonian_giants
 		x = 0
@@ -4826,15 +4817,15 @@ focus_tree = {
 					is_owned_by = ROOT
 				}
 			}
+
 			is_subject = no
 			
 		}
 
 		bypass = {
-			any_state = {
+			any_owned_state = {
 				is_core_of = FRA
 				is_on_continent = europe
-				is_owned_by = ROOT
 			}
 		}
 
@@ -5054,6 +5045,8 @@ focus_tree = {
 			hidden_effect = {
 				retire_country_leader = yes
 
+				remove_ideas = CHL_carlos_ibanez
+
 				add_country_leader_role  = {
 					character = CHL_carlos_ibanez
 				    promote_leader = yes
@@ -5068,7 +5061,6 @@ focus_tree = {
 					set_portraits = {
 						civilian = {
 							large = GFX_portrait_CHL_carlos_ibanez_king
-							small = GFX_portrait_CHL_carlos_ibanez_king_small
 						}
 					}
 				}
@@ -5167,8 +5159,8 @@ focus_tree = {
 		}
 
 		available = {	
-			any_state = {
-				is_owned_and_controlled_by = ROOT
+			any_owned_state = {
+				is_controlled_by = ROOT
 				is_coastal = yes
 			}
 		}
@@ -5493,6 +5485,7 @@ focus_tree = {
 		}
 
 		mutually_exclusive = {
+			focus = CHL_unified_in_spirit
 		} 
 		
 		ai_will_do = {
@@ -5598,6 +5591,7 @@ focus_tree = {
 		}
 
 		mutually_exclusive = {
+			focus = CHL_unified_by_will
 		} 
 		
 		ai_will_do = {
@@ -6100,7 +6094,7 @@ focus_tree = {
 		}
 
 		mutually_exclusive = {
-				focus = CHL_work_towards_laissex_faire						 
+			focus = CHL_work_towards_laissex_faire
 		} 
 		
 		ai_will_do = {
@@ -6177,7 +6171,7 @@ focus_tree = {
 		}
 
 		mutually_exclusive = {
-				focus = CHL_establish_corfo			  
+			focus = CHL_establish_corfo
 		} 
 		
 		ai_will_do = {
@@ -6527,10 +6521,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL_CHARACTER }
 		
 		completion_reward = {
-
-			add_political_power = -25
-			add_stability = 0.07
-
+			add_stability = 0.05
 			add_war_support = -0.1
 
 			custom_effect_tooltip = CHL_skip_one_line_tt
@@ -6550,28 +6541,14 @@ focus_tree = {
 		dynamic = yes
 
 		icon = {
-			trigger = {
+			GFX_focus_intervention_spain_nationalists = {
 				CHL_has_right_wing_government = yes
 			}
-			value = GFX_focus_intervention_spain_nationalists
-		}
-		icon = {
-			trigger = {
+			GFX_focus_generic_befriend_communist_spain_focus = {
 				CHL_has_left_wing_government = yes
 			}
-			value = GFX_focus_generic_befriend_communist_spain_focus
-		} 
-		icon = {
-			trigger = {
-				NOT = {
-					OR = {
-						CHL_has_left_wing_government = yes
-						CHL_has_right_wing_government = yes
-					}
-				}
-			}
-			value = GFX_focus_generic_befriend_republican_spain_focus
-		} 
+			GFX_focus_generic_befriend_republican_spain_focus = yes
+		}
 
 		relative_position_id = CHL_low_cost_housing
 		x = 5
@@ -8680,7 +8657,7 @@ focus_tree = {
 		}
 
 		mutually_exclusive = {
-				focus = CHL_departamento_de_la_juventad_nacista								  
+			focus = CHL_departamento_de_la_juventad_nacista
 		} 
 		
 		ai_will_do = {
@@ -8719,7 +8696,7 @@ focus_tree = {
 		}
 
 		mutually_exclusive = {
-				focus = CHL_departemento_de_las_tropas_nacistas_de_asalto											
+			focus = CHL_departemento_de_las_tropas_nacistas_de_asalto
 		} 
 		
 		ai_will_do = {
@@ -8873,7 +8850,6 @@ focus_tree = {
 				}
 			}
 			is_subject = no
-			#focus = CHL_socialist_youth
 		}
 
 		bypass = {
@@ -9480,12 +9456,12 @@ focus_tree = {
 		ai_will_do = {
 			base = 1.5
 		}
-		available_if_capitulated = no					   
+		available_if_capitulated = no
 
 		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
 
 		available = {
-			is_subject = no	  
+			is_subject = no
 			has_government = fascism
 			has_war_support > 0.79
 			has_idea = CHL_the_francoist_model
@@ -9549,6 +9525,7 @@ focus_tree = {
 		}
 
 		available_if_capitulated = no
+
 		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL }
 
 		available = {
@@ -10354,7 +10331,7 @@ focus_tree = {
 			AND = {
 				controls_state = 687
 				controls_state = 309
-				controls_state = 310
+				controls_state =310
 			}
 		}
 		
@@ -11104,7 +11081,7 @@ focus_tree = {
 
 			custom_effect_tooltip = CHL_skip_one_line_tt
 
-			drop_cosmetic_tag = yes			  
+			drop_cosmetic_tag = yes
 			set_cosmetic_tag = CHL_fascist_kingdom	
 
 			hidden_effect = {
@@ -11631,7 +11608,7 @@ focus_tree = {
 				controls_state = 944
 				controls_state = 503
 				controls_state = 502
-				controls_state = 969		
+				controls_state = 969
 			}
 		} 
 
@@ -11800,7 +11777,7 @@ focus_tree = {
 					}
 				}
 				has_government = communism
-				is_subject_of = ROOT		
+				is_subject_of = ROOT
 				NOT = {
 					OR = {
 						original_tag = USA
@@ -12305,9 +12282,15 @@ focus_tree = {
 			}
 			has_war = no
 		}
-		bypass ={
-			has_government = communism
+
+		bypass = {
+			OR = {
+				has_government = communism
+				is_in_faction = yes 
+				has_war = yes 
+			}
 		}
+
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_HISTORICAL }
 		
 		completion_reward = {
@@ -12876,6 +12859,7 @@ focus_tree = {
 			has_war_support > 0.89
 
 			is_subject = no
+
 		}
 
 		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_HISTORICAL }
@@ -13060,6 +13044,7 @@ focus_tree = {
 					target = AST
 				}
 			}
+
 			hidden_effect = {
 				news_event = { 
 					id = CHL_news_events.7 
@@ -13097,9 +13082,7 @@ focus_tree = {
 		}
 
 		available = {
-
 			is_subject = no
-			
 		}
 
 		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_MANPOWER FOCUS_FILTER_WAR_SUPPORT }
@@ -14570,6 +14553,8 @@ focus_tree = {
 			custom_effect_tooltip = CHL_modify_chilean_economy_ns_intro
 			add_to_variable = { CHL_economy_industrial_capacity_factory = 0.05 tooltip = industrial_capacity_factory_tt }
 
+			custom_effect_tooltip = generic_skip_one_line_tt
+
 			random_state = {
 				limit = {
 					is_owned_and_controlled_by = ROOT
@@ -14627,8 +14612,7 @@ focus_tree = {
 				value = 0.25
 			}
 
-			#custom_effect_tooltip = CHL_modify_chilean_economy_ns_intro
-			#add_to_variable = { CHL_economy_industrial_capacity_factory = 0.1 tooltip = industrial_capacity_factory_tt }
+			custom_effect_tooltip = generic_skip_one_line_tt
 
 			random_state = {
 				limit = {

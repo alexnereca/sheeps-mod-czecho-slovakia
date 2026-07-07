@@ -931,7 +931,7 @@ on_actions = {
 			}
 		}
 		effect = {
-			if = {
+			every_country = {
 				limit = {
 					OR = {
 						tag = NOR
@@ -2890,13 +2890,14 @@ on_actions = {
 					limit = {
 						has_global_flag = is_done 
 					}
-					JAP = {
-						load_focus_tree = {
-							tree = japan_occupation_focus
-							keep_completed = yes
-						}
-						mark_focus_tree_layout_dirty = yes
-					}
+					# TODO: There is no tree for this
+					#JAP = {
+					#	load_focus_tree = {
+					#		tree = japan_occupation_focus
+					#		keep_completed = yes
+					#	}
+					#	mark_focus_tree_layout_dirty = yes
+					#}
 				}
 			}
 		}

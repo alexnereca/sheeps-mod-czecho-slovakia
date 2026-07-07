@@ -1836,7 +1836,7 @@ focus_tree = {
 			BUL = {
 				exists = yes
 				is_subject = no
-				NOT = { has_war_with = ROM }
+				has_war = no
 			}
 			strength_ratio = { tag = BUL ratio > 1.5 }
 			has_army_manpower = { size > 400000 }
@@ -1854,6 +1854,7 @@ focus_tree = {
 							controls_state = 48
 							controls_state = 212
 							controls_state = 211
+							controls_state = 801
 						}
 					}
 				}
@@ -2882,6 +2883,7 @@ focus_tree = {
 			764 = {
 				add_claim_by = ROOT
 			}
+
 		}
 	}
 
@@ -3106,6 +3108,7 @@ focus_tree = {
 				}
 				remove_ideas = ROM_the_sentinel_of_the_motherland
 			}
+			
 			add_timed_idea = { idea = ROM_king_carol_emptied_accounts days = 360 }
 			hidden_effect = {
 				news_event = { id = news.323 days = 1 }
@@ -3487,7 +3490,7 @@ focus_tree = {
 	
 	focus = {
 		id = ROM_white_squadron_focus
-		icon = GFX_goal_generic_build_airforce
+		icon = GFX_focus_SOV_women_in_aviation
 		x = 0
 		y = 1
 		prerequisite = { focus = ROM_expand_the_air_force }
@@ -3588,7 +3591,7 @@ focus_tree = {
 			}
 			add_doctrine_cost_reduction = {
 				name = ROM_air_defense
-				cost_reduction = 0.50
+				cost_reduction = 0.5
 				uses = 1
 				category = air_doctrine
 			}
@@ -3823,6 +3826,8 @@ focus_tree = {
 				days = 240
 				track = fighter_aircraft
 			}
+			
+
 		}
 	}
 
@@ -4061,12 +4066,14 @@ focus_tree = {
 				specialization = specialization_nuclear
 				value = 0.75
 			}
+
 			add_tech_bonus = {
 				name = ROM_nuclear_bomb_project
 				bonus = 1.0
 				uses = 1
 				category = nuclear
 			}
+
 		}
 	}
 

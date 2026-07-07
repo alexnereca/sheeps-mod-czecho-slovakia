@@ -29,6 +29,9 @@ infantry_SPR = {
 				infantry = 9
 				artillery_brigade = 1
 			}
+			regimental_support = {
+				fire_support = 3
+			}
 		
 			support = {
 				artillery = 1
@@ -68,6 +71,9 @@ infantry_SPR = {
 				anti_air_brigade = 1
 				anti_tank_brigade = 1
 			}
+			regimental_support = {
+				fire_support = 5
+			}
 		}
 
 		can_upgrade_in_field = {
@@ -102,6 +108,9 @@ infantry_SPR = {
 			regiments = {
 				infantry = 8
 				artillery_brigade = 3
+			}
+			regimental_support = {
+				fire_support = 3
 			}
 		}
 
@@ -157,6 +166,9 @@ mountaineers_SPR = {
 				artillery_brigade = 4
 				anti_air_brigade = 1
 				anti_tank_brigade = 1
+			}
+			regimental_support = {
+				fire_support = 5
 			}
 		}
 	}

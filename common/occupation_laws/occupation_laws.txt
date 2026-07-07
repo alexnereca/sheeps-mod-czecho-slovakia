@@ -78,7 +78,6 @@ missing_garrison_scaled_effect = {
 	}
 }
 
-
 no_garrison = {
 	icon = 1
 	sound_effect = "Martial_Law_Interface_No_Garrison"
@@ -647,6 +646,7 @@ reconciliation = {
 		base = 9999
 	}
 }
+
 colonial_police = {
 	icon = 13
 	sound_effect = "Martial_Law_Interface_Autonomous_Occupation_Unique_DEM"
@@ -676,6 +676,7 @@ colonial_police = {
 				FROM = { capital_scope = { is_on_continent = africa } }
 			}
 		}
+		
 	}
 
 	state_modifier = { #CHANGES HERE NEED TO BE APPLIED ALSO IN ITA_fake_colonial_police_law idea
@@ -792,7 +793,6 @@ colonial_police_final = {
 		local_factories 				= 0.25
 		local_resources 				= 0.25
 		local_manpower 					= 0.05
-
 	}
 
 
@@ -871,10 +871,41 @@ independent_rule = {
 
 	visible = {
 		original_tag = RAJ
-		OR = { 
-			has_completed_focus = RAJ_princely_states_policy
-			has_completed_focus = RAJ_the_jewel_becomes_the_crown
+		has_dlc = "Graveyard of Empires"
+		OR = {
+			AND = {
+				has_focus_tree = indian_focus_goe
+				has_completed_focus = RAJ_princely_states_policy
+			}
+			AND = {
+				NOT = {
+					has_focus_tree = indian_focus_goe
+				}
+				any_controlled_state = {
+					OR = {
+						is_core_of = MYS
+						is_core_of = HYD
+						is_core_of = MYS
+						is_core_of = RJP
+						is_core_of = CIP
+						is_core_of = WIS
+						is_core_of = SIN
+						is_core_of = KAS
+						is_core_of = KOL
+						is_core_of = KAS
+						is_core_of = WIS
+						is_core_of = NWF
+						is_core_of = MPU
+						is_core_of = KHL
+						is_core_of = FSS
+						is_core_of = SKK
+						is_core_of = RAS
+						is_core_of = KLT
+					}
+				}
+			}
 		}
+
 		FROM = {
 			OR = {
 				original_tag = MYS
@@ -916,6 +947,8 @@ independent_rule = {
 			check_variable  = { resistance_target_without_law > 0.2 }
 			add = 200
 		}
+
+
 		modifier = {
 			check_variable  = { resistance_target_without_law > 0.34}
 			add = 300
@@ -938,8 +971,8 @@ independent_rule = {
 	}
 }
 
-
-princely_subjugation= {
+# The idea for this law is that we exploit the people to get us extra resources fast, but builds up resistance much quicker
+princely_subjugation = {
 	icon = 13
 	sound_effect = "Martial_Law_Interface_Autonomous_Occupation_Unique_DEM"
 
@@ -947,10 +980,41 @@ princely_subjugation= {
 
 	visible = {
 		original_tag = RAJ
-		OR = { 
-			has_completed_focus = RAJ_princely_states_policy
-			has_completed_focus = RAJ_the_jewel_becomes_the_crown
+		has_dlc = "Graveyard of Empires"
+		OR = {
+			AND = {
+				has_focus_tree = indian_focus_goe
+				has_completed_focus = RAJ_princely_states_policy
+			}
+			AND = {
+				NOT = {
+					has_focus_tree = indian_focus_goe
+				}
+				any_controlled_state = {
+					OR = {
+						is_core_of = MYS
+						is_core_of = HYD
+						is_core_of = MYS
+						is_core_of = RJP
+						is_core_of = CIP
+						is_core_of = WIS
+						is_core_of = SIN
+						is_core_of = KAS
+						is_core_of = KOL
+						is_core_of = KAS
+						is_core_of = WIS
+						is_core_of = NWF
+						is_core_of = MPU
+						is_core_of = KHL
+						is_core_of = FSS
+						is_core_of = SKK
+						is_core_of = RAS
+						is_core_of = KLT
+					}
+				}	
+			}	
 		}
+		
 		FROM = {
 			OR = {
 				original_tag = MYS
@@ -973,8 +1037,6 @@ princely_subjugation= {
 				original_tag = KLT
 			}
 		}
-
-		
 	}
 
 	state_modifier = {
@@ -1017,6 +1079,7 @@ princely_subjugation= {
 		}
 	}
 }
+
 senbu_occupation_law = {
 	icon = 16
 	sound_effect = "Martial_Law_Interface_Autonomous_Occupation_Unique_DEM"
