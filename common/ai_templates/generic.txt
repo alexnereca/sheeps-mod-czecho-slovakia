@@ -5,6 +5,7 @@ motorized_div_generic = {
 
 	blocked_for = {
 		DNZ	
+		CZE
 	}
 
 	upgrade_prio = {
@@ -213,6 +214,7 @@ anti_armor_generic = {
 
 	blocked_for = {
 		SOV
+		CZE
 	}
 
 	upgrade_prio = {
@@ -442,6 +444,7 @@ garrison_generic = {
 		ITA
 		SOV
 		FRA
+		CZE
 	}
 	
 	upgrade_prio = {
@@ -543,6 +546,7 @@ infantry_base = {
 
 	blocked_for = {
 		DNZ
+		CZE
 	}
 	
 	upgrade_prio = {
@@ -940,6 +944,7 @@ mountaineers_generic = {
 		SPR
 		FIN
 		BEL
+		CZE
 	}
 	
 	upgrade_prio = {
@@ -1021,6 +1026,7 @@ marines_generic = {
 		SOV
 		FRA
 		CAN
+		CZE
 	}
 	
 	upgrade_prio = {
@@ -1153,6 +1159,7 @@ paratrooper_generic = {
 		ITA
 		SOV
 		FRA
+		CZE
 	}
 	
 	upgrade_prio = {

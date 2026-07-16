@@ -21,6 +21,10 @@ armored_spearhead = {
             	factor = 500
 		is_spg_country = no
         }
+		modifier = {
+            factor = 0
+			tag = CZE
+		}
     }
 
     # EFFECTS
@@ -101,6 +105,10 @@ armored_spearhead_no_lar = {
             	factor = 500
 		is_spg_country = no
         }
+		modifier = {
+            factor = 0
+			tag = CZE
+		}
     }
 
     # EFFECTS
@@ -258,7 +266,10 @@ streamlined_deployment = {
             	factor = 500
 		is_spg_country = yes
         }
-
+		modifier = {
+            factor = 0
+			tag = CZE
+		}
     }
 
     category_all_armor = {
@@ -446,7 +457,10 @@ armored_cavalry = {
 			}
 		}
         }
-
+		modifier = {
+            factor = 0
+			tag = CZE
+		}
     }
 
     armored_car = {
@@ -569,7 +583,10 @@ armored_cavalry_no_lar = {
 			}
 		}
         }
-
+		modifier = {
+            factor = 0
+			tag = CZE
+		}
     }
 
     motorized = {

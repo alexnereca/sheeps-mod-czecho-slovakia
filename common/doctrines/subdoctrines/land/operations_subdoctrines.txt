@@ -275,6 +275,10 @@ grand_assault = {
             	}
 		check_if_tag_needs_to_withdraw_from_europe = no
         }
+		modifier = {
+            factor = 0
+			tag = CZE
+		}
     }
 
     # EFFECTS

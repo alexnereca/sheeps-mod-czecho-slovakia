@@ -802,6 +802,10 @@ field_engineering = {
 
     ai_will_do = { 
         base = 0
+		modifier = {
+			add = 9999
+			tag = CZE
+		}
     }
 
     engineer = {

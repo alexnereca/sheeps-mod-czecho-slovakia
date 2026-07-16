@@ -279,6 +279,10 @@ branch_operation = {
 		
 		ai_will_do = {
 			factor = 20
+			modifier = {
+				add = 9999
+				tag = CZE
+			}
 		}
 		
 		modifiers_during_progress = {
