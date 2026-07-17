@@ -1,0 +1,27 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			CZE = {
+				if = {
+					limit = { is_ai = yes num_of_available_civilian_factories < 15 }
+					add_ideas = block_cze_trading
+				}
+			}
+		}
+	}
+	on_weekly_CZE = {
+		effect = {
+			if = {
+				limit = { is_ai = yes num_of_available_civilian_factories < 15 }
+				add_ideas = block_cze_trading
+			}
+			if = {
+				limit = { 
+					OR = { is_ai = no num_of_available_civilian_factories > 15 }
+					has_idea = block_cze_trading
+				}
+				remove_ideas = block_cze_trading
+			}
+		}
+	}
+}

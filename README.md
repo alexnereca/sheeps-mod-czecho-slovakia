@@ -33,7 +33,7 @@ Version of  [Sheep's Mod](https://steamcommunity.com/sharedfiles/filedetails/?id
 Not addressed yet:
 
 * Czecho-Slovakia should always deny Sudetenland
-* Stopping Czecho-Slovakia trading for resources
+* Flexibility in trading decision-making, if there are enough civs it should happen but should be blocked again if dips below 
 * Replacing army theorist
 * Training up army for mastery gain (is this possible?)
 * Preferred generals etc.
@@ -61,3 +61,4 @@ Notes:
 * Sending attaché to Republic of China may be a good idea or may use up political power and command power needed for other things
 * Out of scope, but the Slovak State  annexes Carpatho-Ukraine after Hungary's war
 * Funny things happen when France defends Czecho-Slovakia but UK doesn't: UK will guarantee Poland, Belgium etc. and then still not join the war on time!
+* AI cheats and gets Partial Mobilisation despite the fact it's locked if you have industrialist's veto

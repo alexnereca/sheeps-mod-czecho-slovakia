@@ -1,0 +1,9 @@
+ideas = {
+	hidden_ideas = {
+		block_cze_trading = {
+			modifier = {
+				resource_trade_cost_bonus_per_factory = -999
+			}
+		}
+	}
+}

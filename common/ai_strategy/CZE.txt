@@ -370,21 +370,21 @@ CZE_template_design = {
 		value = -50
 	}
 }
-CZE_industry = {
-	allowed = { original_tag = CZE }
-	enable = {
-		date < 1940.1.1
-		date > 1936.1.1
-	}
-	abort={
-		date > 1940.1.1
-	}
-
-	ai_strategy = {
-		type = added_military_to_civilian_factory_ratio
-		value = 50
-	}
-}
+#CZE_industry = {
+#	allowed = { original_tag = CZE }
+#	enable = {
+#		date < 1940.1.1
+#		date > 1936.1.1
+#	}
+#	abort={
+#		date > 1940.1.1
+#	}
+#
+#	ai_strategy = {
+#		type = added_military_to_civilian_factory_ratio
+#		value = 50
+#	}
+#}
 
 CZE_tank_export = { #TONKS
 	allowed = {
@@ -638,6 +638,18 @@ CZE_build_mils_else = {
 		id = arms_factory
 		target = 71
 		value = 96
+	}
+}
+
+CZE_pls_no_civs = {
+	allowed = { original_tag = CZE }
+	enable = {
+		always = yes
+	}
+
+	ai_strategy = {
+		type = added_military_to_civilian_factory_ratio
+		value = 100
 	}
 }
 
