@@ -511,6 +511,16 @@ ideas = {
 					has_idea = LSM_neutrality_idea
 					has_government = neutrality
 				}
+				
+				#stop cheating, you need the political power
+				modifier = {
+					add = -9999
+					tag = CZE
+					OR = {
+						has_idea = CZE_industrialists_veto
+						has_idea = CZE_industrialists_veto_2
+					}
+				}
    			}
 		}
 

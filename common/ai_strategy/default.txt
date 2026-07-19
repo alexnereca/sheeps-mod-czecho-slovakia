@@ -678,6 +678,10 @@ ill_show_you_mine_2 = {
 }
 
 default_pp_spend_amount = {
+	allowed = {
+		NOT = { tag = CZE }
+	}
+	
 	enable = {
 		always = yes
 	}

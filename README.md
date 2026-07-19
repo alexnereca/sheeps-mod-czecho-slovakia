@@ -29,6 +29,9 @@ Version of  [Sheep's Mod](https://steamcommunity.com/sharedfiles/filedetails/?id
 * Infantry: 10 battalion + engineer company + support artillery + support anti-air (+ support anti-tank)
 * Mountaineers: 18 battalions + engineer company + recon rangers + support artillery + support anti-air (+ support anti-tank)
 * Prioritise fortification research before any other decision
+* Prioritise A Divided Nation decisions as soon as chief of army + army theorist + bold intelligence officer have been selected
+* Only add partial conscription if mobilize the reserves has been completed
+* Ensured root out paramilitary cells decisions are taken as soon as possible
 
 Not addressed yet:
 
@@ -57,7 +60,7 @@ Notes:
 
 * Germany often starts war August 1938, I dunno if focus order can allow a 'historical' October war instead
 * Spies keep constantly swapping between states, maybe this hampers spy network buildup, maybe it doesn't matter
-* Doesn't need to be said for anyone familiar with this mod, but yes early Anschluss does shift possible focus order
+* Doesn't need to be said for anyone familiar with this mod, but yes German volunteers to Spain and early Anschluss does shift possible focus order
 * Sending attaché to Republic of China may be a good idea or may use up political power and command power needed for other things
 * Out of scope, but the Slovak State  annexes Carpatho-Ukraine after Hungary's war
 * Funny things happen when France defends Czecho-Slovakia but UK doesn't: UK will guarantee Poland, Belgium etc. and then still not join the war on time!

@@ -170,6 +170,11 @@ political_actions = {
 				add = -5000
 				need_low_stability = yes
 			}
+			modifier = {
+				factor = 0
+				has_dlc = "Peace For Our Time" #stability is simply never a problem with this content
+				tag = CZE
+			}
 		}
 	}
 }

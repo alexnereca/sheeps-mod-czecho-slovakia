@@ -2511,6 +2511,12 @@ CZE_a_divided_nation_category = {
 
 		ai_will_do = {
 			base = 15
+			modifier = {
+				factor = 100
+				any_character = { is_army_chief = yes is_hired_as_advisor = yes }
+				any_character = { is_theorist = yes has_army_ledger = yes is_hired_as_advisor = yes }
+				CZE_frantisek_moravec = { is_hired_as_advisor = yes }
+			}
 		}
 
 		allowed = {  
@@ -2665,6 +2671,12 @@ CZE_a_divided_nation_category = {
 
 		ai_will_do = {
 			base = 13
+			modifier = {
+				factor = 100
+				any_character = { is_army_chief = yes is_hired_as_advisor = yes }
+				any_character = { is_theorist = yes has_army_ledger = yes is_hired_as_advisor = yes }
+				CZE_frantisek_moravec = { is_hired_as_advisor = yes }
+			}
 		}
 
 		allowed = {  
@@ -2811,6 +2823,12 @@ CZE_a_divided_nation_category = {
 
 		ai_will_do = {
 			base = 12
+			modifier = {
+				factor = 100
+				any_character = { is_army_chief = yes is_hired_as_advisor = yes }
+				any_character = { is_theorist = yes has_army_ledger = yes is_hired_as_advisor = yes }
+				CZE_frantisek_moravec = { is_hired_as_advisor = yes }
+			}
 		}
 
 		allowed = {  
@@ -2933,6 +2951,12 @@ CZE_a_divided_nation_category = {
 
 		ai_will_do = {
 			base = 10
+			modifier = {
+				factor = 100
+				any_character = { is_army_chief = yes is_hired_as_advisor = yes }
+				any_character = { is_theorist = yes has_army_ledger = yes is_hired_as_advisor = yes }
+				CZE_frantisek_moravec = { is_hired_as_advisor = yes }
+			}
 		}
 
 		allowed = {  
@@ -3057,6 +3081,12 @@ CZE_a_divided_nation_category = {
 
 		ai_will_do = {
 			base = 11
+			modifier = {
+				factor = 100
+				any_character = { is_army_chief = yes is_hired_as_advisor = yes }
+				any_character = { is_theorist = yes has_army_ledger = yes is_hired_as_advisor = yes }
+				CZE_frantisek_moravec = { is_hired_as_advisor = yes }
+			}
 		}
 
 		allowed = {  
@@ -3185,6 +3215,12 @@ CZE_a_divided_nation_category = {
 
 		ai_will_do = {
 			base = 10
+			modifier = {
+				factor = 100
+				any_character = { is_army_chief = yes is_hired_as_advisor = yes }
+				any_character = { is_theorist = yes has_army_ledger = yes is_hired_as_advisor = yes }
+				CZE_frantisek_moravec = { is_hired_as_advisor = yes }
+			}
 		}
 
 		allowed = {  
@@ -3316,6 +3352,12 @@ CZE_a_divided_nation_category = {
 
 		ai_will_do = {
 			base = 10
+			modifier = {
+				factor = 100
+				any_character = { is_army_chief = yes is_hired_as_advisor = yes }
+				any_character = { is_theorist = yes has_army_ledger = yes is_hired_as_advisor = yes }
+				CZE_frantisek_moravec = { is_hired_as_advisor = yes }
+			}
 		}
 
 		allowed = {  
@@ -3445,6 +3487,12 @@ CZE_a_divided_nation_category = {
 
 		ai_will_do = {
 			base = 10
+			modifier = {
+				factor = 100
+				any_character = { is_army_chief = yes is_hired_as_advisor = yes }
+				any_character = { is_theorist = yes has_army_ledger = yes is_hired_as_advisor = yes }
+				CZE_frantisek_moravec = { is_hired_as_advisor = yes }
+			}
 		}
 
 		allowed = {  
@@ -3553,7 +3601,7 @@ CZE_crisis_in_the_sudentenland = {
 		}
 
 		ai_will_do = {
-			base = 100
+			base = 9999 #100
 		}
 	
 		days_remove = 35

@@ -2423,6 +2423,10 @@ intervention_in_japan = {
 	}
 }
 division_template_is_really_cool = {
+	allowed = {
+		NOT = { tag = CZE }
+	}
+	
 	enable = {
 		always = yes
 	}

@@ -669,6 +669,11 @@ CZE_save_xp_please = {
 		id = division_template
 		value = -100
 	}
+	ai_strategy = {
+		type = land_xp_spend_priority
+		id = army_spirit
+		value = -100
+	}
 }
 
 CZE_save_xp_again = {
@@ -688,6 +693,11 @@ CZE_save_xp_again = {
 	ai_strategy = {
 		type = land_xp_spend_priority
 		id = division_template
+		value = -100
+	}
+	ai_strategy = {
+		type = land_xp_spend_priority
+		id = army_spirit
 		value = -100
 	}
 }
@@ -749,12 +759,45 @@ CZE_get_advisors_first = {
 	}
 }
 
+CZE_fix_dividednation_bop_now = {
+	allowed = {
+		original_tag = CZE
+	}
+	enable = {
+		any_character = { is_army_chief = yes is_hired_as_advisor = yes }
+		any_character = { is_theorist = yes has_army_ledger = yes is_hired_as_advisor = yes }
+		CZE_frantisek_moravec = { is_hired_as_advisor = yes }
+	}
+	abort = {
+		NOT = {
+			has_dynamic_modifier = {
+				modifier = CZE_a_divided_nation_dynamic_modifier
+			}
+		}
+	}
+	
+	ai_strategy = {
+		type = pp_spend_priority
+		id = decision
+		value = 999
+	}
+	ai_strategy = {
+		type = pp_spend_priority
+		id = idea
+		value = -999
+	}
+	ai_strategy = {
+		type = pp_spend_amount
+		id = idea
+		value = -999
+	}
+}
+
 CZE_remember_antitank = {
 	allowed = {
 		original_tag = CZE
 	}
 	enable = {
-		#I want to check production line for 5 mils on inf but
 		num_of_available_military_factories < 10
 	}
 	abort_when_not_enabled = yes

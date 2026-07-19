@@ -414,6 +414,11 @@ ideas = {
                 	factor = 0
                 	has_idea = extensive_conscription
                 }
+				modifier = {
+					factor = 0
+					tag = CZE
+					NOT = { has_idea = CZE_mobilize_the_reserves_idea } #get some savings on your political power please
+				}
 			}
 
 			on_add = {

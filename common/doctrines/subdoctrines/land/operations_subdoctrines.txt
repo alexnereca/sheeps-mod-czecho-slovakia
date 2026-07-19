@@ -165,7 +165,10 @@ infiltration_tactics = {
                 original_tag = JAP
             }
         }
-
+		modifier = {
+			factor = 0
+			tag = CZE
+		}
     }
 
     # EFFECTS
